@@ -2,6 +2,7 @@ import React       from 'react';
 import { connect } from 'react-redux';
 
 import Map    from '../map';
+import Goblin from '../monsters/goblin';
 import Player from '../player';
 
 import maps  from '../../data/maps';
@@ -38,6 +39,7 @@ class World extends React.Component {
       }}>
         <Map />
         <Player />
+        <Goblin monster={{position:[720, 360]}} />
       </div>
     );
   }
