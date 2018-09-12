@@ -3,3 +3,22 @@ body {
 
   background-color: #0f0f0f;
 }
+
+.flex-column {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  margin-bottom: 25px;
+}
+
+.flex-row {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  width: 800px;
+  align-self: center;
+}

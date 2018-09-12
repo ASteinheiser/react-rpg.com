@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 
-import World from './features/world';
+import Stats     from './features/stats';
+import Inventory from './features/inventory';
+import World     from './features/world';
 
 class App extends Component {
   render() {
     return (
-      <World />
+      <div className='flex-column'>
+        <World />
+
+        <div className='flex-row'>
+          <Stats />
+          <Inventory />
+        </div>
+      </div>
     );
   }
 }
