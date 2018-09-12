@@ -20,15 +20,28 @@ const statsReducer = (state = initialState, action) => {
       let expToLevel = state.expToLevel;
       // if they are leveling up
       if(newTotalExp >= expToLevel) {
+        // increment level
         newState.level += 1;
+
         // calculate leftover exp if it isn't exactly enough
         if(!(newState.exp === expToLevel)) {
           let leftoverExp = (newTotalExp) % expToLevel;
           newState.exp = leftoverExp;
         }
+
         // set next exp goal to be 1.5 times as much
         newState.expToLevel = state.expToLevel * 1.5;
-      } else { // they aren't leveling up
+
+        // get more maxHp and currHp (roll 1-5)
+        let moreHp = Math.floor(Math.random() * 5) + 1;
+        newState.hp += moreHp;
+        newState.maxHp += moreHp;
+
+        // get more damage (+1)
+        newState.damage += 1;
+
+      } else {
+        // they aren't leveling up
         newState.exp += newExp;
       }
 
