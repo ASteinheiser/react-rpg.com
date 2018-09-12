@@ -16,7 +16,19 @@ const statsReducer = (state = initialState, action) => {
 
     case 'GET_EXP':
       let exp = action.payload.value;
-      newState.exp += exp;
+      // if they are leveling up
+      if(newState.exp + exp >= state.expToLevel) {
+        newState.level = state.level + 1;
+        // calculate leftover exp if it isn't exactly enough
+        if(!(newState.exp + exp === state.expToLevel)) {
+          let leftoverExp = (newState.exp + exp) % state.expToLevel;
+          newState.exp = leftoverExp;
+        }
+        // set next exp goal to be 1.5 times as much
+        newState.expToLevel = state.expToLevel * 1.5;
+      } else { // they aren't leveling up
+        newState.exp += exp;
+      }
 
       return newState;
 

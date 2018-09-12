@@ -82,7 +82,7 @@ export default function handleMovement(player) {
       // TODO: give the player loot!
       store.dispatch({
         type: 'GET_EXP',
-        payload: { value: 15 }
+        payload: { value: 10 }
       })
       store.dispatch({
         type: 'REMOVE_CHEST',
