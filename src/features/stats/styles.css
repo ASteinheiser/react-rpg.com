@@ -9,3 +9,10 @@
 .stats-row-spacing {
   padding-bottom: 15px;
 }
+
+.stats-border {
+  border: 1px solid;
+  border-radius: 2px;
+
+  padding: 15px;
+}
