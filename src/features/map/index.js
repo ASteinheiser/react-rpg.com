@@ -57,8 +57,7 @@ function Map(props) {
   return (
     <div style={{
       width: '800px',
-      height: '600px',
-      border: '4px solid #000',
+      height: '600px'
     }}>
       {
         map.tiles.map((row, index) => {

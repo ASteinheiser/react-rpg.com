@@ -1,7 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import store from '../../config/store';
+// import store from '../../config/store';
 
 function Inventory(props) {
   return (
