@@ -8,7 +8,7 @@ import { tiles } from '../../data/maps/00001';
 import store     from '../../config/store';
 
 function World(props) {
-  const { world } = props;
+  // const { world } = props;
   // set map tiles for current map
   store.dispatch({
     type: 'ADD_TILES',

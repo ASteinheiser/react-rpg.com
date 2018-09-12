@@ -26,6 +26,8 @@ export default function handleMovement(player) {
         return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*2}px`
       case 'NORTH':
         return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*3}px`
+      default:
+        // not good if you get here...
     }
   }
 
@@ -39,6 +41,8 @@ export default function handleMovement(player) {
         return [ oldPos[0], oldPos[1] - SPRITE_SIZE ]
       case 'SOUTH':
         return [ oldPos[0], oldPos[1] + SPRITE_SIZE ]
+      default:
+        // not good if you get here...
     }
   }
 
@@ -73,6 +77,14 @@ export default function handleMovement(player) {
     const x = newPos[0] / SPRITE_SIZE;
 
     const nextTile = tiles[y][x];
+
+    if(nextTile === 4) {
+      // TODO: give the player loot!
+      store.dispatch({
+        type: 'REMOVE_CHEST',
+        payload: { x, y }
+      })
+    }
 
     return nextTile < 5;
   }

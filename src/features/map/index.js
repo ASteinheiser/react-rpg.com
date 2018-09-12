@@ -17,6 +17,8 @@ function getTileSprite(type) {
       return 'rock'
     case 6:
       return 'tree'
+    default:
+      return 'grass'
   }
 }
 
@@ -37,7 +39,13 @@ function MapRow(props) {
         height: SPRITE_SIZE,
       }}>
       {
-        props.tiles.map( tile => <MapTile tile={tile} /> )
+        props.tiles.map((tile, index) => {
+          return(
+            <MapTile
+              tile={tile}
+              key={JSON.stringify(tile) + index} />
+          );
+        })
       }
     </div>
   )
@@ -53,7 +61,13 @@ function Map(props) {
       border: '4px solid #000',
     }}>
       {
-        map.tiles.map( row => <MapRow tiles={row} /> )
+        map.tiles.map((row, index) => {
+          return (
+            <MapRow
+              tiles={row}
+              key={JSON.stringify(row) + index} />
+          );
+        })
       }
     </div>
   );
