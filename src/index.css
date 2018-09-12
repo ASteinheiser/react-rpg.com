@@ -1,7 +1,23 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: lighter;
+  font-weight: 100;
+  src:
+    local('Montserrat'),
+    url(./data/fonts/Montserrat/Montserrat-Light.ttf) format('ttf');
+}
+
 body {
   margin: 0;
 
   background-color: #0f0f0f;
+
+  color: #bcbcbc;
+  font-family: Montserrat;
+  font-weight: lighter;
+  font-size: 20px;
+
+  text-transform: uppercase;
 }
 
 .flex-column {
@@ -21,4 +37,12 @@ body {
 
   width: 800px;
   align-self: center;
+}
+
+.game-title-text {
+  width: 800px;
+  margin-top: 25px;
+
+  align-self: center;
+  text-align: center;
 }

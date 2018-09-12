@@ -8,6 +8,10 @@ class App extends Component {
   render() {
     return (
       <div className='flex-column'>
+        <span className='game-title-text'>
+          {'React + Redux RPG'}
+        </span>
+
         <World />
 
         <div className='flex-row'>
