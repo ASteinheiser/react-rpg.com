@@ -90,10 +90,23 @@ export default function handleMovement(player) {
       })
     }
 
-    if(nextTile === 2) {
+    if(nextTile === 7) {
+      // calculate which border player was at
+      let border;
+      if(y === 0) border = 'NORTH';
+      if(y === (MAP_HEIGHT / SPRITE_SIZE) - 1) border = 'SOUTH';
+      if(x === 0) border = 'WEST';
+      if(x === (MAP_WIDTH / SPRITE_SIZE) - 1) border = 'EAST';
+
+      store.dispatch({
+        type: 'MOVE_OPPOSITE',
+        payload: { border }
+      })
+
+      // change the world map
       store.dispatch({
         type: 'LOAD_NEXT_MAP',
-        payload: { }
+        payload: {}
       })
     }
 
