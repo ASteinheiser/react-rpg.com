@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import Map    from '../map';
 import Player from '../player';
 
-import { tiles } from '../../data/maps/00001';
-import store     from '../../config/store';
+import maps  from '../../data/maps';
+import store from '../../config/store';
 
 function World(props) {
-  // const { world } = props;
+  const { world } = props;
   // set map tiles for current map
   store.dispatch({
     type: 'ADD_TILES',
-    payload: { tiles }
+    payload: { tiles: maps[world.currentMap] }
   })
 
   return (

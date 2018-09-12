@@ -90,6 +90,13 @@ export default function handleMovement(player) {
       })
     }
 
+    if(nextTile === 2) {
+      store.dispatch({
+        type: 'LOAD_NEXT_MAP',
+        payload: { }
+      })
+    }
+
     return nextTile < 5;
   }
 
