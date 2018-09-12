@@ -13,3 +13,7 @@
 .tree {
   background-image: url('/tiles/tree.png')
 }
+
+.chest {
+  background-image: url('/tiles/chest.png')
+}
