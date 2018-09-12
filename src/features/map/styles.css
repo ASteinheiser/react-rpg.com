@@ -17,3 +17,7 @@
 .chest {
   background-image: url('/tiles/chest.png')
 }
+
+.arrow {
+  background-image: url('/tiles/arrow.png')
+}
