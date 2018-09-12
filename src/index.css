@@ -1,20 +1,11 @@
-@font-face {
-  font-family: 'Montserrat';
-  font-style: lighter;
-  font-weight: 100;
-  src:
-    local('Montserrat'),
-    url(./data/fonts/Montserrat/Montserrat-Light.ttf) format('ttf');
-}
-
 body {
   margin: 0;
 
   background-color: #0f0f0f;
 
   color: #bcbcbc;
-  font-family: Montserrat;
-  font-weight: lighter;
+  font-family: sans-serif;
+  font-weight: 100;
   font-size: 20px;
 
   text-transform: uppercase;
