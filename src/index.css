@@ -20,7 +20,7 @@ body {
   text-transform: uppercase;
 }
 
-.flex-column {
+.game-layout-container {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -28,7 +28,7 @@ body {
   margin-bottom: 25px;
 }
 
-.flex-row {
+.game-stats-container {
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -45,4 +45,14 @@ body {
 
   align-self: center;
   text-align: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }

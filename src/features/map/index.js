@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { SPRITE_SIZE } from '../../config/constants';
 
-import './styles.css'
+import './styles.css';
 
 function getTileSprite(type) {
   switch(type) {

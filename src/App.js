@@ -7,14 +7,14 @@ import World     from './features/world';
 class App extends Component {
   render() {
     return (
-      <div className='flex-column'>
+      <div className='game-layout-container'>
         <span className='game-title-text'>
           {'React + Redux RPG'}
         </span>
 
         <World />
 
-        <div className='flex-row'>
+        <div className='game-stats-container'>
           <Stats />
           <Inventory />
         </div>
