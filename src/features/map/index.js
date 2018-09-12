@@ -6,8 +6,8 @@ function Map(props) {
 
   return (
     <div style={{
-        width: '1024px',
-        height: '576px',
+        width: '800px',
+        height: '600px',
         backgroundColor: '#d4d4d4',
         border: '4px solid #000',
       }} />

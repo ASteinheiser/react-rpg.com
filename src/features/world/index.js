@@ -10,8 +10,8 @@ function World(props) {
   return (
     <div style={{
         position: 'relative',
-        width: '1024px',
-        height: '576px',
+        width: '800px',
+        height: '600px',
         margin: '25px auto',
       }}>
       <Map />
