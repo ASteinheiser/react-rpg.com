@@ -9,6 +9,8 @@ function getTileSprite(type) {
   switch(type) {
     case 0:
       return 'grass'
+    case 2:
+      return 'rock' // fake rock obstacles
     case 3:
       return 'tree' // fake tree obstacles
     case 4:
