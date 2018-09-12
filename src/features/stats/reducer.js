@@ -9,7 +9,17 @@ const initialState = {
 };
 
 const statsReducer = (state = initialState, action) => {
+
+  let newState = Object.assign({}, state);
+
   switch(action.type) {
+
+    case 'GET_EXP':
+      let exp = action.payload.value;
+      newState.exp += exp;
+
+      return newState;
+
     default:
       return state;
   }

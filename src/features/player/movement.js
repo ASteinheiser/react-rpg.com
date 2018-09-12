@@ -81,6 +81,10 @@ export default function handleMovement(player) {
     if(nextTile === 4) {
       // TODO: give the player loot!
       store.dispatch({
+        type: 'GET_EXP',
+        payload: { value: 15 }
+      })
+      store.dispatch({
         type: 'REMOVE_CHEST',
         payload: { x, y }
       })
