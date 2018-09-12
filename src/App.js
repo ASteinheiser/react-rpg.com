@@ -8,9 +8,9 @@ class App extends Component {
   render() {
     return (
       <div className='game-layout-container'>
-        <span className='game-title-text'>
+        {/* <span className='game-title-text'>
           {'React + Redux RPG'}
-        </span>
+        </span> */}
 
         <World />
 
