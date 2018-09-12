@@ -1,12 +1,9 @@
 
 const initialState = {
+  spriteLocation: '0px 0px',
+  direction: 'EAST',
   position: [0, 0],
-  stats: {
-    hp: 10,
-    mana: 5,
-    level: 0,
-    exp: 0
-  }
+  walkIndex: 0
 };
 
 const playerReducer = (state = initialState, action) => {
