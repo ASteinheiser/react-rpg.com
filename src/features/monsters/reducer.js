@@ -15,16 +15,17 @@ const monstersReducer = (state = initialState, action) => {
 
   switch(action.type) {
 
+    case 'KILL_MONSTER':
+      delete newState.components[action.payload.id];
+
+      return newState;
+
     // deal damage to individual monster
     case 'DAMAGE_TO_MONSTER':
       const { id, damage } = action.payload;
       // deal damage to monster
       newState.components[id].props.monster.hp -= damage;
-      // check if that killed the monster
-      if(newState.components[id].props.monster.hp <= 0) {
-        // if it did, remove the monster component
-        delete newState.components[id];
-      }
+
       return newState;
 
     // load a new set of monsters

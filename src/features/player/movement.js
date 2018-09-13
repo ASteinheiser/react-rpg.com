@@ -26,12 +26,14 @@ export default function handleMovement(player) {
     const monsters = store.getState().monsters.components;
     // check for monsters
     Object.keys(monsters).forEach(monsterId => {
-      let monsterPos = monsters[monsterId].props.monster.position;
+      let currMonster = monsters[monsterId].props.monster;
+      let monsterPos = currMonster.position;
       // if the new position contains a monster
       if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
+        let { stats } = store.getState();
         // calculate damage
-        let monsterDamage = monsters[monsterId].props.monster.damage;
-        let playerDamage = store.getState().stats.damage;
+        let monsterDamage = currMonster.damage;
+        let playerDamage = stats.damage;
         // deal damage to monster
         store.dispatch({
           type: 'DAMAGE_TO_MONSTER',
@@ -47,6 +49,25 @@ export default function handleMovement(player) {
             damage: monsterDamage
           }
         })
+        // check if monster died
+        if(currMonster.hp <= 0) {
+          // if it did, remove the monster component
+          store.dispatch({
+            type: 'KILL_MONSTER',
+            payload: { id: monsterId }
+          })
+          // and get some exp
+          store.dispatch({
+            type: 'GET_EXP',
+            payload: { value: currMonster.exp }
+          })
+        }
+        // check if player died
+        if(stats.hp <= 0) {
+          // if it did, game over
+          // TODO: game over
+          console.log('game over');
+        }
         // monsters found, don't allow for movement
         validMove = false;
       }

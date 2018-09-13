@@ -18,11 +18,7 @@ const statsReducer = (state = initialState, action) => {
       const { damage } = action.payload;
       // deal damage to player
       newState.hp -= damage;
-      // check if that killed the player
-      if(newState.hp <= 0) {
-        // if it did, game over
-        console.log('game over');
-      }
+
       return newState;
 
     case 'GET_EXP':
