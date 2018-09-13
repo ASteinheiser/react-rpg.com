@@ -1,13 +1,17 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 // game components
-import Map      from '../map';
-import Monsters from '../monsters';
-import Player   from '../player';
+import Inventory from '../inventory';
+import Map       from '../map';
+import Monsters  from '../monsters';
+import Player    from '../player';
+import Stats     from '../stats';
 // game configs
 import items    from '../../data/items';
 import maps     from '../../data/maps';
 import store    from '../../config/store';
+
+import './styles.css';
 
 class World extends React.Component {
 
@@ -18,7 +22,8 @@ class World extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevProps.world !== this.props.world){
+    // reload the tiles and monsters if it's a new map
+    if(prevProps.world.currentMap !== this.props.world.currentMap){
       this.handleLoadMap();
       this.handleLoadMonsters();
     }
@@ -57,15 +62,17 @@ class World extends React.Component {
 
   render() {
     return (
-      <div style={{
-        position: 'relative',
-        width: '800px',
-        height: '600px',
-        margin: '25px auto',
-      }}>
+      <div className='world-view-container'>
+
         <Map />
         <Player />
         <Monsters />
+
+        <div className='world-stats-container'>
+          <Stats />
+          <Inventory />
+        </div>
+
       </div>
     );
   }

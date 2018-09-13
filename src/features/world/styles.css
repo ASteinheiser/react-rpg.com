@@ -1,0 +1,19 @@
+.world-view-container {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  margin: 15px auto;
+}
+
+.world-stats-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  width: 800px;
+  align-self: center;
+
+  margin-top: 15px;
+}

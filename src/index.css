@@ -16,26 +16,7 @@ body {
   flex: 1;
   flex-direction: column;
 
-  margin-bottom: 25px;
-}
-
-.game-stats-container {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-
-  justify-content: space-between;
-
-  width: 800px;
-  align-self: center;
-}
-
-.game-title-text {
-  width: 800px;
-  margin-top: 25px;
-
-  align-self: center;
-  text-align: center;
+  margin-bottom: 15px;
 }
 
 .flex-row {

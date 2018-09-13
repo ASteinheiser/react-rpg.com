@@ -65,8 +65,10 @@ export default function handleMovement(player) {
         // check if player died
         if((stats.hp - monsterDamage) <= 0) {
           // if it did, game over
-          // TODO: game over
-          console.log('game over');
+          store.dispatch({
+            type: 'GAME_OVER',
+            payload: {}
+          })
         }
         // monsters found, don't allow for movement
         validMove = false;
