@@ -7,3 +7,9 @@ cd react-game
 yarn install
 npm start
 ```
+
+## TODO:
+- [ ] better sprites for rocks/trees
+- [ ] add a grass background image
+- [ ] load map from ids instead of incremental
+- [ ] add forward and back (map ids) to map properties to allow for going between maps
