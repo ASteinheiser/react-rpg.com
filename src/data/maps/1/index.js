@@ -18,8 +18,8 @@ const tiles = [
 
 const monsters = [
   {
-    type: 'goblin',
-    position: [ 600, 400 ]
+    type: 'stone-golem',
+    position: [ 15, 10 ]
   }
 ];
 

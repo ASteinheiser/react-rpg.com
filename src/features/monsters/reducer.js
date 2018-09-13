@@ -3,7 +3,8 @@ import React from 'react';
 import Goblin, { goblinStats }         from './goblin';
 import StoneGolem, { stoneGolemStats } from './stone-golem';
 
-import { uuidv4 } from '../../modules/uuid-v4.js';
+import { SPRITE_SIZE } from '../../config/constants';
+import { uuidv4 }      from '../../modules/uuid-v4.js';
 
 const initialState = {
   components: {}
@@ -44,12 +45,16 @@ const monstersReducer = (state = initialState, action) => {
           case 'goblin':
             // merge the initial position with monster stats
             monster = Object.assign({}, monster, goblinStats);
+            // set the position from tile(x,y) to pixels
+            monster.position = monster.position.map(value => value * SPRITE_SIZE);
             // set component key with monster id
             newState.components[uuid] = ( <Goblin monster={monster} key={uuid} /> );
             break;
           case 'stone-golem':
             // merge the initial position with monster stats
             monster = Object.assign({}, monster, stoneGolemStats);
+            // set the position from tile(x,y) to pixels
+            monster.position = monster.position.map(value => value * SPRITE_SIZE);
             // set component key with monster id
             newState.components[uuid] = ( <StoneGolem monster={monster} key={uuid} /> );
             break;
