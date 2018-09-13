@@ -1,5 +1,4 @@
-import React       from 'react';
-// import { connect } from 'react-redux';
+import React from 'react';
 
 import GolemSprite from './stone-golem.png';
 
@@ -19,9 +18,10 @@ function StoneGolem(props) {
   );
 }
 
-// const mapStateToProps = ({ monster }) => {
-//   return { monster };
-// }
-//
-// export default connect(mapStateToProps)(StoneGolem);
 export default StoneGolem;
+
+export const stoneGolemStats = {
+  hp: 20,
+  damage: 5,
+  exp: 25
+};

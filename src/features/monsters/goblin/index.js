@@ -1,5 +1,4 @@
-import React       from 'react';
-// import { connect } from 'react-redux';
+import React from 'react';
 
 import GoblinSprite from './goblin.png';
 
@@ -19,9 +18,10 @@ function Goblin(props) {
   );
 }
 
-// const mapStateToProps = ({ monster }) => {
-//   return { monster };
-// }
-//
-// export default connect(mapStateToProps)(Goblin);
 export default Goblin;
+
+export const goblinStats = {
+  hp: 5,
+  damage: 3,
+  exp: 5
+};
