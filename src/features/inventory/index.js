@@ -14,7 +14,7 @@ function Inventory(props) {
       <div className='inventory-button-container'>
         <div className='flex-row inventory-button'>
 
-          <i className='fa fa-briefcase inventory-icon-padding' />
+          <i className='fa fa-briefcase inventory-icon' />
 
           <span> {'Inventory'} </span>
 
