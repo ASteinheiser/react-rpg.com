@@ -3,6 +3,7 @@ const initialState = {
   hp: 10,
   maxHp: 10,
   damage: 2,
+  defence: 0,
   level: 0,
   exp: 0,
   expToLevel: 20,
@@ -17,11 +18,27 @@ const statsReducer = (state = initialState, action) => {
 
     case 'EQUIP_ITEM':
       let item = action.payload;
-
+      // see what type of item it is
       switch(item.type) {
+
         case 'weapon':
           newState.damage += item.damage;
           newState.equippedItems['weapon'] = item;
+          break;
+
+        case 'armor::body':
+          newState.defence += item.defence;
+          newState.equippedItems['armor'] = { body: item };
+          break;
+
+        case 'armor::helmet':
+          newState.defence += item.defence;
+          newState.equippedItems['armor'] = { helmet: item };
+          break;
+
+        case 'ring':
+          // TODO: calcualate rings 'effect'
+          newState.equippedItems['ring'] = item;
           break;
 
         default:

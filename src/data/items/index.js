@@ -7,7 +7,7 @@ const items = {
   weapons: {
     RustySword
   },
-  armors: {
+  armor: {
     LeatherArmor,
     LeatherHelmet
   },

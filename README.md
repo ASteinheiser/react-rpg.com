@@ -9,6 +9,7 @@ npm start
 ```
 
 ## TODO:
+- [ ] calculate ring effect when equipped
 - [ ] better sprites for rocks/trees
 - [ ] add a grass background image
 - [ ] add forward and back (map ids) to map properties to allow for going between maps
