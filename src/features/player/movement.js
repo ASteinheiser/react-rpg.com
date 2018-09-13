@@ -1,9 +1,13 @@
+import _debounce from 'lodash.debounce';
+
 import store from '../../config/store';
 import {
   SPRITE_SIZE,
   MAP_WIDTH,
   MAP_HEIGHT
 } from '../../config/constants';
+
+const DEBOUNCE_TIME = 150; // .15 seconds
 
 export default function handleMovement(player) {
 
@@ -131,6 +135,14 @@ export default function handleMovement(player) {
   }
 
   window.addEventListener('keydown', (event) => {
+    handleKeyDown = _debounce(handleKeyDown,
+      DEBOUNCE_TIME,
+      {
+        leading: true,
+        trailing: false,
+      }
+    );
+
     handleKeyDown(event);
   });
 
