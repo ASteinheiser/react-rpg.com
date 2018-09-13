@@ -19,6 +19,16 @@ body {
   margin-bottom: 15px;
 }
 
+.game-title-text {
+  font-size: 24px;
+
+  width: 800px;
+  margin: 25px 0 10px 0;
+
+  align-self: center;
+  text-align: center;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
