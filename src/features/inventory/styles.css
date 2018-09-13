@@ -9,6 +9,7 @@
   padding: 10px;
 
   border: 1px solid;
+  border-radius: 2px;
 
   cursor: pointer;
 }

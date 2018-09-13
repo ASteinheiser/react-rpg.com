@@ -5,7 +5,8 @@ const initialState = {
   damage: 2,
   level: 0,
   exp: 0,
-  expToLevel: 20
+  expToLevel: 20,
+  equippedItems: {}
 };
 
 const statsReducer = (state = initialState, action) => {
@@ -13,6 +14,19 @@ const statsReducer = (state = initialState, action) => {
   let newState = Object.assign({}, state);
 
   switch(action.type) {
+
+    case 'EQUIP_ITEM':
+      let item = action.payload;
+
+      switch(item.type) {
+        case 'weapon':
+          newState.damage += item.damage;
+          newState.equippedItems.weapon = item;
+          break;
+
+        default:
+      }
+      return newState;
 
     case 'DAMAGE_TO_PLAYER':
       const { damage } = action.payload;

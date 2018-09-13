@@ -1,12 +1,20 @@
 
 const initialState = {
-  items: [],
-  count: 0,
-  maxItems: 5
+  items: []
 };
 
 const inventoryReducer = (state = initialState, action) => {
+
+  let newState = Object.assign({}, state);
+
   switch(action.type) {
+
+    case 'RECEIVE_ITEM':
+      // save item to list
+      newState.items.push(action.payload);
+
+      return newState;
+
     default:
       return state;
   }

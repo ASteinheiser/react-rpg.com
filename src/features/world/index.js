@@ -12,6 +12,7 @@ class World extends React.Component {
   componentDidMount() {
     this.handleLoadMap();
     this.handleLoadMonsters();
+    this.handleLoadStartingItems(); // only on initial game load
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -19,6 +20,27 @@ class World extends React.Component {
       this.handleLoadMap();
       this.handleLoadMonsters();
     }
+  }
+
+  handleLoadStartingItems() {
+    store.dispatch({
+      type: 'RECEIVE_ITEM',
+      payload: {
+        name: 'Rusty Sword',
+        type: 'weapon',
+        range: 'melee',
+        damage: 1
+      }
+    })
+    store.dispatch({
+      type: 'EQUIP_ITEM',
+      payload: {
+        name: 'Rusty Sword',
+        type: 'weapon',
+        range: 'melee',
+        damage: 1
+      }
+    })
   }
 
   handleLoadMap() {
