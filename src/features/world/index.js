@@ -1,13 +1,11 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import Map        from '../map';
-import Goblin     from '../monsters/goblin';
-import StoneGolem from '../monsters/stone-golem';
-import Player     from '../player';
-
-import maps  from '../../data/maps';
-import store from '../../config/store';
+import Map      from '../map';
+import Monsters from '../monsters';
+import Player   from '../player';
+import maps     from '../../data/maps';
+import store    from '../../config/store';
 
 class World extends React.Component {
 
@@ -40,8 +38,7 @@ class World extends React.Component {
       }}>
         <Map />
         <Player />
-        <Goblin monster={{position:[720, 360]}} />
-        <StoneGolem Golem monster={{position:[720, 240]}} />
+        <Monsters />
       </div>
     );
   }
