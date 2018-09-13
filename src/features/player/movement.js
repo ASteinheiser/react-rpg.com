@@ -15,9 +15,44 @@ export default function handleMovement(player) {
     const oldPos = store.getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
 
-    if(observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) {
+    if(observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)
+        && checkForMonster(newPos)) {
       dispatchMove(direction, newPos);
     }
+  }
+
+  function checkForMonster(newPos) {
+    let validMove = true;
+    const monsters = store.getState().monsters.components;
+    // check for monsters
+    Object.keys(monsters).forEach(monsterId => {
+      let monsterPos = monsters[monsterId].props.monster.position;
+      // if the new position contains a monster
+      if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
+        // calculate damage
+        let monsterDamage = monsters[monsterId].props.monster.damage;
+        let playerDamage = store.getState().stats.damage;
+        // deal damage to monster
+        store.dispatch({
+          type: 'DAMAGE_TO_MONSTER',
+          payload: {
+            id: monsterId,
+            damage: playerDamage
+          }
+        })
+        // deal damage to player
+        store.dispatch({
+          type: 'DAMAGE_TO_PLAYER',
+          payload: {
+            damage: monsterDamage
+          }
+        })
+        // monsters found, don't allow for movement
+        validMove = false;
+      }
+    });
+    // no monsters found in newPos
+    return validMove;
   }
 
   function getSpriteLocation(direction, walkIndex) {
