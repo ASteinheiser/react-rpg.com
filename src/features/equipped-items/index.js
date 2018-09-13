@@ -8,22 +8,28 @@ import './styles.css';
 function EquippedItems(props) {
   let { weapon } = props.stats.equippedItems;
 
-  let weaponSlot = InventorySlot;
-
-  if(weapon) {
-    weaponSlot = weapon.image;
-  }
-
   return (
     <div className='equipped-items-container'>
 
       <div className='flex-row'>
         <div style={{
-            backgroundImage: `url('${weaponSlot}')`,
+            backgroundImage: `url('${InventorySlot}')`,
             backgroundSize: 'contain',
             width: '40px',
             height: '40px'
-          }} />
+          }}>
+          {
+            weapon ?
+              <div style={{
+                backgroundImage: `url('${weapon.image}')`,
+                backgroundSize: 'contain',
+                width: '40px',
+                height: '40px'
+              }} />
+              :
+              null
+          }
+        </div>
         <div style={{
             backgroundImage: `url('${InventorySlot}')`,
             backgroundSize: 'contain',
