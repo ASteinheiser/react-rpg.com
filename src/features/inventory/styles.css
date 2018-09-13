@@ -1,3 +1,11 @@
+.inventory-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+
+  justify-content: space-around;
+}
+
 .inventory-button-container {
   display: flex;
   flex-direction: column;

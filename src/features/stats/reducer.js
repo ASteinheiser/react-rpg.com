@@ -21,7 +21,7 @@ const statsReducer = (state = initialState, action) => {
       switch(item.type) {
         case 'weapon':
           newState.damage += item.damage;
-          newState.equippedItems.weapon = item;
+          newState.equippedItems['weapon'] = item;
           break;
 
         default:
