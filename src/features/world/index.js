@@ -1,9 +1,11 @@
 import React       from 'react';
 import { connect } from 'react-redux';
-
+// game components
 import Map      from '../map';
 import Monsters from '../monsters';
 import Player   from '../player';
+// game configs
+import items    from '../../data/items';
 import maps     from '../../data/maps';
 import store    from '../../config/store';
 
@@ -23,23 +25,15 @@ class World extends React.Component {
   }
 
   handleLoadStartingItems() {
+    // give the player a rusty sword
     store.dispatch({
       type: 'RECEIVE_ITEM',
-      payload: {
-        name: 'Rusty Sword',
-        type: 'weapon',
-        range: 'melee',
-        damage: 1
-      }
+      payload: items.weapons.RustySword
     })
+    // and put it on
     store.dispatch({
       type: 'EQUIP_ITEM',
-      payload: {
-        name: 'Rusty Sword',
-        type: 'weapon',
-        range: 'melee',
-        damage: 1
-      }
+      payload: items.weapons.RustySword
     })
   }
 
