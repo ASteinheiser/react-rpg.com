@@ -11,5 +11,13 @@ npm start
 ## TODO:
 - [ ] better sprites for rocks/trees
 - [ ] add a grass background image
-- [ ] load map from ids instead of incremental
 - [ ] add forward and back (map ids) to map properties to allow for going between maps
+  - [ ] load map from ids instead of incremental
+- [ ] add images for inventory items
+  - [ ] load images in equipped slots
+- [ ] game dialog component
+  - [ ] game over message
+  - [ ] initial game message
+  - [ ] got loot
+  - [ ] killed monster
+  - [ ] inventory dialog component
