@@ -1,3 +1,4 @@
+import OldRingImg from './old-ring.png';
 
 const OldRing = {
   name: 'Old Ring',
@@ -6,7 +7,7 @@ const OldRing = {
     damage: 1,
     hp: 3
   },
-  image: '/data/items/rings/old-ring/old-ring.png'
+  image: OldRingImg
 };
 
 export default OldRing;

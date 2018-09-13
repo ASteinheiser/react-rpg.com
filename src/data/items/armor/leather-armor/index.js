@@ -1,9 +1,10 @@
+import LeatherArmorImg from './leather-armor.png';
 
 const LeatherArmor = {
   name: 'Leather Armor',
   type: 'armor::body',
   defence: 3,
-  image: '/data/items/armor/leather-armor/leather-armor.png'
+  image: LeatherArmorImg
 };
 
 export default LeatherArmor;

@@ -11,7 +11,7 @@ function EquippedItems(props) {
   let weaponSlot = InventorySlot;
 
   if(weapon) {
-    // load weapon image into slot
+    weaponSlot = weapon.image;
   }
 
   return (
