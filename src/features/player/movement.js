@@ -30,7 +30,7 @@ export default function handleMovement(player) {
       let monsterPos = currMonster.position;
       // if the new position contains a monster
       if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
-        let { stats } = store.getState();
+        let stats = store.getState().stats;
         // calculate damage
         let monsterDamage = currMonster.damage;
         let playerDamage = stats.damage;
@@ -63,7 +63,7 @@ export default function handleMovement(player) {
           })
         }
         // check if player died
-        if(stats.hp <= 0) {
+        if((stats.hp - monsterDamage) <= 0) {
           // if it did, game over
           // TODO: game over
           console.log('game over');
