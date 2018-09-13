@@ -1,16 +1,9 @@
-import React       from 'react';
 import { connect } from 'react-redux';
 
 function Monsters(props) {
   const { monsters } = props;
 
-  console.log(monsters);
-
-  return (
-    <div>
-      {'Monsters'}
-    </div>
-  );
+  return ( monsters.components );
 }
 
 const mapStateToProps = ({ monsters }) => {

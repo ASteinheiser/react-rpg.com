@@ -11,11 +11,13 @@ class World extends React.Component {
 
   componentDidMount() {
     this.handleLoadMap();
+    this.handleLoadMonsters();
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(prevProps.world !== this.props.world){
       this.handleLoadMap();
+      this.handleLoadMonsters();
     }
   }
 
@@ -24,7 +26,16 @@ class World extends React.Component {
     // set map tiles for current map
     store.dispatch({
       type: 'ADD_TILES',
-      payload: { tiles: maps[world.currentMap] }
+      payload: { tiles: maps[world.currentMap].tiles }
+    })
+  }
+
+  handleLoadMonsters() {
+    const { world } = this.props;
+    // load initial monsters
+    store.dispatch({
+      type: 'ADD_MONSTERS',
+      payload: { monsters: maps[world.currentMap].monsters }
     })
   }
 

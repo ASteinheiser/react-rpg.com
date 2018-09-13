@@ -16,4 +16,14 @@ const tiles = [
   [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6],
 ];
 
-export default tiles;
+const monsters = [
+  {
+    type: 'goblin',
+    position: [ 600, 400 ]
+  }
+];
+
+export default {
+  tiles,
+  monsters
+};
