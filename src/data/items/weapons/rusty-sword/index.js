@@ -1,8 +1,7 @@
 
 const RustySword = {
   name: 'Rusty Sword',
-  type: 'weapon',
-  range: 'melee',
+  type: 'melee',
   damage: 1
 };
 
