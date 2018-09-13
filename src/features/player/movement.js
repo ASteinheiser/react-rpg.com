@@ -135,6 +135,7 @@ export default function handleMovement(player) {
   }
 
   window.addEventListener('keydown', (event) => {
+    // eslint-disable-next-line
     handleKeyDown = _debounce(handleKeyDown,
       DEBOUNCE_TIME,
       {
