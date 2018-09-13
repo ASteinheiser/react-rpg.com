@@ -7,7 +7,7 @@ import {
   MAP_HEIGHT
 } from '../../config/constants';
 
-const DEBOUNCE_TIME = 150; // .15 seconds
+const DEBOUNCE_TIME = 100; // .1 seconds
 
 export default function handleMovement(player) {
 
