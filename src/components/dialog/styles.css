@@ -1,4 +1,7 @@
 .dialog-container {
+  display: flex;
+  flex-direction: column;
+
   position: absolute;
   top: 30px;
   bottom: 30px;

@@ -15,3 +15,14 @@
 
   font-size: 26px;
 }
+
+.game-over-button-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  margin: 0 auto;
+  padding-bottom: 50px;
+}

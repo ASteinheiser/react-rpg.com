@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Button       from '../button';
 import Dialog       from '../dialog';
 import randomPhrase from './random-phrase';
 
@@ -16,6 +17,12 @@ class GameOver extends Component {
         <span className='game-over-text'>
           { randomPhrase() }
         </span>
+
+        <div className='game-over-button-container'>
+          <Button
+            title={'New Game'}
+            icon='refresh'/>
+        </div>
       </Dialog>
     );
   }
