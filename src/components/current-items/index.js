@@ -5,6 +5,10 @@ import InventorySlot from '../equipped-items/inventory-slot.png';
 
 import './styles.css';
 
+function viewItem(item) {
+  console.log('viewing item: ', item);
+}
+
 function CurrentItems(props) {
   let { items } = props.inventory;
 
@@ -13,11 +17,14 @@ function CurrentItems(props) {
   itemSlots.forEach((item, index) => {
     if(items.length > index) {
       itemSlots[index] = (
-        <div style={{
-          backgroundImage: `url('${items[0].image}')`,
-          backgroundSize: 'contain',
-          width: '40px',
-          height: '40px' }} />
+        <div onClick={viewItem.bind(this, items[index])}
+          style={{
+            backgroundImage: `url('${items[index].image}')`,
+            backgroundSize: 'contain',
+            width: '40px',
+            height: '40px',
+            cursor: 'pointer'
+          }} />
       );
     }
   });

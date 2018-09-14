@@ -1,3 +1,4 @@
+import { uuidv4 } from '../../modules/uuid-v4';
 
 const initialState = {
   items: [],
@@ -11,14 +12,15 @@ const inventoryReducer = (state = initialState, action) => {
   switch(action.type) {
 
     case 'RECEIVE_ITEM':
-      // save item to list
-      newState.items.push(action.payload);
+      let itemId = uuidv4();
+      // save item to list with unique id for keeping track of duplicates
+      newState.items.push(Object.assign({}, action.payload, { id: itemId }));
 
       return newState;
 
     case 'RESET':
       return {
-        items: new Array(),
+        items: [],
         maxItems: 9
       };
 
