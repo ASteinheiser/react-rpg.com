@@ -23,6 +23,52 @@ const statsReducer = (state = initialState, action) => {
 
       return newState;
 
+    case 'UNEQUIP_ITEM':
+      let data = action.payload.data;
+      // check the type
+      switch(data.type) {
+        case 'weapon':
+          newState.damage -= data.damage;
+          delete newState.equippedItems['weapon'];
+          break;
+
+        case 'armor::body':
+          newState.defence -= data.defence;
+          delete newState.equippedItems['armor'];
+          break;
+
+        case 'armor::helmet':
+          newState.defence -= data.defence;
+          delete newState.equippedItems['armor'];
+          break;
+
+        case 'ring':
+          // iterate over each effect
+          Object.keys(data.effect).forEach(effectName => {
+
+            switch (effectName) {
+
+              case 'damage':
+                newState.damage -= data.effect[effectName];
+                break;
+
+              case 'hp':
+                newState.hp -= data.effect[effectName];
+                newState.maxHp -= data.effect[effectName];
+                break;
+
+              default:
+            }
+          });
+          delete newState.equippedItems['ring'];
+
+          break;
+
+        default:
+      }
+
+      return newState;
+
     case 'EQUIP_ITEM':
       let item = action.payload;
       // see what type of item it is

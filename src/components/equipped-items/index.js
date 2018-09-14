@@ -2,8 +2,16 @@ import React       from 'react';
 import { connect } from 'react-redux';
 
 import InventorySlot from './inventory-slot.png';
+import store         from '../../config/store';
 
 import './styles.css';
+
+function handleUnequipItem(item) {
+  store.dispatch({
+    type: 'UNEQUIP_ITEM',
+    payload: { data: item }
+  })
+}
 
 function EquippedItems(props) {
   let { weapon, ring, armor } = props.stats.equippedItems;
@@ -20,12 +28,14 @@ function EquippedItems(props) {
             }}>
             {
               weapon ?
-                <div style={{
-                  backgroundImage: `url('${weapon.image}')`,
-                  backgroundSize: 'contain',
-                  width: '40px',
-                  height: '40px'
-                }} />
+                <div onClick={handleUnequipItem.bind(this, weapon)}
+                  style={{
+                    cursor: 'pointer',
+                    backgroundImage: `url('${weapon.image}')`,
+                    backgroundSize: 'contain',
+                    width: '40px',
+                    height: '40px'
+                  }} />
                 :
                 null
             }
@@ -38,12 +48,14 @@ function EquippedItems(props) {
             }}>
             {
               armor && armor.helmet ?
-                <div style={{
-                  backgroundImage: `url('${armor.helmet.image}')`,
-                  backgroundSize: 'contain',
-                  width: '40px',
-                  height: '40px'
-                }} />
+                <div onClick={handleUnequipItem.bind(this, armor.helmet)}
+                  style={{
+                    cursor: 'pointer',
+                    backgroundImage: `url('${armor.helmet.image}')`,
+                    backgroundSize: 'contain',
+                    width: '40px',
+                    height: '40px'
+                  }} />
                 :
                 null
             }
@@ -59,12 +71,14 @@ function EquippedItems(props) {
             }}>
             {
               ring ?
-                <div style={{
-                  backgroundImage: `url('${ring.image}')`,
-                  backgroundSize: 'contain',
-                  width: '40px',
-                  height: '40px'
-                }} />
+                <div onClick={handleUnequipItem.bind(this, ring)}
+                  style={{
+                    cursor: 'pointer',
+                    backgroundImage: `url('${ring.image}')`,
+                    backgroundSize: 'contain',
+                    width: '40px',
+                    height: '40px'
+                  }} />
                 :
                 null
             }
@@ -77,12 +91,14 @@ function EquippedItems(props) {
             }}>
             {
               armor && armor.body ?
-                <div style={{
-                  backgroundImage: `url('${armor.body.image}')`,
-                  backgroundSize: 'contain',
-                  width: '40px',
-                  height: '40px'
-                }} />
+                <div onClick={handleUnequipItem.bind(this, armor.body)}
+                  style={{
+                    cursor: 'pointer',
+                    backgroundImage: `url('${armor.body.image}')`,
+                    backgroundSize: 'contain',
+                    width: '40px',
+                    height: '40px'
+                  }} />
                 :
                 null
             }
