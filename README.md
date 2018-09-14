@@ -19,6 +19,7 @@ npm start
   - [ ] inventory dialog component
 #
 
+- [ ] add shop to spend gold on healing or items
 - [ ] turn component for calculating player turn, then monster turn
   - [ ] monster AI
     - [ ] move towards player if within sight (5 squares)
