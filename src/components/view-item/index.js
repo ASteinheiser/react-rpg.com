@@ -8,18 +8,18 @@ import './styles.css';
 
 class ViewItem extends Component {
 
-  handleUnEquip(itemSlot) {
+  handleUnEquip(item) {
+    this.props.onClose();
     store.dispatch({
       type: 'UNEQUIP_ITEM',
       payload: {
-        data: {
-          type: itemSlot
-        }
+        data: item
       }
     });
   }
 
   handleEquip(item) {
+    this.props.onClose();
     store.dispatch({
       type: 'EQUIP_ITEM',
       payload: item
@@ -27,6 +27,7 @@ class ViewItem extends Component {
   }
 
   handleDrop(item) {
+    this.props.onClose();
     store.dispatch({
       type: 'DROP_ITEM',
       payload: item
@@ -80,7 +81,7 @@ class ViewItem extends Component {
             itemIsEquipped ?
               <div className='flex-row view-item-buttons-child'>
                 <Button
-                  onClick={this.handleUnEquip.bind(this, data.type)}
+                  onClick={this.handleUnEquip.bind(this, data)}
                   icon='archive'
                   title={'Un-equip'} />
               </div>
