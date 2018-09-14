@@ -26,3 +26,7 @@ npm start
   - [ ] got loot
   - [ ] killed monster
   - [ ] inventory dialog component
+- [ ] monster AI
+  - [ ] move towards player if within sight (5 squares)
+  - [ ] attack player if within range
+  - [ ] move random if no player within sight (5 squares)
