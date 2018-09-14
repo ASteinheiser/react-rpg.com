@@ -1,0 +1,23 @@
+.view-item-text-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  padding: 10px 0;
+}
+
+.view-item-text {
+  font-size: 28px;
+
+  align-self: center;
+}
+
+.view-item-buttons-parent {
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.view-item-buttons-child {
+  justify-content: space-around;
+  padding-bottom: 20px;
+}

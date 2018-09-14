@@ -7,12 +7,28 @@ import './styles.css';
 
 class ViewItem extends Component {
   render() {
-    console.log(this.props);
+    const { data } = this.props;
+
     return(
-      <MicroDialog>
-        <span className='game-over-title'>
-          {'ITEM NAME'}
-        </span>
+      <MicroDialog onClose={this.props.onClose}>
+        <div className='view-item-text-container'>
+          <div style={{
+              backgroundImage: `url('${data.image}')`,
+              backgroundSize: 'contain',
+              width: '60px',
+              height: '60px'
+            }} />
+          <span className='view-item-text'>
+            { data.name || '-' }
+          </span>
+        </div>
+
+        <div className='flex-column view-item-buttons-parent'>
+          <div className='flex-row view-item-buttons-child'>
+            <Button title={'Drop'} />
+            <Button title={'Equip'} />
+          </div>
+        </div>
       </MicroDialog>
     );
   }
