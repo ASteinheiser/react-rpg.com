@@ -154,10 +154,19 @@ export default function handleMovement(player) {
 
     // the player wants to use the stairs
     if(nextTile === 8 || nextTile === 9) {
+      let direction;
+      // player wants to go down
+      if(nextTile === 8) {
+        direction = 'down';
+      }
+      // player wants to go up
+      if(nextTile === 9) {
+        direction = 'up';
+      }
       // change the world map
       store.dispatch({
         type: 'LOAD_NEXT_MAP',
-        payload: {}
+        payload: { direction }
       })
       // move the player to where the 'stairs' were
       return true;

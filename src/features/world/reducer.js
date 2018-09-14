@@ -1,6 +1,7 @@
+import maps  from '../../data/maps';
 
 const initialState = {
-  currentMap: 0,
+  currentMap: '1_1',
   gameOver: false
 };
 
@@ -16,7 +17,12 @@ const worldReducer = (state = initialState, action) => {
       return newState;
 
     case 'LOAD_NEXT_MAP':
-      newState.currentMap += 1;
+      const { direction } = action.payload;
+      const { currentMap } = newState;
+
+      let { stairs } = maps[currentMap];
+
+      newState.currentMap = stairs[direction];
 
       return newState;
     default:
