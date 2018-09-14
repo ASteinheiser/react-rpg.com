@@ -1,6 +1,7 @@
 import _debounce from 'lodash.debounce';
 
-import store from '../../config/store';
+import attackMonster from './attack-monster';
+import store         from '../../config/store';
 import {
   SPRITE_SIZE,
   MAP_WIDTH,
@@ -30,55 +31,7 @@ export default function handleMovement(player) {
       let monsterPos = currMonster.position;
       // if the new position contains a monster
       if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
-        let stats = store.getState().stats;
-        // calculate damage
-        let monsterDamage = currMonster.damage;
-        let playerDamage = stats.damage;
-        // deal damage to monster
-        store.dispatch({
-          type: 'DAMAGE_TO_MONSTER',
-          payload: {
-            id: monsterId,
-            damage: playerDamage
-          }
-        })
-        // deal damage to player
-        store.dispatch({
-          type: 'DAMAGE_TO_PLAYER',
-          payload: {
-            damage: monsterDamage
-          }
-        })
-        // check if monster died
-        if(currMonster.hp <= 0) {
-          // if it did, remove the monster component
-          store.dispatch({
-            type: 'KILL_MONSTER',
-            payload: { id: monsterId }
-          })
-          // and get some exp
-          store.dispatch({
-            type: 'GET_EXP',
-            payload: { value: currMonster.exp }
-          })
-          // replace monster will blood spill
-          // need to pass relative tile index
-          store.dispatch({
-            type: 'ADD_BLOOD_SPILL',
-            payload: {
-              x: newPos[0] / SPRITE_SIZE,
-              y: newPos[1] / SPRITE_SIZE
-            }
-          })
-        }
-        // check if player died
-        if((stats.hp - monsterDamage) <= 0) {
-          // if it did, game over
-          store.dispatch({
-            type: 'GAME_OVER',
-            payload: {}
-          })
-        }
+        attackMonster(monsterPos, currMonster);
         // monsters found, don't allow for movement
         validMove = false;
       }
