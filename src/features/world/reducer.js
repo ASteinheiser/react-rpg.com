@@ -25,6 +25,10 @@ const worldReducer = (state = initialState, action) => {
       newState.currentMap = stairs[direction];
 
       return newState;
+
+    case 'RESET':
+      return initialState;
+
     default:
       return state;
   }

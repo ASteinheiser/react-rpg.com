@@ -15,6 +15,9 @@ const inventoryReducer = (state = initialState, action) => {
 
       return newState;
 
+    case 'RESET':
+      return initialState;
+
     default:
       return state;
   }

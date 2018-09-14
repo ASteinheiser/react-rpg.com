@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import Button       from '../button';
-import Dialog       from '../dialog';
-import randomPhrase from './random-phrase';
+import Button         from '../button';
+import Dialog         from '../dialog';
+import randomPhrase   from './random-phrase';
+import resetGameState from '../../modules/reset-game-state';
 
 import './styles.css';
 
@@ -20,6 +21,7 @@ class GameOver extends Component {
 
         <div className='game-over-button-container'>
           <Button
+            onClick={() => { resetGameState(); }}
             title={'New Game'}
             icon='refresh'/>
         </div>

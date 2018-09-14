@@ -15,6 +15,9 @@ const playerReducer = (state = initialState, action) => {
         ...action.payload
       }
 
+    case 'RESET':
+      return initialState;
+
     default:
       return state;
   }
