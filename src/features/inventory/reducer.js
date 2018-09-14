@@ -14,11 +14,11 @@ const inventoryReducer = (state = initialState, action) => {
     case 'DROP_ITEM':
       let item = action.payload;
       // check each item
-      newState.items.find((item, index) => {
+      newState.items.find((itemData, index) => {
         // if you found the item
         if(newState.items[index] === item) {
           // remove it from the array
-          newState.items.splice(index, 1);
+          return newState.items.splice(index, 1);
         }
       });
 
