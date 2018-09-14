@@ -34,12 +34,12 @@ const statsReducer = (state = initialState, action) => {
 
         case 'armor::body':
           newState.defence -= data.defence;
-          delete newState.equippedItems['armor'];
+          delete newState.equippedItems['armor']['body'];
           break;
 
         case 'armor::helmet':
           newState.defence -= data.defence;
-          delete newState.equippedItems['armor'];
+          delete newState.equippedItems['armor']['helmet'];
           break;
 
         case 'ring':
@@ -81,12 +81,14 @@ const statsReducer = (state = initialState, action) => {
 
         case 'armor::body':
           newState.defence += item.defence;
-          newState.equippedItems['armor'] = { body: item };
+          // safely add new armor peice to object
+          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { body: item });
           break;
 
         case 'armor::helmet':
           newState.defence += item.defence;
-          newState.equippedItems['armor'] = { helmet: item };
+          // safely add new armor peice to object
+          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { helmet: item });
           break;
 
         case 'ring':
