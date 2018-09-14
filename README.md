@@ -9,6 +9,7 @@ npm start
 ```
 
 ## TODO:
+- [ ] hp bar for player and monsters
 - [ ] calculate ring effect when equipped
 - [ ] better sprites for rocks/trees
 - [ ] add a grass background image
