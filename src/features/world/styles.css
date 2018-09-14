@@ -1,8 +1,12 @@
 .world-view-container {
   position: relative;
+
   width: 800px;
   height: 600px;
+
   margin: 15px auto;
+
+  border: 1px solid;
 }
 
 .world-stats-container {

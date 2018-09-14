@@ -1,23 +1,37 @@
 .tile {
   display: inline-flex;
-  background-color: #005f00;
+
+  background-size: contain;
 }
 
-.grass {
+.ground {
+  background-image: url('/tiles/ground.png')
 }
 
-.rock {
-  background-image: url('/tiles/rock.png')
+.stone-wall {
+  background-image: url('/tiles/stone-wall.png')
 }
 
-.tree {
-  background-image: url('/tiles/tree.png')
+.eye-wall {
+  background-image: url('/tiles/eye-wall.png')
+}
+
+.skull-wall {
+  background-image: url('/tiles/skull-wall.png')
 }
 
 .chest {
   background-image: url('/tiles/chest.png')
 }
 
-.arrow {
-  background-image: url('/tiles/arrow.png')
+.stairs-down {
+  background-image: url('/tiles/stairs-down.png')
+}
+
+.stairs-up {
+  background-image: url('/tiles/stairs-up.png')
+}
+
+.blood-splatter {
+  background-image: url('/tiles/blood-splatter.png')
 }

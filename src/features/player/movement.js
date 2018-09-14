@@ -153,7 +153,7 @@ export default function handleMovement(player) {
     }
 
     // the player wants to use the stairs
-    if(nextTile === 7 || nextTile === 8) {
+    if(nextTile === 8 || nextTile === 9) {
       // change the world map
       store.dispatch({
         type: 'LOAD_NEXT_MAP',

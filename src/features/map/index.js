@@ -7,22 +7,28 @@ import './styles.css';
 
 function getTileSprite(type) {
   switch(type) {
+    case -1:
+      return 'blood-splatter'
     case 0:
-      return 'grass'
+      return 'ground'
+    case 1:
+      return 'skull-wall' // fake skull-wall obstacles
     case 2:
-      return 'rock' // fake rock obstacles
+      return 'stone-wall' // fake stone-wall obstacles
     case 3:
-      return 'tree' // fake tree obstacles
+      return 'eye-wall' // fake eye-wall obstacles
     case 4:
       return 'chest'
     case 5:
-      return 'rock'
+      return 'skull-wall'
     case 6:
-      return 'tree'
+      return 'stone-wall'
     case 7:
-      return 'arrow'
+      return 'eye-wall'
     case 8:
-      return 'arrow'
+      return 'stairs-down'
+    case 9:
+      return 'stairs-up'
     default:
   }
 }

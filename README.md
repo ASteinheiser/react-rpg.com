@@ -30,3 +30,4 @@ npm start
   - [ ] move towards player if within sight (5 squares)
   - [ ] attack player if within range
   - [ ] move random if no player within sight (5 squares)
+- [ ] turn component for calculating player turn, then monster turn
