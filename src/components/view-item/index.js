@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 
-import Button      from '../button';
-import MicroDialog from '../micro-dialog';
-import store       from '../../config/store';
+import Button        from '../button';
+import ConfirmDialog from '../confirm-dialog';
+import MicroDialog   from '../micro-dialog';
+import store         from '../../config/store';
 
 import './styles.css';
 
 class ViewItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      confirmDrop: false
+    };
+  }
 
   handleUnEquip(item) {
     this.props.onClose();
@@ -27,6 +35,14 @@ class ViewItem extends Component {
   }
 
   handleDrop(item) {
+    this.setState({ confirmDrop: true });
+  }
+
+  handleCancelDrop() {
+    this.setState({ confirmDrop: false });
+  }
+
+  handleConfirmDrop(item) {
     this.props.onClose();
     store.dispatch({
       type: 'DROP_ITEM',
@@ -36,6 +52,7 @@ class ViewItem extends Component {
 
   render() {
     const { data } = this.props;
+    const { confirmDrop } = this.state;
     // get equipped items
     const equipped = store.getState().stats.equippedItems;
 
@@ -88,7 +105,7 @@ class ViewItem extends Component {
               :
               <div className='flex-row view-item-buttons-child'>
                 <Button
-                  onClick={this.handleDrop.bind(this, data)}
+                  onClick={this.handleDrop.bind(this)}
                   icon='trash-o'
                   title={'Drop'} />
                 <Button
@@ -98,6 +115,19 @@ class ViewItem extends Component {
               </div>
           }
         </div>
+        {
+          confirmDrop ?
+            <ConfirmDialog
+              text={'Are you sure!? This item will be gone forever...'}
+              cancelText={'Keep'}
+              cancelIcon={'archive'}
+              acceptText={'Delete'}
+              acceptIcon={'trash'}
+              confirm={this.handleConfirmDrop.bind(this, data)}
+              onClose={this.handleCancelDrop.bind(this)} />
+            :
+            null
+        }
       </MicroDialog>
     );
   }

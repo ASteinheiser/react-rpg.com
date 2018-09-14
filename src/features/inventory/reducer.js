@@ -17,8 +17,8 @@ const inventoryReducer = (state = initialState, action) => {
       newState.items.find((item, index) => {
         // if you found the item
         if(newState.items[index] === item) {
-          // throw it away...
-          delete newState.items[index];
+          // remove it from the array
+          newState.items.splice(index, 1);
         }
       });
 

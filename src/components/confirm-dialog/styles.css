@@ -1,0 +1,33 @@
+.confirm-dialog-container {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  border: 1px solid;
+  background: var(--dark-gray);
+  box-shadow: 1px 2px 50px var(--dark-gray);
+
+  cursor: default;
+  user-select: none;
+}
+
+.confirm-dialog-text {
+  font-size: 26px;
+  padding: 25px;
+}
+
+
+.confirm-dialog-button-parent {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.confirm-dialog-button-child {
+  justify-content: space-around;
+  padding-bottom: 20px;
+}
