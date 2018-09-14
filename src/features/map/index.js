@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import { SPRITE_SIZE } from '../../config/constants';
 
-import './styles.css';
-
 function getTileSprite(type) {
   switch(type) {
     case -1:
@@ -34,13 +32,24 @@ function getTileSprite(type) {
 }
 
 function MapTile(props) {
-  return <div
-    className={`tile ${getTileSprite(props.tile)}`}
-    style={{
-      height: SPRITE_SIZE,
-      width: SPRITE_SIZE,
-    }}
-  />
+  return (
+    <div
+      style={{
+        backgroundImage: 'url(\'/tiles/ground.png\')',
+        backgroundSize: 'contain',
+        display: 'inline-flex',
+        height: SPRITE_SIZE,
+        width: SPRITE_SIZE,
+      }}>
+      <div
+        style={{
+          backgroundImage: `url(/tiles/${getTileSprite(props.tile)}.png)`,
+          backgroundSize: 'contain',
+          height: SPRITE_SIZE,
+          width: SPRITE_SIZE,
+        }} />
+    </div>
+  );
 }
 
 function MapRow(props) {

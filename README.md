@@ -9,17 +9,13 @@ npm start
 ```
 
 ## TODO:
-- [ ] hp bar for player and monsters
-- [ ] add iron sword +3 damage
-- [ ] add gold reward from chest
-- [ ] better sprites for rocks/trees
-- [ ] add a grass background image
 - [ ] add forward and back (map ids) to map properties to allow for going between maps
   - [ ] load map from ids instead of incremental
   - [ ] replace 'move player opposite' function by adding player start pos to map
     - [ ] add move player pos reducer
-- [ ] add images for inventory items
-  - [ ] load images in equipped slots
+- [ ] hp bar for player and monsters
+- [ ] add iron sword +3 damage
+- [ ] add gold reward from chest
 - [ ] game dialog component
   - [ ] game over message
   - [ ] initial game message
