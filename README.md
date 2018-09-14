@@ -9,6 +9,7 @@ npm start
 ```
 
 ## TODO:
+- [ ] add gold stat and reward from chest
 - [ ] calculate ring effect when equipped
 - [ ] better sprites for rocks/trees
 - [ ] add a grass background image
