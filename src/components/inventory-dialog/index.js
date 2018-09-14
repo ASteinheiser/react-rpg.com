@@ -7,6 +7,11 @@ import EquippedItems from '../equipped-items';
 import './styles.css';
 
 class InventoryDialog extends Component {
+
+  handleViewItem(item) {
+    console.log(item);
+  }
+
   render() {
     return(
       <Dialog>
@@ -20,6 +25,7 @@ class InventoryDialog extends Component {
             <span className='inventory-dialog-section-text'>
               {'Equipped'}
             </span>
+
             <EquippedItems />
           </div>
 
@@ -27,7 +33,8 @@ class InventoryDialog extends Component {
             <span className='inventory-dialog-section-text'>
               {'All Items'}
             </span>
-            <CurrentItems />
+
+            <CurrentItems view_item={this.handleViewItem.bind(this)} />
           </div>
         </div>
       </Dialog>
