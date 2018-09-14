@@ -17,27 +17,6 @@ const playerReducer = (state = initialState, action) => {
 
   switch(action.type) {
 
-    case 'MOVE_OPPOSITE':
-      const { border } = action.payload;
-
-      switch(border) {
-        case 'NORTH':
-          newState.position[1] = (MAP_HEIGHT - SPRITE_SIZE);
-          break;
-        case 'SOUTH':
-          newState.position[1] = 0;
-          break;
-        case 'WEST':
-          newState.position[0] = (MAP_WIDTH - SPRITE_SIZE);
-          break;
-        case 'EAST':
-          newState.position[0] = 0;
-          break;
-        default:
-      }
-
-      return newState;
-
     case 'MOVE_PLAYER':
       return {
         ...action.payload
