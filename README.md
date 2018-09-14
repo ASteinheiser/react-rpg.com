@@ -9,7 +9,8 @@ npm start
 ```
 
 ## TODO:
-- [ ] add gold stat and reward from chest
+- [ ] add iron sword +3 damage
+- [ ] add gold reward from chest
 - [ ] calculate ring effect when equipped
 - [ ] better sprites for rocks/trees
 - [ ] add a grass background image
