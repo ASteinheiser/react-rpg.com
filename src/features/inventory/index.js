@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
 import InventoryDialog from '../../components/inventory-dialog';
-import EquippedItems   from '../equipped-items';
+import EquippedItems   from '../../components/equipped-items';
 import store           from '../../config/store';
 
 import './styles.css';
