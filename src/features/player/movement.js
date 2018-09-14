@@ -61,6 +61,15 @@ export default function handleMovement(player) {
             type: 'GET_EXP',
             payload: { value: currMonster.exp }
           })
+          // replace monster will blood spill
+          // need to pass relative tile index
+          store.dispatch({
+            type: 'ADD_BLOOD_SPILL',
+            payload: {
+              x: newPos[0] / SPRITE_SIZE,
+              y: newPos[1] / SPRITE_SIZE
+            }
+          })
         }
         // check if player died
         if((stats.hp - monsterDamage) <= 0) {

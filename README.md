@@ -10,7 +10,6 @@ npm start
 
 ## TODO:
 - [ ] design first few dungeon levels
-- [ ] add blood spill after monster dies
 - [ ] hp bar for player and monsters
 - [ ] add gold reward from chest
 - [ ] game dialog component

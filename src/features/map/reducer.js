@@ -8,8 +8,13 @@ const mapReducer = (state = initialState, action) => {
 
   switch(action.type) {
 
+    case 'ADD_BLOOD_SPILL':
+      // set current tile to blood spill tile
+      newState.tiles[action.payload.y][action.payload.x] = -1;
+      return newState;
+
     case 'REMOVE_CHEST':
-      // set current chest to grass tile
+      // set current chest to ground tile
       newState.tiles[action.payload.y][action.payload.x] = 0;
       return newState;
 
