@@ -123,8 +123,8 @@ class ViewItem extends Component {
               text={'Are you sure!? This item will be gone forever...'}
               cancelText={'Keep'}
               cancelIcon={'archive'}
-              acceptText={'Delete'}
-              acceptIcon={'trash'}
+              acceptText={'Drop'}
+              acceptIcon={'trash-o'}
               confirm={this.handleConfirmDrop.bind(this, data)}
               onClose={this.handleCancelDrop.bind(this)} />
             :
