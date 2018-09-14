@@ -10,7 +10,7 @@ npm start
 
 ## TODO:
 - [ ] design first few dungeon levels
-- [ ] hp bar for player and monsters
+- [ ] fix monster respawning on old map load by 'remembering' which maps have been opened
 - [ ] game dialog component
   - [ ] game over message
   - [ ] initial game message
