@@ -9,10 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] add forward and back (map ids) to map properties to allow for going between maps
-  - [ ] load map from ids instead of incremental
-  - [ ] replace 'move player opposite' function by adding player start pos to map
-    - [ ] add move player pos reducer
 - [ ] hp bar for player and monsters
 - [ ] add iron sword +3 damage
 - [ ] add gold reward from chest
