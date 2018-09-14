@@ -38,7 +38,24 @@ const statsReducer = (state = initialState, action) => {
           break;
 
         case 'ring':
-          // TODO: calcualate rings 'effect'
+          // iterate over each effect
+          Object.keys(item.effect).forEach(effectName => {
+
+            switch (effectName) {
+
+              case 'damage':
+                newState.damage += item.effect[effectName];
+                break;
+
+              case 'hp':
+                newState.hp += item.effect[effectName];
+                newState.maxHp += item.effect[effectName];
+                break;
+
+              default:
+            }
+          });
+
           newState.equippedItems['ring'] = item;
           break;
 
