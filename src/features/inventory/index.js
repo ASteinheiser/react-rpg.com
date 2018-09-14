@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
 import InventoryDialog from '../../components/inventory-dialog';
-import EquippedItems   from '../../components/equipped-items';
 import store           from '../../config/store';
 
 import './styles.css';
@@ -39,8 +38,6 @@ class Inventory extends Component {
 
     return (
       <div className='inventory-container'>
-        <EquippedItems />
-
         {
             inventoryOpen ?
               <div onClick={this.handleCloseInventory.bind(this)}

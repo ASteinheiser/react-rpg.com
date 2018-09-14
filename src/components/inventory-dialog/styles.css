@@ -1,0 +1,32 @@
+.inventory-dialog-title {
+  font-size: 30px;
+
+  justify-content: center;
+
+  padding: 50px 0px 25px 0;
+}
+
+.inventory-dialog-title-icon {
+  font-size: 36px;
+
+  padding-right: 20px;
+}
+
+.inventory-dialog-container {
+  flex: 1;
+}
+
+.inventory-dialog-child {
+  width: 50%;
+
+  align-items: center;
+
+  padding-top: 50px;
+  justify-content: flex-start;
+}
+
+.inventory-dialog-equipped-text {
+  font-size: 22px;
+
+  padding-bottom: 20px;
+}
