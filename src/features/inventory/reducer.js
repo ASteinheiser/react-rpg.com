@@ -17,7 +17,10 @@ const inventoryReducer = (state = initialState, action) => {
       return newState;
 
     case 'RESET':
-      return initialState;
+      return {
+        items: new Array(),
+        maxItems: 9
+      };
 
     default:
       return state;
