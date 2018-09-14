@@ -1,5 +1,5 @@
-import React       from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 
 import InventoryDialog from '../../components/inventory-dialog';
 import EquippedItems   from '../equipped-items';
@@ -7,29 +7,63 @@ import store           from '../../config/store';
 
 import './styles.css';
 
-function Inventory(props) {
-  return (
-    <div className='inventory-container'>
+class Inventory extends Component {
+  constructor(props) {
+    super(props);
 
-      <EquippedItems />
+    this.state = {
+      inventoryOpen: false
+    }
+  }
 
-      <div onClick={() => {
-          store.dispatch({
-            type: 'PAUSE',
-            payload: { component: <InventoryDialog /> }
-          })
-        }}
-        className='inventory-button-container'>
+  handleOpenInventory() {
+    this.setState({ inventoryOpen: true }, () => {
+      store.dispatch({
+        type: 'PAUSE',
+        payload: { component: <InventoryDialog /> }
+      });
+    });
+  }
 
-        <div className='flex-row inventory-button'>
-          <i className='fa fa-briefcase inventory-icon' />
-          <span> {'Inventory'} </span>
-        </div>
+  handleCloseInventory() {
+    this.setState({ inventoryOpen: false }, () => {
+      store.dispatch({
+        type: 'PAUSE',
+        payload: { component: false }
+      });
+    });
+  }
 
+  render() {
+    const { inventoryOpen } = this.state;
+
+    return (
+      <div className='inventory-container'>
+        <EquippedItems />
+
+        {
+            inventoryOpen ?
+              <div onClick={this.handleCloseInventory.bind(this)}
+                className='inventory-button-container'>
+                <div className='flex-row inventory-button'>
+                  <i className='fa fa-times close-icon' />
+                  <span className='inventory-close-padding'>
+                    {'Close'}
+                  </span>
+                </div>
+              </div>
+              :
+              <div onClick={this.handleOpenInventory.bind(this)}
+                className='inventory-button-container'>
+                <div className='flex-row inventory-button'>
+                  <i className='fa fa-briefcase inventory-icon' />
+                  <span> {'Inventory'} </span>
+                </div>
+              </div>
+        }
       </div>
-
-    </div>
-  );
+    );
+  }
 }
 
 const mapStateToProps = ({ inventory }) => {
