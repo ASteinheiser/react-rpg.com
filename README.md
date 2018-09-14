@@ -9,8 +9,9 @@ npm start
 ```
 
 ## TODO:
+- [ ] design first few dungeon levels
+- [ ] add blood spill after monster dies
 - [ ] hp bar for player and monsters
-- [ ] add iron sword +3 damage
 - [ ] add gold reward from chest
 - [ ] game dialog component
   - [ ] game over message
@@ -23,3 +24,6 @@ npm start
   - [ ] attack player if within range
   - [ ] move random if no player within sight (5 squares)
 - [ ] turn component for calculating player turn, then monster turn
+#
+
+- [ ] auto-generated levels
