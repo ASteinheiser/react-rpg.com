@@ -3,18 +3,35 @@ import React, { Component } from 'react';
 import CurrentItems  from '../current-items';
 import Dialog        from '../dialog';
 import EquippedItems from '../equipped-items';
+import ViewItem      from '../view-item';
 
 import './styles.css';
 
 class InventoryDialog extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      viewItem: null
+    };
+  }
 
   handleViewItem(item) {
-    console.log(item);
+    this.setState({ viewItem: <ViewItem data={item} onClose={this.handleCloseItem.bind(this)} /> });
+  }
+
+  handleCloseItem() {
+    this.setState({ viewItem: null });
   }
 
   render() {
+    const { viewItem } = this.state;
+
     return(
       <Dialog>
+
+        { viewItem }
+
         <div className='flex-row inventory-dialog-title'>
           <i className='fa fa-briefcase inventory-dialog-title-icon' />
           <span> {'View Inventory'} </span>
