@@ -13,9 +13,9 @@ const mapReducer = (state = initialState, action) => {
       newState.tiles[action.payload.y][action.payload.x] = -1;
       return newState;
 
-    case 'REMOVE_CHEST':
+    case 'OPEN_CHEST':
       // set current chest to ground tile
-      newState.tiles[action.payload.y][action.payload.x] = 0;
+      newState.tiles[action.payload.y][action.payload.x] = -2;
       return newState;
 
     // load a new map of tiles

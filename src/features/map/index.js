@@ -5,6 +5,8 @@ import { SPRITE_SIZE } from '../../config/constants';
 
 function getTileSprite(type) {
   switch(type) {
+    case -2:
+      return 'chest-open'
     case -1:
       return 'blood-splatter'
     case 0:

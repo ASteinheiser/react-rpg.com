@@ -160,7 +160,7 @@ export default function handleMovement(player) {
         payload: { value: 10 }
       })
       store.dispatch({
-        type: 'REMOVE_CHEST',
+        type: 'OPEN_CHEST',
         payload: { x, y }
       })
     }
