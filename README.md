@@ -9,12 +9,12 @@ npm start
 ```
 
 ## TODO:
+- [ ] inventory dialog component
+- [ ] got loot from chest dialog
 - [ ] design first few dungeon levels
-- [ ] game dialog components
-  - [ ] initial game message
-  - [ ] got loot from chest
-  - [ ] inventory dialog component
-- [ ] pop-up
+- [ ] initial game dialog
+- [ ] pop-ups
+  - [ ] tried to pick up item with full inventory
   - [ ] dealing damage
   - [ ] killed monster
   - [ ] gained exp & gold
