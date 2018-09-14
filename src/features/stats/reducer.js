@@ -7,6 +7,7 @@ const initialState = {
   level: 0,
   exp: 0,
   expToLevel: 20,
+  gold: 0,
   equippedItems: {}
 };
 
