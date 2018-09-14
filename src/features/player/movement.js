@@ -214,8 +214,8 @@ export default function handleMovement(player) {
         trailing: false,
       }
     );
-
-    handleKeyDown(event);
+    // if the game state is still valid
+    if(!(store.getState().world.gameOver)) handleKeyDown(event);
   });
 
   return player;

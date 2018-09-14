@@ -1,6 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 // game components
+import GameOver  from '../../components/game-over';
 import Inventory from '../inventory';
 import Map       from '../map';
 import Monsters  from '../monsters';
@@ -61,6 +62,8 @@ class World extends React.Component {
   }
 
   render() {
+    const { world } = this.props;
+
     return (
       <div className='world-view-container'>
 
@@ -68,10 +71,15 @@ class World extends React.Component {
         <Player />
         <Monsters />
 
-        <div className='world-stats-container'>
-          <Stats />
-          <Inventory />
-        </div>
+        {
+          world.gameOver ?
+            <GameOver />
+            :
+            <div className='world-stats-container'>
+              <Stats />
+              <Inventory />
+            </div>
+        }
 
       </div>
     );

@@ -5,8 +5,10 @@ import './styles.css';
 class Dialog extends Component {
   render() {
     return(
-      <div>
-        {'DIALOG'}
+      <div className='dialog-container'>
+
+        { this.props.children }
+
       </div>
     );
   }
