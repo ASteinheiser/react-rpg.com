@@ -11,6 +11,19 @@ const inventoryReducer = (state = initialState, action) => {
 
   switch(action.type) {
 
+    case 'DROP_ITEM':
+      let item = action.payload;
+      // check each item
+      newState.items.find((item, index) => {
+        // if you found the item
+        if(newState.items[index] === item) {
+          // throw it away...
+          delete newState.items[index];
+        }
+      });
+
+      return newState;
+
     case 'RECEIVE_ITEM':
       let itemId = uuidv4();
       // save item to list with unique id for keeping track of duplicates

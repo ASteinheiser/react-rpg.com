@@ -45,7 +45,7 @@ class World extends React.Component {
     // and put it on
     store.dispatch({
       type: 'EQUIP_ITEM',
-      payload: items.weapons.RustySword
+      payload: store.getState().inventory.items[0]
     })
   }
 
