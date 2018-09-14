@@ -21,6 +21,8 @@ function getTileSprite(type) {
       return 'tree'
     case 7:
       return 'arrow'
+    case 8:
+      return 'arrow'
     default:
   }
 }

@@ -152,24 +152,15 @@ export default function handleMovement(player) {
       })
     }
 
-    if(nextTile === 7) {
-      // calculate which border player was at
-      let border;
-      if(y === 0) border = 'NORTH';
-      if(y === (MAP_HEIGHT / SPRITE_SIZE) - 1) border = 'SOUTH';
-      if(x === 0) border = 'WEST';
-      if(x === (MAP_WIDTH / SPRITE_SIZE) - 1) border = 'EAST';
-
-      store.dispatch({
-        type: 'MOVE_OPPOSITE',
-        payload: { border }
-      })
-
+    // the player wants to use the stairs
+    if(nextTile === 7 || nextTile === 8) {
       // change the world map
       store.dispatch({
         type: 'LOAD_NEXT_MAP',
         payload: {}
       })
+      // move the player to where the 'stairs' were
+      return true;
     }
 
     return nextTile < 5;
