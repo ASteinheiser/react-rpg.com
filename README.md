@@ -10,8 +10,9 @@ npm start
 
 ## TODO:
 - [ ] inventory dialog component
+- [ ] design first 5 dungeon levels
+  - [ ] add dragon boss
 - [ ] got loot from chest dialog
-- [ ] design first few dungeon levels
 - [ ] initial game dialog
 - [ ] pop-ups
   - [ ] tried to pick up item with full inventory

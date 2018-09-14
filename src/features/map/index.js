@@ -29,6 +29,8 @@ function getTileSprite(type) {
       return 'stairs-down'
     case 9:
       return 'stairs-up'
+    case 10:
+      return 'shop'
     default:
   }
 }
