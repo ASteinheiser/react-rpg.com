@@ -1,8 +1,3 @@
-import {
-  SPRITE_SIZE,
-  MAP_WIDTH,
-  MAP_HEIGHT
-} from '../../config/constants';
 
 const initialState = {
   spriteLocation: '0px 0px',
@@ -12,8 +7,6 @@ const initialState = {
 };
 
 const playerReducer = (state = initialState, action) => {
-
-  let newState = Object.assign({}, state);
 
   switch(action.type) {
 
