@@ -1,6 +1,7 @@
 
 const initialState = {
-  items: []
+  items: [],
+  maxItems: 9
 };
 
 const inventoryReducer = (state = initialState, action) => {

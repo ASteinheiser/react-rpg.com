@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import CurrentItems  from '../current-items';
 import Dialog        from '../dialog';
 import EquippedItems from '../equipped-items';
 
@@ -16,13 +17,19 @@ class InventoryDialog extends Component {
 
         <div className='flex-row inventory-dialog-container'>
           <div className='flex-column inventory-dialog-child'>
-            <span className='inventory-dialog-equipped-text'>
+            <span className='inventory-dialog-section-text'>
               {'Equipped'}
             </span>
             <EquippedItems />
           </div>
-        </div>
 
+          <div className='flex-column inventory-dialog-child'>
+            <span className='inventory-dialog-section-text'>
+              {'All Items'}
+            </span>
+            <CurrentItems />
+          </div>
+        </div>
       </Dialog>
     );
   }

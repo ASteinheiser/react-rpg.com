@@ -1,0 +1,9 @@
+.equipped-items-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.white-border {
+  border: 1px solid;
+}
