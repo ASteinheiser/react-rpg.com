@@ -2,7 +2,8 @@ import maps  from '../../data/maps';
 
 const initialState = {
   currentMap: '1_1',
-  gameOver: false
+  gameOver: false,
+  paused: false
 };
 
 const worldReducer = (state = initialState, action) => {
@@ -11,8 +12,15 @@ const worldReducer = (state = initialState, action) => {
 
   switch(action.type) {
 
+    // set the paused prop to the dialog component
+    case 'PAUSE':
+      newState.paused = action.payload.component;
+
+      return newState;
+
     case 'GAME_OVER':
       newState.gameOver = true;
+      newState.paused = true;
 
       return newState;
 

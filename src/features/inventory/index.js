@@ -1,7 +1,9 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import EquippedItems from '../equipped-items';
+import InventoryDialog from '../../components/inventory-dialog';
+import EquippedItems   from '../equipped-items';
+import store           from '../../config/store';
 
 import './styles.css';
 
@@ -11,14 +13,19 @@ function Inventory(props) {
 
       <EquippedItems />
 
-      <div className='inventory-button-container'>
+      <div onClick={() => {
+          store.dispatch({
+            type: 'PAUSE',
+            payload: { component: <InventoryDialog /> }
+          })
+        }}
+        className='inventory-button-container'>
+
         <div className='flex-row inventory-button'>
-
           <i className='fa fa-briefcase inventory-icon' />
-
           <span> {'Inventory'} </span>
-
         </div>
+
       </div>
 
     </div>

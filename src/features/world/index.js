@@ -86,6 +86,12 @@ class World extends React.Component {
               <Inventory />
             </div>
         }
+        {
+          (world.paused && !world.gameOver) ?
+            world.paused
+            :
+            null
+        }
 
       </div>
     );

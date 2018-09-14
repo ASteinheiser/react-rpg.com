@@ -167,8 +167,8 @@ export default function handleMovement(player) {
         trailing: false,
       }
     );
-    // if the game state is still valid
-    if(!(store.getState().world.gameOver)) handleKeyDown(event);
+    // if the game is not paused by dialogs
+    if(!(store.getState().world.paused)) handleKeyDown(event);
   });
 
   return player;
