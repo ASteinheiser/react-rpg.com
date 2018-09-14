@@ -9,7 +9,8 @@ npm start
 ```
 
 ## TODO:
-- [ ] inventory dialog component
+- [ ] inventory view/equip/drop item
+  - [ ] micro dialog
 - [ ] design first 5 dungeon levels
   - [ ] add dragon boss
 - [ ] got loot from chest dialog
