@@ -11,7 +11,6 @@ npm start
 ## TODO:
 - [ ] design first few dungeon levels
 - [ ] game dialog components
-  - [ ] game over message
   - [ ] initial game message
   - [ ] got loot from chest
   - [ ] inventory dialog component
