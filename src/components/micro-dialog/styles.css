@@ -24,6 +24,7 @@
   font-size: 24px;
   cursor: pointer;
 
-  border: 1px solid;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
   padding: 7px 12px;
 }
