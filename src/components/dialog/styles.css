@@ -8,4 +8,7 @@
   border: 1px solid;
   background: var(--dark-gray);
   box-shadow: 1px 2px 50px var(--dark-gray);
+
+  cursor: default;
+  user-select: none;
 }

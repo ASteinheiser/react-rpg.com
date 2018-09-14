@@ -1,0 +1,17 @@
+.game-over-title {
+  display: flex;
+  justify-content: center;
+
+  padding: 50px 0 25px 0;
+
+  font-size: 36px;
+}
+
+.game-over-text {
+  display: flex;
+  justify-content: center;
+
+  padding: 25px 0;
+
+  font-size: 26px;
+}
