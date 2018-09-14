@@ -20,6 +20,7 @@ const inventoryReducer = (state = initialState, action) => {
           // remove it from the array
           return newState.items.splice(index, 1);
         }
+        return false;
       });
 
       return newState;
