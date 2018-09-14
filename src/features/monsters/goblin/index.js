@@ -1,5 +1,6 @@
 import React from 'react';
 
+import HealthBar    from '../../../components/health-bar';
 import GoblinSprite from './goblin.png';
 
 function Goblin(props) {
@@ -14,7 +15,11 @@ function Goblin(props) {
         backgroundSize: 'contain',
         width: '40px',
         height: '40px'
-      }} />
+      }}>
+
+      <HealthBar value={monster.hp} max={monster.maxHp} />
+
+    </div>
   );
 }
 
@@ -22,6 +27,7 @@ export default Goblin;
 
 export const goblinStats = {
   hp: 5,
+  maxHp: 5,
   damage: 1,
   exp: 5
 };

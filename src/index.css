@@ -1,8 +1,15 @@
 body {
+  --red: #650501;
+  --green: #258000;
+  --gray: #adadad;
+  --dark-gray: #0f0f0f;
+}
+
+body {
   margin: 0;
-  background-color: #0f0f0f;
+  background-color: var(--dark-gray);
   /* global text color */
-  color: #adadad;
+  color: var(--gray);
   /* global font */
   font-family: Montserrat, sans-serif;
   font-weight: 100;

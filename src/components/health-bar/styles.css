@@ -1,0 +1,33 @@
+.health-bar-container {
+  display: flex;
+  height: 100%;
+}
+
+.health-bar-container progress {
+  align-self: flex-start;
+
+  height: 5px;
+
+  margin: 2px 3px 0 3px;
+}
+
+progress {
+  color: var(--green);
+  background: var(--red);
+}
+
+progress::-webkit-progress-value {
+  background: var(--green);
+}
+
+progress::-moz-progress-bar {
+  background: var(--red);
+}
+
+progress::-webkit-progress-value {
+  background: var(--green);
+}
+
+progress::-webkit-progress-bar {
+  background: var(--red);
+}
