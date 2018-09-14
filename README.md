@@ -10,12 +10,15 @@ npm start
 
 ## TODO:
 - [ ] design first few dungeon levels
-- [ ] game dialog component
+- [ ] game dialog components
   - [ ] game over message
   - [ ] initial game message
-  - [ ] got loot
-  - [ ] killed monster
+  - [ ] got loot from chest
   - [ ] inventory dialog component
+- [ ] pop-up
+  - [ ] dealing damage
+  - [ ] killed monster
+  - [ ] gained exp & gold
 #
 
 - [ ] add shop to spend gold on healing or items
