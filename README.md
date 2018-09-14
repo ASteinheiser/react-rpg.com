@@ -9,6 +9,7 @@ npm start
 ```
 
 ## TODO:
+- [ ] game state pause for stopping movement on dialogs
 - [ ] design first few dungeon levels
 - [ ] game dialog components
   - [ ] initial game message
