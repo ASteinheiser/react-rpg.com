@@ -150,7 +150,11 @@ export default function handleMovement(player) {
     const nextTile = tiles[y][x];
 
     if(nextTile === 4) {
-      // TODO: give the player loot!
+      // get a random amount of gold between 3 and 10
+      store.dispatch({
+        type: 'GET_GOLD',
+        payload: { value: Math.floor(Math.random() * 8) + 3 }
+      })
       store.dispatch({
         type: 'GET_EXP',
         payload: { value: 10 }
