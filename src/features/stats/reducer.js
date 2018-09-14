@@ -158,7 +158,17 @@ const statsReducer = (state = initialState, action) => {
       return newState;
 
     case 'RESET':
-      return initialState;
+      return {
+        hp: 10,
+        maxHp: 10,
+        damage: 2,
+        defence: 0,
+        level: 0,
+        exp: 0,
+        expToLevel: 20,
+        gold: 0,
+        equippedItems: {}
+      };
 
     default:
       return state;

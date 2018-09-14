@@ -69,11 +69,13 @@ class ViewItem extends Component {
         break;
 
       case 'armor::helmet':
-        itemIsEquipped = (equipped['armor::helmet'] === data);
+        // properly check the armor
+        itemIsEquipped = (equipped['armor'] && equipped['armor']['helmet'] === data);
         break;
 
       case 'armor::body':
-        itemIsEquipped = (equipped['armor::body'] === data);
+        // properly check the armor
+        itemIsEquipped = (equipped['armor'] && equipped['armor']['body'] === data);
         break;
 
       default:
