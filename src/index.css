@@ -26,6 +26,9 @@ body {
 
   align-self: center;
   text-align: center;
+
+  cursor: default;
+  user-select: none;
 }
 
 .flex-row {
