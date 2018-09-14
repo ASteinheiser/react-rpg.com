@@ -1,6 +1,7 @@
 import _debounce from 'lodash.debounce';
 
 import attackMonster from './attack-monster';
+import openChest     from './open-chest';
 import store         from '../../config/store';
 import {
   SPRITE_SIZE,
@@ -31,6 +32,7 @@ export default function handleMovement(player) {
       let monsterPos = currMonster.position;
       // if the new position contains a monster
       if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
+        // attack the monster
         attackMonster(monsterPos, currMonster);
         // monsters found, don't allow for movement
         validMove = false;
@@ -103,19 +105,8 @@ export default function handleMovement(player) {
     const nextTile = tiles[y][x];
 
     if(nextTile === 4) {
-      // get a random amount of gold between 3 and 10
-      store.dispatch({
-        type: 'GET_GOLD',
-        payload: { value: Math.floor(Math.random() * 8) + 3 }
-      })
-      store.dispatch({
-        type: 'GET_EXP',
-        payload: { value: 10 }
-      })
-      store.dispatch({
-        type: 'OPEN_CHEST',
-        payload: { x, y }
-      })
+      // open the chest
+      openChest(x, y);
     }
 
     // the player wants to use the stairs
