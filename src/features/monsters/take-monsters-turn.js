@@ -7,12 +7,36 @@ export default function takeMonstersTurn() {
   const { components } = store.getState().monsters;
   // find each monster
   Object.keys(components).forEach(monster => {
-    let { position } = components[monster].props.monster;
+    // get monster id and position
+    const { id, position } = components[monster].props.monster;
     // find the relative position
-    let monsterPos = [(position[1] / SPRITE_SIZE), (position[0] / SPRITE_SIZE)];
+    let monsterPos = [(position[0] / SPRITE_SIZE), (position[1] / SPRITE_SIZE)];
     // get the tiles around the monster
     let nearTiles = getSurroundingTiles(monsterPos);
+    // find the player's position
+    let playerPos = store.getState().player.position;
+    // make it relative
+    playerPos = [playerPos[0] / SPRITE_SIZE, playerPos[1] / SPRITE_SIZE];
+    // see if the player pos is in the monster's nearby tiles
+    let foundPlayer = false;
 
-    console.log(nearTiles);
+    nearTiles.forEach(tile => {
+      // if the player is in sight
+      if(JSON.stringify(tile) === JSON.stringify(playerPos)) {
+        foundPlayer = true;
+      }
+    });
+
+    if(foundPlayer) {
+      store.dispatch({
+        type: 'REVEAL_MONSTER',
+        payload: { id }
+      })
+    } else {
+      store.dispatch({
+        type: 'HIDE_MONSTER',
+        payload: { id }
+      })
+    }
   });
 }
