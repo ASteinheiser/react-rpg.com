@@ -12,7 +12,7 @@ npm start
 - [ ] add fog of war
   - [ ] list of 'viewed' or 'explored' tiles saved with map values
   - [ ] add isPlayerInSight func() to monsters to show monster
-- [ ] reference original monster positions in map mapReducer
+- [ ] link monster original position to the map
   - [ ] add original position to monster properties
   - [ ] remove monster from 'map' reference on death to enable persistent death between maps
 - [ ] calculate defence during attacks
