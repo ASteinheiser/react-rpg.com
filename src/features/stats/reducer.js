@@ -75,24 +75,60 @@ const statsReducer = (state = initialState, action) => {
       switch(item.type) {
 
         case 'weapon':
+          // if there's already a weapon
+          if(newState.equippedItems['weapon']) {
+            // subtract it's benefits
+            newState.damage -= newState.equippedItems['weapon'].damage;
+          }
           newState.damage += item.damage;
           newState.equippedItems['weapon'] = item;
           break;
 
         case 'armor::body':
+          // if there's already armor
+          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['body']) {
+            // subtract it's benefits
+            newState.defence -= newState.equippedItems['armor']['body'].defence;
+          }
           newState.defence += item.defence;
           // safely add new armor peice to object
           newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { body: item });
           break;
 
         case 'armor::helmet':
+          // if there's already armor
+          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['helmet']) {
+            // subtract it's benefits
+            newState.defence -= newState.equippedItems['armor']['helmet'].defence;
+          }
           newState.defence += item.defence;
           // safely add new armor peice to object
           newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { helmet: item });
           break;
 
         case 'ring':
-          // iterate over each effect
+          // if there's already a ring
+          if(newState.equippedItems['ring']) {
+            // subtract it's benefits
+            Object.keys(newState.equippedItems['ring'].effect).forEach(effectName => {
+
+              switch (effectName) {
+
+                case 'damage':
+                  newState.damage -= item.effect[effectName];
+                  break;
+
+                case 'hp':
+                  newState.hp -= item.effect[effectName];
+                  newState.maxHp -= item.effect[effectName];
+                  break;
+
+                default:
+              }
+            });
+          }
+
+          // iterate over each new effect
           Object.keys(item.effect).forEach(effectName => {
 
             switch (effectName) {
