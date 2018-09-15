@@ -36,6 +36,19 @@ function getTileSprite(type) {
 }
 
 function MapTile(props) {
+  let inSight = false;
+  // if you need to render the sightBox
+  if(props.sightBox) {
+    // check the sight box tiles
+    props.sightBox.forEach(sightBox => {
+      // if the current tile is in range
+      if(JSON.stringify(sightBox) === JSON.stringify(props.index)) {
+        // remove the overlay
+        return inSight = true;
+      }
+    });
+  }
+
   if(!props.tile.explored) {
     return (
       <div style={{
@@ -61,7 +74,19 @@ function MapTile(props) {
           backgroundSize: 'contain',
           height: SPRITE_SIZE,
           width: SPRITE_SIZE,
-        }} />
+        }}>
+        {
+          inSight ?
+            null
+            :
+            <div style={{
+              backgroundColor: 'rgba(0,0,0,0.5)',
+              display: 'inline-flex',
+              height: SPRITE_SIZE,
+              width: SPRITE_SIZE,
+            }} />
+        }
+      </div>
     </div>
   );
 }
@@ -77,6 +102,8 @@ function MapRow(props) {
           return(
             <MapTile
               tile={tile}
+              index={[props.index, index]}
+              sightBox={props.sightBox}
               key={JSON.stringify(tile) + index} />
           );
         })
@@ -98,6 +125,8 @@ function Map(props) {
           return (
             <MapRow
               tiles={row}
+              index={index}
+              sightBox={map.sightBox}
               key={JSON.stringify(row) + index} />
           );
         })

@@ -1,5 +1,6 @@
 const initialState = {
-  tiles: []
+  tiles: [],
+  sightBox: []
 };
 
 const mapReducer = (state = initialState, action) => {
@@ -15,6 +16,8 @@ const mapReducer = (state = initialState, action) => {
         // set it's value to explored
         newState.tiles[tile[0]][tile[1]].explored = 1;
       });
+      // set tiles for current sight box
+      newState.sightBox = tiles;
       return newState;
 
     case 'ADD_BLOOD_SPILL':
