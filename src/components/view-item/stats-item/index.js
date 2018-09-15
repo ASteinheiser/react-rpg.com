@@ -7,11 +7,11 @@ class StatsItem extends Component {
     const { stats } = this.props;
 
     return(
-      <div className='flex-column'>
-        <span className='flex-row'>
+      <div className='flex-row stats-item-container'>
+        <span>
           { stats.name }
         </span>
-        <span className='flex-row'>
+        <span>
           { stats.value }
         </span>
       </div>
