@@ -1,25 +1,15 @@
 import React from 'react';
 
-import HealthBar from '../../../components/health-bar';
+import Monster   from '../monster';
 import RatSprite from './rat.png';
 
 function Rat(props) {
   const { monster } = props;
 
+  monster.sprite = RatSprite;
+
   return (
-    <div style={{
-        position: 'absolute',
-        top: monster.position[1],
-        left: monster.position[0],
-        backgroundImage: `url('${RatSprite}')`,
-        backgroundSize: 'contain',
-        width: '40px',
-        height: '40px'
-      }}>
-
-      <HealthBar value={monster.hp} max={monster.maxHp} />
-
-    </div>
+    <Monster monster={monster} />
   );
 }
 

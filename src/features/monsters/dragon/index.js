@@ -1,25 +1,15 @@
 import React from 'react';
 
-import HealthBar    from '../../../components/health-bar';
+import Monster      from '../monster';
 import DragonSprite from './dragon.png';
 
 function Dragon(props) {
   const { monster } = props;
 
+  monster.sprite = DragonSprite;
+
   return (
-    <div style={{
-        position: 'absolute',
-        top: monster.position[1],
-        left: monster.position[0],
-        backgroundImage: `url('${DragonSprite}')`,
-        backgroundSize: 'contain',
-        width: '40px',
-        height: '40px'
-      }}>
-
-      <HealthBar value={monster.hp} max={monster.maxHp} />
-
-    </div>
+    <Monster monster={monster} />
   );
 }
 
