@@ -10,6 +10,7 @@ npm start
 
 ## TODO:
 - [ ] design first 5 dungeon levels
+- [ ] add fog of war
 - [ ] got loot from chest dialog
 - [ ] initial game dialog
 - [ ] pop-ups

@@ -12,24 +12,22 @@ function getTileSprite(type) {
     case 0:
       return 'ground'
     case 1:
-      return 'skull-wall' // fake skull-wall obstacles
-    case 2:
       return 'stone-wall' // fake stone-wall obstacles
-    case 3:
-      return 'eye-wall' // fake eye-wall obstacles
     case 4:
       return 'chest'
     case 5:
-      return 'skull-wall'
-    case 6:
       return 'stone-wall'
+    case 6:
+      return 'cracked-wall'
     case 7:
-      return 'eye-wall'
+      return 'skull-wall'
     case 8:
-      return 'stairs-down'
+      return 'eye-wall'
     case 9:
-      return 'stairs-up'
+      return 'stairs-down'
     case 10:
+      return 'stairs-up'
+    case 11:
       return 'shop'
     default:
   }
