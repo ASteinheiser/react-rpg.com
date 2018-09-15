@@ -83,7 +83,12 @@ class World extends React.Component {
             :
             <div className='world-stats-container'>
               <Stats />
-              <Inventory />
+              {
+                (world.paused && !world.inventory) ?
+                  null
+                  :
+                  <Inventory />
+              }
             </div>
         }
         {

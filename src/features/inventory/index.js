@@ -19,7 +19,7 @@ class Inventory extends Component {
     this.setState({ inventoryOpen: true }, () => {
       store.dispatch({
         type: 'PAUSE',
-        payload: { component: <InventoryDialog /> }
+        payload: { component: <InventoryDialog />, inventory: true }
       });
     });
   }
