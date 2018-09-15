@@ -40,7 +40,7 @@ function getSurroundingTiles(startPos) {
         let offsetX = x + startPos[0];
         let offsetY = y + startPos[1];
         // if it is inside the bounds
-        if(offsetX >= 0 && offsetX < 20 && offsetY >= 0 && offsetY < 15) {
+        if(offsetX >= 0 && offsetX < 15 && offsetY >= 0 && offsetY < 20) {
           // explore this tile...
           newTiles.push([offsetX, offsetY]);
         }
