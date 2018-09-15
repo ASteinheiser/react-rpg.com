@@ -5,6 +5,9 @@ import HealthBar from '../../components/health-bar';
 function Monster(props) {
   const { monster } = props;
 
+  // if the monster is hidden by fog
+  if(!monster.visible) return null;
+
   return (
     <div style={{
         position: 'absolute',

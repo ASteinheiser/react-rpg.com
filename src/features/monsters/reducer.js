@@ -82,6 +82,16 @@ const monstersReducer = (state = initialState, action) => {
 
       return newState;
 
+    case 'REVEAL_MONSTER':
+      // update the current monster's visible prop
+      newState.components[action.payload.id].props.monster.visible = true;
+      return newState;
+
+    case 'HIDE_MONSTER':
+      // update the current monster's visible prop
+      newState.components[action.payload.id].props.monster.visible = false;
+      return newState;
+
     case 'RESET':
       return initialState;
 
