@@ -12,7 +12,6 @@ const mapReducer = (state = initialState, action) => {
       const { tiles } = action.payload;
       // get each tile
       tiles.forEach(tile => {
-        console.log(tile);
         // set it's value to explored
         newState.tiles[tile[0]][tile[1]].explored = 1;
       });
@@ -34,10 +33,12 @@ const mapReducer = (state = initialState, action) => {
       // this is used for showing visited tiles
       action.payload.tiles.forEach((row, index) => {
         action.payload.tiles[index].forEach((item, tileIndex) => {
-          action.payload.tiles[index][tileIndex] = {
-            value: action.payload.tiles[index][tileIndex],
-            explored: 0
-          };
+          if(typeof action.payload.tiles[index][tileIndex] !== 'object') {
+            action.payload.tiles[index][tileIndex] = {
+              value: action.payload.tiles[index][tileIndex],
+              explored: 0
+            };
+          }
         });
       });
 

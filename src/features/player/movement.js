@@ -1,6 +1,7 @@
 import _debounce from 'lodash.debounce';
 
 import attackMonster from './attack-monster';
+import exploreTiles  from './explore-tiles';
 import openChest     from './open-chest';
 import store         from '../../config/store';
 import {
@@ -19,7 +20,10 @@ export default function handleMovement(player) {
 
     if(observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)
         && checkForMonster(newPos)) {
+      // move the player
       dispatchMove(direction, newPos);
+      // explore new tiles
+      exploreTiles(newPos);
     }
   }
 
