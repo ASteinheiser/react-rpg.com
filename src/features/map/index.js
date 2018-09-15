@@ -29,6 +29,8 @@ function getTileSprite(type) {
       return 'eye-wall'
     case 9:
       return 'shop'
+    case 10:
+      return 'shrine'
     default:
   }
 }

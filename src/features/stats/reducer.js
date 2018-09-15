@@ -199,7 +199,7 @@ const statsReducer = (state = initialState, action) => {
         maxHp: 10,
         damage: 2,
         defence: 0,
-        level: 0,
+        level: 1,
         exp: 0,
         expToLevel: 20,
         gold: 0,

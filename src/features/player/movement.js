@@ -132,6 +132,11 @@ export default function handleMovement(player) {
       console.log('using shop!');
     }
 
+    // the player won the game
+    if(nextTile === 10) {
+      console.log('winner!');
+    }
+
     return nextTile < 5;
   }
 
