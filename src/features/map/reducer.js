@@ -8,6 +8,16 @@ const mapReducer = (state = initialState, action) => {
 
   switch(action.type) {
 
+    case 'EXPLORE_TILES':
+      const { tiles } = action.payload;
+      // get each tile
+      tiles.forEach(tile => {
+        console.log(tile);
+        // set it's value to explored
+        newState.tiles[tile[0]][tile[1]].explored = 1;
+      });
+      return newState;
+
     case 'ADD_BLOOD_SPILL':
       // set current tile to blood spill tile
       newState.tiles[action.payload.y][action.payload.x].value = -1;
