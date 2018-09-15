@@ -11,17 +11,17 @@ for (y = -SIGHT_RADIUS; y <= SIGHT_RADIUS; y++) {
     }
   }
 }
-
+// takes an array of relative coordinates to the map size (20 x 15) i.e. [1, 1]
 export default function getSurroundingTiles(startPos) {
   let surroundingTiles = [];
-  // add player position as offset to each radius tile
+  // add position as offset to each radius tile
   radiusTiles.forEach(({x, y}) => {
-    // get radius with player location as offset
+    // get radius with location as offset
     let offsetX = x + startPos[0];
     let offsetY = y + startPos[1];
     // if it is inside the bounds
     if(offsetX >= 0 && offsetX < 15 && offsetY >= 0 && offsetY < 20) {
-      // explore this tile...
+      // add to surrounding tile...
       surroundingTiles.push([offsetX, offsetY]);
     }
   });
