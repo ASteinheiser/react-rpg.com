@@ -8,7 +8,11 @@ export default function resetGameState() {
     for(let i = 0; i < maps[mapName].tiles.length; i ++) {
       for(let j = 0; j < maps[mapName].tiles[i].length; j++) {
         // check the tile type
-        switch (maps[mapName].tiles[i][j]) {
+        let value = maps[mapName].tiles[i][j];
+        // pull value off the object
+        if(typeof value === 'object') value = value.value;
+
+        switch (value) {
           // close all the treasure chests
           case -2:
             maps[mapName].tiles[i][j] = {
@@ -26,10 +30,6 @@ export default function resetGameState() {
           default:
             // hide explored on rest of tiles,
             // but set their original values
-            let value = maps[mapName].tiles[i][j];
-            // pull value off the object;
-            if(typeof value === 'object') value = value.value;
-
             maps[mapName].tiles[i][j] = {
               value,
               explored: 0
