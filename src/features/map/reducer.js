@@ -12,8 +12,12 @@ const mapReducer = (state = initialState, action) => {
       const { tiles } = action.payload;
       // get each tile
       tiles.forEach(tile => {
-        // set it's value to explored
-        newState.tiles[tile[0]][tile[1]].explored = 1;
+        if(newState.tiles[tile[0]][tile[1]].explored) {
+          // do nothing
+        } else {
+          // set it's value to explored
+          newState.tiles[tile[0]][tile[1]].explored = 1;
+        }
       });
       return newState;
 

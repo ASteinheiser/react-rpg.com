@@ -7,20 +7,33 @@ export default function resetGameState() {
   Object.keys(maps).forEach(mapName => {
     for(let i = 0; i < maps[mapName].tiles.length; i ++) {
       for(let j = 0; j < maps[mapName].tiles[i].length; j++) {
-
+        // check the tile type
         switch (maps[mapName].tiles[i][j]) {
-
           // close all the treasure chests
           case -2:
-            maps[mapName].tiles[i][j] = 4;
+            maps[mapName].tiles[i][j] = {
+              value: 4,
+              explored: 0
+            };
             break;
-
           // clean up blood
           case -1:
-            maps[mapName].tiles[i][j] = 0;
+            maps[mapName].tiles[i][j] = {
+              value: 0,
+              explored: 0
+            };
             break;
-
           default:
+            // hide explored on rest of tiles,
+            // but set their original values
+            let value = maps[mapName].tiles[i][j];
+            // pull value off the object;
+            if(typeof value === 'object') value = value.value;
+
+            maps[mapName].tiles[i][j] = {
+              value,
+              explored: 0
+            }
         }
       }
     }

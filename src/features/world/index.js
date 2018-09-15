@@ -12,14 +12,14 @@ import items    from '../../data/items';
 import maps     from '../../data/maps';
 import store    from '../../config/store';
 
+import exploreTiles from '../player/explore-tiles';
+
 import './styles.css';
 
 class World extends React.Component {
 
   componentDidMount() {
-    this.handleLoadMap();
-    this.handleLoadMonsters();
-    this.handleLoadStartingItems(); // only on initial game load
+    this.handleGameStart();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,10 +30,19 @@ class World extends React.Component {
     }
     // if the game has been restarted
     if (prevProps.world.gameOver === true && this.props.world.gameOver === false) {
-      this.handleLoadMap();
-      this.handleLoadMonsters();
-      this.handleLoadStartingItems(); // only on initial game load
+      this.handleGameStart();
     }
+  }
+
+  handleGameStart() {
+    this.handleLoadMap();
+    this.handleLoadMonsters();
+    this.handleLoadPlayerSight();
+    this.handleLoadStartingItems();
+  }
+
+  handleLoadPlayerSight() {
+    exploreTiles(store.getState().player.position);
   }
 
   handleLoadStartingItems() {
