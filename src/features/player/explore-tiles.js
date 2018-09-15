@@ -5,7 +5,7 @@ import {
 } from '../../config/constants';
 
 let x, y;
-const radiusTiles = [];
+export const radiusTiles = [];
 // calculate a tile map with desired radius
 // (results in array = [[-4,-4]...[0,0]...[4,4]] )
 for (y = -SIGHT_RADIUS; y <= SIGHT_RADIUS; y++) {
