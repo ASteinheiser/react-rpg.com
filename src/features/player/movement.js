@@ -104,20 +104,15 @@ export default function handleMovement(player) {
 
     const nextTile = tiles[y][x];
 
-    if(nextTile === 4) {
-      // open the chest
-      openChest(x, y);
-    }
-
     // the player wants to use the stairs
-    if(nextTile === 8 || nextTile === 9) {
+    if(nextTile === 2 || nextTile === 3) {
       let direction;
       // player wants to go down
-      if(nextTile === 8) {
+      if(nextTile === 2) {
         direction = 'down';
       }
       // player wants to go up
-      if(nextTile === 9) {
+      if(nextTile === 3) {
         direction = 'up';
       }
       // change the world map
@@ -125,8 +120,16 @@ export default function handleMovement(player) {
         type: 'LOAD_NEXT_MAP',
         payload: { direction }
       })
-      // move the player to where the 'stairs' were
-      return true;
+    }
+
+    if(nextTile === 4) {
+      // open the chest
+      openChest(x, y);
+    }
+
+    // the player wants to use the shop
+    if(nextTile === 9) {
+      console.log('using shop!');
     }
 
     return nextTile < 5;
