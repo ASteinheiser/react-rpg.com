@@ -9,9 +9,7 @@ npm start
 ```
 
 ## TODO:
-- [ ] add fog of war
-  - [ ] list of 'viewed' or 'explored' tiles saved with map values
-  - [ ] add isPlayerInSight func() to monsters to show monster
+- [ ] add isPlayerInSight func() to monsters to show monster
 - [ ] link monster original position to the map
   - [ ] add original position to monster properties
   - [ ] remove monster from 'map' reference on death to enable persistent death between maps
