@@ -102,7 +102,7 @@ export default function handleMovement(player) {
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
 
-    const nextTile = tiles[y][x];
+    const nextTile = tiles[y][x].value;
 
     // the player wants to use the stairs
     if(nextTile === 2 || nextTile === 3) {

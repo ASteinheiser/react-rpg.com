@@ -36,6 +36,16 @@ function getTileSprite(type) {
 }
 
 function MapTile(props) {
+  if(!props.tile.explored) {
+    return (
+      <div style={{
+          backgroundColor: 'black',
+          display: 'inline-flex',
+          height: SPRITE_SIZE,
+          width: SPRITE_SIZE,
+        }} />
+    );
+  }
   return (
     <div
       style={{
@@ -47,7 +57,7 @@ function MapTile(props) {
       }}>
       <div
         style={{
-          backgroundImage: `url(/tiles/${getTileSprite(props.tile)}.png)`,
+          backgroundImage: `url(/tiles/${getTileSprite(props.tile.value)}.png)`,
           backgroundSize: 'contain',
           height: SPRITE_SIZE,
           width: SPRITE_SIZE,

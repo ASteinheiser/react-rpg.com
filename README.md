@@ -10,9 +10,16 @@ npm start
 
 ## TODO:
 - [ ] add fog of war
+  - [ ] list of 'viewed' or 'explored' tiles saved with map values
+  - [ ] add isPlayerInSight func() to monsters to show monster
+- [ ] reference original monster positions in map mapReducer
+  - [ ] add original position to monster properties
+  - [ ] remove monster from 'map' reference on death to enable persistent death between maps
+- [ ] calculate defence during attacks
 - [ ] got loot from chest dialog
 - [ ] initial game dialog
 - [ ] victory dialog
+  - [ ] check if all monsters have been killed
 - [ ] pop-ups
   - [ ] tried to pick up item with full inventory
   - [ ] dealing damage
