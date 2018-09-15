@@ -12,7 +12,7 @@ export default function exploreTiles(newPos) {
   // make an array with new tile position
   let exploreTiles = [ tile ];
   // find the surrounding tiles
-  let nearTiles = getSurroundingTiles({ x, y });
+  let nearTiles = getSurroundingTiles(tile);
   // push surrounding tiles to the explore tiles array
   nearTiles.forEach(tile => {
     exploreTiles.push(tile);
@@ -25,20 +25,24 @@ export default function exploreTiles(newPos) {
     }
   })
 }
-// TODO: fix this
-function getSurroundingTiles({ x, y }) {
+
+function getSurroundingTiles(startPos) {
   // set the 'explore' or 'player viewing' radius
   let radius = SIGHT_RADIUS;
   let newTiles = [];
+  let x, y;
   // move out from center for radius length
   for (y = -radius; y <= radius; y++) {
     for (x = -radius; x <= radius; x++) {
       // find each surrounding tile
       if ((x * x) + (y * y) <= (radius * radius)) {
+        // get radius with player location as offset
+        let offsetX = x + startPos[0];
+        let offsetY = y + startPos[1];
         // if it is inside the bounds
-        if(x >= 0 && x < 20 && y >= 0 && y < 15) {
+        if(offsetX >= 0 && offsetX < 20 && offsetY >= 0 && offsetY < 15) {
           // explore this tile...
-          newTiles.push([x, y]);
+          newTiles.push([offsetX, offsetY]);
         }
       }
     }
