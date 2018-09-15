@@ -10,7 +10,6 @@ npm start
 
 ## TODO:
 - [ ] design first 5 dungeon levels
-  - [ ] add dragon boss
 - [ ] got loot from chest dialog
 - [ ] initial game dialog
 - [ ] pop-ups
@@ -29,4 +28,4 @@ npm start
     - [ ] move towards player if within sight (5 squares)
     - [ ] attack player if within range
     - [ ] move random if no player within sight (5 squares)
-- [ ] auto-generated levels
+- [ ] auto-generated levels (https://medium.freecodecamp.org/how-to-make-your-own-procedural-dungeon-map-generator-using-the-random-walk-algorithm-e0085c8aa9a)
