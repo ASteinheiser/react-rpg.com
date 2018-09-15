@@ -26,8 +26,8 @@ function Goblin(props) {
 export default Goblin;
 
 export const goblinStats = {
-  hp: 5,
-  maxHp: 5,
-  damage: 1,
-  exp: 5
+  hp: 10,
+  maxHp: 10,
+  damage: 2,
+  exp: 10
 };

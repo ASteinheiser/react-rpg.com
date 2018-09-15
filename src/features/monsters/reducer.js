@@ -1,6 +1,8 @@
 import React from 'react';
 
+import Dragon, { dragonStats }         from './dragon';
 import Goblin, { goblinStats }         from './goblin';
+import Rat, { ratStats }               from './rat';
 import StoneGolem, { stoneGolemStats } from './stone-golem';
 
 import { SPRITE_SIZE } from '../../config/constants';
@@ -42,6 +44,14 @@ const monstersReducer = (state = initialState, action) => {
         monster.id = uuid;
 
         switch(monster.type) {
+          case 'dragon':
+            // merge the initial position with monster stats
+            monster = Object.assign({}, monster, dragonStats);
+            // set the position from tile(x,y) to pixels
+            monster.position = monster.position.map(value => value * SPRITE_SIZE);
+            // set component key with monster id
+            newState.components[uuid] = ( <Dragon monster={monster} key={uuid} /> );
+            break;
           case 'goblin':
             // merge the initial position with monster stats
             monster = Object.assign({}, monster, goblinStats);
@@ -49,6 +59,14 @@ const monstersReducer = (state = initialState, action) => {
             monster.position = monster.position.map(value => value * SPRITE_SIZE);
             // set component key with monster id
             newState.components[uuid] = ( <Goblin monster={monster} key={uuid} /> );
+            break;
+          case 'rat':
+            // merge the initial position with monster stats
+            monster = Object.assign({}, monster, ratStats);
+            // set the position from tile(x,y) to pixels
+            monster.position = monster.position.map(value => value * SPRITE_SIZE);
+            // set component key with monster id
+            newState.components[uuid] = ( <Rat monster={monster} key={uuid} /> );
             break;
           case 'stone-golem':
             // merge the initial position with monster stats
