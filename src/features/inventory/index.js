@@ -40,9 +40,9 @@ class Inventory extends Component {
       <div className='inventory-container'>
         {
             inventoryOpen ?
-              <div onClick={this.handleCloseInventory.bind(this)}
-                className='inventory-button-container'>
-                <div className='flex-row inventory-button'>
+              <div className='inventory-button-container'>
+                <div onClick={this.handleCloseInventory.bind(this)}
+                  className='flex-row inventory-button'>
                   <i className='fa fa-times close-icon' />
                   <span className='inventory-close-padding'>
                     {'Close'}
@@ -50,9 +50,9 @@ class Inventory extends Component {
                 </div>
               </div>
               :
-              <div onClick={this.handleOpenInventory.bind(this)}
-                className='inventory-button-container'>
-                <div className='flex-row inventory-button'>
+              <div className='inventory-button-container'>
+                <div onClick={this.handleOpenInventory.bind(this)}
+                  className='flex-row inventory-button'>
                   <i className='fa fa-briefcase inventory-icon' />
                   <span> {'Inventory'} </span>
                 </div>
