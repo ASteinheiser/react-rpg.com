@@ -11,6 +11,7 @@ export default function openChest(x, y) {
     type: 'GET_GOLD',
     payload: { value: Math.floor(Math.random() * 8) + 3 }
   })
+  // TODO: make this level based
   // get some exp
   store.dispatch({
     type: 'GET_EXP',

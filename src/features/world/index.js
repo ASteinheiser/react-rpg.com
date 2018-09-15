@@ -11,8 +11,9 @@ import Stats     from '../stats';
 import items    from '../../data/items';
 import maps     from '../../data/maps';
 import store    from '../../config/store';
-
-import exploreTiles from '../player/explore-tiles';
+// game functions
+import takeMonstersTurn from '../monsters/take-monsters-turn';
+import exploreTiles     from '../player/explore-tiles';
 
 import './styles.css';
 
@@ -29,8 +30,11 @@ class World extends React.Component {
       this.handleLoadMonsters();
     }
     // if the game has been restarted
-    if (prevProps.world.gameOver === true && this.props.world.gameOver === false) {
+    if(prevProps.world.gameOver === true && this.props.world.gameOver === false) {
       this.handleGameStart();
+    }
+    if(prevProps.world.turn !== this.props.world.turn) {
+      takeMonstersTurn();
     }
   }
 

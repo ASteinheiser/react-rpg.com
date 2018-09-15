@@ -24,6 +24,8 @@ export default function handleMovement(player) {
       dispatchMove(direction, newPos);
       // explore new tiles
       exploreTiles(newPos);
+      // take a turn
+      takeTurn();
     }
   }
 
@@ -38,6 +40,8 @@ export default function handleMovement(player) {
       if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
         // attack the monster
         attackMonster(monsterPos, currMonster);
+        // take a turn
+        takeTurn();
         // monsters found, don't allow for movement
         validMove = false;
       }
@@ -74,6 +78,13 @@ export default function handleMovement(player) {
       default:
         // not good if you get here...
     }
+  }
+
+  function takeTurn() {
+    store.dispatch({
+      type: 'TAKE_TURN',
+      payload: {}
+    });
   }
 
   function getWalkIndex() {

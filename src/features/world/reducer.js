@@ -4,7 +4,8 @@ const initialState = {
   currentMap: '1_1',
   gameOver: false,
   paused: false,
-  inventory: false
+  inventory: false,
+  turn: 0
 };
 
 const worldReducer = (state = initialState, action) => {
@@ -12,6 +13,11 @@ const worldReducer = (state = initialState, action) => {
   let newState = Object.assign({}, state);
 
   switch(action.type) {
+
+    case 'TAKE_TURN':
+      // increment the turn
+      newState.turn += 1
+      return newState;
 
     // set the paused prop to the dialog component
     case 'PAUSE':
