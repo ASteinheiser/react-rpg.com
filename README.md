@@ -9,8 +9,7 @@ npm start
 ```
 
 ## TODO:
-- [ ] add isPlayerInSight func() to monsters to show monster
-- [ ] save maps with monsters and child
+- [ ] save maps with monsters as component (instead of just per map monsters)
   - [ ] add original position to monster properties
   - [ ] remove monster from 'map' reference on death to enable persistent death between maps
 - [ ] calculate defence during attacks

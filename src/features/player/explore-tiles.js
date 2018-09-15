@@ -23,12 +23,8 @@ export default function exploreTiles(newPos) {
   let tile = [x, y];
   // make an array with new tile position
   let exploreTiles = [ tile ];
-  // find the surrounding tiles
-  let nearTiles = getSurroundingTiles(tile);
-  // push surrounding tiles to the explore tiles array
-  nearTiles.forEach(tile => {
-    exploreTiles.push(tile);
-  });
+  // find the surrounding tiles and add them to the explore tiles
+  exploreTiles = exploreTiles.concat(getSurroundingTiles(tile));
   // explore the tiles
   store.dispatch({
     type: 'EXPLORE_TILES',
