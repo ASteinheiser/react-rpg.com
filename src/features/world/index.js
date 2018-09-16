@@ -32,8 +32,10 @@ class World extends React.Component {
     if(prevProps.world.gameOver === true && this.props.world.gameOver === false) {
       this.handleGameStart();
     }
-    // after the players turn, monsters take their turn
-    if(prevProps.world.turn !== this.props.world.turn) {
+    // if a turn has been taken, and the game hasn't just restarted
+    if(prevProps.world.turn !== this.props.world.turn
+      && (this.props.world.turn !== 0)) {
+      // take monster turn
       takeMonstersTurn();
     }
   }
