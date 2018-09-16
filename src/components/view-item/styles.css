@@ -21,3 +21,8 @@
   justify-content: space-around;
   padding-bottom: 20px;
 }
+
+.view-item-stats-container {
+  flex: 1;
+  justify-content: space-evenly;
+}

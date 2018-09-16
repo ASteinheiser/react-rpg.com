@@ -1,6 +1,5 @@
 .stats-item-container {
-  justify-content: space-between;
+  justify-content: space-around;
 
   font-size: 22px;
-  padding: 10px 100px;
 }

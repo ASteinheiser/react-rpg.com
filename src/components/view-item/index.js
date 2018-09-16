@@ -109,7 +109,7 @@ class ViewItem extends Component {
           </span>
         </div>
 
-        <div className='view-item-stats-container'>
+        <div className='flex-column view-item-stats-container'>
           { itemStats }
         </div>
 
@@ -130,7 +130,7 @@ class ViewItem extends Component {
                   title={'Drop'} />
                 <Button
                   onClick={this.handleEquip.bind(this, data)}
-                  icon='child'
+                  icon='hand-paper-o'
                   title={'Equip'} />
               </div>
           }
