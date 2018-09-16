@@ -1,33 +1,27 @@
-import { SPRITE_SIZE }     from '../../config/constants';
-import getSurroundingTiles from '../../modules/get-surrounding-tiles';
-import store               from '../../config/store';
+import { SPRITE_SIZE } from '../../config/constants';
+import store           from '../../config/store';
 
 export default function takeMonstersTurn() {
   // get the current monsters
   const { components } = store.getState().monsters;
+  const { sightBox } = store.getState().map;
   // find each monster
   Object.keys(components).forEach(monster => {
     // get monster id and position
     const { id, position } = components[monster].props.monster;
     // find the relative position
-    let monsterPos = [(position[0] / SPRITE_SIZE), (position[1] / SPRITE_SIZE)];
-    // get the tiles around the monster
-    let nearTiles = getSurroundingTiles(monsterPos);
-    // find the player's position
-    let playerPos = store.getState().player.position;
-    // make it relative
-    playerPos = [playerPos[0] / SPRITE_SIZE, playerPos[1] / SPRITE_SIZE];
-    // see if the player pos is in the monster's nearby tiles
-    let foundPlayer = false;
+    let monsterPos = [(position[1] / SPRITE_SIZE), (position[0] / SPRITE_SIZE)];
 
-    nearTiles.forEach(tile => {
-      // if the player is in sight
-      if(JSON.stringify(tile) === JSON.stringify(playerPos)) {
-        foundPlayer = true;
+    let monsterVisible = false;
+    // look through each current sight box tile
+    sightBox.forEach(tile => {
+      // if the monster is in sight
+      if(JSON.stringify(tile) === JSON.stringify(monsterPos)) {
+        monsterVisible = true;
       }
     });
 
-    if(foundPlayer) {
+    if(monsterVisible) {
       store.dispatch({
         type: 'REVEAL_MONSTER',
         payload: { id }
