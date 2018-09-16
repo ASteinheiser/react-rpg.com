@@ -9,8 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] calculate defence during attacks
-- [ ] initial game dialog
 - [ ] victory dialog
   - [ ] check if all monsters have been killed
 - [ ] pop-ups

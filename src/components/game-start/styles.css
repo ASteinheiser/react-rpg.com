@@ -1,0 +1,21 @@
+.game-start-title {
+  justify-content: center;
+  padding: 50px 0;
+  font-size: 36px;
+}
+
+.game-start-text {
+  flex: 1;
+
+  font-size: 26px;
+
+  padding: 25px 100px;
+}
+
+.game-start-button-parent {
+  padding: 25px 0;
+}
+
+.game-start-button-child {
+  justify-content: center;
+}
