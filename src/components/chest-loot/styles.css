@@ -1,0 +1,27 @@
+.chest-loot-title {
+  font-size: 30px;
+  text-align: center;
+
+  padding: 25px 0;
+}
+
+.chest-loot-button-container {
+  justify-content: flex-end;
+}
+
+.chest-loot-button {
+  justify-content: center;
+  padding: 25px 0;
+}
+
+.chest-loot-value-padding {
+  padding-left: 25px;
+}
+
+.chest-loot-contents {
+  flex: 1;
+  font-size: 24px;
+
+  justify-content: space-evenly;
+  align-self: center;
+}

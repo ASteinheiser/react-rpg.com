@@ -1,4 +1,6 @@
-import store from '../../config/store';
+import React     from 'react';
+import ChestLoot from '../../components/chest-loot';
+import store     from '../../config/store';
 
 export default function openChest(x, y) {
   // replace the closed chest img with open
@@ -6,15 +8,9 @@ export default function openChest(x, y) {
     type: 'OPEN_CHEST',
     payload: { x, y }
   })
-  // get a random amount of gold between 3 and 10
+  // show the chest contents
   store.dispatch({
-    type: 'GET_GOLD',
-    payload: { value: Math.floor(Math.random() * 8) + 3 }
-  })
-  // TODO: make this level based
-  // get some exp
-  store.dispatch({
-    type: 'GET_EXP',
-    payload: { value: 10 }
+    type: 'PAUSE',
+    payload: { component: <ChestLoot /> }
   })
 }
