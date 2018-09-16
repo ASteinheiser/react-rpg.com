@@ -18,9 +18,10 @@
 
 .confirm-dialog-text {
   font-size: 26px;
-  padding: 25px;
-}
+  padding: 50px;
 
+  text-align: center;
+}
 
 .confirm-dialog-button-parent {
   flex: 1;
