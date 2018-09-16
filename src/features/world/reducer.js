@@ -21,6 +21,9 @@ const worldReducer = (state = initialState, action) => {
 
     // set the paused prop to the dialog component
     case 'PAUSE':
+      // check if pause type is game start
+      newState.gameStart = action.payload.gameStart || false;
+      // check if pause type is inventory
       newState.inventory = action.payload.inventory || false;
       newState.paused = action.payload.component;
 

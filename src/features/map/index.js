@@ -113,7 +113,11 @@ function MapRow(props) {
 }
 
 function Map(props) {
-  const { map } = props;
+  const { map, world } = props;
+  const { gameStart } = world;
+
+  // game start menu open, hide the map
+  if(gameStart) return <div style={{ width: '800px', height: '600px' }} />;
 
   return (
     <div style={{
@@ -135,8 +139,8 @@ function Map(props) {
   );
 }
 
-const mapStateToProps = ({ map }) => {
-  return { map };
+const mapStateToProps = ({ map, world }) => {
+  return { map, world };
 }
 
 export default connect(mapStateToProps)(Map);

@@ -6,7 +6,11 @@ import WalkSprite     from './player_walk.png';
 import handleMovement from './movement';
 
 function Player(props) {
-  const { player, stats } = props;
+  const { player, stats, world } = props;
+  const { gameStart } = world;
+
+  // game start menu open, hide the player
+  if(gameStart) return null;
 
   return (
     <div style={{
@@ -25,8 +29,8 @@ function Player(props) {
   );
 }
 
-const mapStateToProps = ({ player, stats }) => {
-  return { player, stats };
+const mapStateToProps = ({ player, stats, world }) => {
+  return { player, stats, world };
 }
 
 export default connect(mapStateToProps)(handleMovement(Player));

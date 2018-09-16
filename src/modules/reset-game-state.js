@@ -49,6 +49,9 @@ export default function resetGameState() {
 
   store.dispatch({
     type: 'PAUSE',
-    payload: { component: <GameStart /> }
+    payload: {
+      component: <GameStart />,
+      gameStart: true
+    }
   })
 }

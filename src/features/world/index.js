@@ -43,7 +43,10 @@ class World extends React.Component {
   handleGameStart() {
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: <GameStart /> }
+      payload: {
+        component: <GameStart />,
+        gameStart: true
+      }
     })
   }
 
