@@ -25,7 +25,7 @@ const inventoryReducer = (state = initialState, action) => {
 
       return newState;
 
-    case 'RECEIVE_ITEM':
+    case 'GET_ITEM':
       let itemId = uuidv4();
       // save item to list with unique id for keeping track of duplicates
       newState.items.push(Object.assign({}, action.payload, { id: itemId }));

@@ -53,7 +53,7 @@ class World extends React.Component {
   handleLoadStartingItems() {
     // give the player a rusty sword
     store.dispatch({
-      type: 'RECEIVE_ITEM',
+      type: 'GET_ITEM',
       payload: items.weapons.RustySword
     })
     // and put it on

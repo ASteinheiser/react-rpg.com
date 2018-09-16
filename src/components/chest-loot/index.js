@@ -26,11 +26,16 @@ class ChestLoot extends Component {
       payload: { value: exp }
     })
 
-    // TODO: randomly give player equipment
-    console.log(randomItem());
+    // give the player a 20% chance to get a random item
+    // by gettings a number 1 - 10, then checking if 1 or 2
+    let item = false;
+    let chance = Math.floor(Math.random() * 10) + 1;
+    if(chance === 1 || chance === 2) {
+      item = randomItem();
+    }
 
     this.state = {
-      item: false,
+      item,
       gold,
       exp
     }
@@ -44,8 +49,13 @@ class ChestLoot extends Component {
   }
 
   handleContinue() {
-    if(this.state.item) {
-      // give them the item
+    const { item } = this.state;
+
+    if(item) {
+      store.dispatch({
+        type: 'GET_ITEM',
+        payload: item
+      })
     }
     this.handleClose();
   }
@@ -59,27 +69,31 @@ class ChestLoot extends Component {
           {'Chest Loot!'}
         </span>
         <div className='flex-column chest-loot-contents'>
-          <div className='flex-row'>
+          <div className='flex-row chest-loot-value-spacing'>
             <span>{'Gold: '}</span>
-            <span className='chest-loot-value-padding'>
-              {gold}
-            </span>
+            <span>{gold}</span>
           </div>
-          <div className='flex-row'>
+          <div className='flex-row chest-loot-value-spacing'>
             <span>{'Exp: '}</span>
-            <span className='chest-loot-value-padding'>
-              {exp}
-            </span>
+            <span>{exp}</span>
           </div>
-        </div>
-        {
-          item ?
-            <div>
-              {'you got an item!'}
+          {
+            item ?
+            <div className='flex-row chest-loot-item'>
+              <div style={{
+                  backgroundImage: `url('${item.image}')`,
+                  backgroundSize: 'contain',
+                  width: '40px',
+                  height: '40px'
+                }} />
+                <span className='flex-column chest-loot-item-name'>
+                  {item.name}
+                </span>
             </div>
             :
             null
-        }
+          }
+        </div>
         <div className='flex-column chest-loot-button-container'>
           <div className='flex-row chest-loot-button'>
             <Button

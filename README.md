@@ -10,7 +10,6 @@ npm start
 
 ## TODO:
 - [ ] calculate defence during attacks
-- [ ] got loot from chest dialog
 - [ ] initial game dialog
 - [ ] victory dialog
   - [ ] check if all monsters have been killed
