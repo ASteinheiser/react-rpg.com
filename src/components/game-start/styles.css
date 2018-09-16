@@ -7,7 +7,9 @@
 .game-start-text {
   flex: 1;
 
-  font-size: 26px;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 1px;
 
   padding: 25px 100px;
 }
