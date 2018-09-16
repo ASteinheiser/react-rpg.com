@@ -16,8 +16,6 @@ npm start
   - [ ] dealing damage
   - [ ] killed monster
   - [ ] gained exp & gold
-- [ ] add chance for random item drop from chests
-- [ ] add chance for random item drop from monsters
 - [ ] add gold from monsters
 - [ ] add shop dialog
   - [ ] spend gold for healing
