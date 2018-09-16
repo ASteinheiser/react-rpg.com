@@ -30,11 +30,12 @@ export default function handleMovement(player) {
   }
 
   function checkForMonster(newPos) {
+    let { currentMap } = store.getState().world;
     let validMove = true;
     const monsters = store.getState().monsters.components;
     // check for monsters
-    Object.keys(monsters).forEach(monsterId => {
-      let currMonster = monsters[monsterId].props.monster;
+    Object.keys(monsters[currentMap]).forEach(monsterId => {
+      let currMonster = monsters[currentMap][monsterId].props.monster;
       let monsterPos = currMonster.position;
       // if the new position contains a monster
       if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {

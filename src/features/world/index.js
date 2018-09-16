@@ -77,7 +77,7 @@ class World extends React.Component {
     // load initial monsters
     store.dispatch({
       type: 'ADD_MONSTERS',
-      payload: { monsters: maps[world.currentMap].monsters }
+      payload: { monsters: maps[world.currentMap].monsters, map: world.currentMap }
     })
   }
 

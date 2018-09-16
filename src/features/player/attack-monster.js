@@ -2,6 +2,7 @@ import store           from '../../config/store';
 import { SPRITE_SIZE } from '../../config/constants';
 
 export default function attackMonster(monsterPos, currMonster) {
+  const { currentMap } = store.getState().world;
   let stats = store.getState().stats;
   // calculate damage
   let monsterDamage = currMonster.damage;
@@ -11,7 +12,8 @@ export default function attackMonster(monsterPos, currMonster) {
     type: 'DAMAGE_TO_MONSTER',
     payload: {
       id: currMonster.id,
-      damage: playerDamage
+      damage: playerDamage,
+      map: currentMap
     }
   })
   // deal damage to player
@@ -26,7 +28,7 @@ export default function attackMonster(monsterPos, currMonster) {
     // if it did, remove the monster component
     store.dispatch({
       type: 'KILL_MONSTER',
-      payload: { id: currMonster.id }
+      payload: { id: currMonster.id, map: currentMap }
     })
     // and get some exp
     store.dispatch({
