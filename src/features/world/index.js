@@ -83,7 +83,12 @@ class World extends React.Component {
             <GameOver />
             :
             <div className='world-stats-container'>
-              <Stats />
+              {
+                world.gameStart ?
+                  null
+                  :
+                  <Stats />
+              }
               {
                 (world.paused && !world.inventory) ?
                   null

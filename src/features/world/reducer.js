@@ -3,6 +3,7 @@ import maps  from '../../data/maps';
 const initialState = {
   currentMap: '1_1',
   gameOver: false,
+  gameStart: false,
   paused: false,
   inventory: false,
   turn: 0
