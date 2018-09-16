@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Button      from '../button';
 import MicroDialog from '../micro-dialog';
+import randomItem  from './random-item';
 import store       from '../../config/store';
 
 import './styles.css';
@@ -26,7 +27,7 @@ class ChestLoot extends Component {
     })
 
     // TODO: randomly give player equipment
-    // do it!!
+    console.log(randomItem());
 
     this.state = {
       item: false,
