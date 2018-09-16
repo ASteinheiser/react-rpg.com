@@ -1,18 +1,23 @@
 import store           from '../../config/store';
 import { SPRITE_SIZE } from '../../config/constants';
+import calculateDamage from '../../modules/calculate-damage';
 
 export default function attackMonster(monsterPos, currMonster) {
   const { currentMap } = store.getState().world;
-  let stats = store.getState().stats;
-  // calculate damage
+  const { stats } = store.getState();
+  // gather stats
   let monsterDamage = currMonster.damage;
+  let monsterDefence = currMonster.defence;
   let playerDamage = stats.damage;
+  let playerDefence = stats.defence;
+  // calculate damage
+  let calculatedMonsterDamage = calculateDamage(monsterDamage, playerDefence);
   // deal damage to monster
   store.dispatch({
     type: 'DAMAGE_TO_MONSTER',
     payload: {
       id: currMonster.id,
-      damage: playerDamage,
+      damage: calculateDamage(playerDamage, monsterDefence),
       map: currentMap
     }
   })
@@ -20,7 +25,7 @@ export default function attackMonster(monsterPos, currMonster) {
   store.dispatch({
     type: 'DAMAGE_TO_PLAYER',
     payload: {
-      damage: monsterDamage
+      damage: calculatedMonsterDamage
     }
   })
   // check if monster died
@@ -46,7 +51,7 @@ export default function attackMonster(monsterPos, currMonster) {
     })
   }
   // check if player died
-  if((stats.hp - monsterDamage) <= 0) {
+  if((stats.hp - calculatedMonsterDamage) <= 0) {
     // if it did, game over
     store.dispatch({
       type: 'GAME_OVER',

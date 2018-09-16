@@ -18,6 +18,7 @@ export default Goblin;
 export const goblinStats = {
   hp: 10,
   maxHp: 10,
-  damage: 2,
+  damage: 4,
+  defence: 2,
   exp: 10
 };

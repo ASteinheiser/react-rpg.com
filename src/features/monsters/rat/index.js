@@ -18,6 +18,7 @@ export default Rat;
 export const ratStats = {
   hp: 5,
   maxHp: 5,
-  damage: 1,
+  damage: 2,
+  defence: 0,
   exp: 5
 };

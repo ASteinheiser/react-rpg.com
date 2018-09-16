@@ -18,6 +18,7 @@ export default Dragon;
 export const dragonStats = {
   hp: 50,
   maxHp: 50,
-  damage: 5,
+  damage: 10,
+  defence: 5,
   exp: 100
 };

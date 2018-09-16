@@ -18,6 +18,7 @@ export default StoneGolem;
 export const stoneGolemStats = {
   hp: 20,
   maxHp: 20,
-  damage: 3,
+  damage: 6,
+  defence: 3,
   exp: 25
 };
