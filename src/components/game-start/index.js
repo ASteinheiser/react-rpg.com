@@ -73,7 +73,8 @@ class GameStart extends Component {
           {'Welcome Adventurer... A world full of monsters and gear awaits!'}
         </div>
 
-        <Flame />
+        <Flame position={[9,6]} />
+        <Flame position={[9,11]} />
 
         <div className='flex-column game-start-button-parent'>
           <div className='flex-row game-start-button-child'>

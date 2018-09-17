@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactTimeout         from 'react-timeout'
+import ReactTimeout         from 'react-timeout';
 
 import Flame1 from './images/flame-1.png';
 import Flame2 from './images/flame-2.png';
@@ -9,6 +9,7 @@ import Flame5 from './images/flame-5.png';
 import Flame6 from './images/flame-6.png';
 import Flame7 from './images/flame-7.png';
 import Flame8 from './images/flame-8.png';
+import { SPRITE_SIZE } from '../../config/constants';
 
 import './styles.css';
 
@@ -42,10 +43,13 @@ class Flame extends Component {
 
   render() {
     const { currFrame } = this.state;
+    const { position } = this.props;
 
     return (
       <div className='flame-container'
         style={{
+          top: position[0] * SPRITE_SIZE,
+          left: position[1] * SPRITE_SIZE,
           backgroundImage: `url('${Flames[currFrame]}')`
         }} />
     );
