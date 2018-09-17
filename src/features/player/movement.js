@@ -7,10 +7,9 @@ import store         from '../../config/store';
 import {
   SPRITE_SIZE,
   MAP_WIDTH,
-  MAP_HEIGHT
+  MAP_HEIGHT,
+  ANIMATION_SPEED
 } from '../../config/constants';
-
-const DEBOUNCE_TIME = 80; // 80 ms
 
 export default function handleMovement(player) {
 
@@ -176,7 +175,7 @@ export default function handleMovement(player) {
   window.addEventListener('keydown', (event) => {
     // eslint-disable-next-line
     handleKeyDown = _debounce(handleKeyDown,
-      DEBOUNCE_TIME,
+      ANIMATION_SPEED,
       {
         leading: true,
         trailing: false,

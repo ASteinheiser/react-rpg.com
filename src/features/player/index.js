@@ -1,46 +1,67 @@
-import React       from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { connect }          from 'react-redux';
+import ReactTimeout         from 'react-timeout';
 
 import HealthBar      from '../../components/health-bar';
 import WalkSprite     from './player_walk.png';
 import handleMovement from './movement';
+import { ANIMATION_SPEED } from '../../config/constants';
 
 import './styles.css';
 
-function Player(props) {
-  const { player, stats, world } = props;
-  const { gameStart } = world;
+class Player extends Component {
+  constructor(props) {
+    super(props);
 
-  // game start menu open, hide the player
-  if(gameStart) return null;
+    this.state = {
+      animationPlay: 'paused'
+    };
 
-  let animationPlay = 'paused';
-  // detemine when to play a movement animation
-  if(false) {
-    animationPlay = 'running';
+    this.stopAnimation = this.stopAnimation.bind(this);
   }
 
-  return (
-    <div className='player-animation'
-      style={{
-        position: 'absolute',
-        top: player.position[1],
-        left: player.position[0],
-        backgroundImage: `url('${WalkSprite}')`,
-        backgroundPositionY: player.spriteLocation,
-        width: '40px',
-        height: '40px',
-        animationPlayState: animationPlay
-      }}>
+  // this is used to tell when to animate the player
+  componentDidUpdate(prevProps, prevState) {
+    // detemine when the player has moved
+    if(prevProps.player.playerMoved !== this.props.player.playerMoved) {
+      // animate the player
+      this.setState({ animationPlay: 'running' });
+      // pause the infinite animation after 1 iteration
+      this.props.setTimeout(this.stopAnimation, ANIMATION_SPEED);
+    }
+  }
 
-      <HealthBar value={stats.hp} max={stats.maxHp} />
+  stopAnimation() {
+    this.setState({ animationPlay: 'paused' });
+  }
 
-    </div>
-  );
+  render() {
+    const { animationPlay } = this.state;
+    const { player, stats, world } = this.props;
+
+    const { gameStart } = world;
+    // game start menu open, hide the player
+    if(gameStart) return null;
+
+    return (
+      <div className='player-animation'
+        style={{
+          top: player.position[1],
+          left: player.position[0],
+          backgroundImage: `url('${WalkSprite}')`,
+          backgroundPositionY: player.spriteLocation,
+          animationPlayState: animationPlay
+        }}>
+
+        <HealthBar value={stats.hp} max={stats.maxHp} />
+
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = ({ player, stats, world }) => {
   return { player, stats, world };
 }
 
-export default connect(mapStateToProps)(handleMovement(Player));
+export default connect(mapStateToProps)(handleMovement(ReactTimeout(Player)));

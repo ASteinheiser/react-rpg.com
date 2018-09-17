@@ -5,3 +5,5 @@ export const SIGHT_RADIUS = 3;
 // map size is set to 800 x 600
 export const MAP_HEIGHT = SPRITE_SIZE * 15;
 export const MAP_WIDTH = SPRITE_SIZE * 20;
+// how fast the player move animation plays
+export const ANIMATION_SPEED = 250;

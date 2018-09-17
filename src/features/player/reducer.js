@@ -3,7 +3,8 @@ const initialState = {
   spriteLocation: '0px',
   direction: 'EAST',
   position: [0, 0],
-  walkIndex: 0
+  walkIndex: 0,
+  playerMoved: false
 };
 
 const playerReducer = (state = initialState, action) => {
@@ -12,6 +13,7 @@ const playerReducer = (state = initialState, action) => {
 
     case 'MOVE_PLAYER':
       return {
+        playerMoved: !state.playerMoved,
         ...action.payload
       }
 
