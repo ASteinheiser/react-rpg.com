@@ -175,11 +175,10 @@ export default function handleMovement(player) {
   window.addEventListener('keydown', _debounce((event) => {
     // if the game is not paused by dialogs
     if(!(store.getState().world.paused)) handleKeyDown(event);
-  }),
-  ANIMATION_SPEED,
-  {
-    maxWait: ANIMATION_SPEED
-  });
+  },
+    ANIMATION_SPEED,
+    { maxWait: ANIMATION_SPEED })
+  );
 
   return player;
 }
