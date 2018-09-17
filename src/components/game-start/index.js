@@ -3,6 +3,7 @@ import { connect }          from 'react-redux';
 
 import Button       from '../button';
 import Dialog       from '../dialog';
+import Flame        from '../flame';
 import items        from '../../data/items';
 import maps         from '../../data/maps';
 import store        from '../../config/store';
@@ -71,6 +72,9 @@ class GameStart extends Component {
         <div className='flex-column game-start-text'>
           {'Welcome Adventurer... A world full of monsters and gear awaits!'}
         </div>
+
+        <Flame />
+
         <div className='flex-column game-start-button-parent'>
           <div className='flex-row game-start-button-child'>
             <Button

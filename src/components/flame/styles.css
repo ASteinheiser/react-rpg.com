@@ -1,0 +1,11 @@
+.flame-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+}
