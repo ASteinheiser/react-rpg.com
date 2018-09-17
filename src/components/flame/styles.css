@@ -1,7 +1,9 @@
 .flame-container {
   position: absolute;
-
   width: 40px;
   height: 40px;
-  background-size: contain;
+  /* this is for animating the 'steps' */
+  /* the 'move' animation is setup in the player css */
+  animation: move 2s steps(8) infinite;
+  background-position-x: 0px;
 }

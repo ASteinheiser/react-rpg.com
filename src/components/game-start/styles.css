@@ -1,6 +1,6 @@
 .game-start-title {
   justify-content: center;
-  padding: 50px 0;
+  padding: 50px 100px;
   font-size: 36px;
 }
 
@@ -20,4 +20,16 @@
 
 .game-start-button-child {
   justify-content: center;
+}
+
+.game-start-flame-container-1 {
+  position: absolute;
+  bottom: 75px;
+  left: 125px;
+}
+
+.game-start-flame-container-2 {
+  position: absolute;
+  bottom: 75px;
+  left: 570px;
 }
