@@ -1,0 +1,10 @@
+.player-animation {
+  animation: move .5s steps(8) infinite;
+  background-position-x: 0px;
+}
+
+@keyframes move {
+  100% {
+    background-position-x: 320px;
+  }
+}
