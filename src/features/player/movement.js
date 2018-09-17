@@ -172,17 +172,13 @@ export default function handleMovement(player) {
     }
   }
 
-  window.addEventListener('keydown', (event) => {
-    // eslint-disable-next-line
-    handleKeyDown = _debounce(handleKeyDown,
-      ANIMATION_SPEED,
-      {
-        leading: true,
-        trailing: false,
-      }
-    );
+  window.addEventListener('keydown', _debounce((event) => {
     // if the game is not paused by dialogs
     if(!(store.getState().world.paused)) handleKeyDown(event);
+  }),
+  ANIMATION_SPEED,
+  {
+    maxWait: ANIMATION_SPEED
   });
 
   return player;
