@@ -9,11 +9,15 @@ npm start
 ```
 
 ## TODO:
-- [ ] add shop dialog
-  - [ ] add special sword only purchasable from shop
-  - [ ] spend gold for healing
-  - [ ] spend gold on items (fixed list)
-    - [ ] confirm dialog on all transactions w/ amount
+- [ ] update icons across game to use new hosted version of font-awesome
+
+- [ ] add special sword only purchasable from shop
+- [ ] spend gold for healing
+- [ ] spend gold on items (fixed list)
+  - [ ] confirm dialog on all transactions w/ amount
+
+- [ ] add enter key press to get through chest loot
+- [ ] add instructions to welcome screen
 - [ ] pop-ups
   - [ ] tried to pick up item with full inventory
   - [ ] dealing damage

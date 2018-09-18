@@ -2,6 +2,7 @@ import React     from 'react';
 import _debounce from 'lodash.debounce';
 
 import GameWin       from '../../components/game-win';
+import ShopDialog    from '../../components/shop-dialog';
 import attackMonster from './attack-monster';
 import exploreTiles  from './explore-tiles';
 import openChest     from './open-chest';
@@ -174,7 +175,11 @@ export default function handleMovement(player) {
 
     // the player wants to use the shop
     if(nextTile === 9) {
-      console.log('using shop!');
+      // show the shop dialog
+      store.dispatch({
+        type: 'PAUSE',
+        payload: { component: <ShopDialog /> }
+      })
     }
 
     // the player has accessed a shrine
