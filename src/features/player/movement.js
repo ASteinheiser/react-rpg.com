@@ -18,7 +18,7 @@ export default function handleMovement(player) {
     const newPos = getNewPosition(oldPos, direction);
 
     if(observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)
-        && checkForMonster(newPos)) {
+        && checkForMonster(newPos, direction)) {
       // move the player
       dispatchMove(direction, newPos);
       // explore new tiles
@@ -28,7 +28,7 @@ export default function handleMovement(player) {
     }
   }
 
-  function checkForMonster(newPos) {
+  function checkForMonster(newPos, direction) {
     let { currentMap } = store.getState().world;
     let validMove = true;
     const monsters = store.getState().monsters.components;
@@ -38,6 +38,13 @@ export default function handleMovement(player) {
       let monsterPos = currMonster.position;
       // if the new position contains a monster
       if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
+        // turn to the monster, but
+        // don't move the player or play the animation
+        const { playerMoved, position } = store.getState().player;
+        store.dispatch({
+          type: 'MOVE_PLAYER',
+          payload: { direction, playerMoved, position }
+        });
         // attack the monster
         attackMonster(monsterPos, currMonster);
         // take a turn
@@ -48,21 +55,6 @@ export default function handleMovement(player) {
     });
     // no monsters found in newPos
     return validMove;
-  }
-
-  function getSpriteLocation(direction) {
-    switch(direction) {
-      case 'SOUTH':
-        return `${SPRITE_SIZE*0}px`
-      case 'EAST':
-        return `${SPRITE_SIZE*1}px`
-      case 'WEST':
-        return `${SPRITE_SIZE*2}px`
-      case 'NORTH':
-        return `${SPRITE_SIZE*3}px`
-      default:
-        // not good if you get here...
-    }
   }
 
   function getNewPosition(oldPos, direction) {
@@ -87,22 +79,12 @@ export default function handleMovement(player) {
     });
   }
 
-  function getWalkIndex() {
-    const walkIndex = store.getState().player.walkIndex;
-
-    return walkIndex >= 7 ? 0 : walkIndex + 1;
-  }
-
   function dispatchMove(direction, newPos) {
-    let walkIndex = getWalkIndex();
-
     store.dispatch({
       type: 'MOVE_PLAYER',
       payload: {
         position: newPos,
-        direction,
-        walkIndex,
-        spriteLocation: getSpriteLocation(direction)
+        direction
       }
     });
   }
