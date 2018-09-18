@@ -211,7 +211,7 @@ export default function handleMovement(player) {
     if(!(store.getState().world.paused)) handleKeyDown(event);
   },
     ANIMATION_SPEED,
-    { maxWait: ANIMATION_SPEED })
+    { maxWait: ANIMATION_SPEED, leading: true, trailing: false })
   );
 
   return player;
