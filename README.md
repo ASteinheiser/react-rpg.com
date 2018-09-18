@@ -9,8 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] add transitions to fog blocks
-- [ ] add transitions to sight box
 - [ ] bump animation for attacks
 - [ ] victory dialog
   - [ ] check if all monsters have been killed
