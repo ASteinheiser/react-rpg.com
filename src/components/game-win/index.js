@@ -38,7 +38,7 @@ class GameWin extends Component {
           <div className='flex-row game-win-button'>
             <Button
               onClick={() => { resetGameState(); }}
-              icon='question'
+              icon='sync'
               title={'Play Again'} />
           </div>
         </Dialog>

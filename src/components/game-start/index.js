@@ -84,7 +84,6 @@ class GameStart extends Component {
           <Button
             onClick={this.handleGameStart.bind(this)}
             icon='compass'
-            iconStyle={{fontSize: 27}}
             title={'Explore Dungeon'} />
         </div>
       </Dialog>

@@ -6,12 +6,6 @@
   padding: 40px 0px 25px 0;
 }
 
-.inventory-dialog-title-icon {
-  font-size: 36px;
-
-  padding-right: 20px;
-}
-
 .inventory-dialog-container {
   flex: 1;
 }

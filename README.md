@@ -9,8 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] update icons across game to use new hosted version of font-awesome
-
 - [ ] add special sword only purchasable from shop
 - [ ] spend gold for healing
 - [ ] spend gold on items (fixed list)

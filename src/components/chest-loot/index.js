@@ -97,7 +97,7 @@ class ChestLoot extends Component {
           <Button
             onClick={this.handleContinue.bind(this)}
             title={item ? 'Pick Up' : 'Continue'}
-            icon={item ? 'hand-paper-o' : 'check' }/>
+            icon={item ? 'hand-paper' : 'check' }/>
         </div>
       </MicroDialog>
     );

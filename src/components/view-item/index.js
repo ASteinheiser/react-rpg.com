@@ -141,11 +141,11 @@ class ViewItem extends Component {
               <div className='flex-row view-item-buttons-child'>
                 <Button
                   onClick={this.handleDrop.bind(this)}
-                  icon='trash-o'
+                  icon='trash'
                   title={'Drop'} />
                 <Button
                   onClick={this.handleEquip.bind(this, data)}
-                  icon='hand-paper-o'
+                  icon='hand-paper'
                   title={'Equip'} />
               </div>
           }
@@ -157,7 +157,7 @@ class ViewItem extends Component {
               cancelText={'Keep'}
               cancelIcon={'archive'}
               acceptText={'Drop'}
-              acceptIcon={'trash-o'}
+              acceptIcon={'trash'}
               confirm={this.handleConfirmDrop.bind(this, data)}
               onClose={this.handleCancelDrop.bind(this)} />
             :

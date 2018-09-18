@@ -45,7 +45,7 @@ class Inventory extends Component {
           icon={inventoryOpen ?
             'times' : 'briefcase'}
           iconStyle={inventoryOpen ?
-            {fontSize: 27} : {fontSize: 25}}
+            {fontSize: 24} : {fontSize: 25}}
           title={inventoryOpen ?
             'Close' : 'Inventory'} />
       </div>

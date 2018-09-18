@@ -8,7 +8,7 @@ class MicroDialog extends Component {
       <div className='micro-dialog-container'>
 
         <i onClick={this.props.onClose}
-          className={`fa fa-close micro-dialog-close-button`} />
+          className={`fa fa-times micro-dialog-close-button`} />
 
         { this.props.children }
 

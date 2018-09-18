@@ -23,7 +23,7 @@ class GameOver extends Component {
           <Button
             onClick={() => { resetGameState(); }}
             title={'New Game'}
-            icon='refresh'/>
+            icon='sync'/>
         </div>
       </Dialog>
     );
