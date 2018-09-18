@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Backpack      from './backpack.png';
 import CurrentItems  from '../current-items';
 import Dialog        from '../dialog';
 import EquippedItems from '../equipped-items';
@@ -47,11 +48,9 @@ class InventoryDialog extends Component {
           </div>
 
           <div className='flex-column inventory-dialog-child'>
-            <span className='inventory-dialog-section-text'>
-              {'All Items'}
-            </span>
-
-            <CurrentItems view_item={this.handleViewItem.bind(this)} />
+            <div className='inventory-backpack' style={{backgroundImage: `url(${Backpack})`}}>
+              <CurrentItems view_item={this.handleViewItem.bind(this)} />
+            </div>
           </div>
         </div>
       </Dialog>

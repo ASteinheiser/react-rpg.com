@@ -1,9 +1,5 @@
-.equipped-items-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+.current-items-container {
+  width: fit-content;
 
-.white-border {
-  border: 1px solid;
+  margin: 125px auto;
 }
