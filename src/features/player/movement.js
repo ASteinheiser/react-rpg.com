@@ -115,7 +115,7 @@ export default function handleMovement(player) {
         type: 'MOVE_PLAYER',
         payload: { direction, playerMoved, position: newPosition }
       })
-    }, ANIMATION_SPEED - 100);
+    }, ANIMATION_SPEED / 2);
   }
 
   function takeTurn() {
