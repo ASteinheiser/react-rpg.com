@@ -72,16 +72,16 @@ export default function handleMovement(player) {
     // slightly move the player into the enemy square
     switch (direction) {
       case 'WEST':
-        newPosition[0] -= 15;
+        newPosition[0] -= 20;
         break;
       case 'EAST':
-        newPosition[0] += 15;
+        newPosition[0] += 20;
         break;
       case 'NORTH':
-        newPosition[1] -= 15;
+        newPosition[1] -= 20;
         break;
       case 'SOUTH':
-        newPosition[1] += 15;
+        newPosition[1] += 20;
         break;
       default:
     }
@@ -97,16 +97,16 @@ export default function handleMovement(player) {
       // find the player's original location
       switch (direction) {
         case 'WEST':
-          newPosition[0] += 15;
+          newPosition[0] += 20;
           break;
         case 'EAST':
-          newPosition[0] -= 15;
+          newPosition[0] -= 20;
           break;
         case 'NORTH':
-          newPosition[1] += 15;
+          newPosition[1] += 20;
           break;
         case 'SOUTH':
-          newPosition[1] -= 15;
+          newPosition[1] -= 20;
           break;
         default:
       }
