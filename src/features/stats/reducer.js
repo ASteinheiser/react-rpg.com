@@ -58,12 +58,17 @@ const statsReducer = (state = initialState, action) => {
 
             switch (effectName) {
 
+              case 'defence':
+                newState.defence -= data.effect[effectName];
+                break;
+
               case 'damage':
                 newState.damage -= data.effect[effectName];
                 break;
 
               case 'hp':
                 newState.hp -= data.effect[effectName];
+                if(newState.hp < 1) newState.hp = 1;
                 newState.maxHp -= data.effect[effectName];
                 break;
 
@@ -146,12 +151,17 @@ const statsReducer = (state = initialState, action) => {
 
               switch (effectName) {
 
+                case 'defence':
+                  newState.defence -= item.effect[effectName];
+                  break;
+
                 case 'damage':
                   newState.damage -= item.effect[effectName];
                   break;
 
                 case 'hp':
                   newState.hp -= item.effect[effectName];
+                  if(newState.hp < 1) newState.hp = 1;
                   newState.maxHp -= item.effect[effectName];
                   break;
 
@@ -164,6 +174,10 @@ const statsReducer = (state = initialState, action) => {
           Object.keys(item.effect).forEach(effectName => {
 
             switch (effectName) {
+
+              case 'defence':
+                newState.defence += item.effect[effectName];
+                break;
 
               case 'damage':
                 newState.damage += item.effect[effectName];
