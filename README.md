@@ -9,6 +9,9 @@ npm start
 ```
 
 ## TODO:
+- [ ] better looking equipped item section
+  - [ ] add armor::boots
+  - [ ] add armor::gloves
 - [ ] add transitions to fog blocks
 - [ ] add transitions to sight box
 - [ ] victory dialog
@@ -20,6 +23,7 @@ npm start
   - [ ] gained exp & gold
 - [ ] add gold from monsters
 - [ ] add shop dialog
+  - [ ] add special sword only purchasable from shop
   - [ ] spend gold for healing
   - [ ] spend gold on items (fixed list)
 - [ ] monster AI
