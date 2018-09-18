@@ -1,9 +1,17 @@
-.equipped-items-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.equipped-items-character {
+  width: 220px;
+  height: 425px;
+
+  align-self: center;
+
+  background-size: contain;
 }
 
-.white-border {
-  border: 1px solid;
+.item-slot {
+  cursor: pointer;
+
+  width: 40px;
+  height: 40px;
+
+  background-size: contain;
 }

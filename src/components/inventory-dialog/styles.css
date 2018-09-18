@@ -3,7 +3,7 @@
 
   justify-content: center;
 
-  padding: 50px 0px 25px 0;
+  padding: 40px 0px 25px 0;
 }
 
 .inventory-dialog-title-icon {
@@ -19,14 +19,14 @@
 .inventory-dialog-child {
   width: 50%;
 
-  align-items: center;
-
-  padding-top: 50px;
   justify-content: flex-start;
 }
 
-.inventory-dialog-section-text {
-  font-size: 22px;
+.inventory-backpack {
+  width: 350px;
+  height: 350px;
 
-  padding-bottom: 20px;
+  margin-top: 35px;
+
+  background-size: contain;
 }

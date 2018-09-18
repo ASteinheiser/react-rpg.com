@@ -2,7 +2,7 @@ import { uuidv4 } from '../../modules/uuid-v4';
 
 const initialState = {
   items: [],
-  maxItems: 9
+  maxItems: 8
 };
 
 const inventoryReducer = (state = initialState, action) => {

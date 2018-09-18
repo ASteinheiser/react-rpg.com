@@ -5,6 +5,7 @@ const OldRing = {
   type: 'ring',
   effect: {
     damage: 1,
+    defence: 1,
     hp: 3
   },
   image: OldRingImg

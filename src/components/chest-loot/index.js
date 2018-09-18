@@ -94,12 +94,10 @@ class ChestLoot extends Component {
           }
         </div>
         <div className='flex-column chest-loot-button-container'>
-          <div className='flex-row chest-loot-button'>
-            <Button
-              onClick={this.handleContinue.bind(this)}
-              title={item ? 'Pick Up' : 'Continue'}
-              icon={item ? 'hand-paper-o' : 'check' }/>
-          </div>
+          <Button
+            onClick={this.handleContinue.bind(this)}
+            title={item ? 'Pick Up' : 'Continue'}
+            icon={item ? 'hand-paper-o' : 'check' }/>
         </div>
       </MicroDialog>
     );

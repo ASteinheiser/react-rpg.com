@@ -36,25 +36,23 @@ function getTileSprite(type) {
   }
 }
 
-function HiddenTile(props) {
+function FogTile(props) {
+  // show the tile by default
+  let opacity = '0';
+  // if the tile is out of sight, show faded
+  if(!props.inSight) opacity = '0.5';
+  // if the tile is unexplored, hide it
+  if(!props.explored) opacity = '1';
+  // render fog tiles
   return (
     <div style={{
-        backgroundColor: 'black',
+        backgroundColor: '#000',
+        opacity,
         display: 'inline-flex',
         height: SPRITE_SIZE,
         width: SPRITE_SIZE,
+        transition: 'opacity .35s ease-in-out'
       }} />
-  );
-}
-
-function PartiallyHiddenTile(props) {
-  return (
-    <div style={{
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      display: 'inline-flex',
-      height: SPRITE_SIZE,
-      width: SPRITE_SIZE,
-    }} />
   );
 }
 
@@ -86,23 +84,12 @@ function MapTile(props) {
       }
     });
   }
-  // return a hidden tile if not explored
-  if(!props.tile.explored) {
-    return (
-      <HiddenTile />
-    );
-  }
   // case for rendering animated flame tile
   if(props.tile.value === 20) {
     return (
       <GroundTile>
         <Flame position={props.index}>
-          {
-            inSight ?
-              null
-              :
-              <PartiallyHiddenTile />
-          }
+          <FogTile explored={props.tile.explored} inSight={inSight} />
         </Flame>
       </GroundTile>
     );
@@ -117,12 +104,7 @@ function MapTile(props) {
           height: SPRITE_SIZE,
           width: SPRITE_SIZE,
         }}>
-        {
-          inSight ?
-            null
-            :
-            <PartiallyHiddenTile />
-        }
+        <FogTile explored={props.tile.explored} inSight={inSight} />
       </div>
     </GroundTile>
   );

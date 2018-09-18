@@ -1,46 +1,6 @@
 .inventory-container {
-  display: flex;
-  flex-direction: row;
   flex: 1;
 
+  align-items: center;
   justify-content: space-around;
-}
-
-.inventory-button-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  user-select: none;
-
-  width: 200px;
-}
-
-.inventory-button {
-  font-size: 22px;
-  padding: 10px;
-
-  border: 1px solid;
-  border-radius: 2px;
-
-  cursor: pointer;
-
-  justify-content: center;
-}
-
-.inventory-icon {
-  font-size: 28px;
-
-  padding: 0 12px 0 5px;
-}
-
-.close-icon {
-  font-size: 27px;
-
-  padding: 0 12px 0 5px;
-}
-
-.inventory-close-padding {
-  padding-top: 1px;
-  padding-right: 15px;
 }

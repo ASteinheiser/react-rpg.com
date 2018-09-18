@@ -42,11 +42,25 @@ const statsReducer = (state = initialState, action) => {
           delete newState.equippedItems['armor']['helmet'];
           break;
 
+        case 'armor::boots':
+          newState.defence -= data.defence;
+          delete newState.equippedItems['armor']['boots'];
+          break;
+
+        case 'armor::gloves':
+          newState.defence -= data.defence;
+          delete newState.equippedItems['armor']['gloves'];
+          break;
+
         case 'ring':
           // iterate over each effect
           Object.keys(data.effect).forEach(effectName => {
 
             switch (effectName) {
+
+              case 'defence':
+                newState.defence -= data.effect[effectName];
+                break;
 
               case 'damage':
                 newState.damage -= data.effect[effectName];
@@ -54,6 +68,7 @@ const statsReducer = (state = initialState, action) => {
 
               case 'hp':
                 newState.hp -= data.effect[effectName];
+                if(newState.hp < 1) newState.hp = 1;
                 newState.maxHp -= data.effect[effectName];
                 break;
 
@@ -106,6 +121,28 @@ const statsReducer = (state = initialState, action) => {
           newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { helmet: item });
           break;
 
+        case 'armor::gloves':
+          // if there's already armor
+          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['gloves']) {
+            // subtract it's benefits
+            newState.defence -= newState.equippedItems['armor']['gloves'].defence;
+          }
+          newState.defence += item.defence;
+          // safely add new armor peice to object
+          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { gloves: item });
+          break;
+
+        case 'armor::boots':
+          // if there's already armor
+          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['boots']) {
+            // subtract it's benefits
+            newState.defence -= newState.equippedItems['armor']['boots'].defence;
+          }
+          newState.defence += item.defence;
+          // safely add new armor peice to object
+          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { boots: item });
+          break;
+
         case 'ring':
           // if there's already a ring
           if(newState.equippedItems['ring']) {
@@ -114,12 +151,17 @@ const statsReducer = (state = initialState, action) => {
 
               switch (effectName) {
 
+                case 'defence':
+                  newState.defence -= item.effect[effectName];
+                  break;
+
                 case 'damage':
                   newState.damage -= item.effect[effectName];
                   break;
 
                 case 'hp':
                   newState.hp -= item.effect[effectName];
+                  if(newState.hp < 1) newState.hp = 1;
                   newState.maxHp -= item.effect[effectName];
                   break;
 
@@ -132,6 +174,10 @@ const statsReducer = (state = initialState, action) => {
           Object.keys(item.effect).forEach(effectName => {
 
             switch (effectName) {
+
+              case 'defence':
+                newState.defence += item.effect[effectName];
+                break;
 
               case 'damage':
                 newState.damage += item.effect[effectName];
@@ -197,7 +243,7 @@ const statsReducer = (state = initialState, action) => {
       return {
         hp: 10,
         maxHp: 10,
-        damage: 2,
+        damage: 3,
         defence: 0,
         level: 1,
         exp: 0,

@@ -72,7 +72,7 @@ class World extends React.Component {
     const { world } = this.props;
 
     return (
-      <div className='world-view-container'>
+      <div className='world-view-container white-border'>
 
         <Map />
         <Player />
@@ -82,7 +82,7 @@ class World extends React.Component {
           world.gameOver ?
             <GameOver />
             :
-            <div className='world-stats-container'>
+            <div className='flex-row world-stats-container'>
               {
                 world.gameStart ?
                   null

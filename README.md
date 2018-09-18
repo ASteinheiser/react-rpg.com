@@ -9,23 +9,16 @@ npm start
 ```
 
 ## TODO:
-- [ ] better looking equipped item section
-  - [ ] add armor::boots
-  - [ ] add armor::gloves
-- [ ] add transitions to fog blocks
-- [ ] add transitions to sight box
-- [ ] victory dialog
-  - [ ] check if all monsters have been killed
 - [ ] pop-ups
   - [ ] tried to pick up item with full inventory
   - [ ] dealing damage
   - [ ] killed monster
   - [ ] gained exp & gold
-- [ ] add gold from monsters
 - [ ] add shop dialog
   - [ ] add special sword only purchasable from shop
   - [ ] spend gold for healing
   - [ ] spend gold on items (fixed list)
+    - [ ] confirm dialog on all transactions w/ amount
 - [ ] monster AI
   - [ ] move towards player if within sight (5 squares)
   - [ ] attack player if within range

@@ -80,13 +80,12 @@ class GameStart extends Component {
           <Flame />
         </div>
 
-        <div className='flex-column game-start-button-parent'>
-          <div className='flex-row game-start-button-child'>
-            <Button
-              onClick={this.handleGameStart.bind(this)}
-              icon='compass'
-              title={'Explore Dungeon'} />
-          </div>
+        <div className='flex-column game-start-button'>
+          <Button
+            onClick={this.handleGameStart.bind(this)}
+            icon='compass'
+            iconStyle={{fontSize: 27}}
+            title={'Explore Dungeon'} />
         </div>
       </Dialog>
     );

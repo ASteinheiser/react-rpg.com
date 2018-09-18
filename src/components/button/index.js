@@ -13,7 +13,7 @@ class Button extends Component {
   }
 
   render() {
-    const { icon, title } = this.props;
+    const { icon, title, iconStyle } = this.props;
 
     if(!title) return null;
 
@@ -21,7 +21,8 @@ class Button extends Component {
       <div className='button-container' onClick={this.handleClick.bind(this)}>
         {
           icon ?
-            <i className={`fa fa-${icon} button-icon`} />
+            <i className={`fa fa-${icon} button-icon`}
+              style={iconStyle ? iconStyle : {}} />
             :
             null
         }
