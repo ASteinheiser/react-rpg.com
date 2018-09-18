@@ -19,24 +19,29 @@ export default class ShopDialog extends Component {
   render() {
     return(
       <Dialog>
-        <div className='flex-row shop-container'>
-          <div className='flex-column shop-container-child'>
-            <div className='shop-keep-animated'
-              style={{backgroundImage: `url(${ShopKeepSprite})`}}/>
-          </div>
+        <div className='flex-column'>
 
-          <div className='flex-column shop-container-child'>
-            <div>
-              {'Shop inventory!!'}
+          <span className='shop-title-text'>{'Shop'}</span>
+
+          <div className='flex-row shop-container'>
+            <div className='flex-column shop-container-child'>
+              <div className='shop-keep-animated'
+                style={{backgroundImage: `url(${ShopKeepSprite})`}}/>
+            </div>
+
+            <div className='flex-column shop-container-child'>
+              <div>
+                {'Shop inventory!!'}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className='shop-button-container'>
-          <Button
-            onClick={this.handleCloseDialog.bind(this)}
-            icon='walking'
-            title={'Leave Shop'} />
+          <div className='shop-button-container'>
+            <Button
+              onClick={this.handleCloseDialog.bind(this)}
+              icon='walking'
+              title={'Leave Shop'} />
+          </div>
         </div>
       </Dialog>
     );
