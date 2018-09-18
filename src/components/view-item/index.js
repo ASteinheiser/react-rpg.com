@@ -5,6 +5,7 @@ import ConfirmDialog from '../confirm-dialog';
 import MicroDialog   from '../micro-dialog';
 import StatsItem     from './stats-item';
 import store         from '../../config/store';
+import { uuidv4 }    from '../../modules/uuid-v4';
 
 import './styles.css';
 
@@ -67,14 +68,14 @@ class ViewItem extends Component {
       case 'weapon':
         itemIsEquipped = (equipped['weapon'] === data);
         // display stats
-        itemStats.push(<StatsItem stats={{ name: 'damage', value: data.damage }} key={data.id + '-stats'} />);
+        itemStats.push(<StatsItem stats={{ name: 'damage', value: data.damage }} key={uuidv4()} />);
         break;
 
       case 'ring':
         itemIsEquipped = (equipped['ring'] === data);
         // find each effect
         Object.keys(data.effect).forEach((name) => {
-          itemStats.push(<StatsItem stats={{ name, value: data.effect[name] }} key={data.id + '-stats'} />);
+          itemStats.push(<StatsItem stats={{ name, value: data.effect[name] }} key={uuidv4()} />);
         });
         break;
 
@@ -82,14 +83,14 @@ class ViewItem extends Component {
         // properly check the armor
         itemIsEquipped = (equipped['armor'] && equipped['armor']['helmet'] === data);
         // display stats
-        itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={data.id + '-stats'} />);
+        itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={uuidv4()} />);
         break;
 
       case 'armor::body':
         // properly check the armor
         itemIsEquipped = (equipped['armor'] && equipped['armor']['body'] === data);
         // display stats
-        itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={data.id + '-stats'} />);
+        itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={uuidv4()} />);
         break;
 
       default:
