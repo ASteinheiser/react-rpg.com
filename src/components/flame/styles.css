@@ -4,6 +4,12 @@
   height: 40px;
   /* this is for animating the 'steps' */
   /* the 'move' animation is setup in the player css */
-  animation: move 2s steps(8) infinite;
+  animation: moveFlame 2s steps(8) infinite;
   background-position-x: 0px;
+}
+
+@keyframes moveFlame {
+  100% {
+    background-position-x: 320px;
+  }
 }
