@@ -35,7 +35,7 @@ class InventoryDialog extends Component {
 
         <div className='flex-row inventory-dialog-title'>
           <i className='fa fa-briefcase inventory-dialog-title-icon' />
-          <span> {'View Inventory'} </span>
+          <span> {'Inventory'} </span>
         </div>
 
         <div className='flex-row inventory-dialog-container'>

@@ -1,8 +1,10 @@
-import LeatherArmor from './armor/leather-armor';
-import LeatherCap   from './armor/leather-cap';
-import OldRing      from './rings/old-ring';
-import RustySword   from './weapons/rusty-sword';
-import SteelSword   from './weapons/steel-sword';
+import LeatherArmor  from './armor/leather-armor';
+import LeatherBoots  from './armor/leather-boots';
+import LeatherCap    from './armor/leather-cap';
+import LeatherGloves from './armor/leather-gloves';
+import OldRing       from './rings/old-ring';
+import RustySword    from './weapons/rusty-sword';
+import SteelSword    from './weapons/steel-sword';
 
 const items = {
   weapons: {
@@ -11,7 +13,9 @@ const items = {
   },
   armor: {
     LeatherArmor,
-    LeatherCap
+    LeatherBoots,
+    LeatherCap,
+    LeatherGloves
   },
   rings: {
     OldRing
@@ -21,7 +25,9 @@ const items = {
 export const allItems = [
   SteelSword,
   LeatherArmor,
+  LeatherBoots,
   LeatherCap,
+  LeatherGloves,
   OldRing
 ];
 
