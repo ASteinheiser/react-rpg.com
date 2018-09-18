@@ -9,8 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] victory dialog
-  - [ ] check if all monsters have been killed
 - [ ] pop-ups
   - [ ] tried to pick up item with full inventory
   - [ ] dealing damage
