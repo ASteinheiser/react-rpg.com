@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
+import Button          from '../../components/button';
 import InventoryDialog from '../../components/inventory-dialog';
 import store           from '../../config/store';
 
@@ -37,26 +38,18 @@ class Inventory extends Component {
     const { inventoryOpen } = this.state;
 
     return (
-      <div className='inventory-container'>
+      <div className='flex-row inventory-container'>
         {
-            inventoryOpen ?
-              <div className='inventory-button-container'>
-                <div onClick={this.handleCloseInventory.bind(this)}
-                  className='flex-row inventory-button'>
-                  <i className='fa fa-times close-icon' />
-                  <span className='inventory-close-padding'>
-                    {'Close'}
-                  </span>
-                </div>
-              </div>
-              :
-              <div className='inventory-button-container'>
-                <div onClick={this.handleOpenInventory.bind(this)}
-                  className='flex-row inventory-button'>
-                  <i className='fa fa-briefcase inventory-icon' />
-                  <span> {'Inventory'} </span>
-                </div>
-              </div>
+          inventoryOpen ?
+            <Button
+              onClick={this.handleCloseInventory.bind(this)}
+              icon='times'
+              title={'Close'} />
+            :
+            <Button
+              onClick={this.handleOpenInventory.bind(this)}
+              icon='briefcase'
+              title={'Inventory'} />
         }
       </div>
     );
