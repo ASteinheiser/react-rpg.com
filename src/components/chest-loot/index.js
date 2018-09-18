@@ -26,11 +26,10 @@ class ChestLoot extends Component {
       payload: { value: exp }
     })
 
-    // give the player a 30% chance to get a random item
-    // by gettings a number 1 - 10, then checking if 1 or 2
     let item = false;
-    let chance = Math.floor(Math.random() * 10) + 1;
-    if(chance <= 3) {
+    // give the player a 25% chance to get a random item
+    let chance = Math.floor(Math.random() * 100) + 1;
+    if(chance <= 25) {
       item = randomItem();
     }
 

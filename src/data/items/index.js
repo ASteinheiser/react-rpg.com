@@ -19,7 +19,6 @@ const items = {
 };
 
 export const allItems = [
-  RustySword,
   SteelSword,
   LeatherArmor,
   LeatherCap,
