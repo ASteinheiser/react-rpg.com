@@ -19,8 +19,6 @@
 .inventory-dialog-child {
   width: 50%;
 
-  align-items: center;
-
   padding-top: 35px;
   justify-content: flex-start;
 }
@@ -32,10 +30,8 @@
 }
 
 .inventory-backpack {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
 
   background-size: contain;
-
-  margin-right: 50px;
 }

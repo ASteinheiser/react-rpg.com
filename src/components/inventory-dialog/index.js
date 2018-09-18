@@ -47,9 +47,14 @@ class InventoryDialog extends Component {
             <EquippedItems />
           </div>
 
-          <div className='flex-column inventory-dialog-child'>
-            <div className='inventory-backpack' style={{backgroundImage: `url(${Backpack})`}}>
+          <div className='flex-column inventory-dialog-child'
+            style={{justifyContent: 'flex-start'}}>
+
+            <div className='inventory-backpack'
+              style={{backgroundImage: `url(${Backpack})`}}>
+
               <CurrentItems view_item={this.handleViewItem.bind(this)} />
+
             </div>
           </div>
         </div>
