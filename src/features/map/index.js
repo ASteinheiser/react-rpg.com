@@ -1,6 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
+import Flame           from '../../components/flame';
 import { SPRITE_SIZE } from '../../config/constants';
 
 function getTileSprite(type) {
@@ -35,6 +36,43 @@ function getTileSprite(type) {
   }
 }
 
+function HiddenTile(props) {
+  return (
+    <div style={{
+        backgroundColor: 'black',
+        display: 'inline-flex',
+        height: SPRITE_SIZE,
+        width: SPRITE_SIZE,
+      }} />
+  );
+}
+
+function PartiallyHiddenTile(props) {
+  return (
+    <div style={{
+      backgroundColor: 'rgba(0,0,0,0.5)',
+      display: 'inline-flex',
+      height: SPRITE_SIZE,
+      width: SPRITE_SIZE,
+    }} />
+  );
+}
+
+function GroundTile(props) {
+  return (
+    <div
+      style={{
+        backgroundImage: 'url(\'/tiles/ground.png\')',
+        backgroundSize: 'contain',
+        display: 'inline-flex',
+        height: SPRITE_SIZE,
+        width: SPRITE_SIZE,
+      }}>
+      { props.children }
+    </div>
+  )
+}
+
 function MapTile(props) {
   let inSight = false;
   // if you need to render the sightBox
@@ -48,26 +86,30 @@ function MapTile(props) {
       }
     });
   }
-
+  // return a hidden tile if not explored
   if(!props.tile.explored) {
     return (
-      <div style={{
-          backgroundColor: 'black',
-          display: 'inline-flex',
-          height: SPRITE_SIZE,
-          width: SPRITE_SIZE,
-        }} />
+      <HiddenTile />
     );
   }
+  // case for rendering animated flame tile
+  if(props.tile.value === 20) {
+    return (
+      <GroundTile>
+        <Flame position={props.index}>
+          {
+            inSight ?
+              null
+              :
+              <PartiallyHiddenTile />
+          }
+        </Flame>
+      </GroundTile>
+    );
+  }
+  // case for rendering normal tiles
   return (
-    <div
-      style={{
-        backgroundImage: 'url(\'/tiles/ground.png\')',
-        backgroundSize: 'contain',
-        display: 'inline-flex',
-        height: SPRITE_SIZE,
-        width: SPRITE_SIZE,
-      }}>
+    <GroundTile>
       <div
         style={{
           backgroundImage: `url(/tiles/${getTileSprite(props.tile.value)}.png)`,
@@ -79,15 +121,10 @@ function MapTile(props) {
           inSight ?
             null
             :
-            <div style={{
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              display: 'inline-flex',
-              height: SPRITE_SIZE,
-              width: SPRITE_SIZE,
-            }} />
+            <PartiallyHiddenTile />
         }
       </div>
-    </div>
+    </GroundTile>
   );
 }
 
