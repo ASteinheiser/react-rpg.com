@@ -9,7 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] bump animation for attacks
 - [ ] victory dialog
   - [ ] check if all monsters have been killed
 - [ ] pop-ups

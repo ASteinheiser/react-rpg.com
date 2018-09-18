@@ -38,13 +38,8 @@ export default function handleMovement(player) {
       let monsterPos = currMonster.position;
       // if the new position contains a monster
       if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
-        // turn to the monster, but
-        // don't move the player or play the animation
-        const { playerMoved, position } = store.getState().player;
-        store.dispatch({
-          type: 'MOVE_PLAYER',
-          payload: { direction, playerMoved, position }
-        });
+        // turn the player and 'swing' at the monster
+        swingAtMonster(direction);
         // attack the monster
         attackMonster(monsterPos, currMonster);
         // take a turn
@@ -68,8 +63,59 @@ export default function handleMovement(player) {
       case 'SOUTH':
         return [ oldPos[0], oldPos[1] + SPRITE_SIZE ]
       default:
-        // not good if you get here...
     }
+  }
+
+  function swingAtMonster(direction) {
+    const { playerMoved, position } = store.getState().player;
+    let newPosition = position;
+    // slightly move the player into the enemy square
+    switch (direction) {
+      case 'WEST':
+        newPosition[0] -= 15;
+        break;
+      case 'EAST':
+        newPosition[0] += 15;
+        break;
+      case 'NORTH':
+        newPosition[1] -= 15;
+        break;
+      case 'SOUTH':
+        newPosition[1] += 15;
+        break;
+      default:
+    }
+    // turn to the monster, and move the player slightly,
+    // but do not play the walk animation triggered by a change in playerMoved
+    store.dispatch({
+      type: 'MOVE_PLAYER',
+      payload: { direction, playerMoved, position: newPosition }
+    });
+    // after some time, move the player back
+    // to complete the 'swing' animation
+    setTimeout(function() {
+      // find the player's original location
+      switch (direction) {
+        case 'WEST':
+          newPosition[0] += 15;
+          break;
+        case 'EAST':
+          newPosition[0] -= 15;
+          break;
+        case 'NORTH':
+          newPosition[1] += 15;
+          break;
+        case 'SOUTH':
+          newPosition[1] -= 15;
+          break;
+        default:
+      }
+      // move the player back
+      store.dispatch({
+        type: 'MOVE_PLAYER',
+        payload: { direction, playerMoved, position: newPosition }
+      })
+    }, ANIMATION_SPEED - 100);
   }
 
   function takeTurn() {
