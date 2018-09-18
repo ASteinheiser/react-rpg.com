@@ -19,19 +19,14 @@
 .inventory-dialog-child {
   width: 50%;
 
-  padding-top: 35px;
   justify-content: flex-start;
-}
-
-.inventory-dialog-section-text {
-  font-size: 22px;
-
-  padding-bottom: 20px;
 }
 
 .inventory-backpack {
   width: 350px;
   height: 350px;
+
+  margin-top: 35px;
 
   background-size: contain;
 }

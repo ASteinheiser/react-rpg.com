@@ -40,21 +40,12 @@ class InventoryDialog extends Component {
 
         <div className='flex-row inventory-dialog-container'>
           <div className='flex-column inventory-dialog-child'>
-            <span className='inventory-dialog-section-text'>
-              {'Equipped'}
-            </span>
-
             <EquippedItems />
           </div>
 
-          <div className='flex-column inventory-dialog-child'
-            style={{justifyContent: 'flex-start'}}>
-
-            <div className='inventory-backpack'
-              style={{backgroundImage: `url(${Backpack})`}}>
-
+          <div className='flex-column inventory-dialog-child'>
+            <div className='inventory-backpack' style={{backgroundImage: `url(${Backpack})`}}>
               <CurrentItems view_item={this.handleViewItem.bind(this)} />
-
             </div>
           </div>
         </div>

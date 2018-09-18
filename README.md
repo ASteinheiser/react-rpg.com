@@ -12,6 +12,7 @@ npm start
 - [ ] better looking equipped item section
   - [ ] add armor::boots
   - [ ] add armor::gloves
+- [ ] bump animation for attacks
 - [ ] add transitions to fog blocks
 - [ ] add transitions to sight box
 - [ ] victory dialog
