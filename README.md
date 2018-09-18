@@ -9,12 +9,9 @@ npm start
 ```
 
 ## TODO:
-- [ ] better looking equipped item section
-  - [ ] add armor::boots
-  - [ ] add armor::gloves
-- [ ] bump animation for attacks
 - [ ] add transitions to fog blocks
 - [ ] add transitions to sight box
+- [ ] bump animation for attacks
 - [ ] victory dialog
   - [ ] check if all monsters have been killed
 - [ ] pop-ups
