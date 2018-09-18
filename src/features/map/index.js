@@ -38,18 +38,20 @@ function getTileSprite(type) {
 
 function FogTile(props) {
   // show the tile by default
-  let backgroundColor = 'rgba(0,0,0,0)';
+  let opacity = '0';
   // if the tile is out of sight, show faded
-  if(!props.inSight) backgroundColor = 'rgba(0,0,0,0.5)';
+  if(!props.inSight) opacity = '0.5';
   // if the tile is unexplored, hide it
-  if(!props.explored) backgroundColor = 'rgba(0,0,0,1)';
+  if(!props.explored) opacity = '1';
   // render fog tiles
   return (
     <div style={{
-        backgroundColor,
+        backgroundColor: '#000',
+        opacity,
         display: 'inline-flex',
         height: SPRITE_SIZE,
-        width: SPRITE_SIZE
+        width: SPRITE_SIZE,
+        transition: 'opacity .35s ease-in-out'
       }} />
   );
 }
