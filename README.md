@@ -9,16 +9,17 @@ npm start
 ```
 
 ## TODO:
-- [ ] pop-ups
-  - [ ] tried to pick up item with full inventory
-  - [ ] dealing damage
-  - [ ] killed monster
-  - [ ] gained exp & gold
 - [ ] add shop dialog
   - [ ] add special sword only purchasable from shop
   - [ ] spend gold for healing
   - [ ] spend gold on items (fixed list)
     - [ ] confirm dialog on all transactions w/ amount
+- [ ] pop-ups
+  - [ ] tried to pick up item with full inventory
+  - [ ] dealing damage
+  - [ ] killed monster
+  - [ ] gained exp
+  - [ ] gain stats after lv up
 - [ ] monster AI
   - [ ] move towards player if within sight (5 squares)
   - [ ] attack player if within range
