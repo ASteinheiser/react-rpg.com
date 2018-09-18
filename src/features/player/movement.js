@@ -1,5 +1,7 @@
+import React     from 'react';
 import _debounce from 'lodash.debounce';
 
+import GameWin       from '../../components/game-win';
 import attackMonster from './attack-monster';
 import exploreTiles  from './explore-tiles';
 import openChest     from './open-chest';
@@ -175,9 +177,13 @@ export default function handleMovement(player) {
       console.log('using shop!');
     }
 
-    // the player won the game
+    // the player has accessed a shrine
     if(nextTile === 10) {
-      console.log('winner!');
+      // check if they have won the game
+      store.dispatch({
+        type: 'PAUSE',
+        payload: { component: <GameWin /> }
+      })
     }
 
     return nextTile < 5;
