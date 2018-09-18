@@ -12,7 +12,7 @@ class StatsItem extends Component {
           { stats.name }
         </span>
         <span>
-          { stats.value }
+          { '+' + stats.value }
         </span>
       </div>
     );

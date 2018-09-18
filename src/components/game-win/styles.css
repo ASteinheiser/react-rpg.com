@@ -1,0 +1,21 @@
+.game-win-title {
+  font-size: 36px;
+  padding: 50px 100px 25px 100px;
+  justify-content: center;
+}
+
+.game-win-text {
+  flex: 1;
+
+  padding: 25px 100px 0 100px;
+
+  font-size: 24px;
+  letter-spacing: 1px;
+  line-height: 36px;
+  text-align: center;
+}
+
+.game-win-button {
+  padding: 25px 0;
+  justify-content: center;
+}
