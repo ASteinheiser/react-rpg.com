@@ -14,11 +14,11 @@ npm start
   - [ ] dealing damage
   - [ ] killed monster
   - [ ] gained exp & gold
-- [ ] add gold from monsters
 - [ ] add shop dialog
   - [ ] add special sword only purchasable from shop
   - [ ] spend gold for healing
   - [ ] spend gold on items (fixed list)
+    - [ ] confirm dialog on all transactions w/ amount
 - [ ] monster AI
   - [ ] move towards player if within sight (5 squares)
   - [ ] attack player if within range
