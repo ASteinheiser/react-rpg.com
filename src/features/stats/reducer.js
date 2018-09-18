@@ -2,7 +2,7 @@
 const initialState = {
   hp: 10,
   maxHp: 10,
-  damage: 2,
+  damage: 3,
   defence: 0,
   level: 1,
   exp: 0,
