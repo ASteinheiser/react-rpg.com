@@ -51,3 +51,7 @@ body {
 .space-between {
   justify-content: space-between;
 }
+
+.white-border {
+  border: 1px solid;
+}

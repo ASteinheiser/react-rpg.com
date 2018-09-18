@@ -14,12 +14,10 @@
   padding: 25px 100px;
 }
 
-.game-start-button-parent {
+.game-start-button {
   padding: 25px 0;
-}
 
-.game-start-button-child {
-  justify-content: center;
+  align-items: center;
 }
 
 .game-start-flame-container-1 {

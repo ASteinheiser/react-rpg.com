@@ -7,10 +7,8 @@
 
 .chest-loot-button-container {
   justify-content: flex-end;
-}
 
-.chest-loot-button {
-  justify-content: center;
+  align-items: center;
   padding: 25px 0;
 }
 

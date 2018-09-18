@@ -39,18 +39,15 @@ class Inventory extends Component {
 
     return (
       <div className='flex-row inventory-container'>
-        {
-          inventoryOpen ?
-            <Button
-              onClick={this.handleCloseInventory.bind(this)}
-              icon='times'
-              title={'Close'} />
-            :
-            <Button
-              onClick={this.handleOpenInventory.bind(this)}
-              icon='briefcase'
-              title={'Inventory'} />
-        }
+        <Button
+          onClick={inventoryOpen ?
+            this.handleCloseInventory.bind(this) : this.handleOpenInventory.bind(this)}
+          icon={inventoryOpen ?
+            'times' : 'briefcase'}
+          iconStyle={inventoryOpen ?
+            {fontSize: 27} : {fontSize: 25}}
+          title={inventoryOpen ?
+            'Close' : 'Inventory'} />
       </div>
     );
   }

@@ -5,14 +5,10 @@
   height: 600px;
 
   margin: 15px auto;
-
-  border: 1px solid;
 }
 
 .world-stats-container {
-  display: flex;
   flex: 1;
-  flex-direction: row;
 
   justify-content: space-between;
 
