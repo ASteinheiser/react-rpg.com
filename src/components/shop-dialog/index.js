@@ -25,10 +25,8 @@ export default class ShopDialog extends Component {
 
           <div className='flex-row shop-container'>
             <div className='flex-column shop-container-child'>
-              <div className='flex-column shop-keep-position'>
-                <div className='shop-keep-animated'
-                  style={{backgroundImage: `url(${ShopKeepSprite})`}}/>
-              </div>
+              <div className='shop-keep-animated'
+                style={{backgroundImage: `url(${ShopKeepSprite})`}}/>
             </div>
 
             <div className='flex-column shop-container-child'>
