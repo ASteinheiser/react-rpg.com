@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Button         from '../button';
-import Dialog         from '../dialog';
-import ShopKeepSprite from './shop-keep.png';
-import store          from '../../config/store';
+import Button   from '../button';
+import Dialog   from '../dialog';
+import ShopKeep from '../shop-keep';
+import store    from '../../config/store';
 
 import './styles.css';
 
@@ -21,12 +21,13 @@ export default class ShopDialog extends Component {
       <Dialog>
         <div className='flex-column shop-container'>
 
-          <span className='shop-title-text'>{'Shop'}</span>
+          <span className='shop-title-text'>
+            {'Shop'}
+          </span>
 
           <div className='flex-row shop-container'>
             <div className='flex-column shop-container-child'>
-              <div className='shop-keep-animated'
-                style={{backgroundImage: `url(${ShopKeepSprite})`}}/>
+              <ShopKeep />
             </div>
 
             <div className='flex-column shop-container-child'>

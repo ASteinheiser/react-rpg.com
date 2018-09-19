@@ -19,17 +19,3 @@
 
   padding-bottom: 25px;
 }
-
-.shop-keep-animated {
-  height: 200px;
-  width: 210px;
-
-  animation: moveShopKeep .75s steps(6) infinite;
-  background-position-x: 0px;
-}
-
-@keyframes moveShopKeep {
-  100% {
-    background-position-x: 1260px;
-  }
-}
