@@ -1,5 +1,5 @@
 .shop-container {
-
+  flex: 1;
 }
 
 .shop-container-child {
@@ -7,11 +7,22 @@
 }
 
 .shop-title-text {
-
+  font-size: 36px;
+  text-align: center;
+  padding: 50px 100px 25px;
 }
 
 .shop-button-container {
+  justify-content: center;
 
+  padding-bottom: 25px;
+}
+
+.shop-keep-position {
+  flex: 1;
+
+  align-self: center;
+  justify-content: center;
 }
 
 .shop-keep-animated {

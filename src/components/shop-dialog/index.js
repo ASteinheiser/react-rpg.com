@@ -19,14 +19,16 @@ export default class ShopDialog extends Component {
   render() {
     return(
       <Dialog>
-        <div className='flex-column'>
+        <div className='flex-column shop-container'>
 
           <span className='shop-title-text'>{'Shop'}</span>
 
           <div className='flex-row shop-container'>
             <div className='flex-column shop-container-child'>
-              <div className='shop-keep-animated'
-                style={{backgroundImage: `url(${ShopKeepSprite})`}}/>
+              <div className='flex-column shop-keep-position'>
+                <div className='shop-keep-animated'
+                  style={{backgroundImage: `url(${ShopKeepSprite})`}}/>
+              </div>
             </div>
 
             <div className='flex-column shop-container-child'>
@@ -36,7 +38,7 @@ export default class ShopDialog extends Component {
             </div>
           </div>
 
-          <div className='shop-button-container'>
+          <div className='flex-row shop-button-container'>
             <Button
               onClick={this.handleCloseDialog.bind(this)}
               icon='walking'
