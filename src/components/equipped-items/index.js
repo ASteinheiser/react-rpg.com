@@ -14,7 +14,7 @@ function handleUnequipItem(item) {
   })
 }
 
-function EmptySlot(props) {
+export function EmptySlot(props) {
   return (
     <div className='white-border' style={{
         backgroundImage: `url('${InventorySlot}')`,

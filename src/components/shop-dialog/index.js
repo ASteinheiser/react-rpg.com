@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import Button   from '../button';
-import Dialog   from '../dialog';
-import ShopKeep from '../shop-keep';
-import store    from '../../config/store';
+import Button        from '../button';
+import Dialog        from '../dialog';
+import ShopKeep      from '../shop-keep';
+import ShopInventory from '../shop-inventory';
+import store         from '../../config/store';
 
 import './styles.css';
 
@@ -31,9 +32,7 @@ export default class ShopDialog extends Component {
             </div>
 
             <div className='flex-column shop-container-child'>
-              <div>
-                {'Shop inventory!!'}
-              </div>
+              <ShopInventory />
             </div>
           </div>
 

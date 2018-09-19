@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
-import InventorySlot from '../equipped-items/inventory-slot.png';
+import { EmptySlot } from '../equipped-items';
 
 import './styles.css';
-
-function EmptyInventorySlot(props) {
-  return (
-    <div style={{
-        backgroundImage: `url('${InventorySlot}')`,
-        backgroundSize: 'contain',
-        width: '40px',
-        height: '40px'
-      }}>
-      { props.children }
-    </div>
-  );
-}
 
 class CurrentItems extends Component {
 
@@ -49,33 +36,33 @@ class CurrentItems extends Component {
     return (
       <div className='flex-column current-items-container white-border'>
         <div className='flex-row'>
-          <EmptyInventorySlot>
+          <EmptySlot>
             { itemSlots[0] }
-          </EmptyInventorySlot>
-          <EmptyInventorySlot>
+          </EmptySlot>
+          <EmptySlot>
             { itemSlots[1] }
-          </EmptyInventorySlot>
-          <EmptyInventorySlot>
+          </EmptySlot>
+          <EmptySlot>
             { itemSlots[2] }
-          </EmptyInventorySlot>
-          <EmptyInventorySlot>
+          </EmptySlot>
+          <EmptySlot>
             { itemSlots[3] }
-          </EmptyInventorySlot>
+          </EmptySlot>
         </div>
 
         <div className='flex-row'>
-          <EmptyInventorySlot>
+          <EmptySlot>
             { itemSlots[4] }
-          </EmptyInventorySlot>
-          <EmptyInventorySlot>
+          </EmptySlot>
+          <EmptySlot>
             { itemSlots[5] }
-          </EmptyInventorySlot>
-          <EmptyInventorySlot>
+          </EmptySlot>
+          <EmptySlot>
             { itemSlots[6] }
-          </EmptyInventorySlot>
-          <EmptyInventorySlot>
+          </EmptySlot>
+          <EmptySlot>
             { itemSlots[7] }
-          </EmptyInventorySlot>
+          </EmptySlot>
         </div>
       </div>
     );

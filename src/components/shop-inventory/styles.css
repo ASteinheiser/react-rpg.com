@@ -1,0 +1,14 @@
+.shop-inventory-container {
+  width: 275px;
+  height: 210px;
+
+  align-self: flex-start;
+
+  background-size: contain;
+}
+
+.shop-inventory-items {
+  flex: 1;
+
+  margin: 95px 0 0 55px;
+}
