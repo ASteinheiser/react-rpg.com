@@ -1,4 +1,4 @@
-import { allItems } from '../../data/items';
+import { randomItems } from '../../data/items';
 
 export default function randomItem() {
   let randomNumber = Math.floor(Math.random() * allItems.length);

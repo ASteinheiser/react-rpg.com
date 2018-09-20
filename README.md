@@ -19,6 +19,7 @@ npm start
 - [ ] pop-ups
   - [ ] tried to pick up item with full inventory
   - [ ] dealing damage
+  - [ ] healing hp
   - [ ] killed monster
   - [ ] gained exp
   - [ ] gain stats after lv up

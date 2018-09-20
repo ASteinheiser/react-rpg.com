@@ -5,11 +5,14 @@ import LeatherGloves from './armor/leather-gloves';
 import OldRing       from './rings/old-ring';
 import RustySword    from './weapons/rusty-sword';
 import SteelSword    from './weapons/steel-sword';
+import DragonsBane   from './weapons/dragons-bane';
+import HpPotion      from './other/hp-potion';
 
 const items = {
   weapons: {
     RustySword,
-    SteelSword
+    SteelSword,
+    DragonsBane
   },
   armor: {
     LeatherArmor,
@@ -19,10 +22,13 @@ const items = {
   },
   rings: {
     OldRing
+  },
+  other: {
+    HpPotion
   }
 };
 
-export const allItems = [
+export const randomItems = [
   SteelSword,
   LeatherArmor,
   LeatherBoots,
