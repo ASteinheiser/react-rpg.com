@@ -15,7 +15,7 @@
 }
 
 .shop-button-container {
-  justify-content: center;
+  justify-content: space-evenly;
 
   padding-bottom: 25px;
 }

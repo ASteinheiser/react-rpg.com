@@ -1,0 +1,13 @@
+.sell-items-title {
+  font-size: 36px;
+
+  justify-content: center;
+
+  padding: 25px 0 0;
+}
+
+.sell-items-container {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
