@@ -4,7 +4,8 @@ const LeatherCap = {
   name: 'Leather Cap',
   type: 'armor::helmet',
   defence: 3,
-  image: LeatherCapImg
+  image: LeatherCapImg,
+  value: 30
 };
 
 export default LeatherCap;

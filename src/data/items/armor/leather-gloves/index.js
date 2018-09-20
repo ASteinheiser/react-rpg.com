@@ -4,7 +4,8 @@ const LeatherGloves = {
   name: 'Leather Gloves',
   type: 'armor::gloves',
   defence: 2,
-  image: LeatherGlovesImg
+  image: LeatherGlovesImg,
+  value: 25
 };
 
 export default LeatherGloves;

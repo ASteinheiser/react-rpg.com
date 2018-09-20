@@ -8,7 +8,8 @@ const OldRing = {
     defence: 1,
     hp: 3
   },
-  image: OldRingImg
+  image: OldRingImg,
+  value: 25
 };
 
 export default OldRing;

@@ -4,7 +4,8 @@ const LeatherArmor = {
   name: 'Leather Armor',
   type: 'armor::body',
   defence: 5,
-  image: LeatherArmorImg
+  image: LeatherArmorImg,
+  value: 40
 };
 
 export default LeatherArmor;

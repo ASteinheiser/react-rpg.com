@@ -5,7 +5,8 @@ const RustySword = {
   type: 'weapon',
   range: 'melee',
   damage: 1,
-  image: RustySwordImg
+  image: RustySwordImg,
+  value: 10
 };
 
 export default RustySword;

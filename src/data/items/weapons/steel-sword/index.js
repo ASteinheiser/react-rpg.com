@@ -5,7 +5,8 @@ const SteelSword = {
   type: 'weapon',
   range: 'melee',
   damage: 3,
-  image: SteelSwordImg
+  image: SteelSwordImg,
+  value: 35
 };
 
 export default SteelSword;

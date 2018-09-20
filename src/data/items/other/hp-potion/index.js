@@ -4,7 +4,8 @@ const HpPotion = {
   name: 'HP Potion',
   type: 'potion',
   hp: '10',
-  image: HpPotionImg
+  image: HpPotionImg,
+  value: 20
 };
 
 export default HpPotion;

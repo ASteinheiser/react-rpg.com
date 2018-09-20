@@ -6,7 +6,8 @@ const DragonsBane = {
   range: 'melee',
   damage: 10,
   bonus: 'dragon::2',
-  image: DragonsBaneImg
+  image: DragonsBaneImg,
+  value: 200
 };
 
 export default DragonsBane;
