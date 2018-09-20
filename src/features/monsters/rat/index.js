@@ -20,5 +20,6 @@ export const ratStats = {
   maxHp: 5,
   damage: 2,
   defence: 0,
-  exp: 5
+  exp: 5,
+  type: 'rat'
 };

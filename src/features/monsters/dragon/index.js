@@ -20,5 +20,6 @@ export const dragonStats = {
   maxHp: 50,
   damage: 10,
   defence: 5,
-  exp: 100
+  exp: 100,
+  type: 'dragon'
 };
