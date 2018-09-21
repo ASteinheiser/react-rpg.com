@@ -9,8 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] spend gold on items (fixed list)
-  - [ ] confirm dialog on all transactions w/ amount
 - [ ] display weapon bonus on view Item
 - [ ] add enter key press to get through chest loot
 - [ ] add instructions to welcome screen
