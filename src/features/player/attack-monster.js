@@ -1,6 +1,7 @@
 import store           from '../../config/store';
 import { SPRITE_SIZE } from '../../config/constants';
 import calculateDamage from '../../modules/calculate-damage';
+import calculateBonus  from '../../modules/calculate-bonus';
 
 export default function attackMonster(monsterPos, currMonster) {
   const { currentMap } = store.getState().world;
@@ -8,6 +9,7 @@ export default function attackMonster(monsterPos, currMonster) {
   // gather stats
   let monsterDamage = currMonster.damage;
   let monsterDefence = currMonster.defence;
+  let monsterType = currMonster.type;
   let playerDamage = stats.damage;
   let playerDefence = stats.defence;
   // calculate damage
@@ -17,7 +19,7 @@ export default function attackMonster(monsterPos, currMonster) {
     type: 'DAMAGE_TO_MONSTER',
     payload: {
       id: currMonster.id,
-      damage: calculateDamage(playerDamage, monsterDefence),
+      damage: calculateDamage(calculateBonus(playerDamage, monsterType), monsterDefence),
       map: currentMap
     }
   })
