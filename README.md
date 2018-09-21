@@ -15,14 +15,16 @@ npm start
 - [ ] add enter key press to get through chest loot
 - [ ] add instructions to welcome screen
 - [ ] pop-ups
+  - [ ] not enough gold
+  - [ ] tried to buy item with full inventory
   - [ ] tried to pick up item with full inventory
   - [ ] dealing damage
+  - [ ] took damage
   - [ ] healing hp
-  - [ ] killed monster
   - [ ] gained exp
-  - [ ] gain stats after lv up
+  - [ ] lv up and gain stats
 - [ ] monster AI
-  - [ ] move towards player if within sight (5 squares)
+  - [ ] move towards player if within sight
   - [ ] attack player if within range
-  - [ ] move random if no player within sight (5 squares)
+  - [ ] move random if no player within sight
 - [ ] auto-generated levels (https://medium.freecodecamp.org/how-to-make-your-own-procedural-dungeon-map-generator-using-the-random-walk-algorithm-e0085c8aa9a)
