@@ -2,16 +2,20 @@
   flex: 1;
 }
 
-.shop-container-child {
+.shop-container-child-1 {
   width: 50%;
   justify-content: center;
   align-items: center;
 }
 
+.shop-container-child-2 {
+  width: 50%;
+}
+
 .shop-title-text {
   font-size: 36px;
   text-align: center;
-  padding: 50px 100px 25px;
+  padding: 25px 100px;
 }
 
 .shop-button-container {

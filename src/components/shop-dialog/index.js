@@ -50,11 +50,11 @@ export default class ShopDialog extends Component {
           </span>
 
           <div className='flex-row shop-container'>
-            <div className='flex-column shop-container-child'>
+            <div className='flex-column shop-container-child-1'>
               <ShopKeep />
             </div>
 
-            <div className='flex-column shop-container-child'>
+            <div className='flex-column shop-container-child-2'>
               <ShopInventory />
             </div>
           </div>

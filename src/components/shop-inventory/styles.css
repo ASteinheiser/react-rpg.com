@@ -10,7 +10,24 @@
 }
 
 .shop-inventory-items {
-  width: fit-content;
+  padding: 0 25px 20px 0;
+}
 
-  margin: 95px 0 0 57px;
+.shop-item-container {
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.shop-item-slot {
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+}
+
+.shop-item-text {
+  padding: 0 10px;
+
+  justify-content: space-between;
+  flex: 1;
 }
