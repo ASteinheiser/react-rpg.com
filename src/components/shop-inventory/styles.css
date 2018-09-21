@@ -17,6 +17,8 @@
   align-items: center;
 
   cursor: pointer;
+
+  margin-bottom: 7px;
 }
 
 .shop-item-slot {
@@ -30,4 +32,12 @@
 
   justify-content: space-between;
   flex: 1;
+}
+
+.shop-page-button {
+  font-size: 22px;
+
+  padding: 10px 15px;
+
+  cursor: pointer;
 }

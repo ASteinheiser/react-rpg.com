@@ -10,6 +10,7 @@
 
 .shop-container-child-2 {
   width: 50%;
+  justify-content: center;
 }
 
 .shop-title-text {

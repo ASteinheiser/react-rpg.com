@@ -14,7 +14,8 @@ export default class ShopInventory extends Component {
     super(props);
 
     this.state = {
-      buyItemDialog: null
+      buyItemDialog: null,
+      page: 1
     }
   }
 
@@ -64,7 +65,7 @@ export default class ShopInventory extends Component {
   }
 
   render() {
-    const { buyItemDialog } = this.state;
+    const { buyItemDialog, page } = this.state;
 
     let shopInventoryItems = [];
     // render the shop's items
@@ -89,13 +90,42 @@ export default class ShopInventory extends Component {
       );
     })
 
+    let shopInventoryButtons = (
+      <div className='flex-row space-between'>
+        {
+          page === 1 ?
+            <div />
+            :
+            <div className='shop-page-button' onClick={() => {this.setState({page: 1})}}>
+              <i className='fa fa-arrow-left' style={{paddingRight: 15}} />
+              {'previous'}
+            </div>
+        }
+        {
+          page === 1 ?
+            <div className='shop-page-button' onClick={() => {this.setState({page: 2})}}>
+              {'next'}
+              <i className='fa fa-arrow-right' style={{paddingLeft: 15}} />
+            </div>
+            :
+            <div />
+        }
+      </div>
+    );
+
     return (
       <div className='flex-column shop-inventory-items'>
         {
           buyItemDialog
         }
         {
-          shopInventoryItems
+          page === 1 ?
+            shopInventoryItems.slice(0, 5)
+            :
+            shopInventoryItems.slice(5, 10)
+        }
+        {
+          shopInventoryButtons
         }
       </div>
     );
