@@ -1,5 +1,6 @@
 import React       from 'react';
 import { connect } from 'react-redux';
+import ReactPlayer from 'react-player';
 // game components
 import GameStart from '../../components/game-start';
 import GameOver  from '../../components/game-over';
@@ -103,6 +104,14 @@ class World extends React.Component {
             :
             null
         }
+
+        <ReactPlayer
+          url='https://www.youtube.com/watch?v=H6sNpL4zreM'
+          width={0}
+          height={0}
+          playing={true}
+          loop={true}
+          volume={1} />
 
       </div>
     );
