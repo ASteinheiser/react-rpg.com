@@ -18,6 +18,13 @@ import takeMonstersTurn from '../monsters/take-monsters-turn';
 import './styles.css';
 
 class World extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      musicLoaded: false
+    };
+  }
 
   componentDidMount() {
     this.handleGameStart();
@@ -69,7 +76,12 @@ class World extends React.Component {
     })
   }
 
+  handleMusicReady() {
+    this.setState({ musicLoaded: true });
+  }
+
   render() {
+    const { musicLoaded } = this.state;
     const { world } = this.props;
 
     return (
@@ -109,7 +121,9 @@ class World extends React.Component {
           url='https://www.youtube.com/watch?v=H6sNpL4zreM'
           width={0}
           height={0}
-          playing={true}
+          muted={!musicLoaded}
+          playing={musicLoaded}
+          onReady={this.handleMusicReady.bind(this)}
           loop={true}
           volume={1} />
 
