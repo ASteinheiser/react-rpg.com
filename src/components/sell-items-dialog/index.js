@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
+import ConfirmDialog from '../confirm-dialog';
+import MicroDialog   from '../micro-dialog';
 import Backpack      from '../inventory-dialog/backpack.png';
 import { EmptySlot } from '../equipped-items';
-import MicroDialog   from '../micro-dialog';
+import store         from '../../config/store';
 
 import './styles.css';
 
@@ -12,21 +14,48 @@ class SellItemsDialog extends Component {
     super(props);
 
     this.state = {
-      viewItem: null
+      sellItemConfirm: null
     };
   }
 
   handleViewItem(item) {
-    console.log(item);
-    // this.setState({ viewItem: <ViewItem data={item} onClose={this.handleCloseItem.bind(this)} /> });
+    let itemSellPrice = Math.ceil(item.value / 2);
+
+    this.setState({ sellItemConfirm: (
+      <ConfirmDialog
+        text={'Are you sure you want to sell your ' + item.name + ' for ' + itemSellPrice + ' gold ?'}
+        cancelText={'Cancel'}
+        cancelIcon={'times'}
+        acceptText={'Sell'}
+        acceptIcon={'coins'}
+        confirm={this.handleConfirmSell.bind(this, item, itemSellPrice)}
+        onClose={this.handleCloseItem.bind(this)} />
+      )
+    });
+  }
+
+  handleConfirmSell(item, sellPrice) {
+    store.dispatch({
+      type: 'GET_GOLD',
+      payload: { value: sellPrice }
+    })
+    store.dispatch({
+      type: 'DROP_ITEM',
+      payload: item
+    })
+    store.dispatch({
+      type: 'UNEQUIP_ITEM',
+      payload: { data: item }
+    })
+    this.handleCloseItem();
   }
 
   handleCloseItem() {
-    this.setState({ viewItem: null });
+    this.setState({ sellItemConfirm: null });
   }
 
   render() {
-    const { viewItem } = this.state;
+    const { sellItemConfirm } = this.state;
     const { items, maxItems } = this.props.inventory;
 
     const itemSlots = new Array(maxItems).fill(null);
@@ -51,7 +80,7 @@ class SellItemsDialog extends Component {
     return(
       <MicroDialog onClose={this.props.onClose} inventory_size={true}>
 
-        { viewItem }
+        { sellItemConfirm }
 
         <div className='flex-column sell-items-container'
           style={{backgroundImage: `url(${Backpack})`}}>
