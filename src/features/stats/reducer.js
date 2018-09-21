@@ -252,7 +252,7 @@ const statsReducer = (state = initialState, action) => {
         }
 
         // set next exp goal to be 1.5 times as much
-        newState.expToLevel = state.expToLevel * 1.5;
+        newState.expToLevel = Math.floor(state.expToLevel * 1.5);
 
         // get more maxHp and currHp (roll 1-5)
         let moreHp = Math.floor(Math.random() * 5) + 1;
