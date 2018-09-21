@@ -9,7 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] display weapon bonus on view Item
 - [ ] add enter key press to get through chest loot
 - [ ] add instructions to welcome screen
 - [ ] pop-ups

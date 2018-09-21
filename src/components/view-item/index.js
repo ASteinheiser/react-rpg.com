@@ -69,6 +69,13 @@ class ViewItem extends Component {
         itemIsEquipped = (equipped['weapon'] === data);
         // display stats
         itemStats.push(<StatsItem stats={{ name: 'damage', value: data.damage }} key={uuidv4()} />);
+        // if there's a bonus
+        if(data.bonus) {
+          let bonusType = data.bonus.split('::')[0];
+          let bonusMult = parseFloat(data.bonus.split('::')[1], 10);
+          // display the bonus
+          itemStats.push(<StatsItem stats={{ name: 'VS. ' + bonusType, value: bonusMult + 'x' }} key={uuidv4()} />);
+        }
         break;
 
       case 'ring':
