@@ -6,6 +6,7 @@ const shopItems = [
   items.weapons.SteelSword,
   items.armor.LeatherCap,
   items.armor.LeatherArmor,
+  items.armor.LeatherPants,
   items.armor.LeatherGloves,
   items.armor.LeatherBoots,
   items.rings.OldRing,

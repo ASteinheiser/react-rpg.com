@@ -71,13 +71,25 @@ function EquippedItems(props) {
         }
       </EmptySlot>
 
-      <div className='flex-row space-between'>
+      <div className='flex-row space-around'>
         <EmptySlot className='white-border' margin={'30px 15px 0 15px'}>
           {
             armor && armor.gloves ?
               <div className='item-slot'
                 onClick={handleUnequipItem.bind(this, armor.gloves)}
                 style={{ backgroundImage: `url('${armor.gloves.image}')` }}>
+                <DarkenSlot />
+              </div>
+              :
+              null
+          }
+        </EmptySlot>
+        <EmptySlot className='white-border' margin={'30px 15px 0 15px'}>
+          {
+            armor && armor.pants ?
+              <div className='item-slot'
+                onClick={handleUnequipItem.bind(this, armor.pants)}
+                style={{ backgroundImage: `url('${armor.pants.image}')` }}>
                 <DarkenSlot />
               </div>
               :

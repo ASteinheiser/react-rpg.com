@@ -57,6 +57,9 @@ class SellItemsDialog extends Component {
       case 'armor::body':
         if(equippedItems['armor'] && equippedItems['armor']['body'] === item) itemEquipped = true;
         break;
+      case 'armor::pants':
+        if(equippedItems['armor'] && equippedItems['armor']['pants'] === item) itemEquipped = true;
+        break;
       case 'armor::helmet':
         if(equippedItems['armor'] && equippedItems['armor']['helmet'] === item) itemEquipped = true;
         break;

@@ -114,6 +114,13 @@ class ViewItem extends Component {
         itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={uuidv4()} />);
         break;
 
+      case 'armor::pants':
+        // properly check the armor
+        itemIsEquipped = (equipped['armor'] && equipped['armor']['pants'] === data);
+        // display stats
+        itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={uuidv4()} />);
+        break;
+
       default:
     }
 

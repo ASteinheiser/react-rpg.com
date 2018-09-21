@@ -48,6 +48,11 @@ const statsReducer = (state = initialState, action) => {
           delete newState.equippedItems['armor']['helmet'];
           break;
 
+        case 'armor::pants':
+          newState.defence -= data.defence;
+          delete newState.equippedItems['armor']['pants'];
+          break;
+
         case 'armor::boots':
           newState.defence -= data.defence;
           delete newState.equippedItems['armor']['boots'];
@@ -125,6 +130,17 @@ const statsReducer = (state = initialState, action) => {
           newState.defence += item.defence;
           // safely add new armor peice to object
           newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { helmet: item });
+          break;
+
+        case 'armor::pants':
+          // if there's already armor
+          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['pants']) {
+            // subtract it's benefits
+            newState.defence -= newState.equippedItems['armor']['pants'].defence;
+          }
+          newState.defence += item.defence;
+          // safely add new armor peice to object
+          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { pants: item });
           break;
 
         case 'armor::gloves':
