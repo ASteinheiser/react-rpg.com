@@ -205,6 +205,14 @@ const statsReducer = (state = initialState, action) => {
       }
       return newState;
 
+    case 'HEAL_HP':
+      // heal the hp
+      newState.hp += action.payload.value;
+      // dont go above max hp
+      if(newState.hp > newState.maxHp) newState.hp = newState.maxHp;
+
+      return newState;
+
     case 'DAMAGE_TO_PLAYER':
       const { damage } = action.payload;
       // deal damage to player

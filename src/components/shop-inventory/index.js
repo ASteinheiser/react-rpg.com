@@ -46,10 +46,17 @@ export default class ShopInventory extends Component {
         type: 'LOSE_GOLD',
         payload: { value: item.value }
       })
-      store.dispatch({
-        type: 'GET_ITEM',
-        payload: item
-      })
+      if(item.type === 'potion') {
+        store.dispatch({
+          type: 'HEAL_HP',
+          payload: { value: parseInt(item.hp, 10) }
+        })
+      } else {
+        store.dispatch({
+          type: 'GET_ITEM',
+          payload: item
+        })
+      }
     } else {
       // not enough gold!
     }
