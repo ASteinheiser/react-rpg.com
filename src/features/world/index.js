@@ -1,6 +1,6 @@
 import React       from 'react';
 import { connect } from 'react-redux';
-import ReactPlayer from 'react-player';
+import Sound       from 'react-sound';
 // game components
 import GameStart from '../../components/game-start';
 import GameOver  from '../../components/game-over';
@@ -14,6 +14,8 @@ import maps     from '../../data/maps';
 import store    from '../../config/store';
 // game functions
 import takeMonstersTurn from '../monsters/take-monsters-turn';
+// game files
+import AmbientMusic from './ambient-music.mp3';
 
 import './styles.css';
 
@@ -22,12 +24,37 @@ class World extends React.Component {
     super(props);
 
     this.state = {
-      musicLoaded: false
+      gameMusic: null
     };
+
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
     this.handleGameStart();
+
+    window.addEventListener('mousedown', this.handleKeyPress);
+    window.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousedown', this.handleKeyPress);
+    window.removeEventListener('keydown', this.handleKeyPress);
+  }
+
+  handleKeyPress() {
+    // we have to load music only have user has clicked or pressed a key
+    this.setState({ gameMusic: (
+        <Sound
+          url={AmbientMusic}
+          playStatus={'PLAYING'}
+          autoLoad={true}
+          loop={true}
+          volume={100} />
+      )
+    });
+    window.removeEventListener('mousedown', this.handleKeyPress);
+    window.removeEventListener('keydown', this.handleKeyPress);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -76,16 +103,14 @@ class World extends React.Component {
     })
   }
 
-  handleMusicReady() {
-    this.setState({ musicLoaded: true });
-  }
-
   render() {
-    const { musicLoaded } = this.state;
     const { world } = this.props;
+    const { gameMusic } = this.state;
 
     return (
       <div className='world-view-container white-border'>
+
+        { gameMusic }
 
         <Map />
         <Player />
@@ -116,16 +141,6 @@ class World extends React.Component {
             :
             null
         }
-
-        <ReactPlayer
-          url='https://www.youtube.com/watch?v=H6sNpL4zreM'
-          width={0}
-          height={0}
-          muted={!musicLoaded}
-          playing={musicLoaded}
-          onReady={this.handleMusicReady.bind(this)}
-          loop={true}
-          volume={1} />
 
       </div>
     );
