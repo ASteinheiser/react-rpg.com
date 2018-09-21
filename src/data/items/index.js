@@ -2,6 +2,7 @@ import LeatherArmor  from './armor/leather-armor';
 import LeatherBoots  from './armor/leather-boots';
 import LeatherCap    from './armor/leather-cap';
 import LeatherGloves from './armor/leather-gloves';
+import LeatherPants  from './armor/leather-pants';
 import OldRing       from './rings/old-ring';
 import RustySword    from './weapons/rusty-sword';
 import SteelSword    from './weapons/steel-sword';
@@ -18,7 +19,8 @@ const items = {
     LeatherArmor,
     LeatherBoots,
     LeatherCap,
-    LeatherGloves
+    LeatherGloves,
+    LeatherPants
   },
   rings: {
     OldRing
@@ -34,6 +36,7 @@ export const randomItems = [
   LeatherBoots,
   LeatherCap,
   LeatherGloves,
+  LeatherPants,
   OldRing
 ];
 
