@@ -38,6 +38,23 @@ class ChestLoot extends Component {
       gold,
       exp
     }
+
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyPress);
+  }
+
+  handleKeyPress(event) {
+    // case for 'enter' key
+    if(event.keyCode === 13) {
+      this.handleContinue();
+    }
   }
 
   handleClose() {

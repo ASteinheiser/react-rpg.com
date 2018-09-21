@@ -12,6 +12,26 @@ import exploreTiles from '../../features/player/explore-tiles';
 import './styles.css';
 
 class GameStart extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyPress);
+  }
+
+  handleKeyPress(event) {
+    // case for 'enter' key
+    if(event.keyCode === 13) {
+      this.handleGameStart();
+    }
+  }
 
   handleGameStart() {
     this.handleCloseDialog();
@@ -70,7 +90,17 @@ class GameStart extends Component {
           {'React + Redux RPG'}
         </div>
         <div className='flex-column game-start-text'>
-          {'Welcome Adventurer... A world full of monsters and gear awaits!'}
+          <div>
+            {'Welcome Adventurer... A world full of monsters and gear awaits!'}
+          </div>
+          <div>
+            <div className='game-start-instruction-text'>
+              {'Use \'WASD\' / Arrow keys to move'}
+            </div>
+            <div className='game-start-instruction-text'>
+              {'Press \'Enter\' to close chest popup'}
+            </div>
+          </div>
         </div>
 
         <div className='game-start-flame-container-1'>

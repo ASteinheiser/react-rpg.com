@@ -9,8 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] add enter key press to get through chest loot
-- [ ] add instructions to welcome screen
 - [ ] pop-ups
   - [ ] not enough gold
   - [ ] item purchased

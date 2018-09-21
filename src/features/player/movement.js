@@ -199,12 +199,16 @@ export default function handleMovement(player) {
 
     switch(event.keyCode) {
       case 37:
+      case 65:
         return attemptMove('WEST');
       case 38:
+      case 87:
         return attemptMove('NORTH');
       case 39:
+      case 68:
         return attemptMove('EAST');
       case 40:
+      case 83:
         return attemptMove('SOUTH');
       default:
         // console.log('key not mapped: ', event.keyCode);

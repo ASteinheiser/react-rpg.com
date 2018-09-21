@@ -12,6 +12,8 @@
   letter-spacing: 1px;
   text-align: center;
 
+  justify-content: space-between;
+
   padding: 25px 100px;
 }
 
@@ -31,4 +33,8 @@
   position: absolute;
   bottom: 75px;
   left: 570px;
+}
+
+.game-start-instruction-text {
+  padding-top: 15px;
 }
