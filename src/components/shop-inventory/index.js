@@ -41,7 +41,7 @@ export default class ShopInventory extends Component {
   handleConfirmBuyItem(item) {
     const { gold } = store.getState().stats;
     // make sure player has enough gold
-    if(gold > item.value) {
+    if(gold >= item.value) {
       store.dispatch({
         type: 'LOSE_GOLD',
         payload: { value: item.value }
