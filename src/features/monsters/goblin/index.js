@@ -20,6 +20,6 @@ export const goblinStats = {
   maxHp: 10,
   damage: 4,
   defence: 2,
-  exp: 10,
+  exp: 20,
   type: 'goblin'
 };
