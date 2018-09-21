@@ -261,6 +261,11 @@ const statsReducer = (state = initialState, action) => {
 
         // get more damage (+1)
         newState.damage += 1;
+        // 25% chance to get +2 damage on lv
+        let chance = Math.floor(Math.random() * 100) + 1;
+        if(chance <= 25) {
+          newState.damage += 1;
+        }
 
       } else {
         // they aren't leveling up
