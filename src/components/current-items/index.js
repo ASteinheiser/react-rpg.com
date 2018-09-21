@@ -12,7 +12,7 @@ class CurrentItems extends Component {
   }
 
   render() {
-    let { items, maxItems } = this.props.inventory;
+    const { items, maxItems } = this.props.inventory;
 
     const itemSlots = new Array(maxItems).fill(null);
     // for each empty slot

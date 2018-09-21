@@ -28,3 +28,8 @@
   border-bottom: 1px solid;
   padding: 7px 12px;
 }
+
+.micro-dialog-large {
+  top: 90px !important;
+  bottom: 90px !important;
+}
