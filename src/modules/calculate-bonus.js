@@ -9,7 +9,7 @@ export default function calculateBonus(playerDamage, monsterType) {
   }
   // parse the bonus
   let bonusType = weapon.bonus.split('::')[0];
-  let bonusMult = parseInt(weapon.bonus.split('::')[1]);
+  let bonusMult = parseInt(weapon.bonus.split('::')[1], 10);
   // if we have a bonus with this monster
   if(bonusType === monsterType) {
     // apply the bonus
