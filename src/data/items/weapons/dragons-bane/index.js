@@ -7,7 +7,7 @@ const DragonsBane = {
   damage: 10,
   bonus: 'dragon::1.5',
   image: DragonsBaneImg,
-  value: 200
+  value: 150
 };
 
 export default DragonsBane;
