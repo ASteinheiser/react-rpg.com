@@ -9,8 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] add special sword only purchasable from shop
-- [ ] spend gold for healing
 - [ ] spend gold on items (fixed list)
   - [ ] confirm dialog on all transactions w/ amount
 - [ ] add enter key press to get through chest loot
