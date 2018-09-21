@@ -13,7 +13,6 @@ npm start
 - [ ] spend gold for healing
 - [ ] spend gold on items (fixed list)
   - [ ] confirm dialog on all transactions w/ amount
-- [ ] calculate weapon bonus vs dragon type monsters
 - [ ] add enter key press to get through chest loot
 - [ ] add instructions to welcome screen
 - [ ] pop-ups
