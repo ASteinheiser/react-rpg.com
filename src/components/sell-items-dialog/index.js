@@ -43,10 +43,37 @@ class SellItemsDialog extends Component {
       type: 'DROP_ITEM',
       payload: item
     })
-    store.dispatch({
-      type: 'UNEQUIP_ITEM',
-      payload: { data: item }
-    })
+
+    const { equippedItems } = store.getState().stats;
+    let itemEquipped = false;
+    // check if the item was equipped and take it off
+    switch(item.type) {
+      case 'weapon':
+        if(equippedItems['weapon'] === item) itemEquipped = true;
+        break;
+      case 'ring':
+        if(equippedItems['ring'] === item) itemEquipped = true;
+        break;
+      case 'armor::body':
+        if(equippedItems['armor'] && equippedItems['armor']['body'] === item) itemEquipped = true;
+        break;
+      case 'armor::helmet':
+        if(equippedItems['armor'] && equippedItems['armor']['helmet'] === item) itemEquipped = true;
+        break;
+      case 'armor::boots':
+        if(equippedItems['armor'] && equippedItems['armor']['boots'] === item) itemEquipped = true;
+        break;
+      case 'armor::gloves':
+        if(equippedItems['armor'] && equippedItems['armor']['gloves'] === item) itemEquipped = true;
+        break;
+      default:
+    }
+    if(itemEquipped) {
+      store.dispatch({
+        type: 'UNEQUIP_ITEM',
+        payload: { data: item }
+      })
+    }
     this.handleCloseItem();
   }
 

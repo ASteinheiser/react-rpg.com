@@ -16,6 +16,7 @@ npm start
 - [ ] add instructions to welcome screen
 - [ ] pop-ups
   - [ ] not enough gold
+  - [ ] item purchased
   - [ ] tried to buy item with full inventory
   - [ ] tried to pick up item with full inventory
   - [ ] dealing damage

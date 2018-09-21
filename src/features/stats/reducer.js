@@ -23,6 +23,12 @@ const statsReducer = (state = initialState, action) => {
 
       return newState;
 
+    case 'LOSE_GOLD':
+      // add gold to current gold
+      newState.gold -= action.payload.value;
+
+      return newState;
+
     case 'UNEQUIP_ITEM':
       let data = action.payload.data;
       // check the type
