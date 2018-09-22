@@ -53,7 +53,7 @@
 }
 
 .stats-hp-bar-container {
-  width: 110px;
+  width: 125px;
   height: 15px;
 
   background: var(--red);

@@ -39,7 +39,7 @@ class Player extends Component {
 
   render() {
     const { animationPlay } = this.state;
-    const { player, stats, world } = this.props;
+    const { player, world } = this.props;
 
     const { gameStart } = world;
     // game start menu open, hide the player
@@ -76,8 +76,8 @@ class Player extends Component {
   }
 }
 
-const mapStateToProps = ({ player, stats, world }) => {
-  return { player, stats, world };
+const mapStateToProps = ({ player, world }) => {
+  return { player, world };
 }
 
 export default connect(mapStateToProps)(handleMovement(ReactTimeout(Player)));

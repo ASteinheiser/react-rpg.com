@@ -31,18 +31,18 @@ function Stats(props) {
       <div className='flex-column stats-column-spacing'>
         <div className='flex-row stats-row-spacing'>
           <span className='stats-text-spacing'>
-            {'GOLD: '}
-          </span>
-          <span>
-            { props.stats.gold }
-          </span>
-        </div>
-        <div className='flex-row'>
-          <span className='stats-text-spacing'>
             {'DMG: '}
           </span>
           <span>
             { props.stats.damage }
+          </span>
+        </div>
+        <div className='flex-row'>
+          <span className='stats-text-spacing'>
+            {'DEF: '}
+          </span>
+          <span>
+            { props.stats.defence }
           </span>
         </div>
       </div>
@@ -62,10 +62,10 @@ function Stats(props) {
         </div>
         <div className='flex-row'>
           <span className='stats-text-spacing'>
-            {'DEF: '}
+            {'GOLD: '}
           </span>
           <span>
-            { props.stats.defence }
+            { props.stats.gold }
           </span>
         </div>
       </div>
