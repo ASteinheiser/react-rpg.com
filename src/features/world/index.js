@@ -70,7 +70,7 @@ class World extends React.Component {
   }
 
   render() {
-    const { world } = this.props;
+    const { gameOver, gameStart, paused, inventory } = this.props.world;
 
     return (
       <div className='world-view-container white-border'>
@@ -80,31 +80,33 @@ class World extends React.Component {
         <Monsters />
 
         {
-          world.gameOver ?
+          gameOver ?
             <GameOver />
-            :
-            <div className='flex-row world-stats-container'>
-              {
-                world.gameStart ?
-                  null
-                  :
-                  <Stats />
-              }
-              {
-                (world.paused && !world.inventory) ?
-                  null
-                  :
-                  <Inventory />
-              }
-              <GameMusic />
-            </div>
-        }
-        {
-          (world.paused && !world.gameOver) ?
-            world.paused
             :
             null
         }
+        {
+          (paused && !gameOver) ?
+            paused
+            :
+            null
+        }
+
+        <div className='flex-row world-stats-container'>
+          {
+            gameStart || gameOver ?
+              null
+              :
+              <Stats />
+          }
+          {
+            paused && !inventory ?
+              null
+              :
+              <Inventory />
+          }
+          <GameMusic />
+        </div>
 
       </div>
     );
