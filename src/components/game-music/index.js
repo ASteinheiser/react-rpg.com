@@ -3,6 +3,8 @@ import Sound                from 'react-sound';
 
 import AmbientMusic from './ambient-music.mp3';
 
+import './styles.css';
+
 export default class GameMusic extends Component {
   constructor(props) {
     super(props);
@@ -40,9 +42,35 @@ export default class GameMusic extends Component {
     window.removeEventListener('keydown', this.handleKeyPress);
   }
 
+  toggleMusic() {
+    const { gameMusic } = this.state;
+    if(gameMusic) {
+      this.setState({ gameMusic: null });
+    } else {
+      this.setState({ gameMusic: (
+          <Sound
+            url={AmbientMusic}
+            playStatus={'PLAYING'}
+            autoLoad={true}
+            loop={true}
+            volume={100} />
+        )
+      });
+    }
+  }
+
   render() {
     const { gameMusic } = this.state;
 
-    return gameMusic;
+    return (
+      <div className='game-music-toggle-button'
+        onClick={this.toggleMusic.bind(this)}>
+
+        <i className={`fa fa-${gameMusic ? 'volume-up' : 'volume-off'} game-music-button`} />
+
+        { gameMusic }
+
+      </div>
+    );
   }
 }

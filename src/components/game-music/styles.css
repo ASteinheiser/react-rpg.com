@@ -1,0 +1,19 @@
+.game-music-toggle-button {
+  height: 40px;
+  width: 45px;
+
+  border: 1px solid;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.game-music-button {
+  font-size: 26px;
+
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
