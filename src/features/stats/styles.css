@@ -23,19 +23,22 @@
 
 .exp-bar-container {
   width: 110px;
-  height: 15px;
+  height: 20px;
 
   background: var(--gray);
 
   position: relative;
 
   border: 1px solid var(--blue);
+  border-radius: 5px;
 }
 
 .exp-bar-value {
-  height: 15px;
+  height: 20px;
 
   background: var(--blue);
+
+  border-radius: 4px 0px 0px 4px;
 
   position: absolute;
 
@@ -44,29 +47,30 @@
 
 .exp-bar-position {
   flex: 1;
-  align-items: center;
 }
 
 .stats-hp-bar-position {
-  padding-top: 3px;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
 }
 
 .stats-hp-bar-container {
   width: 125px;
-  height: 15px;
+  height: 20px;
 
   background: var(--red);
 
   position: relative;
 
   border: 1px solid var(--green);
+  border-radius: 5px;
 }
 
 .stats-hp-bar-value {
-  height: 15px;
+  height: 20px;
 
   background: var(--green);
+
+  border-radius: 4px 0px 0px 4px;
 
   position: absolute;
 
@@ -74,8 +78,8 @@
 }
 
 .stats-bar-value-text {
-  height: 15px;
-  font-size: 20px;
+  height: 20px;
+  font-size: 22px;
   color: var(--dark-gray);
 
   font-weight: bold;
