@@ -66,6 +66,21 @@ export default class GameMusic extends Component {
       <div className='game-music-toggle-button'
         onClick={this.toggleMusic.bind(this)}>
 
+        <div className='line1'
+          style={{
+            width: gameMusic ? 0 : 60,
+            top: gameMusic ? 0 : 19,
+            left: gameMusic ? 0 : -7
+          }}>
+        </div>
+        <div className='line2'
+          style={{
+            width: gameMusic ? 0 : 60,
+            top: gameMusic ? 0 : 19,
+            right: gameMusic ? 0 : -7
+          }}>
+        </div>
+
         <i className={`fa fa-${gameMusic ? 'volume-up' : 'volume-off'} game-music-button`} />
 
         { gameMusic }

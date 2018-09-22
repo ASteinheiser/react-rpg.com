@@ -3,9 +3,12 @@
   width: 45px;
 
   border: 1px solid;
+  border-radius: 2px;
 
   cursor: pointer;
   user-select: none;
+
+  position: relative;
 }
 
 .game-music-button {
@@ -16,4 +19,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.line1 {
+  height: 2px;
+  background: var(--gray);
+
+  transform: rotate(41deg);
+
+  position: absolute;
+
+  transition: all .25s ease-in-out;
+}
+
+.line2 {
+  height: 2px;
+  background: var(--gray);
+
+  transform: rotate(139deg);
+
+  position: absolute;
+
+  transition: all .25s ease-in-out;
 }
