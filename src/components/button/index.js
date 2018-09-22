@@ -18,7 +18,7 @@ class Button extends Component {
     if(!title) return null;
 
     return(
-      <div className='button-container' style={style || {}} onClick={this.handleClick.bind(this)}>
+      <div className='button-container white-border' style={style || {}} onClick={this.handleClick.bind(this)}>
         {
           icon ?
             <i className={`fa fa-${icon} button-icon`}

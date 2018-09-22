@@ -2,9 +2,6 @@
   font-size: 24px;
   padding: 15px;
 
-  border: 1px solid;
-  border-radius: 2px;
-
   cursor: pointer;
   user-select: none;
 }

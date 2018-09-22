@@ -7,7 +7,7 @@ import './styles.css';
 class ConfirmDialog extends Component {
   render() {
     return(
-      <div className='confirm-dialog-container'>
+      <div className='confirm-dialog-container white-border'>
 
         <span className='confirm-dialog-text'>
           { this.props.text }

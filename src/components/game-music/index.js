@@ -63,7 +63,7 @@ export default class GameMusic extends Component {
     const { gameMusic } = this.state;
 
     return (
-      <div className='game-music-toggle-button'
+      <div className='game-music-toggle-button white-border'
         onClick={this.toggleMusic.bind(this)}>
 
         <div className='line1'

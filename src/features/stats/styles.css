@@ -10,10 +10,7 @@
   padding-bottom: 15px;
 }
 
-.stats-border {
-  border: 1px solid;
-  border-radius: 2px;
-
+.stats-container {
   padding: 15px;
 
   cursor: default;

@@ -5,7 +5,7 @@ import './styles.css';
 
 function Stats(props) {
   return (
-    <div className='flex-row stats-border'>
+    <div className='flex-row stats-container white-border'>
 
       <div className='flex-column'>
         <div className='flex-row stats-row-spacing'>

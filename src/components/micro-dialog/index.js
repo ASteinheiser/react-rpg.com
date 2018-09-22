@@ -5,7 +5,7 @@ import './styles.css';
 class MicroDialog extends Component {
   render() {
     return(
-      <div className={'micro-dialog-container' + (this.props.inventory_size ? ' micro-dialog-large' : '')}>
+      <div className={'micro-dialog-container white-border' + (this.props.inventory_size ? ' micro-dialog-large' : '')}>
 
         {
           this.props.no_button ?

@@ -8,9 +8,6 @@
   left: 120px;
   right: 120px;
 
-  border: 1px solid;
-  border-radius: 2px;
-
   background: var(--dark-gray);
   box-shadow: 1px 2px 50px var(--dark-gray);
 
