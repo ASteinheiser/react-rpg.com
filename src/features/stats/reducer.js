@@ -252,7 +252,7 @@ const statsReducer = (state = initialState, action) => {
         }
 
         // set next exp goal to be 1.5 times as much if player is 5 or less
-        if(newState.level > 6) {
+        if(newState.level < 6) {
           newState.expToLevel = Math.floor(state.expToLevel * 1.5);
         } else {
           // otherwise set it to be 1.25 times as much
