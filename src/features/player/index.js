@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 
+import SwordSlash     from './sword-slash.png';
 import WalkSprite     from './player_walk.png';
 import handleMovement from './movement';
 import {
@@ -16,10 +17,12 @@ class Player extends Component {
     super(props);
 
     this.state = {
-      animationPlay: 'paused'
+      animationPlay: 'paused',
+      attackAnimationPlay: 'paused'
     };
 
     this.stopAnimation = this.stopAnimation.bind(this);
+    this.stopAttackAnimation = this.stopAttackAnimation.bind(this);
   }
 
   // this is used to tell when to animate the player
@@ -31,6 +34,17 @@ class Player extends Component {
       // pause the infinite animation after 1 iteration
       this.props.setTimeout(this.stopAnimation, ANIMATION_SPEED);
     }
+    // see if the player attacked
+    if(prevProps.player.playerAttacked !== this.props.player.playerAttacked) {
+      // animate the sword slash
+      this.setState({ attackAnimationPlay: 'running' });
+      // pause the infinite animation after 1 iteration
+      this.props.setTimeout(this.stopAttackAnimation, ANIMATION_SPEED);
+    }
+  }
+
+  stopAttackAnimation() {
+    this.setState({ attackAnimationPlay: 'paused' });
   }
 
   stopAnimation() {
@@ -38,7 +52,7 @@ class Player extends Component {
   }
 
   render() {
-    const { animationPlay } = this.state;
+    const { animationPlay, attackAnimationPlay } = this.state;
     const { player, world } = this.props;
 
     const { gameStart } = world;
@@ -71,7 +85,13 @@ class Player extends Component {
           backgroundImage: `url('${WalkSprite}')`,
           backgroundPositionY: spriteLocation,
           animationPlayState: animationPlay
-        }} />
+        }}>
+        <div className='sword-slash'
+          style={{
+            backgroundImage: `url('${SwordSlash}')`,
+            animationPlayState: attackAnimationPlay
+          }} />
+      </div>
     );
   }
 }

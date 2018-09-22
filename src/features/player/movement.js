@@ -71,54 +71,17 @@ export default function handleMovement(player) {
 
   function swingAtMonster(direction) {
     const { playerMoved, position } = store.getState().player;
-    let newPosition = position;
-    // slightly move the player into the enemy square
-    switch (direction) {
-      case 'WEST':
-        newPosition[0] -= SPRITE_SIZE / 2;
-        break;
-      case 'EAST':
-        newPosition[0] += SPRITE_SIZE / 2;
-        break;
-      case 'NORTH':
-        newPosition[1] -= SPRITE_SIZE / 2;
-        break;
-      case 'SOUTH':
-        newPosition[1] += SPRITE_SIZE / 2;
-        break;
-      default:
-    }
-    // turn to the monster, and move the player slightly,
-    // but do not play the walk animation triggered by a change in playerMoved
+    // turn to the monster but do not play the
+    // walk animation triggered by a change in playerMoved
     store.dispatch({
       type: 'MOVE_PLAYER',
-      payload: { direction, playerMoved, position: newPosition }
+      payload: { direction, playerMoved, position }
     });
-    // after some time, move the player back
-    // to complete the 'swing' animation
-    setTimeout(function() {
-      // find the player's original location
-      switch (direction) {
-        case 'WEST':
-          newPosition[0] += SPRITE_SIZE / 2;
-          break;
-        case 'EAST':
-          newPosition[0] -= SPRITE_SIZE / 2;
-          break;
-        case 'NORTH':
-          newPosition[1] += SPRITE_SIZE / 2;
-          break;
-        case 'SOUTH':
-          newPosition[1] -= SPRITE_SIZE / 2;
-          break;
-        default:
-      }
-      // move the player back
-      store.dispatch({
-        type: 'MOVE_PLAYER',
-        payload: { direction, playerMoved, position: newPosition }
-      })
-    }, ANIMATION_SPEED);
+    // show the sword slash animation
+    store.dispatch({
+      type: 'PLAYER_ATTACK',
+      payload: {}
+    });
   }
 
   function takeTurn() {
