@@ -47,7 +47,13 @@ class Inventory extends Component {
           iconStyle={inventoryOpen ?
             {fontSize: 24} : {fontSize: 25}}
           title={inventoryOpen ?
-            'Close' : 'Inventory'} />
+            'Close' : 'Inventory'}
+          style={{
+            width: inventoryOpen ? '120px' : '190px',
+            transition: 'width .25s ease-out',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden'
+          }} />
       </div>
     );
   }
