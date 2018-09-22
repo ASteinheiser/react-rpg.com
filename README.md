@@ -9,9 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] settings button
-  - [ ] dialog with volume settings
-  - [ ] make own sound component
 - [ ] inventory pop-ups
   - [ ] not enough gold
   - [ ] item purchased
