@@ -11,6 +11,7 @@ npm start
 ## TODO:
 - [ ] settings button
   - [ ] dialog with volume settings
+  - [ ] make own sound component
 - [ ] turn exp/total xp to progress bar
 - [ ] pop-ups
   - [ ] not enough gold
