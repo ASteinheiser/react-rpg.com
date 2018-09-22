@@ -18,8 +18,12 @@ function Stats(props) {
         </div>
         <div className='flex-row exp-bar-position'>
           <span className='exp-bar-container'>
+            <span className='flex-row stats-bar-value-text'>
+              {'EXP'}
+            </span>
             <span className='exp-bar-value'
-              style={{ width: `${(props.stats.exp / props.stats.expToLevel) * 100}%` }} />
+              style={{ width: `${(props.stats.exp / props.stats.expToLevel) * 100}%` }}>
+            </span>
           </span>
         </div>
       </div>
@@ -27,10 +31,10 @@ function Stats(props) {
       <div className='flex-column stats-column-spacing'>
         <div className='flex-row stats-row-spacing'>
           <span className='stats-text-spacing'>
-            {'HP: '}
+            {'GOLD: '}
           </span>
           <span>
-            { props.stats.hp + ' / ' + props.stats.maxHp }
+            { props.stats.gold }
           </span>
         </div>
         <div className='flex-row'>
@@ -45,12 +49,16 @@ function Stats(props) {
 
       <div className='flex-column stats-column-spacing'>
         <div className='flex-row stats-row-spacing'>
-          <span className='stats-text-spacing'>
-            {'GOLD: '}
-          </span>
-          <span>
-            { props.stats.gold }
-          </span>
+          <div className='flex-row stats-hp-bar-position'>
+            <span className='stats-hp-bar-container'>
+              <span className='flex-row stats-bar-value-text'>
+                {'Hp'}
+              </span>
+              <span className='stats-hp-bar-value'
+                style={{ width: `${(props.stats.hp / props.stats.maxHp) * 100}%` }}>
+              </span>
+            </span>
+          </div>
         </div>
         <div className='flex-row'>
           <span className='stats-text-spacing'>

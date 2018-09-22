@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 
-import HealthBar      from '../../components/health-bar';
 import WalkSprite     from './player_walk.png';
 import handleMovement from './movement';
 import {
@@ -72,11 +71,7 @@ class Player extends Component {
           backgroundImage: `url('${WalkSprite}')`,
           backgroundPositionY: spriteLocation,
           animationPlayState: animationPlay
-        }}>
-
-        <HealthBar value={stats.hp} max={stats.maxHp} />
-
-      </div>
+        }} />
     );
   }
 }

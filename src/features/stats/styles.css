@@ -46,3 +46,45 @@
   flex: 1;
   align-items: center;
 }
+
+.stats-hp-bar-position {
+  padding-top: 3px;
+  padding-bottom: 4px;
+}
+
+.stats-hp-bar-container {
+  width: 110px;
+  height: 15px;
+
+  background: var(--red);
+
+  position: relative;
+
+  border: 1px solid var(--green);
+}
+
+.stats-hp-bar-value {
+  height: 15px;
+
+  background: var(--green);
+
+  position: absolute;
+
+  transition: width 2s ease-in-out;
+}
+
+.stats-bar-value-text {
+  height: 15px;
+  font-size: 20px;
+  color: var(--dark-gray);
+
+  font-weight: bold;
+
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+}
