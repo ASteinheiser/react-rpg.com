@@ -9,6 +9,10 @@ npm start
 ```
 
 ## TODO:
+- [ ] replace bump attack animation with slash animation
+- [ ] add attack button
+  - [ ] remove attack from movement
+- [ ] stats container animation after a stat was updated (maybe quick flash of white)
 - [ ] inventory pop-ups
   - [ ] not enough gold
   - [ ] item purchased
