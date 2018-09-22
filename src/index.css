@@ -62,4 +62,5 @@ body {
 
 .white-border {
   border: 1px solid;
+  border-radius: 2px;
 }
