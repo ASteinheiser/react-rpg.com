@@ -1,7 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
-import Sound       from 'react-sound';
 // game components
+import GameMusic from '../../components/game-music';
 import GameStart from '../../components/game-start';
 import GameOver  from '../../components/game-over';
 import Inventory from '../inventory';
@@ -14,47 +14,13 @@ import maps     from '../../data/maps';
 import store    from '../../config/store';
 // game functions
 import takeMonstersTurn from '../monsters/take-monsters-turn';
-// game files
-import AmbientMusic from './ambient-music.mp3';
 
 import './styles.css';
 
 class World extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      gameMusic: null
-    };
-
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-  }
 
   componentDidMount() {
     this.handleGameStart();
-
-    window.addEventListener('mousedown', this.handleKeyPress);
-    window.addEventListener('keydown', this.handleKeyPress);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('mousedown', this.handleKeyPress);
-    window.removeEventListener('keydown', this.handleKeyPress);
-  }
-
-  handleKeyPress() {
-    // we have to load music only have user has clicked or pressed a key
-    this.setState({ gameMusic: (
-        <Sound
-          url={AmbientMusic}
-          playStatus={'PLAYING'}
-          autoLoad={true}
-          loop={true}
-          volume={100} />
-      )
-    });
-    window.removeEventListener('mousedown', this.handleKeyPress);
-    window.removeEventListener('keydown', this.handleKeyPress);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -105,12 +71,9 @@ class World extends React.Component {
 
   render() {
     const { world } = this.props;
-    const { gameMusic } = this.state;
 
     return (
       <div className='world-view-container white-border'>
-
-        { gameMusic }
 
         <Map />
         <Player />
@@ -133,6 +96,7 @@ class World extends React.Component {
                   :
                   <Inventory />
               }
+              <GameMusic />
             </div>
         }
         {
