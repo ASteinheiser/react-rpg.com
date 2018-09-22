@@ -23,7 +23,9 @@ class GameWin extends Component {
     // check monsters by map
     Object.keys(components).forEach(mapId => {
       // see if there are any monsters on any maps
-      monstersRemain = Object.keys(components[mapId]).length > 0;
+      if(Object.keys(components[mapId]).length > 0) {
+        monstersRemain = true;
+      }
     });
     // player has defeated all enemies!
     if(!monstersRemain) {
