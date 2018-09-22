@@ -12,9 +12,11 @@ npm start
 - [ ] settings button
   - [ ] dialog with volume settings
   - [ ] make own sound component
-- [ ] pop-ups
+- [ ] inventory pop-ups
   - [ ] not enough gold
   - [ ] item purchased
+  - [ ] item received
+  - [ ] item dropped
   - [ ] tried to buy item with full inventory
   - [ ] tried to pick up item with full inventory
 - [ ] monster AI
