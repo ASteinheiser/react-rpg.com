@@ -10,12 +10,10 @@
 }
 
 .shop-inventory-items {
-  padding: 0 25px 20px 0;
+  padding: 0 50px 20px 0;
 }
 
 .shop-item-container {
-  align-items: center;
-
   cursor: pointer;
 
   margin-bottom: 7px;
@@ -40,4 +38,21 @@
   padding: 10px 15px;
 
   cursor: pointer;
+}
+
+.shop-item-price {
+  color: var(--orange);
+
+  padding-left: 10px;
+  border-left: 1px solid var(--gray);
+
+  width: 30px;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-item-title {
+  align-items: center;
+  justify-content: center;
 }

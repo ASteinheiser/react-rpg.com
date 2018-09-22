@@ -74,17 +74,17 @@ export default class ShopInventory extends Component {
         <div key={uuidv4()}
           onClick={this.handleBuyItem.bind(this, item)}
           className='flex-row shop-item-container white-border'>
-          <EmptySlot>
+          <EmptySlot style={{borderRight: '1px solid'}}>
             <div className='shop-item-slot'
               style={{ backgroundImage: `url('${item.image}')` }} />
           </EmptySlot>
           <div className='flex-row shop-item-text'>
-            <span>
+            <div className='flex-row shop-item-title'>
               { item.name }
-            </span>
-            <span>
+            </div>
+            <div className='flex-row shop-item-price'>
               { item.value }
-            </span>
+            </div>
           </div>
         </div>
       );

@@ -16,13 +16,15 @@ function handleUnequipItem(item) {
 
 export function EmptySlot(props) {
   return (
-    <div className={props.className ? props.className : ''} style={{
+    <div className={props.className ? props.className : ''} style={
+      Object.assign({}, {
         backgroundImage: `url('${InventorySlot}')`,
         backgroundSize: 'contain',
         width: '40px',
         height: '40px',
         margin: props.margin
-      }}>
+      }, props.style)
+    }>
       { props.children }
     </div>
   );
