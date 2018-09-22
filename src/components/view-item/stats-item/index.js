@@ -21,10 +21,13 @@ class StatsItem extends Component {
   render() {
     const { stats } = this.props;
 
+    let name = stats.name;
+    if(name === 'damage') name = 'attack';
+
     return(
       <div className='flex-row stats-item-container'>
         <span>
-          { stats.name }
+          { name }
         </span>
         <span style={{ color: `var(--${this.getColor(stats.name)})` }}>
           { '+' + stats.value }

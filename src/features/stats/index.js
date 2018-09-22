@@ -31,7 +31,7 @@ function Stats(props) {
       <div className='flex-column stats-column-spacing'>
         <div className='flex-row stats-row-spacing'>
           <span className='stats-text-spacing'>
-            {'DMG: '}
+            {'ATK: '}
           </span>
           <span className='stats-text-damage'>
             { props.stats.damage }
