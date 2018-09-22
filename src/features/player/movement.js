@@ -75,16 +75,16 @@ export default function handleMovement(player) {
     // slightly move the player into the enemy square
     switch (direction) {
       case 'WEST':
-        newPosition[0] -= 20;
+        newPosition[0] -= SPRITE_SIZE / 2;
         break;
       case 'EAST':
-        newPosition[0] += 20;
+        newPosition[0] += SPRITE_SIZE / 2;
         break;
       case 'NORTH':
-        newPosition[1] -= 20;
+        newPosition[1] -= SPRITE_SIZE / 2;
         break;
       case 'SOUTH':
-        newPosition[1] += 20;
+        newPosition[1] += SPRITE_SIZE / 2;
         break;
       default:
     }
@@ -100,16 +100,16 @@ export default function handleMovement(player) {
       // find the player's original location
       switch (direction) {
         case 'WEST':
-          newPosition[0] += 20;
+          newPosition[0] += SPRITE_SIZE / 2;
           break;
         case 'EAST':
-          newPosition[0] -= 20;
+          newPosition[0] -= SPRITE_SIZE / 2;
           break;
         case 'NORTH':
-          newPosition[1] += 20;
+          newPosition[1] += SPRITE_SIZE / 2;
           break;
         case 'SOUTH':
-          newPosition[1] -= 20;
+          newPosition[1] -= SPRITE_SIZE / 2;
           break;
         default:
       }
@@ -118,7 +118,7 @@ export default function handleMovement(player) {
         type: 'MOVE_PLAYER',
         payload: { direction, playerMoved, position: newPosition }
       })
-    }, ANIMATION_SPEED / 2);
+    }, ANIMATION_SPEED);
   }
 
   function takeTurn() {
