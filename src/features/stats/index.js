@@ -16,7 +16,7 @@ function Stats(props) {
             { props.stats.level }
           </span>
         </div>
-        <div className='flex-row'>
+        <div className='flex-row exp-bar-position'>
           <span className='exp-bar-container'>
             <span className='exp-bar-value'
               style={{ width: `${(props.stats.exp / props.stats.expToLevel) * 100}%` }} />
