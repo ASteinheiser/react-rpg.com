@@ -9,6 +9,9 @@ npm start
 ```
 
 ## TODO:
+- [ ] settings button
+  - [ ] dialog with volume settings
+- [ ] turn exp/total xp to progress bar
 - [ ] pop-ups
   - [ ] not enough gold
   - [ ] item purchased
