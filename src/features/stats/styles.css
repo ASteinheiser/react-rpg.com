@@ -28,6 +28,8 @@
   background: var(--gray);
 
   position: relative;
+
+  border: 1px solid var(--blue);
 }
 
 .exp-bar-value {
