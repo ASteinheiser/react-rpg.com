@@ -17,11 +17,9 @@ function Stats(props) {
           </span>
         </div>
         <div className='flex-row'>
-          <span className='stats-text-spacing'>
-            {'DMG: '}
-          </span>
-          <span>
-            { props.stats.damage }
+          <span className='exp-bar-container'>
+            <span className='exp-bar-value'
+              style={{ width: `${(props.stats.exp / props.stats.expToLevel) * 100}%` }} />
           </span>
         </div>
       </div>
@@ -37,10 +35,10 @@ function Stats(props) {
         </div>
         <div className='flex-row'>
           <span className='stats-text-spacing'>
-            {'DEF: '}
+            {'DMG: '}
           </span>
           <span>
-            { props.stats.defence }
+            { props.stats.damage }
           </span>
         </div>
       </div>
@@ -56,10 +54,10 @@ function Stats(props) {
         </div>
         <div className='flex-row'>
           <span className='stats-text-spacing'>
-            {'EXP: '}
+            {'DEF: '}
           </span>
           <span>
-            { props.stats.exp + ' / ' + props.stats.expToLevel }
+            { props.stats.defence }
           </span>
         </div>
       </div>
