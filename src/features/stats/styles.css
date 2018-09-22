@@ -30,7 +30,7 @@
   position: relative;
 
   border: 1px solid var(--blue);
-  border-radius: 5px;
+  border-radius: 7px;
 }
 
 .exp-bar-value {
@@ -38,11 +38,11 @@
 
   background: var(--blue);
 
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 5px 0px 0px 4px;
 
   position: absolute;
 
-  transition: width 2s ease-in-out;
+  transition: width 1s ease-in-out;
 }
 
 .exp-bar-position {
@@ -62,7 +62,7 @@
   position: relative;
 
   border: 1px solid var(--green);
-  border-radius: 5px;
+  border-radius: 7px;
 }
 
 .stats-hp-bar-value {
@@ -70,11 +70,11 @@
 
   background: var(--green);
 
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 5px 3px 3px 5px;
 
   position: absolute;
 
-  transition: width 2s ease-in-out;
+  transition: width 1s ease-in-out;
 }
 
 .stats-bar-value-text {
@@ -91,4 +91,20 @@
   z-index: 1000;
   left: 0;
   right: 0;
+}
+
+.stats-text-gold {
+  color: var(--orange);
+}
+
+.stats-text-damage {
+  color: var(--light-red);
+}
+
+.stats-text-level {
+  color: var(--blue);
+}
+
+.stats-text-defence {
+  color: var(--purple);
 }

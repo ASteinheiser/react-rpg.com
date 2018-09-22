@@ -12,7 +12,7 @@ function Stats(props) {
           <span className='stats-text-spacing'>
             {'LEVEL: '}
           </span>
-          <span>
+          <span className='stats-text-level'>
             { props.stats.level }
           </span>
         </div>
@@ -33,7 +33,7 @@ function Stats(props) {
           <span className='stats-text-spacing'>
             {'DMG: '}
           </span>
-          <span>
+          <span className='stats-text-damage'>
             { props.stats.damage }
           </span>
         </div>
@@ -41,7 +41,7 @@ function Stats(props) {
           <span className='stats-text-spacing'>
             {'DEF: '}
           </span>
-          <span>
+          <span className='stats-text-defence'>
             { props.stats.defence }
           </span>
         </div>
@@ -64,7 +64,7 @@ function Stats(props) {
           <span className='stats-text-spacing'>
             {'GOLD: '}
           </span>
-          <span>
+          <span className='stats-text-gold'>
             { props.stats.gold }
           </span>
         </div>
