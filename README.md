@@ -9,7 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] stats container animation after a stat was updated (maybe quick flash of white)
 - [ ] add attack sound effect
 - [ ] add footstep sound to player walk animation
 - [ ] inventory pop-ups
@@ -22,5 +21,7 @@ npm start
 - [ ] monster AI
   - [ ] move towards player if within sight
   - [ ] attack player if within range
+    - [ ] play animation
+    - [ ] play sound
   - [ ] move random if no player within sight
 - [ ] auto-generated levels (https://medium.freecodecamp.org/how-to-make-your-own-procedural-dungeon-map-generator-using-the-random-walk-algorithm-e0085c8aa9a)

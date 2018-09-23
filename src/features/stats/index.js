@@ -1,81 +1,114 @@
-import React       from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { connect }          from 'react-redux';
+import ReactTimeout         from 'react-timeout';
+
+import { ANIMATION_SPEED } from '../../config/constants';
 
 import './styles.css';
 
-function Stats(props) {
-  return (
-    <div className='flex-row stats-container white-border'>
+class Stats extends Component {
+  constructor(props) {
+    super(props);
 
-      <div className='flex-column'>
-        <div className='flex-row stats-row-spacing'>
-          <span className='stats-text-spacing'>
-            {'LEVEL: '}
-          </span>
-          <span className='stats-text-level'>
-            { props.stats.level }
-          </span>
-        </div>
-        <div className='flex-row exp-bar-position'>
-          <span className='exp-bar-container'>
-            <span className='flex-row stats-bar-value-text'>
-              {'EXP'}
+    this.state = {
+      statsBgColor: 'var(--dark-gray)'
+    };
+
+    this.stopAnimation = this.stopAnimation.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // detemine when the stats have been updated
+    if(prevProps.stats !== this.props.stats) {
+      // animate the container
+      this.setState({ statsBgColor: 'var(--gray)' });
+      // pause the infinite animation after 1 iteration
+      this.props.setTimeout(this.stopAnimation, ANIMATION_SPEED);
+    }
+  }
+
+  stopAnimation() {
+    this.setState({ statsBgColor: 'var(--dark-gray)' });
+  }
+
+  render() {
+    const { level, exp, expToLevel, damage, defence, hp, maxHp, gold } = this.props.stats;
+    const { statsBgColor } = this.state;
+
+    return (
+      <div className='flex-row stats-container white-border'
+        style={{ backgroundColor: statsBgColor }}>
+
+        <div className='flex-column'>
+          <div className='flex-row stats-row-spacing'>
+            <span className='stats-text-spacing'>
+              {'LEVEL: '}
             </span>
-            <span className='exp-bar-value'
-              style={{ width: `${(props.stats.exp / props.stats.expToLevel) * 100}%` }}>
+            <span className='stats-text-level'>
+              { level }
             </span>
-          </span>
-        </div>
-      </div>
-
-      <div className='flex-column stats-column-spacing'>
-        <div className='flex-row stats-row-spacing'>
-          <span className='stats-text-spacing'>
-            {'ATK: '}
-          </span>
-          <span className='stats-text-damage'>
-            { props.stats.damage }
-          </span>
-        </div>
-        <div className='flex-row'>
-          <span className='stats-text-spacing'>
-            {'DEF: '}
-          </span>
-          <span className='stats-text-defence'>
-            { props.stats.defence }
-          </span>
-        </div>
-      </div>
-
-      <div className='flex-column stats-column-spacing'>
-        <div className='flex-row stats-row-spacing'>
-          <div className='flex-row stats-hp-bar-position'>
-            <span className='stats-hp-bar-container'>
+          </div>
+          <div className='flex-row exp-bar-position'>
+            <span className='exp-bar-container'>
               <span className='flex-row stats-bar-value-text'>
-                {'Hp'}
+                {'EXP'}
               </span>
-              <span className='stats-hp-bar-value'
-                style={{ width: `${(props.stats.hp / props.stats.maxHp) * 100}%` }}>
+              <span className='exp-bar-value'
+                style={{ width: `${(exp / expToLevel) * 100}%` }}>
               </span>
             </span>
           </div>
         </div>
-        <div className='flex-row'>
-          <span className='stats-text-spacing'>
-            {'GOLD: '}
-          </span>
-          <span className='stats-text-gold'>
-            { props.stats.gold }
-          </span>
-        </div>
-      </div>
 
-    </div>
-  );
+        <div className='flex-column stats-column-spacing'>
+          <div className='flex-row stats-row-spacing'>
+            <span className='stats-text-spacing'>
+              {'ATK: '}
+            </span>
+            <span className='stats-text-damage'>
+              { damage }
+            </span>
+          </div>
+          <div className='flex-row'>
+            <span className='stats-text-spacing'>
+              {'DEF: '}
+            </span>
+            <span className='stats-text-defence'>
+              { defence }
+            </span>
+          </div>
+        </div>
+
+        <div className='flex-column stats-column-spacing'>
+          <div className='flex-row stats-row-spacing'>
+            <div className='flex-row stats-hp-bar-position'>
+              <span className='stats-hp-bar-container'>
+                <span className='flex-row stats-bar-value-text'>
+                  {'Hp'}
+                </span>
+                <span className='stats-hp-bar-value'
+                  style={{ width: `${(hp / maxHp) * 100}%` }}>
+                </span>
+              </span>
+            </div>
+          </div>
+          <div className='flex-row'>
+            <span className='stats-text-spacing'>
+              {'GOLD: '}
+            </span>
+            <span className='stats-text-gold'>
+              { gold }
+            </span>
+          </div>
+        </div>
+
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = ({ stats }) => {
   return { stats };
 }
 
-export default connect(mapStateToProps)(Stats);
+export default connect(mapStateToProps)(ReactTimeout(Stats));

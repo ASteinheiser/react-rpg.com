@@ -16,6 +16,8 @@
   cursor: default;
 
   user-select: none;
+
+  transition: all .5s ease-in-out;
 }
 
 .exp-bar-container {
