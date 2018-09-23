@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 import Sound                from 'react-sound';
-import store                from '../../config/store';
 
 import SwordSwish     from './player-sword-swish.wav';
 import PlayerStep     from './player-step.wav';
 import SwordSlash     from './sword-slash.png';
 import WalkSprite     from './player_walk.png';
+import store          from '../../config/store';
 import handleMovement from './movement';
 import {
   ANIMATION_SPEED,
