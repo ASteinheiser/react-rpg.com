@@ -21,6 +21,8 @@
   width: 40px;
   height: 40px;
 
+  z-index: 1000;
+
   top: 0;
   left: 0;
   /* this is for animating the 'steps' */
