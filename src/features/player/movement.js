@@ -14,6 +14,37 @@ import {
   ANIMATION_SPEED
 } from '../../config/constants';
 
+export function checkForMonster(newPos, direction) {
+  let { currentMap } = store.getState().world;
+  let validMove = false;
+  const monsters = store.getState().monsters.components;
+  // check for monsters
+  Object.keys(monsters[currentMap]).forEach(monsterId => {
+    let currMonster = monsters[currentMap][monsterId].props.monster;
+    let monsterPos = currMonster.position;
+    // if the new position contains a monster
+    if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
+      validMove = monsterPos;
+    }
+  });
+  // no monsters found in newPos
+  return validMove;
+}
+
+export function getNewPosition(oldPos, direction) {
+  switch(direction) {
+    case 'WEST':
+      return [ oldPos[0] - SPRITE_SIZE, oldPos[1] ]
+    case 'EAST':
+      return [ oldPos[0] + SPRITE_SIZE, oldPos[1] ]
+    case 'NORTH':
+      return [ oldPos[0], oldPos[1] - SPRITE_SIZE ]
+    case 'SOUTH':
+      return [ oldPos[0], oldPos[1] + SPRITE_SIZE ]
+    default:
+  }
+}
+
 export default function handleMovement(player) {
 
   function attemptMove(direction) {
@@ -21,67 +52,23 @@ export default function handleMovement(player) {
     const newPos = getNewPosition(oldPos, direction);
 
     if(observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)
-        && checkForMonster(newPos, direction)) {
+        && !checkForMonster(newPos, direction)) {
       // move the player
       dispatchMove(direction, newPos);
       // explore new tiles
       exploreTiles(newPos);
       // take a turn
       takeTurn();
+    } else {
+      // dont move the player
+      const { playerMoved, position } = store.getState().player;
+      // turn the player but do not play the
+      // walk animation triggered by a change in playerMoved
+      store.dispatch({
+        type: 'MOVE_PLAYER',
+        payload: { direction, playerMoved, position }
+      });
     }
-  }
-
-  function checkForMonster(newPos, direction) {
-    let { currentMap } = store.getState().world;
-    let validMove = true;
-    const monsters = store.getState().monsters.components;
-    // check for monsters
-    Object.keys(monsters[currentMap]).forEach(monsterId => {
-      let currMonster = monsters[currentMap][monsterId].props.monster;
-      let monsterPos = currMonster.position;
-      // if the new position contains a monster
-      if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
-        // turn the player and 'swing' at the monster
-        swingAtMonster(direction);
-        // attack the monster
-        attackMonster(monsterPos, currMonster);
-        // take a turn
-        takeTurn();
-        // monsters found, don't allow for movement
-        validMove = false;
-      }
-    });
-    // no monsters found in newPos
-    return validMove;
-  }
-
-  function getNewPosition(oldPos, direction) {
-    switch(direction) {
-      case 'WEST':
-        return [ oldPos[0] - SPRITE_SIZE, oldPos[1] ]
-      case 'EAST':
-        return [ oldPos[0] + SPRITE_SIZE, oldPos[1] ]
-      case 'NORTH':
-        return [ oldPos[0], oldPos[1] - SPRITE_SIZE ]
-      case 'SOUTH':
-        return [ oldPos[0], oldPos[1] + SPRITE_SIZE ]
-      default:
-    }
-  }
-
-  function swingAtMonster(direction) {
-    const { playerMoved, position } = store.getState().player;
-    // turn to the monster but do not play the
-    // walk animation triggered by a change in playerMoved
-    store.dispatch({
-      type: 'MOVE_PLAYER',
-      payload: { direction, playerMoved, position }
-    });
-    // show the sword slash animation
-    store.dispatch({
-      type: 'PLAYER_ATTACK',
-      payload: {}
-    });
   }
 
   function takeTurn() {
@@ -173,6 +160,12 @@ export default function handleMovement(player) {
       case 40:
       case 83:
         return attemptMove('SOUTH');
+      case 13:
+        // attack the monster
+        attackMonster();
+        // take a turn
+        takeTurn();
+        return;
       default:
         // console.log('key not mapped: ', event.keyCode);
     }

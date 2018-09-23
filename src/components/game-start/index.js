@@ -95,10 +95,10 @@ class GameStart extends Component {
           </div>
           <div>
             <div className='game-start-instruction-text'>
-              {'Use \'WASD\' / Arrow keys to move'}
+              {'Use \'WASD\' / Arrow Keys to MOVE'}
             </div>
             <div className='game-start-instruction-text'>
-              {'Press \'Enter\' to close chest popup'}
+              {'Press \'Enter\' Key to ATTACK'}
             </div>
           </div>
         </div>
