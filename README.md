@@ -9,6 +9,7 @@ npm start
 ```
 
 ## TODO:
+- [ ] disable attacking outside map bounds
 - [ ] inventory pop-ups
   - [ ] not enough gold
   - [ ] item purchased
