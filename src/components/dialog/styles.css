@@ -8,6 +8,8 @@
   left: 30px;
   right: 30px;
 
+  z-index: 1001;
+
   background: var(--dark-gray);
   box-shadow: 1px 2px 50px var(--dark-gray);
 
