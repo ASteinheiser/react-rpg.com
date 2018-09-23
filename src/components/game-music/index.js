@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Sound                from 'react-sound';
 
+import store        from '../../config/store';
 import AmbientMusic from './ambient-music.mp3';
 
 import './styles.css';
@@ -35,9 +36,13 @@ export default class GameMusic extends Component {
           playStatus={'PLAYING'}
           autoLoad={true}
           loop={true}
-          volume={100} />
+          volume={50} />
       )
     });
+    store.dispatch({
+      type: 'SET_SOUND',
+      payload: { sound: true }
+    })
     window.removeEventListener('mousedown', this.handleKeyPress);
     window.removeEventListener('keydown', this.handleKeyPress);
   }
@@ -46,14 +51,22 @@ export default class GameMusic extends Component {
     const { gameMusic } = this.state;
     if(gameMusic) {
       this.setState({ gameMusic: null });
+      store.dispatch({
+        type: 'SET_SOUND',
+        payload: { sound: false }
+      })
     } else {
+      store.dispatch({
+        type: 'SET_SOUND',
+        payload: { sound: true }
+      })
       this.setState({ gameMusic: (
           <Sound
             url={AmbientMusic}
             playStatus={'PLAYING'}
             autoLoad={true}
             loop={true}
-            volume={100} />
+            volume={50} />
         )
       });
     }

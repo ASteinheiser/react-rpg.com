@@ -10,7 +10,6 @@ npm start
 
 ## TODO:
 - [ ] add attack sound effect
-- [ ] add footstep sound to player walk animation
 - [ ] inventory pop-ups
   - [ ] not enough gold
   - [ ] item purchased

@@ -6,7 +6,8 @@ const initialState = {
   gameStart: false,
   paused: false,
   inventory: false,
-  turn: 0
+  turn: 0,
+  sound: true
 };
 
 const worldReducer = (state = initialState, action) => {
@@ -14,6 +15,11 @@ const worldReducer = (state = initialState, action) => {
   let newState = Object.assign({}, state);
 
   switch(action.type) {
+
+    case 'SET_SOUND':
+      // turn on or off game sounds
+      newState.sound = action.payload.sound;
+      return newState;
 
     case 'TAKE_TURN':
       // increment the turn
