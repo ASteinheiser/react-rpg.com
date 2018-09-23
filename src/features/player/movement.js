@@ -24,7 +24,7 @@ export function checkForMonster(newPos, direction) {
     let monsterPos = currMonster.position;
     // if the new position contains a monster
     if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
-      validMove = monsterPos;
+      validMove = currMonster.id;
     }
   });
   // no monsters found in newPos

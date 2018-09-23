@@ -8,63 +8,79 @@ export default function attackMonster() {
   // get player direction and the location of position to attack
   const { position, direction } = store.getState().player;
   const newPos = getNewPosition(position, direction);
-
-  console.log(checkForMonster(newPos, direction));
-
-  // const { currentMap } = store.getState().world;
-  // const { stats } = store.getState();
-  // // gather stats
-  // let monsterDamage = currMonster.damage;
-  // let monsterDefence = currMonster.defence;
-  // let monsterType = currMonster.type;
-  // let playerDamage = stats.damage;
-  // let playerDefence = stats.defence;
-  // // calculate damage
-  // let calculatedMonsterDamage = calculateDamage(monsterDamage, playerDefence);
-  // // deal damage to monster
-  // store.dispatch({
-  //   type: 'DAMAGE_TO_MONSTER',
-  //   payload: {
-  //     id: currMonster.id,
-  //     damage: calculateDamage(calculateBonus(playerDamage, monsterType), monsterDefence),
-  //     map: currentMap
-  //   }
-  // })
-  // // deal damage to player
-  // store.dispatch({
-  //   type: 'DAMAGE_TO_PLAYER',
-  //   payload: {
-  //     damage: calculatedMonsterDamage
-  //   }
-  // })
-  // // check if monster died
-  // if(currMonster.hp <= 0) {
-  //   // if it did, remove the monster component
-  //   store.dispatch({
-  //     type: 'KILL_MONSTER',
-  //     payload: { id: currMonster.id, map: currentMap }
-  //   })
-  //   // and get some exp
-  //   store.dispatch({
-  //     type: 'GET_EXP',
-  //     payload: { value: currMonster.exp }
-  //   })
-  //   // replace monster will blood spill
-  //   // need to pass relative tile index
-  //   store.dispatch({
-  //     type: 'ADD_BLOOD_SPILL',
-  //     payload: {
-  //       x: monsterPos[0] / SPRITE_SIZE,
-  //       y: monsterPos[1] / SPRITE_SIZE
-  //     }
-  //   })
-  // }
-  // // check if player died
-  // if((stats.hp - calculatedMonsterDamage) <= 0) {
-  //   // if it did, game over
-  //   store.dispatch({
-  //     type: 'GAME_OVER',
-  //     payload: {}
-  //   })
-  // }
+  // if theres a monster
+  let monsterId = checkForMonster(newPos, direction);
+  if(monsterId) {
+    const { currentMap } = store.getState().world;
+    const { stats } = store.getState();
+    const monsters = store.getState().monsters.components;
+    // get monster
+    let currMonster = monsters[currentMap][monsterId].props.monster;
+    let monsterPos = currMonster.position;
+    // gather stats
+    let monsterDamage = currMonster.damage;
+    let monsterDefence = currMonster.defence;
+    let monsterType = currMonster.type;
+    let playerDamage = stats.damage;
+    let playerDefence = stats.defence;
+    // calculate damage
+    let calculatedMonsterDamage = calculateDamage(monsterDamage, playerDefence);
+    // deal damage to monster
+    store.dispatch({
+      type: 'DAMAGE_TO_MONSTER',
+      payload: {
+        id: currMonster.id,
+        damage: calculateDamage(calculateBonus(playerDamage, monsterType), monsterDefence),
+        map: currentMap
+      }
+    })
+    // show sword swing
+    store.dispatch({
+      type: 'PLAYER_ATTACK',
+      payload: {}
+    })
+    // deal damage to player
+    store.dispatch({
+      type: 'DAMAGE_TO_PLAYER',
+      payload: {
+        damage: calculatedMonsterDamage
+      }
+    })
+    // check if monster died
+    if(currMonster.hp <= 0) {
+      // if it did, remove the monster component
+      store.dispatch({
+        type: 'KILL_MONSTER',
+        payload: { id: currMonster.id, map: currentMap }
+      })
+      // and get some exp
+      store.dispatch({
+        type: 'GET_EXP',
+        payload: { value: currMonster.exp }
+      })
+      // replace monster will blood spill
+      // need to pass relative tile index
+      store.dispatch({
+        type: 'ADD_BLOOD_SPILL',
+        payload: {
+          x: monsterPos[0] / SPRITE_SIZE,
+          y: monsterPos[1] / SPRITE_SIZE
+        }
+      })
+    }
+    // check if player died
+    if((stats.hp - calculatedMonsterDamage) <= 0) {
+      // if it did, game over
+      store.dispatch({
+        type: 'GAME_OVER',
+        payload: {}
+      })
+    }
+  } else {
+    // no monster, just show sword swing
+    store.dispatch({
+      type: 'PLAYER_ATTACK',
+      payload: {}
+    })
+  }
 }
