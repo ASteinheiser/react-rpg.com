@@ -18,7 +18,8 @@ class Player extends Component {
 
     this.state = {
       animationPlay: 'paused',
-      attackAnimationPlay: 'paused'
+      attackAnimationPlay: 'paused',
+      attackAnimationLoc: [0, 0]
     };
 
     this.stopAnimation = this.stopAnimation.bind(this);
@@ -36,8 +37,25 @@ class Player extends Component {
     }
     // see if the player attacked
     if(prevProps.player.playerAttacked !== this.props.player.playerAttacked) {
+      let attackAnimationLoc = [0, 0];
+      // calculate which way the sword should slash
+      switch(this.props.player.direction) {
+        case 'SOUTH':
+          attackAnimationLoc = [0, SPRITE_SIZE];
+          break;
+        case 'EAST':
+          attackAnimationLoc = [SPRITE_SIZE, 0];
+          break;
+        case 'WEST':
+          attackAnimationLoc = [-SPRITE_SIZE, 0];
+          break;
+        case 'NORTH':
+          attackAnimationLoc = [0, -SPRITE_SIZE];
+          break;
+        default:
+      }
       // animate the sword slash
-      this.setState({ attackAnimationPlay: 'running' });
+      this.setState({ attackAnimationPlay: 'running', attackAnimationLoc });
       // pause the infinite animation after 1 iteration
       this.props.setTimeout(this.stopAttackAnimation, ANIMATION_SPEED);
     }
@@ -52,7 +70,7 @@ class Player extends Component {
   }
 
   render() {
-    const { animationPlay, attackAnimationPlay } = this.state;
+    const { animationPlay, attackAnimationPlay, attackAnimationLoc } = this.state;
     const { player, world } = this.props;
 
     const { gameStart } = world;
@@ -88,8 +106,11 @@ class Player extends Component {
         }}>
         <div className='sword-slash'
           style={{
+            top: attackAnimationLoc[1],
+            left: attackAnimationLoc[0],
             backgroundImage: `url('${SwordSlash}')`,
-            animationPlayState: attackAnimationPlay
+            animationPlayState: attackAnimationPlay,
+            opacity: attackAnimationPlay === 'running' ? 1 : 0
           }} />
       </div>
     );
