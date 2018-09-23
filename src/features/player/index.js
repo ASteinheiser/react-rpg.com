@@ -77,7 +77,6 @@ class Player extends Component {
             url={SwordSwish}
             playStatus={'PLAYING'}
             autoLoad={true}
-            loop={true}
             volume={100} />
         );
       }
