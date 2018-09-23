@@ -45,6 +45,11 @@ export function getNewPosition(oldPos, direction) {
   }
 }
 
+export function observeBoundaries(oldPos, newPos) {
+  return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
+         (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
+}
+
 export default function handleMovement(player) {
 
   function attemptMove(direction) {
@@ -86,11 +91,6 @@ export default function handleMovement(player) {
         direction
       }
     });
-  }
-
-  function observeBoundaries(oldPos, newPos) {
-    return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
-           (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
   }
 
   function observeImpassable(oldPos, newPos) {
@@ -147,6 +147,7 @@ export default function handleMovement(player) {
   function handleKeyDown(event) {
     event.preventDefault();
 
+    // move with 'WASD' or Arrow keys
     switch(event.keyCode) {
       case 37:
       case 65:
@@ -161,11 +162,8 @@ export default function handleMovement(player) {
       case 83:
         return attemptMove('SOUTH');
       case 13:
-        // attack the monster
-        attackMonster();
-        // take a turn
-        takeTurn();
-        return;
+        // attack with enter key
+        return attackMonster();
       default:
         // console.log('key not mapped: ', event.keyCode);
     }
