@@ -9,7 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] add attack sound effect
 - [ ] inventory pop-ups
   - [ ] not enough gold
   - [ ] item purchased

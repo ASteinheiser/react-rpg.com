@@ -4,6 +4,7 @@ import ReactTimeout         from 'react-timeout';
 import Sound                from 'react-sound';
 import store                from '../../config/store';
 
+import SwordSwish     from './player-sword-swish.wav';
 import PlayerStep     from './player-step.wav';
 import SwordSlash     from './sword-slash.png';
 import WalkSprite     from './player_walk.png';
@@ -23,7 +24,8 @@ class Player extends Component {
       animationPlay: 'paused',
       attackAnimationPlay: 'paused',
       attackAnimationLoc: [0, 0],
-      animationWalkSound: null
+      animationWalkSound: null,
+      animationAttackSound: null
     };
 
     this.stopAnimation = this.stopAnimation.bind(this);
@@ -68,15 +70,26 @@ class Player extends Component {
           break;
         default:
       }
+      let animationAttackSound = null;
+      if(store.getState().world.sound) {
+        animationAttackSound = (
+          <Sound
+            url={SwordSwish}
+            playStatus={'PLAYING'}
+            autoLoad={true}
+            loop={true}
+            volume={100} />
+        );
+      }
       // animate the sword slash
-      this.setState({ attackAnimationPlay: 'running', attackAnimationLoc });
+      this.setState({ attackAnimationPlay: 'running', attackAnimationLoc, animationAttackSound });
       // pause the infinite animation after 1 iteration
       this.props.setTimeout(this.stopAttackAnimation, ANIMATION_SPEED);
     }
   }
 
   stopAttackAnimation() {
-    this.setState({ attackAnimationPlay: 'paused' });
+    this.setState({ attackAnimationPlay: 'paused', animationAttackSound: null });
   }
 
   stopAnimation() {
@@ -84,7 +97,7 @@ class Player extends Component {
   }
 
   render() {
-    const { animationPlay, attackAnimationPlay, attackAnimationLoc, animationWalkSound } = this.state;
+    const { animationPlay, attackAnimationPlay, attackAnimationLoc, animationWalkSound, animationAttackSound } = this.state;
     const { player, world } = this.props;
 
     const { gameStart } = world;
@@ -118,7 +131,10 @@ class Player extends Component {
           backgroundPositionY: spriteLocation,
           animationPlayState: animationPlay
         }}>
+
         { animationWalkSound }
+        { animationAttackSound }
+
         <div className='sword-slash'
           style={{
             top: attackAnimationLoc[1],
