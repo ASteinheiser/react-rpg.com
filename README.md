@@ -9,13 +9,11 @@ npm start
 ```
 
 ## TODO:
-- [ ] inventory pop-ups
-  - [ ] not enough gold
-  - [ ] item purchased
+- [ ] inventory/shop pop-ups
   - [ ] item received
-  - [ ] item dropped
-  - [ ] tried to buy item with full inventory
-  - [ ] tried to pick up item with full inventory
+  - [ ] item removed
+  - [ ] not enough gold
+  - [ ] tried to get up item with full inventory
 - [ ] monster AI
   - [ ] move towards player if within sight
   - [ ] attack player if within range

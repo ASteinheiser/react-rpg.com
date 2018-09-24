@@ -8,6 +8,7 @@ import Inventory from '../inventory';
 import Map       from '../map';
 import Monsters  from '../monsters';
 import Player    from '../player';
+import Snackbar  from '../snackbar';
 import Stats     from '../stats';
 // game configs
 import maps     from '../../data/maps';
@@ -105,6 +106,7 @@ class World extends React.Component {
               :
               <Inventory />
           }
+          <Snackbar />
           <GameMusic />
         </div>
 

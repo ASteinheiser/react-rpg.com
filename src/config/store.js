@@ -6,6 +6,7 @@ import world     from '../features/world/reducer';
 import stats     from '../features/stats/reducer';
 import inventory from '../features/inventory/reducer';
 import monsters  from '../features/monsters/reducer';
+import snackbar  from '../features/snackbar/reducer';
 
 const rootReducer = combineReducers({
   player,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   stats,
   inventory,
   monsters,
+  snackbar
 });
 
 const store = createStore(
