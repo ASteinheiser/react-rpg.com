@@ -9,11 +9,13 @@ npm start
 ```
 
 ## TODO:
+- [ ] player death sound
+- [ ] monster death sound
 - [ ] inventory/shop pop-ups
   - [ ] item received
   - [ ] item removed
   - [ ] not enough gold
-  - [ ] tried to get up item with full inventory
+  - [ ] tried to get item with full inventory
 - [ ] monster AI
   - [ ] move towards player if within sight
   - [ ] attack player if within range
