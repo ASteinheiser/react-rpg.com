@@ -162,6 +162,7 @@ export default function handleMovement(player) {
       case 83:
         return attemptMove('SOUTH');
       case 13:
+      case 32:
         // attack with enter key
         return attackMonster();
       default:

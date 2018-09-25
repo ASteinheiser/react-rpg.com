@@ -51,8 +51,8 @@ class ChestLoot extends Component {
   }
 
   handleKeyPress(event) {
-    // case for 'enter' key
-    if(event.keyCode === 13) {
+    // case for 'enter' or 'space' key
+    if(event.keyCode === 13 || event.keyCode === 32) {
       this.handleContinue();
     }
   }

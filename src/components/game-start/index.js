@@ -27,8 +27,8 @@ class GameStart extends Component {
   }
 
   handleKeyPress(event) {
-    // case for 'enter' key
-    if(event.keyCode === 13) {
+    // case for 'enter' and 'space' key
+    if(event.keyCode === 13 || event.keyCode === 32) {
       this.handleGameStart();
     }
   }
@@ -98,7 +98,7 @@ class GameStart extends Component {
               {'Use \'WASD\' / Arrow Keys to MOVE'}
             </div>
             <div className='game-start-instruction-text'>
-              {'Press \'Enter\' Key to ATTACK'}
+              {'Press \'Enter\' / \'SPACE\' Key to ATTACK'}
             </div>
           </div>
         </div>
