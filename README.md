@@ -12,8 +12,6 @@ npm start
 - [ ] player death sound
 - [ ] monster death sound
 
-- [ ] tried to get item with full inventory
-
 - [ ] monster AI
   - [ ] move towards player if within sight
   - [ ] attack player if within range

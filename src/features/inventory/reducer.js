@@ -4,7 +4,8 @@ const initialState = {
   items: [],
   maxItems: 8,
   itemDropped: '',
-  itemReceived: ''
+  itemReceived: '',
+  tooManyItems: ''
 };
 
 const inventoryReducer = (state = initialState, action) => {
@@ -31,10 +32,16 @@ const inventoryReducer = (state = initialState, action) => {
 
     case 'GET_ITEM':
       let itemId = uuidv4();
-      // save item to list with unique id for keeping track of duplicates
-      newState.items.push(Object.assign({}, action.payload, { id: itemId }));
+      // if there's room in the inventory
+      if(state.items.length < state.maxItems) {
+        // save item to list with unique id for keeping track of duplicates
+        newState.items.push(Object.assign({}, action.payload, { id: itemId }));
 
-      newState.itemReceived = action.payload.name;
+        newState.itemReceived = action.payload.name;
+      } else {
+        // show player that they have too many items
+        newState.tooManyItems = action.payload.name;
+      }
 
       return newState;
 
