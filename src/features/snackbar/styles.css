@@ -1,2 +1,17 @@
 .snackbar-container {
+  background-color: var(--dark-gray);
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 400px;
+
+  transition: all .35s ease-in-out;
+
+  text-align: center;
+  padding: 20px;
+
+  cursor: default;
+  user-select: none;
 }

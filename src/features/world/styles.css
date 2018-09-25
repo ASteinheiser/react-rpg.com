@@ -16,4 +16,6 @@
 
   align-items: center;
   align-self: center;
+
+  position: relative;
 }

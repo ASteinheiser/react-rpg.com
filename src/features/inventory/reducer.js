@@ -2,7 +2,9 @@ import { uuidv4 } from '../../modules/uuid-v4';
 
 const initialState = {
   items: [],
-  maxItems: 8
+  maxItems: 8,
+  itemDropped: '',
+  itemReceived: ''
 };
 
 const inventoryReducer = (state = initialState, action) => {
@@ -23,6 +25,8 @@ const inventoryReducer = (state = initialState, action) => {
         return false;
       });
 
+      newState.itemDropped = item.name;
+
       return newState;
 
     case 'GET_ITEM':
@@ -30,12 +34,16 @@ const inventoryReducer = (state = initialState, action) => {
       // save item to list with unique id for keeping track of duplicates
       newState.items.push(Object.assign({}, action.payload, { id: itemId }));
 
+      newState.itemReceived = action.payload.name;
+
       return newState;
 
     case 'RESET':
       return {
         items: [],
-        maxItems: 9
+        maxItems: 9,
+        itemDropped: '',
+        itemReceived: ''
       };
 
     default:

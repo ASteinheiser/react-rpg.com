@@ -18,39 +18,31 @@ class Snackbar extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps);
-    console.log(this.props);
-    let prevItems = prevProps.inventory.items;
-    let currItems = this.props.inventory.items;
-    // if the last inventory was larger, we lost an item
-    if(prevItems.length > currItems.length) {
-      console.log('lost item');
-      // get item name from last items
-      this.setState({ show: prevItems[prevItems.length - 1].name + ' was removed from your inventory...' });
-      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 2);
-    }
-    // if the last inventory was small, we got an item
-    else if(prevItems.length < currItems.length) {
-      console.log('got item');
-      // get item name from curr items
-      this.setState({ show: currItems[currItems.length - 1].name + ' was added to your inventory!' });
-      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 2);
+    const { itemReceived, itemDropped } = this.props.inventory;
+    let lastItemReceived = prevProps.inventory.itemReceived;
+    let lastItemDropped = prevProps.inventory.itemDropped;
+    // see if any items were dropped or received
+    if(lastItemDropped !== itemDropped) {
+      this.setState({ show: itemDropped + ' was removed from your inventory...' });
+      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
+    } else if(lastItemReceived !== itemReceived) {
+      this.setState({ show: itemReceived + ' was added to your inventory!' });
+      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
     }
   }
 
   handleHideSnack() {
-    // this.setState({ show: '' });
+    this.setState({ show: '' });
   }
 
   render() {
     const { show } = this.state;
-    const { items } = this.props.inventory;
 
     return(
-      <div key={items.length > 0 ? items[items.length - 1].name : 'item'}
-        className='snackbar-container'
+      <div className='snackbar-container white-border'
         style={{
-
+          opacity: show === '' ? 0 : 1,
+          zIndex: show === '' ? 0 : 101
         }}>
         { show }
       </div>

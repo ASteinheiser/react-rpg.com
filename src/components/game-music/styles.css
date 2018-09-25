@@ -6,6 +6,8 @@
   user-select: none;
 
   position: relative;
+
+  z-index: 100;
 }
 
 .game-music-button {
