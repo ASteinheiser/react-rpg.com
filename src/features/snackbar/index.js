@@ -24,13 +24,13 @@ class Snackbar extends Component {
     // see if any items were dropped or received
     if(lastItemDropped !== itemDropped) {
       this.setState({ show: itemDropped + ' was removed from your inventory...' });
-      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
+      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 7);
     } else if(lastItemReceived !== itemReceived) {
       this.setState({ show: itemReceived + ' was added to your inventory!' });
-      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
+      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 7);
     } else if(prevProps.snackbar.notEnoughGold !== this.props.snackbar.notEnoughGold) {
       this.setState({ show: 'You do not have enough gold for ' + this.props.snackbar.notEnoughGold });
-      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
+      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 7);
     }
   }
 
@@ -45,7 +45,11 @@ class Snackbar extends Component {
       <div className='snackbar-container white-border'
         style={{
           opacity: show === '' ? 0 : 1,
-          zIndex: show === '' ? 0 : 101
+          zIndex: show === '' ? 0 : 101,
+          transition: show === '' ?
+            'opacity .5s ease-in-out, z-index .5s step-end'
+            :
+            'opacity .5s ease-in-out, z-index .5s step-start'
         }}>
         { show }
       </div>
