@@ -30,13 +30,9 @@ export default function attackMonster() {
       let currMonster = monsters[currentMap][monsterId].props.monster;
       let monsterPos = currMonster.position;
       // gather stats
-      let monsterDamage = currMonster.damage;
       let monsterDefence = currMonster.defence;
       let monsterType = currMonster.type;
       let playerDamage = stats.damage;
-      let playerDefence = stats.defence;
-      // calculate damage
-      let calculatedMonsterDamage = calculateDamage(monsterDamage, playerDefence);
       // deal damage to monster
       store.dispatch({
         type: 'DAMAGE_TO_MONSTER',
@@ -50,13 +46,6 @@ export default function attackMonster() {
       store.dispatch({
         type: 'PLAYER_ATTACK',
         payload: {}
-      })
-      // deal damage to player
-      store.dispatch({
-        type: 'DAMAGE_TO_PLAYER',
-        payload: {
-          damage: calculatedMonsterDamage
-        }
       })
 
       // check if monster died
@@ -79,14 +68,6 @@ export default function attackMonster() {
             x: monsterPos[0] / SPRITE_SIZE,
             y: monsterPos[1] / SPRITE_SIZE
           }
-        })
-      }
-      // check if player died
-      if((stats.hp - calculatedMonsterDamage) <= 0) {
-        // if it did, game over
-        store.dispatch({
-          type: 'GAME_OVER',
-          payload: {}
         })
       }
     } else {
