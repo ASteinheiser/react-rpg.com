@@ -28,6 +28,9 @@ class Snackbar extends Component {
     } else if(lastItemReceived !== itemReceived) {
       this.setState({ show: itemReceived + ' was added to your inventory!' });
       this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
+    } else if(prevProps.snackbar.notEnoughGold !== this.props.snackbar.notEnoughGold) {
+      this.setState({ show: 'You do not have enough gold for ' + this.props.snackbar.notEnoughGold });
+      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
     }
   }
 
@@ -50,8 +53,8 @@ class Snackbar extends Component {
   }
 }
 
-const mapStateToProps = ({ inventory }) => {
-  return { inventory }
+const mapStateToProps = ({ inventory, snackbar }) => {
+  return { inventory, snackbar }
 }
 
 export default connect(mapStateToProps)(ReactTimeout(Snackbar));

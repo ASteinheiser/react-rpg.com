@@ -47,6 +47,7 @@ export default class ShopInventory extends Component {
         type: 'LOSE_GOLD',
         payload: { value: item.value }
       })
+      // if it's an hp potion
       if(item.type === 'potion') {
         store.dispatch({
           type: 'HEAL_HP',
@@ -60,6 +61,10 @@ export default class ShopInventory extends Component {
       }
     } else {
       // not enough gold!
+      store.dispatch({
+        type: 'NOT_ENOUGH_GOLD',
+        payload: item
+      })
     }
     this.handleCloseBuyItem();
   }
