@@ -106,7 +106,12 @@ class World extends React.Component {
               :
               <Inventory />
           }
-          <Snackbar />
+          {
+            gameOver ?
+              null
+              :
+              <Snackbar />
+          }
           <GameMusic />
         </div>
 
