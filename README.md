@@ -11,6 +11,7 @@ npm start
 ## TODO:
 - [ ] player death sound
 - [ ] monster death sound
+- [ ] dont allow chest to open with monster on top of it
 - [ ] do not place blood splatter on top of open/closed chests
 - [ ] turn player before allowing movement
 - [ ] resize tiles with ps and remove background sizes
