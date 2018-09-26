@@ -70,6 +70,12 @@ export default function attackMonster() {
           }
         })
       }
+
+      // take a turn if the player attacked something
+      store.dispatch({
+        type: 'TAKE_TURN',
+        payload: {}
+      });
     } else {
       // no monster, just show sword swing
       store.dispatch({
@@ -77,10 +83,5 @@ export default function attackMonster() {
         payload: {}
       })
     }
-    // after everything, take a turn
-    store.dispatch({
-      type: 'TAKE_TURN',
-      payload: {}
-    });
   }
 }
