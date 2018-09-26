@@ -29,6 +29,86 @@ function playerInRange(playerPos, monsterPos) {
   return inRange;
 }
 
+function getRandomDirection() {
+  let directions = ['up', 'down', 'left', 'right'];
+  let randomNumber = Math.floor(Math.random() * directions.length);
+  return directions[randomNumber];
+}
+
+function observeImpassable(newPos) {
+  const tiles = store.getState().map.tiles;
+  const y = newPos[1] / SPRITE_SIZE;
+  const x = newPos[0] / SPRITE_SIZE;
+
+  const nextTile = tiles[y][x].value;
+
+  return nextTile < 5 ? newPos : false;
+}
+
+// recursive function for moving the monster to the next available tile
+// will try to go towards the player if possible
+function moveMonster(direction, position, currentMap, id) {
+  switch(direction) {
+    case 'up':
+      // see if the monster can move to the next location
+      if(observeImpassable([position[0], position[1] - SPRITE_SIZE])) {
+        position[1] -= SPRITE_SIZE;
+      } else {
+        // otherwise move them to another spot
+        return moveMonster('right', position, currentMap, id)
+      }
+      break;
+    case 'down':
+      // see if the monster can move to the next location
+      if(observeImpassable([position[0], position[1] + SPRITE_SIZE])) {
+        position[1] += SPRITE_SIZE;
+      } else {
+        // otherwise move them to another spot
+        return moveMonster('left', position, currentMap, id)
+      }
+      break;
+    case 'left':
+      // see if the monster can move to the next location
+      if(observeImpassable([position[0] - SPRITE_SIZE, position[1]])) {
+        position[0] -= SPRITE_SIZE;
+      } else {
+        // otherwise move them to another spot
+        return moveMonster('up', position, currentMap, id)
+      }
+      break;
+    case 'right':
+      // see if the monster can move to the next location
+      if(observeImpassable([position[0] + SPRITE_SIZE, position[1]])) {
+        position[0] += SPRITE_SIZE;
+      } else {
+        // otherwise move them to another spot
+        return moveMonster('down', position, currentMap, id)
+      }
+      break;
+    default:
+  }
+  const { sightBox } = store.getState().map;
+  // look through each current sight box tile
+  sightBox.forEach(tile => {
+    // if the monster is in sight
+    if(JSON.stringify(tile) === JSON.stringify(position)) {
+      store.dispatch({
+        type: 'REVEAL_MONSTER',
+        payload: { id, map: currentMap }
+      })
+    }
+  });
+  // move the monster
+  store.dispatch({
+    type: 'MOVE_MONSTER',
+    payload: {
+      map: currentMap,
+      id,
+      position
+    }
+  })
+}
+
 export default function takeMonstersTurn() {
   // get the current monsters
   const { components } = store.getState().monsters;
@@ -83,12 +163,40 @@ export default function takeMonstersTurn() {
         }
       } else {
         // no player in range, time to move!
+        // get the monsters actual position in pixels
+        let position = [monsterPos[1] * SPRITE_SIZE, monsterPos[0] * SPRITE_SIZE];
+
+        // if the monster is below the player on the y axis
+        if(position[1] > player.position[1]) {
+          // move the monster 'up' relatively
+          moveMonster('up', position, currentMap, id);
+        }
+        // if the monster is above the player on the y axis
+        else if(position[1] < player.position[1]) {
+          // move the monster 'down' relatively
+          moveMonster('down', position, currentMap, id);
+        }
+        // if the monster is to the right of the player
+        else if(position[0] > player.position[0]) {
+          // move the monster 'left' relatively
+          moveMonster('left', position, currentMap, id);
+        }
+        // if the monster is to the left of the player
+        else if(position[0] < player.position[0]) {
+          // move the monster 'right' relatively
+          moveMonster('right', position, currentMap, id);
+        }
       }
     } else {
+      // monster is too far away from the player
       store.dispatch({
         type: 'HIDE_MONSTER',
         payload: { id, map: currentMap }
       })
+
+      let randomDirection = getRandomDirection();
+      // move the monster in a random direction
+      moveMonster(randomDirection, position, currentMap, id);
     }
   });
 }

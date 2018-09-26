@@ -18,6 +18,12 @@ const monstersReducer = (state = initialState, action) => {
 
   switch(action.type) {
 
+    case 'MOVE_MONSTER':
+      let update = action.payload;
+      newState.components[update.map][update.id].props.monster.position = update.position;
+
+      return newState;
+
     case 'KILL_MONSTER':
       delete newState.components[action.payload.map][action.payload.id];
 
