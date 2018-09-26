@@ -29,6 +29,23 @@ function playerInRange(playerPos, monsterPos) {
   return inRange;
 }
 
+function checkForOtherMonster(id, position, currentMap) {
+  // get current monsters
+  let monsterList = store.getState().monsters.components[currentMap];
+  let foundMonster = false;
+  // check list of monsters
+  Object.keys(monsterList).forEach(monsterId => {
+    // see if there's another monster in the next position
+    if(JSON.stringify(monsterList[monsterId].props.monster.position) === JSON.stringify(position)) {
+      if(monsterId !== id) {
+      foundMonster = true;
+      }
+    }
+  })
+
+  return foundMonster;
+}
+
 function getRandomDirection() {
   let directions = ['up', 'down', 'left', 'right'];
   let randomNumber = Math.floor(Math.random() * directions.length);
@@ -47,46 +64,85 @@ function observeImpassable(newPos) {
 
 // recursive function for moving the monster to the next available tile
 // will try to go towards the player if possible
-function moveMonster(direction, position, currentMap, id) {
+function moveMonster(direction, position, currentMap, id, count) {
+  count ++;
+  // dont allow for infinite loops when monster can't move
+  if(count >= 5) return;
+
+  let nextPos = [0,0];
+
   switch(direction) {
     case 'up':
+      nextPos = [position[0], position[1] - SPRITE_SIZE];
       // see if the monster can move to the next location
-      if(observeImpassable([position[0], position[1] - SPRITE_SIZE])) {
-        position[1] -= SPRITE_SIZE;
+      if(observeImpassable(nextPos)) {
+        // if we found a monster
+        if(checkForOtherMonster(id, nextPos, currentMap)) {
+          // move in a circle, but the opposite direction
+          return moveMonster('left', position, currentMap, id, count);
+        } else {
+          // otherwise just move to the next spot
+          position[1] -= SPRITE_SIZE;
+        }
         break;
       } else {
         // otherwise move them to another spot
-        return moveMonster('right', position, currentMap, id);
+        return moveMonster('right', position, currentMap, id, count);
       }
     case 'down':
+      nextPos = [position[0], position[1] + SPRITE_SIZE];
       // see if the monster can move to the next location
-      if(observeImpassable([position[0], position[1] + SPRITE_SIZE])) {
-        position[1] += SPRITE_SIZE;
+      if(observeImpassable(nextPos)) {
+        // if we found a monster
+        if(checkForOtherMonster(id, nextPos, currentMap)) {
+          // move in a circle, but the opposite direction
+          return moveMonster('right', position, currentMap, id, count);
+        } else {
+          // otherwise just move to the next spot
+          position[1] += SPRITE_SIZE;
+        }
         break;
       } else {
         // otherwise move them to another spot
-        return moveMonster('left', position, currentMap, id);
+        return moveMonster('left', position, currentMap, id, count);
       }
     case 'left':
+      nextPos = [position[0] - SPRITE_SIZE, position[1]];
       // see if the monster can move to the next location
-      if(observeImpassable([position[0] - SPRITE_SIZE, position[1]])) {
-        position[0] -= SPRITE_SIZE;
+      if(observeImpassable(nextPos)) {
+        // if we found a monster
+        if(checkForOtherMonster(id, nextPos, currentMap)) {
+          // move in a circle, but the opposite direction
+          return moveMonster('down', position, currentMap, id, count);
+        } else {
+          // otherwise just move to the next spot
+          position[0] -= SPRITE_SIZE;
+        }
         break;
       } else {
         // otherwise move them to another spot
-        return moveMonster('up', position, currentMap, id);
+        return moveMonster('up', position, currentMap, id, count);
       }
     case 'right':
+      nextPos = [position[0] + SPRITE_SIZE, position[1]];
       // see if the monster can move to the next location
-      if(observeImpassable([position[0] + SPRITE_SIZE, position[1]])) {
-        position[0] += SPRITE_SIZE;
+      if(observeImpassable(nextPos)) {
+        // if we found a monster
+        if(checkForOtherMonster(id, nextPos, currentMap)) {
+          // move in a circle, but the opposite direction
+          return moveMonster('up', position, currentMap, id, count);
+        } else {
+          // otherwise just move to the next spot
+          position[0] += SPRITE_SIZE;
+        }
         break;
       } else {
         // otherwise move them to another spot
-        return moveMonster('down', position, currentMap, id);
+        return moveMonster('down', position, currentMap, id, count);
       }
     default:
   }
+  console.log('made it here');
   // recalculate if the monster is in sight
   const { sightBox } = store.getState().map;
   let inSight = false;
@@ -181,22 +237,22 @@ export default function takeMonstersTurn() {
         // if the monster is below the player on the y axis
         if(position[1] > player.position[1]) {
           // move the monster 'up' relatively
-          moveMonster('up', position, currentMap, id);
+          moveMonster('up', position, currentMap, id, 0);
         }
         // if the monster is above the player on the y axis
         else if(position[1] < player.position[1]) {
           // move the monster 'down' relatively
-          moveMonster('down', position, currentMap, id);
+          moveMonster('down', position, currentMap, id, 0);
         }
         // if the monster is to the right of the player
         else if(position[0] > player.position[0]) {
           // move the monster 'left' relatively
-          moveMonster('left', position, currentMap, id);
+          moveMonster('left', position, currentMap, id, 0);
         }
         // if the monster is to the left of the player
         else if(position[0] < player.position[0]) {
           // move the monster 'right' relatively
-          moveMonster('right', position, currentMap, id);
+          moveMonster('right', position, currentMap, id, 0);
         }
       }
     } else {
@@ -208,7 +264,7 @@ export default function takeMonstersTurn() {
 
       let randomDirection = getRandomDirection();
       // move the monster in a random direction
-      moveMonster(randomDirection, position, currentMap, id);
+      moveMonster(randomDirection, position, currentMap, id, 0);
     }
   });
 }

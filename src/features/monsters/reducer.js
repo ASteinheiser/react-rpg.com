@@ -20,21 +20,8 @@ const monstersReducer = (state = initialState, action) => {
 
     case 'MOVE_MONSTER':
       let update = action.payload;
-      let monsterList = state.components[update.map];
-      let validMove = true;
-      // check list of monsters
-      Object.keys(monsterList).forEach(monsterId => {
-        // if there's a monster at the new position
-        if(JSON.stringify(monsterList[monsterId].props.monster.position) === JSON.stringify(update.position)) {
-          // and it's not us
-          if(monsterList[monsterId].props.monster.id !== update.id) {
-            // then dont allow movement
-            validMove = false;
-          }
-        }
-      })
-      // if the monster can move, update the position
-      if(validMove) newState.components[update.map][update.id].props.monster.position = update.position;
+
+      newState.components[update.map][update.id].props.monster.position = update.position;
 
       return newState;
 
