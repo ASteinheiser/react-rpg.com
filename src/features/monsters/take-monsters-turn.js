@@ -53,51 +53,63 @@ function moveMonster(direction, position, currentMap, id) {
       // see if the monster can move to the next location
       if(observeImpassable([position[0], position[1] - SPRITE_SIZE])) {
         position[1] -= SPRITE_SIZE;
+        break;
       } else {
         // otherwise move them to another spot
-        return moveMonster('right', position, currentMap, id)
+        return moveMonster('right', position, currentMap, id);
       }
-      break;
     case 'down':
       // see if the monster can move to the next location
       if(observeImpassable([position[0], position[1] + SPRITE_SIZE])) {
         position[1] += SPRITE_SIZE;
+        break;
       } else {
         // otherwise move them to another spot
-        return moveMonster('left', position, currentMap, id)
+        return moveMonster('left', position, currentMap, id);
       }
-      break;
     case 'left':
       // see if the monster can move to the next location
       if(observeImpassable([position[0] - SPRITE_SIZE, position[1]])) {
         position[0] -= SPRITE_SIZE;
+        break;
       } else {
         // otherwise move them to another spot
-        return moveMonster('up', position, currentMap, id)
+        return moveMonster('up', position, currentMap, id);
       }
-      break;
     case 'right':
       // see if the monster can move to the next location
       if(observeImpassable([position[0] + SPRITE_SIZE, position[1]])) {
         position[0] += SPRITE_SIZE;
+        break;
       } else {
         // otherwise move them to another spot
-        return moveMonster('down', position, currentMap, id)
+        return moveMonster('down', position, currentMap, id);
       }
-      break;
     default:
   }
+  // recalculate if the monster is in sight
   const { sightBox } = store.getState().map;
+  let inSight = false;
   // look through each current sight box tile
   sightBox.forEach(tile => {
     // if the monster is in sight
-    if(JSON.stringify(tile) === JSON.stringify(position)) {
-      store.dispatch({
-        type: 'REVEAL_MONSTER',
-        payload: { id, map: currentMap }
-      })
+    if(JSON.stringify(tile) === JSON.stringify([(position[1] / SPRITE_SIZE), (position[0] / SPRITE_SIZE)])) {
+      inSight = true;
     }
   });
+  // if the monster is now in sight
+  if(inSight) {
+    store.dispatch({
+      type: 'REVEAL_MONSTER',
+      payload: { id, map: currentMap }
+    })
+  } else {
+    // if the monster is now out of sight
+    store.dispatch({
+      type: 'HIDE_MONSTER',
+      payload: { id, map: currentMap }
+    })
+  }
   // move the monster
   store.dispatch({
     type: 'MOVE_MONSTER',

@@ -9,7 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] fix monster AI movement showing/hiding monsters properly
 - [ ] fix monsters walking on top of other monsters
 - [ ] player death sound
 - [ ] monster death sound
