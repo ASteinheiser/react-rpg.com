@@ -9,9 +9,8 @@ npm start
 ```
 
 ## TODO:
+- [ ] fix monster AI movement showing/hiding monsters properly
+- [ ] fix monsters walking on top of other monsters
 - [ ] player death sound
 - [ ] monster death sound
-- [ ] monster AI
-  - [ ] move towards player if within sight
-  - [ ] move random if no player within sight
 - [ ] auto-generated levels (https://medium.freecodecamp.org/how-to-make-your-own-procedural-dungeon-map-generator-using-the-random-walk-algorithm-e0085c8aa9a)
