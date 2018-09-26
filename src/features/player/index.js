@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 import Sound                from 'react-sound';
-
-import SwordSwish     from './player-sword-swish.wav';
+// player/monster sounds
 import PlayerStep     from './player-step.wav';
-import SwordSlash     from './sword-slash.png';
+import SwordSwish     from './player-sword-swish.wav';
+import MonsterAttack  from './monster-attack.wav';
+// player/monster animation spritesheets
 import WalkSprite     from './player_walk.png';
+import SwordSlash     from './sword-slash.png';
+import MonsterSlash   from './monster-slash.png';
+// other local imports
 import store          from '../../config/store';
 import handleMovement from './movement';
 import {
@@ -25,11 +29,14 @@ class Player extends Component {
       attackAnimationPlay: 'paused',
       attackAnimationLoc: [0, 0],
       animationWalkSound: null,
-      animationAttackSound: null
+      animationAttackSound: null,
+      monsterAttackAnimationPlay: 'paused',
+      monsterAnimationAttackSound: null,
     };
 
     this.stopAnimation = this.stopAnimation.bind(this);
     this.stopAttackAnimation = this.stopAttackAnimation.bind(this);
+    this.stopMonsterAttackAnimation = this.stopMonsterAttackAnimation.bind(this);
   }
 
   // this is used to tell when to animate the player
@@ -51,8 +58,25 @@ class Player extends Component {
       // pause the infinite animation after 1 iteration
       this.props.setTimeout(this.stopAnimation, ANIMATION_SPEED);
     }
+    // see if a monster attacked the player
+    else if(prevProps.player.monsterAttacked !== this.props.player.monsterAttacked) {
+      let monsterAnimationAttackSound = null;
+      if(store.getState().world.sound) {
+        monsterAnimationAttackSound = (
+          <Sound
+            url={MonsterAttack}
+            playStatus={'PLAYING'}
+            autoLoad={true}
+            volume={100} />
+        );
+      }
+      // animate the player
+      this.setState({ monsterAttackAnimationPlay: 'running', monsterAnimationAttackSound });
+      // pause the infinite animation after 1 iteration
+      this.props.setTimeout(this.stopMonsterAttackAnimation, ANIMATION_SPEED);
+    }
     // see if the player attacked
-    if(prevProps.player.playerAttacked !== this.props.player.playerAttacked) {
+    else if(prevProps.player.playerAttacked !== this.props.player.playerAttacked) {
       let attackAnimationLoc = [0, 0];
       // calculate which way the sword should slash
       switch(this.props.player.direction) {
@@ -87,6 +111,10 @@ class Player extends Component {
     }
   }
 
+  stopMonsterAttackAnimation() {
+    this.setState({ monsterAttackAnimationPlay: 'paused', monsterAnimationAttackSound: null });
+  }
+
   stopAttackAnimation() {
     this.setState({ attackAnimationPlay: 'paused', animationAttackSound: null });
   }
@@ -96,7 +124,7 @@ class Player extends Component {
   }
 
   render() {
-    const { animationPlay, attackAnimationPlay, attackAnimationLoc, animationWalkSound, animationAttackSound } = this.state;
+    const { animationPlay, attackAnimationPlay, attackAnimationLoc, animationWalkSound, animationAttackSound, monsterAnimationAttackSound, monsterAttackAnimationPlay } = this.state;
     const { player, world } = this.props;
 
     const { gameStart } = world;
@@ -133,6 +161,14 @@ class Player extends Component {
 
         { animationWalkSound }
         { animationAttackSound }
+        { monsterAnimationAttackSound }
+
+        <div className='monster-slash'
+          style={{
+            backgroundImage: `url('${MonsterSlash}')`,
+            animationPlayState: monsterAttackAnimationPlay,
+            opacity: monsterAttackAnimationPlay === 'running' ? 1 : 0
+          }} />
 
         <div className='sword-slash'
           style={{

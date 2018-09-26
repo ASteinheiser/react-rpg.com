@@ -23,8 +23,6 @@
 
   z-index: 1000;
 
-  top: 0;
-  left: 0;
   /* this is for animating the 'steps' */
   animation: swordSlash .35s steps(8) infinite;
   animation-direction: reverse;
@@ -35,4 +33,19 @@
   100% {
     background-position-x: 320px;
   }
+}
+
+.monster-slash {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+
+  z-index: 1000;
+
+  top: 0;
+  left: 0;
+  /* this is for animating the 'steps' */
+  animation: swordSlash .35s steps(8) infinite;
+  animation-direction: reverse;
+  background-position-x: 0px;
 }

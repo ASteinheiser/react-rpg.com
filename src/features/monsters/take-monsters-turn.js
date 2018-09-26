@@ -68,6 +68,11 @@ export default function takeMonstersTurn() {
             damage: calculatedMonsterDamage
           }
         })
+        // show the attack animation and play sound
+        store.dispatch({
+          type: 'MONSTER_ATTACK',
+          payload: {}
+        })
         // check if player died
         if((stats.hp - calculatedMonsterDamage) <= 0) {
           // if it did, game over
