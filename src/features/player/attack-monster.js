@@ -21,7 +21,7 @@ export default function attackMonster() {
   // if the attacked tile is in bounds
   if(observeBoundaries(position, newPos) && observeImpassable(position, newPos)) {
     // if theres a monster
-    let monsterId = checkForMonster(newPos, direction);
+    let monsterId = checkForMonster(newPos);
     if(monsterId) {
       const { currentMap } = store.getState().world;
       const { stats } = store.getState();

@@ -14,7 +14,7 @@ import {
   ANIMATION_SPEED
 } from '../../config/constants';
 
-export function checkForMonster(newPos, direction) {
+export function checkForMonster(newPos) {
   let { currentMap } = store.getState().world;
   let validMove = false;
   const monsters = store.getState().monsters.components;
