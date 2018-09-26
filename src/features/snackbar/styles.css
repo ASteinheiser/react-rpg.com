@@ -1,5 +1,6 @@
 .snackbar-container {
   background-color: var(--dark-gray);
+  max-width: 360px;
 
   position: absolute;
   top: 0;

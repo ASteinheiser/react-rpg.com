@@ -53,7 +53,10 @@ const worldReducer = (state = initialState, action) => {
       return newState;
 
     case 'RESET':
-      return initialState;
+      return {
+        ...initialState,
+        sound: state.sound
+      };
 
     default:
       return state;
