@@ -16,10 +16,10 @@ function Rat(props) {
 export default Rat;
 
 export const ratStats = {
-  hp: 5,
-  maxHp: 5,
+  hp: 6,
+  maxHp: 6,
   damage: 2,
-  defence: 1,
+  defence: 0,
   exp: 5,
   type: 'rat'
 };
