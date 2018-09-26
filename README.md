@@ -1,4 +1,4 @@
-# RPG Game made with React + Redux
+# RPG made with React + Redux
 
 ## Install locally and play in your browser
 ```
