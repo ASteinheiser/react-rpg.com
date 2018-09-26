@@ -57,7 +57,7 @@ function observeImpassable(newPos) {
   const y = newPos[1] / SPRITE_SIZE;
   const x = newPos[0] / SPRITE_SIZE;
 
-  const nextTile = tiles[y][x].value;
+  const nextTile = tiles[y] ? tiles[y][x].value : 5;
 
   return nextTile < 5 ? newPos : false;
 }
@@ -236,25 +236,29 @@ export default function takeMonstersTurn() {
         let yDiff = position[1] - player.position[1];
         let xDiff = position[0] - player.position[0];
         let greaterY = Math.abs(yDiff) > Math.abs(xDiff);
-        // if the monster is mostly below the player on the y axis
-        if(yDiff > 0 && greaterY) {
-          // move the monster 'up' relatively
-          moveMonster('up', position, currentMap, id, 0);
-        }
-        // if the monster is mostly above the player on the y axis
-        else if(yDiff < 0 && greaterY) {
-          // move the monster 'down' relatively
-          moveMonster('down', position, currentMap, id, 0);
-        }
-        // if the monster is mostly to the right of the player
-        else if(xDiff > 0 && !greaterY) {
-          // move the monster 'left' relatively
-          moveMonster('left', position, currentMap, id, 0);
-        }
-        // if the monster is mostly to the left of the player
-        else if(xDiff < 0 && !greaterY) {
-          // move the monster 'right' relatively
-          moveMonster('right', position, currentMap, id, 0);
+        // see if y axis is greater distance from player
+        if(greaterY) {
+          // if the monster is mostly below the player on the y axis
+          if(yDiff > 0) {
+            // move the monster 'up' relatively
+            moveMonster('up', position, currentMap, id, 0);
+          }
+          // if the monster is mostly above the player on the y axis
+          else if(yDiff < 0) {
+            // move the monster 'down' relatively
+            moveMonster('down', position, currentMap, id, 0);
+          }
+        } else { // x axis is greater distance from player
+          // if the monster is mostly to the right of the player
+          if(xDiff > 0) {
+            // move the monster 'left' relatively
+            moveMonster('left', position, currentMap, id, 0);
+          }
+          // if the monster is mostly to the left of the player
+          else if(xDiff < 0) {
+            // move the monster 'right' relatively
+            moveMonster('right', position, currentMap, id, 0);
+          }
         }
       }
     } else {
