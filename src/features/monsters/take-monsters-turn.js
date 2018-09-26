@@ -38,7 +38,7 @@ function checkForOtherMonster(id, position, currentMap) {
     // see if there's another monster in the next position
     if(JSON.stringify(monsterList[monsterId].props.monster.position) === JSON.stringify(position)) {
       if(monsterId !== id) {
-      foundMonster = true;
+        foundMonster = true;
       }
     }
   })
@@ -142,7 +142,6 @@ function moveMonster(direction, position, currentMap, id, count) {
       }
     default:
   }
-  console.log('made it here');
   // recalculate if the monster is in sight
   const { sightBox } = store.getState().map;
   let inSight = false;
