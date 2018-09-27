@@ -50,14 +50,63 @@ export function observeBoundaries(oldPos, newPos) {
          (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
 }
 
+function handleInteractWithTile(nextTile, newPos) {
+  // the player wants to use the stairs
+  if(nextTile === 2 || nextTile === 3) {
+    let direction;
+    // player wants to go down
+    if(nextTile === 2) {
+      direction = 'down';
+    }
+    // player wants to go up
+    if(nextTile === 3) {
+      direction = 'up';
+    }
+    // change the world map
+    store.dispatch({
+      type: 'LOAD_NEXT_MAP',
+      payload: { direction }
+    })
+  }
+
+  if(nextTile === 4) {
+    const y = newPos[1] / SPRITE_SIZE;
+    const x = newPos[0] / SPRITE_SIZE;
+    // open the chest
+    openChest(x, y);
+  }
+
+  // the player wants to use the shop
+  if(nextTile === 9) {
+    // show the shop dialog
+    store.dispatch({
+      type: 'PAUSE',
+      payload: { component: <ShopDialog /> }
+    })
+  }
+
+  // the player has accessed a shrine
+  if(nextTile === 10) {
+    // check if they have won the game
+    store.dispatch({
+      type: 'PAUSE',
+      payload: { component: <GameWin /> }
+    })
+  }
+}
+
 export default function handleMovement(player) {
 
   function attemptMove(direction) {
     const oldPos = store.getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
 
-    if(observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)
+    let nextTile = observeImpassable(oldPos, newPos);
+
+    if(observeBoundaries(oldPos, newPos) && nextTile < 5
         && !checkForMonster(newPos, direction)) {
+      // open chests, use shop, etc.
+      handleInteractWithTile(nextTile, newPos);
       // move the player
       dispatchMove(direction, newPos);
       // explore new tiles
@@ -100,48 +149,7 @@ export default function handleMovement(player) {
 
     const nextTile = tiles[y][x].value;
 
-    // the player wants to use the stairs
-    if(nextTile === 2 || nextTile === 3) {
-      let direction;
-      // player wants to go down
-      if(nextTile === 2) {
-        direction = 'down';
-      }
-      // player wants to go up
-      if(nextTile === 3) {
-        direction = 'up';
-      }
-      // change the world map
-      store.dispatch({
-        type: 'LOAD_NEXT_MAP',
-        payload: { direction }
-      })
-    }
-
-    if(nextTile === 4) {
-      // open the chest
-      openChest(x, y);
-    }
-
-    // the player wants to use the shop
-    if(nextTile === 9) {
-      // show the shop dialog
-      store.dispatch({
-        type: 'PAUSE',
-        payload: { component: <ShopDialog /> }
-      })
-    }
-
-    // the player has accessed a shrine
-    if(nextTile === 10) {
-      // check if they have won the game
-      store.dispatch({
-        type: 'PAUSE',
-        payload: { component: <GameWin /> }
-      })
-    }
-
-    return nextTile < 5;
+    return nextTile;
   }
 
   function handleKeyDown(event) {
