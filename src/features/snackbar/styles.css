@@ -21,6 +21,7 @@
   flex: 1;
 
   align-self: center;
+  justify-content: center;
 
-  padding: 15px;
+  padding: 5px 15px 10px 15px;
 }
