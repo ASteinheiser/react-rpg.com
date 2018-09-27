@@ -1,6 +1,8 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
+import GlovesOutline from './gloves-outline.png';
+import PantsOutline  from './pants-outline.png'
 import RingOutline   from './ring-outline.png';
 import SwordOutline  from './sword-outline.png';
 import Character     from './equipment-character.png';
@@ -84,7 +86,8 @@ function EquippedItems(props) {
                 <DarkenSlot />
               </div>
               :
-              null
+              <div className='item-slot-placeholder'
+                style={{ backgroundImage: `url('${GlovesOutline}')` }} />
           }
         </EmptySlot>
         <EmptySlot className='white-border' margin={'30px 15px 0 15px'}>
@@ -96,7 +99,8 @@ function EquippedItems(props) {
                 <DarkenSlot />
               </div>
               :
-              null
+              <div className='item-slot-placeholder'
+                style={{ backgroundImage: `url('${PantsOutline}')` }} />
           }
         </EmptySlot>
         <EmptySlot className='white-border' margin={'30px 15px 0 15px'}>
@@ -108,7 +112,8 @@ function EquippedItems(props) {
                 <DarkenSlot />
               </div>
               :
-              null
+              <div className='item-slot-placeholder'
+                style={{ backgroundImage: `url('${GlovesOutline}')` }} />
           }
         </EmptySlot>
       </div>
