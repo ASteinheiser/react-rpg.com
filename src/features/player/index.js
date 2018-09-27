@@ -76,7 +76,7 @@ class Player extends Component {
             volume={100} />
         );
       }
-      // animate the player
+      // player the player death sound
       this.setState({ playerDeath });
       // pause the infinite animation after 1 iteration
       this.props.setTimeout(this.stopPlayerDeath, ANIMATION_SPEED * 4);
@@ -93,10 +93,10 @@ class Player extends Component {
             volume={100} />
         );
       }
-      // animate the player
+      // play the monster death sound
       this.setState({ monsterDeath });
       // pause the infinite animation after 1 iteration
-      this.props.setTimeout(this.stopMonsterDeath, ANIMATION_SPEED * 4);
+      this.props.setTimeout(this.stopMonsterDeath, ANIMATION_SPEED * 3.5);
     }
     // see if a monster attacked the player
     else if(prevProps.player.monsterAttacked !== this.props.player.monsterAttacked) {
