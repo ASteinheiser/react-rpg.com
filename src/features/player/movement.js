@@ -68,30 +68,12 @@ function handleInteractWithTile(nextTile, newPos) {
       payload: { direction }
     })
   }
-
+  // player wants to open chest
   if(nextTile === 4) {
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
     // open the chest
     openChest(x, y);
-  }
-
-  // the player wants to use the shop
-  if(nextTile === 9) {
-    // show the shop dialog
-    store.dispatch({
-      type: 'PAUSE',
-      payload: { component: <ShopDialog /> }
-    })
-  }
-
-  // the player has accessed a shrine
-  if(nextTile === 10) {
-    // check if they have won the game
-    store.dispatch({
-      type: 'PAUSE',
-      payload: { component: <GameWin /> }
-    })
   }
 }
 
@@ -148,6 +130,24 @@ export default function handleMovement(player) {
     const x = newPos[0] / SPRITE_SIZE;
 
     const nextTile = tiles[y][x].value;
+
+    // the player wants to use the shop
+    if(nextTile === 9) {
+      // show the shop dialog
+      store.dispatch({
+        type: 'PAUSE',
+        payload: { component: <ShopDialog /> }
+      })
+    }
+
+    // the player has accessed a shrine
+    if(nextTile === 10) {
+      // check if they have won the game
+      store.dispatch({
+        type: 'PAUSE',
+        payload: { component: <GameWin /> }
+      })
+    }
 
     return nextTile;
   }
