@@ -9,6 +9,6 @@ npm start
 ```
 
 ## TODO:
-- [ ] resize tiles with ps and remove background sizes
+- [ ] remove css background sizes for improper sized images
 - [ ] add item slot placeholder images (translucent) (for armor, gloves, ring, etc);
 - [ ] auto-generated levels (https://medium.freecodecamp.org/how-to-make-your-own-procedural-dungeon-map-generator-using-the-random-walk-algorithm-e0085c8aa9a)
