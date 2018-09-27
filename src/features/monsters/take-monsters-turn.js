@@ -222,6 +222,11 @@ export default function takeMonstersTurn() {
         })
         // check if player died
         if((stats.hp - calculatedMonsterDamage) <= 0) {
+          // play death sound
+          store.dispatch({
+            type: 'PLAYER_DIED',
+            payload: {}
+          })
           // if it did, game over
           store.dispatch({
             type: 'GAME_OVER',

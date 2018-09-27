@@ -60,6 +60,11 @@ export default function attackMonster() {
           type: 'GET_EXP',
           payload: { value: currMonster.exp }
         })
+        // play death sound
+        store.dispatch({
+          type: 'MONSTER_DIED',
+          payload: {}
+        })
         // replace monster will blood spill
         // need to pass relative tile index
         store.dispatch({

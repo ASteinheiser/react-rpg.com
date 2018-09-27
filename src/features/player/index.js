@@ -3,6 +3,8 @@ import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 import Sound                from 'react-sound';
 // player/monster sounds
+import MonsterDeath   from './monster-death.wav';
+import PlayerDeath    from './player-death.mp3';
 import PlayerStep     from './player-step.wav';
 import SwordSwish     from './player-sword-swish.wav';
 import MonsterAttack  from './monster-attack.wav';
@@ -32,11 +34,15 @@ class Player extends Component {
       animationAttackSound: null,
       monsterAttackAnimationPlay: 'paused',
       monsterAnimationAttackSound: null,
+      monsterDeath: null,
+      playerDeath: null
     };
 
     this.stopAnimation = this.stopAnimation.bind(this);
     this.stopAttackAnimation = this.stopAttackAnimation.bind(this);
     this.stopMonsterAttackAnimation = this.stopMonsterAttackAnimation.bind(this);
+    this.stopMonsterDeath = this.stopMonsterDeath.bind(this);
+    this.stopPlayerDeath = this.stopPlayerDeath.bind(this);
   }
 
   // this is used to tell when to animate the player
@@ -57,6 +63,40 @@ class Player extends Component {
       this.setState({ animationPlay: 'running', animationWalkSound });
       // pause the infinite animation after 1 iteration
       this.props.setTimeout(this.stopAnimation, ANIMATION_SPEED);
+    }
+    // see if player died
+    else if(prevProps.player.playerDied !== this.props.player.playerDied) {
+      let playerDeath = null;
+      if(store.getState().world.sound) {
+        playerDeath = (
+          <Sound
+            url={PlayerDeath}
+            playStatus={'PLAYING'}
+            autoLoad={true}
+            volume={100} />
+        );
+      }
+      // animate the player
+      this.setState({ playerDeath });
+      // pause the infinite animation after 1 iteration
+      this.props.setTimeout(this.stopPlayerDeath, ANIMATION_SPEED * 4);
+    }
+    // see if a monster died
+    else if(prevProps.player.monsterDied !== this.props.player.monsterDied) {
+      let monsterDeath = null;
+      if(store.getState().world.sound) {
+        monsterDeath = (
+          <Sound
+            url={MonsterDeath}
+            playStatus={'PLAYING'}
+            autoLoad={true}
+            volume={100} />
+        );
+      }
+      // animate the player
+      this.setState({ monsterDeath });
+      // pause the infinite animation after 1 iteration
+      this.props.setTimeout(this.stopMonsterDeath, ANIMATION_SPEED * 4);
     }
     // see if a monster attacked the player
     else if(prevProps.player.monsterAttacked !== this.props.player.monsterAttacked) {
@@ -123,8 +163,16 @@ class Player extends Component {
     this.setState({ animationPlay: 'paused', animationWalkSound: null });
   }
 
+  stopPlayerDeath() {
+    this.setState({ playerDeath: null });
+  }
+
+  stopMonsterDeath() {
+    this.setState({ monsterDeath: null });
+  }
+
   render() {
-    const { animationPlay, attackAnimationPlay, attackAnimationLoc, animationWalkSound, animationAttackSound, monsterAnimationAttackSound, monsterAttackAnimationPlay } = this.state;
+    const { animationPlay, attackAnimationPlay, attackAnimationLoc, animationWalkSound, animationAttackSound, monsterAnimationAttackSound, monsterAttackAnimationPlay, monsterDeath, playerDeath } = this.state;
     const { player, world } = this.props;
 
     const { gameStart } = world;
@@ -162,6 +210,8 @@ class Player extends Component {
         { animationWalkSound }
         { animationAttackSound }
         { monsterAnimationAttackSound }
+        { monsterDeath }
+        { playerDeath }
 
         <div className='monster-slash'
           style={{

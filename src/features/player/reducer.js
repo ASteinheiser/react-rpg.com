@@ -4,7 +4,9 @@ const initialState = {
   position: [0, 0],
   playerMoved: false,
   playerAttacked: false,
-  monsterAttacked: false
+  monsterAttacked: false,
+  playerDied: false,
+  monsterDied: false,
 };
 
 const playerReducer = (state = initialState, action) => {
@@ -13,10 +15,20 @@ const playerReducer = (state = initialState, action) => {
 
   switch(action.type) {
 
+    case 'MONSTER_DIED':
+      // trigger monster's death sound
+      newState.monsterDied = !state.monsterDied;
+      return newState;
+
+    case 'PLAYER_DIED':
+      // trigger player's death sound
+      newState.playerDied = !state.playerDied;
+      return newState;
+
     case 'MONSTER_ATTACK':
-    // trigger monster's attack animation on player
-    newState.monsterAttacked = !state.monsterAttacked;
-    return newState;
+      // trigger monster's attack animation on player
+      newState.monsterAttacked = !state.monsterAttacked;
+      return newState;
 
     case 'PLAYER_ATTACK':
       // trigger attack animation
