@@ -100,12 +100,8 @@ class World extends React.Component {
               :
               <Stats />
           }
-          {
-            paused && !inventory ?
-              null
-              :
-              <Inventory />
-          }
+
+          <Inventory disabled={paused && !inventory} />
 
           <Snackbar />
           <GameMusic />

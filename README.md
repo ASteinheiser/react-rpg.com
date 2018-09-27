@@ -9,5 +9,4 @@ npm start
 ```
 
 ## TODO:
-- [ ] new item indicator on inventory button that disappears after view inventory
 - [ ] auto-generated levels (https://medium.freecodecamp.org/how-to-make-your-own-procedural-dungeon-map-generator-using-the-random-walk-algorithm-e0085c8aa9a)

@@ -22,7 +22,7 @@ class Snackbar extends Component {
     let lastItemReceived = prevProps.inventory.itemReceived;
     let lastItemDropped = prevProps.inventory.itemDropped;
 
-    if(lastItemDropped !== itemDropped&& itemDropped && itemDropped !== undefined) {
+    if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined) {
       // see if any items were dropped
       this.setState({ show: 'LOST AN ITEM: ' + itemDropped });
       this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 7);

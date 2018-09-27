@@ -12,12 +12,13 @@ class Inventory extends Component {
     super(props);
 
     this.state = {
-      inventoryOpen: false
+      inventoryOpen: false,
+      newItemIndicator: false
     }
   }
 
   handleOpenInventory() {
-    this.setState({ inventoryOpen: true }, () => {
+    this.setState({ inventoryOpen: true, newItemIndicator: false }, () => {
       store.dispatch({
         type: 'PAUSE',
         payload: { component: <InventoryDialog />, inventory: true }
@@ -34,12 +35,32 @@ class Inventory extends Component {
     });
   }
 
-  render() {
+  componentDidUpdate(prevProps, prevState) {
     const { inventoryOpen } = this.state;
+    const { itemReceived, itemDropped } = this.props.inventory;
+    let lastItemReceived = prevProps.inventory.itemReceived;
+    let lastItemDropped = prevProps.inventory.itemDropped;
+
+    if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined && !inventoryOpen) {
+      // see if any items were dropped
+      this.setState({ newItemIndicator: true });
+    }
+    else if(lastItemReceived !== itemReceived && itemReceived && itemReceived !== undefined && !inventoryOpen) {
+      // see if any items were received
+      this.setState({ newItemIndicator: true });
+    }
+  }
+
+  render() {
+    const { inventoryOpen, newItemIndicator } = this.state;
+    const { disabled } = this.props;
+
+    if(disabled) return null;
 
     return (
       <div className='flex-row inventory-container'>
         <Button
+          indicator={newItemIndicator}
           onClick={inventoryOpen ?
             this.handleCloseInventory.bind(this) : this.handleOpenInventory.bind(this)}
           icon={inventoryOpen ?

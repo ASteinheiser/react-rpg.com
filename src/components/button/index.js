@@ -13,7 +13,7 @@ class Button extends Component {
   }
 
   render() {
-    const { icon, title, iconStyle, style } = this.props;
+    const { icon, title, iconStyle, style, indicator } = this.props;
 
     if(!title) return null;
 
@@ -29,6 +29,12 @@ class Button extends Component {
         <span>
           { title }
         </span>
+        {
+          indicator ?
+            <div className='button-indicator' />
+            :
+            null
+        }
       </div>
     );
   }
