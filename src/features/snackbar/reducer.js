@@ -10,7 +10,7 @@ const snackbarReducer = (state = initialState, action) => {
   switch(action.type) {
 
     case 'NOT_ENOUGH_GOLD':
-      newState.notEnoughGold = action.payload.name;
+      newState.notEnoughGold = action.payload.name + '-' + (new Date().getTime());
 
       return newState;
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Button        from '../button';
+import { EmptySlot } from '../equipped-items';
 import ConfirmDialog from '../confirm-dialog';
 import MicroDialog   from '../micro-dialog';
 import StatsItem     from './stats-item';
@@ -127,12 +128,13 @@ class ViewItem extends Component {
     return(
       <MicroDialog onClose={this.props.onClose}>
         <div className='view-item-text-container'>
-          <div style={{
-              backgroundImage: `url('${data.image}')`,
-              marginRight: 15,
-              width: '40px',
-              height: '40px'
-            }} />
+          <EmptySlot className='white-border view-item-image-container'>
+            <div style={{
+                backgroundImage: `url('${data.image}')`,
+                width: '40px',
+                height: '40px'
+              }} />
+          </EmptySlot>
           <span className='view-item-text'>
             { data.name || '-' }
           </span>

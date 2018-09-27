@@ -25,4 +25,13 @@
   height: 15px;
 
   background: var(--light-red);
+
+  animation: fade 4s ease-in-out infinite;
+  opacity: 1;
+}
+
+@keyframes fade {
+  0%   { opacity: 1; }
+  50%  { opacity: .5; }
+  100% { opacity: 1; }
 }

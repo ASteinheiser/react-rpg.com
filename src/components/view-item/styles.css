@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: center;
 
-  padding: 10px 0;
+  padding: 20px 0 10px;
 }
 
 .view-item-text {
@@ -25,4 +25,8 @@
 .view-item-stats-container {
   flex: 1;
   justify-content: space-evenly;
+}
+
+.view-item-image-container {
+  margin-right: 15px;
 }

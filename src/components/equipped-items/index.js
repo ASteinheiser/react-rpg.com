@@ -39,7 +39,7 @@ export function EmptySlot(props) {
 function DarkenSlot(props) {
   return (
     <div style={{
-      backgroundColor: 'rgba(0, 0, 0, 0.35)',
+      backgroundColor: 'rgba(0, 0, 0, 0.25)',
       width: 40,
       height: 40
     }} />

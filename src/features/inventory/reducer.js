@@ -26,22 +26,22 @@ const inventoryReducer = (state = initialState, action) => {
         return false;
       });
 
-      newState.itemDropped = item.name;
+      newState.itemDropped = item.name + '-' + (new Date().getTime());
 
       return newState;
 
     case 'GET_ITEM':
       let itemId = uuidv4();
-      // if there's room in the inventory
-      if(state.items.length < state.maxItems) {
-        // save item to list with unique id for keeping track of duplicates
-        newState.items.push(Object.assign({}, action.payload, { id: itemId }));
+      // save item to list with unique id for keeping track of duplicates
+      newState.items.push(Object.assign({}, action.payload, { id: itemId }));
 
-        newState.itemReceived = action.payload.name;
-      } else {
-        // show player that they have too many items
-        newState.tooManyItems = action.payload.name;
-      }
+      newState.itemReceived = action.payload.name + '-' + (new Date().getTime());
+
+      return newState;
+
+    case 'TOO_MANY_ITEMS':
+      // display the message to the player
+      newState.tooManyItems = action.payload.name + '-' + (new Date().getTime());
 
       return newState;
 

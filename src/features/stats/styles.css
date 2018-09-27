@@ -18,6 +18,8 @@
   user-select: none;
 
   transition: all .5s ease-in-out;
+
+  width: 365px;
 }
 
 .exp-bar-container {

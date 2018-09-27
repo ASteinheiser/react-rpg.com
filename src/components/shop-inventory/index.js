@@ -41,21 +41,31 @@ export default class ShopInventory extends Component {
 
   handleConfirmBuyItem(item) {
     const { gold } = store.getState().stats;
+    const { items, maxItems } = store.getState().inventory;
     // make sure player has enough gold
     if(gold >= item.value) {
-      store.dispatch({
-        type: 'LOSE_GOLD',
-        payload: { value: item.value }
-      })
-      // if it's an hp potion
-      if(item.type === 'potion') {
+      // if there's room in the inventory
+      if(items.length < maxItems) {
         store.dispatch({
-          type: 'HEAL_HP',
-          payload: { value: parseInt(item.hp, 10) }
+          type: 'LOSE_GOLD',
+          payload: { value: item.value }
         })
+        // if it's an hp potion
+        if(item.type === 'potion') {
+          store.dispatch({
+            type: 'HEAL_HP',
+            payload: { value: parseInt(item.hp, 10) }
+          })
+        } else {
+          store.dispatch({
+            type: 'GET_ITEM',
+            payload: item
+          })
+        }
       } else {
+        // inventory full
         store.dispatch({
-          type: 'GET_ITEM',
+          type: 'TOO_MANY_ITEMS',
           payload: item
         })
       }

@@ -58,11 +58,6 @@ class GameStart extends Component {
       type: 'GET_ITEM',
       payload: items.weapons.RustySword
     })
-    // and put it on
-    store.dispatch({
-      type: 'EQUIP_ITEM',
-      payload: store.getState().inventory.items[0]
-    })
   }
 
   handleLoadMap() {
