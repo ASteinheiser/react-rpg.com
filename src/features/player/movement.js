@@ -129,7 +129,7 @@ export default function handleMovement(player) {
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
 
-    const nextTile = tiles[y][x].value;
+    const nextTile = tiles[y] ? tiles[y][x].value : 5;
 
     // the player wants to use the shop
     if(nextTile === 9) {
