@@ -43,6 +43,10 @@ const playerReducer = (state = initialState, action) => {
         playerAttacked: state.playerAttacked,
         // or monster attack
         monsterAttacked: state.monsterAttacked,
+        // or monster death sound
+        monsterDied: state.monsterDied,
+        // or player death sound
+        playerDied: state.playerDied,
         ...action.payload
       }
 

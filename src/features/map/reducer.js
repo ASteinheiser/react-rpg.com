@@ -21,8 +21,12 @@ const mapReducer = (state = initialState, action) => {
       return newState;
 
     case 'ADD_BLOOD_SPILL':
-      // set current tile to blood spill tile
-      newState.tiles[action.payload.y][action.payload.x].value = -1;
+      // we need this check to not override chests, stairs, etc.
+      // check if the next tile is an empty one
+      if(state.tiles[action.payload.y][action.payload.x].value === 0) {
+        // set current tile to blood spill tile
+        newState.tiles[action.payload.y][action.payload.x].value = -1;
+      }
       return newState;
 
     case 'OPEN_CHEST':
