@@ -7,6 +7,11 @@ import App   from './App';
 
 import './index.css';
 
+// supresses enormous amount of console.logs
+/* global soundManager:false */
+import 'react-sound';
+soundManager.setup({ debugMode: false });
+
 ReactDOM.render((
   <Provider store={store}>
     <App />
