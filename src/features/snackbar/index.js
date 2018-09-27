@@ -24,24 +24,24 @@ class Snackbar extends Component {
 
     if(lastItemDropped !== itemDropped&& itemDropped && itemDropped !== undefined) {
       // see if any items were dropped
-      this.setState({ show: itemDropped + ' was removed from your inventory...' });
+      this.setState({ show: 'LOST AN ITEM: ' + itemDropped });
       this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 7);
     }
     else if(lastItemReceived !== itemReceived && itemReceived && itemReceived !== undefined) {
       // see if any items were received
-      this.setState({ show: itemReceived + ' was added to your inventory!' });
+      this.setState({ show: 'GOT NEW ITEM: ' + itemReceived });
       this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 7);
     }
     else if(prevProps.snackbar.notEnoughGold !== this.props.snackbar.notEnoughGold &&
              this.props.snackbar.notEnoughGold && this.props.snackbar.notEnoughGold !== undefined) {
       // see if player tried to buy item without enough gold
-      this.setState({ show: 'You do not have enough gold for ' + this.props.snackbar.notEnoughGold });
+      this.setState({ show: 'NOT ENOUGH GOLD FOR: ' + this.props.snackbar.notEnoughGold });
       this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 7);
     }
     else if(prevProps.inventory.tooManyItems !== this.props.inventory.tooManyItems &&
               this.props.snackbar.tooManyItems && this.props.snackbar.tooManyItems !== undefined) {
       // see if player tried to get item with full inventory
-      this.setState({ show: 'You do not have enough space for ' + this.props.inventory.tooManyItems });
+      this.setState({ show: 'NOT ENOUGH SPACE FOR: ' + this.props.inventory.tooManyItems });
       this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 7);
     }
   }
@@ -63,7 +63,9 @@ class Snackbar extends Component {
             :
             'opacity .5s ease-in-out, z-index .5s step-start'
         }}>
-        { show }
+        <span className='snackbar-text'>
+          { show }
+        </span>
       </div>
     );
   }
