@@ -1,6 +1,8 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
+import RingOutline   from './ring-outline.png';
+import SwordOutline  from './sword-outline.png';
 import Character     from './equipment-character.png';
 import InventorySlot from './inventory-slot.png';
 import store         from '../../config/store';
@@ -121,7 +123,8 @@ function EquippedItems(props) {
                 <DarkenSlot />
               </div>
               :
-              null
+              <div className='item-slot-placeholder'
+                style={{ backgroundImage: `url('${RingOutline}')` }} />
           }
         </EmptySlot>
 
@@ -134,7 +137,8 @@ function EquippedItems(props) {
                 <DarkenSlot />
               </div>
               :
-              null
+              <div className='item-slot-placeholder'
+                style={{ backgroundImage: `url('${SwordOutline}')` }} />
           }
         </EmptySlot>
       </div>

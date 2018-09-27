@@ -13,3 +13,10 @@
   width: 40px;
   height: 40px;
 }
+
+.item-slot-placeholder {
+  cursor: default;
+
+  width: 40px;
+  height: 40px;
+}
