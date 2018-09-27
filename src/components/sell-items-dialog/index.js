@@ -98,7 +98,6 @@ class SellItemsDialog extends Component {
           <div onClick={this.handleViewItem.bind(this, items[index])}
             style={{
               backgroundImage: `url('${items[index].image}')`,
-              backgroundSize: 'contain',
               width: '40px',
               height: '40px',
               cursor: 'pointer'

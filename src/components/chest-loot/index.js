@@ -98,7 +98,6 @@ class ChestLoot extends Component {
             <div className='flex-row chest-loot-item'>
               <div style={{
                   backgroundImage: `url('${item.image}')`,
-                  backgroundSize: 'contain',
                   width: '40px',
                   height: '40px'
                 }} />

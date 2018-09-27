@@ -24,7 +24,6 @@ class CurrentItems extends Component {
           <div onClick={this.viewItem.bind(this, items[index])}
             style={{
               backgroundImage: `url('${items[index].image}')`,
-              backgroundSize: 'contain',
               width: '40px',
               height: '40px',
               cursor: 'pointer'

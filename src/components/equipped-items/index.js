@@ -19,7 +19,6 @@ export function EmptySlot(props) {
     <div className={props.className ? props.className : ''} style={
       Object.assign({}, {
         backgroundImage: `url('${InventorySlot}')`,
-        backgroundSize: 'contain',
         width: '40px',
         height: '40px',
         margin: props.margin

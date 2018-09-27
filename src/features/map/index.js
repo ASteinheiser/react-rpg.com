@@ -61,7 +61,6 @@ function GroundTile(props) {
     <div
       style={{
         backgroundImage: 'url(\'/tiles/ground.png\')',
-        backgroundSize: 'contain',
         display: 'inline-flex',
         height: SPRITE_SIZE,
         width: SPRITE_SIZE,
@@ -100,7 +99,6 @@ function MapTile(props) {
       <div
         style={{
           backgroundImage: `url(/tiles/${getTileSprite(props.tile.value)}.png)`,
-          backgroundSize: 'contain',
           height: SPRITE_SIZE,
           width: SPRITE_SIZE,
         }}>

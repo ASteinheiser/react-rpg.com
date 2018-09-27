@@ -11,7 +11,6 @@ function Monster(props) {
         top: monster.position[1],
         left: monster.position[0],
         backgroundImage: `url('${monster.sprite}')`,
-        backgroundSize: 'contain',
         opacity: monster.visible ? 1 : 0,
         width: '40px',
         height: '40px',

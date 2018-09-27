@@ -129,9 +129,9 @@ class ViewItem extends Component {
         <div className='view-item-text-container'>
           <div style={{
               backgroundImage: `url('${data.image}')`,
-              backgroundSize: 'contain',
-              width: '60px',
-              height: '60px'
+              marginRight: 15,
+              width: '40px',
+              height: '40px'
             }} />
           <span className='view-item-text'>
             { data.name || '-' }
