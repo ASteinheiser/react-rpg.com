@@ -22,19 +22,20 @@ class Button extends Component {
         {
           icon ?
             <i className={`fa fa-${icon} button-icon`}
-              style={iconStyle ? iconStyle : {}} />
+              style={iconStyle ? iconStyle : {}}>
+              {
+                indicator ?
+                  <div className='button-indicator' />
+                  :
+                  null
+              }
+            </i>
             :
             null
         }
         <span>
           { title }
         </span>
-        {
-          indicator ?
-            <div className='button-indicator' />
-            :
-            null
-        }
       </div>
     );
   }
