@@ -112,8 +112,8 @@ class Player extends Component {
       }
       // animate the player
       this.setState({ monsterAttackAnimationPlay: 'running', monsterAnimationAttackSound });
-      // pause the infinite animation after 1 iteration plus delay time (150ms)
-      this.props.setTimeout(this.stopMonsterAttackAnimation, ANIMATION_SPEED + 150);
+      // pause the infinite animation after 1 iteration plus delay time (250ms)
+      this.props.setTimeout(this.stopMonsterAttackAnimation, ANIMATION_SPEED + 250);
     }
     // see if the player attacked
     else if(prevProps.player.playerAttacked !== this.props.player.playerAttacked) {
