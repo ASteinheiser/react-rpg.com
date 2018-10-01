@@ -14,7 +14,7 @@ function Monster(props) {
         opacity: monster.visible ? 1 : 0,
         width: '40px',
         height: '40px',
-        transition: 'left .35s ease-out 0s, top .35s ease-out 0s, opacity .35s ease-out 0s'
+        transition: 'left .35s ease-out .15s, top .35s ease-out .15s, opacity .35s ease-out .15s'
       }}>
 
       <HealthBar value={monster.hp} max={monster.maxHp} />

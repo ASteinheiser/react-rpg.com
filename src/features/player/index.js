@@ -112,8 +112,8 @@ class Player extends Component {
       }
       // animate the player
       this.setState({ monsterAttackAnimationPlay: 'running', monsterAnimationAttackSound });
-      // pause the infinite animation after 1 iteration
-      this.props.setTimeout(this.stopMonsterAttackAnimation, ANIMATION_SPEED);
+      // pause the infinite animation after 1 iteration plus delay time (150ms)
+      this.props.setTimeout(this.stopMonsterAttackAnimation, ANIMATION_SPEED + 150);
     }
     // see if the player attacked
     else if(prevProps.player.playerAttacked !== this.props.player.playerAttacked) {
@@ -213,21 +213,25 @@ class Player extends Component {
         { monsterDeath }
         { playerDeath }
 
-        <div className='monster-slash'
-          style={{
-            backgroundImage: `url('${MonsterSlash}')`,
-            animationPlayState: monsterAttackAnimationPlay,
-            opacity: monsterAttackAnimationPlay === 'running' ? 1 : 0
-          }} />
+        {
+          monsterAttackAnimationPlay === 'running' ?
+            <div className='monster-slash'
+              style={{ backgroundImage: `url('${MonsterSlash}')` }} />
+            :
+            null
+        }
 
-        <div className='sword-slash'
-          style={{
-            top: attackAnimationLoc[1],
-            left: attackAnimationLoc[0],
-            backgroundImage: `url('${SwordSlash}')`,
-            animationPlayState: attackAnimationPlay,
-            opacity: attackAnimationPlay === 'running' ? 1 : 0
-          }} />
+        {
+          attackAnimationPlay === 'running' ?
+            <div className='sword-slash'
+              style={{
+                top: attackAnimationLoc[1],
+                left: attackAnimationLoc[0],
+                backgroundImage: `url('${SwordSlash}')`
+              }} />
+            :
+            null
+        }
       </div>
     );
   }

@@ -24,7 +24,7 @@
   z-index: 1000;
 
   /* this is for animating the 'steps' */
-  animation: swordSlash .35s steps(8) infinite;
+  animation: swordSlash .35s steps(8);
   animation-direction: reverse;
   background-position-x: 0px;
 }
@@ -45,7 +45,9 @@
   top: 0;
   left: 0;
   /* this is for animating the 'steps' */
-  animation: swordSlash .35s steps(8) infinite;
+  animation: swordSlash .35s steps(8);
   animation-direction: reverse;
+  animation-delay: .25s;
+
   background-position-x: 0px;
 }
