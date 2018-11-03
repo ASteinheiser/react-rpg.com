@@ -1,44 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import World from './features/world';
+import World         from './features/world';
+import useWindowSize from './modules/use-window-size';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { height: 0 };
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-  }
+const App = (props) => {
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
+  const { height, width } = useWindowSize();
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
+  return (
+    <div className='game-layout-container'>
+      {
+        height > 800 ?
+          <span className='game-title-text'>
+            {'React + Redux RPG'}
+          </span>
+          :
+          null
+      }
 
-  updateWindowDimensions() {
-    this.setState({ height: window.innerHeight });
-  }
+      <World />
 
-  render() {
-    const { height } = this.state;
-
-    return (
-      <div className='game-layout-container'>
-        {
-          (height < 800) ?
-            null
-            :
-            <span className='game-title-text'>
-              {'React + Redux RPG'}
-            </span>
-        }
-        <World />
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;

@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "lodash.debounce": "^4.0.8",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0",
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.5",
     "react-sound": "^1.2.0",
