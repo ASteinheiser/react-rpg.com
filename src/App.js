@@ -5,7 +5,7 @@ import useWindowSize from './modules/use-window-size';
 
 const App = (props) => {
 
-  const { height, width } = useWindowSize();
+  const { height } = useWindowSize();
 
   return (
     <div className='game-layout-container'>
