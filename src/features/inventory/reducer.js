@@ -1,8 +1,9 @@
-import { uuidv4 } from '../../modules/uuid-v4';
+import { MAX_ITEMS } from '../../config/constants';
+import { uuidv4 }    from '../../modules/uuid-v4';
 
 const initialState = {
   items: [],
-  maxItems: 8,
+  maxItems: MAX_ITEMS,
   itemDropped: '',
   itemReceived: '',
   tooManyItems: ''
@@ -48,7 +49,7 @@ const inventoryReducer = (state = initialState, action) => {
     case 'RESET':
       return {
         items: [],
-        maxItems: 9,
+        maxItems: MAX_ITEMS,
         itemDropped: '',
         itemReceived: ''
       };

@@ -14,3 +14,5 @@ export const ANIMATION_SPEED = 350;
 // configs for random map generation
 export const MAX_TUNNELS = 75;
 export const MAX_LENGTH = 7;
+// max number of inventory items
+export const MAX_ITEMS = 8;
