@@ -11,6 +11,7 @@ npm start
 ## TODO:
 - [ ] new game select mode screen before "game start"
   - refactor "new game" and world levels with game modes and dynamic level start
+- [ ] remove false walls
 - [ ] basic map generator
 - [ ] map generator with randomly placed objects
   - [ ] monsters
