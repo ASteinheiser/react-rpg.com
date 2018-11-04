@@ -9,8 +9,8 @@ npm start
 ```
 
 ## TODO:
-- [ ] refactor calculations with redux updates to local functions for cleaner components
 - [ ] new game select mode screen before "game start"
+  - refactor "new game" and world levels with game modes and dynamic level start
 - [ ] basic map generator
 - [ ] map generator with randomly placed objects
   - [ ] monsters
