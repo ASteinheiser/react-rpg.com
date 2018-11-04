@@ -1,25 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './styles.css';
 
-class MicroDialog extends Component {
-  render() {
-    return(
-      <div className={'micro-dialog-container white-border' + (this.props.inventory_size ? ' micro-dialog-large' : '')}>
+const MicroDialog = (props) => {
 
-        {
-          this.props.no_button ?
-            null
-            :
-            <i onClick={this.props.onClose}
-              className={`fa fa-times micro-dialog-close-button`} />
-        }
+  const { inventory_size, no_button, onClose, children } = props;
 
-        { this.props.children }
+  return(
+    <div className={'micro-dialog-container white-border' +
+      (inventory_size ? ' micro-dialog-large' : '')}>
 
-      </div>
-    );
-  }
+      {
+        no_button ?
+          null
+          :
+          <i onClick={onClose}
+            className={`fa fa-times micro-dialog-close-button`} />
+      }
+
+      { children }
+
+    </div>
+  );
 }
 
 export default MicroDialog;

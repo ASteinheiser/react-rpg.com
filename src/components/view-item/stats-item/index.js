@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './styles.css';
 
-class StatsItem extends Component {
+const StatsItem = (props) => {
 
-  getColor(name) {
+  function getColor(name) {
     switch(name) {
       case 'damage':
         return 'light-red';
@@ -18,23 +18,21 @@ class StatsItem extends Component {
     }
   }
 
-  render() {
-    const { stats } = this.props;
+  const { stats } = props;
 
-    let name = stats.name;
-    if(name === 'damage') name = 'attack';
+  let name = stats.name;
+  if(name === 'damage') name = 'attack';
 
-    return(
-      <div className='flex-row stats-item-container'>
-        <span>
-          { name }
-        </span>
-        <span style={{ color: `var(--${this.getColor(stats.name)})` }}>
-          { '+' + stats.value }
-        </span>
-      </div>
-    );
-  }
+  return(
+    <div className='flex-row stats-item-container'>
+      <span>
+        { name }
+      </span>
+      <span style={{ color: `var(--${getColor(stats.name)})` }}>
+        { '+' + stats.value }
+      </span>
+    </div>
+  );
 }
 
 export default StatsItem;

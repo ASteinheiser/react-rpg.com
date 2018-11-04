@@ -15,7 +15,7 @@ const useWindowSize = () => {
     return () => {
       window.removeEventListener('resize', updateWindowDimensions);
     }
-  });
+  }, []);  // we pass empty array as the second param to make this only call on mount and not on any updates
 
   return {
     width,

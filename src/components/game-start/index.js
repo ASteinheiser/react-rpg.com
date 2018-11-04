@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect }          from 'react-redux';
 
 import Button       from '../button';
@@ -11,109 +11,103 @@ import exploreTiles from '../../features/player/explore-tiles';
 
 import './styles.css';
 
-class GameStart extends Component {
-  constructor(props) {
-    super(props);
+const GameStart = (props) => {
 
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-  }
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    }
+  }, []);  // we pass empty array as the second param to make this only call on mount and not on any updates
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyPress);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyPress);
-  }
-
-  handleKeyPress(event) {
+  function handleKeyPress(event) {
     // case for 'enter' and 'space' key
     if(event.keyCode === 13 || event.keyCode === 32) {
-      this.handleGameStart();
+      handleGameStart();
     }
   }
 
-  handleGameStart() {
-    this.handleCloseDialog();
-    this.handleLoadMap();
-    this.handleLoadMonsters();
-    this.handleLoadPlayerSight();
-    this.handleLoadStartingItems();
+  function handleGameStart() {
+    handleCloseDialog();
+    handleLoadMap();
+    handleLoadMonsters();
+    handleLoadPlayerSight();
+    handleLoadStartingItems();
   }
 
-  handleCloseDialog() {
+  function handleCloseDialog() {
     store.dispatch({
       type: 'PAUSE',
       payload: { component: false }
-    })
+    });
   }
 
-  handleLoadPlayerSight() {
+  function handleLoadPlayerSight() {
     exploreTiles(store.getState().player.position);
   }
 
-  handleLoadStartingItems() {
+  function handleLoadStartingItems() {
     // give the player a rusty sword
     store.dispatch({
       type: 'GET_ITEM',
       payload: items.weapons.RustySword
-    })
+    });
   }
 
-  handleLoadMap() {
-    const { world } = this.props;
+  function handleLoadMap() {
+    const { world } = props;
     // set map tiles for current map
     store.dispatch({
       type: 'ADD_TILES',
       payload: { tiles: maps[world.currentMap].tiles }
-    })
+    });
   }
 
-  handleLoadMonsters() {
-    const { world } = this.props;
+  function handleLoadMonsters() {
+    const { world } = props;
     // load initial monsters
     store.dispatch({
       type: 'ADD_MONSTERS',
       payload: { monsters: maps[world.currentMap].monsters, map: world.currentMap }
-    })
+    });
   }
 
-  render() {
-    return(
-      <Dialog>
-        <div className='flex-row game-start-title'>
-          {'React + Redux RPG'}
-        </div>
-        <div className='flex-column game-start-text'>
-          <div>
-            {'Welcome Adventurer... A world full of monsters and gear awaits!'}
-          </div>
-          <div>
-            <div className='game-start-instruction-text'>
-              {'Use \'WASD\' / Arrow Keys to MOVE'}
-            </div>
-            <div className='game-start-instruction-text'>
-              {'Press \'Enter\' / \'SPACE\' Key to ATTACK'}
-            </div>
-          </div>
+  return(
+    <Dialog>
+      <div className='flex-row game-start-title'>
+        {'React + Redux RPG'}
+      </div>
+
+      <div className='flex-column game-start-text'>
+        <div>
+          {'Welcome Adventurer... A world full of monsters and gear awaits!'}
         </div>
 
-        <div className='game-start-flame-container-1'>
-          <Flame />
+        <div>
+          <div className='game-start-instruction-text'>
+            {'Use \'WASD\' / Arrow Keys to MOVE'}
+          </div>
+          <div className='game-start-instruction-text'>
+            {'Press \'Enter\' / \'SPACE\' Key to ATTACK'}
+          </div>
         </div>
-        <div className='game-start-flame-container-2'>
-          <Flame />
-        </div>
+      </div>
 
-        <div className='flex-column game-start-button'>
-          <Button
-            onClick={this.handleGameStart.bind(this)}
-            icon='compass'
-            title={'Explore Dungeon'} />
-        </div>
-      </Dialog>
-    );
-  }
+      <div className='game-start-flame-container-1'>
+        <Flame />
+      </div>
+      <div className='game-start-flame-container-2'>
+        <Flame />
+      </div>
+
+      <div className='flex-column game-start-button'>
+        <Button
+          onClick={handleGameStart}
+          icon='compass'
+          title={'Explore Dungeon'} />
+      </div>
+    </Dialog>
+  );
 }
 
 const mapStateToProps = ({ world }) => {

@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './styles.css';
 
-class Dialog extends Component {
-  render() {
-    return(
-      <div className='dialog-container white-border'>
-
-        { this.props.children }
-
-      </div>
-    );
-  }
+const Dialog = (props) => {
+  return(
+    <div className='dialog-container white-border'>
+      { props.children }
+    </div>
+  );
 }
 
 export default Dialog;

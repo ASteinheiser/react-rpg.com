@@ -1,104 +1,92 @@
-import React, { Component } from 'react';
-import Sound                from 'react-sound';
+import React, { useState, useEffect } from 'react';
+import Sound                          from 'react-sound';
 
 import store        from '../../config/store';
 import AmbientMusic from './ambient-music.mp3';
 
 import './styles.css';
 
-export default class GameMusic extends Component {
-  constructor(props) {
-    super(props);
+const GameMusic = (props) => {
 
-    this.state = {
-      gameMusic: null
-    };
+  const [gameMusic, setGameMusic] = useState(null);
 
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-  }
+  useEffect(() => {
+    window.addEventListener('mousedown', handleKeyPress);
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('mousedown', handleKeyPress);
+      window.removeEventListener('keydown', handleKeyPress);
+    }
+  }, []); // we pass empty array as the second param to make this only call on mount and not on any updates
 
-  componentDidMount() {
-    window.addEventListener('mousedown', this.handleKeyPress);
-    window.addEventListener('keydown', this.handleKeyPress);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('mousedown', this.handleKeyPress);
-    window.removeEventListener('keydown', this.handleKeyPress);
-  }
-
-  handleKeyPress() {
+  function handleKeyPress() {
     // we have to load music only have user has clicked or pressed a key
     // chrome disables auto play until user has interacted with window
-    this.setState({ gameMusic: (
+    setGameMusic(
+      <Sound
+        url={AmbientMusic}
+        playStatus={'PLAYING'}
+        autoLoad={true}
+        loop={true}
+        volume={50} />
+    );
+    store.dispatch({
+      type: 'SET_SOUND',
+      payload: { sound: true }
+    });
+    // now we no longer need our key or mouse event listeners
+    window.removeEventListener('mousedown', handleKeyPress);
+    window.removeEventListener('keydown', handleKeyPress);
+  }
+
+  function toggleMusic() {
+    if(gameMusic) {
+      setGameMusic(null);
+      store.dispatch({
+        type: 'SET_SOUND',
+        payload: { sound: false }
+      });
+    } else {
+      setGameMusic(
         <Sound
           url={AmbientMusic}
           playStatus={'PLAYING'}
           autoLoad={true}
           loop={true}
           volume={50} />
-      )
-    });
-    store.dispatch({
-      type: 'SET_SOUND',
-      payload: { sound: true }
-    })
-    window.removeEventListener('mousedown', this.handleKeyPress);
-    window.removeEventListener('keydown', this.handleKeyPress);
-  }
-
-  toggleMusic() {
-    const { gameMusic } = this.state;
-    if(gameMusic) {
-      this.setState({ gameMusic: null });
-      store.dispatch({
-        type: 'SET_SOUND',
-        payload: { sound: false }
-      })
-    } else {
+      );
       store.dispatch({
         type: 'SET_SOUND',
         payload: { sound: true }
-      })
-      this.setState({ gameMusic: (
-          <Sound
-            url={AmbientMusic}
-            playStatus={'PLAYING'}
-            autoLoad={true}
-            loop={true}
-            volume={50} />
-        )
       });
     }
   }
 
-  render() {
-    const { gameMusic } = this.state;
+  return (
+    <div className='game-music-toggle-button white-border'
+      onClick={toggleMusic}>
 
-    return (
-      <div className='game-music-toggle-button white-border'
-        onClick={this.toggleMusic.bind(this)}>
-
-        <div className='line1'
-          style={{
-            width: gameMusic ? 0 : 60,
-            top: gameMusic ? 0 : 19,
-            left: gameMusic ? 0 : -7
-          }}>
-        </div>
-        <div className='line2'
-          style={{
-            width: gameMusic ? 0 : 60,
-            top: gameMusic ? 0 : 19,
-            right: gameMusic ? 0 : -7
-          }}>
-        </div>
-
-        <i className={`fa fa-${gameMusic ? 'volume-up' : 'volume-off'} game-music-button`} />
-
-        { gameMusic }
-
+      <div className='line1'
+        style={{
+          width: gameMusic ? 0 : 60,
+          top: gameMusic ? 0 : 19,
+          left: gameMusic ? 0 : -7
+        }}>
       </div>
-    );
-  }
+      <div className='line2'
+        style={{
+          width: gameMusic ? 0 : 60,
+          top: gameMusic ? 0 : 19,
+          right: gameMusic ? 0 : -7
+        }}>
+      </div>
+
+      <i className={`fa fa-${gameMusic ? 'volume-up' : 'volume-off'} game-music-button`} />
+
+      { gameMusic }
+
+    </div>
+  );
 }
+
+export default GameMusic;

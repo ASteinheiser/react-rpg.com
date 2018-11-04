@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import ConfirmDialog from '../confirm-dialog';
 import MicroDialog   from '../micro-dialog';
@@ -9,22 +9,13 @@ import store         from '../../config/store';
 
 import './styles.css';
 
-export default class ShopInventory extends Component {
-  constructor(props) {
-    super(props);
+const ShopInventory = (props) => {
 
-    this.state = {
-      buyItemDialog: null,
-      page: 1
-    }
-  }
+  const [buyItemDialog, setBuyItemDialog] = useState(null);
+  const [page, setPage] = useState(1);
 
-  handleCloseBuyItem() {
-    this.setState({ buyItemDialog: null });
-  }
-
-  handleBuyItem(item) {
-    this.setState({ buyItemDialog: (
+  function handleBuyItem(item) {
+    setBuyItemDialog(
       <MicroDialog no_button>
         <ConfirmDialog
           text={'Are you sure you want to buy ' + item.name + ' for ' + item.value + ' gold?'}
@@ -32,14 +23,13 @@ export default class ShopInventory extends Component {
           cancelIcon={'times'}
           acceptText={'Buy'}
           acceptIcon={'coins'}
-          confirm={this.handleConfirmBuyItem.bind(this, item)}
-          onClose={this.handleCloseBuyItem.bind(this)} />
+          confirm={() => handleConfirmBuyItem(item)}
+          onClose={handleCloseBuyItem} />
       </MicroDialog>
-      )
-    });
+    );
   }
 
-  handleConfirmBuyItem(item) {
+  function handleConfirmBuyItem(item) {
     const { gold } = store.getState().stats;
     const { items, maxItems } = store.getState().inventory;
     // make sure player has enough gold
@@ -49,100 +39,106 @@ export default class ShopInventory extends Component {
         store.dispatch({
           type: 'LOSE_GOLD',
           payload: { value: item.value }
-        })
+        });
         // if it's an hp potion
         if(item.type === 'potion') {
           store.dispatch({
             type: 'HEAL_HP',
             payload: { value: parseInt(item.hp, 10) }
-          })
+          });
         } else {
           store.dispatch({
             type: 'GET_ITEM',
             payload: item
-          })
+          });
         }
       } else {
         // inventory full
         store.dispatch({
           type: 'TOO_MANY_ITEMS',
           payload: item
-        })
+        });
       }
     } else {
       // not enough gold!
       store.dispatch({
         type: 'NOT_ENOUGH_GOLD',
         payload: item
-      })
+      });
     }
-    this.handleCloseBuyItem();
+
+    handleCloseBuyItem();
   }
 
-  render() {
-    const { buyItemDialog, page } = this.state;
+  function handleCloseBuyItem() {
+    setBuyItemDialog(null);
+  }
 
-    let shopInventoryItems = [];
-    // render the shop's items
-    shopItems.forEach(item => {
-      shopInventoryItems.push(
-        <div key={uuidv4()}
-          onClick={this.handleBuyItem.bind(this, item)}
-          className='flex-row shop-item-container white-border'>
-          <EmptySlot style={{borderRight: '1px solid'}}>
-            <div className='shop-item-slot'
-              style={{ backgroundImage: `url('${item.image}')` }} />
-          </EmptySlot>
-          <div className='flex-row shop-item-text'>
-            <div className='flex-row shop-item-title'>
-              { item.name }
-            </div>
-            <div className='flex-row shop-item-price'>
-              { item.value }
-            </div>
+  let shopInventoryItems = [];
+  // render the shop's items
+  shopItems.forEach(item => {
+    shopInventoryItems.push(
+      <div key={uuidv4()}
+        onClick={() => handleBuyItem(item)}
+        className='flex-row shop-item-container white-border'>
+
+        <EmptySlot style={{borderRight: '1px solid'}}>
+          <div className='shop-item-slot'
+            style={{ backgroundImage: `url('${item.image}')` }} />
+        </EmptySlot>
+
+        <div className='flex-row shop-item-text'>
+          <div className='flex-row shop-item-title'>
+            { item.name }
+          </div>
+
+          <div className='flex-row shop-item-price'>
+            { item.value }
           </div>
         </div>
-      );
-    })
-
-    let shopInventoryButtons = (
-      <div className='flex-row space-between'>
-        {
-          page === 1 ?
-            <div />
-            :
-            <div className='shop-page-button' onClick={() => {this.setState({page: 1})}}>
-              <i className='fa fa-arrow-left' style={{paddingRight: 15}} />
-              {'previous'}
-            </div>
-        }
-        {
-          page === 1 ?
-            <div className='shop-page-button' onClick={() => {this.setState({page: 2})}}>
-              {'next'}
-              <i className='fa fa-arrow-right' style={{paddingLeft: 15}} />
-            </div>
-            :
-            <div />
-        }
       </div>
     );
+  })
 
-    return (
-      <div className='flex-column shop-inventory-items'>
-        {
-          buyItemDialog
-        }
-        {
-          page === 1 ?
-            shopInventoryItems.slice(0, 5)
-            :
-            shopInventoryItems.slice(5, 10)
-        }
-        {
-          shopInventoryButtons
-        }
-      </div>
-    );
-  }
+  let shopInventoryButtons = (
+    <div className='flex-row space-between'>
+      {
+        page === 1 ?
+          <div />
+          :
+          <div className='shop-page-button' onClick={() => setPage(1)}>
+            <i className='fa fa-arrow-left' style={{paddingRight: 15}} />
+            {'previous'}
+          </div>
+      }
+      {
+        page === 1 ?
+          <div className='shop-page-button' onClick={() => setPage(2)}>
+            {'next'}
+            <i className='fa fa-arrow-right' style={{paddingLeft: 15}} />
+          </div>
+          :
+          <div />
+      }
+    </div>
+  );
+
+  return (
+    <div className='flex-column shop-inventory-items'>
+
+      { buyItemDialog }
+
+      {
+        page === 1 ?
+          shopInventoryItems.slice(0, 5)
+          :
+          shopInventoryItems.slice(5, 10)
+      }
+
+      { shopInventoryButtons }
+
+    </div>
+  );
 }
+
+export default ShopInventory;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import Button          from '../button';
 import Dialog          from '../dialog';
@@ -9,68 +9,62 @@ import store           from '../../config/store';
 
 import './styles.css';
 
-export default class ShopDialog extends Component {
-  constructor(props) {
-    super(props);
+const ShopDialog = (props) => {
 
-    this.state = {
-      sellItems: null
-    };
+  const [sellItems, setSellItems] = useState(null);
+
+  function handleOpenSellItems() {
+    setSellItems(
+      <SellItemsDialog
+        onClose={handleCloseSellItems} />
+    );
   }
 
-  handleOpenSellItems() {
-    this.setState({ sellItems: <SellItemsDialog onClose={this.handleCloseSellItems.bind(this)} /> });
+  function handleCloseSellItems() {
+    setSellItems(null);
   }
 
-  handleCloseSellItems() {
-    this.setState({ sellItems: null });
-  }
-
-  handleCloseDialog() {
+  function handleCloseDialog() {
     store.dispatch({
       type: 'PAUSE',
       payload: { component: false }
-    })
+    });
   }
 
-  render() {
-    const { sellItems } = this.state;
+  return(
+    <Dialog>
 
-    return(
-      <Dialog>
+      { sellItems }
 
-        {
-          sellItems
-        }
+      <div className='flex-column shop-container'>
 
-        <div className='flex-column shop-container'>
+        <span className='shop-title-text'>
+          {'Shop'}
+        </span>
 
-          <span className='shop-title-text'>
-            {'Shop'}
-          </span>
-
-          <div className='flex-row shop-container'>
-            <div className='flex-column shop-container-child-1'>
-              <ShopKeep />
-            </div>
-
-            <div className='flex-column shop-container-child-2'>
-              <ShopInventory />
-            </div>
+        <div className='flex-row shop-container'>
+          <div className='flex-column shop-container-child-1'>
+            <ShopKeep />
           </div>
 
-          <div className='flex-row shop-button-container'>
-            <Button
-              onClick={this.handleCloseDialog.bind(this)}
-              icon='walking'
-              title={'Leave Shop'} />
-            <Button
-              onClick={this.handleOpenSellItems.bind(this)}
-              icon='coins'
-              title={'Sell Items'} />
+          <div className='flex-column shop-container-child-2'>
+            <ShopInventory />
           </div>
         </div>
-      </Dialog>
-    );
-  }
+
+        <div className='flex-row shop-button-container'>
+          <Button
+            onClick={handleCloseDialog}
+            icon='walking'
+            title={'Leave Shop'} />
+          <Button
+            onClick={handleOpenSellItems}
+            icon='coins'
+            title={'Sell Items'} />
+        </div>
+      </div>
+    </Dialog>
+  );
 }
+
+export default ShopDialog;

@@ -1,44 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './styles.css';
 
-class Button extends Component {
+const Button = (props) => {
 
-  handleClick() {
-    const { onClick } = this.props;
+  const { icon, title, iconStyle, style, indicator, onClick } = props;
 
+  function handleClick() {
     if(typeof onClick === 'function') {
       onClick();
     }
   }
 
-  render() {
-    const { icon, title, iconStyle, style, indicator } = this.props;
+  if(!title) return null;
 
-    if(!title) return null;
-
-    return(
-      <div className='button-container white-border' style={style || {}} onClick={this.handleClick.bind(this)}>
-        {
-          icon ?
-            <i className={`fa fa-${icon} button-icon`}
-              style={iconStyle ? iconStyle : {}}>
-              {
-                indicator ?
-                  <div className='button-indicator' />
-                  :
-                  null
-              }
-            </i>
-            :
-            null
-        }
-        <span>
-          { title }
-        </span>
-      </div>
-    );
-  }
+  return(
+    <div
+      className='button-container white-border'
+      style={style || {}}
+      onClick={handleClick}>
+      {
+        icon ?
+          <i className={`fa fa-${icon} button-icon`}
+            style={iconStyle ? iconStyle : {}}>
+            {
+              indicator ?
+                <div className='button-indicator' />
+                :
+                null
+            }
+          </i>
+          :
+          null
+      }
+      <span>
+        { title }
+      </span>
+    </div>
+  );
 }
 
 export default Button;
