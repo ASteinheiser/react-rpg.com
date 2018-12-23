@@ -1,11 +1,13 @@
 # RPG made with React + Redux
+Turn-based, Dungeon-crawling RPG made with the finest web technologies! [Play the latest version here!](http://react-rpg.com)
 
-## Install locally and play in your browser
+## Install and Dev/Play locally
 ```
-git clone https://github.com/ASteinheiser/react-game.git
-cd react-game
+git clone https://github.com/ASteinheiser/react-rpg.com
+cd react-rpg.com
+
 yarn install
-npm start
+yarn start
 ```
 
 ## TODO:
