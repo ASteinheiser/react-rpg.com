@@ -1,17 +1,23 @@
 # RPG made with React + Redux
 Turn-based, Dungeon-crawling RPG made with the finest web technologies! [Play the latest version here!](http://react-rpg.com)
 
-## Install and Dev/Play locally
+# Get Started Locally!
+## Install
 ```
 git clone https://github.com/ASteinheiser/react-rpg.com
 cd react-rpg.com
-
 yarn install
+```
+## Develop Locally
+```
 yarn start
+```
+## Run Tests
+```
+yarn test
 ```
 
 ## TODO:
-- [ ] tests!!!
 - [ ] new game select mode screen before "game start"
   - refactor "new game" and world levels with game modes and dynamic level start
 - [ ] basic map generator
