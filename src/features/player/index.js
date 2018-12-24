@@ -3,15 +3,15 @@ import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 import Sound                from 'react-sound';
 // player/monster sounds
-import MonsterDeath   from './monster-death.wav';
-import PlayerDeath    from './player-death.mp3';
-import PlayerStep     from './player-step.wav';
-import SwordSwish     from './player-sword-swish.wav';
-import MonsterAttack  from './monster-attack.wav';
+import MonsterDeath   from '../monsters/assets/monster-death.wav';
+import PlayerDeath    from './assets/player-death.mp3';
+import PlayerStep     from './assets/player-step.wav';
+import SwordSwish     from './assets/player-sword-swish.wav';
+import MonsterAttack  from '../monsters/assets/monster-attack.wav';
 // player/monster animation spritesheets
-import WalkSprite     from './player_walk.png';
-import SwordSlash     from './sword-slash.png';
-import MonsterSlash   from './monster-slash.png';
+import WalkSprite     from './assets/player_walk.png';
+import SwordSlash     from './assets/sword-slash.png';
+import MonsterSlash   from '../monsters/assets/monster-slash.png';
 // other local imports
 import store          from '../../config/store';
 import handleMovement from './movement';
