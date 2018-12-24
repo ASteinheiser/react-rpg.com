@@ -12,8 +12,6 @@ function getTileSprite(type) {
       return 'blood-splatter'
     case 0:
       return 'ground'
-    case 1:
-      return 'stone-wall' // fake stone-wall obstacles
     case 2:
       return 'stairs-down'
     case 3:
