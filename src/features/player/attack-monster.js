@@ -15,17 +15,20 @@ function observeImpassable(oldPos, newPos) {
 }
 
 export default function attackMonster() {
+  // get current redux state
+  const currState = store.getState();
   // get player direction and the location of position to attack
-  const { position, direction } = store.getState().player;
+  const { position, direction } = currState.player;
   const newPos = getNewPosition(position, direction);
   // if the attacked tile is in bounds
   if(observeBoundaries(position, newPos) && observeImpassable(position, newPos)) {
     // if theres a monster
     let monsterId = checkForMonster(newPos);
     if(monsterId) {
-      const { currentMap } = store.getState().world;
-      const { stats } = store.getState();
-      const monsters = store.getState().monsters.components;
+      const { currentMap } = currState.world;
+      const monsters = currState.monsters.components;
+      const { stats } = currState;
+      const { weapon } = stats.equippedItems;
       // get monster
       let currMonster = monsters[currentMap][monsterId].props.monster;
       let monsterPos = currMonster.position;
@@ -38,7 +41,7 @@ export default function attackMonster() {
         type: 'DAMAGE_TO_MONSTER',
         payload: {
           id: currMonster.id,
-          damage: calculateDamage(calculateBonus(playerDamage, monsterType), monsterDefence),
+          damage: calculateDamage(calculateBonus(playerDamage, monsterType, weapon), monsterDefence),
           map: currentMap
         }
       })

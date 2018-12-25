@@ -1,8 +1,5 @@
-import store from '../config/store';
-
 // calculates bonus damage to deal based on attacker's bonus and enemy's type
-export default function calculateBonus(playerDamage, monsterType) {
-  const { weapon } = store.getState().stats.equippedItems;
+export default function calculateBonus(playerDamage, monsterType, weapon) {
   // if there are no bonuses, return normal damage
   if(!weapon || !weapon.bonus) {
     return playerDamage;
