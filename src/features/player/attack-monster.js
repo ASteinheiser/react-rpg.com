@@ -41,7 +41,7 @@ export default function attackMonster() {
         type: 'DAMAGE_TO_MONSTER',
         payload: {
           id: currMonster.id,
-          damage: calculateDamage(calculateBonus(playerDamage, monsterType, weapon), monsterDefence),
+          damage: calculateDamage(calculateBonus(playerDamage, monsterType, weapon.bonus), monsterDefence),
           map: currentMap
         }
       })
