@@ -1,4 +1,4 @@
-import { SIGHT_RADIUS } from '../config/constants';
+import { SIGHT_RADIUS, MAP_DIMENSIONS } from '../config/constants';
 
 let x, y;
 export const radiusTiles = [];
@@ -11,8 +11,13 @@ for (y = -SIGHT_RADIUS; y <= SIGHT_RADIUS; y++) {
     }
   }
 }
+
 // takes an array of relative coordinates to the map size (20 x 15) i.e. [1, 1]
 export default function getSurroundingTiles(startPos) {
+  // make sure the start position is within the bounds
+  if(startPos[0] >= MAP_DIMENSIONS[0] || startPos[0] < 0
+    || startPos[1] >= MAP_DIMENSIONS[1] || startPos[1] < 0) return false;
+  // then calculate the surrounding tiles according to the bounds
   let surroundingTiles = [];
   // add position as offset to each radius tile
   radiusTiles.forEach(({x, y}) => {
