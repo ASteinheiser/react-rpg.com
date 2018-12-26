@@ -29,6 +29,7 @@ export default function attackMonster() {
       const monsters = currState.monsters.components;
       const { stats } = currState;
       const { weapon } = stats.equippedItems;
+      const weaponBonus = weapon ? weapon.bonus : undefined;
       // get monster
       let currMonster = monsters[currentMap][monsterId].props.monster;
       let monsterPos = currMonster.position;
@@ -41,7 +42,7 @@ export default function attackMonster() {
         type: 'DAMAGE_TO_MONSTER',
         payload: {
           id: currMonster.id,
-          damage: calculateDamage(calculateBonus(playerDamage, monsterType, weapon.bonus), monsterDefence),
+          damage: calculateDamage(calculateBonus(playerDamage, monsterType, weaponBonus), monsterDefence),
           map: currentMap
         }
       })
