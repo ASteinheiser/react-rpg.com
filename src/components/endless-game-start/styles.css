@@ -1,0 +1,36 @@
+.endless-start-title {
+  justify-content: center;
+  padding: 50px 100px;
+  font-size: 36px;
+}
+
+.endless-start-text {
+  flex: 1;
+
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 1px;
+  text-align: center;
+
+  justify-content: space-between;
+
+  padding: 25px 100px;
+}
+
+.endless-start-button {
+  padding: 25px 0;
+
+  align-items: center;
+}
+
+.endless-start-flame-container-1 {
+  position: absolute;
+  bottom: 75px;
+  left: 125px;
+}
+
+.endless-start-flame-container-2 {
+  position: absolute;
+  bottom: 75px;
+  left: 570px;
+}

@@ -1,10 +1,11 @@
 import React from 'react';
 
-import Button        from '../button';
-import Dialog        from '../dialog';
-import Flame         from '../flame';
-import MainGameStart from '../main-game-start';
-import store         from '../../config/store';
+import Button           from '../button';
+import Dialog           from '../dialog';
+import Flame            from '../flame';
+import MainGameStart    from '../main-game-start';
+import EndlessGameStart from '../endless-game-start';
+import store            from '../../config/store';
 
 import './styles.css';
 
@@ -14,6 +15,13 @@ const GameSelect = (props) => {
     store.dispatch({
       type: 'PAUSE',
       payload: { component: <MainGameStart />, gameStart: true }
+    });
+  }
+
+  function handleStartEndless() {
+    store.dispatch({
+      type: 'PAUSE',
+      payload: { component: <EndlessGameStart />, gameStart: true }
     });
   }
 
@@ -50,7 +58,7 @@ const GameSelect = (props) => {
           title={'Story Mode'} />
 
         <Button
-          onClick={() => console.log('endless')}
+          onClick={handleStartEndless}
           icon='infinity'
           title={'Endless Mode'} />
       </div>
