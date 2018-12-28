@@ -25,3 +25,6 @@ yarn test
   - [ ] stairs up
   - [ ] stairs down
     - [ ] linking the stairs properly to the previous floor when generated
+- better maps for story mode
+- cohesive story for story mode
+- a few well placed dialogs (game beginning, merchant, dragon)
