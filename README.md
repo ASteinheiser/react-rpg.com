@@ -18,8 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] new game select mode screen before "game start"
-  - refactor "new game" and world levels with game modes and dynamic level start
 - [ ] basic map generator
 - [ ] map generator with randomly placed objects
   - [ ] monsters

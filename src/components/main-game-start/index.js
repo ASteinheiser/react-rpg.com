@@ -11,7 +11,7 @@ import exploreTiles from '../../features/player/explore-tiles';
 
 import './styles.css';
 
-const GameStart = (props) => {
+const MainGameStart = (props) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
@@ -75,7 +75,7 @@ const GameStart = (props) => {
   return(
     <Dialog>
       <div className='flex-row game-start-title'>
-        {'React + Redux RPG'}
+        {'Story Mode'}
       </div>
 
       <div className='flex-column game-start-text'>
@@ -114,4 +114,4 @@ const mapStateToProps = ({ world }) => {
   return { world };
 }
 
-export default connect(mapStateToProps)(GameStart);
+export default connect(mapStateToProps)(MainGameStart);

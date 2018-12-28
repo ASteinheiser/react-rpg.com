@@ -1,0 +1,48 @@
+.game-select-title {
+  justify-content: center;
+  padding: 50px 100px;
+  font-size: 36px;
+}
+
+.game-select-text {
+  flex: 1;
+
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 1px;
+  text-align: center;
+
+  justify-content: space-between;
+
+  padding: 25px 100px;
+}
+
+.game-select-button {
+  padding: 25px 0;
+
+  align-items: center;
+}
+
+.game-select-flame-container-1 {
+  position: absolute;
+  bottom: 75px;
+  left: 125px;
+}
+
+.game-select-flame-container-2 {
+  position: absolute;
+  bottom: 75px;
+  left: 570px;
+}
+
+.game-select-flame-container-3 {
+  position: absolute;
+  bottom: 160px;
+  left: 125px;
+}
+
+.game-select-flame-container-4 {
+  position: absolute;
+  bottom: 160px;
+  left: 570px;
+}

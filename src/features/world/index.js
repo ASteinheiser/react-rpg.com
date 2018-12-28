@@ -1,15 +1,15 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 // game components
-import GameMusic from '../../components/game-music';
-import GameStart from '../../components/game-start';
-import GameOver  from '../../components/game-over';
-import Inventory from '../inventory';
-import Map       from '../map';
-import Monsters  from '../monsters';
-import Player    from '../player';
-import Snackbar  from '../snackbar';
-import Stats     from '../stats';
+import GameMusic  from '../../components/game-music';
+import GameSelect from '../../components/game-select';
+import GameOver   from '../../components/game-over';
+import Inventory  from '../inventory';
+import Map        from '../map';
+import Monsters   from '../monsters';
+import Player     from '../player';
+import Snackbar   from '../snackbar';
+import Stats      from '../stats';
 // game configs
 import maps     from '../../data/maps';
 import store    from '../../config/store';
@@ -46,7 +46,7 @@ class World extends React.Component {
     store.dispatch({
       type: 'PAUSE',
       payload: {
-        component: <GameStart />,
+        component: <GameSelect />,
         gameStart: true
       }
     })
