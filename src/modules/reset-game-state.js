@@ -1,8 +1,8 @@
 import React from 'react';
 
-import GameStart from '../components/game-start';
-import store     from '../config/store';
-import maps      from '../data/maps';
+import GameSelect from '../components/game-select';
+import store      from '../config/store';
+import maps       from '../data/maps';
 
 export default function resetGameState() {
   // need to clean out any old values that were
@@ -50,7 +50,7 @@ export default function resetGameState() {
   store.dispatch({
     type: 'PAUSE',
     payload: {
-      component: <GameStart />,
+      component: <GameSelect />,
       gameStart: true
     }
   })
