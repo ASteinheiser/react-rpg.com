@@ -13,11 +13,11 @@ function createMapOfWalls() {
 }
 
 // generates a random dungeon map
-export default function generateMap() {
+export default function generateMap(startPos) {
   let map = createMapOfWalls(), // create a map of walls to carve rooms and hallways from
     maxTunnels = MAX_TUNNELS, // store the max tunnels in a local variable that can be decremented
-    currentRow = Math.floor(Math.random() * MAP_DIMENSIONS[0]), // our current row - start at a random spot
-    currentColumn = Math.floor(Math.random() * MAP_DIMENSIONS[1]), // our current column - start at a random spot
+    currentRow = startPos ? startPos[0] : Math.floor(Math.random() * MAP_DIMENSIONS[0]), // our current row - start at a random spot
+    currentColumn = startPos ? startPos[1] : Math.floor(Math.random() * MAP_DIMENSIONS[1]), // our current column - start at a random spot
     directions = [[-1, 0], [1, 0], [0, -1], [0, 1]], // array to get a random direction from (left,right,up,down)
     lastDirection = [], // save the last direction we went
     randomDirection; // next turn/direction - holds a value from directions

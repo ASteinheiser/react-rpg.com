@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 
-import Button      from '../button';
-import Dialog      from '../dialog';
-import Flame       from '../flame';
-import store       from '../../config/store';
-import generateMap from '../../modules/generate-map';
+import Button       from '../button';
+import Dialog       from '../dialog';
+import Flame        from '../flame';
+import store        from '../../config/store';
+import generateMap  from '../../modules/generate-map';
+import exploreTiles from '../../features/player/explore-tiles';
+import { uuidv4 }   from '../../modules/uuid-v4';
 
 import './styles.css';
 
@@ -27,8 +29,8 @@ const EndlessGameStart = (props) => {
   function handleGameStart() {
     handleCloseDialog();
     handleLoadMap();
+    handleLoadPlayerSight();
     // handleLoadMonsters();
-    // handleLoadPlayerSight();
     // handleLoadStartingItems();
   }
 
@@ -40,7 +42,21 @@ const EndlessGameStart = (props) => {
   }
 
   function handleLoadMap() {
-    console.log(generateMap());
+    const id = uuidv4();
+
+    store.dispatch({
+      type: 'SET_START_MAP',
+      payload: { startMap: id }
+    });
+    // generate and set map tiles for start map
+    store.dispatch({
+      type: 'ADD_TILES',
+      payload: { tiles: generateMap(store.getState().player.position) }
+    });
+  }
+
+  function handleLoadPlayerSight() {
+    exploreTiles(store.getState().player.position);
   }
 
   return(
