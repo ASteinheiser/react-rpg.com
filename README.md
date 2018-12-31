@@ -18,7 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] basic map generator
 - [ ] map generator with randomly placed objects
   - [ ] monsters
   - [ ] chests
