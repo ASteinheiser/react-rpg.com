@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 
-import Button       from '../button';
-import Dialog       from '../dialog';
-import Flame        from '../flame';
-import store        from '../../config/store';
+import Button      from '../button';
+import Dialog      from '../dialog';
+import Flame       from '../flame';
+import store       from '../../config/store';
+import generateMap from '../../modules/generate-map';
 
 import './styles.css';
 
@@ -25,7 +26,7 @@ const EndlessGameStart = (props) => {
 
   function handleGameStart() {
     handleCloseDialog();
-    // handleLoadMap();
+    handleLoadMap();
     // handleLoadMonsters();
     // handleLoadPlayerSight();
     // handleLoadStartingItems();
@@ -36,6 +37,10 @@ const EndlessGameStart = (props) => {
       type: 'PAUSE',
       payload: { component: false }
     });
+  }
+
+  function handleLoadMap() {
+    console.log(generateMap());
   }
 
   return(
