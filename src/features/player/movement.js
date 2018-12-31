@@ -83,9 +83,9 @@ export default function handleMovement(player) {
     const oldPos = store.getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
 
-    let nextTile = observeImpassable(oldPos, newPos);
+    let nextTile = observeImpassable(newPos);
 
-    if(observeBoundaries(oldPos, newPos) && nextTile < 5
+    if(observeBoundaries(newPos) && nextTile < 5
         && !checkForMonster(newPos, direction)) {
       // open chests, use shop, etc.
       handleInteractWithTile(nextTile, newPos);
@@ -129,7 +129,7 @@ export default function handleMovement(player) {
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
 
-    const nextTile = tiles[y] ? tiles[y][x].value : 5;
+    const nextTile = (tiles[y] && tiles[y][x]) ? tiles[y][x].value : 5;
 
     // the player wants to use the shop
     if(nextTile === 9) {
