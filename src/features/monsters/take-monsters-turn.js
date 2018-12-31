@@ -272,10 +272,12 @@ export default function takeMonstersTurn() {
         type: 'HIDE_MONSTER',
         payload: { id, map: currentMap }
       })
-
-      let randomDirection = getRandomDirection();
-      // move the monster in a random direction
-      moveMonster(randomDirection, position, currentMap, id, 0);
+      // give a 25% chance to move the monster when hidden
+      if((Math.round(Math.random() * (4 - 1) + 1)) !== 4) {
+        let randomDirection = getRandomDirection();
+        // move the monster in a random direction
+        moveMonster(randomDirection, position, currentMap, id, 0);
+      }
     }
   });
 }
