@@ -1,4 +1,3 @@
-
 // calculates damage to deal based on attacker's damage and enemy's defence
 export default function calculateDamage(damage, defence) {
   // if damage was reduced to 0 or lower, deal no damage
