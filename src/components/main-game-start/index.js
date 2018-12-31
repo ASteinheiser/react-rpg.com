@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { connect }          from 'react-redux';
 
 import Button       from '../button';
 import Dialog       from '../dialog';
@@ -10,6 +9,8 @@ import store        from '../../config/store';
 import exploreTiles from '../../features/player/explore-tiles';
 
 import './styles.css';
+
+const START_MAP = '1_1';
 
 const MainGameStart = (props) => {
 
@@ -28,11 +29,19 @@ const MainGameStart = (props) => {
   }
 
   function handleGameStart() {
+    handleLoadStartMap();
     handleCloseDialog();
     handleLoadMap();
     handleLoadMonsters();
     handleLoadPlayerSight();
     handleLoadStartingItems();
+  }
+
+  function handleLoadStartMap() {
+    store.dispatch({
+      type: 'SET_START_MAP',
+      payload: { startMap: START_MAP }
+    });
   }
 
   function handleCloseDialog() {
@@ -55,20 +64,18 @@ const MainGameStart = (props) => {
   }
 
   function handleLoadMap() {
-    const { world } = props;
-    // set map tiles for current map
+    // set map tiles for start map
     store.dispatch({
       type: 'ADD_TILES',
-      payload: { tiles: maps[world.currentMap].tiles }
+      payload: { tiles: maps[START_MAP].tiles }
     });
   }
 
   function handleLoadMonsters() {
-    const { world } = props;
     // load initial monsters
     store.dispatch({
       type: 'ADD_MONSTERS',
-      payload: { monsters: maps[world.currentMap].monsters, map: world.currentMap }
+      payload: { monsters: maps[START_MAP].monsters, map: START_MAP }
     });
   }
 
@@ -110,8 +117,4 @@ const MainGameStart = (props) => {
   );
 }
 
-const mapStateToProps = ({ world }) => {
-  return { world };
-}
-
-export default connect(mapStateToProps)(MainGameStart);
+export default MainGameStart;

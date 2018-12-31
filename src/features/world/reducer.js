@@ -1,7 +1,7 @@
-import maps  from '../../data/maps';
+import maps from '../../data/maps';
 
 const initialState = {
-  currentMap: '1_1',
+  currentMap: null,
   gameOver: false,
   gameStart: false,
   paused: false,
@@ -49,6 +49,13 @@ const worldReducer = (state = initialState, action) => {
       let { stairs } = maps[currentMap];
 
       newState.currentMap = stairs[direction];
+
+      return newState;
+
+    case 'SET_START_MAP':
+      const { startMap } = action.payload;
+
+      newState.currentMap = startMap;
 
       return newState;
 
