@@ -18,9 +18,10 @@ yarn test
 ```
 
 ## TODO:
+- [ ] storing dynamically generated maps in redux
 - [ ] map generator with randomly placed objects
-  - [ ] monsters
   - [ ] chests
+  - [ ] shops (at defined intervals)
   - [ ] stairs up
   - [ ] stairs down
     - [ ] linking the stairs properly to the previous floor when generated

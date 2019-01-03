@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 
-import Button       from '../button';
-import Dialog       from '../dialog';
-import Flame        from '../flame';
-import store        from '../../config/store';
-import generateMap  from '../../modules/generate-map';
-import exploreTiles from '../../features/player/explore-tiles';
-import { uuidv4 }   from '../../modules/uuid-v4';
+import Button           from '../button';
+import Dialog           from '../dialog';
+import Flame            from '../flame';
+import items            from '../../data/items';
+import store            from '../../config/store';
+import generateMap      from '../../modules/generate-map';
+import generateMonsters from '../../modules/generate-monsters';
+import exploreTiles     from '../../features/player/explore-tiles';
+import { uuidv4 }       from '../../modules/uuid-v4';
 
 import './styles.css';
 
@@ -27,11 +29,16 @@ const EndlessGameStart = (props) => {
   }
 
   function handleGameStart() {
+    const { player, stats } = store.getState();
+    // generate a random map and id
+    const randomMap = generateMap(player.position);
+    const mapId = uuidv4();
+
     handleCloseDialog();
-    handleLoadMap();
-    handleLoadPlayerSight();
-    // handleLoadMonsters();
-    // handleLoadStartingItems();
+    handleLoadMap(mapId, randomMap);
+    handleLoadPlayerSight(player);
+    handleLoadMonsters(mapId, randomMap, player, stats);
+    handleLoadStartingItems();
   }
 
   function handleCloseDialog() {
@@ -41,25 +48,40 @@ const EndlessGameStart = (props) => {
     });
   }
 
-  function handleLoadMap() {
-    const id = uuidv4();
-
+  function handleLoadMap(mapId, randomMap) {
+    // set map tiles for start map
     store.dispatch({
       type: 'SET_START_MAP',
       payload: {
-        startMap: id,
+        startMap: mapId,
         gameMode: 'endless'
       }
     });
-    // generate and set map tiles for start map
+
     store.dispatch({
       type: 'ADD_TILES',
-      payload: { tiles: generateMap(store.getState().player.position) }
+      payload: { tiles: randomMap }
     });
   }
 
-  function handleLoadPlayerSight() {
-    exploreTiles(store.getState().player.position);
+  function handleLoadPlayerSight(player) {
+    exploreTiles(player.position);
+  }
+
+  function handleLoadMonsters(mapId, randomMap, player, stats) {
+    // load initial (random) monsters
+    store.dispatch({
+      type: 'ADD_MONSTERS',
+      payload: { monsters: generateMonsters(1, randomMap, player.position, stats.level), map: mapId }
+    });
+  }
+
+  function handleLoadStartingItems() {
+    // give the player a rusty sword
+    store.dispatch({
+      type: 'GET_ITEM',
+      payload: items.weapons.RustySword
+    });
   }
 
   return(
