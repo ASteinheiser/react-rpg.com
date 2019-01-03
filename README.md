@@ -19,12 +19,9 @@ yarn test
 
 ## TODO:
 - [ ] storing dynamically generated maps in redux
-- [ ] map generator with randomly placed objects
-  - [ ] chests
-  - [ ] shops (at defined intervals)
-  - [ ] stairs up
-  - [ ] stairs down
-    - [ ] linking the stairs properly to the previous floor when generated
-- better maps for story mode
-- cohesive story for story mode
-- a few well placed dialogs (game beginning, merchant, dragon)
+- [ ] linking the stairs properly to other floors
+- [ ] randomly placed shops (at defined intervals)
+###
+- [ ] better maps for story mode
+- [ ] cohesive story for story mode
+- [ ] a few well placed dialogs (game beginning, merchant, dragon)

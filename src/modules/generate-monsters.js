@@ -14,7 +14,7 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
   }
 
   // generate number of monsters for the map based on floor number and player level
-  const numberMonsters = (floorNum / playerLv) * 3;
+  const numberMonsters = Math.ceil(floorNum / playerLv) * 3;
   let monsterTiles = [];
   // get an array of tiles to position the random monsters
   for(let x = 0; x < numberMonsters; x ++) {

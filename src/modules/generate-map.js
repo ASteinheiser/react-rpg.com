@@ -1,4 +1,5 @@
 import { MAP_DIMENSIONS, MAX_TUNNELS, MAX_LENGTH } from '../config/constants';
+import generateObjects from './generate-objects';
 
 // generate a map filled with wall tiles
 function createMapOfWalls() {
@@ -13,7 +14,7 @@ function createMapOfWalls() {
 }
 
 // generates a random dungeon map
-export default function generateMap(startPos) {
+export default function generateMap(startPos, floorNum) {
   let map = createMapOfWalls(), // create a map of walls to carve rooms and hallways from
     maxTunnels = MAX_TUNNELS, // store the max tunnels in a local variable that can be decremented
     currentRow = startPos ? startPos[0] : Math.floor(Math.random() * MAP_DIMENSIONS[0]), // our current row - start at a random spot
@@ -58,5 +59,7 @@ export default function generateMap(startPos) {
     }
   }
 
-  return map; // all our tunnels have been created and our map is complete, so lets return it to our render()
+  // all our tunnels have been created and now we run placeObjects(),
+  // which will complete our map, so lets return it to our render()
+  return generateObjects(map, floorNum, startPos);
 }

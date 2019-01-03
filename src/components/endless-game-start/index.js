@@ -30,14 +30,15 @@ const EndlessGameStart = (props) => {
 
   function handleGameStart() {
     const { player, stats } = store.getState();
+    const floorNum = 1;
     // generate a random map and id
-    const randomMap = generateMap(player.position);
+    const randomMap = generateMap(player.position, floorNum);
     const mapId = uuidv4();
 
     handleCloseDialog();
     handleLoadMap(mapId, randomMap);
     handleLoadPlayerSight(player);
-    handleLoadMonsters(mapId, randomMap, player, stats);
+    handleLoadMonsters(floorNum, mapId, randomMap, player, stats);
     handleLoadStartingItems();
   }
 
@@ -68,11 +69,11 @@ const EndlessGameStart = (props) => {
     exploreTiles(player.position);
   }
 
-  function handleLoadMonsters(mapId, randomMap, player, stats) {
+  function handleLoadMonsters(floorNum, mapId, randomMap, player, stats) {
     // load initial (random) monsters
     store.dispatch({
       type: 'ADD_MONSTERS',
-      payload: { monsters: generateMonsters(1, randomMap, player.position, stats.level), map: mapId }
+      payload: { monsters: generateMonsters(floorNum, randomMap, player.position, stats.level), map: mapId }
     });
   }
 
