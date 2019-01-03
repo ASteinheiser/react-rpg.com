@@ -35,7 +35,29 @@ export default function generateObjects(map, floorNum, playerPos) {
     availableTiles.splice(randomIndex, 1);
   }
 
-  // TODO: generate a shop every 4 floors
+  // generate a shop every 4 floors
+  if(floorNum % 4 === 0) {
+    let availableWalls = [];
+    
+    // get a list of available wall tiles
+    for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
+      for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
+        // make sure the wall tile touches a path so it can be reached
+        if(map[i][j] === 5 &&
+          (((i - 1 > 0) && map[i - 1][j] === 0)
+          || ((i + 1 < MAP_DIMENSIONS[0]) && map[i + 1][j] === 0)
+          || ((j - 1 > 0) && map[i][j - 1] === 0)
+          || ((j + 1 < MAP_DIMENSIONS[1]) && map[i][j + 1] === 0))) {
+          availableWalls.push([i, j]);
+        }
+      }
+    }
+
+    randomIndex = Math.floor(Math.random() * availableWalls.length);
+    tile = availableWalls[randomIndex];
+
+    map[tile[0]][tile[1]] = 9;
+  }
 
   return map;
 }
