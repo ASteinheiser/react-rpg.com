@@ -20,6 +20,7 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
   for(let x = 0; x < numberMonsters; x ++) {
     const randomIndex = Math.floor(Math.random() * availableTiles.length);
     monsterTiles.push(availableTiles[randomIndex]);
+    availableTiles.splice(randomIndex, 1);
   }
   
   // generate the monster type and create an array of monster objects
