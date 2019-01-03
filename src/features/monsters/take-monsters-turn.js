@@ -57,7 +57,7 @@ function observeImpassable(newPos) {
   const y = newPos[1] / SPRITE_SIZE;
   const x = newPos[0] / SPRITE_SIZE;
 
-  const nextTile = tiles[y] ? tiles[y][x].value : 5;
+  const nextTile = (tiles[y] && tiles[y][x]) ? tiles[y][x].value : 5;
 
   return nextTile < 5 ? newPos : false;
 }
