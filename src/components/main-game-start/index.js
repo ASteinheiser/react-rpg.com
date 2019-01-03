@@ -40,7 +40,10 @@ const MainGameStart = (props) => {
   function handleLoadStartMap() {
     store.dispatch({
       type: 'SET_START_MAP',
-      payload: { startMap: START_MAP }
+      payload: {
+        startMap: START_MAP,
+        gameMode: 'story'
+      }
     });
   }
 

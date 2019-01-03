@@ -46,7 +46,10 @@ const EndlessGameStart = (props) => {
 
     store.dispatch({
       type: 'SET_START_MAP',
-      payload: { startMap: id }
+      payload: {
+        startMap: id,
+        gameMode: 'endless'
+      }
     });
     // generate and set map tiles for start map
     store.dispatch({

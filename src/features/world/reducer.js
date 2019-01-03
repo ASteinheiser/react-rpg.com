@@ -4,6 +4,7 @@ const initialState = {
   currentMap: null,
   gameOver: false,
   gameStart: false,
+  gameMode: null,
   paused: false,
   inventory: false,
   turn: 0,
@@ -53,9 +54,10 @@ const worldReducer = (state = initialState, action) => {
       return newState;
 
     case 'SET_START_MAP':
-      const { startMap } = action.payload;
+      const { startMap, gameMode } = action.payload;
 
       newState.currentMap = startMap;
+      newState.gameMode = gameMode;
 
       return newState;
 

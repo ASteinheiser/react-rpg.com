@@ -26,7 +26,11 @@ class World extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     // reload the tiles and monsters if it's a new map
-    if(prevProps.world.currentMap !== this.props.world.currentMap && prevProps.world.currentMap !== null) {
+    // and there is a current map
+    // and it's not the game start
+    if(prevProps.world.currentMap !== this.props.world.currentMap
+      && prevProps.world.currentMap !== null
+      && this.props.world.gameStart !== true) {
       this.handleLoadMap();
       this.handleLoadMonsters();
     }
