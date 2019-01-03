@@ -24,8 +24,8 @@ export default function generateObjects(map, floorNum, playerPos) {
   map[tile[0]][tile[1]] = 3;
   availableTiles.splice(randomIndex, 1);
 
-  // generate a random number of chests between 2 - 5
-  const randomChests = Math.round(Math.random() * (5 - 2) + 2);
+  // generate a random number of chests between 2 - 4
+  const randomChests = Math.round(Math.random() * (4 - 2) + 2);
   // place the chests on empty tiles
   for(let x = 0; x < randomChests; x++) {
     randomIndex = Math.floor(Math.random() * availableTiles.length);
