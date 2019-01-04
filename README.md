@@ -19,7 +19,6 @@ yarn test
 
 ## TODO:
 - [ ] remove surrounding available tiles when an object or monster is placed for better spacing
-- [ ] remove available tiles that are within the players initial sight radius
 - [ ] dont place chests or stairs in hallways (have walking path exclusively on opposite sides)
 ###
 - [ ] better maps for story mode
