@@ -18,9 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] remove surrounding available tiles when an object or monster is placed for better spacing
-- [ ] dont place chests or stairs in hallways (have walking path exclusively on opposite sides)
-###
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
 - [ ] a few well placed dialogs (game beginning, merchant, dragon)
