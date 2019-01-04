@@ -63,6 +63,14 @@ const EndlessGameStart = (props) => {
       type: 'ADD_TILES',
       payload: { tiles: randomMap }
     });
+
+    store.dispatch({
+      type: 'ADD_RANDOM_MAP',
+      payload: {
+        tiles: randomMap,
+        id: mapId
+      }
+    });
   }
 
   function handleLoadPlayerSight(player) {

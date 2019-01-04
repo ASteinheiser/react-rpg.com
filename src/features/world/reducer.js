@@ -8,7 +8,8 @@ const initialState = {
   paused: false,
   inventory: false,
   turn: 0,
-  sound: true
+  sound: true,
+  randomMaps: {}
 };
 
 const worldReducer = (state = initialState, action) => {
@@ -16,6 +17,12 @@ const worldReducer = (state = initialState, action) => {
   let newState = Object.assign({}, state);
 
   switch(action.type) {
+
+    case 'ADD_RANDOM_MAP':
+      newState.randomMaps[action.payload.id] = {
+        tiles: action.payload.tiles
+      };
+      return newState;
 
     case 'SET_SOUND':
       // turn on or off game sounds

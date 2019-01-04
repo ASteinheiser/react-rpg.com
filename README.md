@@ -20,7 +20,8 @@ yarn test
 ## TODO:
 - [ ] storing dynamically generated maps in redux
 - [ ] linking the stairs properly to other floors
-- [ ] remove surrounding available tiles when an object or monster is placed for better placement
+- [ ] remove surrounding available tiles when an object or monster is placed for better spacing
+- [ ] remove available tiles that are within the players initial sight radius
 ###
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
