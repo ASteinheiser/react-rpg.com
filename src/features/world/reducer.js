@@ -9,7 +9,8 @@ const initialState = {
   inventory: false,
   turn: 0,
   sound: true,
-  randomMaps: {}
+  randomMaps: [],
+  floorNum: null
 };
 
 const worldReducer = (state = initialState, action) => {
@@ -19,9 +20,10 @@ const worldReducer = (state = initialState, action) => {
   switch(action.type) {
 
     case 'ADD_RANDOM_MAP':
-      newState.randomMaps[action.payload.id] = {
-        tiles: action.payload.tiles
-      };
+      newState.randomMaps.push({
+        tiles: action.payload.tiles,
+        id: action.payload.id
+      });
       return newState;
 
     case 'SET_SOUND':
@@ -60,11 +62,18 @@ const worldReducer = (state = initialState, action) => {
 
       return newState;
 
+    case 'SET_CURR_MAP':
+      newState.currentMap = action.payload.map;
+      newState.floorNum = action.payload.floorNum;
+
+      return newState;
+
     case 'SET_START_MAP':
-      const { startMap, gameMode } = action.payload;
+      const { startMap, gameMode, floorNum } = action.payload;
 
       newState.currentMap = startMap;
       newState.gameMode = gameMode;
+      if(floorNum) newState.floorNum = floorNum;
 
       return newState;
 

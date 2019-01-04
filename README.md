@@ -18,10 +18,9 @@ yarn test
 ```
 
 ## TODO:
-- [ ] storing dynamically generated maps in redux
-- [ ] linking the stairs properly to other floors
 - [ ] remove surrounding available tiles when an object or monster is placed for better spacing
 - [ ] remove available tiles that are within the players initial sight radius
+- [ ] dont place chests or stairs in hallways (have walking path exclusively on opposite sides)
 ###
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode

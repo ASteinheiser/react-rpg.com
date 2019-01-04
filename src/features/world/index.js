@@ -15,6 +15,7 @@ import maps     from '../../data/maps';
 import store    from '../../config/store';
 // game functions
 import takeMonstersTurn from '../monsters/take-monsters-turn';
+import generateMonsters from '../../modules/generate-monsters';
 
 import './styles.css';
 
@@ -58,20 +59,49 @@ class World extends React.Component {
 
   handleLoadMap() {
     const { world } = this.props;
-    // set map tiles for current map
-    store.dispatch({
-      type: 'ADD_TILES',
-      payload: { tiles: maps[world.currentMap].tiles }
-    })
+    const { gameMode, floorNum, randomMaps } = world;
+
+    if(gameMode === 'endless') {
+      // set map tiles for current random map
+      store.dispatch({
+        type: 'ADD_TILES',
+        payload: { tiles: randomMaps[floorNum - 1].tiles }
+      });
+    } else {
+      // set map tiles for current story map
+      store.dispatch({
+        type: 'ADD_TILES',
+        payload: { tiles: maps[world.currentMap].tiles }
+      });
+    }
   }
 
   handleLoadMonsters() {
-    const { world } = this.props;
-    // load initial monsters
-    store.dispatch({
-      type: 'ADD_MONSTERS',
-      payload: { monsters: maps[world.currentMap].monsters, map: world.currentMap }
-    })
+    const { world, monsters, player, stats } = this.props;
+    const { gameMode, currentMap, randomMaps, floorNum } = world;
+
+    // if it's endless mode and we don't have monsters for the current map
+    if(gameMode === 'endless') {
+      if(!monsters.components[currentMap]) {
+        // let's generate some monsters and set them!
+        store.dispatch({
+          type: 'ADD_MONSTERS',
+          payload: {
+            monsters: generateMonsters(floorNum, randomMaps[floorNum - 1].tiles, player.position, stats.level),
+            map: currentMap
+          }
+        });
+      }
+    } else {
+      // load monsters for the story map
+      store.dispatch({
+        type: 'ADD_MONSTERS',
+        payload: {
+          monsters: maps[currentMap].monsters,
+          map: currentMap
+        }
+      });
+    }
   }
 
   render() {
@@ -117,8 +147,6 @@ class World extends React.Component {
   }
 }
 
-const mapStateToProps = ({ world }) => {
-  return { world };
-}
+const mapStateToProps = ({ world, monsters, player, stats }) => ({ world, monsters, player, stats });
 
 export default connect(mapStateToProps)(World);

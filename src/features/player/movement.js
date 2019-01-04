@@ -6,6 +6,7 @@ import ShopDialog    from '../../components/shop-dialog';
 import attackMonster from './attack-monster';
 import exploreTiles  from './explore-tiles';
 import openChest     from './open-chest';
+import walkStairs    from './walk-stairs';
 import store         from '../../config/store';
 import {
   SPRITE_SIZE,
@@ -53,20 +54,7 @@ export function observeBoundaries(newPos) {
 function handleInteractWithTile(nextTile, newPos) {
   // the player wants to use the stairs
   if(nextTile === 2 || nextTile === 3) {
-    let direction;
-    // player wants to go down
-    if(nextTile === 2) {
-      direction = 'down';
-    }
-    // player wants to go up
-    if(nextTile === 3) {
-      direction = 'up';
-    }
-    // change the world map
-    store.dispatch({
-      type: 'LOAD_NEXT_MAP',
-      payload: { direction }
-    })
+    walkStairs(nextTile, newPos);
   }
   // player wants to open chest
   if(nextTile === 4) {

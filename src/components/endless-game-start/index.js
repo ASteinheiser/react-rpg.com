@@ -36,7 +36,7 @@ const EndlessGameStart = (props) => {
     const mapId = uuidv4();
 
     handleCloseDialog();
-    handleLoadMap(mapId, randomMap);
+    handleLoadMap(mapId, randomMap, floorNum);
     handleLoadPlayerSight(player);
     handleLoadMonsters(floorNum, mapId, randomMap, player, stats);
     handleLoadStartingItems();
@@ -49,13 +49,14 @@ const EndlessGameStart = (props) => {
     });
   }
 
-  function handleLoadMap(mapId, randomMap) {
+  function handleLoadMap(mapId, randomMap, floorNum) {
     // set map tiles for start map
     store.dispatch({
       type: 'SET_START_MAP',
       payload: {
         startMap: mapId,
-        gameMode: 'endless'
+        gameMode: 'endless',
+        floorNum: floorNum
       }
     });
 
@@ -81,7 +82,10 @@ const EndlessGameStart = (props) => {
     // load initial (random) monsters
     store.dispatch({
       type: 'ADD_MONSTERS',
-      payload: { monsters: generateMonsters(floorNum, randomMap, player.position, stats.level), map: mapId }
+      payload: {
+        monsters: generateMonsters(floorNum, randomMap, player.position, stats.level),
+        map: mapId
+      }
     });
   }
 
