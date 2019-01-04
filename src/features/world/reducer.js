@@ -80,7 +80,9 @@ const worldReducer = (state = initialState, action) => {
     case 'RESET':
       return {
         ...initialState,
-        sound: state.sound
+        sound: state.sound,
+        randomMaps: [],
+        floorNum: null
       };
 
     default:
