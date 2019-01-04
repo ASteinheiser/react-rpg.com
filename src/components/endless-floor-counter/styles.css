@@ -1,0 +1,26 @@
+.endless-floor-counter {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  color: rgba(0, 0, 0, 0.75);
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.75);
+}
+
+.endless-floor-value {
+  font-size: 28px;
+
+  padding-left: 12px;
+}

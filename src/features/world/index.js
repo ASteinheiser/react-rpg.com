@@ -1,6 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 // game components
+import EndlessFloorCounter from '../../components/endless-floor-counter';
 import GameMusic  from '../../components/game-music';
 import GameSelect from '../../components/game-select';
 import GameOver   from '../../components/game-over';
@@ -105,10 +106,17 @@ class World extends React.Component {
   }
 
   render() {
-    const { gameOver, gameStart, paused, inventory } = this.props.world;
+    const { gameOver, gameStart, paused, inventory, gameMode, floorNum } = this.props.world;
 
     return (
       <div className='world-view-container white-border'>
+
+        {
+          gameMode === 'endless' ?
+            <EndlessFloorCounter floor={floorNum} />
+            :
+            null
+        }
 
         <Map />
         <Player />
