@@ -13,7 +13,7 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
         let push = true;
 
         for(let z = 0; z < vision.length; z ++) {
-          if(vision[z][0] === i && vision[z][1] === j) {
+          if(vision[z][1] === i && vision[z][0] === j) {
             push = false;
           }
         }
@@ -24,7 +24,7 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
   }
 
   // generate number of monsters for the map based on floor number and player level
-  const numberMonsters = Math.ceil(floorNum / playerLv) * 3;
+  const numberMonsters = Math.ceil(floorNum / playerLv) * (Math.round(Math.random() * (4 - 2) + 2));
   let monsterTiles = [];
   // get an array of tiles to position the random monsters
   for(let x = 0; x < numberMonsters; x ++) {

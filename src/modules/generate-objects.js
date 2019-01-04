@@ -12,7 +12,7 @@ export default function generateObjects(map, floorNum, playerPos) {
         let push = true;
 
         for(let z = 0; z < vision.length; z ++) {
-          if(vision[z][0] === i && vision[z][1] === j) {
+          if(vision[z][1] === i && vision[z][0] === j) {
             push = false;
           }
         }
