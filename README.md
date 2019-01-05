@@ -18,6 +18,7 @@ yarn test
 ```
 
 ## TODO:
+- [ ] fix bug with placing monsters/objects in player's sight when generating randomMap (availableTiles)
 - [ ] upgrade the merchant's shop
   - [ ] another tier of armor/weapons
   - [ ] backpack upgrade
