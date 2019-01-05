@@ -1,6 +1,6 @@
 .endless-floor-counter {
   position: absolute;
-  top: 7px;
+  top: 5px;
   left: 0;
   right: 0;
 
@@ -14,7 +14,13 @@
   font-weight: bold;
 
   color: rgb(0, 0, 0);
-  text-shadow: 0 2px 12px rgb(255, 255, 255);
+
+  width: fit-content;
+  margin: auto;
+  padding: 0 7px;
+  
+  background: rgba(173, 173, 173, 0.5);
+  border-radius: 7px;
 }
 
 .endless-floor-value {
