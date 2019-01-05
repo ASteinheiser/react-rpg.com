@@ -25,5 +25,4 @@ yarn test
 - [ ] cohesive story for story mode
 - [ ] a few well placed dialogs (game beginning, merchant, dragon)
 ### Expand endless mode
-- [ ] different tile types for higher floors
 - [ ] dialog message every 20 floors for 100 floors

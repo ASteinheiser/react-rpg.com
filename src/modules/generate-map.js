@@ -2,12 +2,12 @@ import { MAP_DIMENSIONS, MAX_TUNNELS, MAX_LENGTH } from '../config/constants';
 import generateObjects from './generate-objects';
 
 // generate a map filled with wall tiles
-function createMapOfWalls() {
+function createMapOfWalls(wallType) {
   let array = [];
   for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
     array.push([]);
     for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
-      array[i].push(5);
+      array[i].push(wallType);
     }
   }
   return array;
@@ -15,7 +15,12 @@ function createMapOfWalls() {
 
 // generates a random dungeon map
 export default function generateMap(startPos, floorNum) {
-  let map = createMapOfWalls(), // create a map of walls to carve rooms and hallways from
+  // change the walls of the dungeon as the floors get higher
+  let wallType = 5;
+  if(floorNum >= 40) wallType = 6;
+  if(floorNum >= 80) wallType = 7;
+
+  let map = createMapOfWalls(wallType), // create a map of walls to carve rooms and hallways from
     maxTunnels = MAX_TUNNELS, // store the max tunnels in a local variable that can be decremented
     currentRow = startPos ? startPos[1] : Math.floor(Math.random() * MAP_DIMENSIONS[0]), // our current row - start at a random spot
     currentColumn = startPos ? startPos[0] : Math.floor(Math.random() * MAP_DIMENSIONS[1]), // our current column - start at a random spot
