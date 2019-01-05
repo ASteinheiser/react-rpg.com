@@ -21,6 +21,8 @@
   
   background: rgba(173, 173, 173, 0.5);
   border-radius: 7px;
+
+  user-select: none;
 }
 
 .endless-floor-value {
