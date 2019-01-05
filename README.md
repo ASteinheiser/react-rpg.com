@@ -18,10 +18,12 @@ yarn test
 ```
 
 ## TODO:
+- [ ] more options/items/upgrades from the merchant
+- [ ] more monster types
 ### Expand story mode
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
 - [ ] a few well placed dialogs (game beginning, merchant, dragon)
 ### Expand endless mode
-- [ ] more options/items/upgrades from the merchant
-- [ ] more monster types
+- [ ] different tile types for higher floors
+- [ ] dialog message every 20 floors for 100 floors
