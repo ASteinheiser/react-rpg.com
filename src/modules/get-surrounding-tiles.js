@@ -1,4 +1,4 @@
-import { SIGHT_RADIUS, MAP_DIMENSIONS } from '../config/constants';
+import { SIGHT_RADIUS, MAP_DIMENSIONS, SPRITE_SIZE } from '../config/constants';
 
 let x, y;
 export const radiusTiles = [];
@@ -13,7 +13,12 @@ for (y = -SIGHT_RADIUS; y <= SIGHT_RADIUS; y++) {
 }
 
 // takes an array of relative coordinates to the map size (20 x 15) i.e. [1, 1]
-export default function getSurroundingTiles(startPos) {
+export default function getSurroundingTiles(newPos) {
+  // make sure the new position is in relative map tile size
+  let x = newPos[1] % SPRITE_SIZE === 0 ? newPos[1] / SPRITE_SIZE : newPos[1];
+  let y = newPos[0] % SPRITE_SIZE === 0 ? newPos[0] / SPRITE_SIZE : newPos[0];
+  // set tile to relative tile position
+  const startPos = [x, y];
   // make sure the start position is within the bounds
   if(startPos[0] >= MAP_DIMENSIONS[0] || startPos[0] < 0
     || startPos[1] >= MAP_DIMENSIONS[1] || startPos[1] < 0) return false;

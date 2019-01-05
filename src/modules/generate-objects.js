@@ -1,11 +1,11 @@
-import { MAP_DIMENSIONS, SPRITE_SIZE } from '../config/constants';
+import { MAP_DIMENSIONS }  from '../config/constants';
 import getSurroundingTiles from './get-surrounding-tiles';
 import arrContainArr       from './arr-contain-arr';
 // randomly generates chests, stairs and shops onto an existing random map
 export default function generateObjects(map, floorNum, playerPos) {
   let availableTiles = [];
 
-  let vision = findVision(playerPos);
+  let vision = getSurroundingTiles(playerPos);
 
   for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
     for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
@@ -71,13 +71,4 @@ export default function generateObjects(map, floorNum, playerPos) {
   }
 
   return map;
-}
-
-function findVision(playerPos) {
-  let x = playerPos[1] % SPRITE_SIZE === 0 ? playerPos[1] / SPRITE_SIZE : playerPos[1];
-  let y = playerPos[0] % SPRITE_SIZE === 0 ? playerPos[0] / SPRITE_SIZE : playerPos[0];
-  // set tile to relative tile position
-  let tile = [x, y];
-  // find the surrounding tiles and add them to the explore tiles
-  return getSurroundingTiles(tile);
 }

@@ -1,12 +1,12 @@
-import { MAP_DIMENSIONS, SPRITE_SIZE } from '../config/constants';
-import generateMonsterType             from './generate-monster-type';
-import getSurroundingTiles             from './get-surrounding-tiles';
-import arrContainArr                   from './arr-contain-arr';
+import { MAP_DIMENSIONS }  from '../config/constants';
+import generateMonsterType from './generate-monster-type';
+import getSurroundingTiles from './get-surrounding-tiles';
+import arrContainArr       from './arr-contain-arr';
 // generates a random map based on the floor number, map tiles, player's position, and level
 export default function generateMonsters(floorNum, map, playerPos, playerLv) {
   let availableTiles = [];
 
-  let vision = findVision(playerPos);
+  let vision = getSurroundingTiles(playerPos);
   // reverse the indexes of the vision tiles to match the available tiles order
   vision = vision.map(value => {
     return [value[1], value[0]];
@@ -43,13 +43,4 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
 
     return { position, type };
   });
-}
-
-function findVision(playerPos) {
-  let x = playerPos[1] % SPRITE_SIZE === 0 ? playerPos[1] / SPRITE_SIZE : playerPos[1];
-  let y = playerPos[0] % SPRITE_SIZE === 0 ? playerPos[0] / SPRITE_SIZE : playerPos[0];
-  // set tile to relative tile position
-  let tile = [x, y];
-  // find the surrounding tiles and add them to the explore tiles
-  return getSurroundingTiles(tile);
 }
