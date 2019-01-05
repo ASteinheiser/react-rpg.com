@@ -4,6 +4,10 @@
 }
 
 .endless-dialog-text {
+  font-family: Roboto;
+  letter-spacing: 5px;
+  line-height: 1.75;
+
   font-size: 24px;
   padding: 0 100px;
 }
