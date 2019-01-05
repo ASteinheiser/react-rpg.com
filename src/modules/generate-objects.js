@@ -1,27 +1,25 @@
-import { MAP_DIMENSIONS }  from '../config/constants';
+import { MAP_DIMENSIONS, SPRITE_SIZE } from '../config/constants';
 import getSurroundingTiles from './get-surrounding-tiles';
+import arrContainArr       from './arr-contain-arr';
 // randomly generates chests, stairs and shops onto an existing random map
 export default function generateObjects(map, floorNum, playerPos) {
   let availableTiles = [];
-  let vision = getSurroundingTiles(playerPos);
+
+  let vision = findVision(playerPos);
 
   for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
     for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
-      // get a list of floor tiles and remove player sight from available tiles
+      // get a list of floor tiles
       if(map[i][j] === 0) {
-        let push = true;
-
-        for(let z = 0; z < vision.length; z ++) {
-          if((vision[z][0] === i && vision[z][1] === j)
-            || (playerPos[0] === i && playerPos[1] === j)) {
-            push = false;
-          }
-        }
-
-        if(push) availableTiles.push([i, j]);
+        availableTiles.push([i, j]);
       }
     }
   }
+
+  availableTiles = availableTiles.filter(value => {
+    // remove the available tiles that are vision tiles
+    return !arrContainArr(vision, value);
+  });
 
   // show stairs down if floor is greater than 1
   if(floorNum > 1) {
@@ -73,4 +71,17 @@ export default function generateObjects(map, floorNum, playerPos) {
   }
 
   return map;
+}
+
+function findVision(playerPos) {
+  let x = playerPos[1] % SPRITE_SIZE === 0 ? playerPos[1] / SPRITE_SIZE : playerPos[1];
+  let y = playerPos[0] % SPRITE_SIZE === 0 ? playerPos[0] / SPRITE_SIZE : playerPos[0];
+  // set tile to relative tile position
+  let tile = [x, y];
+  // make an array with new tile position
+  let exploreTiles = [ tile ];
+  // find the surrounding tiles and add them to the explore tiles
+  exploreTiles = exploreTiles.concat(getSurroundingTiles(tile));
+
+  return exploreTiles;
 }
