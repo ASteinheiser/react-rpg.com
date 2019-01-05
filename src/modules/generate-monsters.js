@@ -13,7 +13,7 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
         let push = true;
 
         for(let z = 0; z < vision.length; z ++) {
-          if(vision[z][0] === i && vision[z][1] === j
+          if((vision[z][0] === i && vision[z][1] === j)
             || (playerPos[0] === i && playerPos[1] === j)) {
             push = false;
           }
