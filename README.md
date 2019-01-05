@@ -18,8 +18,10 @@ yarn test
 ```
 
 ## TODO:
-- [ ] fix bug where item will be added to inventory from chest pickup even if inventory full (use snackbar)
+### Expand story mode
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
 - [ ] a few well placed dialogs (game beginning, merchant, dragon)
+### Expand endless mode
 - [ ] more options/items/upgrades from the merchant
+- [ ] more monster types

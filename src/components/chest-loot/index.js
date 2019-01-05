@@ -49,11 +49,20 @@ const ChestLoot = (props) => {
   }
 
   function handleContinue() {
+    const { items, maxItems } = store.getState().inventory;
+
     if(item) {
-      store.dispatch({
-        type: 'GET_ITEM',
-        payload: item
-      });
+      if(items.length < maxItems) {
+        store.dispatch({
+          type: 'GET_ITEM',
+          payload: item
+        });
+      } else {
+        store.dispatch({
+          type: 'TOO_MANY_ITEMS',
+          payload: item
+        });
+      }
     }
     handleClose();
   }
