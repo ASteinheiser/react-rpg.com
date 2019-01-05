@@ -50,10 +50,6 @@ function findVision(playerPos) {
   let y = playerPos[0] % SPRITE_SIZE === 0 ? playerPos[0] / SPRITE_SIZE : playerPos[0];
   // set tile to relative tile position
   let tile = [x, y];
-  // make an array with new tile position
-  let exploreTiles = [ tile ];
   // find the surrounding tiles and add them to the explore tiles
-  exploreTiles = exploreTiles.concat(getSurroundingTiles(tile));
-
-  return exploreTiles;
+  return getSurroundingTiles(tile);
 }

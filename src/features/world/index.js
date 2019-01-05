@@ -36,15 +36,16 @@ class World extends React.Component {
       this.handleLoadMap();
       this.handleLoadMonsters();
     }
+    // if a turn has been taken, and the game hasn't just restarted, and the map didn't change
+    else if(prevProps.world.turn !== this.props.world.turn
+      && (this.props.world.turn !== 0)
+      && (prevProps.world.currentMap === this.props.world.currentMap)) {
+      // take monster turn
+      takeMonstersTurn();
+    }
     // if the game has been restarted
     if(prevProps.world.gameOver === true && this.props.world.gameOver === false) {
       this.handleGameStart();
-    }
-    // if a turn has been taken, and the game hasn't just restarted
-    if(prevProps.world.turn !== this.props.world.turn
-      && (this.props.world.turn !== 0)) {
-      // take monster turn
-      takeMonstersTurn();
     }
   }
 

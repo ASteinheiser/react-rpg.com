@@ -75,10 +75,10 @@ export default function handleMovement(player) {
 
     if(observeBoundaries(newPos) && nextTile < 5
         && !checkForMonster(newPos, direction)) {
-      // open chests, use shop, etc.
-      handleInteractWithTile(nextTile, newPos);
       // move the player
       dispatchMove(direction, newPos);
+      // open chests, use shop, etc.
+      handleInteractWithTile(nextTile, newPos);
       // explore new tiles
       exploreTiles(newPos);
       // take a turn
