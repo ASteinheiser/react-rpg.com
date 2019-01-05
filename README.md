@@ -18,7 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] fix bug with monsters not unloading when going back down a floor
 - [ ] fix bug where item will be added to inventory from chest pickup even if inventory full (use snackbar)
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
