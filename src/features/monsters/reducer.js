@@ -1,10 +1,6 @@
 import React from 'react';
 
-import Dragon, { dragonStats }         from './dragon';
-import Goblin, { goblinStats }         from './goblin';
-import Rat, { ratStats }               from './rat';
-import StoneGolem, { stoneGolemStats } from './stone-golem';
-
+import Monsters        from '../../data/monsters';
 import { SPRITE_SIZE } from '../../config/constants';
 import { uuidv4 }      from '../../modules/uuid-v4.js';
 
@@ -49,42 +45,13 @@ const monstersReducer = (state = initialState, action) => {
           // generate a unique id (for tracking purposes)
           let uuid = uuidv4();
           monster.id = uuid;
-
-          switch(monster.type) {
-            case 'dragon':
-              // merge the initial position with monster stats
-              monster = Object.assign({}, monster, dragonStats);
-              // set the position from tile(x,y) to pixels
-              monster.position = monster.position.map(value => value * SPRITE_SIZE);
-              // set component key with monster id
-              newState.components[map][uuid] = ( <Dragon monster={monster} key={uuid} /> );
-              break;
-            case 'goblin':
-              // merge the initial position with monster stats
-              monster = Object.assign({}, monster, goblinStats);
-              // set the position from tile(x,y) to pixels
-              monster.position = monster.position.map(value => value * SPRITE_SIZE);
-              // set component key with monster id
-              newState.components[map][uuid] = ( <Goblin monster={monster} key={uuid} /> );
-              break;
-            case 'rat':
-              // merge the initial position with monster stats
-              monster = Object.assign({}, monster, ratStats);
-              // set the position from tile(x,y) to pixels
-              monster.position = monster.position.map(value => value * SPRITE_SIZE);
-              // set component key with monster id
-              newState.components[map][uuid] = ( <Rat monster={monster} key={uuid} /> );
-              break;
-            case 'stone-golem':
-              // merge the initial position with monster stats
-              monster = Object.assign({}, monster, stoneGolemStats);
-              // set the position from tile(x,y) to pixels
-              monster.position = monster.position.map(value => value * SPRITE_SIZE);
-              // set component key with monster id
-              newState.components[map][uuid] = ( <StoneGolem monster={monster} key={uuid} /> );
-              break;
-            default:
-          }
+          // merge the initial position with monster stats
+          monster = Object.assign({}, monster, Monsters[monster.type].stats);
+          // set the position from tile(x,y) to actual pixel size
+          monster.position = monster.position.map(value => value * SPRITE_SIZE);
+          // set component key with monster id
+          const { Comp } = Monsters[monster.type];
+          newState.components[map][uuid] = ( <Comp monster={monster} key={uuid} /> );
         });
       }
 

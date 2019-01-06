@@ -18,10 +18,10 @@ yarn test
 ```
 
 ## TODO:
+- [ ] more monster types
 - [ ] upgrade the merchant's shop
   - [ ] another tier of armor/weapons
   - [ ] backpack upgrade
-- [ ] more monster types
 ### Expand story mode
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
