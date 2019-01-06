@@ -17,8 +17,9 @@ function createMapOfWalls(wallType) {
 export default function generateMap(startPos, floorNum) {
   // change the walls of the dungeon as the floors get higher
   let wallType = 5;
-  if(floorNum >= 40) wallType = 6;
-  if(floorNum >= 80) wallType = 7;
+  if(floorNum >= 30) wallType = 6;
+  if(floorNum >= 60) wallType = 7;
+  if(floorNum >= 90) wallType = 8;
 
   let map = createMapOfWalls(wallType), // create a map of walls to carve rooms and hallways from
     maxTunnels = MAX_TUNNELS, // store the max tunnels in a local variable that can be decremented

@@ -21,7 +21,10 @@ yarn test
 - [ ] upgrade the merchant's shop
   - [ ] another tier of armor/weapons
   - [ ] backpack upgrade
+- [ ] implement new items into chest drop (use player level)
 ### Expand story mode
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
 - [ ] a few well placed dialogs (game beginning, merchant, dragon)
+### Expand endless mode
+- [ ] implement new monster types

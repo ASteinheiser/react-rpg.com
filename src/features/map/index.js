@@ -19,13 +19,13 @@ function getTileSprite(type, variation) {
     case 4:
       return 'chest'
     case 5:
-      return `stone-wall-${variation}`
+      return `brick-wall-${variation}`
     case 6:
-      return `blue-wall-${variation}`
+      return `ornate-wall-${variation}`
     case 7:
-      return `skull-wall-${variation}`
+      return `blue-wall-${variation}`
     case 8:
-      return `eye-wall-${variation}`
+      return `skull-wall-${variation}`
     case 9:
       return 'shop'
     case 10:
@@ -94,7 +94,7 @@ function MapTile(props) {
   }
   // case for rendering normal tiles
   return (
-    <GroundTile>
+    <GroundTile variation={tile.variation}>
       <div
         style={{
           backgroundImage: `url(/tiles/${getTileSprite(tile.value, tile.variation)}.png)`,
