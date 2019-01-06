@@ -1,6 +1,6 @@
 {
-  "short_name": "React + Redux RPG",
-  "name": "RPG made with React + Redux",
+  "short_name": "React-RPG.com",
+  "name": "Dungeon-crawler RPG made with React",
   "icons": [
     {
       "src": "favicon.ico",

@@ -2,6 +2,7 @@ import React       from 'react';
 import { connect } from 'react-redux';
 // game components
 import EndlessFloorCounter from '../../components/endless-floor-counter';
+import Footer     from '../../components/footer';
 import GameMusic  from '../../components/game-music';
 import GameSelect from '../../components/game-select';
 import GameOver   from '../../components/game-over';
@@ -150,6 +151,8 @@ class World extends React.Component {
           <GameMusic />
 
         </div>
+
+        <Footer />
 
       </div>
     );

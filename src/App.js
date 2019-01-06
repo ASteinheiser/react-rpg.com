@@ -7,15 +7,17 @@ const App = (props) => {
 
   const { height } = useWindowSize();
 
-  return (
+  return(
     <div className='game-layout-container'>
       {
         height > 800 ?
           <span className='game-title-text'>
-            {'React + Redux RPG'}
+            {'React-RPG.com'}
           </span>
           :
-          null
+          <span className='game-title-text-small'>
+            {'React-RPG.com'}
+          </span>
       }
 
       <World />

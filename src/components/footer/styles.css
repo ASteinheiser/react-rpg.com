@@ -1,0 +1,22 @@
+.footer-container {
+  font-size: 18px;
+  text-transform: none;
+
+  width: 800px;
+  margin: 35px 0 25px;
+
+  align-self: center;
+  text-align: center;
+
+  cursor: default;
+  user-select: none;
+}
+
+.footer-container a {
+  color: var(--gray);
+  text-decoration: none;
+
+  padding-bottom: 3px;
+
+  border-bottom: 1px solid;
+}

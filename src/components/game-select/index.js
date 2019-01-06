@@ -28,7 +28,7 @@ const GameSelect = (props) => {
   return(
     <Dialog>
       <div className='flex-row game-select-title'>
-        {'React + Redux RPG'}
+        {'React Dungeon RPG'}
       </div>
 
       <div className='flex-column game-select-text'>

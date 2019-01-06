@@ -25,15 +25,30 @@ body {
   display: flex;
   flex: 1;
   flex-direction: column;
-
-  margin-bottom: 15px;
 }
 
 .game-title-text {
   font-size: 24px;
 
+  text-transform: none;
+
   width: 800px;
   margin: 25px 0 10px 0;
+
+  align-self: center;
+  text-align: center;
+
+  cursor: default;
+  user-select: none;
+}
+
+.game-title-text-small {
+  font-size: 18px;
+
+  text-transform: none;
+
+  width: 800px;
+  margin: 15px 0 0;
 
   align-self: center;
   text-align: center;
