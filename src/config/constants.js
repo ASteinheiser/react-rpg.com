@@ -15,4 +15,4 @@ export const MAP_HEIGHT = SPRITE_SIZE * TILE_HEIGHT;
 export const MAP_WIDTH = SPRITE_SIZE * TILE_WIDTH;
 // configs for random map generation
 export const MAX_TUNNELS = 60;
-export const MAX_LENGTH = 7;
+export const MAX_LENGTH = 5;
