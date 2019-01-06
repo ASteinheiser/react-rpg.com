@@ -19,7 +19,7 @@ const stats = {
   damage: 6,
   defence: 5,
   exp: 40,
-  type: 'golem'
+  type: 'stone-golem'
 };
 
 export default {
