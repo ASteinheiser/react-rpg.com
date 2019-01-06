@@ -64,10 +64,21 @@ export default function generateObjects(map, floorNum, playerPos) {
       }
     }
 
-    randomIndex = Math.floor(Math.random() * availableWalls.length);
-    tile = availableWalls[randomIndex];
+    map = generateShop(map, availableWalls);
+  }
 
+  return map;
+}
+
+function generateShop(map, availableWalls) {
+  const randomIndex = Math.floor(Math.random() * availableWalls.length);
+  let tile = availableWalls[randomIndex];
+
+  if(map[tile[0]] && map[tile[0]][tile[1]] === 5) {
     map[tile[0]][tile[1]] = 9;
+  } else {
+    console.error(new Error('Invalid map tile ', tile));
+    return generateShop(map, availableWalls);
   }
 
   return map;
