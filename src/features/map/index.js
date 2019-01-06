@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import Flame           from '../../components/flame';
 import { SPRITE_SIZE } from '../../config/constants';
 
-function getTileSprite(type) {
+function getTileSprite(type, variation) {
   switch(type) {
     case -2:
       return 'chest-open'
     case -1:
       return 'blood-splatter'
     case 0:
-      return 'ground'
+      return `ground-${variation}`
     case 2:
       return 'stairs-down'
     case 3:
@@ -19,13 +19,13 @@ function getTileSprite(type) {
     case 4:
       return 'chest'
     case 5:
-      return 'stone-wall'
+      return `stone-wall-${variation}`
     case 6:
-      return 'blue-wall'
+      return `blue-wall-${variation}`
     case 7:
-      return 'skull-wall'
+      return `skull-wall-${variation}`
     case 8:
-      return 'eye-wall'
+      return `eye-wall-${variation}`
     case 9:
       return 'shop'
     case 10:
@@ -58,7 +58,7 @@ function GroundTile(props) {
   return (
     <div
       style={{
-        backgroundImage: 'url(\'/tiles/ground.png\')',
+        backgroundImage: `url('/tiles/ground-${props.variation}.png')`,
         display: 'inline-flex',
         height: SPRITE_SIZE,
         width: SPRITE_SIZE,
@@ -69,6 +69,7 @@ function GroundTile(props) {
 }
 
 function MapTile(props) {
+  const { tile } = props;
   let inSight = false;
   // if you need to render the sightBox
   if(props.sightBox) {
@@ -82,11 +83,11 @@ function MapTile(props) {
     });
   }
   // case for rendering animated flame tile
-  if(props.tile.value === 20) {
+  if(tile.value === 20) {
     return (
-      <GroundTile>
+      <GroundTile variation={tile.variation}>
         <Flame position={props.index}>
-          <FogTile explored={props.tile.explored} inSight={inSight} />
+          <FogTile explored={tile.explored} inSight={inSight} />
         </Flame>
       </GroundTile>
     );
@@ -96,11 +97,11 @@ function MapTile(props) {
     <GroundTile>
       <div
         style={{
-          backgroundImage: `url(/tiles/${getTileSprite(props.tile.value)}.png)`,
+          backgroundImage: `url(/tiles/${getTileSprite(tile.value, tile.variation)}.png)`,
           height: SPRITE_SIZE,
           width: SPRITE_SIZE,
         }}>
-        <FogTile explored={props.tile.explored} inSight={inSight} />
+        <FogTile explored={tile.explored} inSight={inSight} />
       </div>
     </GroundTile>
   );

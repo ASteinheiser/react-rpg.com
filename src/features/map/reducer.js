@@ -36,14 +36,16 @@ const mapReducer = (state = initialState, action) => {
 
     // load a new map of tiles
     case 'ADD_TILES':
-      // give each tile a 'value' and 'explored' attribute
-      // this is used for showing visited tiles
-      action.payload.tiles.forEach((row, index) => {
-        action.payload.tiles[index].forEach((item, tileIndex) => {
-          if(typeof action.payload.tiles[index][tileIndex] !== 'object') {
-            action.payload.tiles[index][tileIndex] = {
+    action.payload.tiles.forEach((row, index) => {
+      action.payload.tiles[index].forEach((item, tileIndex) => {
+        if(typeof action.payload.tiles[index][tileIndex] !== 'object') {
+          action.payload.tiles[index][tileIndex] = {
+              // give each tile a 'value'
               value: action.payload.tiles[index][tileIndex],
-              explored: 0
+              // this is used for showing visited tiles
+              explored: 0,
+              // add a variation for tiles that allow for it (random num: 1 - 4)
+              variation: Math.round(Math.random() * (4 - 1) + 1)
             };
           }
         });
