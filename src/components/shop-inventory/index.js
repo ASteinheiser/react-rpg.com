@@ -34,24 +34,26 @@ const ShopInventory = (props) => {
     const { items, maxItems } = store.getState().inventory;
     // make sure player has enough gold
     if(gold >= item.value) {
-      // if there's room in the inventory
-      if(items.length < maxItems) {
+      // if it's an hp potion
+      if(item.type === 'potion') {
         store.dispatch({
           type: 'LOSE_GOLD',
           payload: { value: item.value }
         });
-        // if it's an hp potion
-        if(item.type === 'potion') {
-          store.dispatch({
-            type: 'HEAL_HP',
-            payload: { value: parseInt(item.hp, 10) }
-          });
-        } else {
-          store.dispatch({
-            type: 'GET_ITEM',
-            payload: item
-          });
-        }
+        store.dispatch({
+          type: 'HEAL_HP',
+          payload: { value: parseInt(item.hp, 10) }
+        });
+      } // otherwise, see if there's room in the inventory
+      else if(items.length < maxItems) {
+        store.dispatch({
+          type: 'LOSE_GOLD',
+          payload: { value: item.value }
+        });
+        store.dispatch({
+          type: 'GET_ITEM',
+          payload: item
+        });
       } else {
         // inventory full
         store.dispatch({
