@@ -21,7 +21,7 @@ function getTileSprite(type) {
     case 5:
       return 'stone-wall'
     case 6:
-      return 'cracked-wall'
+      return 'blue-wall'
     case 7:
       return 'skull-wall'
     case 8:

@@ -18,6 +18,7 @@ yarn test
 ```
 
 ## TODO:
+- [ ] variations of the brick walls
 - [ ] more monster types
 - [ ] upgrade the merchant's shop
   - [ ] another tier of armor/weapons
