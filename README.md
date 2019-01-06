@@ -18,7 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] better endless floor counter
 - [ ] upgrade the merchant's shop
   - [ ] another tier of armor/weapons
   - [ ] backpack upgrade
