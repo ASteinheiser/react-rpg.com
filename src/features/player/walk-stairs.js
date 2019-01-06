@@ -93,7 +93,7 @@ function showProgressMessage(floorNum) {
       show = true;
       message = (
         <EndlessDialog
-          text1={`As you march onward, you examine the walls. The bricks have a faint purple glow to them...`}
+          text1={`As you march onward, you notice the walls have a faint purple glow to them...`}
           text2={`"THE JOURNEY HAS JUST BEGUN"`} />
       );
       break;
@@ -124,7 +124,7 @@ function showProgressMessage(floorNum) {
       message = (
         <EndlessDialog
           text1={`We didn't expect you to ACTUALLY make it this far.....`}
-          text2={`"THE TRUTH IS... NOTHING... BUT OBLIVION LIES BEYOND THIS POINT"`} />
+          text2={`"THE TRUTH IS... NOTHING... BUT OBLIVION LIES BEYOND THIS POINT..... WELCOME"`} />
       );
       break;
     default:

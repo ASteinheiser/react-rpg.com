@@ -18,7 +18,7 @@ yarn test
 ```
 
 ## TODO:
-- [ ] fix error with generate objects function
+- [ ] better endless floor counter
 - [ ] upgrade the merchant's shop
   - [ ] another tier of armor/weapons
   - [ ] backpack upgrade

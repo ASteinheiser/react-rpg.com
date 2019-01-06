@@ -2,7 +2,7 @@ import { MAP_DIMENSIONS }  from '../config/constants';
 import generateMonsterType from './generate-monster-type';
 import getSurroundingTiles from './get-surrounding-tiles';
 import arrContainArr       from './arr-contain-arr';
-// generates a random map based on the floor number, map tiles, player's position, and level
+// generates random monsters for a random map
 export default function generateMonsters(floorNum, map, playerPos, playerLv) {
   let availableTiles = [];
 
@@ -31,11 +31,13 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
   let monsterTiles = [];
   // get an array of tiles to position the random monsters
   for(let x = 0; x < numberMonsters; x ++) {
-    const randomIndex = Math.floor(Math.random() * availableTiles.length);
-    monsterTiles.push(availableTiles[randomIndex]);
-    availableTiles.splice(randomIndex, 1);
+    if(availableTiles.length > 0) {
+      const randomIndex = Math.floor(Math.random() * availableTiles.length);
+      monsterTiles.push(availableTiles[randomIndex]);
+      availableTiles.splice(randomIndex, 1);
+    }
   }
-  
+
   // generate the monster type and create an array of monster objects
   return monsterTiles.map(position => {
 

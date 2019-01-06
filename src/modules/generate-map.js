@@ -66,5 +66,5 @@ export default function generateMap(startPos, floorNum) {
 
   // all our tunnels have been created and now we run placeObjects(),
   // which will complete our map, so lets return it to our render()
-  return generateObjects(map, floorNum, startPos);
+  return generateObjects(map, floorNum, startPos, wallType);
 }
