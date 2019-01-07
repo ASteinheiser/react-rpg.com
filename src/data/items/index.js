@@ -8,6 +8,8 @@ import SteelBoots    from './armor/steel-boots';
 import SteelHelm     from './armor/steel-helm';
 import SteelGloves   from './armor/steel-gloves';
 import SteelPants    from './armor/steel-pants';
+import DiamondRing   from './rings/diamond-ring';
+import AmethystRing  from './rings/amethyst-ring';
 import OldRing       from './rings/old-ring';
 import RustySword    from './weapons/rusty-sword';
 import SteelSword    from './weapons/steel-sword';
@@ -33,6 +35,8 @@ const items = {
     SteelPants
   },
   rings: {
+    AmethystRing,
+    DiamondRing,
     OldRing
   },
   other: {
