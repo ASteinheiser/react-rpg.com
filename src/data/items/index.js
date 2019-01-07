@@ -15,6 +15,7 @@ import BroadSword    from './weapons/broad-sword';
 import RustySword    from './weapons/rusty-sword';
 import SteelSword    from './weapons/steel-sword';
 import DragonsBane   from './weapons/dragons-bane';
+import LichBane      from './weapons/lich-bane';
 import HpPotion      from './other/hp-potion';
 
 const items = {
@@ -22,7 +23,8 @@ const items = {
     BroadSword,
     RustySword,
     SteelSword,
-    DragonsBane
+    DragonsBane,
+    LichBane
   },
   armor: {
     LeatherArmor,

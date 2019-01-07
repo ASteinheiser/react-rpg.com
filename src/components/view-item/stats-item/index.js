@@ -13,6 +13,7 @@ const StatsItem = (props) => {
       case 'hp':
         return 'green';
       case 'VS. dragon':
+      case 'VS. lich':
         return 'orange';
       default:
     }
