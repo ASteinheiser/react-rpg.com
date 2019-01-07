@@ -19,7 +19,6 @@ yarn test
 
 ## TODO:
 - [ ] better hp potion
-- [ ] another sword
 - [ ] lich sword
 - [ ] fix stats bug with equipping a ring with a ring already equipped
 - [ ] upgrade the merchant's shop

@@ -11,6 +11,7 @@ import SteelPants    from './armor/steel-pants';
 import DiamondRing   from './rings/diamond-ring';
 import AmethystRing  from './rings/amethyst-ring';
 import OldRing       from './rings/old-ring';
+import BroadSword    from './weapons/broad-sword';
 import RustySword    from './weapons/rusty-sword';
 import SteelSword    from './weapons/steel-sword';
 import DragonsBane   from './weapons/dragons-bane';
@@ -18,6 +19,7 @@ import HpPotion      from './other/hp-potion';
 
 const items = {
   weapons: {
+    BroadSword,
     RustySword,
     SteelSword,
     DragonsBane
