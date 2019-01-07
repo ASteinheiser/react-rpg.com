@@ -17,6 +17,7 @@ import SteelSword    from './weapons/steel-sword';
 import DragonsBane   from './weapons/dragons-bane';
 import LichBane      from './weapons/lich-bane';
 import HpPotion      from './other/hp-potion';
+import GreatHpPotion from './other/great-hp-potion';
 
 const items = {
   weapons: {
@@ -44,7 +45,8 @@ const items = {
     OldRing
   },
   other: {
-    HpPotion
+    HpPotion,
+    GreatHpPotion
   }
 };
 
