@@ -3,6 +3,11 @@ import LeatherBoots  from './armor/leather-boots';
 import LeatherCap    from './armor/leather-cap';
 import LeatherGloves from './armor/leather-gloves';
 import LeatherPants  from './armor/leather-pants';
+import SteelArmor    from './armor/steel-armor';
+import SteelBoots    from './armor/steel-boots';
+import SteelHelm     from './armor/steel-helm';
+import SteelGloves   from './armor/steel-gloves';
+import SteelPants    from './armor/steel-pants';
 import OldRing       from './rings/old-ring';
 import RustySword    from './weapons/rusty-sword';
 import SteelSword    from './weapons/steel-sword';
@@ -20,7 +25,12 @@ const items = {
     LeatherBoots,
     LeatherCap,
     LeatherGloves,
-    LeatherPants
+    LeatherPants,
+    SteelArmor,
+    SteelBoots,
+    SteelHelm,
+    SteelGloves,
+    SteelPants
   },
   rings: {
     OldRing

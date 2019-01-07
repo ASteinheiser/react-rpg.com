@@ -18,8 +18,11 @@ yarn test
 ```
 
 ## TODO:
+- [ ] 2 more rings
+- [ ] better hp potion
+- [ ] another sword
+- [ ] lich sword
 - [ ] upgrade the merchant's shop
-  - [ ] another tier of armor/weapons
   - [ ] backpack upgrade
 - [ ] implement new items into chest drop (use player level)
 ### Expand story mode

@@ -42,21 +42,6 @@ body {
   user-select: none;
 }
 
-.game-title-text-small {
-  font-size: 18px;
-
-  text-transform: none;
-
-  width: 800px;
-  margin: 15px 0 0;
-
-  align-self: center;
-  text-align: center;
-
-  cursor: default;
-  user-select: none;
-}
-
 .flex-row {
   display: flex;
   flex-direction: row;
