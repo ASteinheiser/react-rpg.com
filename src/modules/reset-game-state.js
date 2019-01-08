@@ -15,19 +15,24 @@ export default function resetGameState() {
         // pull value off the object
         if(typeof value === 'object') value = value.value;
 
+        const settings = {
+          explored: 0,
+          variation: Math.round(Math.random() * (4 - 1) + 1)
+        };
+
         switch (value) {
           // close all the treasure chests
           case -2:
             maps[mapName].tiles[i][j] = {
               value: 4,
-              explored: 0
+              ...settings
             };
             break;
           // clean up blood
           case -1:
             maps[mapName].tiles[i][j] = {
               value: 0,
-              explored: 0
+              ...settings
             };
             break;
           default:
@@ -35,7 +40,7 @@ export default function resetGameState() {
             // but set their original values
             maps[mapName].tiles[i][j] = {
               value,
-              explored: 0
+              ...settings
             }
         }
       }

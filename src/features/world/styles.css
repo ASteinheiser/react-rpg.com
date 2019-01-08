@@ -9,7 +9,7 @@
 
 .world-stats-container {
   flex: 1;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   width: 800px;
   margin-top: 15px;

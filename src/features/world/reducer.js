@@ -45,6 +45,7 @@ const worldReducer = (state = initialState, action) => {
       newState.gameStart = action.payload.gameStart || false;
       // check if pause type is inventory
       newState.inventory = action.payload.inventory || false;
+      // check if pause type is game over
       newState.gameOver = action.payload.gameOver || false;
       newState.paused = action.payload.component;
 
