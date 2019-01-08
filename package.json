@@ -10,7 +10,9 @@
     "react-scripts": "1.1.5",
     "react-sound": "^1.2.0",
     "react-timeout": "^1.1.2",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "typeface-montserrat": "^0.0.54",
+    "typeface-roboto": "^0.0.54"
   },
   "scripts": {
     "start": "react-scripts start",
