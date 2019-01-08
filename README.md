@@ -32,3 +32,8 @@ yarn test
 - [ ] a few well placed dialogs (game beginning, merchant, dragon)
 ### Expand endless mode
 - [ ] implement new monster types
+### Expand release targets
+- [ ] make the game view be 100% of screen size and scale view to show portion of the map
+- [ ] native touch controls to move and attack
+- [ ] make native desktop version (electron)
+- [ ] make native mobile version (webview in react-native)
