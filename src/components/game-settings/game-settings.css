@@ -1,0 +1,23 @@
+.game-settings-box {
+  height: 40px;
+  width: 45px;
+
+  margin-top: 12px;
+
+  cursor: pointer;
+  user-select: none;
+
+  position: relative;
+
+  z-index: 100;
+}
+
+.game-settings-button {
+  font-size: 26px;
+
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

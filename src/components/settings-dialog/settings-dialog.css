@@ -1,0 +1,19 @@
+.settings-dialog-container {
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.settings-dialog-title {
+  font-size: 32px;
+  font-weight: 500;
+
+  border-bottom: 3px solid;
+}
+
+.setting-dialog-confirm {
+  top: 50px;
+  bottom: 50px;
+  left: 50px;
+  right: 50px;
+}

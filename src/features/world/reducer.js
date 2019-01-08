@@ -1,7 +1,8 @@
 import React from 'react';
 
-import GameSelect from '../../components/game-select';
-import maps       from '../../data/maps';
+import GameSelect     from '../../components/game-select';
+import SettingsDialog from '../../components/settings-dialog';
+import maps           from '../../data/maps';
 
 const initialState = {
   currentMap: null,
@@ -13,7 +14,8 @@ const initialState = {
   turn: 0,
   sound: true,
   randomMaps: [],
-  floorNum: null
+  floorNum: null,
+  settings: null
 };
 
 const worldReducer = (state = initialState, action) => {
@@ -49,6 +51,15 @@ const worldReducer = (state = initialState, action) => {
       newState.gameOver = action.payload.gameOver || false;
       newState.paused = action.payload.component;
 
+      return newState;
+
+    case 'OPEN_SETTINGS':
+      // open the settings dialog
+      newState.settings = <SettingsDialog />;
+      return newState;
+
+    case 'CLOSE_SETTINGS':
+      newState.settings = null;
       return newState;
 
     case 'LOAD_NEXT_MAP':

@@ -89,7 +89,11 @@ class World extends React.Component {
   }
 
   render() {
-    const { gameOver, gameStart, paused, inventory, gameMode, floorNum } = this.props.world;
+    const { gameOver, gameStart, paused, inventory, gameMode, floorNum, settings } = this.props.world;
+    // disable the inventory button when we are in settings or paused and not in the inventory
+    const disableInventory = settings || (paused && !inventory);
+    // disable the stats view when in game start or game over or settings
+    const disableStats = gameStart || gameOver || settings;
 
     return (
       <div className='world-view-container white-border'>
@@ -109,15 +113,18 @@ class World extends React.Component {
         game over screen, as well as other dialogs throughout the game */}
         { paused }
 
-        <div className='flex-row world-stats-container'>
+        { settings }
+
+        <div className='flex-row world-stats-container'
+          style={{ justifyContent: disableStats ? 'flex-end' : 'space-between' }}>
           {
-            gameStart || gameOver ?
+            disableStats ?
               null
               :
               <Stats />
           }
 
-          <Inventory disabled={paused && !inventory} />
+          <Inventory disabled={disableInventory} />
 
           <Snackbar />
 

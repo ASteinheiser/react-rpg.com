@@ -6,10 +6,10 @@ import './styles.css';
 
 const ConfirmDialog = (props) => {
 
-  const { text, onClose, cancelIcon, cancelText, confirm, acceptIcon, acceptText } = props;
+  const { text, onClose, cancelIcon, cancelText, confirm, acceptIcon, acceptText, className } = props;
 
   return(
-    <div className='confirm-dialog-container white-border'>
+    <div className={`confirm-dialog-container white-border ${className ? className : ''}`}>
 
       <span className='confirm-dialog-text'>
         { text }

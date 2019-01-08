@@ -18,8 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] settings button with dialog
-  - [ ] quit to menu button
 - [ ] fix stats bug with equipping a ring with a ring already equipped
 - [ ] upgrade the merchant's shop
   - [ ] backpack upgrade
