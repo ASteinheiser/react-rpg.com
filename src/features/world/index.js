@@ -2,16 +2,17 @@ import React       from 'react';
 import { connect } from 'react-redux';
 // game components
 import EndlessFloorCounter from '../../components/endless-floor-counter';
-import Footer     from '../../components/footer';
-import GameMusic  from '../../components/game-music';
-import GameSelect from '../../components/game-select';
-import GameOver   from '../../components/game-over';
-import Inventory  from '../inventory';
-import Map        from '../map';
-import Monsters   from '../monsters';
-import Player     from '../player';
-import Snackbar   from '../snackbar';
-import Stats      from '../stats';
+import Footer              from '../../components/footer';
+import GameMusic           from '../../components/game-music';
+import GameSelect          from '../../components/game-select';
+import GameOver            from '../../components/game-over';
+import GameSettings        from '../../components/game-settings';
+import Inventory           from '../inventory';
+import Map                 from '../map';
+import Monsters            from '../monsters';
+import Player              from '../player';
+import Snackbar            from '../snackbar';
+import Stats               from '../stats';
 // game configs
 import maps     from '../../data/maps';
 import store    from '../../config/store';
@@ -148,7 +149,11 @@ class World extends React.Component {
           <Inventory disabled={paused && !inventory} />
 
           <Snackbar />
-          <GameMusic />
+
+          <div className='flex-column'>
+            <GameMusic />
+            <GameSettings />
+          </div>
 
         </div>
 
