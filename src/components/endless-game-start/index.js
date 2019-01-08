@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Button           from '../button';
 import Dialog           from '../dialog';
 import Flame            from '../flame';
+import GameSelect       from '../game-select';
 import items            from '../../data/items';
 import store            from '../../config/store';
 import generateMap      from '../../modules/generate-map';
@@ -97,8 +98,21 @@ const EndlessGameStart = (props) => {
     });
   }
 
+  function goBack() {
+    store.dispatch({
+      type: 'PAUSE',
+      payload: {
+        component: <GameSelect />,
+        gameStart: true
+      }
+    });
+  }
+
   return(
     <Dialog>
+      <i onClick={goBack}
+        className={`fa fa-arrow-left endless-start-back`} />
+
       <div className='flex-row endless-start-title'>
         {'Endless Mode'}
       </div>

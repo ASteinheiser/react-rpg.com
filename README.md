@@ -18,14 +18,13 @@ yarn test
 ```
 
 ## TODO:
+- [ ] settings button with dialog
+  - [ ] quit to menu button
 - [ ] fix stats bug with equipping a ring with a ring already equipped
 - [ ] upgrade the merchant's shop
   - [ ] backpack upgrade
 - [ ] implement new items into chest drop (use player level)
 - [ ] rebalance the items and monster stats
-- [ ] back buttons on game start dialogs
-- [ ] settings button with dialog
-  - [ ] quit to menu button
 ### Expand story mode
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode

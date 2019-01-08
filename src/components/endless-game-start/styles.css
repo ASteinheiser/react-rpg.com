@@ -34,3 +34,19 @@
   bottom: 75px;
   left: 570px;
 }
+
+.endless-start-back {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-radius: 2px;
+
+  padding: 15px 25px;
+}

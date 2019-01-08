@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Button       from '../button';
 import Dialog       from '../dialog';
 import Flame        from '../flame';
+import GameSelect   from '../game-select';
 import items        from '../../data/items';
 import maps         from '../../data/maps';
 import store        from '../../config/store';
@@ -82,8 +83,21 @@ const MainGameStart = (props) => {
     });
   }
 
+  function goBack() {
+    store.dispatch({
+      type: 'PAUSE',
+      payload: {
+        component: <GameSelect />,
+        gameStart: true
+      }
+    });
+  }
+
   return(
     <Dialog>
+      <i onClick={goBack}
+        className={`fa fa-arrow-left game-start-back`} />
+
       <div className='flex-row game-start-title'>
         {'Story Mode'}
       </div>
