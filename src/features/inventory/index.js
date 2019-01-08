@@ -30,7 +30,7 @@ class Inventory extends Component {
     this.setState({ inventoryOpen: false }, () => {
       store.dispatch({
         type: 'PAUSE',
-        payload: { component: false }
+        payload: { component: null }
       });
     });
   }

@@ -70,7 +70,7 @@ const ChestLoot = (props) => {
   function handleClose() {
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: false }
+      payload: { component: null }
     });
   }
 

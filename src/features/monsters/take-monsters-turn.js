@@ -1,6 +1,9 @@
+import React from 'react';
+
 import { SPRITE_SIZE } from '../../config/constants';
 import store           from '../../config/store';
 import calculateDamage from '../../modules/calculate-damage';
+import GameOver        from '../../components/game-over';
 
 let x, y;
 const radiusTiles = [];
@@ -229,8 +232,11 @@ export default function takeMonstersTurn() {
           })
           // if it did, game over
           store.dispatch({
-            type: 'GAME_OVER',
-            payload: {}
+            type: 'PAUSE',
+            payload: {
+              gameOver: true,
+              component: <GameOver />
+            }
           })
         }
       } else {

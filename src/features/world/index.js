@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import EndlessFloorCounter from '../../components/endless-floor-counter';
 import Footer              from '../../components/footer';
 import GameMusic           from '../../components/game-music';
-import GameSelect          from '../../components/game-select';
-import GameOver            from '../../components/game-over';
 import GameSettings        from '../../components/game-settings';
 import Inventory           from '../inventory';
 import Map                 from '../map';
@@ -24,10 +22,6 @@ import './styles.css';
 
 class World extends React.Component {
 
-  componentDidMount() {
-    this.handleGameStart();
-  }
-
   componentDidUpdate(prevProps, prevState) {
     // reload the tiles and monsters if it's a new map
     // and there is a current map
@@ -45,20 +39,6 @@ class World extends React.Component {
       // take monster turn
       takeMonstersTurn();
     }
-    // if the game has been restarted
-    if(prevProps.world.gameOver === true && this.props.world.gameOver === false) {
-      this.handleGameStart();
-    }
-  }
-
-  handleGameStart() {
-    store.dispatch({
-      type: 'PAUSE',
-      payload: {
-        component: <GameSelect />,
-        gameStart: true
-      }
-    })
   }
 
   handleLoadMap() {
@@ -125,18 +105,9 @@ class World extends React.Component {
         <Player />
         <Monsters />
 
-        {
-          gameOver ?
-            <GameOver />
-            :
-            null
-        }
-        {
-          (paused && !gameOver) ?
-            paused
-            :
-            null
-        }
+        {/* Show our 'paused' component here - this is the game start screen,
+        game over screen, as well as other dialogs throughout the game */}
+        { paused }
 
         <div className='flex-row world-stats-container'>
           {

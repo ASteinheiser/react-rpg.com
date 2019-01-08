@@ -1,11 +1,14 @@
-import maps from '../../data/maps';
+import React from 'react';
+
+import GameSelect from '../../components/game-select';
+import maps       from '../../data/maps';
 
 const initialState = {
   currentMap: null,
   gameOver: false,
-  gameStart: false,
+  gameStart: true,
   gameMode: null,
-  paused: false,
+  paused: <GameSelect />,
   inventory: false,
   turn: 0,
   sound: true,
@@ -42,13 +45,8 @@ const worldReducer = (state = initialState, action) => {
       newState.gameStart = action.payload.gameStart || false;
       // check if pause type is inventory
       newState.inventory = action.payload.inventory || false;
+      newState.gameOver = action.payload.gameOver || false;
       newState.paused = action.payload.component;
-
-      return newState;
-
-    case 'GAME_OVER':
-      newState.gameOver = true;
-      newState.paused = true;
 
       return newState;
 

@@ -51,7 +51,7 @@ const MainGameStart = (props) => {
   function handleCloseDialog() {
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: false }
+      payload: { component: null }
     });
   }
 
