@@ -18,8 +18,6 @@ yarn test
 ```
 
 ## TODO:
-### Expand endless mode
-- [ ] implement new monster types
 ### Expand story mode
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
