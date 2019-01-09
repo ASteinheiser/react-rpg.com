@@ -10,10 +10,12 @@ import store         from '../../config/store';
 
 import './styles.css';
 
+const ITEMS_PER_PAGE = 5;
+
 const ShopInventory = (props) => {
 
   const [buyItemDialog, setBuyItemDialog] = useState(null);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
 
   function handleBuyItem(item) {
     setBuyItemDialog(
@@ -86,6 +88,18 @@ const ShopInventory = (props) => {
     setBuyItemDialog(null);
   }
 
+  function decrementPage() {
+    if(page > 0) {
+      setPage(page - 1);
+    }
+  }
+
+  function incrementPage() {
+    if(page < MAX_PAGE) {
+      setPage(page + 1);
+    }
+  }
+
   let shopInventoryItems = [];
   // render the shop's items
   shopItems.forEach(item => {
@@ -115,25 +129,27 @@ const ShopInventory = (props) => {
     );
   })
 
+  const MAX_PAGE = Math.ceil(shopInventoryItems.length / ITEMS_PER_PAGE) - 1;
+
   let shopInventoryButtons = (
     <div className='flex-row space-between'>
       {
-        page === 1 ?
+        page === 0 ?
           <div />
           :
-          <div className='shop-page-button' onClick={() => setPage(1)}>
+          <div className='shop-page-button' onClick={decrementPage}>
             <i className='fa fa-arrow-left' style={{paddingRight: 15}} />
             {'previous'}
           </div>
       }
       {
-        page === 1 ?
-          <div className='shop-page-button' onClick={() => setPage(2)}>
+        page === MAX_PAGE ?
+          <div />
+          :
+          <div className='shop-page-button' onClick={incrementPage}>
             {'next'}
             <i className='fa fa-arrow-right' style={{paddingLeft: 15}} />
           </div>
-          :
-          <div />
       }
     </div>
   );
@@ -143,12 +159,7 @@ const ShopInventory = (props) => {
 
       { buyItemDialog }
 
-      {
-        page === 1 ?
-          shopInventoryItems.slice(0, 5)
-          :
-          shopInventoryItems.slice(5, 10)
-      }
+      { shopInventoryItems.splice(5 * page, ITEMS_PER_PAGE) }
 
       { shopInventoryButtons }
 
