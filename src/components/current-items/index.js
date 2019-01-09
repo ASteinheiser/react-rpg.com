@@ -59,6 +59,26 @@ const CurrentItems = (props) => {
           { itemSlots[7] }
         </EmptySlot>
       </div>
+
+      {
+        maxItems === 12 ?
+          <div className='flex-row'>
+            <EmptySlot>
+              { itemSlots[8] }
+            </EmptySlot>
+            <EmptySlot>
+              { itemSlots[9] }
+            </EmptySlot>
+            <EmptySlot>
+              { itemSlots[10] }
+            </EmptySlot>
+            <EmptySlot>
+              { itemSlots[11] }
+            </EmptySlot>
+          </div>
+          :
+          null
+      }
     </div>
   );
 }

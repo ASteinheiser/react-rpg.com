@@ -1,6 +1,7 @@
 import items from '../../data/items';
 
 const shopItems = [
+  items.other.BackpackUpgrade,
   items.other.HpPotion,
   items.rings.OldRing,
   items.armor.LeatherBoots,
