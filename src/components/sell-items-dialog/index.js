@@ -19,7 +19,6 @@ const SellItemsDialog = (props) => {
       <ConfirmDialog
         text={'Are you sure you want to sell your ' + item.name + ' for ' + itemSellPrice + ' gold ?'}
         cancelText={'Cancel'}
-        cancelIcon={'times'}
         acceptText={'Sell'}
         acceptIcon={'coins'}
         confirm={() => handleConfirmSell(item, itemSellPrice)}

@@ -20,7 +20,6 @@ const ShopInventory = (props) => {
         <ConfirmDialog
           text={'Are you sure you want to buy ' + item.name + ' for ' + item.value + ' gold?'}
           cancelText={'Cancel'}
-          cancelIcon={'times'}
           acceptText={'Buy'}
           acceptIcon={'coins'}
           confirm={() => handleConfirmBuyItem(item)}

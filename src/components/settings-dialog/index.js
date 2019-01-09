@@ -43,11 +43,7 @@ const SettingsDialog = (props) => {
             className='setting-dialog-confirm'
             text='Are you sure you want to quit? You will lose all progress...'
             onClose={() => setConfirmQuit(false)}
-            cancelIcon='times'
-            cancelText='No'
-            confirm={resetGameState}
-            acceptIcon='check'
-            acceptText ='Yes' />
+            confirm={resetGameState} />
           :
           null
       }
