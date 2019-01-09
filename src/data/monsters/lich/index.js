@@ -14,11 +14,11 @@ function Lich(props) {
 }
 
 const stats = {
-  hp: 100,
-  maxHp: 100,
-  damage: 20,
-  defence: 20,
-  exp: 300,
+  hp: 120,
+  maxHp: 120,
+  damage: 22,
+  defence: 22,
+  exp: 1000,
   type: 'lich'
 };
 

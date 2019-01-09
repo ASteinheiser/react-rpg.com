@@ -14,11 +14,11 @@ function Dragon(props) {
 }
 
 const stats = {
-  hp: 50,
-  maxHp: 50,
-  damage: 10,
-  defence: 10,
-  exp: 150,
+  hp: 80,
+  maxHp: 80,
+  damage: 15,
+  defence: 15,
+  exp: 400,
   type: 'dragon'
 };
 

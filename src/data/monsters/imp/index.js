@@ -14,11 +14,11 @@ function Imp(props) {
 }
 
 const stats = {
-  hp: 30,
-  maxHp: 30,
-  damage: 8,
-  defence: 6,
-  exp: 40,
+  hp: 40,
+  maxHp: 40,
+  damage: 14,
+  defence: 4,
+  exp: 150,
   type: 'imp'
 };
 

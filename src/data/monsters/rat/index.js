@@ -14,11 +14,11 @@ function Rat(props) {
 }
 
 const stats = {
-  hp: 6,
-  maxHp: 6,
+  hp: 8,
+  maxHp: 8,
   damage: 2,
   defence: 0,
-  exp: 5,
+  exp: 8,
   type: 'rat'
 };
 

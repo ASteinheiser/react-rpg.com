@@ -14,11 +14,11 @@ function StoneGolem(props) {
 }
 
 const stats = {
-  hp: 20,
-  maxHp: 20,
-  damage: 6,
+  hp: 30,
+  maxHp: 30,
+  damage: 8,
   defence: 5,
-  exp: 40,
+  exp: 60,
   type: 'stone-golem'
 };
 

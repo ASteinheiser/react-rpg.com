@@ -7,7 +7,7 @@ const LichBane = {
   damage: 25,
   bonus: 'lich::2',
   image: LichBaneImg,
-  value: 500
+  value: 999
 };
 
 export default LichBane;

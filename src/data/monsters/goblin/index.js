@@ -14,8 +14,8 @@ function Goblin(props) {
 }
 
 const stats = {
-  hp: 10,
-  maxHp: 10,
+  hp: 12,
+  maxHp: 12,
   damage: 4,
   defence: 3,
   exp: 20,

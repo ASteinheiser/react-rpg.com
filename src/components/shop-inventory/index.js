@@ -102,7 +102,7 @@ const ShopInventory = (props) => {
 
   let shopInventoryItems = [];
   // render the shop's items
-  shopItems.forEach(item => {
+  shopItems(props.stats.level).forEach(item => {
     // don't show backpack upgrade if it was purchased
     if(props.inventory.maxItems === 12 && item.type === 'upgrade::backpack') return;
 
