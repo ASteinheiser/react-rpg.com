@@ -18,7 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] implement new items into chest drop (use player level)
 - [ ] rebalance the items and monster stats
 ### Expand story mode
 - [ ] better maps for story mode

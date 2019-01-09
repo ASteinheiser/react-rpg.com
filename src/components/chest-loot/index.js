@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import Button      from '../button';
 import MicroDialog from '../micro-dialog';
@@ -9,13 +10,12 @@ import './styles.css';
 
 const ChestLoot = (props) => {
 
-  const { level } = store.getState().stats;
-
+  const { level } = props.stats;
   // give the player a 25% chance to get a random item
   let itemDrop = false;
   const chance = Math.floor(Math.random() * 100) + 1;
   if(chance <= 25) {
-    itemDrop = randomItem();
+    itemDrop = randomItem(level);
   }
   const [item] = useState(itemDrop);
   // get a random amount of gold between 1 and 8 PLUS player level x2
@@ -49,7 +49,7 @@ const ChestLoot = (props) => {
   }
 
   function handleContinue() {
-    const { items, maxItems } = store.getState().inventory;
+    const { items, maxItems } = props.inventory;
 
     if(item) {
       if(items.length < maxItems) {
@@ -121,4 +121,6 @@ const ChestLoot = (props) => {
   );
 }
 
-export default ChestLoot;
+const mapStateToProps = ({ inventory, stats }) => ({ inventory, stats });
+
+export default connect(mapStateToProps)(ChestLoot);
