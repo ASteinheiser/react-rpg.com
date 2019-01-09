@@ -166,25 +166,26 @@ const statsReducer = (state = initialState, action) => {
           break;
 
         case 'ring':
+          const equippedRing = newState.equippedItems['ring'];
           // if there's already a ring
-          if(newState.equippedItems['ring']) {
+          if(equippedRing) {
             // subtract it's benefits
-            Object.keys(newState.equippedItems['ring'].effect).forEach(effectName => {
+            Object.keys(equippedRing.effect).forEach(effectName => {
 
               switch (effectName) {
 
                 case 'defence':
-                  newState.defence -= item.effect[effectName];
+                  newState.defence -= equippedRing.effect[effectName];
                   break;
 
                 case 'damage':
-                  newState.damage -= item.effect[effectName];
+                  newState.damage -= equippedRing.effect[effectName];
                   break;
 
                 case 'hp':
-                  newState.hp -= item.effect[effectName];
+                  newState.hp -= equippedRing.effect[effectName];
                   if(newState.hp < 1) newState.hp = 1;
-                  newState.maxHp -= item.effect[effectName];
+                  newState.maxHp -= equippedRing.effect[effectName];
                   break;
 
                 default:

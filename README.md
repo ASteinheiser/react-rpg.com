@@ -18,7 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] fix stats bug with equipping a ring with a ring already equipped
 - [ ] upgrade the merchant's shop
   - [ ] backpack upgrade
 - [ ] implement new items into chest drop (use player level)
