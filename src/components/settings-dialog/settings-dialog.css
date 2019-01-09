@@ -1,6 +1,9 @@
 .settings-dialog-container {
+  padding: 32px 0;
+
   flex: 1;
-  justify-content: space-evenly;
+
+  justify-content: space-between;
   align-items: center;
 }
 
