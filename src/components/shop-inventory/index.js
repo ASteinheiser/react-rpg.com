@@ -44,6 +44,16 @@ const ShopInventory = (props) => {
           type: 'HEAL_HP',
           payload: { value: parseInt(item.hp, 10) }
         });
+      } // if it's a backpack upgrade
+      else if(item.type === 'upgrade::backpack') {
+        store.dispatch({
+          type: 'LOSE_GOLD',
+          payload: { value: item.value }
+        });
+        store.dispatch({
+          type: 'UPGRADE_PACK',
+          payload: { slots: item.slots }
+        });
       } // otherwise, see if there's room in the inventory
       else if(items.length < maxItems) {
         store.dispatch({

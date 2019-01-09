@@ -46,6 +46,10 @@ const inventoryReducer = (state = initialState, action) => {
 
       return newState;
 
+    case 'UPGRADE_PACK':
+      newState.maxItems += action.payload.slots;
+      return newState;
+
     case 'RESET':
       return {
         items: [],

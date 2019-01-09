@@ -29,7 +29,8 @@ const CurrentItems = (props) => {
   });
 
   return (
-    <div className='flex-column current-items-container white-border'>
+    <div className='flex-column current-items-container white-border'
+      style={{ minHeight: maxItems === 12 ? 120 : 80 }}>
       <div className='flex-row'>
         <EmptySlot>
           { itemSlots[0] }
