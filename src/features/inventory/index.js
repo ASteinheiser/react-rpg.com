@@ -12,48 +12,50 @@ class Inventory extends Component {
     super(props);
 
     this.state = {
-      inventoryOpen: false,
       newItemIndicator: false
     }
   }
 
   handleOpenInventory() {
-    this.setState({ inventoryOpen: true, newItemIndicator: false }, () => {
+    this.setState({ newItemIndicator: false }, () => {
       store.dispatch({
         type: 'PAUSE',
-        payload: { component: <InventoryDialog />, inventory: true }
+        payload: {
+          component: <InventoryDialog />,
+          inventory: true
+        }
       });
     });
   }
 
   handleCloseInventory() {
-    this.setState({ inventoryOpen: false }, () => {
-      store.dispatch({
-        type: 'PAUSE',
-        payload: { component: null }
-      });
+    store.dispatch({
+      type: 'PAUSE',
+      payload: { component: null }
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { inventoryOpen } = this.state;
+    const { inventory } = this.props.world;
     const { itemReceived, itemDropped } = this.props.inventory;
     let lastItemReceived = prevProps.inventory.itemReceived;
     let lastItemDropped = prevProps.inventory.itemDropped;
 
-    if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined && !inventoryOpen) {
+    if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined && !inventory) {
       // see if any items were dropped
       this.setState({ newItemIndicator: true });
     }
-    else if(lastItemReceived !== itemReceived && itemReceived && itemReceived !== undefined && !inventoryOpen) {
+    else if(lastItemReceived !== itemReceived && itemReceived && itemReceived !== undefined && !inventory) {
       // see if any items were received
       this.setState({ newItemIndicator: true });
     }
   }
 
   render() {
-    const { inventoryOpen, newItemIndicator } = this.state;
-    const { disabled } = this.props;
+    const { newItemIndicator } = this.state;
+    const { disabled, world } = this.props;
+
+    const open = world.inventory;
 
     if(disabled) return null;
 
@@ -61,16 +63,16 @@ class Inventory extends Component {
       <div className='flex-row inventory-container'>
         <Button
           indicator={newItemIndicator}
-          onClick={inventoryOpen ?
+          onClick={open ?
             this.handleCloseInventory.bind(this) : this.handleOpenInventory.bind(this)}
-          icon={inventoryOpen ?
+          icon={open ?
             'times' : 'briefcase'}
-          iconStyle={inventoryOpen ?
+          iconStyle={open ?
             {fontSize: 24} : {fontSize: 25}}
-          title={inventoryOpen ?
+          title={open ?
             'Close' : 'Inventory'}
           style={{
-            width: inventoryOpen ? '120px' : '190px',
+            width: open ? '120px' : '190px',
             transition: 'width .25s ease-out',
             whiteSpace: 'nowrap',
             overflow: 'hidden'
@@ -80,8 +82,6 @@ class Inventory extends Component {
   }
 }
 
-const mapStateToProps = ({ inventory }) => {
-  return { inventory };
-}
+const mapStateToProps = ({ inventory, world }) => ({ inventory, world });
 
 export default connect(mapStateToProps)(Inventory);
