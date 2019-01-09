@@ -5,7 +5,7 @@ const GreatHpPotion = {
   type: 'potion',
   hp: '25',
   image: GreatHpPotionImg,
-  value: 50
+  value: 100
 };
 
 export default GreatHpPotion;

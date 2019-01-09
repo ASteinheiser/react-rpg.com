@@ -18,8 +18,7 @@ yarn test
 ```
 
 ## TODO:
-- [ ] upgrade the merchant's shop
-  - [ ] backpack upgrade
+- [ ] upgrade the merchant's shop with new items
 - [ ] implement new items into chest drop (use player level)
 - [ ] rebalance the items and monster stats
 ### Expand story mode

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect }         from 'react-redux';
 
 import ConfirmDialog from '../confirm-dialog';
 import MicroDialog   from '../micro-dialog';
@@ -29,8 +30,8 @@ const ShopInventory = (props) => {
   }
 
   function handleConfirmBuyItem(item) {
-    const { gold } = store.getState().stats;
-    const { items, maxItems } = store.getState().inventory;
+    const { gold } = props.stats;
+    const { items, maxItems } = props.inventory;
     // make sure player has enough gold
     if(gold >= item.value) {
       // if it's an hp potion
@@ -88,6 +89,9 @@ const ShopInventory = (props) => {
   let shopInventoryItems = [];
   // render the shop's items
   shopItems.forEach(item => {
+    // don't show backpack upgrade if it was purchased
+    if(props.inventory.maxItems === 12 && item.type === 'upgrade::backpack') return;
+
     shopInventoryItems.push(
       <div key={uuidv4()}
         onClick={() => handleBuyItem(item)}
@@ -152,4 +156,6 @@ const ShopInventory = (props) => {
   );
 }
 
-export default ShopInventory;
+const mapStateToProps = ({ inventory, stats }) => ({ inventory, stats });
+
+export default connect(mapStateToProps)(ShopInventory);
