@@ -18,7 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] change color of monster slash to red
 - [ ] fix stats bug with equipping a ring with a ring already equipped
 - [ ] upgrade the merchant's shop
   - [ ] backpack upgrade
