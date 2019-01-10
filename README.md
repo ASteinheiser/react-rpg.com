@@ -21,7 +21,6 @@ yarn test
 ### Expand story mode
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
-- [ ] a few well placed dialogs (game beginning, merchant, dragon)
 ### Expand release targets
 - [ ] make the game view be 100% of screen size and scale view to show portion of the map
 - [ ] native touch controls to move and attack
