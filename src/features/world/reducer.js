@@ -72,8 +72,8 @@ const worldReducer = (state = initialState, action) => {
       newState.currentMap = stairs[direction];
 
       const { message } = maps[newState.currentMap];
-      // if the map has a message, display it
-      if(message) {
+      // if the map has a message and player is going up, display message
+      if(message && direction === 'up') {
         newState.paused = (
           <GameTextDialog
             text1={message.title}
