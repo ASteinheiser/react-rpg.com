@@ -6,7 +6,7 @@ import store  from '../../config/store';
 
 import './styles.css';
 
-const EndlessDialog = (props) => {
+const GameTextDialog = (props) => {
 
   const { text1, text2 } = props;
 
@@ -34,17 +34,17 @@ const EndlessDialog = (props) => {
   return(
     <Dialog>
 
-      <div className='flex-column endless-dialog-container'>
+      <div className='flex-column game-text-dialog-container'>
 
-        <div className='endless-dialog-text'>
+        <div className='game-text-dialog-text'>
           { text1 || '' }
         </div>
 
-        <div className='endless-dialog-text'>
+        <div className='game-text-dialog-text'>
           { text2 || '' }
         </div>
 
-        <div className='endless-dialog-button'>
+        <div className='game-text-dialog-button'>
           <Button
             onClick={handleCloseDialog}
             title='Continue' />
@@ -54,4 +54,4 @@ const EndlessDialog = (props) => {
   );
 }
 
-export default EndlessDialog;
+export default GameTextDialog;

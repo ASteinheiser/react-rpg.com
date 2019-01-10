@@ -1,6 +1,6 @@
 import React from 'react';
 
-import EndlessDialog   from '../../components/endless-dialog';
+import GameTextDialog  from '../../components/game-text-dialog';
 import store           from '../../config/store';
 import generateMap     from '../../modules/generate-map';
 import { uuidv4 }      from '../../modules/uuid-v4';
@@ -84,7 +84,7 @@ function showProgressMessage(floorNum) {
     case 2:
       show = true;
       message = (
-        <EndlessDialog
+        <GameTextDialog
           text1={`As you stare into the dark dungeon, it greets you with a cold chill... and a message...`}
           text2={`"JOURNEY ONE HUNDRED FLOORS AND ALL WILL BE GRANTED"`} />
       );
@@ -92,7 +92,7 @@ function showProgressMessage(floorNum) {
     case 20:
       show = true;
       message = (
-        <EndlessDialog
+        <GameTextDialog
           text1={`As you march onward, you notice the walls have a faint purple glow to them...`}
           text2={`"THE JOURNEY HAS JUST BEGUN"`} />
       );
@@ -100,14 +100,14 @@ function showProgressMessage(floorNum) {
     case 40:
       show = true;
       message = (
-        <EndlessDialog
+        <GameTextDialog
           text1={`As you nearly approach the halfway point, you feel confident and charge forward!`} />
       );
       break;
     case 60:
       show = true;
       message = (
-        <EndlessDialog
+        <GameTextDialog
           text1={`As you turn the corner, now well past the halfway point, you hear the shadowy voice...`}
           text2={`"WELL DONE ADVENTURER... ONLY A LITTLE FURTHER"`} />
       );
@@ -115,14 +115,14 @@ function showProgressMessage(floorNum) {
     case 80:
       show = true;
       message = (
-        <EndlessDialog
+        <GameTextDialog
           text1={`Now very close to the hundredth floor, you can feel the darkness pulling you towards it as it appears to swirl on the walls.`} />
       );
       break;
     case 100:
       show = true;
       message = (
-        <EndlessDialog
+        <GameTextDialog
           text1={`We didn't expect you to ACTUALLY make it this far.....`}
           text2={`"THE TRUTH IS... NOTHING... BUT OBLIVION LIES BEYOND THIS POINT..... WELCOME"`} />
       );

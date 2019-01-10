@@ -48,8 +48,14 @@ const stairs = {
   down: '1_1'
 }
 
+const message = {
+  title: 'This is the Title!',
+  body: 'Here is a sweet body...'
+}
+
 export default {
   tiles,
   monsters,
-  stairs
+  stairs,
+  message
 };

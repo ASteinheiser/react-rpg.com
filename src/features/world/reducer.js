@@ -1,5 +1,6 @@
 import React from 'react';
 
+import GameTextDialog from '../../components/game-text-dialog';
 import GameSelect     from '../../components/game-select';
 import SettingsDialog from '../../components/settings-dialog';
 import maps           from '../../data/maps';
@@ -69,6 +70,16 @@ const worldReducer = (state = initialState, action) => {
       let { stairs } = maps[currentMap];
 
       newState.currentMap = stairs[direction];
+
+      const { message } = maps[newState.currentMap];
+      // if the map has a message, display it
+      if(message) {
+        newState.paused = (
+          <GameTextDialog
+            text1={message.title}
+            text2={message.body} />
+        );
+      }
 
       return newState;
 

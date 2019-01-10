@@ -12,8 +12,8 @@ import Player              from '../player';
 import Snackbar            from '../snackbar';
 import Stats               from '../stats';
 // game configs
-import maps     from '../../data/maps';
-import store    from '../../config/store';
+import maps  from '../../data/maps';
+import store from '../../config/store';
 // game functions
 import takeMonstersTurn from '../monsters/take-monsters-turn';
 import generateMonsters from '../../modules/generate-monsters';

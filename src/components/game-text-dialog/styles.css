@@ -1,9 +1,11 @@
-.endless-dialog-container {
+.game-text-dialog-container {
   flex: 1;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  padding-top: 72px;
 }
 
-.endless-dialog-text {
+.game-text-dialog-text {
   font-family: Montserrat;
   font-size: 22px;
   text-transform: none;
@@ -14,7 +16,7 @@
   padding: 0 100px;
 }
 
-.endless-dialog-button {
+.game-text-dialog-button {
   display: flex;
   justify-content: center;
 }
