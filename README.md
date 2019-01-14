@@ -18,10 +18,10 @@ yarn test
 ```
 
 ## TODO:
-- [ ] allow message on first floor of endless
-- [ ] allow message on first floor of story mode
+- [ ] allow message on first floor of endless (switch message from floor 2 -> 1)
 ### Expand story mode
 - [ ] better maps for story mode
+- [ ] allow message on first floor of story mode
 - [ ] cohesive story for story mode
 ### Expand release targets
 - [ ] make the game view be 100% of screen size and scale view to show portion of the map
