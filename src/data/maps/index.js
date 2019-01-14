@@ -5,6 +5,7 @@ import map1_4 from './1_4';
 import map1_5 from './1_5';
 import map2_1 from './2_1';
 import map2_2 from './2_2';
+import map2_3 from './2_3';
 
 const maps = {
   '1_1': map1_1,
@@ -13,7 +14,8 @@ const maps = {
   '1_4': map1_4,
   '1_5': map1_5,
   '2_1': map2_1,
-  '2_2': map2_2
+  '2_2': map2_2,
+  '2_3': map2_3
 };
 
 export default maps;
