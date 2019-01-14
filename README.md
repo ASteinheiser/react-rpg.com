@@ -18,6 +18,8 @@ yarn test
 ```
 
 ## TODO:
+- [ ] allow message on first floor of endless
+- [ ] allow message on first floor of story mode
 ### Expand story mode
 - [ ] better maps for story mode
 - [ ] cohesive story for story mode
