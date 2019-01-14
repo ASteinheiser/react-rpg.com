@@ -33,17 +33,11 @@ const monsters = [
 
 const stairs = {
   down: '1_4',
-  up: '1_6'
-}
-
-const message = {
-  title: 'This is the Title!',
-  body: 'Here is a sweet body...'
+  up: '2_1'
 }
 
 export default {
   tiles,
   monsters,
-  stairs,
-  message
+  stairs
 };
