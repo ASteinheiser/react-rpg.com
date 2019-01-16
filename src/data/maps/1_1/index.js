@@ -44,8 +44,8 @@ const stairs = {
 }
 
 const message = {
-  title: 'This is the Title!',
-  body: 'Here is a sweet body...'
+  title: 'As you enter the damp sewers, a putrid scent overtakes you...',
+  body: 'Blah blah rusty sword blah blah'
 }
 
 export default {

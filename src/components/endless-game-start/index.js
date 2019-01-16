@@ -12,7 +12,7 @@ import generateMonsters from '../../modules/generate-monsters';
 import exploreTiles     from '../../features/player/explore-tiles';
 import { uuidv4 }       from '../../modules/uuid-v4';
 
-import './styles.css';
+import './styles.scss';
 
 const EndlessGameStart = (props) => {
 

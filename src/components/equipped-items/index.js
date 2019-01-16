@@ -1,18 +1,18 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import BootsOutline  from './boots-outline.png';
-import HelmetOutline from './helmet-outline.png';
-import BodyOutline   from './body-outline.png';
-import GlovesOutline from './gloves-outline.png';
-import PantsOutline  from './pants-outline.png'
-import RingOutline   from './ring-outline.png';
-import SwordOutline  from './sword-outline.png';
-import Character     from './equipment-character.png';
-import InventorySlot from './inventory-slot.png';
+import BootsOutline  from './assets/boots-outline.png';
+import HelmetOutline from './assets/helmet-outline.png';
+import BodyOutline   from './assets/body-outline.png';
+import GlovesOutline from './assets/gloves-outline.png';
+import PantsOutline  from './assets/pants-outline.png'
+import RingOutline   from './assets/ring-outline.png';
+import SwordOutline  from './assets/sword-outline.png';
+import Character     from './assets/equipment-character.png';
+import InventorySlot from './assets/inventory-slot.png';
 import store         from '../../config/store';
 
-import './styles.css';
+import './styles.scss';
 
 function handleUnequipItem(item) {
   store.dispatch({

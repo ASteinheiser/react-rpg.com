@@ -4,7 +4,7 @@ import Sound                          from 'react-sound';
 import store        from '../../config/store';
 import AmbientMusic from './ambient-music.mp3';
 
-import './styles.css';
+import './styles.scss';
 
 const GameMusic = (props) => {
 

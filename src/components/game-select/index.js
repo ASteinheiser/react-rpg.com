@@ -7,7 +7,7 @@ import MainGameStart    from '../main-game-start';
 import EndlessGameStart from '../endless-game-start';
 import store            from '../../config/store';
 
-import './styles.css';
+import './styles.scss';
 
 const GameSelect = (props) => {
 

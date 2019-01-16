@@ -6,7 +6,7 @@ import MicroDialog   from '../micro-dialog';
 import Backpack      from '../inventory-dialog/backpack.png';
 import store         from '../../config/store';
 
-import './styles.css';
+import './styles.scss';
 
 const SellItemsDialog = (props) => {
 

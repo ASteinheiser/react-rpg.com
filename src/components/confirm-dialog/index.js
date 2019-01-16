@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../button';
 
-import './styles.css';
+import './styles.scss';
 
 const ConfirmDialog = (props) => {
 

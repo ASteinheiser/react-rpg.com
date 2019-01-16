@@ -2,7 +2,7 @@ import React from 'react';
 
 import packageJson from '../../../package.json';
 
-import './styles.css';
+import './styles.scss';
 
 const Footer = (props) => {
   return(

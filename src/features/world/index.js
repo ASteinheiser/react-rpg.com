@@ -18,7 +18,7 @@ import store from '../../config/store';
 import takeMonstersTurn from '../monsters/take-monsters-turn';
 import generateMonsters from '../../modules/generate-monsters';
 
-import './styles.css';
+import './styles.scss';
 
 class World extends React.Component {
 

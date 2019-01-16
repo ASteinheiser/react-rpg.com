@@ -7,7 +7,7 @@ import ShopKeep        from '../shop-keep';
 import ShopInventory   from '../shop-inventory';
 import store           from '../../config/store';
 
-import './styles.css';
+import './styles.scss';
 
 const ShopDialog = (props) => {
 

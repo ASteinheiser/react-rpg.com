@@ -8,7 +8,7 @@ import StatsItem     from './stats-item';
 import store         from '../../config/store';
 import { uuidv4 }    from '../../modules/uuid-v4';
 
-import './styles.css';
+import './styles.scss';
 
 const ViewItem = (props) => {
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { EmptySlot } from '../equipped-items';
 
-import './styles.css';
+import './styles.scss';
 
 const CurrentItems = (props) => {
 

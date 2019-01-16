@@ -6,7 +6,7 @@ import Dialog        from '../dialog';
 import EquippedItems from '../equipped-items';
 import ViewItem      from '../view-item';
 
-import './styles.css';
+import './styles.scss';
 
 const InventoryDialog = (props) => {
 

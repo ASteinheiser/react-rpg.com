@@ -5,7 +5,7 @@ import Dialog         from '../dialog';
 import randomPhrase   from './random-phrase';
 import resetGameState from '../../modules/reset-game-state';
 
-import './styles.css';
+import './styles.scss';
 
 const GameOver = (props) => {
   return(

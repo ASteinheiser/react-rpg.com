@@ -3,7 +3,7 @@ import React from 'react';
 import Flames          from './flames.png';
 import { SPRITE_SIZE } from '../../config/constants';
 
-import './styles.css';
+import './styles.scss';
 
 const Flame = (props) => {
 

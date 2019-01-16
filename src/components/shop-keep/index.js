@@ -2,7 +2,7 @@ import React from 'react';
 
 import ShopKeepSprite from './shop-keep.png';
 
-import './styles.css';
+import './styles.scss';
 
 const ShopKeep = (props) => {
   return (

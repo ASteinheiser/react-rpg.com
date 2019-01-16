@@ -2,7 +2,7 @@ import React from 'react';
 
 import store from '../../config/store';
 
-import './game-settings.css';
+import './styles.scss';
 
 const GameSettings = (props) => {
 

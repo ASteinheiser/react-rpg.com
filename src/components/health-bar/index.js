@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './styles.css';
+import './styles.scss';
 
 const HealthBar = ({ value, max }) => {
   // dont show hp bars on full health units

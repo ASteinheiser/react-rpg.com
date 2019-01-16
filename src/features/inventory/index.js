@@ -5,7 +5,7 @@ import Button          from '../../components/button';
 import InventoryDialog from '../../components/inventory-dialog';
 import store           from '../../config/store';
 
-import './styles.css';
+import './styles.scss';
 
 class Inventory extends Component {
   constructor(props) {

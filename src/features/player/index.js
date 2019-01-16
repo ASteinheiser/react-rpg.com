@@ -20,7 +20,7 @@ import {
   SPRITE_SIZE
 } from '../../config/constants';
 
-import './styles.css';
+import './styles.scss';
 
 class Player extends Component {
   constructor(props) {

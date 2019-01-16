@@ -6,7 +6,7 @@ import Dialog         from '../dialog';
 import store          from '../../config/store';
 import resetGameState from '../../modules/reset-game-state';
 
-import './settings-dialog.css';
+import './settings-dialog.scss';
 
 const SettingsDialog = (props) => {
 

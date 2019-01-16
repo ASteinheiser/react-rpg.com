@@ -9,7 +9,7 @@ import App   from './App';
 import 'typeface-roboto';
 import 'typeface-montserrat';
 
-import './index.css';
+import './index.scss';
 
 // supresses enormous amount of console.logs
 /* global soundManager:false */

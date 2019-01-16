@@ -4,7 +4,7 @@ import Button from '../button';
 import Dialog from '../dialog';
 import store  from '../../config/store';
 
-import './styles.css';
+import './styles.scss';
 
 const GameTextDialog = (props) => {
 

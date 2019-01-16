@@ -6,7 +6,7 @@ import MicroDialog from '../micro-dialog';
 import randomItem  from './random-item';
 import store       from '../../config/store';
 
-import './styles.css';
+import './styles.scss';
 
 const ChestLoot = (props) => {
 

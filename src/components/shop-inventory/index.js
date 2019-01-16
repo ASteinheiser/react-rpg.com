@@ -8,7 +8,7 @@ import { EmptySlot } from '../equipped-items';
 import { uuidv4 }    from '../../modules/uuid-v4';
 import store         from '../../config/store';
 
-import './styles.css';
+import './styles.scss';
 
 const ITEMS_PER_PAGE = 5;
 

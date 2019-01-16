@@ -10,7 +10,7 @@ import maps           from '../../data/maps';
 import store          from '../../config/store';
 import exploreTiles   from '../../features/player/explore-tiles';
 
-import './styles.css';
+import './styles.scss';
 
 const START_MAP = '1_1';
 

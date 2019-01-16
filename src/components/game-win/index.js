@@ -6,7 +6,7 @@ import Dialog         from '../dialog';
 import resetGameState from '../../modules/reset-game-state';
 import store          from '../../config/store';
 
-import './styles.css';
+import './styles.scss';
 
 const GameWin = (props) => {
 

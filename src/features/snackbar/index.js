@@ -4,7 +4,7 @@ import { connect }          from 'react-redux';
 
 import { ANIMATION_SPEED } from '../../config/constants';
 
-import './styles.css';
+import './styles.scss';
 
 class Snackbar extends Component {
   constructor(props) {
