@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 
-import Button       from '../button';
-import Dialog       from '../dialog';
-import Flame        from '../flame';
-import GameSelect   from '../game-select';
-import items        from '../../data/items';
-import maps         from '../../data/maps';
-import store        from '../../config/store';
-import exploreTiles from '../../features/player/explore-tiles';
+import Button         from '../button';
+import Dialog         from '../dialog';
+import Flame          from '../flame';
+import GameSelect     from '../game-select';
+import GameTextDialog from '../game-text-dialog';
+import items          from '../../data/items';
+import maps           from '../../data/maps';
+import store          from '../../config/store';
+import exploreTiles   from '../../features/player/explore-tiles';
 
 import './styles.css';
 
@@ -31,7 +32,7 @@ const MainGameStart = (props) => {
 
   function handleGameStart() {
     handleLoadStartMap();
-    handleCloseDialog();
+    handleShowStartMessage();
     handleLoadMap();
     handleLoadMonsters();
     handleLoadPlayerSight();
@@ -48,10 +49,18 @@ const MainGameStart = (props) => {
     });
   }
 
-  function handleCloseDialog() {
+  function handleShowStartMessage() {
+    const { message } = maps[START_MAP];
+
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: null }
+      payload: {
+        component: (
+          <GameTextDialog
+            text1={message.title}
+            text2={message.body} />
+        )
+      }
     });
   }
 
