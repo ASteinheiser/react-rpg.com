@@ -4,6 +4,7 @@ import Button           from '../button';
 import Dialog           from '../dialog';
 import Flame            from '../flame';
 import GameSelect       from '../game-select';
+import GameTextDialog   from '../game-text-dialog';
 import items            from '../../data/items';
 import store            from '../../config/store';
 import generateMap      from '../../modules/generate-map';
@@ -36,17 +37,23 @@ const EndlessGameStart = (props) => {
     const randomMap = generateMap(player.position, floorNum);
     const mapId = uuidv4();
 
-    handleCloseDialog();
+    handleShowStartMessage();
     handleLoadMap(mapId, randomMap, floorNum);
     handleLoadPlayerSight(player);
     handleLoadMonsters(floorNum, mapId, randomMap, player, stats);
     handleLoadStartingItems();
   }
 
-  function handleCloseDialog() {
+  function handleShowStartMessage() {
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: null }
+      payload: {
+        component: (
+          <GameTextDialog
+            text1={`As you stare into the dark dungeon, it greets you with a cold chill... and a message...`}
+            text2={`"JOURNEY ONE HUNDRED FLOORS AND ALL WILL BE GRANTED"`} />
+        )
+      }
     });
   }
 
