@@ -28,8 +28,8 @@ const stairs = {
 }
 
 const message = {
-  title: 'This is the Title!',
-  body: 'Here is a sweet body...'
+  title: 'You feel the strange force stonger than ever',
+  body: 'THIS IS IT! COME BOW BEFORE ME'
 }
 
 export default {

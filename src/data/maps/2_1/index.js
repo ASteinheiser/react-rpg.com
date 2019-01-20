@@ -37,8 +37,8 @@ const stairs = {
 }
 
 const message = {
-  title: 'This is the Title!',
-  body: 'Here is a sweet body...'
+  title: 'Notice small silhouettes and odd color stones. Communicate with dark energy in the dungeon',
+  body: 'dark energy informs you that you must destroy each monster'
 }
 
 export default {

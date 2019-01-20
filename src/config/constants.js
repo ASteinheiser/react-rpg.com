@@ -16,3 +16,5 @@ export const MAP_WIDTH = SPRITE_SIZE * TILE_WIDTH;
 // configs for random map generation
 export const MAX_TUNNELS = 60;
 export const MAX_LENGTH = 5;
+// set the main game's start map
+export const START_MAP = '1_1';

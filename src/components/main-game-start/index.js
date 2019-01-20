@@ -9,10 +9,9 @@ import items          from '../../data/items';
 import maps           from '../../data/maps';
 import store          from '../../config/store';
 import exploreTiles   from '../../features/player/explore-tiles';
+import { START_MAP }  from '../../config/constants';
 
 import './styles.scss';
-
-const START_MAP = '1_1';
 
 const MainGameStart = (props) => {
 

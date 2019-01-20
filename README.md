@@ -18,8 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] cohesive story for story mode
-### Expand release targets
 - [ ] make the game view be 100% of screen size and scale view to show portion of the map
 - [ ] native touch controls to move and attack
 - [ ] make native desktop version (electron)

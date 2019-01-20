@@ -41,7 +41,7 @@ const stairs = {
 }
 
 const message = {
-  title: 'This is the Title!',
+  title: 'Notice mystic powers of dungeon. Notice groups of small humanoid creatures',
   body: 'Here is a sweet body...'
 }
 
