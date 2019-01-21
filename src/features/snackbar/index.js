@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactTimeout         from 'react-timeout';
 import { connect }          from 'react-redux';
 
-import { ANIMATION_SPEED } from '../../config/constants';
+import { SNACK_DURATION } from '../../config/constants';
 
 import './styles.scss';
 
@@ -25,24 +25,24 @@ class Snackbar extends Component {
     if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined) {
       // see if any items were dropped
       this.setState({ show: 'LOST AN ITEM: ' + itemDropped.split('-')[0] });
-      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
+      this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
     }
     else if(lastItemReceived !== itemReceived && itemReceived && itemReceived !== undefined) {
       // see if any items were received
       this.setState({ show: 'GOT NEW ITEM: ' + itemReceived.split('-')[0] });
-      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
+      this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
     }
     else if(prevProps.snackbar.notEnoughGold !== this.props.snackbar.notEnoughGold &&
              this.props.snackbar.notEnoughGold && this.props.snackbar.notEnoughGold !== undefined) {
       // see if player tried to buy item without enough gold
       this.setState({ show: 'NOT ENOUGH GOLD FOR: ' + this.props.snackbar.notEnoughGold.split('-')[0] });
-      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
+      this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
     }
     else if(prevProps.inventory.tooManyItems !== this.props.inventory.tooManyItems &&
               this.props.inventory.tooManyItems && this.props.inventory.tooManyItems !== undefined) {
       // see if player tried to get item with full inventory
       this.setState({ show: 'NOT ENOUGH SPACE FOR: ' + this.props.inventory.tooManyItems.split('-')[0] });
-      this.props.setTimeout(this.handleHideSnack, ANIMATION_SPEED * 5);
+      this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
     }
   }
 

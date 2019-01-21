@@ -2,7 +2,7 @@
 export const MAX_ITEMS = 8;
 // how far the player can 'see' or 'explore'
 export const SIGHT_RADIUS = 3;
-// how fast the player move animation plays
+// how fast the player move animation plays (ms)
 export const ANIMATION_SPEED = 350;
 // size of tiles
 export const SPRITE_SIZE = 40;
@@ -18,3 +18,5 @@ export const MAX_TUNNELS = 60;
 export const MAX_LENGTH = 5;
 // set the main game's start map
 export const START_MAP = '1_1';
+// set the duration for showing the snackbar (ms)
+export const SNACK_DURATION = 2500;
