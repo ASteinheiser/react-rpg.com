@@ -28,8 +28,8 @@ const stairs = {
 }
 
 const message = {
-  title: 'You feel the strange force stonger than ever',
-  body: 'THIS IS IT! COME BOW BEFORE ME'
+  title: 'You feel a strong force in this area as you notice the skull covered walls. The voice speaks once more...',
+  body: `"THIS IS IT! COME BOW BEFORE ME MORTAL....."`
 }
 
 export default {
