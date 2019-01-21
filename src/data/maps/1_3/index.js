@@ -41,8 +41,8 @@ const stairs = {
 }
 
 const message = {
-  title: 'Notice mystic powers of dungeon. Notice groups of small humanoid creatures',
-  body: 'Here is a sweet body...'
+  title: 'As you inspect the walls, you notice a feint purple glow. Something definitely seemed off about those rats...',
+  body: 'Up ahead, you notice a group of small humanoid creatures...'
 }
 
 export default {
