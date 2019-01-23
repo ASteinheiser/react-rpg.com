@@ -23,8 +23,6 @@ body {
 
 .game-layout-container {
   display: flex;
-  flex: 1;
-  flex-direction: column;
 }
 
 .game-title-text {
@@ -40,6 +38,15 @@ body {
 
   cursor: default;
   user-select: none;
+}
+
+.world-viewport {
+  overflow: hidden;
+
+  width: 320px;
+  height: 320px;
+
+  margin: auto;
 }
 
 .flex-row {

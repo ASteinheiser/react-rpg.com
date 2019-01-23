@@ -89,13 +89,22 @@ class World extends React.Component {
 
   render() {
     const { gameOver, gameStart, paused, inventory, gameMode, floorNum, settings } = this.props.world;
+    const { position } = this.props.player;
     // disable the inventory button when we are in settings or paused and not in the inventory
     const disableInventory = settings || (paused && !inventory);
     // disable the stats view when in game start or game over or settings
     const disableStats = gameStart || gameOver || settings;
+    // calculate the offset for the world map according to player position
+    // so that the viewport is always centered
+    const worldTop = 120 - position[1];
+    const worldLeft = 120 - position[0];
 
     return (
-      <div className='world-view-container white-border'>
+      <div className='world-view-container white-border'
+        style={{
+          top: worldTop,
+          left: worldLeft
+        }}>
 
         {
           gameMode === 'endless' ?

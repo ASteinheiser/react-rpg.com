@@ -12,7 +12,9 @@ const App = (props) => {
         {'React-RPG.com'}
       </span> */}
 
-      <World />
+      <div className='world-viewport white-border'>
+        <World />
+      </div>
 
       {/* <Footer /> */}
 
