@@ -1,17 +1,20 @@
 import React from 'react';
 
-import World from './features/world';
+import World  from './features/world';
+// import Footer from './components/footer';
 
 const App = (props) => {
 
   return(
     <div className='game-layout-container'>
 
-      <span className='game-title-text'>
+      {/* <span className='game-title-text'>
         {'React-RPG.com'}
-      </span>
+      </span> */}
 
       <World />
+
+      {/* <Footer /> */}
 
     </div>
   );

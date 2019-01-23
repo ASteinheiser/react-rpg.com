@@ -2,15 +2,14 @@ import React       from 'react';
 import { connect } from 'react-redux';
 // game components
 import EndlessFloorCounter from '../../components/endless-floor-counter';
-import Footer              from '../../components/footer';
-import GameMusic           from '../../components/game-music';
-import GameSettings        from '../../components/game-settings';
-import Inventory           from '../inventory';
+// import GameMusic           from '../../components/game-music';
+// import GameSettings        from '../../components/game-settings';
+// import Inventory           from '../inventory';
 import Map                 from '../map';
 import Monsters            from '../monsters';
 import Player              from '../player';
-import Snackbar            from '../snackbar';
-import Stats               from '../stats';
+// import Snackbar            from '../snackbar';
+// import Stats               from '../stats';
 // game configs
 import maps  from '../../data/maps';
 import store from '../../config/store';
@@ -115,7 +114,7 @@ class World extends React.Component {
 
         { settings }
 
-        <div className='flex-row world-stats-container'
+        {/* <div className='flex-row world-stats-container'
           style={{ justifyContent: disableStats ? 'flex-end' : 'space-between' }}>
           {
             disableStats ?
@@ -133,9 +132,7 @@ class World extends React.Component {
             <GameSettings />
           </div>
 
-        </div>
-
-        <Footer />
+        </div> */}
 
       </div>
     );
