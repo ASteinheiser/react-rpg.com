@@ -1,24 +1,15 @@
 import React from 'react';
 
-import World  from './features/world';
-// import Footer from './components/footer';
+import World    from './features/world';
+import Viewport from './components/viewport';
 
 const App = (props) => {
-
   return(
-    <div className='game-layout-container'>
+    <Viewport>
 
-      {/* <span className='game-title-text'>
-        {'React-RPG.com'}
-      </span> */}
+      <World />
 
-      <div className='world-viewport white-border'>
-        <World />
-      </div>
-
-      {/* <Footer /> */}
-
-    </div>
+    </Viewport>
   );
 }
 

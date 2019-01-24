@@ -21,34 +21,6 @@ body {
   text-transform: uppercase;
 }
 
-.game-layout-container {
-  display: flex;
-}
-
-.game-title-text {
-  font-size: 24px;
-
-  text-transform: none;
-
-  width: 800px;
-  margin: 25px 0 10px 0;
-
-  align-self: center;
-  text-align: center;
-
-  cursor: default;
-  user-select: none;
-}
-
-.world-viewport {
-  overflow: hidden;
-
-  width: 320px;
-  height: 320px;
-
-  margin: auto;
-}
-
 .flex-row {
   display: flex;
   flex-direction: row;
