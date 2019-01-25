@@ -1,5 +1,5 @@
 .settings-dialog-container {
-  padding: 32px 0;
+  padding: 16px 0;
 
   flex: 1;
 
@@ -8,15 +8,8 @@
 }
 
 .settings-dialog-title {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 500;
 
-  border-bottom: 3px solid;
-}
-
-.setting-dialog-confirm {
-  top: 50px;
-  bottom: 50px;
-  left: 50px;
-  right: 50px;
+  border-bottom: 2px solid;
 }
