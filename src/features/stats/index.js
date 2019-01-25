@@ -18,8 +18,9 @@ class Stats extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // detemine when the stats have been updated
-    if(JSON.stringify(prevProps.stats) !== JSON.stringify(this.props.stats)) {
+    // detemine when the stats have been updated and are not disabled
+    if(JSON.stringify(prevProps.stats) !== JSON.stringify(this.props.stats)
+      && !this.props.disabled) {
       // animate the container
       this.setState({ statsBgColor: 'var(--gray)' });
       // pause the infinite animation after 1 iteration
@@ -114,8 +115,6 @@ class Stats extends Component {
   }
 }
 
-const mapStateToProps = ({ stats }) => {
-  return { stats };
-}
+const mapStateToProps = ({ stats }) => ({ stats });
 
 export default connect(mapStateToProps)(ReactTimeout(Stats));
