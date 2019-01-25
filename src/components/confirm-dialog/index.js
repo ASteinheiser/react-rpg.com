@@ -15,18 +15,16 @@ const ConfirmDialog = (props) => {
         { text }
       </span>
 
-      <div className='flex-column confirm-dialog-button-parent'>
-        <div className='flex-row confirm-dialog-button-child'>
-          <Button
-            onClick={onClose}
-            icon={cancelIcon || 'times'}
-            title={cancelText || 'No'} />
+      <div className='flex-row confirm-dialog-button-child'>
+        <Button
+          onClick={onClose}
+          icon={cancelIcon || 'times'}
+          title={cancelText || 'No'} />
 
-          <Button
-            onClick={confirm}
-            icon={acceptIcon || 'check'}
-            title={acceptText || 'Yes'} />
-        </div>
+        <Button
+          onClick={confirm}
+          icon={acceptIcon || 'check'}
+          title={acceptText || 'Yes'} />
       </div>
 
     </div>
