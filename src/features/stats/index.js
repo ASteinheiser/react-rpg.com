@@ -19,7 +19,7 @@ class Stats extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     // detemine when the stats have been updated
-    if(prevProps.stats !== this.props.stats) {
+    if(JSON.stringify(prevProps.stats) !== JSON.stringify(this.props.stats)) {
       // animate the container
       this.setState({ statsBgColor: 'var(--gray)' });
       // pause the infinite animation after 1 iteration
