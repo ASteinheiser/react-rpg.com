@@ -31,6 +31,10 @@ body {
   flex-direction: column;
 }
 
+.centered {
+  justify-content: center;
+}
+
 .space-between {
   justify-content: space-between;
 }
@@ -46,12 +50,15 @@ body {
 
 .game-menu-section {
   flex: 1;
+  flex-wrap: wrap;
 
-  width: 800px;
+  max-width: 380px;
   margin-top: 15px;
 
   align-items: center;
   align-self: center;
 
   position: relative;
+
+  padding-left: 2px;
 }

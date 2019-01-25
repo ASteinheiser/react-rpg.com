@@ -18,11 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] adapt game view for different screen sizes
-  - [ ] scale map size depending on height and width
-  - [ ] center map in view
-  - [ ] hide overflow
-  - [ ] show stats and options positioned absolute on the bottom
 - [ ] native touch controls to move and attack
 - [ ] make native desktop version (electron)
 - [ ] make native mobile version (webview in react-native)

@@ -1,12 +1,14 @@
 import React from 'react';
 
+import { GAME_VIEWPORT_SIZE } from '../../config/constants';
+
 import './viewport.scss';
 
 const Viewport = (props) => {
 
   const viewportSize = {
-    width: 320,
-    height: 320
+    width: GAME_VIEWPORT_SIZE,
+    height: GAME_VIEWPORT_SIZE
   };
 
   return(

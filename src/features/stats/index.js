@@ -32,75 +32,82 @@ class Stats extends Component {
   }
 
   render() {
-    const { level, exp, expToLevel, damage, defence, hp, maxHp, gold } = this.props.stats;
+    const { disabled, stats } = this.props;
+    const { level, exp, expToLevel, damage, defence, hp, maxHp, gold } = stats;
     const { statsBgColor } = this.state;
 
     return (
-      <div className='flex-row stats-container white-border'
+      <div className={`flex-row stats-container ${disabled ? '' : 'white-border'}`}
         style={{ backgroundColor: statsBgColor }}>
+        {
+          disabled ?
+            null
+            :
+            <React.Fragment>
+              <div className='flex-column'>
+                <div className='flex-row stats-row-spacing'>
+                  <span className='stats-text-spacing'>
+                    {'LEVEL: '}
+                  </span>
+                  <span className='stats-text-level'>
+                    { level }
+                  </span>
+                </div>
+                <div className='flex-row exp-bar-position'>
+                  <span className='exp-bar-container'>
+                    <span className='flex-row stats-bar-value-text'>
+                      {'EXP'}
+                    </span>
+                    <span className='exp-bar-value'
+                      style={{ width: `${(exp / expToLevel) * 100}%` }}>
+                    </span>
+                  </span>
+                </div>
+              </div>
 
-        <div className='flex-column'>
-          <div className='flex-row stats-row-spacing'>
-            <span className='stats-text-spacing'>
-              {'LEVEL: '}
-            </span>
-            <span className='stats-text-level'>
-              { level }
-            </span>
-          </div>
-          <div className='flex-row exp-bar-position'>
-            <span className='exp-bar-container'>
-              <span className='flex-row stats-bar-value-text'>
-                {'EXP'}
-              </span>
-              <span className='exp-bar-value'
-                style={{ width: `${(exp / expToLevel) * 100}%` }}>
-              </span>
-            </span>
-          </div>
-        </div>
+              <div className='flex-column stats-column-spacing'>
+                <div className='flex-row stats-row-spacing'>
+                  <span className='stats-text-spacing'>
+                    {'ATK: '}
+                  </span>
+                  <span className='stats-text-damage'>
+                    { damage }
+                  </span>
+                </div>
+                <div className='flex-row'>
+                  <span className='stats-text-spacing'>
+                    {'DEF: '}
+                  </span>
+                  <span className='stats-text-defence'>
+                    { defence }
+                  </span>
+                </div>
+              </div>
 
-        <div className='flex-column stats-column-spacing'>
-          <div className='flex-row stats-row-spacing'>
-            <span className='stats-text-spacing'>
-              {'ATK: '}
-            </span>
-            <span className='stats-text-damage'>
-              { damage }
-            </span>
-          </div>
-          <div className='flex-row'>
-            <span className='stats-text-spacing'>
-              {'DEF: '}
-            </span>
-            <span className='stats-text-defence'>
-              { defence }
-            </span>
-          </div>
-        </div>
-
-        <div className='flex-column stats-column-spacing'>
-          <div className='flex-row stats-row-spacing'>
-            <div className='flex-row stats-hp-bar-position'>
-              <span className='stats-hp-bar-container'>
-                <span className='flex-row stats-bar-value-text'>
-                  {'Hp'}
-                </span>
-                <span className='stats-hp-bar-value'
-                  style={{ width: `${(hp / maxHp) * 100}%` }}>
-                </span>
-              </span>
-            </div>
-          </div>
-          <div className='flex-row'>
-            <span className='stats-text-spacing'>
-              {'GOLD: '}
-            </span>
-            <span className='stats-text-gold'>
-              { gold }
-            </span>
-          </div>
-        </div>
+              <div className='flex-column stats-column-spacing'>
+                <div className='flex-row stats-row-spacing'>
+                  <div className='flex-row stats-hp-bar-position'>
+                    <span className='stats-hp-bar-container'>
+                      <span className='flex-row stats-bar-value-text'>
+                        {'Hp'}
+                      </span>
+                      <span className='stats-hp-bar-value'
+                        style={{ width: `${(hp / maxHp) * 100}%` }}>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div className='flex-row'>
+                  <span className='stats-text-spacing'>
+                    {'GOLD: '}
+                  </span>
+                  <span className='stats-text-gold'>
+                    { gold }
+                  </span>
+                </div>
+              </div>
+            </React.Fragment>
+        }
 
       </div>
     );

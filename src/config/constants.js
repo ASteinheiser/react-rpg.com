@@ -20,3 +20,5 @@ export const MAX_LENGTH = 5;
 export const START_MAP = '1_1';
 // set the duration for showing the snackbar (ms)
 export const SNACK_DURATION = 2500;
+// set the size for the game viewport (in pixels)
+export const GAME_VIEWPORT_SIZE = 350;

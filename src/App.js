@@ -41,20 +41,22 @@ const App = (props) => {
 
       </Viewport>
 
-      <div className='flex-row game-menu-section'
-        style={{ justifyContent: disableStats ? 'flex-end' : 'space-between' }}>
+      <div className='flex-row centered'>
+        <div className='flex-row game-menu-section'
+          style={{ justifyContent: disableStats ? 'flex-end' : 'space-between' }}>
 
-        { !disableStats ? <Stats /> : null }
+          <Stats disabled={disableStats} />
 
-        <Inventory disabled={disableInventory} />
+          <Inventory disabled={disableInventory} />
 
-        <Snackbar />
+          <Snackbar />
 
-        <div className='flex-column'>
-          <GameMusic />
-          <GameSettings />
+          <div className='flex-column'>
+            <GameMusic />
+            <GameSettings />
+          </div>
+
         </div>
-
       </div>
     </React.Fragment>
   );
