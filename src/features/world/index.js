@@ -89,7 +89,7 @@ class World extends React.Component {
     const worldLeft = 120 - position[0];
 
     return (
-      <div className='world-view-container white-border'
+      <div className='world-view-container'
         style={{
           top: worldTop,
           left: worldLeft
