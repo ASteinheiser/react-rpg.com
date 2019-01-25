@@ -39,7 +39,7 @@ class Stats extends Component {
 
     return (
       <div className={`flex-row stats-container ${disabled ? '' : 'white-border'}`}
-        style={{ backgroundColor: statsBgColor }}>
+        style={{ backgroundColor: statsBgColor, height: disabled ? 66 : 64 }}>
         {
           disabled ?
             null
