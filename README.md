@@ -18,6 +18,8 @@ yarn test
 ```
 
 ## TODO:
-- [ ] native touch controls to move and attack
+- [ ] fix dialogs
+- [ ] add Dpad and attack button
+  - [ ] move position of buttons based on screen width and height
 - [ ] make native desktop version (electron)
 - [ ] make native mobile version (webview in react-native)
