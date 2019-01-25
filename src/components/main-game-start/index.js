@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import Button         from '../button';
 import Dialog         from '../dialog';
-import Flame          from '../flame';
 import GameSelect     from '../game-select';
 import GameTextDialog from '../game-text-dialog';
 import items          from '../../data/items';
@@ -112,24 +111,17 @@ const MainGameStart = (props) => {
 
       <div className='flex-column game-start-text'>
         <div>
-          {'Welcome Adventurer... A world full of monsters and gear awaits!'}
+          {'Welcome Adventurer... A world of monsters and gear awaits!'}
         </div>
 
         <div>
           <div className='game-start-instruction-text'>
-            {'Use \'WASD\' / Arrow Keys to MOVE'}
+            {'MOVE: \'WASD\' / Arrows'}
           </div>
           <div className='game-start-instruction-text'>
-            {'Press \'Enter\' / \'SPACE\' Key to ATTACK'}
+            {'ATTACK: \'Enter\' / \'SPACE\''}
           </div>
         </div>
-      </div>
-
-      <div className='game-start-flame-container-1'>
-        <Flame />
-      </div>
-      <div className='game-start-flame-container-2'>
-        <Flame />
       </div>
 
       <div className='flex-column game-start-button'>

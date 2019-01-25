@@ -1,42 +1,31 @@
 .game-start-title {
-  justify-content: center;
-  padding: 50px 100px;
-  font-size: 36px;
+  justify-content: flex-end;
+
+  padding: 18px 48px 0;
+
+  font-size: 26px;
 }
 
 .game-start-text {
   flex: 1;
 
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 20px;
   letter-spacing: 1px;
   text-align: center;
 
-  justify-content: space-between;
+  justify-content: space-evenly;
 
-  padding: 25px 100px;
+  padding: 24px 16px 0;
 }
 
 .game-start-button {
-  padding: 25px 0;
+  padding: 16px 0;
 
   align-items: center;
 }
 
-.game-start-flame-container-1 {
-  position: absolute;
-  bottom: 75px;
-  left: 125px;
-}
-
-.game-start-flame-container-2 {
-  position: absolute;
-  bottom: 75px;
-  left: 570px;
-}
-
 .game-start-instruction-text {
-  padding-top: 15px;
+  padding-top: 12px;
 }
 
 .game-start-back {
