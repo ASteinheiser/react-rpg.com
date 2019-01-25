@@ -43,16 +43,10 @@ const GameSelect = (props) => {
       <div className='game-select-flame-container-2'>
         <Flame />
       </div>
-      <div className='game-select-flame-container-3'>
-        <Flame />
-      </div>
-      <div className='game-select-flame-container-4'>
-        <Flame />
-      </div>
 
       <div className='flex-column game-select-button'>
         <Button
-          style={{marginBottom: 25}}
+          style={{marginBottom: 16}}
           onClick={handleStartMainGame}
           icon='torah'
           title={'Story Mode'} />
