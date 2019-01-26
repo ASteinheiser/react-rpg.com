@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import ConfirmDialog from '../confirm-dialog';
-import CurrentItems  from '../current-items';
+import BackpackItems  from '../backpack-items';
 import MicroDialog   from '../micro-dialog';
 import Backpack      from '../inventory-dialog/backpack.png';
 import store         from '../../config/store';
@@ -86,7 +86,7 @@ const SellItemsDialog = (props) => {
       <div className='flex-column sell-items-container'
         style={{backgroundImage: `url(${Backpack})`}}>
 
-        <CurrentItems view_item={handleViewItem} />
+        <BackpackItems view_item={handleViewItem} />
 
       </div>
 

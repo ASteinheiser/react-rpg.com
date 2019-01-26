@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Backpack      from './backpack.png';
-import CurrentItems  from '../current-items';
+import BackpackItems from '../backpack-items';
 import Dialog        from '../dialog';
 import EquippedItems from '../equipped-items';
 import ViewItem      from '../view-item';
@@ -29,18 +29,16 @@ const InventoryDialog = (props) => {
 
       { viewItem }
 
-      <div className='flex-row inventory-dialog-title'>
-        <span> {'Inventory'} </span>
-      </div>
-
       <div className='flex-row inventory-dialog-container'>
-        <div className='flex-column inventory-dialog-child'>
+        <div className='flex-column inventory-dialog-child'
+          style={{width: '40%'}}>
           <EquippedItems />
         </div>
 
-        <div className='flex-column inventory-dialog-child'>
+        <div className='flex-column inventory-dialog-child'
+          style={{width: '60%'}}>
           <div className='inventory-backpack' style={{backgroundImage: `url(${Backpack})`}}>
-            <CurrentItems view_item={handleViewItem} />
+            <BackpackItems view_item={handleViewItem} />
           </div>
         </div>
       </div>

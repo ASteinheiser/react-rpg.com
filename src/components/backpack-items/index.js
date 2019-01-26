@@ -5,7 +5,7 @@ import { EmptySlot } from '../equipped-items';
 
 import './styles.scss';
 
-const CurrentItems = (props) => {
+const BackpackItems = (props) => {
 
   const { view_item, inventory } = props;
   const { items, maxItems } = inventory;
@@ -29,7 +29,7 @@ const CurrentItems = (props) => {
   });
 
   return (
-    <div className='flex-column current-items-container white-border'
+    <div className='flex-column backpack-items-container white-border'
       style={{ minHeight: maxItems === 12 ? 120 : 80 }}>
       <div className='flex-row'>
         <EmptySlot>
@@ -84,8 +84,6 @@ const CurrentItems = (props) => {
   );
 }
 
-const mapStateToProps = ({ inventory }) => {
-  return { inventory };
-}
+const mapStateToProps = ({ inventory }) => ({ inventory });
 
-export default connect(mapStateToProps)(CurrentItems);
+export default connect(mapStateToProps)(BackpackItems);
