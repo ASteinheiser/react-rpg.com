@@ -18,6 +18,5 @@ yarn test
 ```
 
 ## TODO:
-- [ ] add swipe and double tap controls for player
 - [ ] make native desktop version (electron)
 - [ ] make native mobile version (webview in react-native)
