@@ -1,13 +1,13 @@
 .view-item-text-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
 
-  padding: 20px 0 10px;
+  padding: 12px 0 8px 12px;
 }
 
 .view-item-text {
-  font-size: 28px;
+  font-size: 22px;
 
   align-self: center;
 }
@@ -19,7 +19,7 @@
 
 .view-item-buttons-child {
   justify-content: space-around;
-  padding-bottom: 20px;
+  padding-bottom: 16px;
 }
 
 .view-item-stats-container {
