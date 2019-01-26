@@ -1,10 +1,10 @@
 .equipped-items-character {
-  width: 220px;
-  height: 425px;
+  width: 170px;
 
   align-self: center;
 
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .item-slot {

@@ -53,7 +53,7 @@ function EquippedItems(props) {
     <div className='equipped-items-character'
       style={{backgroundImage: `url(${Character})`}}>
 
-      <EmptySlot className='white-border' margin={'25px auto 0 auto'}>
+      <EmptySlot className='white-border' margin={'20px 0 0 66px'}>
         {
           armor && armor.helmet ?
             <div className='item-slot'
@@ -67,7 +67,7 @@ function EquippedItems(props) {
         }
       </EmptySlot>
 
-      <EmptySlot className='white-border' margin={'50px auto 0 auto'}>
+      <EmptySlot className='white-border' margin={'12px 0 0 66px'}>
         {
           armor && armor.body ?
             <div className='item-slot'
@@ -81,8 +81,8 @@ function EquippedItems(props) {
         }
       </EmptySlot>
 
-      <div className='flex-row space-around'>
-        <EmptySlot className='white-border' margin={'30px 15px 0 15px'}>
+      <div className='flex-row flex-end'>
+        <EmptySlot className='white-border' margin={'30px 0 0 18px'}>
           {
             armor && armor.gloves ?
               <div className='item-slot'
@@ -95,7 +95,7 @@ function EquippedItems(props) {
                 style={{ backgroundImage: `url('${GlovesOutline}')` }} />
           }
         </EmptySlot>
-        <EmptySlot className='white-border' margin={'30px 15px 0 15px'}>
+        <EmptySlot className='white-border' margin={'16px 6px 0'}>
           {
             armor && armor.pants ?
               <div className='item-slot'
@@ -108,7 +108,7 @@ function EquippedItems(props) {
                 style={{ backgroundImage: `url('${PantsOutline}')` }} />
           }
         </EmptySlot>
-        <EmptySlot className='white-border' margin={'30px 15px 0 15px'}>
+        <EmptySlot className='white-border' margin={'30px 0 0 0'}>
           {
             armor && armor.gloves ?
               <div className='item-slot'
@@ -124,7 +124,7 @@ function EquippedItems(props) {
       </div>
 
       <div className='flex-row space-between'>
-        <EmptySlot className='white-border' margin={'25px 0 0 0'}>
+        <EmptySlot className='white-border' margin={'25px 0 0 30px'}>
           {
             ring ?
               <div className='item-slot'
@@ -138,7 +138,7 @@ function EquippedItems(props) {
           }
         </EmptySlot>
 
-        <EmptySlot className='white-border' margin={'25px 0 0 0'}>
+        <EmptySlot className='white-border' margin={'25px 26px 0 0'}>
           {
             weapon ?
               <div className='item-slot'
@@ -154,7 +154,7 @@ function EquippedItems(props) {
       </div>
 
       <div className='flex-row space-between'>
-        <EmptySlot className='white-border' margin={'60px 29px 0 29px'}>
+        <EmptySlot className='white-border' margin={'30px 0 0 20px'}>
           {
             armor && armor.boots ?
               <div className='item-slot'
@@ -167,7 +167,7 @@ function EquippedItems(props) {
                 style={{ backgroundImage: `url('${BootsOutline}')` }} />
           }
         </EmptySlot>
-        <EmptySlot className='white-border' margin={'60px 29px 0 29px'}>
+        <EmptySlot className='white-border' margin={'30px 16px 0 0'}>
           {
             armor && armor.boots ?
               <div className='item-slot'
