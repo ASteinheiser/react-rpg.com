@@ -7,10 +7,11 @@
 }
 
 .inventory-backpack {
-  width: 350px;
-  height: 350px;
+  height: 280px;
 
-  margin-top: 35px;
+  margin-top: 36px;
 
-  background-size: contain;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
