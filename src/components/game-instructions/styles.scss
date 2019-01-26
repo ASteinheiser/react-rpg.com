@@ -2,16 +2,17 @@
   font-size: 26px;
   text-align: center;
 
-  padding-top: 16px;
+  padding: 16px 0;
 }
 
 .game-instructions-text {
   display: flex;
   flex: 1;
-
   align-items: center;
 
-  padding: 0 36px;
-
+  letter-spacing: 1px;
+  text-transform: none;
   text-align: center;
+
+  padding: 0 36px;
 }

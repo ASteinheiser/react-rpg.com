@@ -16,10 +16,10 @@ const GameInstructions = (props) => {
       </div>
 
       <div className='game-instructions-text'>
-        {`ATTACK -> Double-tap / 'Space' / 'Enter'`}
+        {`ATTACK >> Double-tap / 'Space' / 'Enter'`}
         <br />
         <br />
-        {`MOVE -> Swipe / 'WASD' / Arrow Keys`}
+        {`MOVE >> Swipe Direction / 'WASD' / Arrow Keys`}
       </div>
 
       <div className='flex-column game-start-button'>
