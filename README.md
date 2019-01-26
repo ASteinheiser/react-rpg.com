@@ -18,7 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] move game menus to the side when screen size is short
 - [ ] add swipe and double tap controls for player
 - [ ] make native desktop version (electron)
 - [ ] make native mobile version (webview in react-native)

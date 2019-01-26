@@ -51,11 +51,16 @@ class Snackbar extends Component {
   }
 
   render() {
+    const { sideMenu } = this.props;
     const { show } = this.state;
 
     return(
       <div className='snackbar-container white-border'
         style={{
+          paddingLeft: sideMenu ? 2 : 0,
+          top: sideMenu ? 230 : 100,
+          width: sideMenu ? 175 : 380,
+          fontSize: sideMenu ? 18 : 20,
           opacity: show === '' ? 0 : 1,
           zIndex: show === '' ? 0 : 101,
           transition: show === '' ?

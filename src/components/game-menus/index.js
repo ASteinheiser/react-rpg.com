@@ -11,7 +11,8 @@ import './styles.scss';
 
 const GameMenus = (props) => {
 
-  const { gameOver, gameStart, paused, inventory, settings } = props.world;
+  const { sideMenu, world } = props;
+  const { gameOver, gameStart, paused, inventory, settings } = world;
 
   // disable the inventory button when we are in settings or paused and not in the inventory
   const disableInventory = settings || (paused && !inventory);
@@ -20,14 +21,21 @@ const GameMenus = (props) => {
 
   return(
     <div className='flex-row centered'>
-      <div className='flex-row game-menu-container'
-        style={{ justifyContent: disableStats ? 'flex-end' : 'space-between' }}>
+      <div className={`game-menu-container ${sideMenu ? 'flex-column' : 'flex-row'}`}
+        style={{
+          height: sideMenu ? '395px' : 'unset',
+          justifyContent: disableStats ? 'flex-end' : 'space-between'
+        }}>
 
-        <Stats disabled={disableStats} />
+        <Stats
+          sideMenu={sideMenu}
+          disabled={disableStats} />
 
-        <Inventory disabled={disableInventory} />
+        <Inventory
+          sideMenu={sideMenu}
+          disabled={disableInventory} />
 
-        <Snackbar />
+        <Snackbar sideMenu={sideMenu} />
 
         <div className='flex-column'>
           <GameMusic />

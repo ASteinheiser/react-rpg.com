@@ -33,13 +33,25 @@ class Stats extends Component {
   }
 
   render() {
-    const { disabled, stats } = this.props;
+    const { disabled, stats, sideMenu } = this.props;
     const { level, exp, expToLevel, damage, defence, hp, maxHp, gold } = stats;
     const { statsBgColor } = this.state;
 
+    let height = disabled ? 66 : 64;
+    if(sideMenu) height = disabled ? 202 : 200;
+
     return (
-      <div className={`flex-row stats-container ${disabled ? '' : 'white-border'}`}
-        style={{ backgroundColor: statsBgColor, height: disabled ? 66 : 64 }}>
+      <div
+        style={{
+          backgroundColor: statsBgColor,
+          height,
+          width: sideMenu ? 150 : 380
+        }}
+        className={
+          `stats-container
+          ${disabled ? '' : 'white-border'}
+          ${sideMenu ? 'flex-column' : 'flex-row'}`
+        }>
         {
           disabled ?
             null
