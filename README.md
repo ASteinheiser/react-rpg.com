@@ -20,8 +20,8 @@ yarn test
 ## TODO:
 - [ ] increase game viewport on big screens
 - [ ] move game menus to the side when screen size is short
-- [ ] different bg color for viewport to see when area is not part of map
 - [ ] fix dialogs
 - [ ] add swipe and double tap controls for player
+- [ ] add instructions dialog during main game start
 - [ ] make native desktop version (electron)
 - [ ] make native mobile version (webview in react-native)
