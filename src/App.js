@@ -24,6 +24,8 @@ const App = (props) => {
     // if the screen size is too short
     if(height < 575) sideMenu = true;
   }
+  // if the width is too small, dont squish the viewport
+  if(width < 750) sideMenu = false;
 
   return(
     <div className={`${sideMenu ? 'flex-row' : 'flex-column'}`}>
@@ -44,7 +46,7 @@ const App = (props) => {
 
       </Viewport>
 
-      <GameMenus />
+      <GameMenus sideMenu={sideMenu} />
 
     </div>
   );
