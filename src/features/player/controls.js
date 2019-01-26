@@ -1,4 +1,4 @@
-import Hammer    from 'react-hammerjs';
+import Hammer    from 'hammerjs';
 import _debounce from 'lodash.debounce';
 
 import movePlayer          from './movement';
@@ -33,6 +33,7 @@ export default function Controls(player) {
     }
   }
 
+  // enable keyboard for player controls
   window.addEventListener('keydown', _debounce((event) => {
     // if the game is not paused by dialogs
     if(!(store.getState().world.paused)) handleKeyDown(event);
@@ -41,13 +42,40 @@ export default function Controls(player) {
     { maxWait: ANIMATION_SPEED, leading: true, trailing: false })
   );
 
-  // var touchEnabledPlayer = new Hammer.Manager(player);
+  // enable touch for player controls
+  let hammertime = new Hammer(document.getElementById('window'));
 
-  // touchEnabledPlayer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-  // touchEnabledPlayer.add( new Hammer.Tap({ event: 'quadrupletap', taps: 4 }) );
+  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+  // hammertime.add(new Hammer.Tap({ event: 'doubleTap', taps: 2 }) );
 
-  // touchEnabledPlayer.on('swipe', handlePan);
-  // touchEnabledPlayer.on('quadrupletap', handleTaps);
+  hammertime.on('swipe', _debounce(({ direction, offsetDirection }) => {
+    // return if the game is paused by dialogs
+    if(store.getState().world.paused) return;
+    // if we get a bad swipe, use the best guess
+    if(direction === 1) direction = offsetDirection;
+
+    switch(direction) {
+      case 8:
+        movePlayer('NORTH');
+        break;
+      case 16:
+        movePlayer('SOUTH');
+        break;
+      case 2:
+        movePlayer('WEST');
+        break;
+      case 4:
+        movePlayer('EAST');
+        break;
+      default:
+        // console.log(`Unmapped swipe direction ${direction}`);
+    }
+  },
+    ANIMATION_SPEED,
+    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
+  ));
+
+  // hammertime.on('tap', () => console.log);
 
   return player;
 }
