@@ -18,9 +18,9 @@ yarn test
 ```
 
 ## TODO:
+- [ ] fix dialogs
 - [ ] increase game viewport on big screens
 - [ ] move game menus to the side when screen size is short
-- [ ] fix dialogs
 - [ ] add swipe and double tap controls for player
 - [ ] add instructions dialog during main game start
 - [ ] make native desktop version (electron)
