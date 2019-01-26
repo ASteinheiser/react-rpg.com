@@ -43,14 +43,17 @@ class Stats extends Component {
     return (
       <div
         style={{
+          alignItems: sideMenu ? 'flex-start' : 'center',
+          padding: sideMenu ? '12px 0 12px 32px' : 12,
           backgroundColor: statsBgColor,
           height,
-          width: sideMenu ? 150 : 380
+          width: sideMenu ? 150 : 380,
+          lineHeight: sideMenu ? 1.5 : 'unset'
         }}
         className={
           `stats-container
           ${disabled ? '' : 'white-border'}
-          ${sideMenu ? 'flex-column' : 'flex-row'}`
+          ${sideMenu ? 'flex-column-reverse' : 'flex-row'}`
         }>
         {
           disabled ?
@@ -58,7 +61,7 @@ class Stats extends Component {
             :
             <React.Fragment>
               <div className='flex-column'>
-                <div className='flex-row stats-row-spacing'>
+                <div className={`flex-row ${sideMenu ? '' : 'stats-row-spacing'}`}>
                   <span className='stats-text-spacing'>
                     {'LEVEL: '}
                   </span>
@@ -66,7 +69,8 @@ class Stats extends Component {
                     { level }
                   </span>
                 </div>
-                <div className='flex-row exp-bar-position'>
+                <div className='flex-row exp-bar-position'
+                  style={{paddingTop: sideMenu ? 12 : 0}}>
                   <span className='exp-bar-container'>
                     <span className='flex-row stats-bar-value-text'>
                       {'EXP'}
@@ -78,8 +82,8 @@ class Stats extends Component {
                 </div>
               </div>
 
-              <div className='flex-column stats-column-spacing'>
-                <div className='flex-row stats-row-spacing'>
+              <div className={`flex-column ${sideMenu ? '' : 'stats-column-spacing'}`}>
+                <div className={`flex-row ${sideMenu ? '' : 'stats-row-spacing'}`}>
                   <span className='stats-text-spacing'>
                     {'ATK: '}
                   </span>
@@ -97,9 +101,10 @@ class Stats extends Component {
                 </div>
               </div>
 
-              <div className='flex-column stats-column-spacing'>
-                <div className='flex-row stats-row-spacing'>
-                  <div className='flex-row stats-hp-bar-position'>
+              <div className={`flex-column ${sideMenu ? '' : 'stats-column-spacing'}`}>
+                <div className={`flex-row ${sideMenu ? '' : 'stats-row-spacing'}`}>
+                  <div className='flex-row stats-hp-bar-position'
+                    style={{paddingBottom: sideMenu ? 12 : 0}}>
                     <span className='stats-hp-bar-container'>
                       <span className='flex-row stats-bar-value-text'>
                         {'Hp'}

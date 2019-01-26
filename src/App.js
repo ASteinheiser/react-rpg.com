@@ -25,7 +25,7 @@ const App = (props) => {
     if(height < 575) sideMenu = true;
   }
   // don't switch to side menu if there's no horizontal room
-  if(width < 580) {
+  if(width < 550) {
     sideMenu = false;
   }
 
