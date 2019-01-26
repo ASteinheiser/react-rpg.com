@@ -5,17 +5,32 @@ import EndlessFloorCounter from './components/endless-floor-counter';
 import GameMenus           from './components/game-menus';
 import World               from './features/world';
 import Viewport            from './components/viewport';
+import useWindowSize       from './modules/use-window-size';
 
 const App = (props) => {
 
   const { paused, gameMode, floorNum, settings } = props.world;
+  const { height, width } = useWindowSize();
+
+  let largeView = false;
+  let sideMenu = false;
+  // if we have a wide screen size
+  if(width > 800) {
+    largeView = true;
+    // if the screen size is too short
+    if(height < 625) sideMenu = true;
+  } // if we have a normal/small screen size
+  else {
+    // if the screen size is too short
+    if(height < 575) sideMenu = true;
+  }
 
   return(
-    <React.Fragment>
+    <div className={`${sideMenu ? 'flex-row' : 'flex-column'}`}>
 
-      <Viewport>
+      <Viewport largeView={largeView}>
 
-        <World />
+        <World largeView={largeView} />
 
         {/* Show the 'paused' component here - this is the game start screen,
         game over screen, as well as other dialogs throughout the game */}
@@ -31,7 +46,7 @@ const App = (props) => {
 
       <GameMenus />
 
-    </React.Fragment>
+    </div>
   );
 }
 

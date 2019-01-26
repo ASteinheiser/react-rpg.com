@@ -82,11 +82,13 @@ class World extends React.Component {
   }
 
   render() {
-    const { position } = this.props.player;
+    const { player, largeView } = this.props;
+    const { position } = player;
     // calculate the offset for the world map according to player position
     // so that the viewport is always centered
-    const worldTop = 155 - position[1];
-    const worldLeft = 155 - position[0];
+    const mapOffset = largeView ? 180 : 155;
+    const worldTop = mapOffset - position[1];
+    const worldLeft = mapOffset - position[0];
 
     return (
       <div className='world-view-container'
