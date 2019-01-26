@@ -21,6 +21,5 @@ yarn test
 - [ ] increase game viewport on big screens
 - [ ] move game menus to the side when screen size is short
 - [ ] add swipe and double tap controls for player
-- [ ] add instructions dialog during main game start
 - [ ] make native desktop version (electron)
 - [ ] make native mobile version (webview in react-native)

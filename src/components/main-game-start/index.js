@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 
-import Button         from '../button';
-import Dialog         from '../dialog';
-import GameSelect     from '../game-select';
-import GameTextDialog from '../game-text-dialog';
-import items          from '../../data/items';
-import maps           from '../../data/maps';
-import store          from '../../config/store';
-import exploreTiles   from '../../features/player/explore-tiles';
-import { START_MAP }  from '../../config/constants';
+import Button           from '../button';
+import Dialog           from '../dialog';
+import GameSelect       from '../game-select';
+import GameTextDialog   from '../game-text-dialog';
+import GameInstructions from '../game-instructions';
+import items            from '../../data/items';
+import maps             from '../../data/maps';
+import store            from '../../config/store';
+import exploreTiles     from '../../features/player/explore-tiles';
+import { START_MAP }    from '../../config/constants';
 
 import './styles.scss';
 
@@ -30,7 +31,7 @@ const MainGameStart = (props) => {
 
   function handleGameStart() {
     handleLoadStartMap();
-    handleShowStartMessage();
+    handleShowMapMessage();
     handleLoadMap();
     handleLoadMonsters();
     handleLoadPlayerSight();
@@ -48,6 +49,18 @@ const MainGameStart = (props) => {
   }
 
   function handleShowStartMessage() {
+    store.dispatch({
+      type: 'PAUSE',
+      payload: {
+        component: (
+          <GameInstructions
+            onContinue={() => handleGameStart()} />
+        )
+      }
+    });
+  }
+
+  function handleShowMapMessage() {
     const { message } = maps[START_MAP];
 
     store.dispatch({
@@ -110,23 +123,12 @@ const MainGameStart = (props) => {
       </div>
 
       <div className='flex-column game-start-text'>
-        <div>
-          {'Welcome Adventurer... A world of monsters and gear awaits!'}
-        </div>
-
-        <div>
-          <div className='game-start-instruction-text'>
-            {'MOVE: \'WASD\' / Arrows'}
-          </div>
-          <div className='game-start-instruction-text'>
-            {'ATTACK: \'Enter\' / \'SPACE\''}
-          </div>
-        </div>
+        {'Welcome Adventurer... A world full of monsters and gear awaits!'}
       </div>
 
       <div className='flex-column game-start-button'>
         <Button
-          onClick={handleGameStart}
+          onClick={handleShowStartMessage}
           icon='compass'
           title={'Explore Dungeon'} />
       </div>
