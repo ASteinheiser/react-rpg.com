@@ -22,6 +22,11 @@ body {
   text-transform: uppercase;
 }
 
+.flex-1 {
+  display: flex;
+  flex: 1;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
