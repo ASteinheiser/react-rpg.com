@@ -79,7 +79,7 @@ const SellItemsDialog = (props) => {
   }
 
   return(
-    <MicroDialog onClose={props.onClose} inventory_size={true}>
+    <MicroDialog onClose={props.onClose}>
 
       { sellItemConfirm }
 
