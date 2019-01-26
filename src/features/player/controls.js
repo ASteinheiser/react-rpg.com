@@ -46,7 +46,7 @@ export default function Controls(player) {
   let hammertime = new Hammer(document.getElementById('window'));
 
   hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-  // hammertime.add(new Hammer.Tap({ event: 'doubleTap', taps: 2 }) );
+  hammertime.get('tap').set({ taps: 2 });
 
   hammertime.on('swipe', _debounce(({ direction, offsetDirection }) => {
     // return if the game is paused by dialogs
@@ -75,7 +75,13 @@ export default function Controls(player) {
     { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
   ));
 
-  // hammertime.on('tap', () => console.log);
+  hammertime.on('tap', _debounce(() => {
+    // if the game is not paused by dialogs
+    if(!(store.getState().world.paused)) attackMonster();
+  },
+    ANIMATION_SPEED,
+    { maxWait: ANIMATION_SPEED, leading: true, trailing: false })
+  );
 
   return player;
 }
