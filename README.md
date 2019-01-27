@@ -16,7 +16,3 @@ yarn start
 ```
 yarn test
 ```
-
-## TODO:
-- [ ] make native desktop version (electron)
-- [ ] make native mobile version (webview in react-native)
