@@ -2,19 +2,19 @@
   display: flex;
   justify-content: center;
 
-  padding: 50px 0 25px 0;
+  padding: 32px 0;
 
-  font-size: 36px;
+  font-size: 32px;
 }
 
 .game-over-text {
   display: flex;
   justify-content: center;
+  text-align: center;
 
-  padding: 25px 0;
+  padding: 32px;
 
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 20px;
   letter-spacing: 1px;
 }
 
@@ -26,5 +26,5 @@
   justify-content: flex-end;
 
   margin: 0 auto;
-  padding-bottom: 50px;
+  padding-bottom: 16px;
 }

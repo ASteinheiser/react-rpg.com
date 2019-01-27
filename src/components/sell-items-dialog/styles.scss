@@ -1,8 +1,12 @@
 .sell-items-container {
-  width: 350px;
-  height: 350px;
+  height: 280px;
+  width: 100%;
 
-  background-size: contain;
+  margin-top: 16px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   align-self: center;
   align-items: center;

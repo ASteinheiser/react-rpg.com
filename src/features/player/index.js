@@ -14,7 +14,7 @@ import SwordSlash     from './assets/sword-slash.png';
 import MonsterSlash   from '../monsters/assets/monster-slash.png';
 // other local imports
 import store          from '../../config/store';
-import handleMovement from './movement';
+import playerControls from './controls';
 import {
   ANIMATION_SPEED,
   SPRITE_SIZE
@@ -241,4 +241,4 @@ const mapStateToProps = ({ player, world }) => {
   return { player, world };
 }
 
-export default connect(mapStateToProps)(handleMovement(ReactTimeout(Player)));
+export default connect(mapStateToProps)(playerControls(ReactTimeout(Player)));

@@ -1,26 +1,17 @@
-.inventory-dialog-title {
-  font-size: 30px;
-
-  justify-content: center;
-
-  padding: 40px 0px 25px 0;
-}
-
 .inventory-dialog-container {
   flex: 1;
 }
 
 .inventory-dialog-child {
-  width: 50%;
-
   justify-content: flex-start;
 }
 
 .inventory-backpack {
-  width: 350px;
-  height: 350px;
+  height: 280px;
 
-  margin-top: 35px;
+  margin-top: 36px;
 
-  background-size: contain;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

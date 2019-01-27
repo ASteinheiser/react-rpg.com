@@ -16,18 +16,17 @@
 }
 
 .confirm-dialog-text {
-  font-size: 26px;
-  padding: 50px;
-
-  text-align: center;
-}
-
-.confirm-dialog-button-parent {
+  display: flex;
   flex: 1;
-  justify-content: flex-end;
+  align-items: center;
+
+  font-size: 22px;
+  text-align: center;
+
+  padding: 16px;
 }
 
 .confirm-dialog-button-child {
   justify-content: space-around;
-  padding-bottom: 20px;
+  padding-bottom: 16px;
 }

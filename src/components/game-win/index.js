@@ -30,12 +30,8 @@ const GameWin = (props) => {
   if(!monstersRemain) {
     return(
       <Dialog>
-        <span className='flex-row game-win-title'>
-          {'Congratulations!!'}
-        </span>
-
         <span className='flex-column game-win-text'>
-          {'You managed to bathe your blade in the blood of each creature that once lurked in this dungeon...'}
+          {'The old spirit speaks: "Greetings warrior! I cannot thank you enough for freeing me from the evil spirits. Now I may finally rest..."'}
         </span>
 
         <div className='flex-row game-win-button'>
@@ -68,8 +64,6 @@ const GameWin = (props) => {
   );
 }
 
-const mapStateToProps = ({ monsters }) => {
-  return { monsters };
-}
+const mapStateToProps = ({ monsters }) => ({ monsters });
 
 export default connect(mapStateToProps)(GameWin);

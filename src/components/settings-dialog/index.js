@@ -40,7 +40,6 @@ const SettingsDialog = (props) => {
       {
         confirmQuit ?
           <ConfirmDialog
-            className='setting-dialog-confirm'
             text='Are you sure you want to quit? You will lose all progress...'
             onClose={() => setConfirmQuit(false)}
             confirm={resetGameState} />

@@ -1,11 +1,16 @@
 .shop-inventory-items {
-  padding: 0 50px 20px 0;
+  flex: 1;
+  justify-content: space-evenly;
+
+  width: 96%;
+
+  padding-top: 4px;
 }
 
 .shop-item-container {
   cursor: pointer;
 
-  margin-bottom: 7px;
+  margin-bottom: 4px;
 }
 
 .shop-item-slot {
@@ -14,16 +19,18 @@
 }
 
 .shop-item-text {
-  padding: 0 10px;
-
-  justify-content: space-between;
   flex: 1;
+  justify-content: space-between;
+
+  font-size: 18px;
+
+  padding: 0 10px;
 }
 
 .shop-page-button {
-  font-size: 22px;
+  font-size: 20px;
 
-  padding: 10px 15px;
+  padding: 4px 16px 12px;
 
   cursor: pointer;
 }

@@ -1,26 +1,33 @@
 .shop-container {
   flex: 1;
-}
 
-.shop-container-child-1 {
-  width: 50%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-.shop-container-child-2 {
-  width: 50%;
-  justify-content: center;
-}
-
 .shop-title-text {
-  font-size: 36px;
+  font-size: 26px;
   text-align: center;
-  padding: 25px 100px;
+
+  padding: 24px 64px 0;
 }
 
 .shop-button-container {
+  width: 100%;
   justify-content: space-evenly;
 
-  padding-bottom: 25px;
+  padding-bottom: 16px;
+}
+
+.shop-keep-text {
+  justify-content: center;
+
+  width: 50%;
+
+  padding: 0 12px 12px 0;
+
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: 1px;
 }

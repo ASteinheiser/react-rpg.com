@@ -11,6 +11,7 @@ import './styles.scss';
 
 const ShopDialog = (props) => {
 
+  const [welcome, setWelcome] = useState(true);
   const [sellItems, setSellItems] = useState(null);
 
   function handleOpenSellItems() {
@@ -31,6 +32,41 @@ const ShopDialog = (props) => {
     });
   }
 
+  if(welcome) {
+    return(
+      <Dialog>
+        <div className='flex-column space-between flex-1'>
+
+          <div className='shop-title-text'>
+            {'Shop'}
+          </div>
+
+          <div className='flex-row'>
+            <ShopKeep />
+
+            <div className='flex-column shop-keep-text'>
+              {'Welcome traveler! Please, come in...'}
+            </div>
+          </div>
+
+          <div className='flex-row shop-button-container'>
+            <Button
+              small
+              onClick={handleCloseDialog}
+              icon='walking'
+              title={'Leave'} />
+            <Button
+              small
+              onClick={() => setWelcome(false)}
+              icon='angle-double-right'
+              title={'Shop'} />
+          </div>
+
+        </div>
+      </Dialog>
+    );
+  }
+
   return(
     <Dialog>
 
@@ -38,29 +74,19 @@ const ShopDialog = (props) => {
 
       <div className='flex-column shop-container'>
 
-        <span className='shop-title-text'>
-          {'Shop'}
-        </span>
-
-        <div className='flex-row shop-container'>
-          <div className='flex-column shop-container-child-1'>
-            <ShopKeep />
-          </div>
-
-          <div className='flex-column shop-container-child-2'>
-            <ShopInventory />
-          </div>
-        </div>
+        <ShopInventory />
 
         <div className='flex-row shop-button-container'>
           <Button
+            small
             onClick={handleCloseDialog}
             icon='walking'
-            title={'Leave Shop'} />
+            title={'Leave'} />
           <Button
+            small
             onClick={handleOpenSellItems}
             icon='coins'
-            title={'Sell Items'} />
+            title={'Sell'} />
         </div>
       </div>
     </Dialog>

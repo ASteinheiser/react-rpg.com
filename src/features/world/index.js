@@ -1,16 +1,9 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 // game components
-import EndlessFloorCounter from '../../components/endless-floor-counter';
-import Footer              from '../../components/footer';
-import GameMusic           from '../../components/game-music';
-import GameSettings        from '../../components/game-settings';
-import Inventory           from '../inventory';
-import Map                 from '../map';
-import Monsters            from '../monsters';
-import Player              from '../player';
-import Snackbar            from '../snackbar';
-import Stats               from '../stats';
+import Map      from '../map';
+import Monsters from '../monsters';
+import Player   from '../player';
 // game configs
 import maps  from '../../data/maps';
 import store from '../../config/store';
@@ -89,53 +82,26 @@ class World extends React.Component {
   }
 
   render() {
-    const { gameOver, gameStart, paused, inventory, gameMode, floorNum, settings } = this.props.world;
-    // disable the inventory button when we are in settings or paused and not in the inventory
-    const disableInventory = settings || (paused && !inventory);
-    // disable the stats view when in game start or game over or settings
-    const disableStats = gameStart || gameOver || settings;
+    const { player, largeView } = this.props;
+    const { position } = player;
+    // calculate the offset for the world map according to player position
+    // so that the viewport is always centered
+    const mapOffset = largeView ? 180 : 155;
+    const worldTop = mapOffset - position[1];
+    const worldLeft = mapOffset - position[0];
 
     return (
-      <div className='world-view-container white-border'>
-
-        {
-          gameMode === 'endless' ?
-            <EndlessFloorCounter floor={floorNum} />
-            :
-            null
-        }
+      <div className='world-view-container'
+        style={{
+          top: worldTop,
+          left: worldLeft
+        }}>
 
         <Map />
+
         <Player />
+
         <Monsters />
-
-        {/* Show our 'paused' component here - this is the game start screen,
-        game over screen, as well as other dialogs throughout the game */}
-        { paused }
-
-        { settings }
-
-        <div className='flex-row world-stats-container'
-          style={{ justifyContent: disableStats ? 'flex-end' : 'space-between' }}>
-          {
-            disableStats ?
-              null
-              :
-              <Stats />
-          }
-
-          <Inventory disabled={disableInventory} />
-
-          <Snackbar />
-
-          <div className='flex-column'>
-            <GameMusic />
-            <GameSettings />
-          </div>
-
-        </div>
-
-        <Footer />
 
       </div>
     );

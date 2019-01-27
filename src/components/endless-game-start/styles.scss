@@ -1,24 +1,25 @@
 .endless-start-title {
+  font-size: 26px;
   justify-content: center;
-  padding: 50px 100px;
-  font-size: 36px;
+
+  padding: 14px 0 0;
+  margin-left: 26px;
 }
 
 .endless-start-text {
   flex: 1;
 
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 20px;
   letter-spacing: 1px;
   text-align: center;
 
   justify-content: space-between;
 
-  padding: 25px 100px;
+  padding: 48px 16px 0;
 }
 
 .endless-start-button {
-  padding: 25px 0;
+  padding: 16px 0;
 
   align-items: center;
 }
@@ -48,5 +49,5 @@
   border-bottom: 1px solid;
   border-radius: 2px;
 
-  padding: 15px 25px;
+  padding: 12px 16px;
 }

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import Button           from '../button';
 import Dialog           from '../dialog';
-import Flame            from '../flame';
 import GameSelect       from '../game-select';
 import GameTextDialog   from '../game-text-dialog';
 import items            from '../../data/items';
@@ -129,13 +128,6 @@ const EndlessGameStart = (props) => {
           {'Up for a challenge..? These randomly generated dungeons will run you into oblivion.'}
         </div>
 
-      </div>
-
-      <div className='endless-start-flame-container-1'>
-        <Flame />
-      </div>
-      <div className='endless-start-flame-container-2'>
-        <Flame />
       </div>
 
       <div className='flex-column endless-start-button'>

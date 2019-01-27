@@ -2,11 +2,13 @@
   display: flex;
   flex-direction: column;
 
+  z-index: 1;
+
   position: absolute;
-  top: 120px;
-  bottom: 120px;
-  left: 120px;
-  right: 120px;
+  top: 12px;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
 
   background: var(--dark-gray);
   box-shadow: 1px 2px 50px var(--dark-gray);
@@ -28,9 +30,4 @@
   border-radius: 2px;
 
   padding: 7px 12px;
-}
-
-.micro-dialog-large {
-  top: 90px !important;
-  bottom: 90px !important;
 }

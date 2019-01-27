@@ -2,6 +2,7 @@ html {
   --red: #650501;
   --green: #258000;
   --gray: #adadad;
+  --medium-gray: #292929;
   --dark-gray: #0f0f0f;
   --blue: #006fd7;
   --orange: #daa43d;
@@ -21,25 +22,9 @@ body {
   text-transform: uppercase;
 }
 
-.game-layout-container {
+.flex-1 {
   display: flex;
   flex: 1;
-  flex-direction: column;
-}
-
-.game-title-text {
-  font-size: 24px;
-
-  text-transform: none;
-
-  width: 800px;
-  margin: 25px 0 10px 0;
-
-  align-self: center;
-  text-align: center;
-
-  cursor: default;
-  user-select: none;
 }
 
 .flex-row {
@@ -50,6 +35,20 @@ body {
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.flex-column-reverse {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.centered {
+  justify-content: center;
 }
 
 .space-between {

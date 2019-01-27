@@ -11,15 +11,12 @@
 }
 
 .stats-container {
-  padding: 15px;
+  justify-content: center;
+
+  transition: background .5s ease-in-out;
 
   cursor: default;
-
   user-select: none;
-
-  transition: all .5s ease-in-out;
-
-  width: 365px;
 }
 
 .exp-bar-container {
@@ -55,7 +52,7 @@
 }
 
 .stats-hp-bar-container {
-  width: 125px;
+  width: 115px;
   height: 20px;
 
   background: var(--red);

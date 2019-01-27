@@ -53,30 +53,34 @@ class Inventory extends Component {
 
   render() {
     const { newItemIndicator } = this.state;
-    const { disabled, world } = this.props;
+    const { disabled, world, sideMenu } = this.props;
 
     const open = world.inventory;
 
-    if(disabled) return null;
-
     return (
       <div className='flex-row inventory-container'>
-        <Button
-          indicator={newItemIndicator}
-          onClick={open ?
-            this.handleCloseInventory.bind(this) : this.handleOpenInventory.bind(this)}
-          icon={open ?
-            'times' : 'briefcase'}
-          iconStyle={open ?
-            {fontSize: 24} : {fontSize: 25}}
-          title={open ?
-            'Close' : 'Inventory'}
-          style={{
-            width: open ? '120px' : '190px',
-            transition: 'width .25s ease-out',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden'
-          }} />
+        {
+          disabled ?
+            null
+            :
+            <Button
+              small={sideMenu}
+              indicator={newItemIndicator}
+              onClick={open ?
+                this.handleCloseInventory.bind(this) : this.handleOpenInventory.bind(this)}
+              icon={open ?
+                'times' : 'briefcase'}
+              iconStyle={open ?
+                {fontSize: 22} : {fontSize: sideMenu ? 20 : 23}}
+              title={open ?
+                'Close' : 'Inventory'}
+              style={{
+                width: (open ? '110px' : (sideMenu ? '150px' : '170px')),
+                transition: 'width .25s ease-out',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+              }} />
+        }
       </div>
     );
   }
