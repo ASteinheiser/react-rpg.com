@@ -1,5 +1,6 @@
-import React       from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect }          from 'react-redux';
+import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import EndlessFloorCounter from './components/endless-floor-counter';
 import GameMenus           from './components/game-menus';
@@ -11,6 +12,13 @@ const App = (props) => {
 
   const { paused, gameMode, floorNum, settings } = props.world;
   const { height, width } = useWindowSize();
+
+  // disable scrolling of the page
+  // prevents iOS Safari bouncing during movement
+  useEffect(() => {
+    disableBodyScroll(document.getElementById('root'));
+    return clearAllBodyScrollLocks;
+  }, []);
 
   let largeView = false;
   let sideMenu = false;
