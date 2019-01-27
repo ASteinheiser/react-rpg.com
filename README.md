@@ -18,6 +18,5 @@ yarn test
 ```
 
 ## TODO:
-- [ ] fix background music bug
 - [ ] make native desktop version (electron)
 - [ ] make native mobile version (webview in react-native)

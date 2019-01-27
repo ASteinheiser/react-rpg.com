@@ -14,7 +14,11 @@ import './index.scss';
 // supresses enormous amount of console.logs
 /* global soundManager:false */
 import 'react-sound';
-soundManager.setup({ debugMode: false });
+
+soundManager.setup({
+  debugMode: false,
+  ignoreMobileRestrictions: true
+});
 
 ReactDOM.render((
   <Provider store={store}>
