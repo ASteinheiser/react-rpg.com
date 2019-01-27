@@ -35,7 +35,6 @@ const MainGameStart = (props) => {
     handleLoadMap();
     handleLoadMonsters();
     handleLoadPlayerSight();
-    handleLoadStartingItems();
   }
 
   function handleLoadStartMap() {
@@ -54,7 +53,10 @@ const MainGameStart = (props) => {
       payload: {
         component: (
           <GameInstructions
-            onContinue={() => handleGameStart()} />
+            onContinue={() => {
+              handleGameStart();
+              handleLoadStartingItems();
+            }} />
         )
       }
     });
@@ -84,6 +86,11 @@ const MainGameStart = (props) => {
     store.dispatch({
       type: 'GET_ITEM',
       payload: items.weapons.RustySword
+    });
+    // and equip it
+    store.dispatch({
+      type: 'EQUIP_ITEM',
+      payload: store.getState().inventory.items[0]
     });
   }
 

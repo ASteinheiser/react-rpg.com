@@ -102,6 +102,11 @@ const EndlessGameStart = (props) => {
       type: 'GET_ITEM',
       payload: items.weapons.RustySword
     });
+    // and equip it
+    store.dispatch({
+      type: 'EQUIP_ITEM',
+      payload: store.getState().inventory.items[0]
+    });
   }
 
   function goBack() {

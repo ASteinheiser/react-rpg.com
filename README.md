@@ -18,8 +18,6 @@ yarn test
 ```
 
 ## TODO:
-- [ ] auto equip rusty sword on game starts
-- [ ] small screen size for iphone 5
 - [ ] fix sound bug
 - [ ] make native desktop version (electron)
 - [ ] make native mobile version (webview in react-native)
