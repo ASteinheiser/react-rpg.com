@@ -19,6 +19,5 @@ yarn test
 
 ## TODO:
 - [ ] fix background music bug
-- [ ] disable the new game continue button on game over for 1 second
 - [ ] make native desktop version (electron)
 - [ ] make native mobile version (webview in react-native)

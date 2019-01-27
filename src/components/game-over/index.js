@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import ReactTimeout from 'react-timeout';
 
 import Button         from '../button';
 import Dialog         from '../dialog';
@@ -8,6 +9,13 @@ import resetGameState from '../../modules/reset-game-state';
 import './styles.scss';
 
 const GameOver = (props) => {
+
+  const [phrase] = useState(randomPhrase());
+  const [ready, setReady] = useState(false);
+  // delay the new game button for 1 second to prevent
+  // accidental click during double click on mobile
+  useEffect(() => props.setTimeout(() => setReady(true), 1000), []);
+
   return(
     <Dialog>
       <span className='game-over-title'>
@@ -15,12 +23,12 @@ const GameOver = (props) => {
       </span>
 
       <span className='game-over-text'>
-        { randomPhrase() }
+        { phrase }
       </span>
 
       <div className='game-over-button-container'>
         <Button
-          onClick={resetGameState}
+          onClick={ready && resetGameState}
           title={'New Game'}
           icon='sync'/>
       </div>
@@ -28,4 +36,4 @@ const GameOver = (props) => {
   );
 }
 
-export default GameOver;
+export default ReactTimeout(GameOver);

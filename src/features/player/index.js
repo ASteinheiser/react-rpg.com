@@ -71,9 +71,9 @@ class Player extends Component {
         );
       }
       // player the player death sound after
-      this.setState({ playerDeath });
+      this.props.setTimeout(() => this.setState({ playerDeath }), ANIMATION_SPEED);
       // pause the infinite animation after 1 iteration
-      this.props.setTimeout(() => this.setState({ playerDeath: null }), ANIMATION_SPEED * 4);
+      this.props.setTimeout(() => this.setState({ playerDeath: null }), ANIMATION_SPEED + (ANIMATION_SPEED * 4));
     }
     // see if a monster died
     else if(prevProps.player.monsterDied !== this.props.player.monsterDied) {
