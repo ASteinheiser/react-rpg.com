@@ -64,7 +64,8 @@ const GameMusic = (props) => {
 
   return (
     <div className='game-music-toggle-button white-border'
-      onClick={toggleMusic}>
+      onClick={toggleMusic}
+      style={{ marginTop: props.sideMenu ? 0 : 10 }}>
 
       <div className='line1'
         style={{
