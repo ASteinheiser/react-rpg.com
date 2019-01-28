@@ -33,7 +33,7 @@ const GameSelect = (props) => {
 
       <div className='flex-column game-select-text'>
         <div>
-          {'Greetings, Traveler. Please, explore one of our lovely dungeons...'}
+          {'Greetings, Traveler. Please, explore one of our dungeons...'}
         </div>
       </div>
 
