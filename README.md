@@ -18,6 +18,7 @@ yarn test
 ```
 
 # TODO:
+- [ ] fix full hp bar radius
 - [ ] replace purchase confirm screen with item view sort of dialog
 - [ ] make map size 5 squares bigger in each direction
   - [ ] don't allow for random map to build in extra map tile area
