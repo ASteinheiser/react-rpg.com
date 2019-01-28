@@ -3,9 +3,9 @@ import HpPotionImg from './hp-potion.png';
 const HpPotion = {
   name: 'HP Potion',
   type: 'potion',
-  hp: '10',
+  hp: '15',
   image: HpPotionImg,
-  value: 50
+  value: 40
 };
 
 export default HpPotion;

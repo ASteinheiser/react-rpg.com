@@ -19,7 +19,6 @@ yarn test
 
 # TODO:
 - [ ] add popup on mobile for downloading the app from the app store
-- [ ] tweak potion prices
 - [ ] replace purchase confirm screen with item view sort of dialog
 - [ ] fix view items stats to be space between
 - [ ] make map size 5 squares bigger in each direction
