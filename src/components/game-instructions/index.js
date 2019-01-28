@@ -4,7 +4,10 @@ import Button from '../button';
 import Dialog from '../dialog';
 
 import ArrowKeys from './assets/arrow-keys.png';
-// import Swipe     from './assets/swipe.png';
+import DoubleTap from './assets/double-tap.png';
+import Enter     from './assets/enter.png';
+import Space     from './assets/space.png';
+import Swipe     from './assets/swipe.png';
 import WASDKeys  from './assets/wasd-keys.png';
 
 import './styles.scss';
@@ -24,9 +27,9 @@ const GameInstructions = (props) => {
           {`MOVEMENT`}
         </span>
 
-        <div className='flex-row space-between'>
-          {/* <img src={Swipe} alt='swipe' /> */}
+        <div className='flex-row space-between align-center'>
           <img src={ArrowKeys} alt='arrow-keys' />
+          <img src={Swipe} alt='swipe' />
           <img src={WASDKeys} alt='wasd-keys' />
         </div>
 
@@ -34,10 +37,10 @@ const GameInstructions = (props) => {
           {`ATTACK`}
         </span>
 
-        <div className='flex-row space-between'>
-          {/* <img src={ArrowKeys} alt='arrow-keys' />
-          <img src={ArrowKeys} alt='arrow-keys' />
-          <img src={ArrowKeys} alt='arrow-keys' /> */}
+        <div className='flex-row space-between align-center'>
+          <img src={Space} alt='space' />
+          <img src={DoubleTap} alt='double-tap' />
+          <img src={Enter} alt='enter' />
         </div>
 
       </div>
