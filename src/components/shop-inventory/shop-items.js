@@ -1,7 +1,8 @@
-import items from '../../data/items';
+import items      from '../../data/items';
+import { TIER_2 } from '../../config/constants';
 // returns the correct tier of items depending on player level
 const shopItems = (level) => {
-  if(level < 10) {
+  if(level < TIER_2) {
     return [
       items.other.BackpackUpgrade,
       items.other.HpPotion,

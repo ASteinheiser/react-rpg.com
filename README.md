@@ -22,4 +22,5 @@ yarn test
 - [ ] tweak potion prices
 - [ ] replace purchase confirm screen with item view sort of dialog
 - [ ] fix view items stats to be space between
-- [ ] tier 2 constant, make sure it check if equal, not just greater
+- [ ] make map size 5 squares bigger in each direction
+  - [ ] don't allow for random map to build in extra map tile area

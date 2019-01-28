@@ -23,3 +23,5 @@ export const SNACK_DURATION = 2500;
 // set the size for the game viewport (in pixels)
 export const GAME_VIEWPORT_SIZE = 350;
 export const GAME_VIEWPORT_SIZE_LG = 400;
+// set the minimum level for tier 2 items
+export const TIER_2 = 10;
