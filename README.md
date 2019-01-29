@@ -23,3 +23,4 @@ yarn test
 - [ ] make map size 5 squares bigger in each direction
   - [ ] don't allow for random map to build in extra map tile area
 - [ ] add popup on mobile for downloading the app from the app store
+  - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
