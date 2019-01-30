@@ -1,4 +1,6 @@
 import { createStore, combineReducers } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage                          from 'redux-persist/lib/storage';
 
 import player    from '../features/player/reducer';
 import map       from '../features/map/reducer';
@@ -18,9 +20,17 @@ const rootReducer = combineReducers({
   snackbar
 });
 
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = createStore(
-  rootReducer,
+  persistedReducer,
   process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 export default store;
+export let persistor = persistStore(store);

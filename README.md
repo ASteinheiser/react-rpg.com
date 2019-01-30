@@ -24,5 +24,4 @@ yarn test
   - [ ] don't allow for random map to build in extra map tile area
 - [ ] add popup on mobile for downloading the app from the app store
   - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
-- [ ] add redux persist to save game state
 - [ ] show proper controls depending on platform and ?nativeApp=true query param

@@ -1,9 +1,11 @@
-import React        from 'react';
-import ReactDOM     from 'react-dom';
-import { Provider } from 'react-redux';
+import React           from 'react';
+import ReactDOM        from 'react-dom';
+import { Provider }    from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import store from './config/store';
-import App   from './App';
+import store, { persistor } from './config/store';
+import App                  from './App';
+import Spinner              from './components/spinner';
 
 // import fonts
 import 'typeface-roboto';
@@ -22,6 +24,12 @@ soundManager.setup({
 
 ReactDOM.render((
   <Provider store={store}>
-    <App />
+    <PersistGate
+      loading={<Spinner />}
+      persistor={persistor}>
+
+      <App />
+
+    </PersistGate>
   </Provider>
 ), document.getElementById('root'));
