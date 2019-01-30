@@ -72,6 +72,29 @@ const monstersReducer = (state = initialState, action) => {
         components: {}
       };
 
+    case 'persist/REHYDRATE':
+      if(!action.payload) return state;
+
+      const { components } = action.payload.monsters;
+      const maps = Object.keys(components);
+
+      // return if there are no maps persisted
+      if(maps.length === 0) return state;
+
+      // find the monster data on each map and load the react components
+      for(let i = 0; i < maps.length; i ++) {
+        const monstersForMap = components[maps[i]];
+        newState.components[maps[i]] = {};
+        for(let j = 0; j < Object.keys(monstersForMap).length; j ++) {
+          const monsterObj = monstersForMap[Object.keys(monstersForMap)[j]];
+          const monster = monsterObj.props.monster;
+          // set component key with monster id
+          const { Comp } = Monsters[monster.type];
+          newState.components[maps[i]][monsterObj.key] = ( <Comp monster={monster} key={monsterObj.key} /> );
+        }
+      }
+      return newState;
+
     default:
       return state;
   }
