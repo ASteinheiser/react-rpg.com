@@ -40,6 +40,9 @@ class Stats extends Component {
     let height = disabled ? 66 : 64;
     if(sideMenu) height = disabled ? 202 : 200;
 
+    let hpPercent = (hp / maxHp) * 100;
+    if(hpPercent > 100) hpPercent = 100;
+
     return (
       <div
         style={{
@@ -110,7 +113,17 @@ class Stats extends Component {
                         {'Hp'}
                       </span>
                       <span className='stats-hp-bar-value'
-                        style={{ width: `${(hp / maxHp) * 100}%` }}>
+                        style={{
+                          width: `${hpPercent}%`,
+                          borderRadius: (
+                            (hpPercent >= 97) ?
+                              (hpPercent >= 99) ?
+                                '5px'
+                                :
+                                '5px 3px 3px 5px'
+                              :
+                              '5px 0 0 5px'
+                          )}}>
                       </span>
                     </span>
                   </div>

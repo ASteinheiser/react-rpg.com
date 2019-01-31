@@ -18,10 +18,9 @@ yarn test
 ```
 
 # TODO:
-- [ ] fix full hp bar radius
 - [ ] replace purchase confirm screen with item view sort of dialog
 - [ ] add popup on mobile for downloading the app from the app store
   - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
 - [ ] show proper controls depending on platform and ?nativeApp=true query param
 - [ ] make redux store for dialog manager
-- [ ] turn game menus into a "feature" with a store??
+- [ ] turn game menus into a "feature" 
