@@ -25,3 +25,4 @@ yarn test
   - [ ] move dialogs into this folder
 - [ ] turn game menus into a "feature"
   - [ ] bring game music and game settings under this folder
+- [ ] update app store game images
