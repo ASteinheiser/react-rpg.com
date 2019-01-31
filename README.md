@@ -27,4 +27,5 @@ yarn test
 - [ ] turn game menus into a "feature"
   - [ ] bring game music and game settings under this folder
 - [ ] update app store game images
+- [ ] fix ios launch screen size and constraints
 - [ ] fix map padding tapering on large view
