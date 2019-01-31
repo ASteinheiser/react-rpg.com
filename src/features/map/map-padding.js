@@ -5,6 +5,14 @@ import { SPRITE_SIZE }   from '../../config/constants';
 
 import './styles.scss';
 
+let variation = [];
+// generate static variations for the map padding tiles
+// to avoid setting it during render and having the tiles
+// variation swap with each player move
+for(let i = 0; i < 125; i ++) {
+  variation.push(Math.round(Math.random() * (4 - 1) + 1));
+}
+
 export default function MapPadding(props) {
   const { tile } = props;
 
@@ -12,10 +20,9 @@ export default function MapPadding(props) {
   for(let i = 0; i < 5; i ++) {
     let Row = [];
     for(let j = 0; j < 20; j ++) {
-      const variation = Math.round(Math.random() * (4 - 1) + 1);
       Row.push(
         <div style={{
-          backgroundImage: `url(/tiles/${getTileSprite(tile, variation)}.png)`,
+          backgroundImage: `url(/tiles/${getTileSprite(tile, variation[i + j])}.png)`,
           display: 'inline-flex',
           height: SPRITE_SIZE,
           width: SPRITE_SIZE
@@ -33,10 +40,9 @@ export default function MapPadding(props) {
   for(let i = 0; i < 25; i ++) {
     let Row = [];
     for(let j = 0; j < 5; j ++) {
-      const variation = Math.round(Math.random() * (4 - 1) + 1);
       Row.push(
         <div style={{
-          backgroundImage: `url(/tiles/${getTileSprite(tile, variation)}.png)`,
+          backgroundImage: `url(/tiles/${getTileSprite(tile, variation[i + j])}.png)`,
           display: 'inline-flex',
           height: SPRITE_SIZE,
           width: SPRITE_SIZE
