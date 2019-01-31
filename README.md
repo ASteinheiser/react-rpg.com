@@ -19,7 +19,9 @@ yarn test
 
 # TODO:
 - [ ] replace purchase confirm screen with item view sort of dialog
-- [ ] add popup on mobile for downloading the app from the app store
+- [ ] add popup on non-native version for downloading the app from the app store
   - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
 - [ ] make redux store for dialog manager
-- [ ] turn game menus into a "feature" 
+  - [ ] move dialogs into this folder
+- [ ] turn game menus into a "feature"
+  - [ ] bring game music and game settings under this folder
