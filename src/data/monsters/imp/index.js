@@ -17,7 +17,7 @@ const stats = {
   hp: 40,
   maxHp: 40,
   damage: 14,
-  defence: 4,
+  defence: 1,
   exp: 150,
   type: 'imp'
 };

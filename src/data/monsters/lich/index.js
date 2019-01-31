@@ -17,7 +17,7 @@ const stats = {
   hp: 120,
   maxHp: 120,
   damage: 22,
-  defence: 22,
+  defence: 12,
   exp: 1000,
   type: 'lich'
 };

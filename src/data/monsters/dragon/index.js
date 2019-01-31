@@ -17,7 +17,7 @@ const stats = {
   hp: 80,
   maxHp: 80,
   damage: 15,
-  defence: 15,
+  defence: 8,
   exp: 400,
   type: 'dragon'
 };
