@@ -68,7 +68,7 @@ const GameInstructions = (props) => {
           { nativeOnly ? null : <img src={WASDKeys} alt='wasd-keys' /> }
         </div>
 
-        <span style={{paddingTop: 16}}>
+        <span style={{paddingTop: 12}}>
           {`ATTACK`}
         </span>
 
