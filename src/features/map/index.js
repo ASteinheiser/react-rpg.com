@@ -1,10 +1,11 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
+import MapPadding      from './map-padding';
 import Flame           from '../../components/flame';
 import { SPRITE_SIZE } from '../../config/constants';
 
-function getTileSprite(type, variation) {
+export function getTileSprite(type, variation) {
   switch(type) {
     case -2:
       return 'chest-open'
@@ -109,7 +110,7 @@ function MapTile(props) {
 
 function MapRow(props) {
   return (
-    <div className="row"
+    <div className='row'
       style={{
         height: SPRITE_SIZE,
       }}>
@@ -132,14 +133,20 @@ function Map(props) {
   const { map, world } = props;
   const { gameStart } = world;
 
+  const wallType = getWallType(map.tiles);
+
   // game start menu open, hide the map
   if(gameStart) return <div style={{ width: '800px', height: '600px' }} />;
 
   return (
     <div style={{
       width: '800px',
-      height: '600px'
+      height: '600px',
+      position: 'relative'
     }}>
+
+      <MapPadding tile={wallType} />
+
       {
         map.tiles.map((row, index) => {
           return (
@@ -151,8 +158,20 @@ function Map(props) {
           );
         })
       }
+
     </div>
   );
+}
+
+function getWallType(tiles) {
+  for(let i = 0; i < tiles.length; i ++) {
+    for(let j = 0; j < tiles[i].length; j ++) {
+      if(tiles[i][j].value === 5) return 5;
+      if(tiles[i][j].value === 6) return 6;
+      if(tiles[i][j].value === 7) return 7;
+      if(tiles[i][j].value === 8) return 8;
+    }
+  }
 }
 
 const mapStateToProps = ({ map, world }) => {

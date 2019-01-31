@@ -20,8 +20,6 @@ yarn test
 # TODO:
 - [ ] fix full hp bar radius
 - [ ] replace purchase confirm screen with item view sort of dialog
-- [ ] make map size 5 squares bigger in each direction
-  - [ ] don't allow for random map to build in extra map tile area
 - [ ] add popup on mobile for downloading the app from the app store
   - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
 - [ ] show proper controls depending on platform and ?nativeApp=true query param
