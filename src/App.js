@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect }          from 'react-redux';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
+import DialogManager       from './features/dialog-manager';
 import EndlessFloorCounter from './components/endless-floor-counter';
 import GameMenus           from './components/game-menus';
 import World               from './features/world';
@@ -10,7 +11,7 @@ import useWindowSize       from './modules/use-window-size';
 
 const App = (props) => {
 
-  const { paused, gameMode, floorNum, settings } = props.world;
+  const { gameMode, floorNum } = props.world;
   const { height, width } = useWindowSize();
 
   // disable scrolling of the page
@@ -44,12 +45,7 @@ const App = (props) => {
 
         <World largeView={largeView} />
 
-        {/* Show the 'paused' component here - this is the game start screen,
-        game over screen, as well as other dialogs throughout the game */}
-        { paused }
-
-        {/* Show the 'settings' component over the 'paused' and 'world' components */}
-        { settings }
+        <DialogManager />
 
         {/* Show the floor counter when playing endless mode */}
         { gameMode === 'endless' ? <EndlessFloorCounter floor={floorNum} /> : null }

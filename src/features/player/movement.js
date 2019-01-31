@@ -1,7 +1,3 @@
-import React from 'react';
-
-import GameWin      from '../../components/game-win';
-import ShopDialog   from '../../components/shop-dialog';
 import exploreTiles from './explore-tiles';
 import openChest    from './open-chest';
 import walkStairs   from './walk-stairs';
@@ -115,8 +111,11 @@ function observeImpassable(newPos) {
     // show the shop dialog
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: <ShopDialog /> }
-    })
+      payload: {
+        pause: true,
+        shop: true
+      }
+    });
   }
 
   // the player has accessed a shrine
@@ -124,8 +123,11 @@ function observeImpassable(newPos) {
     // check if they have won the game
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: <GameWin /> }
-    })
+      payload: {
+        pause: true,
+        gameWin: true
+      }
+    });
   }
 
   return nextTile;

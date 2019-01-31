@@ -1,7 +1,11 @@
 import React from 'react';
 
-import Button from '../button';
-import Dialog from '../dialog';
+import Button        from '../button';
+import Dialog        from '../dialog';
+import items         from '../../data/items';
+import maps          from '../../data/maps';
+import store         from '../../config/store';
+import { START_MAP } from '../../config/constants';
 
 import ArrowKeys from './assets/arrow-keys.png';
 import DoubleTap from './assets/double-tap.png';
@@ -14,7 +18,33 @@ import './styles.scss';
 
 const GameInstructions = (props) => {
 
-  const { onContinue } = props;
+  function handleShowMapMessage() {
+    const { message } = maps[START_MAP];
+
+    store.dispatch({
+      type: 'PAUSE',
+      payload: {
+        pause: true,
+        gameText: {
+          title: message.title,
+          body: message.body
+        }
+      }
+    });
+  }
+
+  function handleLoadStartingItems() {
+    // give the player a rusty sword
+    store.dispatch({
+      type: 'GET_ITEM',
+      payload: items.weapons.RustySword
+    });
+    // and equip it
+    store.dispatch({
+      type: 'EQUIP_ITEM',
+      payload: store.getState().inventory.items[0]
+    });
+  }
 
   return(
     <Dialog>
@@ -47,7 +77,10 @@ const GameInstructions = (props) => {
 
       <div className='flex-column game-start-button'>
         <Button
-          onClick={onContinue}
+          onClick={() => {
+            handleShowMapMessage();
+            handleLoadStartingItems();
+          }}
           title={'Continue'} />
       </div>
     </Dialog>

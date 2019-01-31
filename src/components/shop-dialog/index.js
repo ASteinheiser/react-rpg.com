@@ -28,7 +28,7 @@ const ShopDialog = (props) => {
   function handleCloseDialog() {
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: null }
+      payload: { pause: false }
     });
   }
 

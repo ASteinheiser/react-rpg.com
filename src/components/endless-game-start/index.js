@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 
 import Button           from '../button';
 import Dialog           from '../dialog';
-import GameSelect       from '../game-select';
-import GameTextDialog   from '../game-text-dialog';
 import items            from '../../data/items';
 import store            from '../../config/store';
 import generateMap      from '../../modules/generate-map';
@@ -47,11 +45,11 @@ const EndlessGameStart = (props) => {
     store.dispatch({
       type: 'PAUSE',
       payload: {
-        component: (
-          <GameTextDialog
-            text1={`As you stare into the dark dungeon, it greets you with a cold chill... and a message...`}
-            text2={`"JOURNEY ONE HUNDRED FLOORS AND ALL WILL BE GRANTED"`} />
-        )
+        pause: true,
+        gameText: {
+          title: `As you stare into the dark dungeon, it greets you with a cold chill... and a message...`,
+          body: `"JOURNEY ONE HUNDRED FLOORS AND ALL WILL BE GRANTED"`
+        }
       }
     });
   }
@@ -113,7 +111,7 @@ const EndlessGameStart = (props) => {
     store.dispatch({
       type: 'PAUSE',
       payload: {
-        component: <GameSelect />,
+        pause: true,
         gameStart: true
       }
     });

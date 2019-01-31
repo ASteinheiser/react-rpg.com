@@ -1,11 +1,9 @@
 import React from 'react';
 
-import Button           from '../button';
-import Dialog           from '../dialog';
-import Flame            from '../flame';
-import MainGameStart    from '../main-game-start';
-import EndlessGameStart from '../endless-game-start';
-import store            from '../../config/store';
+import Button from '../button';
+import Dialog from '../dialog';
+import Flame  from '../flame';
+import store  from '../../config/store';
 
 import './styles.scss';
 
@@ -14,14 +12,22 @@ const GameSelect = (props) => {
   function handleStartMainGame() {
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: <MainGameStart />, gameStart: true }
+      payload: {
+        pause: true,
+        gameStart: true,
+        gameSelect: 'story'
+      }
     });
   }
 
   function handleStartEndless() {
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: <EndlessGameStart />, gameStart: true }
+      payload: {
+        pause: true,
+        gameStart: true,
+        gameSelect: 'endless'
+      }
     });
   }
 

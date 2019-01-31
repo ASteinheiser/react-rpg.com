@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react';
 
-import Button           from '../button';
-import Dialog           from '../dialog';
-import GameSelect       from '../game-select';
-import GameTextDialog   from '../game-text-dialog';
-import GameInstructions from '../game-instructions';
-import items            from '../../data/items';
-import maps             from '../../data/maps';
-import store            from '../../config/store';
-import exploreTiles     from '../../features/player/explore-tiles';
-import { START_MAP }    from '../../config/constants';
+import Button        from '../button';
+import Dialog        from '../dialog';
+import maps          from '../../data/maps';
+import store         from '../../config/store';
+import exploreTiles  from '../../features/player/explore-tiles';
+import { START_MAP } from '../../config/constants';
 
 import './styles.scss';
 
@@ -31,10 +27,10 @@ const MainGameStart = (props) => {
 
   function handleGameStart() {
     handleLoadStartMap();
-    handleShowMapMessage();
     handleLoadMap();
     handleLoadMonsters();
     handleLoadPlayerSight();
+    handleShowStartMessage();
   }
 
   function handleLoadStartMap() {
@@ -51,47 +47,14 @@ const MainGameStart = (props) => {
     store.dispatch({
       type: 'PAUSE',
       payload: {
-        component: (
-          <GameInstructions
-            onContinue={() => {
-              handleGameStart();
-              handleLoadStartingItems();
-            }} />
-        )
-      }
-    });
-  }
-
-  function handleShowMapMessage() {
-    const { message } = maps[START_MAP];
-
-    store.dispatch({
-      type: 'PAUSE',
-      payload: {
-        component: (
-          <GameTextDialog
-            text1={message.title}
-            text2={message.body} />
-        )
+        pause: true,
+        gameInstructions: true
       }
     });
   }
 
   function handleLoadPlayerSight() {
     exploreTiles(store.getState().player.position);
-  }
-
-  function handleLoadStartingItems() {
-    // give the player a rusty sword
-    store.dispatch({
-      type: 'GET_ITEM',
-      payload: items.weapons.RustySword
-    });
-    // and equip it
-    store.dispatch({
-      type: 'EQUIP_ITEM',
-      payload: store.getState().inventory.items[0]
-    });
   }
 
   function handleLoadMap() {
@@ -114,7 +77,7 @@ const MainGameStart = (props) => {
     store.dispatch({
       type: 'PAUSE',
       payload: {
-        component: <GameSelect />,
+        pause: true,
         gameStart: true
       }
     });
@@ -135,7 +98,7 @@ const MainGameStart = (props) => {
 
       <div className='flex-column game-start-button'>
         <Button
-          onClick={handleShowStartMessage}
+          onClick={handleGameStart}
           icon='compass'
           title={'Explore Dungeon'} />
       </div>

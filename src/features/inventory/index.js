@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
-import Button          from '../../components/button';
-import InventoryDialog from '../../components/inventory-dialog';
-import store           from '../../config/store';
+import Button from '../../components/button';
+import store  from '../../config/store';
 
 import './styles.scss';
 
@@ -21,7 +20,7 @@ class Inventory extends Component {
       store.dispatch({
         type: 'PAUSE',
         payload: {
-          component: <InventoryDialog />,
+          pause: true,
           inventory: true
         }
       });
@@ -31,7 +30,7 @@ class Inventory extends Component {
   handleCloseInventory() {
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: null }
+      payload: { pause: false }
     });
   }
 

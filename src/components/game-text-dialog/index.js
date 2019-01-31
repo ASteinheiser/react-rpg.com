@@ -27,7 +27,7 @@ const GameTextDialog = (props) => {
   function handleCloseDialog() {
     store.dispatch({
       type: 'PAUSE',
-      payload: { component: null }
+      payload: { pause: false }
     });
   }
 
