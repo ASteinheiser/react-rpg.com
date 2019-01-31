@@ -18,6 +18,11 @@ import './styles.scss';
 
 const GameInstructions = (props) => {
 
+  let nativeOnly = false;
+  if(window.location.search === '?nativeApp=true') {
+    nativeOnly = true;
+  }
+
   function handleShowMapMessage() {
     const { message } = maps[START_MAP];
 
@@ -57,20 +62,20 @@ const GameInstructions = (props) => {
           {`MOVEMENT`}
         </span>
 
-        <div className='flex-row space-between align-center'>
-          <img src={ArrowKeys} alt='arrow-keys' />
+        <div className={`flex-row align-center ${nativeOnly ? 'centered' : 'space-between'}`}>
+          { nativeOnly ? null : <img src={ArrowKeys} alt='arrow-keys' /> }
           <img src={Swipe} alt='swipe' />
-          <img src={WASDKeys} alt='wasd-keys' />
+          { nativeOnly ? null : <img src={WASDKeys} alt='wasd-keys' /> }
         </div>
 
         <span style={{paddingTop: 16}}>
           {`ATTACK`}
         </span>
 
-        <div className='flex-row space-between align-center'>
-          <img src={Space} alt='space' />
+        <div className={`flex-row align-center ${nativeOnly ? 'centered' : 'space-between'}`}>
+          { nativeOnly ? null : <img src={Space} alt='space' /> }
           <img src={DoubleTap} alt='double-tap' />
-          <img src={Enter} alt='enter' />
+          { nativeOnly ? null : <img src={Enter} alt='enter' /> }
         </div>
 
       </div>
