@@ -30,3 +30,4 @@ yarn test
 - [ ] fix ios launch screen size and constraints
 - [ ] fix map padding tapering on large view
 - [ ] look into making map padding walls have explored values
+- [ ] add iphone X SafeAreaView
