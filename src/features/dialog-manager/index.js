@@ -20,7 +20,6 @@ const DialogManager = (props) => {
   let PauseComp = null;
   let SettingsComp = null;
 
-  if(settings) PauseComp = <SettingsDialog />;
   if(paused) {
     if(chest) PauseComp = <ChestLoot />;
     if(shop) PauseComp = <ShopDialog />;
@@ -35,6 +34,7 @@ const DialogManager = (props) => {
     }
     if(gameWin) PauseComp = <GameWin />;
   }
+  if(settings) PauseComp = <SettingsDialog />;
 
   return(
     <React.Fragment>
