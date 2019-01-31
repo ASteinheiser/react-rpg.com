@@ -27,3 +27,4 @@ yarn test
 - [ ] turn game menus into a "feature"
   - [ ] bring game music and game settings under this folder
 - [ ] update app store game images
+- [ ] fix map padding tapering on large view
