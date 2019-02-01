@@ -9,7 +9,7 @@ let variation = [];
 // generate static variations for the map padding tiles
 // to avoid setting it during render and having the tiles
 // variation swap with each player move
-for(let i = 0; i < 25; i ++) {
+for(let i = 0; i < 30; i ++) {
   variation.push(Math.round(Math.random() * (4 - 1) + 1));
 }
 

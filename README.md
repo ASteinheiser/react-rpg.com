@@ -28,6 +28,5 @@ yarn test
   - [ ] move dialogs into this folder
 - [ ] turn game menus into a "feature"
   - [ ] bring game music and game settings under this folder
-- [ ] fix map padding tapering on large view
 - [ ] look into making map padding walls have explored values
 - [ ] swipe and hold for continuous movement in that direction
