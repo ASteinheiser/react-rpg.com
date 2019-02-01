@@ -18,6 +18,7 @@ yarn test
 ```
 
 # TODO:
+- [ ] update app store game images
 - [ ] replace purchase confirm screen with item view sort of dialog
 - [ ] add popup on non-native version for downloading the app from the app store
   - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
@@ -26,8 +27,5 @@ yarn test
   - [ ] move dialogs into this folder
 - [ ] turn game menus into a "feature"
   - [ ] bring game music and game settings under this folder
-- [ ] update app store game images
-- [ ] fix ios launch screen size and constraints
 - [ ] fix map padding tapering on large view
 - [ ] look into making map padding walls have explored values
-- [ ] add iphone X SafeAreaView
