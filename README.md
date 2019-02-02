@@ -18,8 +18,6 @@ yarn test
 ```
 
 # TODO:
-- [ ] release tablet support for Android
-- [ ] screenshots for Android tablets
 - [ ] replace purchase confirm screen with item view sort of dialog
 - [ ] add popup on non-native version for downloading the app from the app store
   - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
