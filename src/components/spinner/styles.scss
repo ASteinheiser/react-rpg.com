@@ -4,17 +4,18 @@
   justify-content: center;
 
   flex: 1;
-  height: 100%;
+
+  padding-top: 48px;
 
   &:after {
     content: " ";
     display: block;
     
-    width: 16px;
-    height: 16px;
+    width: 64px;
+    height: 64px;
 
     border-radius: 50%;
-    border: 6px solid var(--gray);
+    border: 12px solid var(--gray);
     border-color: var(--gray) transparent var(--gray) transparent;
 
     animation: spinning 1.2s linear infinite;
