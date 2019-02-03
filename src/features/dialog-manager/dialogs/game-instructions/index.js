@@ -59,24 +59,58 @@ const GameInstructions = (props) => {
       </div>
 
       <div className='game-instructions-text'>
-        <span>
-          {`MOVEMENT`}
-        </span>
+        {
+          nativeVersion ?
+            null
+            :
+            <span>
+              {`MOVEMENT`}
+            </span>
+        }
 
-        <div className={`flex-row align-center ${nativeVersion ? 'centered' : 'space-evenly'}`}>
-          { nativeVersion ? null : <img src={ArrowKeys} alt='arrow-keys' /> }
-          { nativeVersion ? <img src={Swipe} alt='swipe' /> : null }
-          { nativeVersion ? null : <img src={WASDKeys} alt='wasd-keys' /> }
+        <div className={`flex-row align-center space-evenly`}>
+          {
+            nativeVersion ?
+              <React.Fragment>
+                <img src={Swipe}
+                  alt='swipe' />
+                <div className='native-text'>
+                  {'SWIPE and HOLD to MOVE'}
+                </div>
+              </React.Fragment>
+              :
+              <React.Fragment>
+                <img src={ArrowKeys} alt='arrow-keys' />
+                <img src={WASDKeys} alt='wasd-keys' />
+              </React.Fragment>
+          }
         </div>
 
-        <span style={{paddingTop: 12}}>
-          {`ATTACK`}
-        </span>
+        {
+          nativeVersion ?
+            null
+            :
+            <span style={{paddingTop: 12}}>
+              {`ATTACK`}
+            </span>
+        }
 
-        <div className={`flex-row align-center ${nativeVersion ? 'centered' : 'space-evenly'}`}>
-          { nativeVersion ? null : <img src={Space} alt='space' /> }
-          { nativeVersion ? <img src={DoubleTap} alt='double-tap' /> : null }
-          { nativeVersion ? null : <img src={Enter} alt='enter' /> }
+        <div className={`flex-row align-center space-evenly`}>
+          {
+            nativeVersion ?
+              <React.Fragment>
+                <img src={DoubleTap}
+                  alt='double-tap' />
+                <div className='native-text'>
+                  {'DOUBLE TAP to ATTACK'}
+                </div>
+              </React.Fragment>
+              :
+              <React.Fragment>
+                <img src={Space} alt='space' />
+                <img src={Enter} alt='enter' />
+              </React.Fragment>
+          }
         </div>
 
       </div>

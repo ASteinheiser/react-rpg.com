@@ -11,6 +11,9 @@
   flex-direction: column;
   justify-content: space-evenly;
 
+  font-size: 20px;
+  color: var(--gray);
+
   letter-spacing: 1px;
   text-transform: none;
   text-align: center;
@@ -19,6 +22,10 @@
 
   span {
     padding-bottom: 12px;
+  }
+
+  .native-text {
+    max-width: 175px;
   }
 }
 
