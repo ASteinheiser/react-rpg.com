@@ -31,13 +31,14 @@ const mapReducer = (state = initialState, action) => {
       newState.paddingSightBox = paddingTiles;
       // make a new array of the padding tiles location as strings
       const paddTiles = paddingTiles.map(JSON.stringify);
-      // check each padding tile list and see if any
+      // check each padding tile direction and see if any
       // tiles are contained in the new sightbox
-      newState.paddingTiles.top = state.paddingTiles.top.map(tileRow => {
-        return tileRow.map(tile => {
-          // if the tile location is in the padding tile sightbox, explore it
-          if(paddTiles.indexOf(JSON.stringify(tile.location)) > -1) tile.explored = 1;
-          return tile;
+      Object.keys(state.paddingTiles).forEach(direction => {
+        newState.paddingTiles[direction] = state.paddingTiles[direction].map(tileRow => {
+          return tileRow.map(tile => {
+            if(paddTiles.indexOf(JSON.stringify(tile.location)) > -1) tile.explored = 1;
+            return tile;
+          });
         });
       });
 

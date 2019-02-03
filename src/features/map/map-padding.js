@@ -54,19 +54,39 @@ export default function MapPadding(props) {
       </div>
     );
   });
-  // we need to mirrow the rows for them to render properly
-  // with the player's sightbox
+  // we need to mirrow the top rows for them to
+  // render properly with the player's sightbox
   TilesTop.reverse();
+
+  const TilesBottom = tiles.bottom.map((bottomRow, index) => {
+    return (
+      <div className='row' style={{ height: SPRITE_SIZE }} key={`bottom-row-${index}`}>
+        {
+          bottomRow.map(bottomRowTile => {
+            return (
+              <BoundaryTile
+                tileType={tileType}
+                variation={bottomRowTile.variation}
+                explored={bottomRowTile.explored}
+                sightBox={sightBox}
+                location={bottomRowTile.location}
+                key={JSON.stringify(bottomRowTile.location)} />
+            );
+          })
+        }
+      </div>
+    );
+  });
 
   return(
     <React.Fragment>
       <div className='map-padding-top'>
         { TilesTop }
       </div>
-      {/* <div className='map-padding-bottom'>
+      <div className='map-padding-bottom'>
         { TilesBottom }
       </div>
-      <div className='map-padding-left'>
+      {/* <div className='map-padding-left'>
         { TilesLeft }
       </div>
       <div className='map-padding-right'>
