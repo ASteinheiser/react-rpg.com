@@ -33,14 +33,16 @@ const mapReducer = (state = initialState, action) => {
       const paddTiles = paddingTiles.map(JSON.stringify);
       // check each padding tile direction and see if any
       // tiles are contained in the new sightbox
-      Object.keys(state.paddingTiles).forEach(direction => {
-        newState.paddingTiles[direction] = state.paddingTiles[direction].map(tileRow => {
-          return tileRow.map(tile => {
-            if(paddTiles.indexOf(JSON.stringify(tile.location)) > -1) tile.explored = 1;
-            return tile;
+      if(paddTiles.length > 0) {
+        Object.keys(state.paddingTiles).forEach(direction => {
+          newState.paddingTiles[direction] = state.paddingTiles[direction].map(tileRow => {
+            return tileRow.map(tile => {
+              if(paddTiles.indexOf(JSON.stringify(tile.location)) > -1) tile.explored = 1;
+              return tile;
+            });
           });
         });
-      });
+      }
 
       return newState;
 
