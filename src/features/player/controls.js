@@ -105,7 +105,7 @@ export default function Controls(player) {
         default:
           // console.log(`Unmapped pan direction ${direction}`);
       }
-    }, ANIMATION_SPEED * 1.5);
+    }, ANIMATION_SPEED * 2);
   },
     ANIMATION_SPEED,
     { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
