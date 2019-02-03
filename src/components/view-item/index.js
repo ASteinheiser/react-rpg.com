@@ -12,7 +12,10 @@ import './styles.scss';
 
 const ViewItem = (props) => {
 
+  const { sell, onClose } = props;
+
   const [confirmDrop, setConfirmDrop] = useState(false);
+  const [confirmSell, setConfirmSell] = useState(false);
 
   function handleUnEquip(item) {
     props.onClose();
@@ -46,6 +49,54 @@ const ViewItem = (props) => {
       type: 'DROP_ITEM',
       payload: item
     });
+  }
+
+  function handleConfirmSell(item, sellPrice) {
+    store.dispatch({
+      type: 'GET_GOLD',
+      payload: { value: sellPrice }
+    });
+    store.dispatch({
+      type: 'DROP_ITEM',
+      payload: item
+    });
+
+    const { equippedItems } = store.getState().stats;
+    let itemEquipped = false;
+    // check if the item was equipped, then take it off
+    switch(item.type) {
+      case 'weapon':
+        if(equippedItems['weapon'] === item) itemEquipped = true;
+        break;
+      case 'ring':
+        if(equippedItems['ring'] === item) itemEquipped = true;
+        break;
+      case 'armor::body':
+        if(equippedItems['armor'] && equippedItems['armor']['body'] === item) itemEquipped = true;
+        break;
+      case 'armor::pants':
+        if(equippedItems['armor'] && equippedItems['armor']['pants'] === item) itemEquipped = true;
+        break;
+      case 'armor::helmet':
+        if(equippedItems['armor'] && equippedItems['armor']['helmet'] === item) itemEquipped = true;
+        break;
+      case 'armor::boots':
+        if(equippedItems['armor'] && equippedItems['armor']['boots'] === item) itemEquipped = true;
+        break;
+      case 'armor::gloves':
+        if(equippedItems['armor'] && equippedItems['armor']['gloves'] === item) itemEquipped = true;
+        break;
+      default:
+    }
+
+    if(itemEquipped) {
+      store.dispatch({
+        type: 'UNEQUIP_ITEM',
+        payload: { data: item }
+      });
+    }
+
+    onClose();
   }
 
   const { data } = props;
@@ -118,6 +169,8 @@ const ViewItem = (props) => {
     default:
   }
 
+  const itemSellPrice = Math.ceil(data.value / 2);
+
   return(
     <MicroDialog onClose={props.onClose}>
       <div className='view-item-text-container'>
@@ -137,28 +190,40 @@ const ViewItem = (props) => {
         { itemStats }
       </div>
 
-      <div className='flex-column view-item-buttons-parent'>
-        {
-          itemIsEquipped ?
+      {
+        sell ?
+          <div className='flex-column view-item-buttons-parent'>
             <div className='flex-row view-item-buttons-child'>
               <Button
-                onClick={() => handleUnEquip(data)}
-                icon='archive'
-                title={'Un-equip'} />
+                onClick={() => setConfirmSell(true)}
+                icon='coins'
+                title={'Sell Item'} />
             </div>
-            :
-            <div className='flex-row view-item-buttons-child'>
-              <Button
-                onClick={handleDrop}
-                icon='trash'
-                title={'Drop'} />
-              <Button
-                onClick={() => handleEquip(data)}
-                icon='hand-paper'
-                title={'Equip'} />
-            </div>
-        }
-      </div>
+          </div>
+          :
+          <div className='flex-column view-item-buttons-parent'>
+            {
+              itemIsEquipped ?
+                <div className='flex-row view-item-buttons-child'>
+                  <Button
+                    onClick={() => handleUnEquip(data)}
+                    icon='archive'
+                    title={'Un-equip'} />
+                </div>
+                :
+                <div className='flex-row view-item-buttons-child'>
+                  <Button
+                    onClick={handleDrop}
+                    icon='trash'
+                    title={'Drop'} />
+                  <Button
+                    onClick={() => handleEquip(data)}
+                    icon='hand-paper'
+                    title={'Equip'} />
+                </div>
+            }
+          </div>
+      }
       {
         confirmDrop ?
           <ConfirmDialog
@@ -169,6 +234,18 @@ const ViewItem = (props) => {
             acceptIcon={'trash'}
             confirm={() => handleConfirmDrop(data)}
             onClose={handleCancelDrop} />
+          :
+          null
+      }
+      {
+        confirmSell ?
+          <ConfirmDialog
+            text={'Are you sure you want to sell your ' + data.name + ' for ' + itemSellPrice + ' gold ?'}
+            cancelText={'Cancel'}
+            acceptText={'Sell'}
+            acceptIcon={'coins'}
+            confirm={() => handleConfirmSell(data, itemSellPrice)}
+            onClose={() => setConfirmSell(false)} />
           :
           null
       }
