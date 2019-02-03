@@ -1,7 +1,7 @@
 import BackpackUpgradeImg from './backpack-upgrade.png';
 
 const BackpackUpgrade = {
-  name: '+4 Inventory',
+  name: 'Backpack Upgrade',
   type: 'upgrade::backpack',
   slots: 4,
   image: BackpackUpgradeImg,

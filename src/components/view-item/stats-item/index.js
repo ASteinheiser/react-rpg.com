@@ -11,7 +11,9 @@ const StatsItem = (props) => {
       case 'defence':
         return 'purple';
       case 'hp':
+      case 'heal':
         return 'green';
+      case 'slots':
       case 'VS. dragon':
       case 'VS. lich':
         return 'orange';

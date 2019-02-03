@@ -165,6 +165,16 @@ const ViewItem = (props) => {
   // find the type of item
   switch(data.type) {
 
+    case 'upgrade::backpack':
+      // display stats
+      itemStats.push(<StatsItem stats={{ name: 'slots', value: data.slots }} key={uuidv4()} />);
+      break;
+
+    case 'potion':
+      // display stats
+      itemStats.push(<StatsItem stats={{ name: 'heal', value: data.hp }} key={uuidv4()} />);
+      break;
+
     case 'weapon':
       itemIsEquipped = (equipped['weapon'] === data);
       // display stats
