@@ -2,6 +2,7 @@ import { createStore, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage                          from 'redux-persist/lib/storage';
 
+import appState  from '../features/app-state/reducer';
 import player    from '../features/player/reducer';
 import dialog    from '../features/dialog-manager/reducer';
 import map       from '../features/map/reducer';
@@ -12,6 +13,7 @@ import monsters  from '../features/monsters/reducer';
 import snackbar  from '../features/snackbar/reducer';
 
 const rootReducer = combineReducers({
+  appState,
   player,
   dialog,
   map,

@@ -19,9 +19,9 @@ import './styles.scss';
 
 const GameInstructions = (props) => {
 
-  let nativeVersion = false;
+  let mobileVersion = false;
   if(window.location.search === '?nativeApp=true' || isMobile) {
-    nativeVersion = true;
+    mobileVersion = true;
   }
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const GameInstructions = (props) => {
 
       <div className='game-instructions-text'>
         {
-          nativeVersion ?
+          mobileVersion ?
             null
             :
             <span>
@@ -89,7 +89,7 @@ const GameInstructions = (props) => {
 
         <div className={`flex-row align-center space-evenly`}>
           {
-            nativeVersion ?
+            mobileVersion ?
               <React.Fragment>
                 <img src={Swipe}
                   alt='swipe' />
@@ -106,7 +106,7 @@ const GameInstructions = (props) => {
         </div>
 
         {
-          nativeVersion ?
+          mobileVersion ?
             null
             :
             <span style={{paddingTop: 12}}>
@@ -116,7 +116,7 @@ const GameInstructions = (props) => {
 
         <div className={`flex-row align-center space-evenly`}>
           {
-            nativeVersion ?
+            mobileVersion ?
               <React.Fragment>
                 <img src={DoubleTap}
                   alt='double-tap' />
