@@ -33,22 +33,11 @@ const worldReducer = (state = initialState, action) => {
       return newState;
 
     case 'LOAD_NEXT_MAP':
-      const { direction } = action.payload;
-      const { currentMap } = newState;
+      const { direction, currentMap } = action.payload;
 
-      let { stairs } = maps[currentMap];
+      const { stairs } = maps[currentMap];
 
       newState.currentMap = stairs[direction];
-
-      const { message } = maps[newState.currentMap];
-      // if the map has a message and player is going up, display message
-      if(message && direction === 'up') {
-        newState.paused = true;
-        newState.gameText = {
-          title: message.title,
-          body: message.body
-        };
-      }
 
       return newState;
 

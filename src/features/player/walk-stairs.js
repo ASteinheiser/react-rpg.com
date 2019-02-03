@@ -5,7 +5,7 @@ import { uuidv4 }         from '../../modules/uuid-v4';
 import { SPRITE_SIZE }    from '../../config/constants';
 
 export default function walkStairs(nextTile, playerPos) {
-  const { gameMode, randomMaps, floorNum } = store.getState().world;
+  const { gameMode, randomMaps, floorNum, currentMap } = store.getState().world;
 
   playerPos = playerPos.map(value => value / SPRITE_SIZE);
 
@@ -65,7 +65,7 @@ export default function walkStairs(nextTile, playerPos) {
     // change the story mode map
     store.dispatch({
       type: 'LOAD_NEXT_MAP',
-      payload: { direction }
+      payload: { direction, currentMap }
     });
   }
 }
