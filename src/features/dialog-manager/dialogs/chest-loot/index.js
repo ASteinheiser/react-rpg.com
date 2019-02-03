@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Button      from '../../../../components/button';
@@ -10,28 +10,39 @@ import './styles.scss';
 
 const ChestLoot = (props) => {
 
+  const { chestOpen } = props.dialog;
   const { level } = props.stats;
-  // give the player a 25% chance to get a random item
-  let itemDrop = false;
-  const chance = Math.floor(Math.random() * 100) + 1;
-  if(chance <= 25) {
-    itemDrop = randomItem(level);
-  }
-  const [item] = useState(itemDrop);
-  // get a random amount of gold between 1 and 8 PLUS player level x3
-  const [gold] = useState((Math.floor(Math.random() * 8) + 1) + (level * 3));
-  // get some level based exp
-  const [exp] = useState((level * 5) + 5);
 
   useEffect(() => {
-    store.dispatch({
-      type: 'GET_GOLD',
-      payload: { value: gold }
-    });
-    store.dispatch({
-      type: 'GET_EXP',
-      payload: { value: exp }
-    });
+    if(!chestOpen) {
+      // give the player a 25% chance to get a random item
+      let itemDrop = false;
+      const chance = Math.floor(Math.random() * 100) + 1;
+      if(chance <= 25) {
+        itemDrop = randomItem(level);
+      }
+      // get a random amount of gold between 1 and 8 PLUS player level x3
+      const gold = (Math.floor(Math.random() * 8) + 1) + (level * 3);
+      // get some level based exp
+      const exp = (level * 5) + 5;
+
+      store.dispatch({
+        type: 'GET_GOLD',
+        payload: { value: gold }
+      });
+      store.dispatch({
+        type: 'GET_EXP',
+        payload: { value: exp }
+      });
+      store.dispatch({
+        type: 'SET_CHEST_DATA',
+        payload: {
+          exp,
+          gold,
+          item: itemDrop
+        }
+      });
+    }
   }, []);  // we pass empty array as the second param to make this only call on mount and not on any updates
 
   useEffect(() => {
@@ -47,6 +58,8 @@ const ChestLoot = (props) => {
       handleContinue();
     }
   }
+
+  const { gold, exp, item } = chestOpen;
 
   function handleContinue() {
     const { items, maxItems } = props.inventory;
@@ -68,6 +81,10 @@ const ChestLoot = (props) => {
   }
 
   function handleClose() {
+    store.dispatch({
+      type: 'SET_CHEST_DATA',
+      payload: false
+    });
     store.dispatch({
       type: 'PAUSE',
       payload: { pause: false }
@@ -121,6 +138,6 @@ const ChestLoot = (props) => {
   );
 }
 
-const mapStateToProps = ({ inventory, stats }) => ({ inventory, stats });
+const mapStateToProps = ({ inventory, stats, dialog }) => ({ inventory, stats, dialog });
 
 export default connect(mapStateToProps)(ChestLoot);

@@ -8,6 +8,7 @@ const initialState = {
   gameWin: false,
   paused: true,
   chest: false,
+  chestOpen: false,
   shop: false,
   settings: false,
   inventory: false
@@ -42,6 +43,10 @@ const dialogManagerReducer = (state = initialState, action) => {
       // check if pausing or unpausing
       newState.paused = action.payload.pause;
 
+      return newState;
+
+    case 'SET_CHEST_DATA':
+      newState.chestOpen = action.payload;
       return newState;
 
     case 'OPEN_SETTINGS':
