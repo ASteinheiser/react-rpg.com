@@ -26,6 +26,5 @@ yarn test
   - [ ] move dialogs into this folder
 - [ ] turn game menus into a "feature"
   - [ ] bring game music and game settings under this folder
-- [ ] swipe and hold for continuous movement in that direction
 - [ ] improved instructions screen depending on device instead of query param
   - [ ] use text to explain swipe and double tap

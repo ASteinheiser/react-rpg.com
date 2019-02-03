@@ -45,13 +45,13 @@ export default function Controls(player) {
   // enable touch for player controls
   let hammertime = new Hammer(document.getElementById('window'));
 
-  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+  hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
   hammertime.get('tap').set({ taps: 2 });
 
-  hammertime.on('swipe', _debounce(({ direction, offsetDirection }) => {
+  hammertime.on('pan', _debounce(({ direction, offsetDirection }) => {
     // return if the game is paused by dialogs
     if(store.getState().world.paused) return;
-    // if we get a bad swipe, use the best guess
+    // if we get a bad pan, use the best guess
     if(direction === 1) direction = offsetDirection;
 
     switch(direction) {
@@ -68,7 +68,7 @@ export default function Controls(player) {
         movePlayer('EAST');
         break;
       default:
-        // console.log(`Unmapped swipe direction ${direction}`);
+        // console.log(`Unmapped pan direction ${direction}`);
     }
   },
     ANIMATION_SPEED,
