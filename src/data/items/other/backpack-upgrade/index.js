@@ -5,7 +5,7 @@ const BackpackUpgrade = {
   type: 'upgrade::backpack',
   slots: 4,
   image: BackpackUpgradeImg,
-  value: 100
+  value: 50
 };
 
 export default BackpackUpgrade;
