@@ -13,9 +13,13 @@ const GameMusic = (props) => {
   useEffect(() => {
     window.addEventListener('mousedown', handleKeyPress);
     window.addEventListener('keydown', handleKeyPress);
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('blur', handleBlur);
     return () => {
       window.removeEventListener('mousedown', handleKeyPress);
       window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('blur', handleBlur);
     }
   }, []); // we pass empty array as the second param to make this only call on mount and not on any updates
 
@@ -41,25 +45,41 @@ const GameMusic = (props) => {
 
   function toggleMusic() {
     if(gameMusic) {
-      setGameMusic(null);
-      store.dispatch({
-        type: 'SET_SOUND',
-        payload: { sound: false }
-      });
+      turnOffSound();
     } else {
-      setGameMusic(
-        <Sound
-          url={AmbientMusic}
-          playStatus={'PLAYING'}
-          autoLoad={true}
-          loop={true}
-          volume={50} />
-      );
-      store.dispatch({
-        type: 'SET_SOUND',
-        payload: { sound: true }
-      });
+      turnOnSound();
     }
+  }
+
+  function handleFocus(e) {
+    turnOnSound();
+  }
+
+  function handleBlur(e) {
+    turnOffSound();
+  }
+
+  function turnOffSound() {
+    setGameMusic(null);
+    store.dispatch({
+      type: 'SET_SOUND',
+      payload: { sound: false }
+    });
+  }
+
+  function turnOnSound() {
+    setGameMusic(
+      <Sound
+        url={AmbientMusic}
+        playStatus={'PLAYING'}
+        autoLoad={true}
+        loop={true}
+        volume={50} />
+    );
+    store.dispatch({
+      type: 'SET_SOUND',
+      payload: { sound: true }
+    });
   }
 
   return (
