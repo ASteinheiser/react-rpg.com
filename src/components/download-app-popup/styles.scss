@@ -29,6 +29,7 @@
     max-width: 300px;
 
     padding: 32px;
+    margin-bottom: 64px;
 
     background: var(--dark-gray);
 
@@ -39,6 +40,22 @@
 
       letter-spacing: 1px;
       line-height: 30px;
+    }
+
+    .ios-store-icon {
+      width: 75%;
+
+      padding: 48px 0 16px;
+
+      cursor: pointer;
+    }
+
+    .android-store-icon {
+      width: 75%;
+
+      padding: 16px 0 48px;
+
+      cursor: pointer;
     }
 
     .close-option {
