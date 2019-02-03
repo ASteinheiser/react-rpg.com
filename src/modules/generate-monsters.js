@@ -6,7 +6,7 @@ import arrContainArr       from './arr-contain-arr';
 export default function generateMonsters(floorNum, map, playerPos, playerLv) {
   let availableTiles = [];
 
-  let vision = getSurroundingTiles(playerPos);
+  let vision = getSurroundingTiles(playerPos).tiles;
   // reverse the indexes of the vision tiles to match the available tiles order
   vision = vision.map(value => {
     return [value[1], value[0]];

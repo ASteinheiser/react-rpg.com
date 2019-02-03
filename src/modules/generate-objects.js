@@ -5,7 +5,7 @@ import arrContainArr       from './arr-contain-arr';
 export default function generateObjects(map, floorNum, playerPos, wallType) {
   let initialTiles = [];
 
-  let vision = getSurroundingTiles(playerPos);
+  let vision = getSurroundingTiles(playerPos).tiles;
 
   for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
     for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
