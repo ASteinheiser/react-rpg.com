@@ -4,7 +4,7 @@ import './styles.scss';
 
 const MicroDialog = (props) => {
 
-  const { no_button, onClose, children, fullsize } = props;
+  const { no_button, onClose, children, fullsize, className } = props;
 
   let styles = {};
 
@@ -18,7 +18,7 @@ const MicroDialog = (props) => {
   }
 
   return(
-    <div className={'micro-dialog-container white-border'} style={styles}>
+    <div className={'micro-dialog-container white-border ' + (className || '')} style={styles}>
 
       {
         no_button ?

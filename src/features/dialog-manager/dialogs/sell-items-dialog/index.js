@@ -12,7 +12,7 @@ const SellItemsDialog = (props) => {
   const [sellItem, setSellItem] = useState(false);
 
   return(
-    <MicroDialog onClose={props.onClose}>
+    <MicroDialog onClose={props.onClose} fullsize className='centered'>
 
       {
         sellItem ?

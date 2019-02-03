@@ -162,7 +162,7 @@ const ViewItem = (props) => {
   let itemStats = [];
 
   let itemIsEquipped = false;
-  // find the type and see if this item is equipped
+  // find the type of item
   switch(data.type) {
 
     case 'weapon':
@@ -227,7 +227,7 @@ const ViewItem = (props) => {
   const itemSellPrice = Math.ceil(data.value / 2);
 
   return(
-    <MicroDialog onClose={props.onClose} fullsize={sell}>
+    <MicroDialog onClose={props.onClose}>
       <div className='view-item-text-container'>
         <EmptySlot className='white-border view-item-image-container'>
           <div style={{
