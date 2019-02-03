@@ -154,7 +154,7 @@ const ViewItem = (props) => {
     onClose();
   }
 
-  const { data } = props;
+  const { data, stats } = props;
   // get equipped items
   const equipped = store.getState().stats.equippedItems;
 
@@ -172,7 +172,7 @@ const ViewItem = (props) => {
 
     case 'potion':
       // display stats
-      itemStats.push(<StatsItem stats={{ name: 'heal', value: data.hp }} key={uuidv4()} />);
+      itemStats.push(<StatsItem stats={{ name: 'heal', value: Math.ceil((data.hp / stats.maxHp) * 100) }} key={uuidv4()} />);
       break;
 
     case 'weapon':
