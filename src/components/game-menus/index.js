@@ -11,8 +11,8 @@ import './styles.scss';
 
 const GameMenus = (props) => {
 
-  const { sideMenu, world } = props;
-  const { gameOver, gameStart, paused, inventory, settings } = world;
+  const { sideMenu, dialog } = props;
+  const { gameOver, gameStart, paused, inventory, settings } = dialog;
 
   // disable the inventory button when we are in settings or paused and not in the inventory
   const disableInventory = settings || (paused && !inventory);
@@ -48,6 +48,6 @@ const GameMenus = (props) => {
   );
 }
 
-const mapStateToProps = ({ world }) => ({ world });
+const mapStateToProps = ({ dialog }) => ({ dialog });
 
 export default connect(mapStateToProps)(GameMenus);

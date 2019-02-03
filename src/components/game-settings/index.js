@@ -7,7 +7,7 @@ import './styles.scss';
 const GameSettings = (props) => {
 
   function toggleSettings() {
-    if(store.getState().world.settings) {
+    if(store.getState().dialog.settings) {
       store.dispatch({
         type: 'CLOSE_SETTINGS',
         payload: {}

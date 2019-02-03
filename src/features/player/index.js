@@ -147,9 +147,9 @@ class Player extends Component {
 
   render() {
     const { animationPlay, attackAnimationPlay, attackAnimationLoc, animationWalkSound, animationAttackSound, monsterAnimationAttackSound, monsterAttackAnimationPlay, monsterDeath, playerDeath } = this.state;
-    const { player, world } = this.props;
+    const { player, dialog } = this.props;
 
-    const { gameStart } = world;
+    const { gameStart } = dialog;
     // game start menu open, hide the player
     if(gameStart) return null;
 
@@ -211,8 +211,6 @@ class Player extends Component {
   }
 }
 
-const mapStateToProps = ({ player, world }) => {
-  return { player, world };
-}
+const mapStateToProps = ({ player, dialog }) => ({ player, dialog });
 
 export default connect(mapStateToProps)(playerControls(ReactTimeout(Player)));

@@ -130,8 +130,8 @@ function MapRow(props) {
 }
 
 function Map(props) {
-  const { map, world } = props;
-  const { gameStart } = world;
+  const { map, dialog } = props;
+  const { gameStart } = dialog;
 
   const wallType = getWallType(map.tiles);
 
@@ -177,8 +177,6 @@ function getWallType(tiles) {
   }
 }
 
-const mapStateToProps = ({ map, world }) => {
-  return { map, world };
-}
+const mapStateToProps = ({ map, dialog }) => ({ map, dialog });
 
 export default connect(mapStateToProps)(Map);

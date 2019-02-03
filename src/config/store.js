@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage                          from 'redux-persist/lib/storage';
 
 import player    from '../features/player/reducer';
+import dialog    from '../features/dialog-manager/reducer';
 import map       from '../features/map/reducer';
 import world     from '../features/world/reducer';
 import stats     from '../features/stats/reducer';
@@ -12,6 +13,7 @@ import snackbar  from '../features/snackbar/reducer';
 
 const rootReducer = combineReducers({
   player,
+  dialog,
   map,
   world,
   stats,

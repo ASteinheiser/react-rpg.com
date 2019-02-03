@@ -21,7 +21,7 @@ class World extends React.Component {
     // and it's not the game start
     if(prevProps.world.currentMap !== this.props.world.currentMap
       && prevProps.world.currentMap !== null
-      && this.props.world.gameStart !== true) {
+      && this.props.dialog.gameStart !== true) {
       this.handleLoadMap();
       this.handleLoadMonsters();
     }
@@ -108,6 +108,6 @@ class World extends React.Component {
   }
 }
 
-const mapStateToProps = ({ world, monsters, player, stats }) => ({ world, monsters, player, stats });
+const mapStateToProps = ({ world, monsters, player, stats, dialog }) => ({ world, monsters, player, stats, dialog });
 
 export default connect(mapStateToProps)(World);

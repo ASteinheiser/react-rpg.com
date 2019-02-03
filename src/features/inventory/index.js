@@ -35,7 +35,7 @@ class Inventory extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { inventory } = this.props.world;
+    const { inventory } = this.props.dialog;
     const { itemReceived, itemDropped } = this.props.inventory;
     let lastItemReceived = prevProps.inventory.itemReceived;
     let lastItemDropped = prevProps.inventory.itemDropped;
@@ -52,9 +52,9 @@ class Inventory extends Component {
 
   render() {
     const { newItemIndicator } = this.state;
-    const { disabled, world, sideMenu } = this.props;
+    const { disabled, dialog, sideMenu } = this.props;
 
-    const open = world.inventory;
+    const open = dialog.inventory;
 
     return (
       <div className='flex-row inventory-container'>
@@ -85,6 +85,6 @@ class Inventory extends Component {
   }
 }
 
-const mapStateToProps = ({ inventory, world }) => ({ inventory, world });
+const mapStateToProps = ({ inventory, dialog }) => ({ inventory, dialog });
 
 export default connect(mapStateToProps)(Inventory);
