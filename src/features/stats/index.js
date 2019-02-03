@@ -110,7 +110,7 @@ class Stats extends Component {
                     style={{paddingBottom: sideMenu ? 12 : 0}}>
                     <span className='stats-hp-bar-container'>
                       <span className='flex-row stats-bar-value-text'>
-                        {'Hp'}
+                        {'HP'}
                       </span>
                       <span className='stats-hp-bar-value'
                         style={{

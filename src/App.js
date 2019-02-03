@@ -46,24 +46,27 @@ const App = (props) => {
   }
 
   return(
-    <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
+    <React.Fragment>
+      <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
 
-      <Viewport largeView={largeView} sideMenu={sideMenu}>
+        <Viewport largeView={largeView} sideMenu={sideMenu}>
 
-        <World largeView={largeView} />
+          <World largeView={largeView} />
 
-        <DialogManager />
+          <DialogManager />
 
-        {/* Show the floor counter when playing endless mode */}
-        { gameMode === 'endless' ? <EndlessFloorCounter floor={floorNum} /> : null }
+          {/* Show the floor counter when playing endless mode */}
+          { gameMode === 'endless' ? <EndlessFloorCounter floor={floorNum} /> : null }
 
-      </Viewport>
+        </Viewport>
 
-      <GameMenus sideMenu={sideMenu} />
+        <GameMenus sideMenu={sideMenu} />
+
+      </div>
 
       { nativeVersion ? null : <Footer /> }
 
-    </div>
+    </React.Fragment>
   );
 }
 
