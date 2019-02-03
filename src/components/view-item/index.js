@@ -172,7 +172,7 @@ const ViewItem = (props) => {
   const itemSellPrice = Math.ceil(data.value / 2);
 
   return(
-    <MicroDialog onClose={props.onClose}>
+    <MicroDialog onClose={props.onClose} fullsize={sell}>
       <div className='view-item-text-container'>
         <EmptySlot className='white-border view-item-image-container'>
           <div style={{
