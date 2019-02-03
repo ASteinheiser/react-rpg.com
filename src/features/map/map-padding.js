@@ -35,63 +35,48 @@ function BoundaryTile(props) {
 export default function MapPadding(props) {
   const { tileType, tiles, sightBox } = props;
 
-  const TilesTop = tiles.top.map((topRow, index) => {
-    return (
-      <div className='row' style={{ height: SPRITE_SIZE }} key={`top-row-${index}`}>
-        {
-          topRow.map(topRowTile => {
-            return (
-              <BoundaryTile
-                tileType={tileType}
-                variation={topRowTile.variation}
-                explored={topRowTile.explored}
-                sightBox={sightBox}
-                location={topRowTile.location}
-                key={JSON.stringify(topRowTile.location)} />
-            );
-          })
-        }
-      </div>
-    );
+  const PaddingTiles = {};
+
+  Object.keys(tiles).forEach(direction => {
+    PaddingTiles[direction] = tiles[direction].map((row, index) => {
+      return (
+        <div className='row' style={{ height: SPRITE_SIZE }} key={`${direction}-${index}`}>
+          {
+            row.map(rowTile => {
+              return (
+                <BoundaryTile
+                  tileType={tileType}
+                  variation={rowTile.variation}
+                  explored={rowTile.explored}
+                  sightBox={sightBox}
+                  location={rowTile.location}
+                  key={JSON.stringify(rowTile.location)} />
+              );
+            })
+          }
+        </div>
+      );
+    });
   });
+
   // we need to mirrow the top rows for them to
   // render properly with the player's sightbox
-  TilesTop.reverse();
-
-  const TilesBottom = tiles.bottom.map((bottomRow, index) => {
-    return (
-      <div className='row' style={{ height: SPRITE_SIZE }} key={`bottom-row-${index}`}>
-        {
-          bottomRow.map(bottomRowTile => {
-            return (
-              <BoundaryTile
-                tileType={tileType}
-                variation={bottomRowTile.variation}
-                explored={bottomRowTile.explored}
-                sightBox={sightBox}
-                location={bottomRowTile.location}
-                key={JSON.stringify(bottomRowTile.location)} />
-            );
-          })
-        }
-      </div>
-    );
-  });
+  PaddingTiles.top.reverse();
 
   return(
     <React.Fragment>
       <div className='map-padding-top'>
-        { TilesTop }
+        { PaddingTiles.top }
       </div>
       <div className='map-padding-bottom'>
-        { TilesBottom }
+        { PaddingTiles.bottom }
       </div>
-      {/* <div className='map-padding-left'>
-        { TilesLeft }
+      <div className='map-padding-left'>
+        { PaddingTiles.left }
       </div>
       <div className='map-padding-right'>
-        { TilesRight }
-      </div> */}
+        { PaddingTiles.right }
+      </div>
     </React.Fragment>
   );
 }
