@@ -93,7 +93,7 @@ const MainGameStart = (props) => {
       </div>
 
       <div className='flex-column game-start-text'>
-        {'Welcome Adventurer... A world full of monsters and gear awaits!'}
+        {'Explore the dark dungeon, full of monsters and gear!'}
       </div>
 
       <div className='flex-column game-start-button'>
