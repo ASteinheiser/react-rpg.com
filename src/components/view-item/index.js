@@ -66,25 +66,25 @@ const ViewItem = (props) => {
     // check if the item was equipped, then take it off
     switch(item.type) {
       case 'weapon':
-        if(equippedItems['weapon'] === item) itemEquipped = true;
+        if(JSON.stringify(equippedItems['weapon']) === JSON.stringify(item)) itemEquipped = true;
         break;
       case 'ring':
-        if(equippedItems['ring'] === item) itemEquipped = true;
+        if(JSON.stringify(equippedItems['ring']) === JSON.stringify(item)) itemEquipped = true;
         break;
       case 'armor::body':
-        if(equippedItems['armor'] && equippedItems['armor']['body'] === item) itemEquipped = true;
+        if(equippedItems['armor'] && JSON.stringify(equippedItems['armor']['body']) === JSON.stringify(item)) itemEquipped = true;
         break;
       case 'armor::pants':
-        if(equippedItems['armor'] && equippedItems['armor']['pants'] === item) itemEquipped = true;
+        if(equippedItems['armor'] && JSON.stringify(equippedItems['armor']['pants']) === JSON.stringify(item)) itemEquipped = true;
         break;
       case 'armor::helmet':
-        if(equippedItems['armor'] && equippedItems['armor']['helmet'] === item) itemEquipped = true;
+        if(equippedItems['armor'] && JSON.stringify(equippedItems['armor']['helmet']) === JSON.stringify(item)) itemEquipped = true;
         break;
       case 'armor::boots':
-        if(equippedItems['armor'] && equippedItems['armor']['boots'] === item) itemEquipped = true;
+        if(equippedItems['armor'] && JSON.stringify(equippedItems['armor']['boots']) === JSON.stringify(item)) itemEquipped = true;
         break;
       case 'armor::gloves':
-        if(equippedItems['armor'] && equippedItems['armor']['gloves'] === item) itemEquipped = true;
+        if(equippedItems['armor'] && JSON.stringify(equippedItems['armor']['gloves']) === JSON.stringify(item)) itemEquipped = true;
         break;
       default:
     }
