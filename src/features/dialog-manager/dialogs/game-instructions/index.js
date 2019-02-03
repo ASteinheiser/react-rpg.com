@@ -1,5 +1,5 @@
-import React        from 'react';
-import { isMobile } from 'react-device-detect';
+import React, { useEffect } from 'react';
+import { isMobile }         from 'react-device-detect';
 
 import Button        from '../../../../components/button';
 import Dialog        from '../../../../components/dialog';
@@ -22,6 +22,25 @@ const GameInstructions = (props) => {
   let nativeVersion = false;
   if(window.location.search === '?nativeApp=true' || isMobile) {
     nativeVersion = true;
+  }
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    }
+  }, []); // we pass empty array as the second param to make this only call on mount and not on any updates
+
+  function handleKeyPress(event) {
+    // case for 'enter' or 'space' key
+    if(event.keyCode === 13 || event.keyCode === 32) {
+      handleContinue();
+    }
+  }
+
+  function handleContinue() {
+    handleShowMapMessage();
+    handleLoadStartingItems();
   }
 
   function handleShowMapMessage() {
@@ -117,10 +136,7 @@ const GameInstructions = (props) => {
 
       <div className='flex-column game-start-button'>
         <Button
-          onClick={() => {
-            handleShowMapMessage();
-            handleLoadStartingItems();
-          }}
+          onClick={handleContinue}
           title={'Continue'} />
       </div>
     </Dialog>
