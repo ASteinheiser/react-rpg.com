@@ -35,7 +35,7 @@ export function getTileSprite(type, variation) {
   }
 }
 
-function FogTile(props) {
+export function FogTile(props) {
   // show the tile by default
   let opacity = '0';
   // if the tile is out of sight, show faded
@@ -145,7 +145,10 @@ function Map(props) {
       position: 'relative'
     }}>
 
-      <MapPadding tile={wallType} />
+      <MapPadding
+        tileType={wallType}
+        tiles={map.paddingTiles}
+        sightBox={map.paddingSightBox} />
 
       {
         map.tiles.map((row, index) => {

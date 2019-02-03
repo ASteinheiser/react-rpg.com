@@ -1,92 +1,77 @@
 import React from 'react';
 
-import { getTileSprite } from './index.js';
-import { SPRITE_SIZE }   from '../../config/constants';
+import { getTileSprite, FogTile } from './index.js';
+import { SPRITE_SIZE }            from '../../config/constants';
 
 import './styles.scss';
 
-let variation = [];
-// generate static variations for the map padding tiles
-// to avoid setting it during render and having the tiles
-// variation swap with each player move
-for(let i = 0; i < 30; i ++) {
-  variation.push(Math.round(Math.random() * (4 - 1) + 1));
-}
-
 function BoundaryTile(props) {
-  const { tile, variation } = props;
+  const { tileType, variation, explored, sightBox, location } = props;
+
+  let inSight = false;
+  if(sightBox) {
+    // check the sight box tiles
+    sightBox.forEach(sightBoxTile => {
+      // if the current tile is in range
+      if(JSON.stringify(sightBoxTile) === JSON.stringify(location)) {
+        // remove the overlay
+        return inSight = true;
+      }
+    });
+  }
 
   return(
     <div style={{
-      backgroundImage: `url(/tiles/${getTileSprite(tile, variation)}.png)`,
+      backgroundImage: `url(/tiles/${getTileSprite(tileType, variation)}.png)`,
       display: 'inline-flex',
       height: SPRITE_SIZE,
       width: SPRITE_SIZE
     }}>
-      <div style={{
-        backgroundColor: '#000',
-        opacity: '0.2',
-        display: 'inline-flex',
-        height: SPRITE_SIZE,
-        width: SPRITE_SIZE
-      }} />
+      <FogTile explored={explored} inSight={inSight} />
     </div>
   );
 }
 
 export default function MapPadding(props) {
-  const { tile } = props;
+  const { tileType, tiles, sightBox } = props;
 
-  let TilesUpDown = [];
-  for(let i = 0; i < 5; i ++) {
-    let Row = [];
-    for(let j = 0; j < 20; j ++) {
-      Row.push(
-        <BoundaryTile
-          tile={tile}
-          variation={variation[i + j]}
-          key={`padding-top-${i + j}`} />
-      );
-    }
-    TilesUpDown.push(
-      <div className='row' style={{ height: SPRITE_SIZE }} key={`row-${i}`}>
-        { Row }
+  const TilesTop = tiles.top.map((topRow, index) => {
+    return (
+      <div className='row' style={{ height: SPRITE_SIZE }} key={`top-row-${index}`}>
+        {
+          topRow.map(topRowTile => {
+            return (
+              <BoundaryTile
+                tileType={tileType}
+                variation={topRowTile.variation}
+                explored={topRowTile.explored}
+                sightBox={sightBox}
+                location={topRowTile.location}
+                key={JSON.stringify(topRowTile.location)} />
+            );
+          })
+        }
       </div>
     );
-  }
-
-  let TilesSide = [];
-  for(let i = 0; i < 25; i ++) {
-    let Row = [];
-    for(let j = 0; j < 5; j ++) {
-      Row.push(
-        <BoundaryTile
-          tile={tile}
-          variation={variation[i + j]}
-          key={`padding-side-${i + j}`} />
-      );
-    }
-    TilesSide.push(
-      <div className='row' style={{ height: SPRITE_SIZE }} key={`row-${i}`}>
-        { Row }
-      </div>
-    );
-  }
+  });
+  // we need to mirrow the rows for them to render properly
+  // with the player's sightbox
+  TilesTop.reverse();
 
   return(
     <React.Fragment>
       <div className='map-padding-top'>
-        { TilesUpDown }
+        { TilesTop }
       </div>
-      <div className='map-padding-bottom'>
-        { TilesUpDown }
+      {/* <div className='map-padding-bottom'>
+        { TilesBottom }
       </div>
       <div className='map-padding-left'>
-        { TilesSide }
+        { TilesLeft }
       </div>
       <div className='map-padding-right'>
-        { TilesSide }
-      </div>
+        { TilesRight }
+      </div> */}
     </React.Fragment>
   );
 }

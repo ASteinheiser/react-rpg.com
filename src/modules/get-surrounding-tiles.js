@@ -24,6 +24,7 @@ export default function getSurroundingTiles(newPos) {
     || startPos[1] >= MAP_DIMENSIONS[1] || startPos[1] < 0) return false;
   // then calculate the surrounding tiles according to the bounds
   let surroundingTiles = [];
+  let paddingTiles = [];
   // add position as offset to each radius tile
   radiusTiles.forEach(({x, y}) => {
     // get radius with location as offset
@@ -33,7 +34,13 @@ export default function getSurroundingTiles(newPos) {
     if(offsetX >= 0 && offsetX < 15 && offsetY >= 0 && offsetY < 20) {
       // add to surrounding tile...
       surroundingTiles.push([offsetX, offsetY]);
+    } else {
+      paddingTiles.push([offsetX, offsetY]);
     }
   });
-  return surroundingTiles;
+
+  return {
+    tiles: surroundingTiles,
+    paddingTiles
+  };
 }
