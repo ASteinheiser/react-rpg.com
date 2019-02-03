@@ -1,10 +1,10 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import Button         from '../button';
-import Dialog         from '../dialog';
-import resetGameState from '../../modules/reset-game-state';
-import store          from '../../config/store';
+import Button         from '../../../../components/button';
+import Dialog         from '../../../../components/dialog';
+import resetGameState from '../../../../modules/reset-game-state';
+import store          from '../../../../config/store';
 
 import './styles.scss';
 

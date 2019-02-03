@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Button from '../button';
-import Dialog from '../dialog';
-import Flame  from '../flame';
-import store  from '../../config/store';
+import Button from '../../../../components/button';
+import Dialog from '../../../../components/dialog';
+import Flame  from '../../../../components/flame';
+import store  from '../../../../config/store';
 
 import './styles.scss';
 

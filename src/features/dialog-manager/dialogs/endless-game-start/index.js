@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 
-import Button           from '../button';
-import Dialog           from '../dialog';
-import items            from '../../data/items';
-import store            from '../../config/store';
-import generateMap      from '../../modules/generate-map';
-import generateMonsters from '../../modules/generate-monsters';
-import exploreTiles     from '../../features/player/explore-tiles';
-import { uuidv4 }       from '../../modules/uuid-v4';
+import Button           from '../../../../components/button';
+import Dialog           from '../../../../components/dialog';
+import items            from '../../../../data/items';
+import store            from '../../../../config/store';
+import generateMap      from '../../../../modules/generate-map';
+import generateMonsters from '../../../../modules/generate-monsters';
+import exploreTiles     from '../../../../features/player/explore-tiles';
+import { uuidv4 }       from '../../../../modules/uuid-v4';
 
 import './styles.scss';
 

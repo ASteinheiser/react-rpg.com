@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 
-import Button from '../button';
-import Dialog from '../dialog';
-import store  from '../../config/store';
+import Button from '../../../../components/button';
+import Dialog from '../../../../components/dialog';
+import store  from '../../../../config/store';
 
 import './styles.scss';
 

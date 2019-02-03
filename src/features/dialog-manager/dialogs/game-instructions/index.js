@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Button        from '../button';
-import Dialog        from '../dialog';
-import items         from '../../data/items';
-import maps          from '../../data/maps';
-import store         from '../../config/store';
-import { START_MAP } from '../../config/constants';
+import Button        from '../../../../components/button';
+import Dialog        from '../../../../components/dialog';
+import items         from '../../../../data/items';
+import maps          from '../../../../data/maps';
+import store         from '../../../../config/store';
+import { START_MAP } from '../../../../config/constants';
 
 import ArrowKeys from './assets/arrow-keys.png';
 import DoubleTap from './assets/double-tap.png';

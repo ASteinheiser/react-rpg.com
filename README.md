@@ -23,7 +23,6 @@ yarn test
   - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
   - [ ] ios https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1450907766&mt=8
 - [ ] make redux store for dialog manager
-  - [ ] move dialogs into this folder
 - [ ] turn game menus into a "feature"
   - [ ] bring game music and game settings under this folder
 - [ ] improved instructions screen depending on device instead of query param

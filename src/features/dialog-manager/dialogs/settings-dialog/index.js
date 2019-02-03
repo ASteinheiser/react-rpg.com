@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import Button         from '../button';
-import ConfirmDialog  from '../confirm-dialog';
-import Dialog         from '../dialog';
-import store          from '../../config/store';
-import resetGameState from '../../modules/reset-game-state';
+import Button         from '../../../../components/button';
+import ConfirmDialog  from '../../../../components/confirm-dialog';
+import Dialog         from '../../../../components/dialog';
+import store          from '../../../../config/store';
+import resetGameState from '../../../../modules/reset-game-state';
 
 import './settings-dialog.scss';
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ReactTimeout from 'react-timeout';
 
-import Button         from '../button';
-import Dialog         from '../dialog';
+import Button         from '../../../../components/button';
+import Dialog         from '../../../../components/dialog';
 import randomPhrase   from './random-phrase';
-import resetGameState from '../../modules/reset-game-state';
+import resetGameState from '../../../../modules/reset-game-state';
 
 import './styles.scss';
 

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import Button          from '../button';
-import Dialog          from '../dialog';
+import Button          from '../../../../components/button';
+import Dialog          from '../../../../components/dialog';
 import SellItemsDialog from '../sell-items-dialog';
-import ShopKeep        from '../shop-keep';
-import ShopInventory   from '../shop-inventory';
-import store           from '../../config/store';
+import ShopKeep        from '../../../../components/shop-keep';
+import ShopInventory   from '../../../../components/shop-inventory';
+import store           from '../../../../config/store';
 
 import './styles.scss';
 

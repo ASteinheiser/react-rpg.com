@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 
-import Button        from '../button';
-import Dialog        from '../dialog';
-import maps          from '../../data/maps';
-import store         from '../../config/store';
-import exploreTiles  from '../../features/player/explore-tiles';
-import { START_MAP } from '../../config/constants';
+import Button        from '../../../../components/button';
+import Dialog        from '../../../../components/dialog';
+import maps          from '../../../../data/maps';
+import store         from '../../../../config/store';
+import exploreTiles  from '../../../../features/player/explore-tiles';
+import { START_MAP } from '../../../../config/constants';
 
 import './styles.scss';
 

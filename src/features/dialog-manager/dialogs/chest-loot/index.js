@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import Button      from '../button';
-import MicroDialog from '../micro-dialog';
+import Button      from '../../../../components/button';
+import MicroDialog from '../../../../components/micro-dialog';
 import randomItem  from './random-item';
-import store       from '../../config/store';
+import store       from '../../../../config/store';
 
 import './styles.scss';
 

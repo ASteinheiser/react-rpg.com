@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import ConfirmDialog from '../confirm-dialog';
-import BackpackItems  from '../backpack-items';
-import MicroDialog   from '../micro-dialog';
+import ConfirmDialog from '../../../../components/confirm-dialog';
+import BackpackItems from '../../../../components/backpack-items';
+import MicroDialog   from '../../../../components/micro-dialog';
 import Backpack      from '../inventory-dialog/backpack.png';
-import store         from '../../config/store';
+import store         from '../../../../config/store';
 
 import './styles.scss';
 

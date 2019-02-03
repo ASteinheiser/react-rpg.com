@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 import Backpack      from './backpack.png';
-import BackpackItems from '../backpack-items';
-import Dialog        from '../dialog';
-import EquippedItems from '../equipped-items';
-import ViewItem      from '../view-item';
+import BackpackItems from '../../../../components/backpack-items';
+import Dialog        from '../../../../components/dialog';
+import EquippedItems from '../../../../components/equipped-items';
+import ViewItem      from '../../../../components/view-item';
 
 import './styles.scss';
 
