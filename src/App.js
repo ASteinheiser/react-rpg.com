@@ -4,7 +4,7 @@ import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import DialogManager       from './features/dialog-manager';
 import EndlessFloorCounter from './components/endless-floor-counter';
-import GameMenus           from './components/game-menus';
+import GameMenus           from './features/game-menus';
 import World               from './features/world';
 import Viewport            from './components/viewport';
 import useWindowSize       from './modules/use-window-size';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sound                          from 'react-sound';
 
-import store        from '../../config/store';
+import store        from '../../../config/store';
 import AmbientMusic from './ambient-music.mp3';
 
 import './styles.scss';

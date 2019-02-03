@@ -19,10 +19,9 @@ yarn test
 
 # TODO:
 - [ ] replace purchase confirm screen with item view sort of dialog
+- [ ] replace sell confirm screen with item view sort of dialog
 - [ ] add popup on non-native version for downloading the app from the app store
   - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
   - [ ] ios https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1450907766&mt=8
-- [ ] turn game menus into a "feature"
-  - [ ] bring game music and game settings under this folder
 - [ ] improved instructions screen depending on device instead of query param
   - [ ] use text to explain swipe and double tap

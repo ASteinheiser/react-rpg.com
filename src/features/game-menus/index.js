@@ -1,11 +1,11 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import GameMusic    from '../game-music';
-import GameSettings from '../game-settings';
-import Inventory    from '../../features/inventory';
-import Snackbar     from '../../features/snackbar';
-import Stats        from '../../features/stats';
+import GameMusic    from './game-music';
+import GameSettings from './game-settings';
+import Inventory    from '../inventory';
+import Snackbar     from '../snackbar';
+import Stats        from '../stats';
 
 import './styles.scss';
 
