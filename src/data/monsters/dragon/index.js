@@ -14,8 +14,8 @@ function Dragon(props) {
 }
 
 const stats = {
-  hp: 80,
-  maxHp: 80,
+  hp: 60,
+  maxHp: 60,
   damage: 15,
   defence: 8,
   exp: 400,
