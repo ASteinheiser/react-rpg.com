@@ -16,3 +16,6 @@ yarn start
 ```
 yarn test
 ```
+
+# TODO:
+- [ ] fix bug with maps object losing data for old floors when game is rehydrated
