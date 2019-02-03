@@ -1,4 +1,5 @@
-import React from 'react';
+import React        from 'react';
+import { isMobile } from 'react-device-detect';
 
 import Button        from '../../../../components/button';
 import Dialog        from '../../../../components/dialog';
@@ -18,9 +19,9 @@ import './styles.scss';
 
 const GameInstructions = (props) => {
 
-  let nativeOnly = false;
-  if(window.location.search === '?nativeApp=true') {
-    nativeOnly = true;
+  let nativeVersion = false;
+  if(window.location.search === '?nativeApp=true' || isMobile) {
+    nativeVersion = true;
   }
 
   function handleShowMapMessage() {
@@ -62,20 +63,20 @@ const GameInstructions = (props) => {
           {`MOVEMENT`}
         </span>
 
-        <div className={`flex-row align-center ${nativeOnly ? 'centered' : 'space-between'}`}>
-          { nativeOnly ? null : <img src={ArrowKeys} alt='arrow-keys' /> }
-          <img src={Swipe} alt='swipe' />
-          { nativeOnly ? null : <img src={WASDKeys} alt='wasd-keys' /> }
+        <div className={`flex-row align-center ${nativeVersion ? 'centered' : 'space-evenly'}`}>
+          { nativeVersion ? null : <img src={ArrowKeys} alt='arrow-keys' /> }
+          { nativeVersion ? <img src={Swipe} alt='swipe' /> : null }
+          { nativeVersion ? null : <img src={WASDKeys} alt='wasd-keys' /> }
         </div>
 
         <span style={{paddingTop: 12}}>
           {`ATTACK`}
         </span>
 
-        <div className={`flex-row align-center ${nativeOnly ? 'centered' : 'space-between'}`}>
-          { nativeOnly ? null : <img src={Space} alt='space' /> }
-          <img src={DoubleTap} alt='double-tap' />
-          { nativeOnly ? null : <img src={Enter} alt='enter' /> }
+        <div className={`flex-row align-center ${nativeVersion ? 'centered' : 'space-evenly'}`}>
+          { nativeVersion ? null : <img src={Space} alt='space' /> }
+          { nativeVersion ? <img src={DoubleTap} alt='double-tap' /> : null }
+          { nativeVersion ? null : <img src={Enter} alt='enter' /> }
         </div>
 
       </div>

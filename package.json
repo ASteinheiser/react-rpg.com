@@ -8,6 +8,7 @@
     "lodash.debounce": "^4.0.8",
     "node-sass": "^4.11.0",
     "react": "^16.7.0-alpha.0",
+    "react-device-detect": "^1.6.2",
     "react-dom": "^16.7.0-alpha.0",
     "react-redux": "^5.0.7",
     "react-scripts": "^2.1.3",
