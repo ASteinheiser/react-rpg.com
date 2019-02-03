@@ -1,4 +1,3 @@
-import maps from '../../data/maps';
 
 const initialState = {
   gameText: false,
@@ -59,13 +58,13 @@ const dialogManagerReducer = (state = initialState, action) => {
       return newState;
 
     case 'LOAD_NEXT_MAP':
-      const { direction, currentMap } = action.payload;
+      const { direction, currentMap, storyMaps } = action.payload;
 
-      const { stairs } = maps[currentMap];
+      const { stairs } = storyMaps[currentMap];
 
       const nextMap = stairs[direction];
 
-      const { message } = maps[nextMap];
+      const { message } = storyMaps[nextMap];
       // if the map has a message and player is going up, display message
       if(message && direction === 'up') {
         newState.paused = true;

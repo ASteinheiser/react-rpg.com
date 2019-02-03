@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import Button        from '../../../../components/button';
 import Dialog        from '../../../../components/dialog';
-import maps          from '../../../../data/maps';
 import store         from '../../../../config/store';
 import exploreTiles  from '../../../../features/player/explore-tiles';
 import { START_MAP } from '../../../../config/constants';
@@ -26,11 +25,19 @@ const MainGameStart = (props) => {
   }
 
   function handleGameStart() {
+    handleLoadStoryMaps();
     handleLoadStartMap();
     handleLoadMap();
     handleLoadMonsters();
     handleLoadPlayerSight();
     handleShowStartMessage();
+  }
+
+  function handleLoadStoryMaps() {
+    store.dispatch({
+      type: 'LOAD_STORY_MAPS',
+      payload: {}
+    });
   }
 
   function handleLoadStartMap() {
@@ -61,7 +68,7 @@ const MainGameStart = (props) => {
     // set map tiles for start map
     store.dispatch({
       type: 'ADD_TILES',
-      payload: { tiles: maps[START_MAP].tiles }
+      payload: { tiles: store.getState().world.storyMaps[START_MAP].tiles }
     });
   }
 
@@ -69,7 +76,7 @@ const MainGameStart = (props) => {
     // load initial monsters
     store.dispatch({
       type: 'ADD_MONSTERS',
-      payload: { monsters: maps[START_MAP].monsters, map: START_MAP }
+      payload: { monsters: store.getState().world.storyMaps[START_MAP].monsters, map: START_MAP }
     });
   }
 

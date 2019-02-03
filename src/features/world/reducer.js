@@ -5,6 +5,7 @@ const initialState = {
   gameMode: null,
   turn: 0,
   sound: true,
+  storyMaps: {},
   randomMaps: [],
   floorNum: null
 };
@@ -14,6 +15,10 @@ const worldReducer = (state = initialState, action) => {
   let newState = Object.assign({}, state);
 
   switch(action.type) {
+
+    case 'LOAD_STORY_MAPS':
+      newState.storyMaps = Object.assign({}, maps);
+      return newState;
 
     case 'ADD_RANDOM_MAP':
       newState.randomMaps.push({
@@ -35,7 +40,7 @@ const worldReducer = (state = initialState, action) => {
     case 'LOAD_NEXT_MAP':
       const { direction, currentMap } = action.payload;
 
-      const { stairs } = maps[currentMap];
+      const { stairs } = state.storyMaps[currentMap];
 
       newState.currentMap = stairs[direction];
 
@@ -61,6 +66,7 @@ const worldReducer = (state = initialState, action) => {
         ...initialState,
         sound: state.sound,
         randomMaps: [],
+        storyMaps: {},
         floorNum: null
       };
 

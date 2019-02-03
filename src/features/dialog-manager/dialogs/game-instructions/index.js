@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import { connect }          from 'react-redux';
 import { isMobile }         from 'react-device-detect';
 
 import Button        from '../../../../components/button';
 import Dialog        from '../../../../components/dialog';
 import items         from '../../../../data/items';
-import maps          from '../../../../data/maps';
 import store         from '../../../../config/store';
 import { START_MAP } from '../../../../config/constants';
 
@@ -44,7 +44,7 @@ const GameInstructions = (props) => {
   }
 
   function handleShowMapMessage() {
-    const { message } = maps[START_MAP];
+    const { message } = props.world.storyMaps[START_MAP];
 
     store.dispatch({
       type: 'PAUSE',
@@ -143,4 +143,6 @@ const GameInstructions = (props) => {
   );
 }
 
-export default GameInstructions;
+const mapStateToProps = ({ world }) => ({ world });
+
+export default connect(mapStateToProps)(GameInstructions);

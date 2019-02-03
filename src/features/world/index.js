@@ -1,13 +1,10 @@
 import React       from 'react';
 import { connect } from 'react-redux';
-// game components
-import Map      from '../map';
-import Monsters from '../monsters';
-import Player   from '../player';
-// game configs
-import maps  from '../../data/maps';
-import store from '../../config/store';
-// game functions
+
+import Map              from '../map';
+import Monsters         from '../monsters';
+import Player           from '../player';
+import store            from '../../config/store';
 import takeMonstersTurn from '../monsters/take-monsters-turn';
 import generateMonsters from '../../modules/generate-monsters';
 
@@ -36,7 +33,7 @@ class World extends React.Component {
 
   handleLoadMap() {
     const { world } = this.props;
-    const { gameMode, floorNum, randomMaps } = world;
+    const { gameMode, floorNum, randomMaps, storyMaps } = world;
 
     if(gameMode === 'endless') {
       // set map tiles for current random map
@@ -48,14 +45,14 @@ class World extends React.Component {
       // set map tiles for current story map
       store.dispatch({
         type: 'ADD_TILES',
-        payload: { tiles: maps[world.currentMap].tiles }
+        payload: { tiles: storyMaps[world.currentMap].tiles }
       });
     }
   }
 
   handleLoadMonsters() {
     const { world, monsters, player, stats } = this.props;
-    const { gameMode, currentMap, randomMaps, floorNum } = world;
+    const { gameMode, currentMap, randomMaps, floorNum, storyMaps } = world;
 
     // if it's endless mode and we don't have monsters for the current map
     if(gameMode === 'endless') {
@@ -74,7 +71,7 @@ class World extends React.Component {
       store.dispatch({
         type: 'ADD_MONSTERS',
         payload: {
-          monsters: maps[currentMap].monsters,
+          monsters: storyMaps[currentMap].monsters,
           map: currentMap
         }
       });
