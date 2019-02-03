@@ -67,3 +67,19 @@
     }
   }
 }
+
+@media(max-width: 500px) {
+  .download-app-container {
+    .download-app-box {
+      padding: 16px;
+      margin-bottom: 32px;
+
+      .ios-store-icon {
+        padding: 32px 0 16px;
+      }
+      .android-store-icon {
+        padding: 16px 0 32px;
+      }
+    }
+  }
+}
