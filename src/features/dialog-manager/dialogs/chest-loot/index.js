@@ -10,8 +10,10 @@ import './styles.scss';
 
 const ChestLoot = (props) => {
 
-  const { chestOpen } = props.dialog;
   const { level } = props.stats;
+
+  const { chestOpen } = props.dialog;
+  const { gold, exp, item } = chestOpen;
 
   useEffect(() => {
     if(!chestOpen) {
@@ -59,10 +61,9 @@ const ChestLoot = (props) => {
     }
   }
 
-  const { gold, exp, item } = chestOpen;
-
   function handleContinue() {
     const { items, maxItems } = props.inventory;
+    const { item } = store.getState().dialog.chestOpen;
 
     if(item) {
       if(items.length < maxItems) {
