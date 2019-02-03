@@ -24,7 +24,7 @@ const App = (props) => {
   let largeView = false;
   let sideMenu = false;
   // if we have a wide screen size
-  if(width > 800) {
+  if(width > 760) {
     largeView = true;
     // if the screen size is too short
     if(height < 625) sideMenu = true;
