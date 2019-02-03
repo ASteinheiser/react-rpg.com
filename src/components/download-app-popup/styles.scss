@@ -1,0 +1,52 @@
+.download-app-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 10000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .background-close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    cursor: pointer;
+  }
+
+  .download-app-box {
+    z-index: 10000;
+
+    max-width: 300px;
+
+    padding: 32px;
+
+    background: var(--dark-gray);
+
+    text-align: center;
+
+    span {
+      font-size: 20px;
+
+      letter-spacing: 1px;
+      line-height: 30px;
+    }
+
+    .close-option {
+      font-size: 16px;
+
+      padding-top: 16px;
+
+      cursor: pointer;
+    }
+  }
+}

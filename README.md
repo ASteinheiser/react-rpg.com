@@ -16,8 +16,3 @@ yarn start
 ```
 yarn test
 ```
-
-# TODO:
-- [ ] add popup on non-native version for downloading the app from the app store
-  - [ ] android https://play.google.com/store/apps/details?id=com.reactrpgnative
-  - [ ] ios https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1450907766&mt=8

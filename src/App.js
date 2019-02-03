@@ -63,7 +63,7 @@ const App = (props) => {
   return(
     <React.Fragment>
 
-      { showDl ? <DownloadAppPopup /> : null }
+      { showDl ? <DownloadAppPopup onClose={() => setShowDl(false)} /> : null }
 
       <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
 
