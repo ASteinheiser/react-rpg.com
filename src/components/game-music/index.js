@@ -51,11 +51,11 @@ const GameMusic = (props) => {
     }
   }
 
-  function handleFocus(e) {
+  function handleFocus() {
     turnOnSound();
   }
 
-  function handleBlur(e) {
+  function handleBlur() {
     turnOffSound();
   }
 
