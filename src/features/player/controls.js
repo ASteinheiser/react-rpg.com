@@ -48,7 +48,35 @@ export default function Controls(player) {
   let hammertime = new Hammer(document.getElementById('window'));
 
   hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
   hammertime.get('tap').set({ taps: 2 });
+
+  hammertime.on('swipe', _debounce(({ direction, offsetDirection }) => {
+    // return if the game is paused by dialogs
+    if(store.getState().world.paused) return;
+    // if we get a bad pan, use the best guess
+    if(direction === 1) direction = offsetDirection;
+
+    switch(direction) {
+      case 8:
+        movePlayer('NORTH');
+        break;
+      case 16:
+        movePlayer('SOUTH');
+        break;
+      case 2:
+        movePlayer('WEST');
+        break;
+      case 4:
+        movePlayer('EAST');
+        break;
+      default:
+        // console.log(`Unmapped pan direction ${direction}`);
+    }
+  },
+    ANIMATION_SPEED,
+    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
+  ));
 
   hammertime.on('panend', _ => {
     clearInterval(intervalId);
@@ -77,7 +105,7 @@ export default function Controls(player) {
         default:
           // console.log(`Unmapped pan direction ${direction}`);
       }
-    }, ANIMATION_SPEED);
+    }, ANIMATION_SPEED * 1.5);
   },
     ANIMATION_SPEED,
     { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
