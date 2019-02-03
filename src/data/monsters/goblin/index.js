@@ -18,7 +18,7 @@ const stats = {
   maxHp: 12,
   damage: 4,
   defence: 3,
-  exp: 20,
+  exp: 25,
   type: 'goblin'
 };
 

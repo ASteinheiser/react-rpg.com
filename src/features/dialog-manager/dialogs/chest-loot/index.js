@@ -18,8 +18,8 @@ const ChestLoot = (props) => {
     itemDrop = randomItem(level);
   }
   const [item] = useState(itemDrop);
-  // get a random amount of gold between 1 and 8 PLUS player level x2
-  const [gold] = useState((Math.floor(Math.random() * 8) + 1) + (level * 2));
+  // get a random amount of gold between 1 and 8 PLUS player level x3
+  const [gold] = useState((Math.floor(Math.random() * 8) + 1) + (level * 3));
   // get some level based exp
   const [exp] = useState((level * 5) + 5);
 
