@@ -1,15 +1,22 @@
 import React, { useEffect } from 'react';
 import { connect }          from 'react-redux';
+import { isMobile }         from 'react-device-detect';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import DialogManager       from './features/dialog-manager';
 import EndlessFloorCounter from './components/endless-floor-counter';
+import Footer              from './components/footer';
 import GameMenus           from './features/game-menus';
 import World               from './features/world';
 import Viewport            from './components/viewport';
 import useWindowSize       from './modules/use-window-size';
 
 const App = (props) => {
+
+  let nativeVersion = false;
+  if(window.location.search === '?nativeApp=true' || isMobile) {
+    nativeVersion = true;
+  }
 
   const { gameMode, floorNum } = props.world;
   const { height, width } = useWindowSize();
@@ -53,6 +60,8 @@ const App = (props) => {
       </Viewport>
 
       <GameMenus sideMenu={sideMenu} />
+
+      { nativeVersion ? null : <Footer /> }
 
     </div>
   );
