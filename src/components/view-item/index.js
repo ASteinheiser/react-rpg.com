@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 import Button        from '../button';
 import { EmptySlot } from '../equipped-items';
@@ -12,10 +13,11 @@ import './styles.scss';
 
 const ViewItem = (props) => {
 
-  const { sell, onClose } = props;
+  const { sell, buy, onClose } = props;
 
   const [confirmDrop, setConfirmDrop] = useState(false);
   const [confirmSell, setConfirmSell] = useState(false);
+  const [confirmBuy, setConfirmBuy] = useState(false);
 
   function handleUnEquip(item) {
     props.onClose();
@@ -49,6 +51,59 @@ const ViewItem = (props) => {
       type: 'DROP_ITEM',
       payload: item
     });
+  }
+
+  function handleConfirmBuy(item) {
+    const { gold } = props.stats;
+    const { items, maxItems } = props.inventory;
+    // make sure player has enough gold
+    if(gold >= item.value) {
+      // if it's an hp potion
+      if(item.type === 'potion') {
+        store.dispatch({
+          type: 'LOSE_GOLD',
+          payload: { value: item.value }
+        });
+        store.dispatch({
+          type: 'HEAL_HP',
+          payload: { value: parseInt(item.hp, 10) }
+        });
+      } // if it's a backpack upgrade
+      else if(item.type === 'upgrade::backpack') {
+        store.dispatch({
+          type: 'LOSE_GOLD',
+          payload: { value: item.value }
+        });
+        store.dispatch({
+          type: 'UPGRADE_PACK',
+          payload: { slots: item.slots }
+        });
+      } // otherwise, see if there's room in the inventory
+      else if(items.length < maxItems) {
+        store.dispatch({
+          type: 'LOSE_GOLD',
+          payload: { value: item.value }
+        });
+        store.dispatch({
+          type: 'GET_ITEM',
+          payload: item
+        });
+      } else {
+        // inventory full
+        store.dispatch({
+          type: 'TOO_MANY_ITEMS',
+          payload: item
+        });
+      }
+    } else {
+      // not enough gold!
+      store.dispatch({
+        type: 'NOT_ENOUGH_GOLD',
+        payload: item
+      });
+    }
+
+    onClose();
   }
 
   function handleConfirmSell(item, sellPrice) {
@@ -191,15 +246,25 @@ const ViewItem = (props) => {
       </div>
 
       {
-        sell ?
-          <div className='flex-column view-item-buttons-parent'>
-            <div className='flex-row view-item-buttons-child'>
-              <Button
-                onClick={() => setConfirmSell(true)}
-                icon='coins'
-                title={'Sell Item'} />
+        sell || buy ?
+            buy ?
+            <div className='flex-column view-item-buttons-parent'>
+              <div className='flex-row view-item-buttons-child'>
+                <Button
+                  onClick={() => setConfirmBuy(true)}
+                  icon='coins'
+                  title={'Buy Item'} />
+              </div>
             </div>
-          </div>
+            :
+            <div className='flex-column view-item-buttons-parent'>
+              <div className='flex-row view-item-buttons-child'>
+                <Button
+                  onClick={() => setConfirmSell(true)}
+                  icon='coins'
+                  title={'Sell Item'} />
+              </div>
+            </div>
           :
           <div className='flex-column view-item-buttons-parent'>
             {
@@ -249,8 +314,22 @@ const ViewItem = (props) => {
           :
           null
       }
+      {
+        confirmBuy ?
+          <ConfirmDialog
+            text={'Are you sure you want to buy ' + data.name + ' for ' + data.value + ' gold ?'}
+            cancelText={'Cancel'}
+            acceptText={'Buy'}
+            acceptIcon={'coins'}
+            confirm={() => handleConfirmBuy(data)}
+            onClose={() => setConfirmBuy(false)} />
+          :
+          null
+      }
     </MicroDialog>
   );
 }
 
-export default ViewItem;
+const mapStateToProps = ({ inventory, stats }) => ({ inventory, stats });
+
+export default connect(mapStateToProps)(ViewItem);

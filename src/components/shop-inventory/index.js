@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { connect }         from 'react-redux';
 
-import ConfirmDialog from '../confirm-dialog';
-import MicroDialog   from '../micro-dialog';
 import shopItems     from './shop-items';
+import ViewItem      from '../view-item';
 import { EmptySlot } from '../equipped-items';
 import { uuidv4 }    from '../../modules/uuid-v4';
-import store         from '../../config/store';
 
 import './styles.scss';
 
@@ -14,79 +12,8 @@ const ITEMS_PER_PAGE = 5;
 
 const ShopInventory = (props) => {
 
-  const [buyItemDialog, setBuyItemDialog] = useState(null);
+  const [buyItem, setBuyItem] = useState(false);
   const [page, setPage] = useState(0);
-
-  function handleBuyItem(item) {
-    setBuyItemDialog(
-      <MicroDialog no_button>
-        <ConfirmDialog
-          text={'Are you sure you want to buy ' + item.name + ' for ' + item.value + ' gold?'}
-          cancelText={'Cancel'}
-          acceptText={'Buy'}
-          acceptIcon={'coins'}
-          confirm={() => handleConfirmBuyItem(item)}
-          onClose={handleCloseBuyItem} />
-      </MicroDialog>
-    );
-  }
-
-  function handleConfirmBuyItem(item) {
-    const { gold } = props.stats;
-    const { items, maxItems } = props.inventory;
-    // make sure player has enough gold
-    if(gold >= item.value) {
-      // if it's an hp potion
-      if(item.type === 'potion') {
-        store.dispatch({
-          type: 'LOSE_GOLD',
-          payload: { value: item.value }
-        });
-        store.dispatch({
-          type: 'HEAL_HP',
-          payload: { value: parseInt(item.hp, 10) }
-        });
-      } // if it's a backpack upgrade
-      else if(item.type === 'upgrade::backpack') {
-        store.dispatch({
-          type: 'LOSE_GOLD',
-          payload: { value: item.value }
-        });
-        store.dispatch({
-          type: 'UPGRADE_PACK',
-          payload: { slots: item.slots }
-        });
-      } // otherwise, see if there's room in the inventory
-      else if(items.length < maxItems) {
-        store.dispatch({
-          type: 'LOSE_GOLD',
-          payload: { value: item.value }
-        });
-        store.dispatch({
-          type: 'GET_ITEM',
-          payload: item
-        });
-      } else {
-        // inventory full
-        store.dispatch({
-          type: 'TOO_MANY_ITEMS',
-          payload: item
-        });
-      }
-    } else {
-      // not enough gold!
-      store.dispatch({
-        type: 'NOT_ENOUGH_GOLD',
-        payload: item
-      });
-    }
-
-    handleCloseBuyItem();
-  }
-
-  function handleCloseBuyItem() {
-    setBuyItemDialog(null);
-  }
 
   function decrementPage() {
     if(page > 0) {
@@ -108,7 +35,7 @@ const ShopInventory = (props) => {
 
     shopInventoryItems.push(
       <div key={uuidv4()}
-        onClick={() => handleBuyItem(item)}
+        onClick={() => setBuyItem(item)}
         className='flex-row shop-item-container white-border'>
 
         <EmptySlot style={{borderRight: '1px solid'}}>
@@ -157,7 +84,15 @@ const ShopInventory = (props) => {
   return (
     <div className='flex-column shop-inventory-items'>
 
-      { buyItemDialog }
+      {
+        buyItem ?
+          <ViewItem
+            buy={true}
+            data={buyItem}
+            onClose={() => setBuyItem(false)} />
+          :
+          null
+      }
 
       { shopInventoryItems.splice(5 * page, ITEMS_PER_PAGE) }
 
