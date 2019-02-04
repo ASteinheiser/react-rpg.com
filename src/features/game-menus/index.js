@@ -24,8 +24,7 @@ const GameMenus = (props) => {
       <div className={`game-menu-container ${sideMenu ? 'flex-column' : 'flex-row'}`}
         style={{
           paddingLeft: sideMenu ? 8 : 0,
-          height: sideMenu ? '380px' : 'unset',
-          justifyContent: disableStats ? 'flex-end' : 'space-between'
+          height: sideMenu ? '380px' : 'unset'
         }}>
 
         <Stats

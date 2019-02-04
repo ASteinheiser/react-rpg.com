@@ -50,7 +50,7 @@ class Stats extends Component {
           padding: sideMenu ? '12px 0 12px 32px' : 12,
           backgroundColor: statsBgColor,
           height,
-          width: sideMenu ? 150 : 380,
+          width: sideMenu ? 150 : 345,
           lineHeight: sideMenu ? 1.5 : 'unset'
         }}
         className={
