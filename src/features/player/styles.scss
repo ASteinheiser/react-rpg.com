@@ -4,7 +4,7 @@
   height: 40px;
   /* this is for sliding the player to their next location */
   /* NOTE: this needs to be like this otherwise the new bg can load diagonally and it looks weird */
-  transition: left .35s ease-out 0s, top .35s ease-out 0s;
+  transition: left .65s ease-out 0s, top .65s ease-out 0s;
   /* this is for animating the 'steps' */
   animation: movePlayer .35s steps(8) infinite;
   background-position-x: 0px;
