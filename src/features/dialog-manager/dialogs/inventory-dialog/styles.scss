@@ -1,5 +1,6 @@
 .inventory-dialog-container {
   flex: 1;
+  align-items: center;
 }
 
 .inventory-dialog-child {
@@ -8,8 +9,6 @@
 
 .inventory-backpack {
   height: 280px;
-
-  margin-top: 36px;
 
   background-size: cover;
   background-position: center;
