@@ -20,6 +20,10 @@ body {
   font-weight: 400;
   font-size: 20px;
   text-transform: uppercase;
+  /* disable iOS double tap to zoom */
+  touch-action: manipulation;
+  height: 100%;
+  width: 100%;
 }
 
 .flex-1 {
