@@ -33,7 +33,7 @@ class Stats extends Component {
   }
 
   render() {
-    const { disabled, stats, sideMenu } = this.props;
+    const { disabled, stats, sideMenu, largeView } = this.props;
     const { level, exp, expToLevel, damage, defence, hp, maxHp, gold } = stats;
     const { statsBgColor } = this.state;
 
@@ -47,10 +47,10 @@ class Stats extends Component {
       <div
         style={{
           alignItems: sideMenu ? 'flex-start' : 'center',
-          padding: sideMenu ? '12px 0 12px 32px' : 12,
+          padding: sideMenu ? '12px 0 12px 32px' : largeView ? '12px 24px' : 12,
           backgroundColor: statsBgColor,
           height,
-          width: sideMenu ? 150 : 345,
+          width: sideMenu ? 150 : largeView ? 395 : 345,
           lineHeight: sideMenu ? 1.5 : 'unset'
         }}
         className={
@@ -85,7 +85,7 @@ class Stats extends Component {
                 </div>
               </div>
 
-              <div className={`flex-column ${sideMenu ? '' : 'stats-column-spacing'}`}>
+              <div className={`flex-column ${sideMenu ? '' : largeView ? 'stats-column-spacing-large' : 'stats-column-spacing'}`}>
                 <div className={`flex-row ${sideMenu ? '' : 'stats-row-spacing'}`}>
                   <span className='stats-text-spacing'>
                     {'ATK: '}
@@ -104,7 +104,7 @@ class Stats extends Component {
                 </div>
               </div>
 
-              <div className={`flex-column ${sideMenu ? '' : 'stats-column-spacing'}`}>
+              <div className={`flex-column ${sideMenu ? '' : largeView ? 'stats-column-spacing-large' : 'stats-column-spacing'}`}>
                 <div className={`flex-row ${sideMenu ? '' : 'stats-row-spacing'}`}>
                   <div className='flex-row stats-hp-bar-position'
                     style={{paddingBottom: sideMenu ? 12 : 0}}>

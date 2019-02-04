@@ -51,7 +51,7 @@ class Snackbar extends Component {
   }
 
   render() {
-    const { sideMenu } = this.props;
+    const { sideMenu, largeView } = this.props;
     const { show } = this.state;
 
     return(
@@ -59,7 +59,7 @@ class Snackbar extends Component {
         style={{
           marginLeft: sideMenu ? 8 : 0,
           top: sideMenu ? 230 : 100,
-          width: sideMenu ? 180 : 350,
+          width: sideMenu ? 180 : largeView ? 400 : 350,
           fontSize: sideMenu ? 18 : 20,
           opacity: show === '' ? 0 : 1,
           zIndex: show === '' ? 0 : 101,

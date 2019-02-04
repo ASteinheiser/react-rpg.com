@@ -78,7 +78,7 @@ const App = (props) => {
 
         </Viewport>
 
-        <GameMenus sideMenu={sideMenu} />
+        <GameMenus sideMenu={sideMenu} largeView={largeView} />
 
       </div>
 

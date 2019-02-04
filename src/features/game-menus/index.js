@@ -11,7 +11,7 @@ import './styles.scss';
 
 const GameMenus = (props) => {
 
-  const { sideMenu, dialog } = props;
+  const { sideMenu, dialog, largeView } = props;
   const { gameOver, gameStart, paused, inventory, settings } = dialog;
 
   // disable the inventory button when we are in settings or paused and not in the inventory
@@ -23,11 +23,13 @@ const GameMenus = (props) => {
     <div className='flex-row centered'>
       <div className={`game-menu-container ${sideMenu ? 'flex-column' : 'flex-row'}`}
         style={{
+          maxWidth: largeView ? 400 : 350,
           paddingLeft: sideMenu ? 8 : 0,
           height: sideMenu ? '380px' : 'unset'
         }}>
 
         <Stats
+          largeView={largeView}
           sideMenu={sideMenu}
           disabled={disableStats} />
 
@@ -35,7 +37,9 @@ const GameMenus = (props) => {
           sideMenu={sideMenu}
           disabled={disableInventory} />
 
-        <Snackbar sideMenu={sideMenu} />
+        <Snackbar
+          largeView={largeView}
+          sideMenu={sideMenu} />
 
         <div className='flex-column'>
           <GameMusic sideMenu={sideMenu} />
