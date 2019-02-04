@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://react-rpg.com/sitemap.xml
