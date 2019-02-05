@@ -1,5 +1,6 @@
 # React RPG
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+
 React RPG is an Open-Source RPG made with React and Redux.
 
 [Play the Web version here!](http://react-rpg.com)
@@ -29,7 +30,7 @@ yarn test
 ```
 ## 5. Submit a Pull Request!
 
-## Contributors
+# Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
 
