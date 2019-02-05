@@ -12,8 +12,10 @@ const useWindowSize = () => {
 
   useEffect(() => {
     window.addEventListener('resize', updateWindowDimensions);
+    window.addEventListener('orientationchange', updateWindowDimensions);
     return () => {
       window.removeEventListener('resize', updateWindowDimensions);
+      window.removeEventListener('orientationchange', updateWindowDimensions);
     }
   }, []);  // we pass empty array as the second param to make this only call on mount and not on any updates
 
