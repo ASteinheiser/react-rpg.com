@@ -15,6 +15,7 @@ const ViewItem = (props) => {
 
   const { sell, buy, onClose } = props;
 
+  const [confirmHeal, setConfirmHeal] = useState(false);
   const [confirmDrop, setConfirmDrop] = useState(false);
   const [confirmSell, setConfirmSell] = useState(false);
   const [confirmBuy, setConfirmBuy] = useState(false);
@@ -37,14 +38,6 @@ const ViewItem = (props) => {
     });
   }
 
-  function handleDrop() {
-    setConfirmDrop(true);
-  }
-
-  function handleCancelDrop() {
-    setConfirmDrop(false);
-  }
-
   function handleConfirmDrop(item) {
     props.onClose();
     store.dispatch({
@@ -53,23 +46,25 @@ const ViewItem = (props) => {
     });
   }
 
+  function handleConfirmHeal(item) {
+    props.onClose();
+    store.dispatch({
+      type: 'DROP_ITEM',
+      payload: item
+    });
+    store.dispatch({
+      type: 'HEAL_HP',
+      payload: { value: parseInt(item.hp, 10) }
+    });
+  }
+
   function handleConfirmBuy(item) {
     const { gold } = props.stats;
     const { items, maxItems } = props.inventory;
     // make sure player has enough gold
     if(gold >= item.value) {
-      // if it's an hp potion
-      if(item.type === 'potion') {
-        store.dispatch({
-          type: 'LOSE_GOLD',
-          payload: { value: item.value }
-        });
-        store.dispatch({
-          type: 'HEAL_HP',
-          payload: { value: parseInt(item.hp, 10) }
-        });
-      } // if it's a backpack upgrade
-      else if(item.type === 'upgrade::backpack') {
+      // if it's a backpack upgrade
+      if(item.type === 'upgrade::backpack') {
         store.dispatch({
           type: 'LOSE_GOLD',
           payload: { value: item.value }
@@ -288,13 +283,21 @@ const ViewItem = (props) => {
                 :
                 <div className='flex-row view-item-buttons-child'>
                   <Button
-                    onClick={handleDrop}
+                    onClick={() => setConfirmDrop(true)}
                     icon='trash'
                     title={'Drop'} />
-                  <Button
-                    onClick={() => handleEquip(data)}
-                    icon='hand-paper'
-                    title={'Equip'} />
+                  {
+                    data.type === 'potion' ?
+                      <Button
+                        onClick={() => setConfirmHeal(true)}
+                        icon='medkit'
+                        title={'Heal'} />
+                      :
+                      <Button
+                        onClick={() => handleEquip(data)}
+                        icon='hand-paper'
+                        title={'Equip'} />
+                  }
                 </div>
             }
           </div>
@@ -308,7 +311,7 @@ const ViewItem = (props) => {
             acceptText={'Drop'}
             acceptIcon={'trash'}
             confirm={() => handleConfirmDrop(data)}
-            onClose={handleCancelDrop} />
+            onClose={() => setConfirmDrop(false)} />
           :
           null
       }
@@ -333,6 +336,18 @@ const ViewItem = (props) => {
             acceptIcon={'coins'}
             confirm={() => handleConfirmBuy(data)}
             onClose={() => setConfirmBuy(false)} />
+          :
+          null
+      }
+      {
+        confirmHeal ?
+          <ConfirmDialog
+            text={`Are you sure you want to use your ${data.name}?`}
+            cancelText={'Cancel'}
+            acceptText={'Heal'}
+            acceptIcon={'medkit'}
+            confirm={() => handleConfirmHeal(data)}
+            onClose={() => setConfirmHeal(false)} />
           :
           null
       }
