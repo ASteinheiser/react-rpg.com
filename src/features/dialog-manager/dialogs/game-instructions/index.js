@@ -10,6 +10,7 @@ import { START_MAP } from '../../../../config/constants';
 
 import ArrowKeys from './assets/arrow-keys.png';
 import DoubleTap from './assets/double-tap.png';
+import WaitKeys  from './assets/wait-keys.png';
 import Enter     from './assets/enter.png';
 import Space     from './assets/space.png';
 import Swipe     from './assets/swipe.png';
@@ -101,6 +102,23 @@ const GameInstructions = (props) => {
               <React.Fragment>
                 <img src={ArrowKeys} alt='arrow-keys' />
                 <img src={WASDKeys} alt='wasd-keys' />
+              </React.Fragment>
+          }
+        </div>
+
+        {
+          mobileVersion ?
+            null
+            :
+            <span>
+              {`WAIT`}
+            </span>
+        }
+
+        <div className={`flex-row align-center space-evenly`}>
+          {
+              <React.Fragment>
+                <img src={WaitKeys} alt='arrow-keys' />
               </React.Fragment>
           }
         </div>

@@ -30,6 +30,8 @@ export default function Controls(player) {
       case 32:
         // attack with enter or space key
         return attackMonster();
+      case 84:
+        return movePlayer('NONE');
       default:
         // console.log('key not mapped: ', event.keyCode);
     }

@@ -31,6 +31,8 @@ export function getNewPosition(oldPos, direction) {
       return [ oldPos[0], oldPos[1] - SPRITE_SIZE ]
     case 'SOUTH':
       return [ oldPos[0], oldPos[1] + SPRITE_SIZE ]
+    case 'NONE':
+      return [ oldPos[0], oldPos[1] ]
     default:
   }
 }
