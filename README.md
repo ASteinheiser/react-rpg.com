@@ -14,21 +14,22 @@ React RPG is a turn-based, dungeon crawler. Comes with two game modes: Story and
 
 # Want to Contribute?
 ## 1. Create a Github Issue that outlines the feature you want to add.
-## 2. Install
+## 2. Let's discuss the addition to make sure that it aligns with the direction of the project.
+## 3. Install
 ```
 git clone https://github.com/ASteinheiser/react-rpg.com
 cd react-rpg.com
 yarn install
 ```
-## 3. Develop Locally
+## 4. Develop Locally
 ```
 yarn start
 ```
-## 4. Run Tests
+## 5. Run Tests
 ```
 yarn test
 ```
-## 5. Submit a Pull Request!
+## 6. Submit a Pull Request!
 
 # Contributors
 
