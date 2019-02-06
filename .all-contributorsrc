@@ -19,6 +19,15 @@
         "test",
         "code"
       ]
+    },
+    {
+      "login": "Alphanumber",
+      "name": "Alphanumber",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/9552208?v=4",
+      "profile": "https://github.com/Alphanumber",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7
