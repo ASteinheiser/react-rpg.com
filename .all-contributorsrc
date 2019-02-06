@@ -15,9 +15,14 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/9949512?v=4",
       "profile": "http://iamandrew.io",
       "contributions": [
-        "infra",
+        "ideas",
+        "question",
         "test",
-        "code"
+        "code",
+        "doc",
+        "maintenance",
+        "tool",
+        "review"
       ]
     },
     {
