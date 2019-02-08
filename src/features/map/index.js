@@ -50,7 +50,7 @@ export function FogTile(props) {
         display: 'inline-flex',
         height: SPRITE_SIZE,
         width: SPRITE_SIZE,
-        transition: 'opacity .5s ease-in-out'
+        transition: 'opacity .5s linear'
       }} />
   );
 }
