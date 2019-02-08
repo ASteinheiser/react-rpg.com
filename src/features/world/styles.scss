@@ -3,3 +3,15 @@
 
   transition: all 0.5s ease-in-out;
 }
+
+.world-map-transition {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  transition: all .5s ease-in-out;
+
+  background-color: black;
+}

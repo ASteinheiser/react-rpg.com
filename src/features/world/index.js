@@ -1,16 +1,24 @@
-import React       from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { connect }          from 'react-redux';
+import ReactTimeout         from 'react-timeout';
 
 import Map              from '../map';
 import Monsters         from '../monsters';
-import Player           from '../player';
-import store            from '../../config/store';
 import takeMonstersTurn from '../monsters/take-monsters-turn';
+import Player           from '../player';
+import exploreTiles     from '../player/explore-tiles';
 import generateMonsters from '../../modules/generate-monsters';
+import store            from '../../config/store';
 
 import './styles.scss';
 
-class World extends React.Component {
+class World extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      opacity: 0
+    };
+  }
 
   componentDidUpdate(prevProps, prevState) {
     // reload the tiles and monsters if it's a new map
@@ -32,22 +40,32 @@ class World extends React.Component {
   }
 
   handleLoadMap() {
-    const { world } = this.props;
+    const { world, player } = this.props;
     const { gameMode, floorNum, randomMaps, storyMaps } = world;
 
-    if(gameMode === 'endless') {
-      // set map tiles for current random map
-      store.dispatch({
-        type: 'ADD_TILES',
-        payload: { tiles: randomMaps[floorNum - 1].tiles }
-      });
-    } else {
-      // set map tiles for current story map
-      store.dispatch({
-        type: 'ADD_TILES',
-        payload: { tiles: storyMaps[world.currentMap].tiles }
-      });
-    }
+    // fade the map transition to black
+    this.setState({ opacity: 1 }, () => {
+      // after (1 transition + 100ms), show the map again, with the new map loaded
+      this.props.setTimeout(() => {
+        if(gameMode === 'endless') {
+          // set map tiles for current random map
+          store.dispatch({
+            type: 'ADD_TILES',
+            payload: { tiles: randomMaps[floorNum - 1].tiles }
+          });
+        } else {
+          // set map tiles for current story map
+          store.dispatch({
+            type: 'ADD_TILES',
+            payload: { tiles: storyMaps[world.currentMap].tiles }
+          });
+        }
+
+        exploreTiles(player.position);
+
+        this.setState({ opacity: 0 });
+      }, 600);
+    });
   }
 
   handleLoadMonsters() {
@@ -79,6 +97,7 @@ class World extends React.Component {
   }
 
   render() {
+    const { opacity } = this.state;
     const { player, largeView } = this.props;
     const { position } = player;
     // calculate the offset for the world map according to player position
@@ -88,23 +107,28 @@ class World extends React.Component {
     const worldLeft = mapOffset - position[0];
 
     return (
-      <div className='world-view-container'
-        style={{
-          top: worldTop,
-          left: worldLeft
-        }}>
+      <React.Fragment>
+        <div className='world-view-container'
+          style={{
+            top: worldTop,
+            left: worldLeft
+          }}>
 
-        <Map />
+          <Map />
 
-        <Player />
+          <Player />
 
-        <Monsters />
+          <Monsters />
 
-      </div>
+        </div>
+
+        <div className='world-map-transition' style={{ opacity }} />
+
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = ({ world, monsters, player, stats, dialog }) => ({ world, monsters, player, stats, dialog });
 
-export default connect(mapStateToProps)(World);
+export default connect(mapStateToProps)(ReactTimeout(World));

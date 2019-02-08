@@ -44,6 +44,7 @@ function handleInteractWithTile(nextTile, newPos) {
   // the player wants to use the stairs
   if(nextTile === 2 || nextTile === 3) {
     walkStairs(nextTile, newPos);
+    return false;
   }
   // player wants to open chest
   if(nextTile === 4) {
@@ -52,6 +53,7 @@ function handleInteractWithTile(nextTile, newPos) {
     // open the chest
     openChest(x, y);
   }
+  return true;
 }
 
 export default function attemptMove(direction) {
@@ -64,12 +66,12 @@ export default function attemptMove(direction) {
       && !checkForMonster(newPos, direction)) {
     // move the player
     dispatchMove(direction, newPos);
-    // open chests, use shop, etc.
-    handleInteractWithTile(nextTile, newPos);
+    // if we do anything but use stairs, count a turn
+    if(handleInteractWithTile(nextTile, newPos)) {
+      takeTurn();
+    }
     // explore new tiles
     exploreTiles(newPos);
-    // take a turn
-    takeTurn();
   } else {
     // dont move the player
     const { playerMoved, position } = store.getState().player;
