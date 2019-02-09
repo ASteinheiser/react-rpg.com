@@ -21,6 +21,7 @@ React RPG is a turn-based, dungeon crawler. Comes with two game modes: Story and
 ```
 git clone https://github.com/ASteinheiser/react-rpg.com
 cd react-rpg.com
+nvm use
 yarn install
 ```
 ## 4. Develop Locally
