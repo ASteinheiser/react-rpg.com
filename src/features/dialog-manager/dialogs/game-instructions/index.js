@@ -90,18 +90,18 @@ const GameInstructions = (props) => {
         <div className={`flex-row align-center space-evenly`}>
           {
             mobileVersion ?
-              <React.Fragment>
+              <>
                 <img src={Swipe}
                   alt='swipe' />
                 <div className='native-text'>
                   {'SWIPE and HOLD to MOVE'}
                 </div>
-              </React.Fragment>
+              </>
               :
-              <React.Fragment>
+              <>
                 <img src={ArrowKeys} alt='arrow-keys' />
                 <img src={WASDKeys} alt='wasd-keys' />
-              </React.Fragment>
+              </>
           }
         </div>
 
@@ -117,18 +117,18 @@ const GameInstructions = (props) => {
         <div className={`flex-row align-center space-evenly`}>
           {
             mobileVersion ?
-              <React.Fragment>
+              <>
                 <img src={DoubleTap}
                   alt='double-tap' />
                 <div className='native-text'>
                   {'DOUBLE TAP to ATTACK'}
                 </div>
-              </React.Fragment>
+              </>
               :
-              <React.Fragment>
+              <>
                 <img src={Space} alt='space' />
                 <img src={Enter} alt='enter' />
-              </React.Fragment>
+              </>
           }
         </div>
 

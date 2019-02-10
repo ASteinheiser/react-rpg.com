@@ -32,4 +32,4 @@ ReactDOM.render((
 
     </PersistGate>
   </Provider>
-), document.getElementById('root'));
+), document.getElementById('react-rpg'));

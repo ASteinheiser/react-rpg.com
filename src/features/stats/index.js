@@ -62,7 +62,7 @@ class Stats extends Component {
           disabled ?
             null
             :
-            <React.Fragment>
+            <>
               <div className='flex-column'>
                 <div className={`flex-row ${sideMenu ? '' : 'stats-row-spacing'}`}>
                   <span className='stats-text-spacing'>
@@ -137,7 +137,7 @@ class Stats extends Component {
                   </span>
                 </div>
               </div>
-            </React.Fragment>
+            </>
         }
 
       </div>

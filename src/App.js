@@ -14,7 +14,7 @@ import useWindowSize       from './modules/use-window-size';
 
 const App = (props) => {
 
-  const [showDl, setShowDl] = useState(false);
+  const [showDownloadPopup, setShowDownloadPopup] = useState(false);
 
   let mobileVersion = false;
 
@@ -35,11 +35,11 @@ const App = (props) => {
     return clearAllBodyScrollLocks;
   }, []);
 
-  // check if we are on the webView version, and if not
+  // if this is not the react native app and they haven't opted out,
   // show the user a dialog to download the app
   useEffect(() => {
     if(!nativeApp && !optOutDownload) {
-      setShowDl(true);
+      setShowDownloadPopup(true);
     }
   }, []);
 
@@ -58,9 +58,8 @@ const App = (props) => {
   }
 
   return(
-    <React.Fragment>
-
-      { showDl ? <DownloadAppPopup onClose={() => setShowDl(false)} /> : null }
+    <>
+      { showDownloadPopup && <DownloadAppPopup onClose={() => setShowDownloadPopup(false)} /> }
 
       <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
 
@@ -80,8 +79,7 @@ const App = (props) => {
       </div>
 
       { mobileVersion ? null : <Footer /> }
-
-    </React.Fragment>
+    </>
   );
 }
 

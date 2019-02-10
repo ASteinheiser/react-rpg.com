@@ -64,7 +64,7 @@ export default function MapPadding(props) {
   PaddingTiles.top.reverse();
 
   return(
-    <React.Fragment>
+    <>
       <div className='map-padding-top'>
         { PaddingTiles.top }
       </div>
@@ -77,6 +77,6 @@ export default function MapPadding(props) {
       <div className='map-padding-right'>
         { PaddingTiles.right }
       </div>
-    </React.Fragment>
+    </>
   );
 }

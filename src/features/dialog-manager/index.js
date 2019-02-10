@@ -37,16 +37,14 @@ const DialogManager = (props) => {
   if(settings) PauseComp = <SettingsDialog />;
 
   return(
-    <React.Fragment>
-
+    <>
       {/* Show the 'paused' component here - this is the game start screen,
         game over screen, as well as other dialogs throughout the game */}
       { PauseComp }
 
       {/* Show the 'settings' component over the 'paused' components */}
       { SettingsComp }
-
-    </React.Fragment>
+    </>
   );
 }
 

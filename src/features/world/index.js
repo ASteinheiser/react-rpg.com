@@ -107,7 +107,7 @@ class World extends Component {
     const worldLeft = mapOffset - position[0];
 
     return (
-      <React.Fragment>
+      <>
         <div className='world-view-container'
           style={{
             top: worldTop,
@@ -123,8 +123,7 @@ class World extends Component {
         </div>
 
         <div className='world-map-transition' style={{ opacity }} />
-
-      </React.Fragment>
+      </>
     );
   }
 }
