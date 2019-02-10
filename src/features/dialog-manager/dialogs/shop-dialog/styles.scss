@@ -1,25 +1,18 @@
-.shop-container {
+.shop-dialog__container {
   flex: 1;
 
   justify-content: space-between;
   align-items: center;
 }
 
-.shop-title-text {
+.shop-dialog__title {
   font-size: 26px;
   text-align: center;
 
   padding: 24px 64px 0;
 }
 
-.shop-button-container {
-  width: 100%;
-  justify-content: space-evenly;
-
-  padding-bottom: 16px;
-}
-
-.shop-keep-text {
+.shop-dialog__text {
   justify-content: center;
 
   width: 50%;
@@ -30,4 +23,11 @@
   text-align: center;
   line-height: 1.4;
   letter-spacing: 1px;
+}
+
+.shop-dialog__button {
+  width: 100%;
+  justify-content: space-evenly;
+
+  padding-bottom: 16px;
 }

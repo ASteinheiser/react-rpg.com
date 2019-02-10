@@ -17,7 +17,7 @@ import WASDKeys  from './assets/wasd-keys.png';
 
 import './styles.scss';
 
-const GameInstructions = (props) => {
+const GameInstructions = ({ world }) => {
 
   let mobileVersion = false;
   if(window.location.search === '?nativeApp=true' || isMobile) {
@@ -44,7 +44,7 @@ const GameInstructions = (props) => {
   }
 
   function handleShowMapMessage() {
-    const { message } = props.world.storyMaps[START_MAP];
+    const { message } = world.storyMaps[START_MAP];
 
     store.dispatch({
       type: 'PAUSE',
@@ -73,16 +73,16 @@ const GameInstructions = (props) => {
 
   return(
     <Dialog>
-      <div className='game-instructions-title'>
+      <div className='game-instructions__title'>
         {'Game Controls'}
       </div>
 
-      <div className='game-instructions-text'>
+      <div className='game-instructions__text'>
         {
           mobileVersion ?
             null
             :
-            <span>
+            <span style={{paddingBottom: 12}}>
               {`MOVEMENT`}
             </span>
         }
@@ -93,7 +93,7 @@ const GameInstructions = (props) => {
               <>
                 <img src={Swipe}
                   alt='swipe' />
-                <div className='native-text'>
+                <div className='game-instructions__native-text'>
                   {'SWIPE and HOLD to MOVE'}
                 </div>
               </>
@@ -120,7 +120,7 @@ const GameInstructions = (props) => {
               <>
                 <img src={DoubleTap}
                   alt='double-tap' />
-                <div className='native-text'>
+                <div className='game-instructions__native-text'>
                   {'DOUBLE TAP to ATTACK'}
                 </div>
               </>
@@ -134,7 +134,7 @@ const GameInstructions = (props) => {
 
       </div>
 
-      <div className='flex-column game-start-button'>
+      <div className='flex-column game-instructions__button'>
         <Button
           onClick={handleContinue}
           title={'Continue'} />

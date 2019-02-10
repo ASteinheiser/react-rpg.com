@@ -8,7 +8,7 @@ import ViewItem      from '../../../../components/view-item';
 
 import './styles.scss';
 
-const InventoryDialog = (props) => {
+const InventoryDialog = () => {
 
   const [viewItem, setViewItem] = useState(null);
 
@@ -29,18 +29,20 @@ const InventoryDialog = (props) => {
 
       { viewItem }
 
-      <div className='flex-row inventory-dialog-container'>
-        <div className='flex-column inventory-dialog-child'
+      <div className='flex-row inventory-dialog__container'>
+
+        <div className='flex-column inventory-dialog__child'
           style={{width: '40%'}}>
           <EquippedItems />
         </div>
 
-        <div className='flex-column inventory-dialog-child'
+        <div className='flex-column inventory-dialog__child'
           style={{width: '60%'}}>
-          <div className='inventory-backpack' style={{backgroundImage: `url(${Backpack})`}}>
+          <div className='inventory-dialog__backpack' style={{backgroundImage: `url(${Backpack})`}}>
             <BackpackItems view_item={handleViewItem} />
           </div>
         </div>
+
       </div>
     </Dialog>
   );

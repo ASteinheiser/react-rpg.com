@@ -6,14 +6,16 @@ const HealthBar = ({ value, max }) => {
   // dont show hp bars on full health units
   return(
     <span className='flex-row'>
-      <span className='health-bar-container'
+      <span className='health-bar__container'
         style={{
           width: (value === max) ? 0 : '38px',
           border: (value === max) ? '' : '1px solid var(--green)',
         }}>
-        <span className='health-bar-value'
+
+        <span className='health-bar__value'
           style={{ width: `${(value / max) * 100}%` }}>
         </span>
+
       </span>
     </span>
   );

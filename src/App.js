@@ -12,7 +12,7 @@ import World               from './features/world';
 import Viewport            from './components/viewport';
 import useWindowSize       from './modules/use-window-size';
 
-const App = (props) => {
+const App = ({ appState, world }) => {
 
   const [showDownloadPopup, setShowDownloadPopup] = useState(false);
 
@@ -24,8 +24,8 @@ const App = (props) => {
     mobileVersion = true;
   }
 
-  const { optOutDownload } = props.appState;
-  const { gameMode, floorNum } = props.world;
+  const { optOutDownload } = appState;
+  const { gameMode, floorNum } = world;
   const { height, width } = useWindowSize();
 
   // disable scrolling of the page
@@ -70,7 +70,7 @@ const App = (props) => {
           <DialogManager />
 
           {/* Show the floor counter when playing endless mode */}
-          { gameMode === 'endless' ? <EndlessFloorCounter floor={floorNum} /> : null }
+          { gameMode === 'endless' && <EndlessFloorCounter floor={floorNum} /> }
 
         </Viewport>
 
@@ -78,7 +78,7 @@ const App = (props) => {
 
       </div>
 
-      { mobileVersion ? null : <Footer /> }
+      { !mobileVersion && <Footer /> }
     </>
   );
 }

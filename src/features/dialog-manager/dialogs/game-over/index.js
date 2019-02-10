@@ -31,15 +31,15 @@ class GameOver extends Component {
 
     return(
       <Dialog>
-        <span className='game-over-title'>
+        <span className='game-over__title'>
           {'Game Over!'}
         </span>
 
-        <span className='game-over-text'>
+        <span className='game-over__text'>
           { phrase }
         </span>
 
-        <div className='game-over-button-container'>
+        <div className='game-over__button'>
           <Button
             onClick={ready && resetGameState}
             title={'New Game'}

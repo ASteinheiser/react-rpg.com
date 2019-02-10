@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect }          from 'react-redux';
 
 import Button      from '../../../../components/button';
 import MicroDialog from '../../../../components/micro-dialog';
@@ -8,11 +8,11 @@ import store       from '../../../../config/store';
 
 import './styles.scss';
 
-const ChestLoot = (props) => {
+const ChestLoot = ({ stats, dialog, inventory }) => {
 
-  const { level } = props.stats;
+  const { level } = stats;
 
-  const { chestOpen } = props.dialog;
+  const { chestOpen } = dialog;
   const { gold, exp, item } = chestOpen;
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const ChestLoot = (props) => {
   }
 
   function handleContinue() {
-    const { items, maxItems } = props.inventory;
+    const { items, maxItems } = inventory;
     const { item } = store.getState().dialog.chestOpen;
 
     if(item) {
@@ -95,31 +95,31 @@ const ChestLoot = (props) => {
   return(
     <MicroDialog onClose={handleClose}>
 
-      <span className='chest-loot-title'>
+      <span className='chest-loot__title'>
         {'Chest Loot!'}
       </span>
 
-      <div className='flex-column chest-loot-contents'>
+      <div className='flex-column chest-loot__contents'>
 
-        <div className='flex-row chest-loot-value-spacing'>
+        <div className='flex-row chest-loot__value--spacing'>
           <span>{'Gold: '}</span>
           <span>{gold}</span>
         </div>
 
-        <div className='flex-row chest-loot-value-spacing'>
+        <div className='flex-row chest-loot__value--spacing'>
           <span>{'Exp: '}</span>
           <span>{exp}</span>
         </div>
 
         {
           item ?
-            <div className='flex-row chest-loot-item'>
+            <div className='flex-row chest-loot__item'>
               <div style={{
                   backgroundImage: `url('${item.image}')`,
                   width: '40px',
                   height: '40px'
                 }} />
-                <span className='flex-column chest-loot-item-name'>
+                <span className='flex-column chest-loot__item-name'>
                   {item.name}
                 </span>
             </div>
@@ -128,7 +128,7 @@ const ChestLoot = (props) => {
         }
       </div>
 
-      <div className='flex-column chest-loot-button-container'>
+      <div className='flex-column chest-loot__buttons'>
         <Button
           onClick={handleContinue}
           title={item ? 'Pick Up' : 'Continue'}

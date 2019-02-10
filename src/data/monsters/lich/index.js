@@ -3,8 +3,7 @@ import React from 'react';
 import Monster    from '../../../features/monsters/monster';
 import LichSprite from './lich.png';
 
-function Lich(props) {
-  const { monster } = props;
+function Lich({ monster }) {
 
   monster.sprite = LichSprite;
 

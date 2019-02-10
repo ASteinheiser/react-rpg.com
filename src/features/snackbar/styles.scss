@@ -1,4 +1,4 @@
-.snackbar-container {
+.snackbar__container {
   background-color: var(--dark-gray);
 
   position: absolute;
@@ -14,7 +14,7 @@
   display: flex;
 }
 
-.snackbar-text {
+.snackbar__text {
   display: flex;
   flex: 1;
 

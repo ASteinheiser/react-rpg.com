@@ -5,10 +5,10 @@ import { SPRITE_SIZE }            from '../../config/constants';
 
 import './styles.scss';
 
-function BoundaryTile(props) {
-  const { tileType, variation, explored, sightBox, location } = props;
+function BoundaryTile({ tileType, variation, explored, sightBox, location }) {
 
   let inSight = false;
+
   if(sightBox) {
     // check the sight box tiles
     sightBox.forEach(sightBoxTile => {
@@ -32,8 +32,7 @@ function BoundaryTile(props) {
   );
 }
 
-export default function MapPadding(props) {
-  const { tileType, tiles, sightBox } = props;
+export default function MapPadding({ tileType, tiles, sightBox }) {
 
   const PaddingTiles = {};
 
@@ -65,16 +64,16 @@ export default function MapPadding(props) {
 
   return(
     <>
-      <div className='map-padding-top'>
+      <div className='map__padding--top'>
         { PaddingTiles.top }
       </div>
-      <div className='map-padding-bottom'>
+      <div className='map__padding--bottom'>
         { PaddingTiles.bottom }
       </div>
-      <div className='map-padding-left'>
+      <div className='map__padding--left'>
         { PaddingTiles.left }
       </div>
-      <div className='map-padding-right'>
+      <div className='map__padding--right'>
         { PaddingTiles.right }
       </div>
     </>

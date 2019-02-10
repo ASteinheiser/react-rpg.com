@@ -1,4 +1,4 @@
-.game-over-title {
+.game-over__title {
   display: flex;
   justify-content: center;
 
@@ -7,7 +7,7 @@
   font-size: 32px;
 }
 
-.game-over-text {
+.game-over__text {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -18,7 +18,7 @@
   letter-spacing: 1px;
 }
 
-.game-over-button-container {
+.game-over__button {
   display: flex;
   flex: 1;
   flex-direction: column;

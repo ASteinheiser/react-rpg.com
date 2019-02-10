@@ -6,9 +6,7 @@ import store  from '../../../../config/store';
 
 import './styles.scss';
 
-const GameTextDialog = (props) => {
-
-  const { text1, text2 } = props;
+const GameTextDialog = ({ text1, text2 }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
@@ -34,17 +32,17 @@ const GameTextDialog = (props) => {
   return(
     <Dialog>
 
-      <div className='flex-column game-text-dialog-container'>
+      <div className='flex-column game-text-dialog__container'>
 
-        <div className='game-text-dialog-text'>
+        <span className='game-text-dialog__text'>
           { text1 || '' }
-        </div>
+        </span>
 
-        <div className='game-text-dialog-text'>
+        <span className='game-text-dialog__text'>
           { text2 || '' }
-        </div>
+        </span>
 
-        <div className='game-text-dialog-button'>
+        <div className='game-text-dialog__button'>
           <Button
             onClick={handleCloseDialog}
             title='Continue' />

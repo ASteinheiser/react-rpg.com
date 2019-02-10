@@ -8,7 +8,7 @@ import store          from '../../../../config/store';
 
 import './styles.scss';
 
-const GameWin = (props) => {
+const GameWin = ({ monsters }) => {
 
   function handleCloseDialog() {
     store.dispatch({
@@ -17,7 +17,7 @@ const GameWin = (props) => {
     });
   }
 
-  const { components } = props.monsters;
+  const { components } = monsters;
   let monstersRemain = false;
   // check monsters by map
   Object.keys(components).forEach(mapId => {
@@ -30,11 +30,11 @@ const GameWin = (props) => {
   if(!monstersRemain) {
     return(
       <Dialog>
-        <span className='flex-column game-win-text'>
+        <span className='flex-column game-win__text'>
           {'The old spirit speaks: "Greetings warrior! I cannot thank you enough for freeing me from the evil spirits. Now I may finally rest..."'}
         </span>
 
-        <div className='flex-row game-win-button'>
+        <div className='flex-row game-win__button'>
           <Button
             onClick={resetGameState}
             icon='sync'
@@ -46,15 +46,15 @@ const GameWin = (props) => {
   // player hasn't killed all enemies
   return(
     <Dialog>
-      <span className='flex-row game-win-title'>
+      <span className='flex-row game-win__title'>
         {'You Are Weak...'}
       </span>
 
-      <span className='flex-column game-win-text'>
+      <span className='flex-column game-win__text'>
         {'The shrine can only recognize you once every monster in the dungeon has been defeated...'}
       </span>
 
-      <div className='flex-row game-win-button'>
+      <div className='flex-row game-win__button'>
         <Button
           onClick={handleCloseDialog}
           icon='reply'

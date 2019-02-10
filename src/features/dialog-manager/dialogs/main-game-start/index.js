@@ -8,7 +8,7 @@ import { START_MAP } from '../../../../config/constants';
 
 import './styles.scss';
 
-const MainGameStart = (props) => {
+const MainGameStart = () => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
@@ -91,19 +91,17 @@ const MainGameStart = (props) => {
   }
 
   return(
-    <Dialog>
-      <i onClick={goBack}
-        className={`fa fa-arrow-left game-start-back`} />
+    <Dialog goBack={goBack}>
 
-      <div className='flex-row game-start-title'>
+      <span className='flex-row game-start__title'>
         {'Story Mode'}
-      </div>
+      </span>
 
-      <div className='flex-column game-start-text'>
+      <span className='flex-column game-start__text'>
         {'Explore the dark dungeon, full of monsters and gear!'}
-      </div>
+      </span>
 
-      <div className='flex-column game-start-button'>
+      <div className='flex-column game-start__button'>
         <Button
           onClick={handleGameStart}
           icon='compass'

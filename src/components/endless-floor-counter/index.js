@@ -2,17 +2,14 @@ import React from 'react';
 
 import './styles.scss';
 
-const EndlessFloorCounter = (props) => {
-
-  const { floor } = props;
-
+const EndlessFloorCounter = ({ floor }) => {
   return(
-    <div className='endless-floor-counter'>
+    <div className='floor-counter__container'>
 
       {'FLOOR'}
 
-      <span className='endless-floor-value'>
-        {floor}
+      <span className='floor-counter__value'>
+        { floor }
       </span>
     </div>
   );

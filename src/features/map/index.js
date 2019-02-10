@@ -35,13 +35,13 @@ export function getTileSprite(type, variation) {
   }
 }
 
-export function FogTile(props) {
+export function FogTile({ inSight, explored }) {
   // show the tile by default
   let opacity = '0';
   // if the tile is out of sight, show faded
-  if(!props.inSight) opacity = '0.5';
+  if(!inSight) opacity = '0.5';
   // if the tile is unexplored, hide it
-  if(!props.explored) opacity = '1';
+  if(!explored) opacity = '1';
   // render fog tiles
   return (
     <div style={{
@@ -55,29 +55,29 @@ export function FogTile(props) {
   );
 }
 
-function GroundTile(props) {
+function GroundTile({ variation, children }) {
   return (
     <div
       style={{
-        backgroundImage: `url('/tiles/ground-${props.variation}.png')`,
+        backgroundImage: `url('/tiles/ground-${variation}.png')`,
         display: 'inline-flex',
         height: SPRITE_SIZE,
         width: SPRITE_SIZE,
       }}>
-      { props.children }
+      { children }
     </div>
   )
 }
 
-function MapTile(props) {
-  const { tile } = props;
+function MapTile({ tile, index, sightBox }) {
+
   let inSight = false;
   // if you need to render the sightBox
-  if(props.sightBox) {
+  if(sightBox) {
     // check the sight box tiles
-    props.sightBox.forEach(sightBox => {
+    sightBox.forEach(sightBox => {
       // if the current tile is in range
-      if(JSON.stringify(sightBox) === JSON.stringify(props.index)) {
+      if(JSON.stringify(sightBox) === JSON.stringify(index)) {
         // remove the overlay
         return inSight = true;
       }
@@ -87,7 +87,7 @@ function MapTile(props) {
   if(tile.value === 20) {
     return (
       <GroundTile variation={tile.variation}>
-        <Flame position={props.index}>
+        <Flame position={index}>
           <FogTile explored={tile.explored} inSight={inSight} />
         </Flame>
       </GroundTile>
@@ -129,8 +129,7 @@ function MapRow(props) {
   )
 }
 
-function Map(props) {
-  const { map, dialog } = props;
+function Map({ map, dialog }) {
   const { gameStart } = dialog;
 
   const wallType = getWallType(map.tiles);

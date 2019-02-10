@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect }         from 'react-redux';
 
 import Button        from '../button';
 import { EmptySlot } from '../equipped-items';
@@ -11,9 +11,7 @@ import { uuidv4 }    from '../../modules/uuid-v4';
 
 import './styles.scss';
 
-const ViewItem = (props) => {
-
-  const { sell, buy, onClose } = props;
+const ViewItem = ({ sell, buy, onClose, data, stats, inventory }) => {
 
   const [confirmHeal, setConfirmHeal] = useState(false);
   const [confirmDrop, setConfirmDrop] = useState(false);
@@ -21,7 +19,7 @@ const ViewItem = (props) => {
   const [confirmBuy, setConfirmBuy] = useState(false);
 
   function handleUnEquip(item) {
-    props.onClose();
+    onClose();
     store.dispatch({
       type: 'UNEQUIP_ITEM',
       payload: {
@@ -31,7 +29,7 @@ const ViewItem = (props) => {
   }
 
   function handleEquip(item) {
-    props.onClose();
+    onClose();
     store.dispatch({
       type: 'EQUIP_ITEM',
       payload: item
@@ -39,7 +37,7 @@ const ViewItem = (props) => {
   }
 
   function handleConfirmDrop(item) {
-    props.onClose();
+    onClose();
     store.dispatch({
       type: 'DROP_ITEM',
       payload: item
@@ -47,7 +45,7 @@ const ViewItem = (props) => {
   }
 
   function handleConfirmHeal(item) {
-    props.onClose();
+    onClose();
     store.dispatch({
       type: 'DROP_ITEM',
       payload: item
@@ -59,8 +57,8 @@ const ViewItem = (props) => {
   }
 
   function handleConfirmBuy(item) {
-    const { gold } = props.stats;
-    const { items, maxItems } = props.inventory;
+    const { gold } = stats;
+    const { items, maxItems } = inventory;
     // make sure player has enough gold
     if(gold >= item.value) {
       // if it's a backpack upgrade
@@ -149,7 +147,6 @@ const ViewItem = (props) => {
     onClose();
   }
 
-  const { data, stats } = props;
   // get equipped items
   const equipped = store.getState().stats.equippedItems;
 
@@ -179,7 +176,7 @@ const ViewItem = (props) => {
         let bonusType = data.bonus.split('::')[0];
         let bonusMult = parseFloat(data.bonus.split('::')[1], 10);
         // display the bonus
-        itemStats.push(<StatsItem stats={{ name: 'VS. ' + bonusType, value: bonusMult + 'x' }} key={uuidv4()} />);
+        itemStats.push(<StatsItem stats={{ name: `VS. ${bonusType}`, value: bonusMult + 'x' }} key={uuidv4()} />);
       }
       break;
 
@@ -232,29 +229,31 @@ const ViewItem = (props) => {
   const itemSellPrice = Math.ceil(data.value / 2);
 
   return(
-    <MicroDialog onClose={props.onClose}>
-      <div className='view-item-text-container'>
-        <EmptySlot className='white-border view-item-image-container'>
+    <MicroDialog onClose={onClose}>
+
+      <div className='view-item__title'>
+        <EmptySlot className='white-border view-item__image'>
           <div style={{
               backgroundImage: `url('${data.image}')`,
               width: '40px',
               height: '40px'
             }} />
         </EmptySlot>
-        <span className='view-item-text'>
+
+        <span className='view-item__text'>
           { data.name || '-' }
         </span>
       </div>
 
-      <div className='flex-column view-item-stats-container'>
+      <div className='flex-column view-item__stats'>
         { itemStats }
       </div>
 
       {
-        sell || buy ?
+        (sell || buy) ?
             buy ?
-            <div className='flex-column view-item-buttons-parent'>
-              <div className='flex-row view-item-buttons-child'>
+            <div className='flex-column view-item__button-container'>
+              <div className='flex-row view-item__button'>
                 <Button
                   onClick={() => setConfirmBuy(true)}
                   icon='coins'
@@ -262,8 +261,8 @@ const ViewItem = (props) => {
               </div>
             </div>
             :
-            <div className='flex-column view-item-buttons-parent'>
-              <div className='flex-row view-item-buttons-child'>
+            <div className='flex-column view-item__button-container'>
+              <div className='flex-row view-item__button'>
                 <Button
                   onClick={() => setConfirmSell(true)}
                   icon='coins'
@@ -271,17 +270,17 @@ const ViewItem = (props) => {
               </div>
             </div>
           :
-          <div className='flex-column view-item-buttons-parent'>
+          <div className='flex-column view-item__button-container'>
             {
               itemIsEquipped ?
-                <div className='flex-row view-item-buttons-child'>
+                <div className='flex-row view-item__button'>
                   <Button
                     onClick={() => handleUnEquip(data)}
                     icon='archive'
                     title={'Un-equip'} />
                 </div>
                 :
-                <div className='flex-row view-item-buttons-child'>
+                <div className='flex-row view-item__button'>
                   <Button
                     onClick={() => setConfirmDrop(true)}
                     icon='trash'
@@ -303,7 +302,7 @@ const ViewItem = (props) => {
           </div>
       }
       {
-        confirmDrop ?
+        confirmDrop &&
           <ConfirmDialog
             text={'Are you sure!? This item will be gone forever...'}
             cancelText={'Keep'}
@@ -312,35 +311,29 @@ const ViewItem = (props) => {
             acceptIcon={'trash'}
             confirm={() => handleConfirmDrop(data)}
             onClose={() => setConfirmDrop(false)} />
-          :
-          null
       }
       {
-        confirmSell ?
+        confirmSell &&
           <ConfirmDialog
-            text={'Are you sure you want to sell your ' + data.name + ' for ' + itemSellPrice + ' gold ?'}
+            text={`Are you sure you want to sell your ${data.name} for ${itemSellPrice} gold ?`}
             cancelText={'Cancel'}
             acceptText={'Sell'}
             acceptIcon={'coins'}
             confirm={() => handleConfirmSell(data, itemSellPrice)}
             onClose={() => setConfirmSell(false)} />
-          :
-          null
       }
       {
-        confirmBuy ?
+        confirmBuy &&
           <ConfirmDialog
-            text={'Are you sure you want to buy ' + data.name + ' for ' + data.value + ' gold ?'}
+            text={`Are you sure you want to buy ${data.name} for ${data.value} gold ?`}
             cancelText={'Cancel'}
             acceptText={'Buy'}
             acceptIcon={'coins'}
             confirm={() => handleConfirmBuy(data)}
             onClose={() => setConfirmBuy(false)} />
-          :
-          null
       }
       {
-        confirmHeal ?
+        confirmHeal &&
           <ConfirmDialog
             text={`Are you sure you want to use your ${data.name}?`}
             cancelText={'Cancel'}
@@ -348,8 +341,6 @@ const ViewItem = (props) => {
             acceptIcon={'medkit'}
             confirm={() => handleConfirmHeal(data)}
             onClose={() => setConfirmHeal(false)} />
-          :
-          null
       }
     </MicroDialog>
   );

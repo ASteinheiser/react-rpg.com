@@ -11,7 +11,7 @@ import { uuidv4 }       from '../../../../modules/uuid-v4';
 
 import './styles.scss';
 
-const EndlessGameStart = (props) => {
+const EndlessGameStart = () => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
@@ -118,22 +118,17 @@ const EndlessGameStart = (props) => {
   }
 
   return(
-    <Dialog>
-      <i onClick={goBack}
-        className={`fa fa-arrow-left endless-start-back`} />
+    <Dialog goBack={goBack}>
 
-      <div className='flex-row endless-start-title'>
+      <span className='flex-row endless-start__title'>
         {'Endless Mode'}
-      </div>
+      </span>
 
-      <div className='flex-column endless-start-text'>
-        <div>
-          {'Up for a challenge..? These randomly generated dungeons will run you into oblivion.'}
-        </div>
+      <span className='flex-column endless-start__text'>
+        {'Up for a challenge..? These randomly generated dungeons will run you into oblivion.'}
+      </span>
 
-      </div>
-
-      <div className='flex-column endless-start-button'>
+      <div className='flex-column endless-start__button'>
         <Button
           onClick={handleGameStart}
           icon='compass'

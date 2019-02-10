@@ -9,6 +9,13 @@ import { ANIMATION_SPEED } from '../../config/constants';
 var intervalId = null;
 
 export default function Controls(player) {
+
+  function gamePaused() {
+    const { paused, settings } = store.getState().dialog;
+    if(paused || settings) return true;
+    return false;
+  }
+
   function handleKeyDown(event) {
     event.preventDefault();
 
@@ -38,7 +45,7 @@ export default function Controls(player) {
   // enable keyboard for player controls
   window.addEventListener('keydown', _debounce((event) => {
     // if the game is not paused by dialogs
-    if(!(store.getState().dialog.paused)) handleKeyDown(event);
+    if(!gamePaused()) handleKeyDown(event);
   },
     ANIMATION_SPEED,
     { maxWait: ANIMATION_SPEED, leading: true, trailing: false })
@@ -53,7 +60,7 @@ export default function Controls(player) {
 
   hammertime.on('swipe', _debounce(({ direction, offsetDirection }) => {
     // return if the game is paused by dialogs
-    if(store.getState().dialog.paused) return;
+    if(gamePaused()) return;
     // if we get a bad pan, use the best guess
     if(direction === 1) direction = offsetDirection;
 
@@ -83,8 +90,8 @@ export default function Controls(player) {
   });
 
   hammertime.on('panstart', _debounce(({ direction, offsetDirection }) => {
-    // return if the game is paused by dialogs
-    if(store.getState().dialog.paused) return;
+    // return if the game is paused by dialogs or in settings mode
+    if(gamePaused()) return;
     // if we get a bad pan, use the best guess
     if(direction === 1) direction = offsetDirection;
 
@@ -113,7 +120,7 @@ export default function Controls(player) {
 
   hammertime.on('tap', _debounce(() => {
     // if the game is not paused by dialogs
-    if(!(store.getState().dialog.paused)) attackMonster();
+    if(!gamePaused()) attackMonster();
   },
     ANIMATION_SPEED,
     { maxWait: ANIMATION_SPEED, leading: true, trailing: false })

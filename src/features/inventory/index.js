@@ -57,11 +57,9 @@ class Inventory extends Component {
     const open = dialog.inventory;
 
     return (
-      <div className='flex-row inventory-container'>
+      <div className='flex-row inventory__container'>
         {
-          disabled ?
-            null
-            :
+          !disabled &&
             <Button
               small={sideMenu}
               indicator={newItemIndicator}
@@ -74,7 +72,7 @@ class Inventory extends Component {
               title={open ?
                 'Close' : 'Inventory'}
               style={{
-                width: (open ? '110px' : (sideMenu ? '150px' : '170px')),
+                width: 'fit-content',
                 transition: 'width .25s ease-out',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',

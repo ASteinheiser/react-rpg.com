@@ -54,65 +54,72 @@ class Stats extends Component {
           lineHeight: sideMenu ? 1.5 : 'unset'
         }}
         className={
-          `stats-container
+          `stats__container
           ${disabled ? '' : 'white-border'}
           ${sideMenu ? 'flex-column-reverse' : 'flex-row'}`
         }>
         {
-          disabled ?
-            null
-            :
+          !disabled &&
             <>
               <div className='flex-column'>
-                <div className={`flex-row ${sideMenu ? '' : 'stats-row-spacing'}`}>
-                  <span className='stats-text-spacing'>
+
+                <div className={`flex-row ${sideMenu ? '' : 'stats__row--spacing'}`}>
+                  <span className='stats__text--spacing'>
                     {'LEVEL: '}
                   </span>
-                  <span className='stats-text-level'>
+                  <span className='stats__text--level'>
                     { level }
                   </span>
                 </div>
-                <div className='flex-row exp-bar-position'
+
+                <div className='flex-row flex-1'
                   style={{paddingTop: sideMenu ? 12 : 0}}>
-                  <span className='exp-bar-container'>
-                    <span className='flex-row stats-bar-value-text'>
+
+                  <span className='exp-bar__container'>
+                    <span className='flex-row stats-bar__text'>
                       {'EXP'}
                     </span>
-                    <span className='exp-bar-value'
+                    <span className='exp-bar__value'
                       style={{ width: `${(exp / expToLevel) * 100}%` }}>
                     </span>
                   </span>
                 </div>
+
               </div>
 
-              <div className={`flex-column ${sideMenu ? '' : largeView ? 'stats-column-spacing-large' : 'stats-column-spacing'}`}>
-                <div className={`flex-row ${sideMenu ? '' : 'stats-row-spacing'}`}>
-                  <span className='stats-text-spacing'>
+              <div className={`flex-column ${sideMenu ? '' : largeView ? 'stats-column__spacing--large' : 'stats-column__spacing'}`}>
+
+                <div className={`flex-row ${sideMenu ? '' : 'stats__row--spacing'}`}>
+                  <span className='stats__text--spacing'>
                     {'ATK: '}
                   </span>
-                  <span className='stats-text-damage'>
+                  <span className='stats__text--damage'>
                     { damage }
                   </span>
                 </div>
+
                 <div className='flex-row'>
-                  <span className='stats-text-spacing'>
+                  <span className='stats__text--spacing'>
                     {'DEF: '}
                   </span>
-                  <span className='stats-text-defence'>
+                  <span className='stats__text--defence'>
                     { defence }
                   </span>
                 </div>
+
               </div>
 
-              <div className={`flex-column ${sideMenu ? '' : largeView ? 'stats-column-spacing-large' : 'stats-column-spacing'}`}>
-                <div className={`flex-row ${sideMenu ? '' : 'stats-row-spacing'}`}>
-                  <div className='flex-row stats-hp-bar-position'
+              <div className={`flex-column ${sideMenu ? '' : largeView ? 'stats-column__spacing--large' : 'stats-column__spacing'}`}>
+
+                <div className={`flex-row ${sideMenu ? '' : 'stats__row--spacing'}`}>
+                  <div className='flex-row'
                     style={{paddingBottom: sideMenu ? 12 : 0}}>
-                    <span className='stats-hp-bar-container'>
-                      <span className='flex-row stats-bar-value-text'>
+
+                    <span className='stats-hp-bar__container'>
+                      <span className='flex-row stats-bar__text'>
                         {'HP'}
                       </span>
-                      <span className='stats-hp-bar-value'
+                      <span className='stats-hp-bar__value'
                         style={{
                           width: `${hpPercent}%`,
                           borderRadius: (
@@ -128,14 +135,16 @@ class Stats extends Component {
                     </span>
                   </div>
                 </div>
+
                 <div className='flex-row'>
-                  <span className='stats-text-spacing'>
+                  <span className='stats__text--spacing'>
                     {'GOLD: '}
                   </span>
-                  <span className='stats-text-gold'>
+                  <span className='stats__text--gold'>
                     { gold }
                   </span>
                 </div>
+
               </div>
             </>
         }

@@ -3,8 +3,7 @@ import React from 'react';
 import Monster      from '../../../features/monsters/monster';
 import GoblinSprite from './goblin.png';
 
-function Goblin(props) {
-  const { monster } = props;
+function Goblin({ monster }) {
 
   monster.sprite = GoblinSprite;
 

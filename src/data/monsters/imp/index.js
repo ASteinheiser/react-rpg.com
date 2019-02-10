@@ -3,8 +3,7 @@ import React from 'react';
 import Monster   from '../../../features/monsters/monster';
 import ImpSprite from './imp.png';
 
-function Imp(props) {
-  const { monster } = props;
+function Imp({ monster }) {
 
   monster.sprite = ImpSprite;
 

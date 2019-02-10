@@ -6,7 +6,7 @@ import AmbientMusic from './ambient-music.mp3';
 
 import './styles.scss';
 
-const GameMusic = (props) => {
+const GameMusic = ({ sideMenu }) => {
 
   const [gameMusic, setGameMusic] = useState(null);
 
@@ -83,30 +83,30 @@ const GameMusic = (props) => {
   }
 
   return (
-    <div className='game-music-toggle-button white-border'
+    <button className='game-music__button white-border'
       onClick={toggleMusic}
-      style={{ marginTop: props.sideMenu ? 0 : 10 }}>
+      style={{ marginTop: sideMenu ? 0 : 10 }}>
 
-      <div className='line1'
+      <div className='game-music__diagonal-line--1'
         style={{
-          width: gameMusic ? 0 : 60,
-          top: gameMusic ? 0 : 19,
+          width: gameMusic ? 0 : 57,
+          top: gameMusic ? 0 : 18,
           left: gameMusic ? 0 : -7
         }}>
       </div>
-      <div className='line2'
+      <div className='game-music__diagonal-line--2'
         style={{
-          width: gameMusic ? 0 : 60,
-          top: gameMusic ? 0 : 19,
+          width: gameMusic ? 0 : 57,
+          top: gameMusic ? 0 : 18,
           right: gameMusic ? 0 : -7
         }}>
       </div>
 
-      <i className={`fa fa-${gameMusic ? 'volume-up' : 'volume-off'} game-music-button`} />
+      <i className={`fa fa-${gameMusic ? 'volume-up' : 'volume-off'} game-music__icon`} />
 
       { gameMusic }
 
-    </div>
+    </button>
   );
 }
 

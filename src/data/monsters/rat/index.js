@@ -3,8 +3,7 @@ import React from 'react';
 import Monster   from '../../../features/monsters/monster';
 import RatSprite from './rat.png';
 
-function Rat(props) {
-  const { monster } = props;
+function Rat({ monster }) {
 
   monster.sprite = RatSprite;
 

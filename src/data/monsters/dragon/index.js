@@ -3,8 +3,7 @@ import React from 'react';
 import Monster      from '../../../features/monsters/monster';
 import DragonSprite from './dragon.png';
 
-function Dragon(props) {
-  const { monster } = props;
+function Dragon({ monster }) {
 
   monster.sprite = DragonSprite;
 

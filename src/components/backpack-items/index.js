@@ -5,9 +5,8 @@ import { EmptySlot } from '../equipped-items';
 
 import './styles.scss';
 
-const BackpackItems = (props) => {
+const BackpackItems = ({ view_item, inventory }) => {
 
-  const { view_item, inventory } = props;
   const { items, maxItems } = inventory;
 
   const itemSlots = new Array(maxItems).fill(null);
@@ -17,11 +16,15 @@ const BackpackItems = (props) => {
     if(items.length > index) {
       // assign the slot to that item
       itemSlots[index] = (
-        <div onClick={() => view_item(items[index])}
+        <button
+          onClick={() => view_item(items[index])}
           style={{
             backgroundImage: `url('${items[index].image}')`,
+            backgroundColor: 'var(--transparent)',
             width: '40px',
             height: '40px',
+            padding: 0,
+            border: 'none',
             cursor: 'pointer'
           }} />
       );
@@ -29,7 +32,7 @@ const BackpackItems = (props) => {
   });
 
   return (
-    <div className='flex-column backpack-items-container white-border'
+    <div className='flex-column white-border backpack-items__container'
       style={{ minHeight: maxItems === 12 ? 120 : 80 }}>
       <div className='flex-row'>
         <EmptySlot>

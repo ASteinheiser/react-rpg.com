@@ -21,22 +21,23 @@ function handleUnequipItem(item) {
   })
 }
 
-export function EmptySlot(props) {
+export function EmptySlot({ margin, style, className, children }) {
+
+  const styles = Object.assign({
+    backgroundImage: `url('${InventorySlot}')`,
+    width: '40px',
+    height: '40px',
+    margin: margin
+  }, style);
+
   return (
-    <div className={props.className ? props.className : ''} style={
-      Object.assign({}, {
-        backgroundImage: `url('${InventorySlot}')`,
-        width: '40px',
-        height: '40px',
-        margin: props.margin
-      }, props.style)
-    }>
-      { props.children }
+    <div className={className || ''} style={styles}>
+      { children }
     </div>
   );
 }
 
-function DarkenSlot(props) {
+function DarkenSlot() {
   return (
     <div style={{
       backgroundColor: 'rgba(0, 0, 0, 0.25)',
@@ -46,137 +47,136 @@ function DarkenSlot(props) {
   );
 }
 
-function EquippedItems(props) {
-  let { weapon, ring, armor } = props.stats.equippedItems;
+const EquippedItems = ({ stats }) => {
+
+  let { weapon, ring, armor } = stats.equippedItems;
 
   return (
-    <div className='equipped-items-character'
+    <div className='equipped-items__character'
       style={{backgroundImage: `url(${Character})`}}>
 
-      <EmptySlot className='white-border' margin={'20px 0 0 66px'}>
+      <EmptySlot className='white-border equipped-items__helmet'>
         {
           armor && armor.helmet ?
-            <div className='item-slot'
+            <button className='equipped-items__slot'
               onClick={handleUnequipItem.bind(this, armor.helmet)}
               style={{ backgroundImage: `url('${armor.helmet.image}')` }}>
               <DarkenSlot />
-            </div>
+            </button>
             :
-            <div className='item-slot-placeholder'
+            <div className='equipped-items__slot--placeholder'
               style={{ backgroundImage: `url('${HelmetOutline}')` }} />
         }
       </EmptySlot>
 
-      <EmptySlot className='white-border' margin={'12px 0 0 66px'}>
+      <EmptySlot className='white-border equipped-items__body'>
         {
           armor && armor.body ?
-            <div className='item-slot'
+            <button className='equipped-items__slot'
               onClick={handleUnequipItem.bind(this, armor.body)}
               style={{ backgroundImage: `url('${armor.body.image}')` }}>
               <DarkenSlot />
-            </div>
+            </button>
             :
-            <div className='item-slot-placeholder'
+            <div className='equipped-items__slot--placeholder'
               style={{ backgroundImage: `url('${BodyOutline}')` }} />
         }
       </EmptySlot>
 
       <div className='flex-row flex-end'>
-        <EmptySlot className='white-border' margin={'30px 0 0 18px'}>
+        <EmptySlot className='equipped-items__gloves--left'>
           {
-            armor && armor.gloves ?
-              <div className='item-slot'
-                onClick={handleUnequipItem.bind(this, armor.gloves)}
-                style={{ backgroundImage: `url('${armor.gloves.image}')` }}>
-                <DarkenSlot />
-              </div>
-              :
-              <div className='item-slot-placeholder'
-                style={{ backgroundImage: `url('${GlovesOutline}')` }} />
+            armor && armor.gloves &&
+              <div style={{
+                height: 40,
+                width: 40,
+                backgroundImage: `url('${armor.gloves.image}')`
+              }}>
+              <DarkenSlot />
+            </div>
           }
         </EmptySlot>
-        <EmptySlot className='white-border' margin={'16px 6px 0'}>
+        <EmptySlot className='white-border equipped-items__pants'>
           {
             armor && armor.pants ?
-              <div className='item-slot'
+              <button className='equipped-items__slot'
                 onClick={handleUnequipItem.bind(this, armor.pants)}
                 style={{ backgroundImage: `url('${armor.pants.image}')` }}>
                 <DarkenSlot />
-              </div>
+              </button>
               :
-              <div className='item-slot-placeholder'
+              <div className='equipped-items__slot--placeholder'
                 style={{ backgroundImage: `url('${PantsOutline}')` }} />
           }
         </EmptySlot>
-        <EmptySlot className='white-border' margin={'30px 0 0 0'}>
+        <EmptySlot className='white-border equipped-items__gloves--right'>
           {
             armor && armor.gloves ?
-              <div className='item-slot'
+              <button className='equipped-items__slot'
                 onClick={handleUnequipItem.bind(this, armor.gloves)}
                 style={{ backgroundImage: `url('${armor.gloves.image}')` }}>
                 <DarkenSlot />
-              </div>
+              </button>
               :
-              <div className='item-slot-placeholder'
+              <div className='equipped-items__slot--placeholder'
                 style={{ backgroundImage: `url('${GlovesOutline}')` }} />
           }
         </EmptySlot>
       </div>
 
       <div className='flex-row space-between'>
-        <EmptySlot className='white-border' margin={'25px 0 0 30px'}>
+        <EmptySlot className='white-border equipped-items__ring'>
           {
             ring ?
-              <div className='item-slot'
+              <button className='equipped-items__slot'
                 onClick={handleUnequipItem.bind(this, ring)}
                 style={{ backgroundImage: `url('${ring.image}')` }}>
                 <DarkenSlot />
-              </div>
+              </button>
               :
-              <div className='item-slot-placeholder'
+              <div className='equipped-items__slot--placeholder'
                 style={{ backgroundImage: `url('${RingOutline}')` }} />
           }
         </EmptySlot>
 
-        <EmptySlot className='white-border' margin={'25px 26px 0 0'}>
+        <EmptySlot className='white-border equipped-items__weapon'>
           {
             weapon ?
-              <div className='item-slot'
+              <button className='equipped-items__slot'
                 onClick={handleUnequipItem.bind(this, weapon)}
                 style={{ backgroundImage: `url('${weapon.image}')` }}>
                 <DarkenSlot />
-              </div>
+              </button>
               :
-              <div className='item-slot-placeholder'
+              <div className='equipped-items__slot--placeholder'
                 style={{ backgroundImage: `url('${SwordOutline}')` }} />
           }
         </EmptySlot>
       </div>
 
       <div className='flex-row space-between'>
-        <EmptySlot className='white-border' margin={'30px 0 0 20px'}>
+        <EmptySlot className='equipped-items__boots--left'>
           {
-            armor && armor.boots ?
-              <div className='item-slot'
-                onClick={handleUnequipItem.bind(this, armor.boots)}
-                style={{ backgroundImage: `url('${armor.boots.image}')` }}>
-                <DarkenSlot />
-              </div>
-              :
-              <div className='item-slot-placeholder'
-                style={{ backgroundImage: `url('${BootsOutline}')` }} />
+            armor && armor.boots &&
+              <div style={{
+                height: 40,
+                width: 40,
+                backgroundImage: `url('${armor.boots.image}')`
+              }}>
+              <DarkenSlot />
+            </div>
           }
         </EmptySlot>
-        <EmptySlot className='white-border' margin={'30px 16px 0 0'}>
+        <EmptySlot className='white-border equipped-items__boots--right'>
           {
             armor && armor.boots ?
-              <div className='item-slot'
+              <button className='equipped-items__slot'
                 onClick={handleUnequipItem.bind(this, armor.boots)}
                 style={{ backgroundImage: `url('${armor.boots.image}')` }}>
                 <DarkenSlot />
-              </div>
+              </button>
               :
-              <div className='item-slot-placeholder'
+              <div className='equipped-items__slot--placeholder'
                 style={{ backgroundImage: `url('${BootsOutline}')` }} />
           }
         </EmptySlot>
@@ -186,8 +186,6 @@ function EquippedItems(props) {
   );
 }
 
-const mapStateToProps = ({ stats }) => {
-  return { stats };
-}
+const mapStateToProps = ({ stats }) => ({ stats });
 
 export default connect(mapStateToProps)(EquippedItems);

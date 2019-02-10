@@ -1,39 +1,44 @@
-.button-container {
+.button__container {
+  background: var(--transparent);
+  border-color: var(--gray);
+
   font-size: 20px;
+  font-family: Montserrat;
+
   padding: 15px;
 
   cursor: pointer;
   user-select: none;
+
+  .button__icon {
+    position: relative;
+
+    padding-right: 15px;
+    padding-left: 5px;
+
+    font-size: 22px;
+  }
+
+  .button__indicator {
+    position: absolute;
+    bottom: -5px;
+    right: 7px;
+
+    border-radius: 10px;
+
+    width: 15px;
+    height: 15px;
+
+    background: var(--light-red);
+
+    animation: fade 4s ease-in-out infinite;
+    opacity: 1;
+  }
 }
 
-.button-container-small {
+.button__container--small {
   font-size: 18px;
   padding: 12px;
-}
-
-.button-icon {
-  position: relative;
-
-  padding-right: 15px;
-  padding-left: 5px;
-
-  font-size: 22px;
-}
-
-.button-indicator {
-  position: absolute;
-  bottom: -5px;
-  right: 7px;
-
-  border-radius: 10px;
-
-  width: 15px;
-  height: 15px;
-
-  background: var(--light-red);
-
-  animation: fade 4s ease-in-out infinite;
-  opacity: 1;
 }
 
 @keyframes fade {

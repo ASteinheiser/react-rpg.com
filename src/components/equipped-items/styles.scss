@@ -1,4 +1,4 @@
-.equipped-items-character {
+.equipped-items__character {
   width: 170px;
 
   margin-bottom: 16px;
@@ -7,18 +7,59 @@
 
   background-size: cover;
   background-repeat: no-repeat;
-}
 
-.item-slot {
-  cursor: pointer;
+  .equipped-items__slot {
+    background: var(--transparent);
+    border: none;
 
-  width: 40px;
-  height: 40px;
-}
+    padding: 0;
 
-.item-slot-placeholder {
-  cursor: default;
+    width: 40px;
+    height: 40px;
 
-  width: 40px;
-  height: 40px;
+    cursor: pointer;
+  }
+
+  .equipped-items__slot--placeholder {
+    width: 40px;
+    height: 40px;
+
+    cursor: default;
+  }
+
+  .equipped-items__helmet {
+    margin: 20px 0 0 66px;
+  }
+
+  .equipped-items__body {
+    margin: 12px 0 0 66px;
+  }
+
+  .equipped-items__gloves--left {
+    margin: 30px 0 0 18px;
+  }
+
+  .equipped-items__gloves--right {
+    margin: 30px 0 0 0;
+  }
+
+  .equipped-items__pants {
+    margin: 16px 8px 0;
+  }
+
+  .equipped-items__ring {
+    margin: 25px 0 0 30px;
+  }
+
+  .equipped-items__weapon {
+    margin: 25px 26px 0 0;
+  }
+
+  .equipped-items__boots--left {
+    margin: 30px 0 0 20px;
+  }
+
+  .equipped-items__boots--right {
+    margin: 30px 16px 0 0;
+  }
 }

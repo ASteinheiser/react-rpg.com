@@ -108,7 +108,7 @@ class World extends Component {
 
     return (
       <>
-        <div className='world-view-container'
+        <div className='world__container'
           style={{
             top: worldTop,
             left: worldLeft
@@ -122,7 +122,7 @@ class World extends Component {
 
         </div>
 
-        <div className='world-map-transition' style={{ opacity }} />
+        <div className='world__map-transition' style={{ opacity }} />
       </>
     );
   }

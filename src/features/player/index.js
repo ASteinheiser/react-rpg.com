@@ -172,7 +172,7 @@ class Player extends Component {
     }
 
     return (
-      <div className='player-animation'
+      <div className='player__animation'
         style={{
           top: player.position[1],
           left: player.position[0],
@@ -188,23 +188,19 @@ class Player extends Component {
         { playerDeath }
 
         {
-          monsterAttackAnimationPlay === 'running' ?
-            <div className='monster-slash'
+          monsterAttackAnimationPlay === 'running' &&
+            <div className='monster__slash'
               style={{ backgroundImage: `url('${MonsterSlash}')` }} />
-            :
-            null
         }
 
         {
-          attackAnimationPlay === 'running' ?
-            <div className='sword-slash'
+          attackAnimationPlay === 'running' &&
+            <div className='sword__slash'
               style={{
                 top: attackAnimationLoc[1],
                 left: attackAnimationLoc[0],
                 backgroundImage: `url('${SwordSlash}')`
               }} />
-            :
-            null
         }
       </div>
     );

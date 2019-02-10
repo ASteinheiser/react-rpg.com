@@ -7,24 +7,22 @@ import ViewItem      from '../../../../components/view-item';
 
 import './styles.scss';
 
-const SellItemsDialog = (props) => {
+const SellItemsDialog = ({ onClose }) => {
 
   const [sellItem, setSellItem] = useState(false);
 
   return(
-    <MicroDialog onClose={props.onClose} fullsize className='centered'>
+    <MicroDialog onClose={onClose} fullsize className='centered'>
 
       {
-        sellItem ?
+        sellItem &&
           <ViewItem
             data={sellItem}
             sell={true}
             onClose={() => setSellItem(false)} />
-            :
-            null
       }
 
-      <div className='flex-column sell-items-container'
+      <div className='flex-column sell-items__container'
         style={{backgroundImage: `url(${Backpack})`}}>
 
         <BackpackItems

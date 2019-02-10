@@ -10,7 +10,7 @@ import './styles.scss';
 
 const ITEMS_PER_PAGE = 5;
 
-const ShopInventory = (props) => {
+const ShopInventory = ({ stats, inventory }) => {
 
   const [buyItem, setBuyItem] = useState(false);
   const [page, setPage] = useState(0);
@@ -29,28 +29,28 @@ const ShopInventory = (props) => {
 
   let shopInventoryItems = [];
   // render the shop's items
-  shopItems(props.stats.level).forEach(item => {
+  shopItems(stats.level).forEach(item => {
     // don't show backpack upgrade if it was purchased
-    if(props.inventory.maxItems === 12 && item.type === 'upgrade::backpack') return;
+    if(inventory.maxItems === 12 && item.type === 'upgrade::backpack') return;
 
     shopInventoryItems.push(
       <div key={uuidv4()}
         onClick={() => setBuyItem(item)}
-        className='flex-row shop-item-container white-border'>
+        className='shop-item__container white-border flex-row'>
 
         <EmptySlot style={{borderRight: '1px solid'}}>
-          <div className='shop-item-slot'
+          <div className='shop-item__slot'
             style={{ backgroundImage: `url('${item.image}')` }} />
         </EmptySlot>
 
-        <div className='flex-row shop-item-text'>
-          <div className='flex-row shop-item-title'>
+        <div className='flex-row shop-item__text'>
+          <span className='flex-row shop-item__title'>
             { item.name }
-          </div>
+          </span>
 
-          <div className='flex-row shop-item-price'>
+          <span className='flex-row shop-item__price'>
             { item.value }
-          </div>
+          </span>
         </div>
       </div>
     );
@@ -64,7 +64,7 @@ const ShopInventory = (props) => {
         page === 0 ?
           <div />
           :
-          <div className='shop-page-button' onClick={decrementPage}>
+          <div className='shop-inventory__button' onClick={decrementPage}>
             <i className='fa fa-arrow-left' style={{paddingRight: 15}} />
             {'previous'}
           </div>
@@ -73,7 +73,7 @@ const ShopInventory = (props) => {
         page === MAX_PAGE ?
           <div />
           :
-          <div className='shop-page-button' onClick={incrementPage}>
+          <div className='shop-inventory__button' onClick={incrementPage}>
             {'next'}
             <i className='fa fa-arrow-right' style={{paddingLeft: 15}} />
           </div>
@@ -82,16 +82,14 @@ const ShopInventory = (props) => {
   );
 
   return (
-    <div className='flex-column shop-inventory-items'>
+    <div className='flex-column shop-inventory__container'>
 
       {
-        buyItem ?
+        buyItem &&
           <ViewItem
             buy={true}
             data={buyItem}
             onClose={() => setBuyItem(false)} />
-          :
-          null
       }
 
       { shopInventoryItems.splice(5 * page, ITEMS_PER_PAGE) }

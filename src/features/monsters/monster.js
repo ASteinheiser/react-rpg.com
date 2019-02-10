@@ -2,8 +2,7 @@ import React from 'react';
 
 import HealthBar from '../../components/health-bar';
 
-function Monster(props) {
-  const { monster } = props;
+function Monster({ monster }) {
 
   return (
     <div style={{

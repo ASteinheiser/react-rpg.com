@@ -7,7 +7,7 @@ import store  from '../../../../config/store';
 
 import './styles.scss';
 
-const GameSelect = (props) => {
+const GameSelect = () => {
 
   function handleStartMainGame() {
     store.dispatch({
@@ -33,24 +33,22 @@ const GameSelect = (props) => {
 
   return(
     <Dialog>
-      <div className='flex-row game-select-title'>
+      <span className='flex-row game-select__title'>
         {'React RPG'}
-      </div>
+      </span>
 
-      <div className='flex-column game-select-text'>
-        <div>
-          {'Greetings, Traveler. Please, explore one of our dungeons...'}
-        </div>
-      </div>
+      <span className='flex-column game-select__text'>
+        {'Greetings, Traveler. Please, explore one of our dungeons...'}
+      </span>
 
-      <div className='game-select-flame-container-1'>
+      <div className='game-select__flame--1'>
         <Flame />
       </div>
-      <div className='game-select-flame-container-2'>
+      <div className='game-select__flame--2'>
         <Flame />
       </div>
 
-      <div className='flex-column game-select-button'>
+      <div className='flex-column game-select__button'>
         <Button
           style={{marginBottom: 16}}
           onClick={handleStartMainGame}

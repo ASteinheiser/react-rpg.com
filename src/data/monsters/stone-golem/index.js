@@ -3,8 +3,7 @@ import React from 'react';
 import Monster     from '../../../features/monsters/monster';
 import GolemSprite from './stone-golem.png';
 
-function StoneGolem(props) {
-  const { monster } = props;
+function StoneGolem({ monster }) {
 
   monster.sprite = GolemSprite;
 

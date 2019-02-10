@@ -9,7 +9,7 @@ import store           from '../../../../config/store';
 
 import './styles.scss';
 
-const ShopDialog = (props) => {
+const ShopDialog = () => {
 
   const [welcome, setWelcome] = useState(true);
   const [sellItems, setSellItems] = useState(null);
@@ -37,19 +37,19 @@ const ShopDialog = (props) => {
       <Dialog>
         <div className='flex-column space-between flex-1'>
 
-          <div className='shop-title-text'>
+          <span className='shop-dialog__title'>
             {'Shop'}
-          </div>
+          </span>
 
           <div className='flex-row'>
             <ShopKeep />
 
-            <div className='flex-column shop-keep-text'>
+            <span className='flex-column shop-dialog__text'>
               {'Welcome traveler! Please, come in...'}
-            </div>
+            </span>
           </div>
 
-          <div className='flex-row shop-button-container'>
+          <div className='flex-row shop-dialog__button'>
             <Button
               small
               onClick={handleCloseDialog}
@@ -72,11 +72,11 @@ const ShopDialog = (props) => {
 
       { sellItems }
 
-      <div className='flex-column shop-container'>
+      <div className='flex-column shop-dialog__container'>
 
         <ShopInventory />
 
-        <div className='flex-row shop-button-container'>
+        <div className='flex-row shop-dialog__button'>
           <Button
             small
             onClick={handleCloseDialog}

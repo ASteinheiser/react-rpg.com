@@ -27,7 +27,7 @@ const inventoryReducer = (state = initialState, action) => {
         return false;
       });
 
-      newState.itemDropped = item.name + '-' + (new Date().getTime());
+      newState.itemDropped = `${item.name}-${new Date().getTime()}`;
 
       return newState;
 
@@ -36,13 +36,13 @@ const inventoryReducer = (state = initialState, action) => {
       // save item to list with unique id for keeping track of duplicates
       newState.items.push(Object.assign({}, action.payload, { id: itemId }));
 
-      newState.itemReceived = action.payload.name + '-' + (new Date().getTime());
+      newState.itemReceived = `${action.payload.name}-${new Date().getTime()}`;
 
       return newState;
 
     case 'TOO_MANY_ITEMS':
       // display the message to the player
-      newState.tooManyItems = action.payload.name + '-' + (new Date().getTime());
+      newState.tooManyItems = `${action.payload.name}-${new Date().getTime()}`;
 
       return newState;
 

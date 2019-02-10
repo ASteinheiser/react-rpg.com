@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { connect }             from 'react-redux';
 
-function Monsters(props) {
-  const { monsters, world } = props;
+function Monsters({ monsters, world }) {
+
   const { currentMap } = world;
 
   const [monstersToRender, setMonstersToRender] = useState(null);

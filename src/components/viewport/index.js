@@ -7,9 +7,7 @@ import {
 
 import './viewport.scss';
 
-const Viewport = (props) => {
-
-  const { largeView, sideMenu } = props;
+const Viewport = ({ largeView, sideMenu, children }) => {
 
   const gameSize = (largeView ? GAME_VIEWPORT_SIZE_LG : GAME_VIEWPORT_SIZE);
   const margin = sideMenu ? '8px 0 0' : '8px auto 0';
@@ -21,10 +19,10 @@ const Viewport = (props) => {
   };
 
   return(
-    <div className='viewport-container white-border'
-      style={styles}>
+    <div style={styles}
+      className='viewport__container white-border'>
 
-      { props.children }
+      { children }
 
     </div>
   );

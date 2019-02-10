@@ -8,7 +8,7 @@ import resetGameState from '../../../../modules/reset-game-state';
 
 import './settings-dialog.scss';
 
-const SettingsDialog = (props) => {
+const SettingsDialog = () => {
 
   const [confirmQuit, setConfirmQuit] = useState(false);
 
@@ -21,10 +21,10 @@ const SettingsDialog = (props) => {
 
   return(
     <Dialog>
-      <div className='flex-column settings-dialog-container'>
-        <div className='settings-dialog-title'>
+      <div className='flex-column settings-dialog__container'>
+        <span className='settings-dialog__title'>
           {'Settings'}
-        </div>
+        </span>
 
         <Button
           onClick={() => setConfirmQuit(true)}
@@ -38,13 +38,11 @@ const SettingsDialog = (props) => {
       </div>
 
       {
-        confirmQuit ?
+        confirmQuit &&
           <ConfirmDialog
             text='Are you sure you want to quit? You will lose all progress...'
             onClose={() => setConfirmQuit(false)}
             confirm={resetGameState} />
-          :
-          null
       }
 
     </Dialog>

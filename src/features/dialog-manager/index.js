@@ -13,9 +13,9 @@ import MainGameStart    from './dialogs/main-game-start';
 import SettingsDialog   from './dialogs/settings-dialog';
 import ShopDialog       from './dialogs/shop-dialog';
 
-const DialogManager = (props) => {
+const DialogManager = ({ dialog }) => {
 
-  const { chest, inventory, gameText, gameOver, gameStart, gameSelect, gameWin, gameInstructions, paused, settings, shop } = props.dialog;
+  const { chest, inventory, gameText, gameOver, gameStart, gameSelect, gameWin, gameInstructions, paused, settings, shop } = dialog;
 
   let PauseComp = null;
   let SettingsComp = null;
