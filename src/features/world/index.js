@@ -98,7 +98,8 @@ class World extends Component {
 
   render() {
     const { opacity } = this.state;
-    const { player, largeView } = this.props;
+    const { appState, player } = this.props;
+    const { largeView } = appState;
     const { position } = player;
     // calculate the offset for the world map according to player position
     // so that the viewport is always centered
@@ -128,6 +129,6 @@ class World extends Component {
   }
 }
 
-const mapStateToProps = ({ world, monsters, player, stats, dialog }) => ({ world, monsters, player, stats, dialog });
+const mapStateToProps = ({ appState, world, monsters, player, stats, dialog }) => ({ appState, world, monsters, player, stats, dialog });
 
 export default connect(mapStateToProps)(ReactTimeout(World));

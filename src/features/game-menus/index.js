@@ -9,8 +9,9 @@ import Stats        from '../stats';
 
 import './styles.scss';
 
-const GameMenus = ({ sideMenu, dialog, largeView }) => {
+const GameMenus = ({ appState, dialog }) => {
 
+  const { sideMenu, largeView } = appState;
   const { gameOver, gameStart, paused, inventory, settings } = dialog;
 
   // disable the inventory button when we are in settings or paused and not in the inventory
@@ -50,6 +51,6 @@ const GameMenus = ({ sideMenu, dialog, largeView }) => {
   );
 }
 
-const mapStateToProps = ({ dialog }) => ({ dialog });
+const mapStateToProps = ({ appState, dialog }) => ({ appState, dialog });
 
 export default connect(mapStateToProps)(GameMenus);

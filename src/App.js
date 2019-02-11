@@ -3,30 +3,32 @@ import { connect }                                    from 'react-redux';
 import { isMobile }                                   from 'react-device-detect';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-import DownloadAppPopup    from './components/download-app-popup';
-import DialogManager       from './features/dialog-manager';
-import EndlessFloorCounter from './components/endless-floor-counter';
-import Footer              from './components/footer';
-import GameMenus           from './features/game-menus';
-import World               from './features/world';
-import Viewport            from './components/viewport';
-import useWindowSize       from './modules/use-window-size';
+import DownloadAppPopup       from './components/download-app-popup';
+import DialogManager          from './features/dialog-manager';
+import EndlessFloorCounter    from './components/endless-floor-counter';
+import Footer                 from './components/footer';
+import GameMenus              from './features/game-menus';
+import World                  from './features/world';
+import Viewport               from './components/viewport';
+import useGameViewportScaling from './features/app-state/use-game-viewport-scaling';
 
 const App = ({ appState, world }) => {
 
+  useGameViewportScaling();
+
   const [showDownloadPopup, setShowDownloadPopup] = useState(false);
 
-  let mobileVersion = false;
+  let showFooter = true;
 
   const nativeApp = window.location.search === '?nativeApp=true';
-
+  // don't show the footer if on a mobile device
+  // or using the native app query param
   if(nativeApp || isMobile) {
-    mobileVersion = true;
+    showFooter = false;
   }
 
-  const { optOutDownload } = appState;
+  const { optOutDownload, sideMenu } = appState;
   const { gameMode, floorNum } = world;
-  const { height, width } = useWindowSize();
 
   // disable scrolling of the page
   // prevents iOS Safari bouncing during movement
@@ -43,29 +45,15 @@ const App = ({ appState, world }) => {
     }
   }, []);
 
-  let largeView = false;
-  let sideMenu = false;
-  // if we have a wide screen size
-  if(width > 410) {
-    largeView = true;
-    // if the screen size is too short
-    if(height < 680) sideMenu = true;
-    if(height <= 410) largeView = false;
-  }
-  // don't switch to side menu if there's no horizontal room
-  if(width < 600) {
-    sideMenu = false;
-  }
-
   return(
     <>
       { showDownloadPopup && <DownloadAppPopup onClose={() => setShowDownloadPopup(false)} /> }
 
       <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
 
-        <Viewport largeView={largeView} sideMenu={sideMenu}>
+        <Viewport>
 
-          <World largeView={largeView} />
+          <World />
 
           <DialogManager />
 
@@ -74,11 +62,11 @@ const App = ({ appState, world }) => {
 
         </Viewport>
 
-        <GameMenus sideMenu={sideMenu} largeView={largeView} />
+        <GameMenus />
 
       </div>
 
-      { !mobileVersion && <Footer /> }
+      { showFooter && <Footer /> }
     </>
   );
 }
