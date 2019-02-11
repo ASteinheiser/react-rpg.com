@@ -1,4 +1,5 @@
-import React from 'react';
+import React      from 'react';
+import _cloneDeep from 'lodash.clonedeep';
 
 import Monsters        from '../../data/monsters';
 import { SPRITE_SIZE } from '../../config/constants';
@@ -10,38 +11,39 @@ const initialState = {
 
 const monstersReducer = (state = initialState, action) => {
 
-  let newState = Object.assign({}, state);
+  let newState;
 
   switch(action.type) {
 
     case 'MOVE_MONSTER':
-      let update = action.payload;
+      newState = _cloneDeep(state);
+      const updateMove = action.payload;
 
-      newState.components[update.map][update.id].props.monster.position = update.position;
-
-      return newState;
-
-    case 'KILL_MONSTER':
-      delete newState.components[action.payload.map][action.payload.id];
+      newState.components[updateMove.map][updateMove.id].props.monster.position = updateMove.position;
 
       return newState;
 
-    // deal damage to individual monster
     case 'DAMAGE_TO_MONSTER':
-      const { id, damage } = action.payload;
-      // deal damage to monster
-      newState.components[action.payload.map][id].props.monster.hp -= damage;
+      newState = _cloneDeep(state);
+      const updateDmg = action.payload;
+      // subtract the damage from monster hp
+      newState.components[updateDmg.map][updateDmg.id].props.monster.hp -= updateDmg.damage;
+      // if monster has 0 or less hp, kill it
+      if(newState.components[updateDmg.map][updateDmg.id].props.monster.hp <= 0) {
+        delete newState.components[updateDmg.map][updateDmg.id];
+      }
 
       return newState;
 
     // load a new set of monsters
     case 'ADD_MONSTERS':
-      let { monsters, map } = action.payload;
+      newState = _cloneDeep(state);
+      const addMonster = action.payload;
       // save monsters by the map
-      if(!newState.components[map]) {
-        newState.components[map] = {};
+      if(!newState.components[addMonster.map]) {
+        newState.components[addMonster.map] = {};
         // render monsters
-        monsters.forEach(monster => {
+        addMonster.monsters.forEach(monster => {
           // generate a unique id (for tracking purposes)
           let uuid = uuidv4();
           monster.id = uuid;
@@ -51,30 +53,31 @@ const monstersReducer = (state = initialState, action) => {
           monster.position = monster.position.map(value => value * SPRITE_SIZE);
           // set component key with monster id
           const { Comp } = Monsters[monster.type];
-          newState.components[map][uuid] = ( <Comp monster={monster} key={uuid} /> );
+          newState.components[addMonster.map][uuid] = ( <Comp monster={monster} key={uuid} /> );
         });
       }
 
       return newState;
 
     case 'REVEAL_MONSTER':
-      // update the current monster's visible prop
+      newState = _cloneDeep(state);
+
       newState.components[action.payload.map][action.payload.id].props.monster.visible = true;
       return newState;
 
     case 'HIDE_MONSTER':
-      // update the current monster's visible prop
+      newState = _cloneDeep(state);
+
       newState.components[action.payload.map][action.payload.id].props.monster.visible = false;
       return newState;
 
     case 'RESET':
-      return {
-        components: {}
-      };
+      return { ...initialState };
 
     case 'persist/REHYDRATE':
       if(!action.payload) return state;
 
+      newState = _cloneDeep(state);
       const { components } = action.payload.monsters;
       const maps = Object.keys(components);
 

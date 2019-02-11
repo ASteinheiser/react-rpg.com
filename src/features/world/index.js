@@ -12,6 +12,9 @@ import store            from '../../config/store';
 
 import './styles.scss';
 
+// animation time is 250(ms), adding 50 makes it smoother
+const MAP_TRANSITION_DELAY = 300;
+
 class World extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +48,7 @@ class World extends Component {
 
     // fade the map transition to black
     this.setState({ opacity: 1 }, () => {
-      // after (1 transition + 100ms), show the map again, with the new map loaded
+      // after a delay, fade the map transition with the new map loaded
       this.props.setTimeout(() => {
         if(gameMode === 'endless') {
           // set map tiles for current random map
@@ -64,7 +67,7 @@ class World extends Component {
         exploreTiles(player.position);
 
         this.setState({ opacity: 0 });
-      }, 600);
+      }, MAP_TRANSITION_DELAY);
     });
   }
 

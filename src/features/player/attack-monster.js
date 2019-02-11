@@ -23,7 +23,7 @@ export default function attackMonster() {
   // if the attacked tile is in bounds
   if(observeBoundaries(position, newPos) && observeImpassable(position, newPos)) {
     // if theres a monster
-    let monsterId = checkForMonster(newPos);
+    const monsterId = checkForMonster(newPos);
     if(monsterId) {
       const { currentMap } = currState.world;
       const monsters = currState.monsters.components;
@@ -31,44 +31,40 @@ export default function attackMonster() {
       const { weapon } = stats.equippedItems;
       const weaponBonus = weapon ? weapon.bonus : undefined;
       // get monster
-      let currMonster = monsters[currentMap][monsterId].props.monster;
-      let monsterPos = currMonster.position;
+      const currMonster = monsters[currentMap][monsterId].props.monster;
+      const monsterPos = currMonster.position;
       // gather stats
-      let monsterDefence = currMonster.defence;
-      let monsterType = currMonster.type;
-      let playerDamage = stats.damage;
-      // deal damage to monster
-      store.dispatch({
-        type: 'DAMAGE_TO_MONSTER',
-        payload: {
-          id: currMonster.id,
-          damage: calculateDamage(calculateBonus(playerDamage, monsterType, weaponBonus), monsterDefence),
-          map: currentMap
-        }
-      })
+      const monsterDefence = currMonster.defence;
+      const monsterType = currMonster.type;
+      const playerDamage = stats.damage;
+      const damage = calculateDamage(calculateBonus(playerDamage, monsterType, weaponBonus), monsterDefence);
       // show sword swing
       store.dispatch({
         type: 'PLAYER_ATTACK',
         payload: {}
-      })
+      });
+      // deal damage to monster
+      store.dispatch({
+        type: 'DAMAGE_TO_MONSTER',
+        payload: {
+          damage,
+          id: currMonster.id,
+          map: currentMap
+        }
+      });
 
       // check if monster died
-      if(currMonster.hp <= 0) {
-        // if it did, remove the monster component
-        store.dispatch({
-          type: 'KILL_MONSTER',
-          payload: { id: currMonster.id, map: currentMap }
-        })
+      if((currMonster.hp - damage) <= 0) {
         // and get some exp
         store.dispatch({
           type: 'GET_EXP',
           payload: { value: currMonster.exp }
-        })
+        });
         // play death sound
         store.dispatch({
           type: 'MONSTER_DIED',
           payload: {}
-        })
+        });
         // replace monster will blood spill
         // need to pass relative tile index
         store.dispatch({
@@ -77,7 +73,7 @@ export default function attackMonster() {
             x: monsterPos[0] / SPRITE_SIZE,
             y: monsterPos[1] / SPRITE_SIZE
           }
-        })
+        });
       }
 
       // take a turn if the player attacked something
@@ -90,7 +86,7 @@ export default function attackMonster() {
       store.dispatch({
         type: 'PLAYER_ATTACK',
         payload: {}
-      })
+      });
     }
   }
 }

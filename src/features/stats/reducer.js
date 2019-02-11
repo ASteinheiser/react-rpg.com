@@ -1,3 +1,4 @@
+import _cloneDeep from 'lodash.clonedeep';
 
 const initialState = {
   hp: 10,
@@ -12,25 +13,21 @@ const initialState = {
 };
 
 const statsReducer = (state = initialState, action) => {
-
-  let newState = Object.assign({}, state);
+  let newState;
 
   switch(action.type) {
 
     case 'GET_GOLD':
       // add gold to current gold
-      newState.gold += action.payload.value;
-
-      return newState;
+      return { ...state, gold: (state.gold + action.payload.value) };
 
     case 'LOSE_GOLD':
       // add gold to current gold
-      newState.gold -= action.payload.value;
-
-      return newState;
+      return { ...state, gold: (state.gold - action.payload.value) };
 
     case 'UNEQUIP_ITEM':
-      let data = action.payload.data;
+      newState = _cloneDeep(state);
+      let { data } = action.payload;
       // check the type
       switch(data.type) {
         case 'weapon':
@@ -96,6 +93,7 @@ const statsReducer = (state = initialState, action) => {
       return newState;
 
     case 'EQUIP_ITEM':
+      newState = _cloneDeep(state);
       let item = action.payload;
       // see what type of item it is
       switch(item.type) {
@@ -224,23 +222,22 @@ const statsReducer = (state = initialState, action) => {
 
     case 'HEAL_HP':
       // heal the hp
-      newState.hp += action.payload.value;
+      let _hp = state.hp + action.payload.value;
       // dont go above max hp
-      if(newState.hp > newState.maxHp) newState.hp = newState.maxHp;
+      if(_hp > state.maxHp) _hp = state.maxHp;
 
-      return newState;
+      return { ...state, hp: _hp };
 
     case 'DAMAGE_TO_PLAYER':
       const { damage } = action.payload;
       // deal damage to player
-      newState.hp -= damage;
-
-      return newState;
+      return { ...state, hp: (state.hp - damage) };
 
     case 'GET_EXP':
-      let newExp = action.payload.value;
-      let newTotalExp = state.exp + newExp;
-      let expToLevel = state.expToLevel;
+      newState = _cloneDeep(state);
+      const newExp = action.payload.value;
+      const newTotalExp = state.exp + newExp;
+      const { expToLevel } = state;
       // if they are leveling up
       if(newTotalExp >= expToLevel) {
         // increment level
@@ -274,8 +271,8 @@ const statsReducer = (state = initialState, action) => {
         if(chance <= 25) {
           newState.damage += 1;
         }
-
-      } else {
+      }
+      else {
         // they aren't leveling up
         newState.exp += newExp;
       }
@@ -283,17 +280,7 @@ const statsReducer = (state = initialState, action) => {
       return newState;
 
     case 'RESET':
-      return {
-        hp: 10,
-        maxHp: 10,
-        damage: 3,
-        defence: 0,
-        level: 1,
-        exp: 0,
-        expToLevel: 20,
-        gold: 0,
-        equippedItems: {}
-      };
+      return { ...initialState };
 
     default:
       return state;

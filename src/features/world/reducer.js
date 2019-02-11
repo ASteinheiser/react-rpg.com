@@ -1,4 +1,5 @@
-import maps from '../../data/maps';
+import maps       from '../../data/maps';
+import _cloneDeep from 'lodash.clonedeep';
 
 const initialState = {
   currentMap: null,
@@ -12,62 +13,57 @@ const initialState = {
 
 const worldReducer = (state = initialState, action) => {
 
-  let newState = Object.assign({}, state);
-
   switch(action.type) {
 
     case 'LOAD_STORY_MAPS':
-      newState.storyMaps = Object.assign({}, maps);
-      return newState;
+      return { ...state, storyMaps: _cloneDeep(maps) };
 
     case 'ADD_RANDOM_MAP':
-      newState.randomMaps.push({
+      const _randomMaps = _cloneDeep(state.randomMaps);
+
+      _randomMaps.push({
         tiles: action.payload.tiles,
         id: action.payload.id
       });
-      return newState;
+
+      return { ...state, randomMaps: _randomMaps };
 
     case 'SET_SOUND':
       // turn on or off game sounds
-      newState.sound = action.payload.sound;
-      return newState;
+      return { ...state, sound: action.payload.sound };
 
     case 'TAKE_TURN':
       // increment the turn
-      newState.turn += 1
-      return newState;
+      return { ...state, turn: (state.turn + 1) };
 
     case 'LOAD_NEXT_MAP':
       const { direction, currentMap } = action.payload;
 
       const { stairs } = state.storyMaps[currentMap];
 
-      newState.currentMap = stairs[direction];
-
-      return newState;
+      return { ...state, currentMap: stairs[direction] };
 
     case 'SET_CURR_MAP':
-      newState.currentMap = action.payload.map;
-      newState.floorNum = action.payload.floorNum;
-
-      return newState;
+      return {
+        ...state,
+        currentMap: action.payload.map,
+        floorNum: action.payload.floorNum
+      };
 
     case 'SET_START_MAP':
       const { startMap, gameMode, floorNum } = action.payload;
 
-      newState.currentMap = startMap;
-      newState.gameMode = gameMode;
-      if(floorNum) newState.floorNum = floorNum;
-
-      return newState;
+      return {
+        ...state,
+        gameMode,
+        currentMap: startMap,
+        floorNum: floorNum ? floorNum : state.floorNum
+      };
 
     case 'RESET':
       return {
         ...initialState,
-        sound: state.sound,
-        randomMaps: [],
-        storyMaps: {},
-        floorNum: null
+        sound: state.sound
       };
 
     default:

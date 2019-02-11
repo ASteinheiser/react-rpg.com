@@ -5,19 +5,16 @@ const initialState = {
 
 const snackbarReducer = (state = initialState, action) => {
 
-  let newState = Object.assign({}, state);
-
   switch(action.type) {
 
     case 'NOT_ENOUGH_GOLD':
-      newState.notEnoughGold = `${action.payload.name}-${new Date().getTime()}`;
+      // set the name of the item with a timestamp(for uniqueness)
+      const notEnoughGold = `${action.payload.name}-${new Date().getTime()}`;
 
-      return newState;
+      return { ...state, notEnoughGold };
 
     case 'RESET':
-      return {
-        notEnoughGold: ''
-      };
+      return { ...initialState };
 
     default:
       return state;
