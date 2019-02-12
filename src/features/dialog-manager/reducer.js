@@ -67,7 +67,7 @@ const dialogManagerReducer = (state = initialState, action) => {
       return state;
 
     case 'RESET':
-      return { ...initialState };
+      return initialState;
 
     default:
       return state;

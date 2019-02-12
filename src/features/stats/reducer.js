@@ -280,7 +280,7 @@ const statsReducer = (state = initialState, action) => {
       return newState;
 
     case 'RESET':
-      return { ...initialState };
+      return initialState;
 
     default:
       return state;

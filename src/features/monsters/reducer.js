@@ -72,7 +72,7 @@ const monstersReducer = (state = initialState, action) => {
       return newState;
 
     case 'RESET':
-      return { ...initialState };
+      return initialState;
 
     case 'persist/REHYDRATE':
       if(!action.payload) return state;
