@@ -4,8 +4,7 @@ import './styles.scss';
 
 const StatsItem = ({ stats }) => {
 
-  let name = stats.name;
-  if(name === 'damage') name = 'attack';
+  let { name } = stats;
 
   function getColor(name) {
     switch(name) {
@@ -23,6 +22,8 @@ const StatsItem = ({ stats }) => {
       default:
     }
   }
+
+  if(name === 'damage') name = 'attack';
 
   return(
     <div className='flex-row stats-item__container'>

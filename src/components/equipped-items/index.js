@@ -10,6 +10,7 @@ import RingOutline   from './assets/ring-outline.png';
 import SwordOutline  from './assets/sword-outline.png';
 import Character     from './assets/equipment-character.png';
 import InventorySlot from './assets/inventory-slot.png';
+import unequipItem   from '../view-item/unequip-item';
 
 import './styles.scss';
 
@@ -180,14 +181,5 @@ const EquippedItems = ({ stats, unequipItem }) => {
 }
 
 const mapStateToProps = ({ stats }) => ({ stats });
-
-function unequipItem(item) {
-  return dispatch => {
-    dispatch({
-      type: 'UNEQUIP_ITEM',
-      payload: { data: item }
-    });
-  }
-}
 
 export default connect(mapStateToProps, { unequipItem })(EquippedItems);

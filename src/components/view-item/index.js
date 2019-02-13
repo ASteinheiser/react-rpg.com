@@ -2,39 +2,26 @@ import React, { useState } from 'react';
 import { connect }         from 'react-redux';
 
 import Button        from '../button';
-import { EmptySlot } from '../equipped-items';
 import ConfirmDialog from '../confirm-dialog';
+import { EmptySlot } from '../equipped-items';
 import MicroDialog   from '../micro-dialog';
-import StatsItem     from './stats-item';
-import store         from '../../config/store';
 import { uuidv4 }    from '../../modules/uuid-v4';
+
+import equipItem     from './equip-item';
+import unequipItem   from './unequip-item';
+import StatsItem     from './stats-item';
+
+import store from '../../config/store';
 
 import './styles.scss';
 
-const ViewItem = ({ sell, buy, onClose, data, stats, inventory }) => {
+const ViewItem = ({ sell, buy, onClose, data, stats, inventory, unequipItem,
+                    equipItem }) => {
 
   const [confirmHeal, setConfirmHeal] = useState(false);
   const [confirmDrop, setConfirmDrop] = useState(false);
   const [confirmSell, setConfirmSell] = useState(false);
   const [confirmBuy, setConfirmBuy] = useState(false);
-
-  function handleUnEquip(item) {
-    onClose();
-    store.dispatch({
-      type: 'UNEQUIP_ITEM',
-      payload: {
-        data: item
-      }
-    });
-  }
-
-  function handleEquip(item) {
-    onClose();
-    store.dispatch({
-      type: 'EQUIP_ITEM',
-      payload: item
-    });
-  }
 
   function handleConfirmDrop(item) {
     onClose();
@@ -147,13 +134,12 @@ const ViewItem = ({ sell, buy, onClose, data, stats, inventory }) => {
     onClose();
   }
 
-  // get equipped items
-  const equipped = store.getState().stats.equippedItems;
+  const equipped = stats.equippedItems;
 
-  // array of item stats
   let itemStats = [];
 
   let itemIsEquipped = false;
+
   // find the type of item
   switch(data.type) {
 
@@ -275,7 +261,10 @@ const ViewItem = ({ sell, buy, onClose, data, stats, inventory }) => {
               itemIsEquipped ?
                 <div className='flex-row view-item__button'>
                   <Button
-                    onClick={() => handleUnEquip(data)}
+                    onClick={() => {
+                      unequipItem(data);
+                      onClose();
+                    }}
                     icon='archive'
                     title={'Un-equip'} />
                 </div>
@@ -293,7 +282,10 @@ const ViewItem = ({ sell, buy, onClose, data, stats, inventory }) => {
                         title={'Heal'} />
                       :
                       <Button
-                        onClick={() => handleEquip(data)}
+                        onClick={() => {
+                          equipItem(data);
+                          onClose();
+                        }}
                         icon='hand-paper'
                         title={'Equip'} />
                   }
@@ -348,4 +340,6 @@ const ViewItem = ({ sell, buy, onClose, data, stats, inventory }) => {
 
 const mapStateToProps = ({ inventory, stats }) => ({ inventory, stats });
 
-export default connect(mapStateToProps)(ViewItem);
+const actions = { unequipItem, equipItem };
+
+export default connect(mapStateToProps, actions)(ViewItem);
