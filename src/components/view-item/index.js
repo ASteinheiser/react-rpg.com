@@ -87,6 +87,54 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
     default:
   }
 
+  let ViewItemButtons = null;
+
+  if(buy) ViewItemButtons = (
+    <Button
+      onClick={() => setConfirmBuy(true)}
+      icon='coins'
+      title={'Buy Item'} />
+  );
+  else if(sell) ViewItemButtons = (
+    <Button
+      onClick={() => setConfirmSell(true)}
+      icon='coins'
+      title={'Sell Item'} />
+  );
+  else if(itemIsEquipped) ViewItemButtons = (
+    <Button
+      onClick={() => {
+        unequipItem(data);
+        onClose();
+      }}
+      icon='archive'
+      title={'Un-equip'} />
+  );
+  else ViewItemButtons = (
+    <>
+      <Button
+        onClick={() => setConfirmDrop(true)}
+        icon='trash'
+        title={'Drop'} />
+
+      {
+        data.type === 'potion' ?
+          <Button
+            onClick={() => setConfirmPotion(true)}
+            icon='medkit'
+            title={'Heal'} />
+          :
+          <Button
+            onClick={() => {
+              equipItem(data);
+              onClose();
+            }}
+            icon='hand-paper'
+            title={'Equip'} />
+      }
+    </>
+  );
+
   return(
     <MicroDialog onClose={onClose}>
 
@@ -108,64 +156,12 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
         { itemStats }
       </div>
 
-      {
-        (sell || buy) ?
-            buy ?
-            <div className='flex-column view-item__button-container'>
-              <div className='flex-row view-item__button'>
-                <Button
-                  onClick={() => setConfirmBuy(true)}
-                  icon='coins'
-                  title={'Buy Item'} />
-              </div>
-            </div>
-            :
-            <div className='flex-column view-item__button-container'>
-              <div className='flex-row view-item__button'>
-                <Button
-                  onClick={() => setConfirmSell(true)}
-                  icon='coins'
-                  title={'Sell Item'} />
-              </div>
-            </div>
-          :
-          <div className='flex-column view-item__button-container'>
-            {
-              itemIsEquipped ?
-                <div className='flex-row view-item__button'>
-                  <Button
-                    onClick={() => {
-                      unequipItem(data);
-                      onClose();
-                    }}
-                    icon='archive'
-                    title={'Un-equip'} />
-                </div>
-                :
-                <div className='flex-row view-item__button'>
-                  <Button
-                    onClick={() => setConfirmDrop(true)}
-                    icon='trash'
-                    title={'Drop'} />
-                  {
-                    data.type === 'potion' ?
-                      <Button
-                        onClick={() => setConfirmPotion(true)}
-                        icon='medkit'
-                        title={'Heal'} />
-                      :
-                      <Button
-                        onClick={() => {
-                          equipItem(data);
-                          onClose();
-                        }}
-                        icon='hand-paper'
-                        title={'Equip'} />
-                  }
-                </div>
-            }
-          </div>
-      }
+      <div className='flex-column view-item__button-container'>
+        <div className='flex-row view-item__button'>
+          { ViewItemButtons }
+        </div>
+      </div>
+
       {
         confirmDrop &&
           <ConfirmDialog
