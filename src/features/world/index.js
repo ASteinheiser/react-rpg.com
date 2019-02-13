@@ -64,7 +64,7 @@ class World extends Component {
           });
         }
 
-        exploreTiles(player.position);
+        store.dispatch(exploreTiles(player.position));
 
         this.setState({ opacity: 0 });
       }, MAP_TRANSITION_DELAY);

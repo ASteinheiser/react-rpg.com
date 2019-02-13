@@ -71,7 +71,7 @@ export default function attemptMove(direction) {
       takeTurn();
     }
     // explore new tiles
-    exploreTiles(newPos);
+    store.dispatch(exploreTiles(newPos));
   } else {
     // dont move the player
     const { playerMoved, position } = store.getState().player;
