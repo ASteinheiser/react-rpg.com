@@ -3,45 +3,27 @@ import { connect }         from 'react-redux';
 
 import Button        from '../button';
 import ConfirmDialog from '../confirm-dialog';
-import { EmptySlot } from '../equipped-items';
 import MicroDialog   from '../micro-dialog';
+import { EmptySlot } from '../equipped-items';
 import { uuidv4 }    from '../../modules/uuid-v4';
 
+import StatsItem     from './stats-item';
+import consumePotion from './consume-potion';
+import dropItem      from './drop-item';
 import equipItem     from './equip-item';
 import unequipItem   from './unequip-item';
-import StatsItem     from './stats-item';
 
 import store from '../../config/store';
 
 import './styles.scss';
 
 const ViewItem = ({ sell, buy, onClose, data, stats, inventory, unequipItem,
-                    equipItem }) => {
+                    equipItem, dropItem, consumePotion }) => {
 
-  const [confirmHeal, setConfirmHeal] = useState(false);
+  const [confirmPotion, setConfirmPotion] = useState(false);
   const [confirmDrop, setConfirmDrop] = useState(false);
   const [confirmSell, setConfirmSell] = useState(false);
   const [confirmBuy, setConfirmBuy] = useState(false);
-
-  function handleConfirmDrop(item) {
-    onClose();
-    store.dispatch({
-      type: 'DROP_ITEM',
-      payload: item
-    });
-  }
-
-  function handleConfirmHeal(item) {
-    onClose();
-    store.dispatch({
-      type: 'DROP_ITEM',
-      payload: item
-    });
-    store.dispatch({
-      type: 'HEAL_HP',
-      payload: { value: parseInt(item.hp, 10) }
-    });
-  }
 
   function handleConfirmBuy(item) {
     const { gold } = stats;
@@ -277,7 +259,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, inventory, unequipItem,
                   {
                     data.type === 'potion' ?
                       <Button
-                        onClick={() => setConfirmHeal(true)}
+                        onClick={() => setConfirmPotion(true)}
                         icon='medkit'
                         title={'Heal'} />
                       :
@@ -301,7 +283,10 @@ const ViewItem = ({ sell, buy, onClose, data, stats, inventory, unequipItem,
             cancelIcon={'archive'}
             acceptText={'Drop'}
             acceptIcon={'trash'}
-            confirm={() => handleConfirmDrop(data)}
+            confirm={() => {
+              dropItem(data);
+              onClose();
+            }}
             onClose={() => setConfirmDrop(false)} />
       }
       {
@@ -325,14 +310,17 @@ const ViewItem = ({ sell, buy, onClose, data, stats, inventory, unequipItem,
             onClose={() => setConfirmBuy(false)} />
       }
       {
-        confirmHeal &&
+        confirmPotion &&
           <ConfirmDialog
             text={`Are you sure you want to use your ${data.name}?`}
             cancelText={'Cancel'}
             acceptText={'Heal'}
             acceptIcon={'medkit'}
-            confirm={() => handleConfirmHeal(data)}
-            onClose={() => setConfirmHeal(false)} />
+            confirm={() => {
+              consumePotion(data);
+              onClose();
+            }}
+            onClose={() => setConfirmPotion(false)} />
       }
     </MicroDialog>
   );
@@ -340,6 +328,6 @@ const ViewItem = ({ sell, buy, onClose, data, stats, inventory, unequipItem,
 
 const mapStateToProps = ({ inventory, stats }) => ({ inventory, stats });
 
-const actions = { unequipItem, equipItem };
+const actions = { consumePotion, dropItem, equipItem, unequipItem };
 
 export default connect(mapStateToProps, actions)(ViewItem);
