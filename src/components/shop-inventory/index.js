@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect }         from 'react-redux';
 
+import ShopItem              from './shop-item';
 import shopItems             from './shop-items';
 import ViewItem              from '../view-item';
-import { EmptySlot }         from '../equipped-items';
 import { uuidv4 }            from '../../modules/uuid-v4';
 import { MAX_ITEMS_UPGRADE } from '../../config/constants';
 
@@ -36,52 +36,14 @@ const ShopInventory = ({ stats, inventory }) => {
       inventory.maxItems === MAX_ITEMS_UPGRADE) return;
 
     shopInventoryItems.push(
-      <div key={uuidv4()}
-        onClick={() => setBuyItem(item)}
-        className='shop-item__container white-border flex-row'>
-
-        <EmptySlot style={{borderRight: '1px solid'}}>
-          <div className='shop-item__slot'
-            style={{ backgroundImage: `url('${item.image}')` }} />
-        </EmptySlot>
-
-        <div className='flex-row shop-item__text'>
-          <span className='flex-row shop-item__title'>
-            { item.name }
-          </span>
-
-          <span className='flex-row shop-item__price'>
-            { item.value }
-          </span>
-        </div>
-      </div>
+      <ShopItem
+        key={uuidv4()}
+        item={item}
+        buyItem={() => setBuyItem(item)} />
     );
-  })
+  });
 
   const MAX_PAGE = Math.ceil(shopInventoryItems.length / ITEMS_PER_PAGE) - 1;
-
-  let shopInventoryButtons = (
-    <div className='flex-row space-between'>
-      {
-        page === 0 ?
-          <div />
-          :
-          <div className='shop-inventory__button' onClick={decrementPage}>
-            <i className='fa fa-arrow-left' style={{paddingRight: 15}} />
-            {'previous'}
-          </div>
-      }
-      {
-        page === MAX_PAGE ?
-          <div />
-          :
-          <div className='shop-inventory__button' onClick={incrementPage}>
-            {'next'}
-            <i className='fa fa-arrow-right' style={{paddingLeft: 15}} />
-          </div>
-      }
-    </div>
-  );
 
   return (
     <div className='flex-column shop-inventory__container'>
@@ -96,7 +58,26 @@ const ShopInventory = ({ stats, inventory }) => {
 
       { shopInventoryItems.splice(5 * page, ITEMS_PER_PAGE) }
 
-      { shopInventoryButtons }
+      <div className='flex-row space-between'>
+        {
+          page > 0 ?
+            <button className='shop-inventory__button' onClick={decrementPage}>
+              <i className='fa fa-arrow-left' style={{paddingRight: 15}} />
+              {'previous'}
+            </button>
+            :
+            <div />
+        }
+        {
+          page < MAX_PAGE ?
+            <button className='shop-inventory__button' onClick={incrementPage}>
+              {'next'}
+              <i className='fa fa-arrow-right' style={{paddingLeft: 15}} />
+            </button>
+            :
+            <div />
+        }
+      </div>
 
     </div>
   );

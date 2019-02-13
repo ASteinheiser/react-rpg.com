@@ -21,11 +21,8 @@ const BackpackItems = ({ view_item, inventory }) => {
         onClick={() => view_item(items[i])}
         style={{
           backgroundImage: `url('${items[i].image}')`,
-          backgroundColor: 'var(--transparent)',
           width: '40px',
           height: '40px',
-          padding: 0,
-          border: 'none',
           cursor: 'pointer'
         }} />
     );

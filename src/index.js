@@ -22,7 +22,7 @@ soundManager.setup({
   ignoreMobileRestrictions: true
 });
 
-ReactDOM.render((
+const ConnectedApp = () => (
   <Provider store={store}>
     <PersistGate
       loading={<Spinner />}
@@ -32,4 +32,6 @@ ReactDOM.render((
 
     </PersistGate>
   </Provider>
-), document.getElementById('react-rpg'));
+);
+
+ReactDOM.render(<ConnectedApp />, document.getElementById('react-rpg'));

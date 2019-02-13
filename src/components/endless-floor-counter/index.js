@@ -6,7 +6,7 @@ const EndlessFloorCounter = ({ floor }) => {
   return(
     <div className='floor-counter__container'>
 
-      {'FLOOR'}
+      <span>{'FLOOR'}</span>
 
       <span className='floor-counter__value'>
         { floor }

@@ -23,9 +23,9 @@ const GameSettings = ({ dialog }) => {
 
   return(
     <button onClick={toggleSettings}
-      className='game-settings__container white-border'>
+      className='game-settings__button white-border'>
 
-      <i className={`fa fa-cog game-settings__button`} />
+      <i className={`fa fa-cog game-settings__icon`} />
 
     </button>
   );

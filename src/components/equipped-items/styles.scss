@@ -9,22 +9,8 @@
   background-repeat: no-repeat;
 
   .equipped-items__slot {
-    background: var(--transparent);
-    border: none;
-
-    padding: 0;
-
     width: 40px;
     height: 40px;
-
-    cursor: pointer;
-  }
-
-  .equipped-items__slot--placeholder {
-    width: 40px;
-    height: 40px;
-
-    cursor: default;
   }
 
   .equipped-items__helmet {

@@ -1,20 +1,16 @@
-.game-settings__container {
+.game-settings__button {
   height: 40px;
   width: 45px;
 
-  background-color: var(--transparent);
-  padding: 0;
-
   margin-top: 12px;
 
-  cursor: pointer;
   user-select: none;
 
   position: relative;
 
   z-index: 100;
 
-  .game-settings__button {
+  .game-settings__icon {
     font-size: 26px;
 
     height: 100%;

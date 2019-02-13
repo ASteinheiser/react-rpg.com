@@ -23,10 +23,20 @@ body {
   text-transform: uppercase;
 }
 
-/* default focus outline color */
 button {
+  font-size: 20px;
+  font-family: Montserrat;
   text-transform: uppercase;
+
+  color: var(--gray);
   outline-color: var(--gray);
+
+  border: none;
+
+  background-color: var(--transparent);
+  padding: 0;
+
+  cursor: pointer;
 }
 a {
   outline-color: var(--gray);

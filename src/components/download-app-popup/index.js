@@ -1,6 +1,5 @@
-import React from 'react';
-
-import store from '../../config/store';
+import React       from 'react';
+import { connect } from 'react-redux';
 
 import iosStore     from './ios-store.png';
 import androidStore from './android-store.png';
@@ -10,13 +9,10 @@ import './styles.scss';
 const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.reactrpgnative';
 const IOS_URL = 'https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1450907766&mt=8';
 
-const DownloadAppPopup = ({ onClose }) => {
+const DownloadAppPopup = ({ onClose, optOut }) => {
 
   function handleOptOut() {
-    store.dispatch({
-      type: 'OPT_OUT_DOWNLOAD',
-      payload: {}
-    });
+    optOut();
     onClose();
   }
 
@@ -57,4 +53,13 @@ const DownloadAppPopup = ({ onClose }) => {
   );
 }
 
-export default DownloadAppPopup;
+const optOut = () => {
+  return dispatch => {
+    dispatch({
+      type: 'OPT_OUT_DOWNLOAD',
+      payload: {}
+    });
+  }
+}
+
+export default connect(null, { optOut })(DownloadAppPopup);

@@ -12,7 +12,11 @@ const Flame = ({ children, position }) => {
 
   return (
     <div className='flame__container'
-      style={{ top, left, backgroundImage: `url('${Flames}')` }}>
+      style={{
+        top,
+        left,
+        backgroundImage: `url('${Flames}')`
+      }}>
 
       { children }
 
