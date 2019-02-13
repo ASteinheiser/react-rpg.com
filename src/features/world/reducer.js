@@ -16,7 +16,30 @@ const worldReducer = (state = initialState, action) => {
   switch(action.type) {
 
     case 'LOAD_STORY_MAPS':
-      return { ...state, storyMaps: _cloneDeep(maps) };
+      let _maps = _cloneDeep(maps);
+      // go over each story map and add explored values
+      // and variation data to the tiles
+      Object.keys(_maps).forEach(mapName => {
+
+        const newTiles = _cloneDeep(_maps[mapName].tiles);
+
+        newTiles.forEach((_, tileRowIndex) => {
+          newTiles[tileRowIndex].forEach((_, tileIndex) => {
+            newTiles[tileRowIndex][tileIndex] = {
+              // give each tile a 'value'
+              value: newTiles[tileRowIndex][tileIndex],
+              // this is used for showing visited tiles
+              explored: 0,
+              // add a variation for tiles that allow for it (random num: 1 - 4)
+              variation: Math.round(Math.random() * (4 - 1) + 1)
+            };
+          });
+        });
+
+        _maps[mapName] = { ..._maps[mapName], tiles: newTiles };
+      });
+
+      return { ...state, storyMaps: _maps };
 
     case 'ADD_RANDOM_MAP':
       const _randomMaps = _cloneDeep(state.randomMaps);

@@ -1,24 +1,27 @@
+import _cloneDeep from 'lodash.clonedeep';
+
 import { MAP_DIMENSIONS } from '../../config/constants';
 
 const initialState = {
   tiles: [],
   sightBox: [],
+  paddingSightBox: [],
   paddingTiles: {
     left: [],
     right: [],
     top: [],
     bottom: []
-  },
-  paddingSightBox: []
+  }
 };
 
 const mapReducer = (state = initialState, action) => {
 
-  let newState = Object.assign({}, state);
+  let newState;
 
   switch(action.type) {
 
     case 'EXPLORE_TILES':
+      newState = _cloneDeep(state);
       const { tiles, paddingTiles } = action.payload;
       // get each tile
       tiles.forEach(tile => {
@@ -47,6 +50,7 @@ const mapReducer = (state = initialState, action) => {
       return newState;
 
     case 'ADD_BLOOD_SPILL':
+      newState = _cloneDeep(state);
       // we need this check to not override chests, stairs, etc.
       // check if the next tile is an empty one
       if(state.tiles[action.payload.y][action.payload.x].value === 0) {
@@ -56,28 +60,13 @@ const mapReducer = (state = initialState, action) => {
       return newState;
 
     case 'OPEN_CHEST':
+      newState = _cloneDeep(state);
       // set current chest to ground tile
       newState.tiles[action.payload.y][action.payload.x].value = -2;
       return newState;
 
-    // load a new map of tiles
     case 'ADD_TILES':
-      action.payload.tiles.forEach((_, index) => {
-        action.payload.tiles[index].forEach((_, tileIndex) => {
-          if(typeof action.payload.tiles[index][tileIndex] !== 'object') {
-            action.payload.tiles[index][tileIndex] = {
-              // give each tile a 'value'
-              value: action.payload.tiles[index][tileIndex],
-              // this is used for showing visited tiles
-              explored: 0,
-              // add a variation for tiles that allow for it (random num: 1 - 4)
-              variation: Math.round(Math.random() * (4 - 1) + 1)
-            };
-          }
-        });
-      });
-
-      // now we need to add padding tiles so the
+      // we need to add padding tiles so the
       // player cannot see past the edge of the map
       let top = [];
       let bottom = [];
@@ -123,6 +112,7 @@ const mapReducer = (state = initialState, action) => {
       }
 
       return {
+        ...state,
         paddingTiles: { top, bottom, left, right },
         ...action.payload
       };
