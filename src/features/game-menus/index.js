@@ -25,7 +25,8 @@ const GameMenus = ({ appState, dialog }) => {
         style={{
           maxWidth: largeView ? 400 : 350,
           paddingLeft: sideMenu ? 8 : 0,
-          height: sideMenu ? '380px' : 'unset'
+          height: sideMenu ? '380px' : 'unset',
+          justifyContent: disableInventory ? 'flex-end' : 'center'
         }}>
 
         <Stats
