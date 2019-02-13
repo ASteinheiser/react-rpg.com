@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { connect }         from 'react-redux';
 
-import shopItems     from './shop-items';
-import ViewItem      from '../view-item';
-import { EmptySlot } from '../equipped-items';
-import { uuidv4 }    from '../../modules/uuid-v4';
+import shopItems             from './shop-items';
+import ViewItem              from '../view-item';
+import { EmptySlot }         from '../equipped-items';
+import { uuidv4 }            from '../../modules/uuid-v4';
+import { MAX_ITEMS_UPGRADE } from '../../config/constants';
 
 import './styles.scss';
 
@@ -31,7 +32,8 @@ const ShopInventory = ({ stats, inventory }) => {
   // render the shop's items
   shopItems(stats.level).forEach(item => {
     // don't show backpack upgrade if it was purchased
-    if(inventory.maxItems === 12 && item.type === 'upgrade::backpack') return;
+    if(item.type === 'upgrade::backpack' &&
+      inventory.maxItems === MAX_ITEMS_UPGRADE) return;
 
     shopInventoryItems.push(
       <div key={uuidv4()}
