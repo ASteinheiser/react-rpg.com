@@ -1,17 +1,18 @@
 import { useEffect } from 'react';
 import _debounce     from 'lodash.debounce';
 
-import store         from '../../config/store';
-import useWindowSize from '../../modules/use-window-size';
+import store         from '../../../config/store';
+import useWindowSize from '../../../modules/use-window-size';
 import {
   SCREEN_SMALL_WIDTH,
   SCREEN_SMALL_HEIGHT,
   SCREEN_MEDIUM_WIDTH,
   SCREEN_MEDIUM_HEIGHT,
-} from '../../config/constants';
+} from '../../../config/constants';
 
 const VIEWPORT_RESIZE_RATE = 250;
 
+// This function is both a React Hook and a Redux Action
 const useGameViewportScaling = () => {
 
   const { height, width } = useWindowSize();
@@ -40,11 +41,11 @@ const useGameViewportScaling = () => {
   function updateViewportScale({ largeView, sideMenu }) {
     store.dispatch({
       type: 'SET_SIDE_MENU',
-      payload: { value: sideMenu }
+      payload: sideMenu
     });
     store.dispatch({
       type: 'SET_LARGE_VIEW',
-      payload: { value: largeView }
+      payload: largeView
     });
   }
 }

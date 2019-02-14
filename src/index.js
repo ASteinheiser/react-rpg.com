@@ -7,7 +7,6 @@ import store, { persistor } from './config/store';
 import App                  from './App';
 import Spinner              from './components/spinner';
 
-// import fonts
 import 'typeface-roboto';
 import 'typeface-montserrat';
 

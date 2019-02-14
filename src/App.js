@@ -10,7 +10,7 @@ import Footer                 from './components/footer';
 import GameMenus              from './features/game-menus';
 import World                  from './features/world';
 import Viewport               from './components/viewport';
-import useGameViewportScaling from './features/app-state/use-game-viewport-scaling';
+import useGameViewportScaling from './features/app-state/actions/use-game-viewport-scaling';
 
 const App = ({ appState, world }) => {
 
