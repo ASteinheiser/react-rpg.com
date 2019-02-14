@@ -6,7 +6,7 @@ import items            from '../../../../data/items';
 import store            from '../../../../config/store';
 import generateMap      from '../../../../modules/generate-map';
 import generateMonsters from '../../../../modules/generate-monsters';
-import exploreTiles     from '../../../../features/player/explore-tiles';
+import exploreTiles     from '../../../../features/player/actions/explore-tiles';
 import { uuidv4 }       from '../../../../modules/uuid-v4';
 
 import './styles.scss';

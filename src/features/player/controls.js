@@ -1,8 +1,8 @@
 import Hammer    from 'hammerjs';
 import _debounce from 'lodash.debounce';
 
-import movePlayer          from './movement';
-import attackMonster       from './attack-monster';
+import movePlayer          from './actions/movement';
+import attackMonster       from './actions/attack-monster';
 import store               from '../../config/store';
 import { ANIMATION_SPEED } from '../../config/constants';
 

@@ -1,4 +1,4 @@
-import store from '../../config/store';
+import store from '../../../config/store';
 
 export default function openChest(x, y) {
   // replace the closed chest img with open

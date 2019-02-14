@@ -13,12 +13,9 @@ import WalkSprite     from './assets/player_walk.png';
 import SwordSlash     from './assets/sword-slash.png';
 import MonsterSlash   from '../monsters/assets/monster-slash.png';
 // other local imports
-import store          from '../../config/store';
 import playerControls from './controls';
-import {
-  ANIMATION_SPEED,
-  SPRITE_SIZE
-} from '../../config/constants';
+import store          from '../../config/store';
+import { ANIMATION_SPEED, SPRITE_SIZE } from '../../config/constants';
 
 import './styles.scss';
 

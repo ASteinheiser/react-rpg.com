@@ -1,8 +1,8 @@
 import exploreTiles from './explore-tiles';
 import openChest    from './open-chest';
 import walkStairs   from './walk-stairs';
-import store        from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../config/constants';
+import store        from '../../../config/store';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../../config/constants';
 
 export function checkForMonster(newPos) {
   let { currentMap } = store.getState().world;

@@ -1,10 +1,10 @@
-import store           from '../../config/store';
-import { SPRITE_SIZE } from '../../config/constants';
-import calculateDamage from '../../modules/calculate-damage';
-import calculateBonus  from '../../modules/calculate-bonus';
+import store           from '../../../config/store';
+import { SPRITE_SIZE } from '../../../config/constants';
+import calculateDamage from '../../../modules/calculate-damage';
+import calculateBonus  from '../../../modules/calculate-bonus';
 import { checkForMonster, getNewPosition, observeBoundaries } from './movement';
 
-function observeImpassable(oldPos, newPos) {
+function observeImpassable(newPos) {
   const tiles = store.getState().map.tiles;
   const y = newPos[1] / SPRITE_SIZE;
   const x = newPos[0] / SPRITE_SIZE;
@@ -21,7 +21,7 @@ export default function attackMonster() {
   const { position, direction } = currState.player;
   const newPos = getNewPosition(position, direction);
   // if the attacked tile is in bounds
-  if(observeBoundaries(position, newPos) && observeImpassable(position, newPos)) {
+  if(observeBoundaries(position, newPos) && observeImpassable(newPos)) {
     // if theres a monster
     const monsterId = checkForMonster(newPos);
     if(monsterId) {

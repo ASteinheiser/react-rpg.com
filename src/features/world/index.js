@@ -6,7 +6,7 @@ import Map              from '../map';
 import Monsters         from '../monsters';
 import takeMonstersTurn from '../monsters/take-monsters-turn';
 import Player           from '../player';
-import exploreTiles     from '../player/explore-tiles';
+import exploreTiles     from '../player/actions/explore-tiles';
 import generateMonsters from '../../modules/generate-monsters';
 import store            from '../../config/store';
 
