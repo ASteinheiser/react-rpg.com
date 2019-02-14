@@ -3,11 +3,12 @@ import React, { useEffect } from 'react';
 import Button           from '../../../../components/button';
 import Dialog           from '../../../../components/dialog';
 import items            from '../../../../data/items';
-import store            from '../../../../config/store';
-import generateMap      from '../../../../modules/generate-map';
-import generateMonsters from '../../../../modules/generate-monsters';
+import generateMap      from '../../../map/random-map-gen/generate-map';
+import generateMonsters from '../../../map/random-map-gen/generate-monsters';
 import exploreTiles     from '../../../../features/player/actions/explore-tiles';
 import uuidv4           from '../../../../modules/uuid-v4';
+
+import store from '../../../../config/store';
 
 import './styles.scss';
 

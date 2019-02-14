@@ -1,6 +1,6 @@
 import store              from '../../../config/store';
-import generateMap        from '../../../modules/generate-map';
-import showEndlessMessage from '../../../modules/show-endless-message';
+import generateMap        from '../../map/random-map-gen/generate-map';
+import randomMapMessage   from '../../map/random-map-gen/random-map-message';
 import uuidv4             from '../../../modules/uuid-v4';
 import { SPRITE_SIZE }    from '../../../config/constants';
 
@@ -18,7 +18,7 @@ export default function walkStairs(nextTile, playerPos) {
   if(gameMode === 'endless') {
     if(direction === 'up') {
       // conditionally show a message based on floorNum
-      showEndlessMessage(floorNum);
+      randomMapMessage(floorNum);
       // if we have reached a new floor
       if(floorNum === randomMaps.length) {
         // generate a random map, save it, and set it as the current map

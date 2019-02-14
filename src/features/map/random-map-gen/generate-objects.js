@@ -1,6 +1,6 @@
-import { MAP_DIMENSIONS }  from '../config/constants';
-import getSurroundingTiles from './get-surrounding-tiles';
-import arrContainArr       from './arr-contain-arr';
+import { MAP_DIMENSIONS }  from '../../../config/constants';
+import getSurroundingTiles from '../../../modules/get-surrounding-tiles';
+import arrContainArr       from '../../../modules/arr-contain-arr';
 // randomly generates chests, stairs and shops onto an existing random map
 export default function generateObjects(map, floorNum, playerPos, wallType) {
   let initialTiles = [];

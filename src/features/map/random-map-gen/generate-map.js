@@ -1,4 +1,4 @@
-import { MAP_DIMENSIONS, MAX_TUNNELS, MAX_LENGTH } from '../config/constants';
+import { MAP_DIMENSIONS, MAX_TUNNELS, MAX_LENGTH } from '../../../config/constants';
 import generateObjects from './generate-objects';
 
 // generate a map filled with wall tiles

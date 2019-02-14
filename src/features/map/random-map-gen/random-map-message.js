@@ -1,6 +1,7 @@
-import store from '../config/store';
+import store from '../../../config/store';
 
-export default function showEndlessMessage(floorNum) {
+export default function randomMapMessage(floorNum) {
+
   let message = false;
   // check if we should show a message
   switch(floorNum + 1) {
