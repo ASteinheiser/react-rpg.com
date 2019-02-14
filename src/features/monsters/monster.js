@@ -13,7 +13,7 @@ function Monster({ monster }) {
         opacity: monster.visible ? 1 : 0,
         width: '40px',
         height: '40px',
-        transition: 'left .35s ease-in-out .15s, top .35s ease-in-out .15s, opacity .35s ease-in-out .15s'
+        transition: 'left .35s ease-in-out .15s, top .35s ease-in-out .15s, opacity .35s ease-in-out'
       }}>
 
       <HealthBar value={monster.hp} max={monster.maxHp} />

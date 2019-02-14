@@ -1,6 +1,6 @@
-import { SPRITE_SIZE } from '../../config/constants';
-import store           from '../../config/store';
-import calculateDamage from '../../modules/calculate-damage';
+import { SPRITE_SIZE } from '../../../config/constants';
+import store           from '../../../config/store';
+import calculateDamage from '../../../modules/calculate-damage';
 
 let x, y;
 const radiusTiles = [];
