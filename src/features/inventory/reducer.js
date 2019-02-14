@@ -1,7 +1,7 @@
 import _cloneDeep from 'lodash.clonedeep';
 
 import { MAX_ITEMS } from '../../config/constants';
-import { uuidv4 }    from '../../modules/uuid-v4';
+import uuidv4        from '../../modules/uuid-v4';
 
 const initialState = {
   items: [],

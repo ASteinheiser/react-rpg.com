@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { connect }         from 'react-redux';
 
 import Button         from '../../../../components/button';
 import ConfirmDialog  from '../../../../components/confirm-dialog';
 import Dialog         from '../../../../components/dialog';
 import store          from '../../../../config/store';
-import resetGameState from '../../../../modules/reset-game-state';
+import resetGameState from '../../../world/actions/reset-game-state';
 
 import './settings-dialog.scss';
 
-const SettingsDialog = () => {
+const SettingsDialog = ({ resetGameState }) => {
 
   const [confirmQuit, setConfirmQuit] = useState(false);
 
@@ -47,4 +48,4 @@ const SettingsDialog = () => {
   );
 }
 
-export default SettingsDialog;
+export default connect(null, { resetGameState })(SettingsDialog);

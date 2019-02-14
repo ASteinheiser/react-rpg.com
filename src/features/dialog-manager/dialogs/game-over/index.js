@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import ReactTimeout         from 'react-timeout';
+import { connect }          from 'react-redux';
 
 import Button         from '../../../../components/button';
 import Dialog         from '../../../../components/dialog';
 import randomPhrase   from './random-phrase';
-import resetGameState from '../../../../modules/reset-game-state';
+import resetGameState from '../../../world/actions/reset-game-state';
 
 import './styles.scss';
 
@@ -28,6 +29,7 @@ class GameOver extends Component {
 
   render() {
     const { phrase, ready } = this.state;
+    const { resetGameState } = this.props;
 
     return(
       <Dialog>
@@ -50,4 +52,4 @@ class GameOver extends Component {
   }
 }
 
-export default ReactTimeout(GameOver);
+export default connect(null, { resetGameState })(ReactTimeout(GameOver));

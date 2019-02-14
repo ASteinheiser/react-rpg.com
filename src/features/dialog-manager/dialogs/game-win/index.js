@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import Button         from '../../../../components/button';
 import Dialog         from '../../../../components/dialog';
-import resetGameState from '../../../../modules/reset-game-state';
+import resetGameState from '../../../world/actions/reset-game-state';
 import store          from '../../../../config/store';
 
 import './styles.scss';
 
-const GameWin = ({ monsters }) => {
+const GameWin = ({ monsters, resetGameState }) => {
 
   function handleCloseDialog() {
     store.dispatch({
@@ -66,4 +66,4 @@ const GameWin = ({ monsters }) => {
 
 const mapStateToProps = ({ monsters }) => ({ monsters });
 
-export default connect(mapStateToProps)(GameWin);
+export default connect(mapStateToProps, { resetGameState })(GameWin);

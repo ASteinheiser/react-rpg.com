@@ -1,7 +1,7 @@
 import store              from '../../../config/store';
 import generateMap        from '../../../modules/generate-map';
 import showEndlessMessage from '../../../modules/show-endless-message';
-import { uuidv4 }         from '../../../modules/uuid-v4';
+import uuidv4             from '../../../modules/uuid-v4';
 import { SPRITE_SIZE }    from '../../../config/constants';
 
 export default function walkStairs(nextTile, playerPos) {
