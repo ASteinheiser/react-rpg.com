@@ -37,13 +37,11 @@ const SettingsDialog = () => {
           title='Close' />
       </div>
 
-      {
-        confirmQuit &&
-          <ConfirmDialog
-            text='Are you sure you want to quit? You will lose all progress...'
-            onClose={() => setConfirmQuit(false)}
-            confirm={resetGameState} />
-      }
+      <ConfirmDialog
+        open={confirmQuit}
+        text='Are you sure you want to quit? You will lose all progress...'
+        onClose={() => setConfirmQuit(false)}
+        confirm={resetGameState} />
 
     </Dialog>
   );

@@ -162,59 +162,55 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
         </div>
       </div>
 
-      {
-        confirmDrop &&
-          <ConfirmDialog
-            text={'Are you sure!? This item will be gone forever...'}
-            cancelText={'Keep'}
-            cancelIcon={'archive'}
-            acceptText={'Drop'}
-            acceptIcon={'trash'}
-            confirm={() => {
-              dropItem(data);
-              onClose();
-            }}
-            onClose={() => setConfirmDrop(false)} />
-      }
-      {
-        confirmSell &&
-          <ConfirmDialog
-            text={`Are you sure you want to sell your ${data.name} for ${Math.ceil(data.value / 2)} gold ?`}
-            cancelText={'Cancel'}
-            acceptText={'Sell'}
-            acceptIcon={'coins'}
-            confirm={() => {
-              sellItem(data);
-              onClose();
-            }}
-            onClose={() => setConfirmSell(false)} />
-      }
-      {
-        confirmBuy &&
-          <ConfirmDialog
-            text={`Are you sure you want to buy ${data.name} for ${data.value} gold ?`}
-            cancelText={'Cancel'}
-            acceptText={'Buy'}
-            acceptIcon={'coins'}
-            confirm={() => {
-              buyItem(data);
-              onClose();
-            }}
-            onClose={() => setConfirmBuy(false)} />
-      }
-      {
-        confirmPotion &&
-          <ConfirmDialog
-            text={`Are you sure you want to use your ${data.name}?`}
-            cancelText={'Cancel'}
-            acceptText={'Heal'}
-            acceptIcon={'medkit'}
-            confirm={() => {
-              consumePotion(data);
-              onClose();
-            }}
-            onClose={() => setConfirmPotion(false)} />
-      }
+      <ConfirmDialog
+        open={confirmDrop}
+        text={'Are you sure!? This item will be gone forever...'}
+        cancelText={'Keep'}
+        cancelIcon={'archive'}
+        acceptText={'Drop'}
+        acceptIcon={'trash'}
+        confirm={() => {
+          dropItem(data);
+          onClose();
+        }}
+        onClose={() => setConfirmDrop(false)} />
+
+      <ConfirmDialog
+        open={confirmSell}
+        text={`Are you sure you want to sell your ${data.name} for ${Math.ceil(data.value / 2)} gold ?`}
+        cancelText={'Cancel'}
+        acceptText={'Sell'}
+        acceptIcon={'coins'}
+        confirm={() => {
+          sellItem(data);
+          onClose();
+        }}
+        onClose={() => setConfirmSell(false)} />
+
+      <ConfirmDialog
+        open={confirmBuy}
+        text={`Are you sure you want to buy ${data.name} for ${data.value} gold ?`}
+        cancelText={'Cancel'}
+        acceptText={'Buy'}
+        acceptIcon={'coins'}
+        confirm={() => {
+          buyItem(data);
+          onClose();
+        }}
+        onClose={() => setConfirmBuy(false)} />
+
+      <ConfirmDialog
+        open={confirmPotion}
+        text={`Are you sure you want to use your ${data.name}?`}
+        cancelText={'Cancel'}
+        acceptText={'Heal'}
+        acceptIcon={'medkit'}
+        confirm={() => {
+          consumePotion(data);
+          onClose();
+        }}
+        onClose={() => setConfirmPotion(false)} />
+
     </MicroDialog>
   );
 }

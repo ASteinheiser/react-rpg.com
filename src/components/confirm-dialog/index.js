@@ -4,7 +4,9 @@ import Button from '../button';
 
 import './styles.scss';
 
-const ConfirmDialog = ({ text, onClose, cancelIcon, cancelText, confirm, acceptIcon, acceptText, className }) => {
+const ConfirmDialog = ({ open, text, onClose, cancelIcon, cancelText, confirm, acceptIcon, acceptText, className }) => {
+
+  if(!open) return null;
 
   return(
     <div className={`confirm-dialog__container white-border ${className || ''}`}>
