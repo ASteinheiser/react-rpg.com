@@ -2,8 +2,8 @@ import React       from 'react';
 import { connect } from 'react-redux';
 
 import optOut       from '../../features/app-state/actions/opt-out';
-import iosStore     from './ios-store.png';
-import androidStore from './android-store.png';
+import iosStore     from './assets/ios-store.png';
+import androidStore from './assets/android-store.png';
 
 import './styles.scss';
 
