@@ -48,13 +48,11 @@ const ShopInventory = ({ stats, inventory }) => {
   return (
     <div className='flex-column shop-inventory__container'>
 
-      {
-        buyItem &&
-          <ViewItem
-            buy={true}
-            data={buyItem}
-            onClose={() => setBuyItem(false)} />
-      }
+      <ViewItem
+        open={Boolean(buyItem)}
+        buy={true}
+        data={buyItem}
+        onClose={() => setBuyItem(false)} />
 
       { shopInventoryItems.splice(5 * page, ITEMS_PER_PAGE) }
 

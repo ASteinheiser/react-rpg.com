@@ -1,7 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import { EmptySlot }         from '../equipped-items';
+import EmptySlot             from '../empty-slot';
 import { MAX_ITEMS_UPGRADE } from '../../config/constants';
 
 import './styles.scss';

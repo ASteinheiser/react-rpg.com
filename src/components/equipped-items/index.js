@@ -1,6 +1,9 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
+import EmptySlot, { DarkenSlot } from '../empty-slot';
+import unequipItem               from '../../features/inventory/actions/unequip-item';
+
 import BootsOutline  from './assets/boots-outline.png';
 import HelmetOutline from './assets/helmet-outline.png';
 import BodyOutline   from './assets/body-outline.png';
@@ -9,37 +12,8 @@ import PantsOutline  from './assets/pants-outline.png'
 import RingOutline   from './assets/ring-outline.png';
 import SwordOutline  from './assets/sword-outline.png';
 import Character     from './assets/equipment-character.png';
-import InventorySlot from './assets/inventory-slot.png';
-import unequipItem   from '../view-item/unequip-item';
 
 import './styles.scss';
-
-export function EmptySlot({ margin, style, className, children }) {
-
-  const styles = {
-    ...style,
-    backgroundImage: `url('${InventorySlot}')`,
-    width: '40px',
-    height: '40px',
-    margin: margin
-  };
-
-  return (
-    <div className={className || ''} style={styles}>
-      { children }
-    </div>
-  );
-}
-
-function DarkenSlot() {
-  return (
-    <div style={{
-      backgroundColor: 'rgba(0, 0, 0, 0.25)',
-      width: 40,
-      height: 40
-    }} />
-  );
-}
 
 const EquippedItems = ({ stats, unequipItem }) => {
 

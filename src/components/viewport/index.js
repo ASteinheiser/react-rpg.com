@@ -9,6 +9,7 @@ import {
 import './viewport.scss';
 
 const Viewport = ({ appState, children }) => {
+
   const { largeView, sideMenu } = appState;
 
   const gameSize = (largeView ? GAME_VIEWPORT_SIZE_LG : GAME_VIEWPORT_SIZE);

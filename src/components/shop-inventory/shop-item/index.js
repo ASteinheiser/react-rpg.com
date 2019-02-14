@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { EmptySlot } from '../../equipped-items';
+import EmptySlot from '../../empty-slot';
 
 import './styles.scss';
 

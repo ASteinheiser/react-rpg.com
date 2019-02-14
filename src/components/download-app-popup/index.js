@@ -1,6 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
+import optOut       from '../../features/app-state/actions/opt-out';
 import iosStore     from './ios-store.png';
 import androidStore from './android-store.png';
 
@@ -51,15 +52,6 @@ const DownloadAppPopup = ({ onClose, optOut }) => {
 
     </div>
   );
-}
-
-const optOut = () => {
-  return dispatch => {
-    dispatch({
-      type: 'OPT_OUT_DOWNLOAD',
-      payload: {}
-    });
-  }
 }
 
 export default connect(null, { optOut })(DownloadAppPopup);

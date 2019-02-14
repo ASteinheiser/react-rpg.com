@@ -14,13 +14,11 @@ const SellItemsDialog = ({ onClose }) => {
   return(
     <MicroDialog onClose={onClose} fullsize className='centered'>
 
-      {
-        sellItem &&
-          <ViewItem
-            data={sellItem}
-            sell={true}
-            onClose={() => setSellItem(false)} />
-      }
+      <ViewItem
+        open={Boolean(sellItem)}
+        data={sellItem}
+        sell={true}
+        onClose={() => setSellItem(false)} />
 
       <div className='flex-column sell-items__container'
         style={{backgroundImage: `url(${Backpack})`}}>

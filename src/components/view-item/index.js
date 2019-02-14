@@ -3,27 +3,29 @@ import { connect }         from 'react-redux';
 
 import Button        from '../button';
 import ConfirmDialog from '../confirm-dialog';
+import EmptySlot     from '../empty-slot';
 import MicroDialog   from '../micro-dialog';
-import { EmptySlot } from '../equipped-items';
+import StatsItem     from './stats-item';
 import { uuidv4 }    from '../../modules/uuid-v4';
 
-import StatsItem     from './stats-item';
-import consumePotion from './consume-potion';
-import buyItem       from './buy-item';
-import dropItem      from './drop-item';
-import equipItem     from './equip-item';
-import unequipItem   from './unequip-item';
-import sellItem      from './sell-item';
+import consumePotion from '../../features/inventory/actions/consume-potion';
+import buyItem       from '../../features/inventory/actions/buy-item';
+import dropItem      from '../../features/inventory/actions/drop-item';
+import equipItem     from '../../features/inventory/actions/equip-item';
+import unequipItem   from '../../features/inventory/actions/unequip-item';
+import sellItem      from '../../features/inventory/actions/sell-item';
 
 import './styles.scss';
 
 const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
-                    equipItem, dropItem, consumePotion, sellItem }) => {
+                    equipItem, dropItem, consumePotion, sellItem, open }) => {
 
   const [confirmPotion, setConfirmPotion] = useState(false);
   const [confirmDrop, setConfirmDrop] = useState(false);
   const [confirmSell, setConfirmSell] = useState(false);
   const [confirmBuy, setConfirmBuy] = useState(false);
+
+  if(!open) return null;
 
   let itemStats = [];
   let itemIsEquipped = false;
