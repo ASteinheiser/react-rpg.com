@@ -1,6 +1,6 @@
-import React, { useEffect, useState }                 from 'react';
-import { connect }                                    from 'react-redux';
-import { isMobile }                                   from 'react-device-detect';
+import React, { useEffect, useState } from 'react';
+import { connect }                    from 'react-redux';
+import { isMobile }                   from 'react-device-detect';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import DownloadAppPopup       from './components/download-app-popup';
@@ -18,18 +18,6 @@ const App = ({ appState, world }) => {
 
   const [showDownloadPopup, setShowDownloadPopup] = useState(false);
 
-  let showFooter = true;
-
-  const nativeApp = window.location.search === '?nativeApp=true';
-  // don't show the footer if on a mobile device
-  // or using the native app query param
-  if(nativeApp || isMobile) {
-    showFooter = false;
-  }
-
-  const { optOutDownload, sideMenu } = appState;
-  const { gameMode, floorNum } = world;
-
   // disable scrolling of the page
   // prevents iOS Safari bouncing during movement
   useEffect(() => {
@@ -45,9 +33,23 @@ const App = ({ appState, world }) => {
     }
   }, []);
 
+  const { optOutDownload, sideMenu } = appState;
+  const { gameMode, floorNum } = world;
+
+  let showFooter = true;
+
+  const nativeApp = window.location.search === '?nativeApp=true';
+  // don't show the footer if on a mobile device
+  // or using the native app query param
+  if(nativeApp || isMobile) {
+    showFooter = false;
+  }
+
   return(
     <>
-      { showDownloadPopup && <DownloadAppPopup onClose={() => setShowDownloadPopup(false)} /> }
+      <DownloadAppPopup
+        open={showDownloadPopup}
+        onClose={() => setShowDownloadPopup(false)} />
 
       <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
 

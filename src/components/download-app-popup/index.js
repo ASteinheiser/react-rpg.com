@@ -10,7 +10,9 @@ import './styles.scss';
 const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.reactrpgnative';
 const IOS_URL = 'https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1450907766&mt=8';
 
-const DownloadAppPopup = ({ onClose, optOut }) => {
+const DownloadAppPopup = ({ onClose, optOut, open }) => {
+
+  if(!open) return false;
 
   function handleOptOut() {
     optOut();
@@ -29,6 +31,7 @@ const DownloadAppPopup = ({ onClose, optOut }) => {
         </span>
 
         <div className='download-app__buttons'>
+
           <a href={IOS_URL} target='_blank' rel="noopener noreferrer">
             <img className='ios-icon' src={iosStore} alt='ios-store' />
           </a>
@@ -36,6 +39,7 @@ const DownloadAppPopup = ({ onClose, optOut }) => {
           <a href={ANDROID_URL} target='_blank' rel="noopener noreferrer">
             <img className='android-icon' src={androidStore} alt='android-store' />
           </a>
+
         </div>
 
         <div className='flex-row space-between'>

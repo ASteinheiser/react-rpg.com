@@ -17,7 +17,7 @@ import './styles.scss';
 
 const EquippedItems = ({ stats, unequipItem }) => {
 
-  let { weapon, ring, armor } = stats.equippedItems;
+  const { weapon, ring, armor } = stats.equippedItems;
 
   return (
     <div className='equipped-items__character'

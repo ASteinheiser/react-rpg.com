@@ -4,14 +4,10 @@ import './styles.scss';
 
 const MicroDialog = ({ no_button, onClose, children, fullsize, className }) => {
 
-  let styles = {};
-
-  if(fullsize) {
-    styles = { top: 0, bottom: 0, left: 0, right: 0 };
-  }
+  const noSpacing = { top: 0, bottom: 0, left: 0, right: 0 };
 
   return(
-    <div style={styles}
+    <div style={fullsize ? noSpacing : {}}
       className={`micro-dialog__container white-border ${className || ''}`}>
 
       {
