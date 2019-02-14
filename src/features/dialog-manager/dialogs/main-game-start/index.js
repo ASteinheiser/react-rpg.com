@@ -3,8 +3,8 @@ import { connect }          from 'react-redux';
 
 import Button        from '../../../../components/button';
 import Dialog        from '../../../../components/dialog';
-import backToSelect  from '../game-select/back-to-select';
-import startMainGame from './start-main-game';
+import backToSelect  from '../../actions/back-to-select';
+import startMainGame from '../../../world/actions/start-main-game';
 
 import './styles.scss';
 

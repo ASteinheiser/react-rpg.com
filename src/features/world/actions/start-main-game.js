@@ -1,5 +1,5 @@
-import exploreTiles  from '../../../../features/player/actions/explore-tiles';
-import { START_MAP } from '../../../../config/constants';
+import exploreTiles  from '../../player/actions/explore-tiles';
+import { START_MAP } from '../../../config/constants';
 
 export default function startMainGame() {
   return (dispatch, getState) => {
