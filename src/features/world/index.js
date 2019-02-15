@@ -13,8 +13,8 @@ import store from '../../config/store';
 
 import './styles.scss';
 
-// animation time is 250(ms), adding 50 makes it smoother
-const MAP_TRANSITION_DELAY = 300;
+// animation time is 500(ms), adding 100 makes it smoother
+const MAP_TRANSITION_DELAY = 600;
 
 class World extends Component {
   constructor(props) {
