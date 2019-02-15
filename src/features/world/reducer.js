@@ -1,6 +1,8 @@
 import maps       from '../../data/maps';
 import _cloneDeep from 'lodash.clonedeep';
 
+import attachMetaToTiles from '../../modules/attach-meta-to-tiles';
+
 const initialState = {
   currentMap: null,
   gameMode: null,
@@ -13,7 +15,38 @@ const initialState = {
 
 const worldReducer = (state = initialState, action) => {
 
+  let newState;
+
   switch(action.type) {
+
+    case 'EXPLORE_TILES':
+      newState = _cloneDeep(state);
+      const { tiles } = action.payload;
+      // get each tile
+      tiles.forEach(tile => {
+        if(newState.gameMode === 'story') {
+          newState.storyMaps[newState.currentMap].tiles[tile[0]][tile[1]].explored = 1;
+        } else {
+          newState.randomMaps[newState.floorNum - 1].tiles[tile[0]][tile[1]].explored = 1;
+        }
+      });
+
+      // // make a new array of the padding tiles location as strings
+      // const paddTiles = paddingTiles.map(JSON.stringify);
+      // // check each padding tile direction and see if any
+      // // tiles are contained in the new sightbox
+      // if(paddTiles.length > 0) {
+      //   Object.keys(state.paddingTiles).forEach(direction => {
+      //     newState.paddingTiles[direction] = state.paddingTiles[direction].map(tileRow => {
+      //       return tileRow.map(tile => {
+      //         if(paddTiles.indexOf(JSON.stringify(tile.location)) > -1) tile.explored = 1;
+      //         return tile;
+      //       });
+      //     });
+      //   });
+      // }
+
+      return newState;
 
     case 'LOAD_STORY_MAPS':
       let _maps = _cloneDeep(maps);
@@ -21,20 +54,7 @@ const worldReducer = (state = initialState, action) => {
       // and variation data to the tiles
       Object.keys(_maps).forEach(mapName => {
 
-        const newTiles = _cloneDeep(_maps[mapName].tiles);
-
-        newTiles.forEach((_, tileRowIndex) => {
-          newTiles[tileRowIndex].forEach((_, tileIndex) => {
-            newTiles[tileRowIndex][tileIndex] = {
-              // give each tile a 'value'
-              value: newTiles[tileRowIndex][tileIndex],
-              // this is used for showing visited tiles
-              explored: 0,
-              // add a variation for tiles that allow for it (random num: 1 - 4)
-              variation: Math.round(Math.random() * (4 - 1) + 1)
-            };
-          });
-        });
+        const newTiles = attachMetaToTiles(_maps[mapName].tiles);
 
         _maps[mapName] = { ..._maps[mapName], tiles: newTiles };
       });
@@ -42,10 +62,12 @@ const worldReducer = (state = initialState, action) => {
       return { ...state, storyMaps: _maps };
 
     case 'ADD_RANDOM_MAP':
-      const _randomMaps = _cloneDeep(state.randomMaps);
+      let _randomMaps = _cloneDeep(state.randomMaps);
+
+      const randomTiles = attachMetaToTiles(action.payload.tiles);
 
       _randomMaps.push({
-        tiles: action.payload.tiles,
+        tiles: randomTiles,
         id: action.payload.id
       });
 

@@ -1,9 +1,9 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import MapPadding      from './map-padding';
-import Flame           from '../../components/flame';
-import { SPRITE_SIZE } from '../../config/constants';
+import MapPadding from './map-padding';
+import Flame      from '../../components/flame';
+import { SPRITE_SIZE, MAP_HEIGHT, MAP_WIDTH } from '../../config/constants';
 
 export function getTileSprite(type, variation) {
   switch(type) {
@@ -129,25 +129,35 @@ function MapRow(props) {
   )
 }
 
-function Map({ map, dialog }) {
-  const { gameStart } = dialog;
+const GameMap = ({ map, world }) => {
 
-  const wallType = getWallType(map.tiles);
+  const { gameMode, storyMaps, randomMaps, currentMap, floorNum } = world;
 
-  // game start menu open, hide the map
-  if(gameStart) return <div style={{ width: '800px', height: '600px' }} />;
+  const mapStyle = {
+    width: MAP_WIDTH,
+    height: MAP_HEIGHT,
+    position: 'relative'
+  };
+
+  if(!currentMap) return (
+    <div style={mapStyle} />
+  );
+
+  if(gameMode === 'story') {
+    map.tiles = storyMaps[currentMap].tiles;
+  } else {
+    map.tiles = randomMaps[floorNum - 1].tiles;
+  }
+
+  // const wallType = getWallType(map.tiles);
 
   return (
-    <div style={{
-      width: '800px',
-      height: '600px',
-      position: 'relative'
-    }}>
+    <div style={mapStyle}>
 
-      <MapPadding
+      {/* <MapPadding
         tileType={wallType}
         tiles={map.paddingTiles}
-        sightBox={map.paddingSightBox} />
+        sightBox={map.paddingSightBox} /> */}
 
       {
         map.tiles.map((row, index) => {
@@ -176,6 +186,6 @@ function getWallType(tiles) {
   }
 }
 
-const mapStateToProps = ({ map, dialog }) => ({ map, dialog });
+const mapStateToProps = ({ world, map }) => ({ world, map });
 
-export default connect(mapStateToProps)(Map);
+export default connect(mapStateToProps)(GameMap);

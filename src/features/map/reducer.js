@@ -3,15 +3,8 @@ import _cloneDeep from 'lodash.clonedeep';
 import { MAP_DIMENSIONS } from '../../config/constants';
 
 const initialState = {
-  tiles: [],
   sightBox: [],
-  paddingSightBox: [],
-  paddingTiles: {
-    left: [],
-    right: [],
-    top: [],
-    bottom: []
-  }
+  paddingSightBox: []
 };
 
 const mapReducer = (state = initialState, action) => {
@@ -23,29 +16,10 @@ const mapReducer = (state = initialState, action) => {
     case 'EXPLORE_TILES':
       newState = _cloneDeep(state);
       const { tiles, paddingTiles } = action.payload;
-      // get each tile
-      tiles.forEach(tile => {
-        // set it's value to explored
-        newState.tiles[tile[0]][tile[1]].explored = 1;
-      });
       // set tiles for current sight box
       newState.sightBox = tiles;
       // set tiles for current padding sight box
       newState.paddingSightBox = paddingTiles;
-      // make a new array of the padding tiles location as strings
-      const paddTiles = paddingTiles.map(JSON.stringify);
-      // check each padding tile direction and see if any
-      // tiles are contained in the new sightbox
-      if(paddTiles.length > 0) {
-        Object.keys(state.paddingTiles).forEach(direction => {
-          newState.paddingTiles[direction] = state.paddingTiles[direction].map(tileRow => {
-            return tileRow.map(tile => {
-              if(paddTiles.indexOf(JSON.stringify(tile.location)) > -1) tile.explored = 1;
-              return tile;
-            });
-          });
-        });
-      }
 
       return newState;
 
