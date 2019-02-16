@@ -1,4 +1,4 @@
-import getSurroundingTiles, { radiusTiles } from '../../modules/get-surrounding-tiles';
+import getSurroundingTiles, { radiusTiles } from '../../utils/get-surrounding-tiles';
 import { MAP_DIMENSIONS }                   from '../../config/constants';
 
 describe('getSurroundingTiles tests:', () => {

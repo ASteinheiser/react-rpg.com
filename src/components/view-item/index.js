@@ -6,7 +6,7 @@ import ConfirmDialog from '../confirm-dialog';
 import EmptySlot     from '../empty-slot';
 import MicroDialog   from '../micro-dialog';
 import StatsItem     from './stats-item';
-import uuidv4        from '../../modules/uuid-v4';
+import uuidv4        from '../../utils/uuid-v4';
 
 import consumePotion from '../../features/inventory/actions/consume-potion';
 import buyItem       from '../../features/inventory/actions/buy-item';

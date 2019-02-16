@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import _debounce     from 'lodash.debounce';
 
 import store         from '../../../config/store';
-import useWindowSize from '../../../modules/use-window-size';
+import useWindowSize from '../../../utils/use-window-size';
 import {
   SCREEN_SMALL_WIDTH,
   SCREEN_SMALL_HEIGHT,

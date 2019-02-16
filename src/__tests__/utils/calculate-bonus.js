@@ -1,4 +1,4 @@
-import calculateBonus from '../../modules/calculate-bonus';
+import calculateBonus from '../../utils/calculate-bonus';
 
 describe('calculateBonus tests:', () => {
 

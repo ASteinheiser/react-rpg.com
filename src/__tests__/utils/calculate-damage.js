@@ -1,4 +1,4 @@
-import calculateDamage from '../../modules/calculate-damage';
+import calculateDamage from '../../utils/calculate-damage';
 
 describe('basic calculateDamage tests:', () => {
 

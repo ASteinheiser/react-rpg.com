@@ -1,7 +1,7 @@
 import store              from '../../../config/store';
 import generateMap        from '../../map/random-map-gen/generate-map';
 import randomMapMessage   from '../../map/random-map-gen/random-map-message';
-import uuidv4             from '../../../modules/uuid-v4';
+import uuidv4             from '../../../utils/uuid-v4';
 import { SPRITE_SIZE }    from '../../../config/constants';
 
 export default function walkStairs(nextTile, playerPos) {

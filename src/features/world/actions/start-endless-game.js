@@ -2,7 +2,7 @@ import items            from '../../../data/items';
 import generateMap      from '../../map/random-map-gen/generate-map';
 import generateMonsters from '../../map/random-map-gen/generate-monsters';
 import exploreTiles     from '../../../features/player/actions/explore-tiles';
-import uuidv4           from '../../../modules/uuid-v4';
+import uuidv4           from '../../../utils/uuid-v4';
 
 export default function startEndlessGame() {
   return (dispatch, getState) => {

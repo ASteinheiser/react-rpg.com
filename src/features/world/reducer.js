@@ -1,7 +1,7 @@
 import maps       from '../../data/maps';
 import _cloneDeep from 'lodash.clonedeep';
 
-import attachMetaToTiles from '../../modules/attach-meta-to-tiles';
+import attachMetaToTiles from '../../utils/attach-meta-to-tiles';
 
 const initialState = {
   currentMap: null,

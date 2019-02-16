@@ -1,7 +1,7 @@
 import store           from '../../../config/store';
 import { SPRITE_SIZE } from '../../../config/constants';
-import calculateDamage from '../../../modules/calculate-damage';
-import calculateBonus  from '../../../modules/calculate-bonus';
+import calculateDamage from '../../../utils/calculate-damage';
+import calculateBonus  from '../../../utils/calculate-bonus';
 import { checkForMonster, getNewPosition, observeBoundaries } from './movement';
 
 function observeImpassable(newPos) {
