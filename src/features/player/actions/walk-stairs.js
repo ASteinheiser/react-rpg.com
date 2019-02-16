@@ -33,7 +33,7 @@ export default function walkStairs(nextTile, playerPos) {
           }
         });
         store.dispatch({
-          type: 'SET_CURR_MAP',
+          type: 'SET_ENDLESS_MAP',
           payload: {
             map: mapId,
             floorNum: floorNum + 1
@@ -42,7 +42,7 @@ export default function walkStairs(nextTile, playerPos) {
       } else {
         // figure out the next map and set it as the current
         store.dispatch({
-          type: 'SET_CURR_MAP',
+          type: 'SET_ENDLESS_MAP',
           payload: {
             // pass the floorNum because with array indexing this will get the next map
             map: randomMaps[floorNum].id,
@@ -53,7 +53,7 @@ export default function walkStairs(nextTile, playerPos) {
     } else if(direction === 'down' && floorNum > 1) {
       // figure out the previous map and set it as the current
       store.dispatch({
-        type: 'SET_CURR_MAP',
+        type: 'SET_ENDLESS_MAP',
         payload: {
           // offset by 2 because we want the previous map and account for array indexing
           map: randomMaps[floorNum - 2].id,
@@ -64,7 +64,7 @@ export default function walkStairs(nextTile, playerPos) {
   } else {
     // change the story mode map
     store.dispatch({
-      type: 'LOAD_NEXT_MAP',
+      type: 'SET_STORY_MAP',
       payload: { direction, currentMap, storyMaps }
     });
   }

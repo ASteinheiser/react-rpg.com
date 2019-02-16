@@ -144,20 +144,20 @@ const GameMap = ({ map, world }) => {
   );
 
   if(gameMode === 'story') {
-    map.tiles = storyMaps[currentMap].tiles;
+    map = { ...map, ...storyMaps[currentMap] };
   } else {
-    map.tiles = randomMaps[floorNum - 1].tiles;
+    map = { ...map, ...randomMaps[floorNum - 1] };
   }
 
-  // const wallType = getWallType(map.tiles);
+  const wallType = getWallType(map.tiles);
 
   return (
     <div style={mapStyle}>
 
-      {/* <MapPadding
+      <MapPadding
         tileType={wallType}
         tiles={map.paddingTiles}
-        sightBox={map.paddingSightBox} /> */}
+        sightBox={map.paddingSightBox} />
 
       {
         map.tiles.map((row, index) => {

@@ -1,6 +1,7 @@
 import exploreTiles from './explore-tiles';
 import openChest    from './open-chest';
 import walkStairs   from './walk-stairs';
+import getNextTile  from '../../../utils/get-next-tile';
 import store        from '../../../config/store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../../config/constants';
 
@@ -102,11 +103,7 @@ function dispatchMove(direction, newPos) {
 }
 
 function observeImpassable(newPos) {
-  const tiles = store.getState().map.tiles;
-  const y = newPos[1] / SPRITE_SIZE;
-  const x = newPos[0] / SPRITE_SIZE;
-
-  const nextTile = (tiles[y] && tiles[y][x]) ? tiles[y][x].value : 5;
+  const nextTile = getNextTile(store.getState().world, newPos);
 
   // the player wants to use the shop
   if(nextTile === 9) {

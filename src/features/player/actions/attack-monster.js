@@ -2,14 +2,12 @@ import store           from '../../../config/store';
 import { SPRITE_SIZE } from '../../../config/constants';
 import calculateDamage from '../../../utils/calculate-damage';
 import calculateBonus  from '../../../utils/calculate-bonus';
+import getNextTile     from '../../../utils/get-next-tile';
+
 import { checkForMonster, getNewPosition, observeBoundaries } from './movement';
 
 function observeImpassable(newPos) {
-  const tiles = store.getState().map.tiles;
-  const y = newPos[1] / SPRITE_SIZE;
-  const x = newPos[0] / SPRITE_SIZE;
-
-  const nextTile = tiles[y] ? tiles[y][x].value : 5;
+  const nextTile = getNextTile(store.getState().world, newPos);
 
   return nextTile < 5;
 }

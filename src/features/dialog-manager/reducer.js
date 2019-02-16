@@ -44,7 +44,7 @@ const dialogManagerReducer = (state = initialState, action) => {
     case 'CLOSE_SETTINGS':
       return { ...state, settings: false };
 
-    case 'LOAD_NEXT_MAP':
+    case 'SET_STORY_MAP':
       const { direction, currentMap, storyMaps } = action.payload;
 
       const { stairs } = storyMaps[currentMap];
