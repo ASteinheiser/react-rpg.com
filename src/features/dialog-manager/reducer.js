@@ -14,12 +14,12 @@ const initialState = {
   inventory: false
 };
 
-const dialogManagerReducer = (state = initialState, action) => {
+const dialogManagerReducer = (state = initialState, { type, payload }) => {
 
-  switch(action.type) {
+  switch(type) {
 
     case 'PAUSE':
-      const { shop, chest, gameStart, inventory, gameOver, gameText, gameWin, gameSelect, gameInstructions, pause } = action.payload;
+      const { shop, chest, gameStart, inventory, gameOver, gameText, gameWin, gameSelect, gameInstructions, pause } = payload;
 
       return {
         ...state,
@@ -36,7 +36,7 @@ const dialogManagerReducer = (state = initialState, action) => {
       };
 
     case 'SET_CHEST_DATA':
-      return { ...state, chestOpen: action.payload };
+      return { ...state, chestOpen: payload };
 
     case 'OPEN_SETTINGS':
       return { ...state, settings: true };
@@ -45,7 +45,7 @@ const dialogManagerReducer = (state = initialState, action) => {
       return { ...state, settings: false };
 
     case 'SET_STORY_MAP':
-      const { direction, currentMap, storyMaps } = action.payload;
+      const { direction, currentMap, storyMaps } = payload;
 
       const { stairs } = storyMaps[currentMap];
 

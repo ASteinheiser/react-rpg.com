@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { connect }          from 'react-redux';
 import { isMobile }         from 'react-device-detect';
 
-import Button        from '../../../../components/button';
-import Dialog        from '../../../../components/dialog';
-import items         from '../../../../data/items';
-import store         from '../../../../config/store';
-import { START_MAP } from '../../../../config/constants';
+import Button                from '../../../../components/button';
+import Dialog                from '../../../../components/dialog';
+import loadStartingItems     from '../../../inventory/actions/load-starting-items';
+import showFirstStoryMessage from '../../actions/show-first-story-message';
 
 import ArrowKeys from './assets/arrow-keys.png';
 import DoubleTap from './assets/double-tap.png';
@@ -17,7 +16,7 @@ import WASDKeys  from './assets/wasd-keys.png';
 
 import './styles.scss';
 
-const GameInstructions = ({ world }) => {
+const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
 
   let mobileVersion = false;
   if(window.location.search === '?nativeApp=true' || isMobile) {
@@ -39,36 +38,8 @@ const GameInstructions = ({ world }) => {
   }
 
   function handleContinue() {
-    handleShowMapMessage();
-    handleLoadStartingItems();
-  }
-
-  function handleShowMapMessage() {
-    const { message } = world.storyMaps[START_MAP];
-
-    store.dispatch({
-      type: 'PAUSE',
-      payload: {
-        pause: true,
-        gameText: {
-          title: message.title,
-          body: message.body
-        }
-      }
-    });
-  }
-
-  function handleLoadStartingItems() {
-    // give the player a rusty sword
-    store.dispatch({
-      type: 'GET_ITEM',
-      payload: items.weapons.RustySword
-    });
-    // and equip it
-    store.dispatch({
-      type: 'EQUIP_ITEM',
-      payload: store.getState().inventory.items[0]
-    });
+    loadStartingItems();
+    showFirstStoryMessage();
   }
 
   return(
@@ -79,9 +50,7 @@ const GameInstructions = ({ world }) => {
 
       <div className='game-instructions__text'>
         {
-          mobileVersion ?
-            null
-            :
+          !mobileVersion &&
             <span style={{paddingBottom: 12}}>
               {`MOVEMENT`}
             </span>
@@ -106,9 +75,7 @@ const GameInstructions = ({ world }) => {
         </div>
 
         {
-          mobileVersion ?
-            null
-            :
+          !mobileVersion &&
             <span style={{paddingTop: 12}}>
               {`ATTACK`}
             </span>
@@ -143,6 +110,6 @@ const GameInstructions = ({ world }) => {
   );
 }
 
-const mapStateToProps = ({ world }) => ({ world });
+const actions = { loadStartingItems, showFirstStoryMessage };
 
-export default connect(mapStateToProps)(GameInstructions);
+export default connect(null, actions)(GameInstructions);
