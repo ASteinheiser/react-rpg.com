@@ -7,6 +7,7 @@ import appState  from '../features/app-state/reducer';
 import player    from '../features/player/reducer';
 import dialog    from '../features/dialog-manager/reducer';
 import map       from '../features/map/reducer';
+import gameMenu  from '../features/game-menus/reducer';
 import world     from '../features/world/reducer';
 import stats     from '../features/stats/reducer';
 import inventory from '../features/inventory/reducer';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   appState,
   player,
   dialog,
+  gameMenu,
   map,
   world,
   stats,

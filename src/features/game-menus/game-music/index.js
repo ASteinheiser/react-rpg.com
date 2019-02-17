@@ -36,7 +36,7 @@ const GameMusic = ({ sideMenu }) => {
     );
     store.dispatch({
       type: 'SET_SOUND',
-      payload: { sound: true }
+      payload: true
     });
     // now we no longer need our key or mouse event listeners
     window.removeEventListener('mousedown', handleKeyPress);
@@ -63,7 +63,7 @@ const GameMusic = ({ sideMenu }) => {
     setGameMusic(null);
     store.dispatch({
       type: 'SET_SOUND',
-      payload: { sound: false }
+      payload: false
     });
   }
 
@@ -78,7 +78,7 @@ const GameMusic = ({ sideMenu }) => {
     );
     store.dispatch({
       type: 'SET_SOUND',
-      payload: { sound: true }
+      payload: true
     });
   }
 

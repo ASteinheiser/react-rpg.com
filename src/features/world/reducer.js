@@ -8,7 +8,6 @@ const initialState = {
   currentMap: null,
   gameMode: null,
   turn: 0,
-  sound: true,
   storyMaps: {},
   randomMaps: [],
   floorNum: null
@@ -97,10 +96,6 @@ const worldReducer = (state = initialState, { type, payload }) => {
       });
 
       return { ...state, randomMaps: _randomMaps };
-
-    case 'SET_SOUND':
-      // turn on or off game sounds
-      return { ...state, sound: payload.sound };
 
     case 'TAKE_TURN':
       // increment the turn

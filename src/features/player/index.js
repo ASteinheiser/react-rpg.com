@@ -41,7 +41,7 @@ class Player extends Component {
     // detemine when the player has moved
     if(prevProps.player.playerMoved !== this.props.player.playerMoved) {
       let animationWalkSound = null;
-      if(store.getState().world.sound) {
+      if(store.getState().gameMenu.sound) {
         animationWalkSound = (
           <Sound
             url={PlayerStep}
@@ -58,7 +58,7 @@ class Player extends Component {
     // see if player died
     else if(prevProps.player.playerDied !== this.props.player.playerDied) {
       let playerDeath = null;
-      if(store.getState().world.sound) {
+      if(store.getState().gameMenu.sound) {
         playerDeath = (
           <Sound
             url={PlayerDeath}
@@ -75,7 +75,7 @@ class Player extends Component {
     // see if a monster died
     else if(prevProps.player.monsterDied !== this.props.player.monsterDied) {
       let monsterDeath = null;
-      if(store.getState().world.sound) {
+      if(store.getState().gameMenu.sound) {
         monsterDeath = (
           <Sound
             url={MonsterDeath}
@@ -92,7 +92,7 @@ class Player extends Component {
     // see if a monster attacked the player
     else if(prevProps.player.monsterAttacked !== this.props.player.monsterAttacked) {
       let monsterAnimationAttackSound = null;
-      if(store.getState().world.sound) {
+      if(store.getState().gameMenu.sound) {
         monsterAnimationAttackSound = (
           <Sound
             url={MonsterAttack}
@@ -126,7 +126,7 @@ class Player extends Component {
         default:
       }
       let animationAttackSound = null;
-      if(store.getState().world.sound) {
+      if(store.getState().gameMenu.sound) {
         animationAttackSound = (
           <Sound
             url={SwordSwish}
