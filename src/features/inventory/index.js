@@ -36,9 +36,9 @@ class Inventory extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { inventory } = this.props.dialog;
-    const { itemReceived, itemDropped } = this.props.inventory;
-    let lastItemReceived = prevProps.inventory.itemReceived;
-    let lastItemDropped = prevProps.inventory.itemDropped;
+    const { itemReceived, itemDropped } = this.props.snackbar;
+    let lastItemReceived = prevProps.snackbar.itemReceived;
+    let lastItemDropped = prevProps.snackbar.itemDropped;
 
     if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined && !inventory) {
       // see if any items were dropped
@@ -83,6 +83,6 @@ class Inventory extends Component {
   }
 }
 
-const mapStateToProps = ({ inventory, dialog }) => ({ inventory, dialog });
+const mapStateToProps = ({ snackbar, dialog }) => ({ snackbar, dialog });
 
 export default connect(mapStateToProps)(Inventory);

@@ -11,6 +11,7 @@ export default function generatePaddingTiles() {
   for(let i = 0; i < MAP_PADDING_DISTANCE; i ++) {
     let topRow = [];
     let bottomRow = [];
+
     for(let j = 0; j < MAP_DIMENSIONS[1]; j ++) {
       topRow.push({
         location: [(-i) + (-1), j],
@@ -23,6 +24,7 @@ export default function generatePaddingTiles() {
         variation: Math.round(Math.random() * (4 - 1) + 1)
       });
     }
+
     top.push(topRow);
     bottom.push(bottomRow);
   }
@@ -30,6 +32,7 @@ export default function generatePaddingTiles() {
   for(let i = 0; i < MAP_DIMENSIONS[1] + MAP_PADDING_DISTANCE; i ++) {
     let leftRow = [];
     let rightRow = [];
+
     for(let j = 0; j < MAP_PADDING_DISTANCE; j ++) {
       leftRow.push({
         location: [i - MAP_PADDING_DISTANCE, j - MAP_PADDING_DISTANCE],
@@ -42,6 +45,7 @@ export default function generatePaddingTiles() {
         variation: Math.round(Math.random() * (4 - 1) + 1)
       });
     }
+
     left.push(leftRow);
     right.push(rightRow);
   }

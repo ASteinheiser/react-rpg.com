@@ -1,25 +1,11 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 
-import store from '../../../config/store';
+import toggleSettings from '../../dialog-manager/actions/toggle-settings';
 
 import './styles.scss';
 
-const GameSettings = ({ dialog }) => {
-
-  function toggleSettings() {
-    if(dialog.settings) {
-      store.dispatch({
-        type: 'CLOSE_SETTINGS',
-        payload: {}
-      });
-    } else {
-      store.dispatch({
-        type: 'OPEN_SETTINGS',
-        payload: {}
-      });
-    }
-  }
+const GameSettings = ({ toggleSettings }) => {
 
   return(
     <button onClick={toggleSettings}
@@ -31,6 +17,6 @@ const GameSettings = ({ dialog }) => {
   );
 }
 
-const mapStateToProps = ({ dialog }) => ({ dialog });
+const actions = { toggleSettings };
 
-export default connect(mapStateToProps)(GameSettings);
+export default connect(null, actions)(GameSettings);

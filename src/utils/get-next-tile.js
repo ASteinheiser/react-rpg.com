@@ -1,7 +1,9 @@
 import { SPRITE_SIZE } from '../config/constants';
 
 export default function getNextTile(world, newPos) {
+
   const { gameMode, storyMaps, currentMap, randomMaps, floorNum } = world;
+
   let currentMapData;
   if(gameMode === 'story') {
     currentMapData = storyMaps[currentMap];

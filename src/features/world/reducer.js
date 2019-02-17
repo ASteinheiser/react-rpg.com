@@ -126,10 +126,7 @@ const worldReducer = (state = initialState, { type, payload }) => {
       };
 
     case 'RESET':
-      return {
-        ...initialState,
-        sound: state.sound
-      };
+      return initialState;
 
     default:
       return state;
