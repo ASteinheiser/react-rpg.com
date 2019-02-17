@@ -1,32 +1,26 @@
 import React, { useEffect } from 'react';
+import { connect }          from 'react-redux';
 
-import Button from '../../../../components/button';
-import Dialog from '../../../../components/dialog';
-import store  from '../../../../config/store';
+import Button      from '../../../../components/button';
+import Dialog      from '../../../../components/dialog';
+import closeDialog from '../../actions/close-dialog';
 
 import './styles.scss';
 
-const GameTextDialog = ({ text1, text2 }) => {
+const GameTextDialog = ({ text1, text2, closeDialog }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     }
-  }, []); // we pass empty array as the second param to make this only call on mount and not on any updates
+  }, []);
 
   function handleKeyPress(event) {
     // case for 'enter' or 'space' key
     if(event.keyCode === 13 || event.keyCode === 32) {
-      handleCloseDialog();
+      closeDialog();
     }
-  }
-
-  function handleCloseDialog() {
-    store.dispatch({
-      type: 'PAUSE',
-      payload: { pause: false }
-    });
   }
 
   return(
@@ -44,7 +38,7 @@ const GameTextDialog = ({ text1, text2 }) => {
 
         <div className='game-text-dialog__button'>
           <Button
-            onClick={handleCloseDialog}
+            onClick={closeDialog}
             title='Continue' />
         </div>
       </div>
@@ -52,4 +46,6 @@ const GameTextDialog = ({ text1, text2 }) => {
   );
 }
 
-export default GameTextDialog;
+const actions = { closeDialog };
+
+export default connect(null, actions)(GameTextDialog);
