@@ -18,27 +18,15 @@ const ChestLoot = ({ dialog, pickupItem, openChest, closeChestDialog }) => {
     if(!chestOpen) openChest();
   }, []);
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    }
-  }, []);
-
-  function handleKeyPress(event) {
-    // case for 'enter' or 'space' key
-    if(event.keyCode === 13 || event.keyCode === 32) {
-      handleContinue();
-    }
-  }
-
   function handleContinue() {
     pickupItem();
     closeChestDialog();
   }
 
   return(
-    <MicroDialog onClose={closeChestDialog}>
+    <MicroDialog
+      onClose={closeChestDialog}
+      onKeyPress={handleContinue}>
 
       <span className='chest-loot__title'>
         {'Chest Loot!'}

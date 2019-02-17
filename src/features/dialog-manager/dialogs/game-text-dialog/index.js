@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { connect }          from 'react-redux';
+import React       from 'react';
+import { connect } from 'react-redux';
 
 import Button      from '../../../../components/button';
 import Dialog      from '../../../../components/dialog';
@@ -9,22 +9,8 @@ import './styles.scss';
 
 const GameTextDialog = ({ text1, text2, closeDialog }) => {
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    }
-  }, []);
-
-  function handleKeyPress(event) {
-    // case for 'enter' or 'space' key
-    if(event.keyCode === 13 || event.keyCode === 32) {
-      closeDialog();
-    }
-  }
-
   return(
-    <Dialog>
+    <Dialog onKeyPress={closeDialog}>
 
       <div className='flex-column game-text-dialog__container'>
 
@@ -42,6 +28,7 @@ const GameTextDialog = ({ text1, text2, closeDialog }) => {
             title='Continue' />
         </div>
       </div>
+
     </Dialog>
   );
 }

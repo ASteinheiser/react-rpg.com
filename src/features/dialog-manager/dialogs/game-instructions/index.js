@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { connect }          from 'react-redux';
-import { isMobile }         from 'react-device-detect';
+import React        from 'react';
+import { connect }  from 'react-redux';
+import { isMobile } from 'react-device-detect';
 
 import Button                from '../../../../components/button';
 import Dialog                from '../../../../components/dialog';
@@ -23,27 +23,14 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
     mobileVersion = true;
   }
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    }
-  }, []);
-
-  function handleKeyPress(event) {
-    // case for 'enter' or 'space' key
-    if(event.keyCode === 13 || event.keyCode === 32) {
-      handleContinue();
-    }
-  }
-
   function handleContinue() {
     loadStartingItems();
     showFirstStoryMessage();
   }
 
   return(
-    <Dialog>
+    <Dialog onKeyPress={handleContinue}>
+
       <div className='game-instructions__title'>
         {'Game Controls'}
       </div>
@@ -106,6 +93,7 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
           onClick={handleContinue}
           title={'Continue'} />
       </div>
+
     </Dialog>
   );
 }

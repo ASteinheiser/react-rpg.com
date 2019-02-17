@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { connect }          from 'react-redux';
+import React       from 'react';
+import { connect } from 'react-redux';
 
 import Button           from '../../../../components/button';
 import Dialog           from '../../../../components/dialog';
@@ -10,22 +10,10 @@ import './styles.scss';
 
 const EndlessGameStart = ({ backToSelect, startEndlessGame }) => {
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    }
-  }, []);
-
-  function handleKeyPress(event) {
-    // case for 'enter' and 'space' key
-    if(event.keyCode === 13 || event.keyCode === 32) {
-      startEndlessGame();
-    }
-  }
-
   return(
-    <Dialog goBack={backToSelect}>
+    <Dialog
+      goBack={backToSelect}
+      onKeyPress={startEndlessGame}>
 
       <span className='flex-row endless-start__title'>
         {'Endless Mode'}
