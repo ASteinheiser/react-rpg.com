@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { connect }                    from 'react-redux';
 import Sound                          from 'react-sound';
 
-import store        from '../../../config/store';
-import AmbientMusic from './ambient-music.mp3';
+import AmbientMusic     from './ambient-music.mp3';
+import setGameSound     from '../actions/set-game-sound';
+import gameSoundEnabled from '../actions/game-sound-enabled';
 
 import './styles.scss';
 
-const GameMusic = ({ sideMenu }) => {
+const GameMusic = ({ sideMenu, gameSoundEnabled, setGameSound }) => {
 
   const [gameMusic, setGameMusic] = useState(null);
 
@@ -21,23 +23,21 @@ const GameMusic = ({ sideMenu }) => {
       window.removeEventListener('focus', handleFocus);
       window.removeEventListener('blur', handleBlur);
     }
-  }, []); // we pass empty array as the second param to make this only call on mount and not on any updates
+  }, []);
 
   function handleKeyPress() {
     // we have to load music only have user has clicked or pressed a key
     // chrome disables auto play until user has interacted with window
-    setGameMusic(
-      <Sound
-        url={AmbientMusic}
-        playStatus={'PLAYING'}
-        autoLoad={true}
-        loop={true}
-        volume={50} />
-    );
-    store.dispatch({
-      type: 'SET_SOUND',
-      payload: true
-    });
+    if(gameSoundEnabled()) {
+      setGameMusic(
+        <Sound
+          url={AmbientMusic}
+          playStatus={'PLAYING'}
+          autoLoad={true}
+          loop={true}
+          volume={50} />
+      );
+    }
     // now we no longer need our key or mouse event listeners
     window.removeEventListener('mousedown', handleKeyPress);
     window.removeEventListener('keydown', handleKeyPress);
@@ -52,19 +52,20 @@ const GameMusic = ({ sideMenu }) => {
   }
 
   function handleFocus() {
-    turnOnSound();
+    // make sure the player has music enabled before turning it back on
+    if(gameSoundEnabled()) {
+      turnOnSound();
+    }
   }
 
   function handleBlur() {
-    turnOffSound();
+    // during blur, don't change the sound redux state, just turn off music
+    setGameMusic(null);
   }
 
   function turnOffSound() {
     setGameMusic(null);
-    store.dispatch({
-      type: 'SET_SOUND',
-      payload: false
-    });
+    setGameSound(false);
   }
 
   function turnOnSound() {
@@ -76,10 +77,7 @@ const GameMusic = ({ sideMenu }) => {
         loop={true}
         volume={50} />
     );
-    store.dispatch({
-      type: 'SET_SOUND',
-      payload: true
-    });
+    setGameSound(true);
   }
 
   return (
@@ -110,4 +108,6 @@ const GameMusic = ({ sideMenu }) => {
   );
 }
 
-export default GameMusic;
+const actions = { gameSoundEnabled, setGameSound };
+
+export default connect(null, actions)(GameMusic);
