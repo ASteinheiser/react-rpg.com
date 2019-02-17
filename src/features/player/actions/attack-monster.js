@@ -56,7 +56,7 @@ export default function attackMonster() {
         // and get some exp
         store.dispatch({
           type: 'GET_EXP',
-          payload: { value: currMonster.exp }
+          payload: currMonster.exp
         });
         // play death sound
         store.dispatch({

@@ -12,7 +12,7 @@ export default function buyItem(item) {
       if(item.type === 'upgrade::backpack') {
         dispatch({
           type: 'LOSE_GOLD',
-          payload: { value: item.value }
+          payload: item.value
         });
         dispatch({
           type: 'UPGRADE_PACK',
@@ -22,7 +22,7 @@ export default function buyItem(item) {
       else if(items.length < maxItems) {
         dispatch({
           type: 'LOSE_GOLD',
-          payload: { value: item.value }
+          payload: item.value
         });
         dispatch({
           type: 'GET_ITEM',

@@ -17,11 +17,11 @@ export default function openChest() {
 
     dispatch({
       type: 'GET_GOLD',
-      payload: { value: gold }
+      payload: gold
     });
     dispatch({
       type: 'GET_EXP',
-      payload: { value: exp }
+      payload: exp
     });
     dispatch({
       type: 'SET_CHEST_DATA',

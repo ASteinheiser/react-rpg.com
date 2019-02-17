@@ -4,7 +4,7 @@ export default function unequipItem(item) {
 
     dispatch({
       type: 'UNEQUIP_ITEM',
-      payload: { data: item }
+      payload: item
     });
   }
 }

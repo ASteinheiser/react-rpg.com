@@ -4,7 +4,7 @@ export default function consumePotion(item) {
 
     dispatch({
       type: 'HEAL_HP',
-      payload: { value: item.hp }
+      payload: item.hp
     });
 
     dispatch({

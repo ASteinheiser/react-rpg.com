@@ -6,7 +6,7 @@ export default function sellItem(item) {
 
     dispatch({
       type: 'GET_GOLD',
-      payload: { value: sellPrice }
+      payload: sellPrice
     });
 
     dispatch({
@@ -45,7 +45,7 @@ export default function sellItem(item) {
     if(itemEquipped) {
       dispatch({
         type: 'UNEQUIP_ITEM',
-        payload: { data: item }
+        payload: item
       });
     }
   }
