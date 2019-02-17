@@ -1,13 +1,16 @@
 
-export default function pickupItem(item) {
+export default function pickupItem() {
   return (dispatch, getState) => {
+    const { inventory, dialog } = getState();
+
+    const { item } = dialog.chestOpen;
 
     if(!item) return;
 
-    const { items, maxItems } = getState().inventory;
+    const { items, maxItems } = inventory;
 
     if(items.length < maxItems) {
-      dispatch({
+    dispatch({
         type: 'GET_ITEM',
         payload: item
       });

@@ -33,7 +33,7 @@ const ChestLoot = ({ dialog, pickupItem, openChest, closeChestDialog }) => {
   }
 
   function handleContinue() {
-    pickupItem(item);
+    pickupItem();
     closeChestDialog();
   }
 
