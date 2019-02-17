@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
-import Button from '../../components/button';
-import store  from '../../config/store';
+import Button          from '../../components/button';
+import toggleInventory from '../dialog-manager/actions/toggle-inventory';
 
 import './styles.scss';
 
@@ -12,26 +12,7 @@ class Inventory extends Component {
 
     this.state = {
       newItemIndicator: false
-    }
-  }
-
-  handleOpenInventory() {
-    this.setState({ newItemIndicator: false }, () => {
-      store.dispatch({
-        type: 'PAUSE',
-        payload: {
-          pause: true,
-          inventory: true
-        }
-      });
-    });
-  }
-
-  handleCloseInventory() {
-    store.dispatch({
-      type: 'PAUSE',
-      payload: { pause: false }
-    });
+    };
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -50,6 +31,14 @@ class Inventory extends Component {
     }
   }
 
+  _toggleInventory() {
+    // We can turn off the indicator if the inventory is opened
+    // If we are closing the inventory, it is okay to turn off
+    // indicator since it should be false already
+    this.setState({ newItemIndicator: false });
+    this.props.toggleInventory();
+  }
+
   render() {
     const { newItemIndicator } = this.state;
     const { disabled, dialog, sideMenu } = this.props;
@@ -63,8 +52,7 @@ class Inventory extends Component {
             <Button
               small={sideMenu}
               indicator={newItemIndicator}
-              onClick={open ?
-                this.handleCloseInventory.bind(this) : this.handleOpenInventory.bind(this)}
+              onClick={this._toggleInventory.bind(this)}
               icon={open ?
                 'times' : 'briefcase'}
               iconStyle={open ?
@@ -85,4 +73,6 @@ class Inventory extends Component {
 
 const mapStateToProps = ({ snackbar, dialog }) => ({ snackbar, dialog });
 
-export default connect(mapStateToProps)(Inventory);
+const actions = { toggleInventory };
+
+export default connect(mapStateToProps, actions)(Inventory);

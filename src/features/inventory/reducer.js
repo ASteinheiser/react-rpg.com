@@ -8,15 +8,15 @@ const initialState = {
   maxItems: MAX_ITEMS
 };
 
-const inventoryReducer = (state = initialState, action) => {
+const inventoryReducer = (state = initialState, { type, payload }) => {
 
   let newState;
 
-  switch(action.type) {
+  switch(type) {
 
     case 'DROP_ITEM':
       newState = _cloneDeep(state);
-      let item = action.payload;
+      let item = payload;
 
       newState.items.find((itemData, index) => {
         // if you found the item
@@ -33,14 +33,14 @@ const inventoryReducer = (state = initialState, action) => {
       newState = _cloneDeep(state);
       let itemId = uuidv4();
       // save item to list with unique id for keeping track of duplicates
-      newState.items.push(Object.assign({ id: itemId }, action.payload));
+      newState.items.push({ ...payload, id: itemId });
 
       return newState;
 
     case 'UPGRADE_PACK':
       return {
         ...state,
-        maxItems: state.maxItems + action.payload.slots
+        maxItems: state.maxItems + payload.slots
       };
 
     case 'RESET':

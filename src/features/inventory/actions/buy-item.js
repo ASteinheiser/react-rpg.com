@@ -1,9 +1,11 @@
 
 export default function buyItem(item) {
   return (dispatch, getState) => {
+
     const { stats, inventory } = getState();
     const { gold } = stats;
     const { items, maxItems } = inventory;
+
     // make sure player has enough gold
     if(gold >= item.value) {
       // if it's a backpack upgrade

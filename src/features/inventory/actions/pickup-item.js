@@ -1,6 +1,7 @@
 
 export default function pickupItem() {
   return (dispatch, getState) => {
+
     const { inventory, dialog } = getState();
 
     const { item } = dialog.chestOpen;
