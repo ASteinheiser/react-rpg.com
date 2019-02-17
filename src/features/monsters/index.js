@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
-import { connect }             from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { connect }                    from 'react-redux';
+
+import Monster from './monster';
 
 function Monsters({ monsters, world }) {
 
@@ -15,7 +17,10 @@ function Monsters({ monsters, world }) {
     } else if(monsters.components[currentMap]) {
       // find each monster on the current map
       Object.keys(monsters.components[currentMap]).forEach(uuid => {
-        monsterArray.push(monsters.components[currentMap][uuid]);
+        monsterArray.push(
+          <Monster key={uuid}
+            monster={monsters.components[currentMap][uuid]} />
+        );
       });
 
       setMonstersToRender(monsterArray);

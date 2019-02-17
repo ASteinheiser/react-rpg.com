@@ -37,7 +37,7 @@ function checkForOtherMonster(id, position, currentMap) {
   // check list of monsters
   Object.keys(monsterList).forEach(monsterId => {
     // see if there's another monster in the next position
-    if(JSON.stringify(monsterList[monsterId].props.monster.position) === JSON.stringify(position)) {
+    if(JSON.stringify(monsterList[monsterId].position) === JSON.stringify(position)) {
       if(monsterId !== id) {
         foundMonster = true;
       }
@@ -181,7 +181,7 @@ export default function takeMonstersTurn() {
   // find each monster
   Object.keys(components[currentMap]).forEach(monsterId => {
     // get monster id and position
-    const { id, position, damage } = components[currentMap][monsterId].props.monster;
+    const { id, position, damage } = components[currentMap][monsterId];
     // find the relative position
     let monsterPos = [(position[1] / SPRITE_SIZE), (position[0] / SPRITE_SIZE)];
 

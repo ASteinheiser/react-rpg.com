@@ -1,27 +1,13 @@
-import React from 'react';
-
-import Monster      from '../../../features/monsters/monster';
 import GoblinSprite from './goblin.png';
 
-function Goblin({ monster }) {
-
-  monster.sprite = GoblinSprite;
-
-  return (
-    <Monster monster={monster} />
-  );
-}
-
-const stats = {
+const Goblin = {
   hp: 12,
   maxHp: 12,
   damage: 4,
   defence: 3,
   exp: 25,
-  type: 'goblin'
+  type: 'goblin',
+  sprite: GoblinSprite
 };
 
-export default {
-  Comp: Goblin,
-  stats
-};
+export default Goblin;

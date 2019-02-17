@@ -1,27 +1,13 @@
-import React from 'react';
-
-import Monster   from '../../../features/monsters/monster';
 import ImpSprite from './imp.png';
 
-function Imp({ monster }) {
-
-  monster.sprite = ImpSprite;
-
-  return (
-    <Monster monster={monster} />
-  );
-}
-
-const stats = {
+const Imp = {
   hp: 40,
   maxHp: 40,
   damage: 10,
   defence: 2,
   exp: 150,
-  type: 'imp'
+  type: 'imp',
+  sprite: ImpSprite
 };
 
-export default {
-  Comp: Imp,
-  stats
-};
+export default Imp;

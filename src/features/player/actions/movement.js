@@ -11,7 +11,7 @@ export function checkForMonster(newPos) {
   const monsters = store.getState().monsters.components;
   // check for monsters
   Object.keys(monsters[currentMap]).forEach(monsterId => {
-    let currMonster = monsters[currentMap][monsterId].props.monster;
+    let currMonster = monsters[currentMap][monsterId];
     let monsterPos = currMonster.position;
     // if the new position contains a monster
     if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
