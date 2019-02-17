@@ -4,21 +4,14 @@ import { connect }         from 'react-redux';
 import Button         from '../../../../components/button';
 import ConfirmDialog  from '../../../../components/confirm-dialog';
 import Dialog         from '../../../../components/dialog';
-import store          from '../../../../config/store';
+import closeSettings  from '../../actions/close-settings';
 import resetGameState from '../../../world/actions/reset-game-state';
 
 import './settings-dialog.scss';
 
-const SettingsDialog = ({ resetGameState }) => {
+const SettingsDialog = ({ resetGameState, closeSettings }) => {
 
   const [confirmQuit, setConfirmQuit] = useState(false);
-
-  function handleClose() {
-    store.dispatch({
-      type: 'CLOSE_SETTINGS',
-      payload: {}
-    });
-  }
 
   return(
     <Dialog>
@@ -33,7 +26,7 @@ const SettingsDialog = ({ resetGameState }) => {
           title='Return to Menu' />
 
         <Button
-          onClick={handleClose}
+          onClick={closeSettings}
           icon='times'
           title='Close' />
       </div>
@@ -48,4 +41,6 @@ const SettingsDialog = ({ resetGameState }) => {
   );
 }
 
-export default connect(null, { resetGameState })(SettingsDialog);
+const actions = { resetGameState, closeSettings };
+
+export default connect(null, actions)(SettingsDialog);

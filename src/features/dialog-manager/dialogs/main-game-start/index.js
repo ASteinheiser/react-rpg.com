@@ -15,7 +15,7 @@ const MainGameStart = ({ startMainGame, backToSelect }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     }
-  }, []); // pass empty array for onMount()
+  }, []);
 
   function handleKeyPress(event) {
     // case for 'enter' and 'space' key

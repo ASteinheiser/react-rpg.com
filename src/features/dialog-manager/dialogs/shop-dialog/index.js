@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { connect }         from 'react-redux';
 
 import Button          from '../../../../components/button';
 import Dialog          from '../../../../components/dialog';
 import SellItemsDialog from '../sell-items-dialog';
 import ShopKeep        from '../../../../components/shop-keep';
 import ShopInventory   from '../../../../components/shop-inventory';
-import store           from '../../../../config/store';
+import closeDialog     from '../../actions/close-dialog';
 
 import './styles.scss';
 
-const ShopDialog = () => {
+const ShopDialog = ({ closeDialog }) => {
 
   const [welcome, setWelcome] = useState(true);
   const [sellItems, setSellItems] = useState(null);
@@ -17,19 +18,8 @@ const ShopDialog = () => {
   function handleOpenSellItems() {
     setSellItems(
       <SellItemsDialog
-        onClose={handleCloseSellItems} />
+        onClose={() => setSellItems(null)} />
     );
-  }
-
-  function handleCloseSellItems() {
-    setSellItems(null);
-  }
-
-  function handleCloseDialog() {
-    store.dispatch({
-      type: 'PAUSE',
-      payload: { pause: false }
-    });
   }
 
   if(welcome) {
@@ -52,9 +42,10 @@ const ShopDialog = () => {
           <div className='flex-row shop-dialog__button'>
             <Button
               small
-              onClick={handleCloseDialog}
+              onClick={closeDialog}
               icon='walking'
               title={'Leave'} />
+
             <Button
               small
               onClick={() => setWelcome(false)}
@@ -79,9 +70,10 @@ const ShopDialog = () => {
         <div className='flex-row shop-dialog__button'>
           <Button
             small
-            onClick={handleCloseDialog}
+            onClick={closeDialog}
             icon='walking'
             title={'Leave'} />
+
           <Button
             small
             onClick={handleOpenSellItems}
@@ -93,4 +85,6 @@ const ShopDialog = () => {
   );
 }
 
-export default ShopDialog;
+const actions = { closeDialog };
+
+export default connect(null, actions)(ShopDialog);

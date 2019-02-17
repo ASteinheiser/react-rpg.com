@@ -52,4 +52,6 @@ class GameOver extends Component {
   }
 }
 
-export default connect(null, { resetGameState })(ReactTimeout(GameOver));
+const actions = { resetGameState };
+
+export default connect(null, actions)(ReactTimeout(GameOver));

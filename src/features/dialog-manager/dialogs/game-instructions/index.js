@@ -28,7 +28,7 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     }
-  }, []); // we pass empty array as the second param to make this only call on mount and not on any updates
+  }, []);
 
   function handleKeyPress(event) {
     // case for 'enter' or 'space' key
