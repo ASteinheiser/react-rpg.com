@@ -5,21 +5,20 @@ import getNextTile  from '../../../utils/get-next-tile';
 import store        from '../../../config/store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../../config/constants';
 
+// returns `false` or the monster's id
 export function checkForMonster(newPos) {
+  let isMonster = false;
   let { currentMap } = store.getState().world;
-  let validMove = false;
   const monsters = store.getState().monsters.components;
   // check for monsters
   Object.keys(monsters[currentMap]).forEach(monsterId => {
     let currMonster = monsters[currentMap][monsterId];
-    let monsterPos = currMonster.position;
     // if the new position contains a monster
-    if(JSON.stringify(monsterPos) === JSON.stringify([newPos[0], newPos[1]])) {
-      validMove = currMonster.id;
+    if(JSON.stringify(currMonster.position) === JSON.stringify(newPos)) {
+      isMonster = currMonster.id;
     }
   });
-  // no monsters found in newPos
-  return validMove;
+  return isMonster;
 }
 
 export function getNewPosition(oldPos, direction) {

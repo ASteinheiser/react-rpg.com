@@ -18,7 +18,7 @@ export default function takeMonstersTurn() {
       // get monster id and position
       const { id, position, damage } = components[currentMap][monsterId];
       // find the relative position
-      let monsterPos = position.map(value => value / SPRITE_SIZE).reverse();
+      let monsterPos = position.map(value => value / SPRITE_SIZE);
 
       let monsterVisible = false;
       // look through each current sight box tile
@@ -69,10 +69,10 @@ export default function takeMonstersTurn() {
         } else {
           // no player in range, time to move!
           // get the monsters actual position in pixels
-          let position = monsterPos.map(value => value * SPRITE_SIZE).reverse();
+          let position = monsterPos.map(value => value * SPRITE_SIZE);
           // get distance from player on both axis
-          let yDiff = position[1] - player.position[1];
           let xDiff = position[0] - player.position[0];
+          let yDiff = position[1] - player.position[1];
           let greaterY = Math.abs(yDiff) > Math.abs(xDiff);
           // see if y axis is greater distance from player
           if(greaterY) {
@@ -223,7 +223,7 @@ export default function takeMonstersTurn() {
       // look through each current sight box tile
       sightBox.forEach(tile => {
         // if the monster is in sight
-        const newMonsterPos = position.map(value => value / SPRITE_SIZE).reverse();
+        const newMonsterPos = position.map(value => value / SPRITE_SIZE);
         if(JSON.stringify(tile) === JSON.stringify(newMonsterPos)) {
           inSight = true;
         }
@@ -262,7 +262,7 @@ function playerInRange(playerPos, monsterPos) {
     let offsetX = tile.x + monsterPos[0];
     let offsetY = tile.y + monsterPos[1];
     // see if the player is in range
-    const playerLocation = playerPos.map(value => value / SPRITE_SIZE).reverse();
+    const playerLocation = playerPos.map(value => value / SPRITE_SIZE);
     if(JSON.stringify([offsetX, offsetY]) === JSON.stringify(playerLocation)) {
       inRange = true;
     }

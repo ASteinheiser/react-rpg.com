@@ -75,9 +75,9 @@ function MapTile({ tile, index, sightBox }) {
   // if you need to render the sightBox
   if(sightBox) {
     // check the sight box tiles
-    sightBox.forEach(sightBox => {
+    sightBox.forEach(sightValue => {
       // if the current tile is in range
-      if(JSON.stringify(sightBox) === JSON.stringify(index)) {
+      if(JSON.stringify(sightValue) === JSON.stringify(index)) {
         // remove the overlay
         return inSight = true;
       }
@@ -119,7 +119,7 @@ function MapRow(props) {
           return(
             <MapTile
               tile={tile}
-              index={[props.index, index]}
+              index={[index, props.index]}
               sightBox={props.sightBox}
               key={JSON.stringify(tile) + index} />
           );

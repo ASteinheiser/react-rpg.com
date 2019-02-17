@@ -7,8 +7,8 @@ import './styles.scss';
 
 const Flame = ({ children, position }) => {
 
-  const top = position ? (position[0] * SPRITE_SIZE) : 0;
-  const left = position ? (position[1] * SPRITE_SIZE) : 0;
+  const top = position ? (position[1] * SPRITE_SIZE) : 0;
+  const left = position ? (position[0] * SPRITE_SIZE) : 0;
 
   return (
     <div className='flame__container'

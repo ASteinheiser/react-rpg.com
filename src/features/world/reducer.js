@@ -45,11 +45,13 @@ const worldReducer = (state = initialState, { type, payload }) => {
       currentMapData = getCurrentMap(newState);
       // get each tile
       tiles.forEach(tile => {
-        currentMapData.tiles[tile[0]][tile[1]].explored = 1;
+        currentMapData.tiles[tile[1]][tile[0]].explored = 1;
       });
 
-      // make a new array of the padding tiles location as strings
-      const paddTiles = paddingTiles.map(JSON.stringify);
+      // create new array of the padding tiles location as strings
+      // make sure to reverse the padding tiles values to get them in [y, x],
+      // which is the format the map reads them (since its a 2d array, columns then rows)
+      const paddTiles = paddingTiles.map(value => JSON.stringify(value.reverse()));
       // check each padding tile direction and see if any
       // tiles are contained in the new sightbox
       if(paddTiles.length > 0) {
