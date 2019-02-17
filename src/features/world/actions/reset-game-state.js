@@ -1,9 +1,10 @@
 
 export default function resetGameState() {
   return dispatch => {
+
     dispatch({
       type: 'RESET',
-      payload: {}
+      payload: null
     });
 
     dispatch({

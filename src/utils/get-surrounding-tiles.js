@@ -1,15 +1,18 @@
 import { SIGHT_RADIUS, MAP_DIMENSIONS, SPRITE_SIZE } from '../config/constants';
 
-let x, y;
-export const radiusTiles = [];
-// calculate a tile map with desired radius
-// (results in array = [[-4,-4]...[0,0]...[4,4]] )
-for (y = -SIGHT_RADIUS; y <= SIGHT_RADIUS; y++) {
-  for (x = -SIGHT_RADIUS; x <= SIGHT_RADIUS; x++) {
-    if ((x * x) + (y * y) <= (SIGHT_RADIUS * SIGHT_RADIUS)) {
-      radiusTiles.push({x, y});
+export let radiusTiles = (radiusSize = SIGHT_RADIUS) => {
+  let x, y;
+  let radTiles = [];
+  // calculate a tile map with desired radius
+  // (results in array = [[-4,-4]...[0,0]...[4,4]] )
+  for (y = -radiusSize; y <= radiusSize; y++) {
+    for (x = -radiusSize; x <= radiusSize; x++) {
+      if ((x * x) + (y * y) <= (radiusSize * radiusSize)) {
+        radTiles.push({x, y});
+      }
     }
   }
+  return radTiles;
 }
 
 // takes an array of relative coordinates to the map size (20 x 15) i.e. [1, 1]
@@ -26,7 +29,7 @@ export default function getSurroundingTiles(newPos) {
   let surroundingTiles = [];
   let paddingTiles = [];
   // add position as offset to each radius tile
-  radiusTiles.forEach(({x, y}) => {
+  radiusTiles().forEach(({x, y}) => {
     // get radius with location as offset
     let offsetX = x + startPos[0];
     let offsetY = y + startPos[1];

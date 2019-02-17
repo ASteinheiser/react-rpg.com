@@ -5,12 +5,12 @@ export default function toggleSettings() {
     if(getState().dialog.settings) {
       dispatch({
         type: 'CLOSE_SETTINGS',
-        payload: {}
+        payload: null
       });
     } else {
       dispatch({
         type: 'OPEN_SETTINGS',
-        payload: {}
+        payload: null
       });
     }
   }

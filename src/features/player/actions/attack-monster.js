@@ -39,7 +39,7 @@ export default function attackMonster() {
       // show sword swing
       store.dispatch({
         type: 'PLAYER_ATTACK',
-        payload: {}
+        payload: null
       });
       // deal damage to monster
       store.dispatch({
@@ -61,7 +61,7 @@ export default function attackMonster() {
         // play death sound
         store.dispatch({
           type: 'MONSTER_DIED',
-          payload: {}
+          payload: null
         });
         // replace monster will blood spill
         // need to pass relative tile index
@@ -77,13 +77,13 @@ export default function attackMonster() {
       // take a turn if the player attacked something
       store.dispatch({
         type: 'TAKE_TURN',
-        payload: {}
+        payload: null
       });
     } else {
       // no monster, just show sword swing
       store.dispatch({
         type: 'PLAYER_ATTACK',
-        payload: {}
+        payload: null
       });
     }
   }

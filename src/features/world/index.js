@@ -5,15 +5,12 @@ import ReactTimeout         from 'react-timeout';
 import Map              from '../map';
 import Monsters         from '../monsters';
 import takeMonstersTurn from '../monsters/actions/take-monsters-turn';
+import loadMonsters     from '../monsters/actions/load-monsters';
 import Player           from '../player';
-import exploreTiles     from '../player/actions/explore-tiles';
-import generateMonsters from '../map/random-map-gen/generate-monsters';
-
-import store from '../../config/store';
 
 import './styles.scss';
 
-// animation time is 500(ms), adding 100 makes it smoother
+// animation time is 500(ms), adding +100 makes it smoother
 const MAP_TRANSITION_DELAY = 600;
 
 class World extends Component {
@@ -31,73 +28,26 @@ class World extends Component {
     if(prevProps.world.currentMap !== this.props.world.currentMap
       && prevProps.world.currentMap !== null
       && this.props.dialog.gameStart !== true) {
-      this.handleLoadMap();
-      this.handleLoadMonsters();
+      this.handleMapTransition();
+      this.props.loadMonsters();
     }
     // if a turn has been taken, and the game hasn't just restarted, and the map didn't change
     else if(prevProps.world.turn !== this.props.world.turn
       && (this.props.world.turn !== 0)
       && (prevProps.world.currentMap === this.props.world.currentMap)) {
       // take monster turn
-      takeMonstersTurn();
+      this.props.takeMonstersTurn();
     }
   }
 
-  handleLoadMap() {
-    const { world, player } = this.props;
-    const { gameMode, floorNum, randomMaps, storyMaps } = world;
-
-    // fade the map transition to black
+  handleMapTransition() {
+    // fade the map transition component to black
     this.setState({ opacity: 1 }, () => {
       // after a delay, fade the map transition with the new map loaded
       this.props.setTimeout(() => {
-        if(gameMode === 'endless') {
-          // set map tiles for current random map
-          store.dispatch({
-            type: 'ADD_TILES',
-            payload: { tiles: randomMaps[floorNum - 1].tiles }
-          });
-        } else {
-          // set map tiles for current story map
-          store.dispatch({
-            type: 'ADD_TILES',
-            payload: { tiles: storyMaps[world.currentMap].tiles }
-          });
-        }
-
-        store.dispatch(exploreTiles(player.position));
-
         this.setState({ opacity: 0 });
       }, MAP_TRANSITION_DELAY);
     });
-  }
-
-  handleLoadMonsters() {
-    const { world, monsters, player, stats } = this.props;
-    const { gameMode, currentMap, randomMaps, floorNum, storyMaps } = world;
-
-    // if it's endless mode and we don't have monsters for the current map
-    if(gameMode === 'endless') {
-      if(!monsters.components[currentMap]) {
-        // let's generate some monsters and set them!
-        store.dispatch({
-          type: 'ADD_MONSTERS',
-          payload: {
-            monsters: generateMonsters(floorNum, randomMaps[floorNum - 1].tiles, player.position, stats.level),
-            map: currentMap
-          }
-        });
-      }
-    } else {
-      // load monsters for the story map
-      store.dispatch({
-        type: 'ADD_MONSTERS',
-        payload: {
-          monsters: storyMaps[currentMap].monsters,
-          map: currentMap
-        }
-      });
-    }
   }
 
   render() {
@@ -133,6 +83,8 @@ class World extends Component {
   }
 }
 
-const mapStateToProps = ({ appState, world, monsters, player, stats, dialog }) => ({ appState, world, monsters, player, stats, dialog });
+const mapStateToProps = ({ appState, world, player, dialog }) => ({ appState, world, player, dialog });
 
-export default connect(mapStateToProps)(ReactTimeout(World));
+const actions = { loadMonsters, takeMonstersTurn };
+
+export default connect(mapStateToProps, actions)(ReactTimeout(World));

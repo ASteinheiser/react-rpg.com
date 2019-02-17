@@ -56,7 +56,9 @@ const worldReducer = (state = initialState, { type, payload }) => {
         Object.keys(currentMapData.paddingTiles).forEach(direction => {
           currentMapData.paddingTiles[direction] = currentMapData.paddingTiles[direction].map(tileRow => {
             return tileRow.map(tile => {
-              if(paddTiles.indexOf(JSON.stringify(tile.location)) > -1) tile.explored = 1;
+              if(paddTiles.indexOf(JSON.stringify(tile.location)) > -1) {
+                tile.explored = 1;
+              }
               return tile;
             });
           });

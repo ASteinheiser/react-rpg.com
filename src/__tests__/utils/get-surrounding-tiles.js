@@ -15,7 +15,7 @@ describe('getSurroundingTiles tests:', () => {
                                               {x: 0, y: 3}
       ];
 
-      expect(radiusTiles).toEqual(expected);
+      expect(radiusTiles()).toEqual(expected);
     });
   });
 

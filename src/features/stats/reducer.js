@@ -229,9 +229,7 @@ const statsReducer = (state = initialState, action) => {
       return { ...state, hp: _hp };
 
     case 'DAMAGE_TO_PLAYER':
-      const { damage } = action.payload;
-      // deal damage to player
-      return { ...state, hp: (state.hp - damage) };
+      return { ...state, hp: (state.hp - action.payload) };
 
     case 'GET_EXP':
       newState = _cloneDeep(state);

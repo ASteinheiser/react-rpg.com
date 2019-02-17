@@ -4,7 +4,7 @@ export default function closeSettings() {
 
     dispatch({
       type: 'CLOSE_SETTINGS',
-      payload: {}
+      payload: null
     });
   }
 }

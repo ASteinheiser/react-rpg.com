@@ -11,9 +11,6 @@ const mapReducer = (state = initialState, { type, payload }) => {
       // turn on or off game sounds
       return { ...state, sound: payload };
 
-    case 'RESET':
-      return initialState;
-
     default:
       return state;
   }

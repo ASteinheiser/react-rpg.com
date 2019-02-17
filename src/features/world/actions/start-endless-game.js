@@ -41,11 +41,6 @@ export default function startEndlessGame() {
       }
     });
 
-    dispatch({
-      type: 'ADD_TILES',
-      payload: { tiles: randomMap }
-    });
-
     dispatch(exploreTiles(player.position));
 
     dispatch({

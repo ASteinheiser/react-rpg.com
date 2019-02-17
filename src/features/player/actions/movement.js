@@ -88,7 +88,7 @@ export default function attemptMove(direction) {
 function takeTurn() {
   store.dispatch({
     type: 'TAKE_TURN',
-    payload: {}
+    payload: null
   });
 }
 

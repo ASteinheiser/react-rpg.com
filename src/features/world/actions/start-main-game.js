@@ -14,7 +14,7 @@ export default function startMainGame() {
 
     dispatch({
       type: 'LOAD_STORY_MAPS',
-      payload: {}
+      payload: null
     });
 
     // this needs to happen before add tiles, explore tiles, or add monsters
@@ -23,13 +23,6 @@ export default function startMainGame() {
       payload: {
         startMap: START_MAP,
         gameMode: 'story'
-      }
-    });
-
-    dispatch({
-      type: 'ADD_TILES',
-      payload: {
-        tiles: getState().world.storyMaps[START_MAP].tiles
       }
     });
 
