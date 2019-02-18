@@ -3,7 +3,6 @@ import React from 'react';
 import HealthBar from '../../components/health-bar';
 
 function Monster({ monster }) {
-
   return (
     <div style={{
         position: 'absolute',

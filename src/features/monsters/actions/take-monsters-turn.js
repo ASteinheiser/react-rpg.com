@@ -143,9 +143,9 @@ export default function takeMonstersTurn() {
       count ++;
       // dont allow for infinite loops when monster can't move
       if(count >= 5) return;
-    
+
       let nextPos = [0,0];
-    
+
       switch(direction) {
         case 'up':
           nextPos = [position[0], position[1] - SPRITE_SIZE];

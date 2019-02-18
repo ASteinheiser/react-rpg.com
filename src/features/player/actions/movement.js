@@ -64,14 +64,14 @@ export default function attemptMove(direction) {
 
   if(observeBoundaries(newPos) && nextTile < 5
       && !checkForMonster(newPos, direction)) {
+    // explore new tiles
+    store.dispatch(exploreTiles(newPos));
     // move the player
     dispatchMove(direction, newPos);
     // if we do anything but use stairs, count a turn
     if(handleInteractWithTile(nextTile, newPos)) {
       takeTurn();
     }
-    // explore new tiles
-    store.dispatch(exploreTiles(newPos));
   } else {
     // dont move the player
     const { playerMoved, position } = store.getState().player;

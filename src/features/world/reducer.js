@@ -103,7 +103,7 @@ const worldReducer = (state = initialState, { type, payload }) => {
 
     case 'TAKE_TURN':
       // increment the turn
-      return { ...state, turn: (state.turn + 1) };
+      return { ...state, turn: state.turn + 1 };
 
     case 'SET_STORY_MAP':
       const { direction, currentMap } = payload;
