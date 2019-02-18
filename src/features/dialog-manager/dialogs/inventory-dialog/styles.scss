@@ -1,16 +1,16 @@
-.inventory-dialog-container {
+.inventory-dialog__container {
   flex: 1;
   align-items: center;
-}
 
-.inventory-dialog-child {
-  justify-content: flex-start;
-}
+  .inventory-dialog__child {
+    justify-content: flex-start;
 
-.inventory-backpack {
-  height: 280px;
+    .inventory-dialog__backpack {
+      height: 280px;
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
 }

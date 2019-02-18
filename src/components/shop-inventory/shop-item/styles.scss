@@ -1,0 +1,36 @@
+.shop-item__container {
+  margin: 0 0 4px;
+
+  .shop-item__slot {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shop-item__text {
+    flex: 1;
+    justify-content: space-between;
+
+    font-size: 18px;
+
+    padding: 0 10px;
+
+    height: 40px;
+
+    .shop-item__price {
+      color: var(--orange);
+
+      padding-left: 10px;
+      border-left: 1px solid var(--gray);
+
+      width: 30px;
+
+      align-items: center;
+      justify-content: center;
+    }
+
+    .shop-item__title {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

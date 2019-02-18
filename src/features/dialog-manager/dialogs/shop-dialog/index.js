@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { connect }         from 'react-redux';
 
 import Button          from '../../../../components/button';
 import Dialog          from '../../../../components/dialog';
 import SellItemsDialog from '../sell-items-dialog';
 import ShopKeep        from '../../../../components/shop-keep';
 import ShopInventory   from '../../../../components/shop-inventory';
-import store           from '../../../../config/store';
+import closeDialog     from '../../actions/close-dialog';
 
 import './styles.scss';
 
-const ShopDialog = (props) => {
+const ShopDialog = ({ closeDialog }) => {
 
   const [welcome, setWelcome] = useState(true);
   const [sellItems, setSellItems] = useState(null);
@@ -17,19 +18,8 @@ const ShopDialog = (props) => {
   function handleOpenSellItems() {
     setSellItems(
       <SellItemsDialog
-        onClose={handleCloseSellItems} />
+        onClose={() => setSellItems(null)} />
     );
-  }
-
-  function handleCloseSellItems() {
-    setSellItems(null);
-  }
-
-  function handleCloseDialog() {
-    store.dispatch({
-      type: 'PAUSE',
-      payload: { pause: false }
-    });
   }
 
   if(welcome) {
@@ -37,24 +27,25 @@ const ShopDialog = (props) => {
       <Dialog>
         <div className='flex-column space-between flex-1'>
 
-          <div className='shop-title-text'>
+          <span className='shop-dialog__title'>
             {'Shop'}
-          </div>
+          </span>
 
           <div className='flex-row'>
             <ShopKeep />
 
-            <div className='flex-column shop-keep-text'>
+            <span className='flex-column shop-dialog__text'>
               {'Welcome traveler! Please, come in...'}
-            </div>
+            </span>
           </div>
 
-          <div className='flex-row shop-button-container'>
+          <div className='flex-row shop-dialog__button'>
             <Button
               small
-              onClick={handleCloseDialog}
+              onClick={closeDialog}
               icon='walking'
               title={'Leave'} />
+
             <Button
               small
               onClick={() => setWelcome(false)}
@@ -72,16 +63,17 @@ const ShopDialog = (props) => {
 
       { sellItems }
 
-      <div className='flex-column shop-container'>
+      <div className='flex-column shop-dialog__container'>
 
         <ShopInventory />
 
-        <div className='flex-row shop-button-container'>
+        <div className='flex-row shop-dialog__button'>
           <Button
             small
-            onClick={handleCloseDialog}
+            onClick={closeDialog}
             icon='walking'
             title={'Leave'} />
+
           <Button
             small
             onClick={handleOpenSellItems}
@@ -93,4 +85,6 @@ const ShopDialog = (props) => {
   );
 }
 
-export default ShopDialog;
+const actions = { closeDialog };
+
+export default connect(null, actions)(ShopDialog);

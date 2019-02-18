@@ -1,23 +1,24 @@
-.game-settings-box {
+.game-settings__button {
   height: 40px;
   width: 45px;
 
+  background-color: var(--dark-gray);
+
   margin-top: 12px;
 
-  cursor: pointer;
   user-select: none;
 
   position: relative;
 
   z-index: 100;
-}
 
-.game-settings-button {
-  font-size: 26px;
+  .game-settings__icon {
+    font-size: 26px;
 
-  height: 100%;
+    height: 100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -1,3 +1,4 @@
+import _cloneDeep from 'lodash.clonedeep';
 
 const initialState = {
   hp: 10,
@@ -11,76 +12,72 @@ const initialState = {
   equippedItems: {}
 };
 
-const statsReducer = (state = initialState, action) => {
+const statsReducer = (state = initialState, { type, payload }) => {
 
-  let newState = Object.assign({}, state);
+  let newState;
 
-  switch(action.type) {
+  switch(type) {
 
     case 'GET_GOLD':
       // add gold to current gold
-      newState.gold += action.payload.value;
-
-      return newState;
+      return { ...state, gold: state.gold + payload };
 
     case 'LOSE_GOLD':
       // add gold to current gold
-      newState.gold -= action.payload.value;
-
-      return newState;
+      return { ...state, gold: state.gold - payload };
 
     case 'UNEQUIP_ITEM':
-      let data = action.payload.data;
+      newState = _cloneDeep(state);
       // check the type
-      switch(data.type) {
+      switch(payload.type) {
         case 'weapon':
-          newState.damage -= data.damage;
+          newState.damage -= payload.damage;
           delete newState.equippedItems['weapon'];
           break;
 
         case 'armor::body':
-          newState.defence -= data.defence;
+          newState.defence -= payload.defence;
           delete newState.equippedItems['armor']['body'];
           break;
 
         case 'armor::helmet':
-          newState.defence -= data.defence;
+          newState.defence -= payload.defence;
           delete newState.equippedItems['armor']['helmet'];
           break;
 
         case 'armor::pants':
-          newState.defence -= data.defence;
+          newState.defence -= payload.defence;
           delete newState.equippedItems['armor']['pants'];
           break;
 
         case 'armor::boots':
-          newState.defence -= data.defence;
+          newState.defence -= payload.defence;
           delete newState.equippedItems['armor']['boots'];
           break;
 
         case 'armor::gloves':
-          newState.defence -= data.defence;
+          newState.defence -= payload.defence;
           delete newState.equippedItems['armor']['gloves'];
           break;
 
         case 'ring':
           // iterate over each effect
-          Object.keys(data.effect).forEach(effectName => {
+          Object.keys(payload.effect).forEach(effectName => {
 
             switch (effectName) {
 
               case 'defence':
-                newState.defence -= data.effect[effectName];
+                newState.defence -= payload.effect[effectName];
                 break;
 
               case 'damage':
-                newState.damage -= data.effect[effectName];
+                newState.damage -= payload.effect[effectName];
                 break;
 
               case 'hp':
-                newState.hp -= data.effect[effectName];
+                newState.hp -= payload.effect[effectName];
                 if(newState.hp < 1) newState.hp = 1;
-                newState.maxHp -= data.effect[effectName];
+                newState.maxHp -= payload.effect[effectName];
                 break;
 
               default:
@@ -96,7 +93,8 @@ const statsReducer = (state = initialState, action) => {
       return newState;
 
     case 'EQUIP_ITEM':
-      let item = action.payload;
+      newState = _cloneDeep(state);
+      let item = payload;
       // see what type of item it is
       switch(item.type) {
 
@@ -224,23 +222,20 @@ const statsReducer = (state = initialState, action) => {
 
     case 'HEAL_HP':
       // heal the hp
-      newState.hp += action.payload.value;
+      let _hp = state.hp + payload;
       // dont go above max hp
-      if(newState.hp > newState.maxHp) newState.hp = newState.maxHp;
+      if(_hp > state.maxHp) _hp = state.maxHp;
 
-      return newState;
+      return { ...state, hp: _hp };
 
     case 'DAMAGE_TO_PLAYER':
-      const { damage } = action.payload;
-      // deal damage to player
-      newState.hp -= damage;
-
-      return newState;
+      return { ...state, hp: (state.hp - payload) };
 
     case 'GET_EXP':
-      let newExp = action.payload.value;
-      let newTotalExp = state.exp + newExp;
-      let expToLevel = state.expToLevel;
+      newState = _cloneDeep(state);
+
+      const newTotalExp = state.exp + payload;
+      const { expToLevel } = state;
       // if they are leveling up
       if(newTotalExp >= expToLevel) {
         // increment level
@@ -274,26 +269,16 @@ const statsReducer = (state = initialState, action) => {
         if(chance <= 25) {
           newState.damage += 1;
         }
-
-      } else {
+      }
+      else {
         // they aren't leveling up
-        newState.exp += newExp;
+        newState.exp += payload;
       }
 
       return newState;
 
     case 'RESET':
-      return {
-        hp: 10,
-        maxHp: 10,
-        damage: 3,
-        defence: 0,
-        level: 1,
-        exp: 0,
-        expToLevel: 20,
-        gold: 0,
-        equippedItems: {}
-      };
+      return initialState;
 
     default:
       return state;

@@ -1,4 +1,4 @@
-.micro-dialog-container {
+.micro-dialog__container {
   display: flex;
   flex-direction: column;
 
@@ -15,19 +15,18 @@
 
   cursor: default;
   user-select: none;
-}
 
-.micro-dialog-close-button {
-  position: absolute;
-  right: 0;
-  top: 0;
+  .micro-dialog__close {
+    position: absolute;
+    right: 0;
+    top: 0;
 
-  font-size: 24px;
-  cursor: pointer;
+    font-size: 24px;
 
-  border-left: 1px solid;
-  border-bottom: 1px solid;
-  border-radius: 2px;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 2px;
 
-  padding: 7px 12px;
+    padding: 7px 12px;
+  }
 }

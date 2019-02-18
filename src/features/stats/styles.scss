@@ -1,20 +1,4 @@
-.stats-text-spacing {
-  padding-right: 15px;
-}
-
-.stats-column-spacing {
-  padding-left: 12px;
-}
-
-.stats-column-spacing-large {
-  padding-left: 24px;
-}
-
-.stats-row-spacing {
-  padding-bottom: 15px;
-}
-
-.stats-container {
+.stats__container {
   justify-content: center;
 
   transition: background .5s ease-in-out;
@@ -23,7 +7,39 @@
   user-select: none;
 }
 
-.exp-bar-container {
+.stats__row--spacing {
+  padding-bottom: 15px;
+}
+
+.stats__text--spacing {
+  padding-right: 15px;
+}
+
+.stats__text--level {
+  color: var(--blue);
+}
+
+.stats__text--gold {
+  color: var(--orange);
+}
+
+.stats__text--damage {
+  color: var(--light-red);
+}
+
+.stats__text--defence {
+  color: var(--purple);
+}
+
+.stats-column__spacing {
+  padding-left: 12px;
+}
+
+.stats-column__spacing--large {
+  padding-left: 24px;
+}
+
+.exp-bar__container {
   width: 110px;
   height: 20px;
 
@@ -33,29 +49,21 @@
 
   border: 1px solid var(--blue);
   border-radius: 7px;
+
+  .exp-bar__value {
+    height: 20px;
+
+    background: var(--blue);
+
+    border-radius: 5px 0px 0px 4px;
+
+    position: absolute;
+
+    transition: width 1s ease-in-out;
+  }
 }
 
-.exp-bar-value {
-  height: 20px;
-
-  background: var(--blue);
-
-  border-radius: 5px 0px 0px 4px;
-
-  position: absolute;
-
-  transition: width 1s ease-in-out;
-}
-
-.exp-bar-position {
-  flex: 1;
-}
-
-.stats-hp-bar-position {
-  padding-bottom: 2px;
-}
-
-.stats-hp-bar-container {
+.stats-hp-bar__container {
   width: 115px;
   height: 20px;
 
@@ -65,19 +73,19 @@
 
   border: 1px solid var(--green);
   border-radius: 7px;
+
+  .stats-hp-bar__value {
+    height: 20px;
+
+    background: var(--green);
+
+    position: absolute;
+
+    transition: width 1s ease-in-out;
+  }
 }
 
-.stats-hp-bar-value {
-  height: 20px;
-
-  background: var(--green);
-
-  position: absolute;
-
-  transition: width 1s ease-in-out;
-}
-
-.stats-bar-value-text {
+.stats-bar__text {
   height: 20px;
   font-size: 22px;
   color: var(--dark-gray);
@@ -91,20 +99,4 @@
   z-index: 1000;
   left: 0;
   right: 0;
-}
-
-.stats-text-gold {
-  color: var(--orange);
-}
-
-.stats-text-damage {
-  color: var(--light-red);
-}
-
-.stats-text-level {
-  color: var(--blue);
-}
-
-.stats-text-defence {
-  color: var(--purple);
 }

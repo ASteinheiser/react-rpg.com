@@ -8,18 +8,38 @@ html {
   --orange: #daa43d;
   --light-red: #ff593b;
   --purple: #8000ed;
+  --transparent: rgba(0,0,0,0);
 }
 
 body {
   margin: 0;
   background-color: var(--dark-gray);
-  /* global text color */
+  /* default text color */
   color: var(--gray);
-  /* global font */
-  font-family: 'Montserrat', sans-serif;
+  /* default font */
+  font-family: Montserrat, Roboto, sans-serif;
   font-weight: 400;
   font-size: 20px;
   text-transform: uppercase;
+}
+
+button {
+  font-size: 20px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+
+  color: var(--gray);
+  outline-color: var(--gray);
+
+  border: none;
+
+  background-color: var(--transparent);
+  padding: 0;
+
+  cursor: pointer;
+}
+a {
+  outline-color: var(--gray);
 }
 
 .flex-1 {
@@ -70,4 +90,5 @@ body {
 .white-border {
   border: 1px solid;
   border-radius: 2px;
+  color: var(--gray);
 }

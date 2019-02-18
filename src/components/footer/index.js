@@ -1,17 +1,17 @@
 import React from 'react';
 
-import packageJson from '../../../package.json';
+import { version } from '../../../package.json';
 
 import './styles.scss';
 
-const Footer = (props) => {
+const Footer = () => {
   return(
-    <div className='footer-container'>
-      <span>
-        {`Made with ♥ by Andrew Steinheiser - v${packageJson.version} - `}
-      </span>
+    <div className='footer__container'>
 
-      <a href='https://github.com/ASteinheiser/react-rpg.com'
+      <span>{`Made with ♥ by Andrew Steinheiser - v${version} - `}</span>
+
+      <a className='footer__link'
+        href='https://github.com/ASteinheiser/react-rpg.com'
         target='_blank'
         rel='noopener noreferrer'>
         {'View Source'}

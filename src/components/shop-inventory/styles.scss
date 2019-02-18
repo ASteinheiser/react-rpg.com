@@ -1,53 +1,12 @@
-.shop-inventory-items {
+.shop-inventory__container {
   flex: 1;
   justify-content: space-evenly;
 
   width: 96%;
 
   padding-top: 4px;
-}
 
-.shop-item-container {
-  cursor: pointer;
-
-  margin-bottom: 4px;
-}
-
-.shop-item-slot {
-  width: 40px;
-  height: 40px;
-}
-
-.shop-item-text {
-  flex: 1;
-  justify-content: space-between;
-
-  font-size: 18px;
-
-  padding: 0 10px;
-}
-
-.shop-page-button {
-  font-size: 20px;
-
-  padding: 4px 16px 12px;
-
-  cursor: pointer;
-}
-
-.shop-item-price {
-  color: var(--orange);
-
-  padding-left: 10px;
-  border-left: 1px solid var(--gray);
-
-  width: 30px;
-
-  align-items: center;
-  justify-content: center;
-}
-
-.shop-item-title {
-  align-items: center;
-  justify-content: center;
+  .shop-inventory__button {
+    padding: 4px 16px;
+  }
 }

@@ -1,43 +1,44 @@
-.game-music-toggle-button {
+.game-music__button {
   height: 40px;
   width: 45px;
 
-  cursor: pointer;
+  background-color: var(--dark-gray);
+
   user-select: none;
 
   position: relative;
 
   z-index: 100;
-}
 
-.game-music-button {
-  font-size: 26px;
+  .game-music__icon {
+    font-size: 26px;
 
-  height: 100%;
+    height: 100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.line1 {
-  height: 2px;
-  background: var(--gray);
+  .game-music__diagonal-line--1 {
+    height: 2px;
+    background: var(--gray);
 
-  transform: rotate(41deg);
+    transform: rotate(41deg);
 
-  position: absolute;
+    position: absolute;
 
-  transition: all .25s ease-in-out;
-}
+    transition: all .25s ease-in-out;
+  }
 
-.line2 {
-  height: 2px;
-  background: var(--gray);
+  .game-music__diagonal-line--2 {
+    height: 2px;
+    background: var(--gray);
 
-  transform: rotate(139deg);
+    transform: rotate(139deg);
 
-  position: absolute;
+    position: absolute;
 
-  transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+  }
 }

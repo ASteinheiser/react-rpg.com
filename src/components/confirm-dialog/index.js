@@ -4,18 +4,18 @@ import Button from '../button';
 
 import './styles.scss';
 
-const ConfirmDialog = (props) => {
+const ConfirmDialog = ({ open, text, onClose, cancelIcon, cancelText, confirm, acceptIcon, acceptText, className }) => {
 
-  const { text, onClose, cancelIcon, cancelText, confirm, acceptIcon, acceptText, className } = props;
+  if(!open) return null;
 
   return(
-    <div className={`confirm-dialog-container white-border ${className ? className : ''}`}>
+    <div className={`confirm-dialog__container white-border ${className || ''}`}>
 
-      <span className='confirm-dialog-text'>
+      <span className='confirm-dialog__text'>
         { text }
       </span>
 
-      <div className='flex-row confirm-dialog-button-child'>
+      <div className='flex-row confirm-dialog__buttons'>
         <Button
           onClick={onClose}
           icon={cancelIcon || 'times'}

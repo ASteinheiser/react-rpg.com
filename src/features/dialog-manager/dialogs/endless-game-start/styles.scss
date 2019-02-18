@@ -1,4 +1,4 @@
-.endless-start-title {
+.endless-start__title {
   font-size: 26px;
   justify-content: center;
 
@@ -6,7 +6,7 @@
   margin-left: 26px;
 }
 
-.endless-start-text {
+.endless-start__text {
   flex: 1;
 
   font-size: 20px;
@@ -18,36 +18,8 @@
   padding: 48px 32px 0;
 }
 
-.endless-start-button {
+.endless-start__button {
   padding: 16px 0;
 
   align-items: center;
-}
-
-.endless-start-flame-container-1 {
-  position: absolute;
-  bottom: 75px;
-  left: 125px;
-}
-
-.endless-start-flame-container-2 {
-  position: absolute;
-  bottom: 75px;
-  left: 570px;
-}
-
-.endless-start-back {
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  font-size: 24px;
-
-  cursor: pointer;
-
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-  border-radius: 2px;
-
-  padding: 12px 16px;
 }

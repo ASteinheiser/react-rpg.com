@@ -1,144 +1,77 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect }          from 'react-redux';
 
-import Button      from '../../../../components/button';
-import MicroDialog from '../../../../components/micro-dialog';
-import randomItem  from './random-item';
-import store       from '../../../../config/store';
+import Button           from '../../../../components/button';
+import MicroDialog      from '../../../../components/micro-dialog';
+import pickupItem       from '../../../inventory/actions/pickup-item';
+import openChest        from '../../actions/open-chest';
+import closeChestDialog from '../../actions/close-chest-dialog';
 
 import './styles.scss';
 
-const ChestLoot = (props) => {
+const ChestLoot = ({ dialog, pickupItem, openChest, closeChestDialog }) => {
 
-  const { level } = props.stats;
-
-  const { chestOpen } = props.dialog;
+  const { chestOpen } = dialog;
   const { gold, exp, item } = chestOpen;
 
   useEffect(() => {
-    if(!chestOpen) {
-      // give the player a 25% chance to get a random item
-      let itemDrop = false;
-      const chance = Math.floor(Math.random() * 100) + 1;
-      if(chance <= 25) {
-        itemDrop = randomItem(level);
-      }
-      // get a random amount of gold between 1 and 8 PLUS player level x3
-      const gold = (Math.floor(Math.random() * 8) + 1) + (level * 3);
-      // get some level based exp
-      const exp = (level * 5) + 5;
-
-      store.dispatch({
-        type: 'GET_GOLD',
-        payload: { value: gold }
-      });
-      store.dispatch({
-        type: 'GET_EXP',
-        payload: { value: exp }
-      });
-      store.dispatch({
-        type: 'SET_CHEST_DATA',
-        payload: {
-          exp,
-          gold,
-          item: itemDrop
-        }
-      });
-    }
-  }, []);  // we pass empty array as the second param to make this only call on mount and not on any updates
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    }
-  }, []); // we pass empty array as the second param to make this only call on mount and not on any updates
-
-  function handleKeyPress(event) {
-    // case for 'enter' or 'space' key
-    if(event.keyCode === 13 || event.keyCode === 32) {
-      handleContinue();
-    }
-  }
+    if(!chestOpen) openChest();
+  }, []);
 
   function handleContinue() {
-    const { items, maxItems } = props.inventory;
-    const { item } = store.getState().dialog.chestOpen;
-
-    if(item) {
-      if(items.length < maxItems) {
-        store.dispatch({
-          type: 'GET_ITEM',
-          payload: item
-        });
-      } else {
-        store.dispatch({
-          type: 'TOO_MANY_ITEMS',
-          payload: item
-        });
-      }
-    }
-    handleClose();
-  }
-
-  function handleClose() {
-    store.dispatch({
-      type: 'SET_CHEST_DATA',
-      payload: false
-    });
-    store.dispatch({
-      type: 'PAUSE',
-      payload: { pause: false }
-    });
+    pickupItem();
+    closeChestDialog();
   }
 
   return(
-    <MicroDialog onClose={handleClose}>
+    <MicroDialog
+      onClose={closeChestDialog}
+      onKeyPress={handleContinue}>
 
-      <span className='chest-loot-title'>
+      <span className='chest-loot__title'>
         {'Chest Loot!'}
       </span>
 
-      <div className='flex-column chest-loot-contents'>
+      <div className='flex-column chest-loot__contents'>
 
-        <div className='flex-row chest-loot-value-spacing'>
+        <div className='flex-row chest-loot__value--spacing'>
           <span>{'Gold: '}</span>
-          <span>{gold}</span>
+          <span>{ gold }</span>
         </div>
 
-        <div className='flex-row chest-loot-value-spacing'>
+        <div className='flex-row chest-loot__value--spacing'>
           <span>{'Exp: '}</span>
-          <span>{exp}</span>
+          <span>{ exp }</span>
         </div>
 
         {
-          item ?
-            <div className='flex-row chest-loot-item'>
+          item &&
+            <div className='flex-row chest-loot__item'>
               <div style={{
                   backgroundImage: `url('${item.image}')`,
                   width: '40px',
                   height: '40px'
                 }} />
-                <span className='flex-column chest-loot-item-name'>
+                <span className='flex-column chest-loot__item-name'>
                   {item.name}
                 </span>
             </div>
-            :
-            null
         }
       </div>
 
-      <div className='flex-column chest-loot-button-container'>
+      <div className='flex-column chest-loot__buttons'>
         <Button
           onClick={handleContinue}
           title={item ? 'Pick Up' : 'Continue'}
-          icon={item ? 'hand-paper' : 'check' }/>
+          icon={item ? 'hand-paper' : 'check' } />
       </div>
 
     </MicroDialog>
   );
 }
 
-const mapStateToProps = ({ inventory, stats, dialog }) => ({ inventory, stats, dialog });
+const mapStateToProps = ({ dialog }) => ({ dialog });
 
-export default connect(mapStateToProps)(ChestLoot);
+const actions = { pickupItem, openChest, closeChestDialog };
+
+export default connect(mapStateToProps, actions)(ChestLoot);

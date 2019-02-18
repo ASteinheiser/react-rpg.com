@@ -1,4 +1,4 @@
-.footer-container {
+.footer__container {
   font-size: 18px;
   text-transform: none;
 
@@ -9,13 +9,13 @@
 
   cursor: default;
   user-select: none;
-}
 
-.footer-container a {
-  color: var(--gray);
-  text-decoration: none;
+  .footer__link {
+    color: var(--gray);
+    text-decoration: none;
 
-  padding-bottom: 3px;
+    padding-bottom: 3px;
 
-  border-bottom: 1px solid;
+    border-bottom: 1px solid;
+  }
 }

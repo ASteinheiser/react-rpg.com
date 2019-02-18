@@ -13,9 +13,9 @@ import MainGameStart    from './dialogs/main-game-start';
 import SettingsDialog   from './dialogs/settings-dialog';
 import ShopDialog       from './dialogs/shop-dialog';
 
-const DialogManager = (props) => {
+const DialogManager = ({ dialog }) => {
 
-  const { chest, inventory, gameText, gameOver, gameStart, gameSelect, gameWin, gameInstructions, paused, settings, shop } = props.dialog;
+  const { chest, inventory, gameText, gameOver, gameStart, gameSelect, gameWin, gameInstructions, paused, settings, shop } = dialog;
 
   let PauseComp = null;
   let SettingsComp = null;
@@ -37,16 +37,14 @@ const DialogManager = (props) => {
   if(settings) PauseComp = <SettingsDialog />;
 
   return(
-    <React.Fragment>
-
+    <>
       {/* Show the 'paused' component here - this is the game start screen,
         game over screen, as well as other dialogs throughout the game */}
       { PauseComp }
 
       {/* Show the 'settings' component over the 'paused' components */}
       { SettingsComp }
-
-    </React.Fragment>
+    </>
   );
 }
 

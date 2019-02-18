@@ -9,46 +9,32 @@ const initialState = {
   monsterDied: false,
 };
 
-const playerReducer = (state = initialState, action) => {
+const playerReducer = (state = initialState, { type, payload }) => {
 
-  let newState = Object.assign({}, state);
-
-  switch(action.type) {
+  switch(type) {
 
     case 'MONSTER_DIED':
       // trigger monster's death sound
-      newState.monsterDied = !state.monsterDied;
-      return newState;
+      return { ...state, monsterDied: !state.monsterDied };
 
     case 'PLAYER_DIED':
       // trigger player's death sound
-      newState.playerDied = !state.playerDied;
-      return newState;
+      return { ...state, playerDied: !state.playerDied };
 
     case 'MONSTER_ATTACK':
       // trigger monster's attack animation on player
-      newState.monsterAttacked = !state.monsterAttacked;
-      return newState;
+      return { ...state, monsterAttacked: !state.monsterAttacked };
 
     case 'PLAYER_ATTACK':
       // trigger attack animation
-      newState.playerAttacked = !state.playerAttacked;
-      return newState;
+      return { ...state, playerAttacked: !state.playerAttacked };
 
     case 'MOVE_PLAYER':
       return {
-        // trigger move animation
+        ...state,
         playerMoved: !state.playerMoved,
-        // dont trigger attack
-        playerAttacked: state.playerAttacked,
-        // or monster attack
-        monsterAttacked: state.monsterAttacked,
-        // or monster death sound
-        monsterDied: state.monsterDied,
-        // or player death sound
-        playerDied: state.playerDied,
-        ...action.payload
-      }
+        ...payload
+      };
 
     case 'RESET':
       return initialState;

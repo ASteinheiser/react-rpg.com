@@ -1,7 +1,10 @@
-.viewport-container {
+.viewport__container {
   position: relative;
 
   overflow: hidden;
 
-  background: repeating-linear-gradient(-45deg, var(--dark-gray), var(--dark-gray) 10px, var(--medium-gray) 10px, var(--medium-gray) 20px);
+  background: repeating-linear-gradient(
+    -45deg, var(--dark-gray), var(--dark-gray) 10px,
+    var(--medium-gray) 10px, var(--medium-gray) 20px
+  );
 }

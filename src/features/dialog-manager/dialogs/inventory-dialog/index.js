@@ -8,39 +8,34 @@ import ViewItem      from '../../../../components/view-item';
 
 import './styles.scss';
 
-const InventoryDialog = (props) => {
+const InventoryDialog = () => {
 
-  const [viewItem, setViewItem] = useState(null);
-
-  function handleViewItem(item) {
-    setViewItem(
-      <ViewItem
-        data={item}
-        onClose={handleCloseItem} />
-    );
-  }
-
-  function handleCloseItem() {
-    setViewItem(null);
-  }
+  const [viewItem, setViewItem] = useState(false);
 
   return(
     <Dialog>
 
-      { viewItem }
+      <ViewItem
+        open={Boolean(viewItem)}
+        data={viewItem}
+        onClose={() => setViewItem(false)} />
 
-      <div className='flex-row inventory-dialog-container'>
-        <div className='flex-column inventory-dialog-child'
-          style={{width: '40%'}}>
+      <div className='flex-row inventory-dialog__container'>
+
+        <div className='flex-column inventory-dialog__child' style={{width: '40%'}}>
           <EquippedItems />
         </div>
 
-        <div className='flex-column inventory-dialog-child'
-          style={{width: '60%'}}>
-          <div className='inventory-backpack' style={{backgroundImage: `url(${Backpack})`}}>
-            <BackpackItems view_item={handleViewItem} />
+        <div className='flex-column inventory-dialog__child' style={{width: '60%'}}>
+          <div className='inventory-dialog__backpack'
+            style={{backgroundImage: `url(${Backpack})`}}>
+
+            <BackpackItems
+              view_item={(item) => setViewItem(item)} />
+
           </div>
         </div>
+
       </div>
     </Dialog>
   );

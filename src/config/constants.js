@@ -1,5 +1,6 @@
 // max number of inventory items
 export const MAX_ITEMS = 8;
+export const MAX_ITEMS_UPGRADE = 12;
 // how far the player can 'see' or 'explore'
 export const SIGHT_RADIUS = 3;
 // how fast the player move animation plays (ms)
@@ -25,3 +26,10 @@ export const GAME_VIEWPORT_SIZE = 350;
 export const GAME_VIEWPORT_SIZE_LG = 400;
 // set the minimum level for tier 2 items
 export const TIER_2 = 10;
+// set the pixel values for the different screen sizes
+export const SCREEN_SMALL_WIDTH = 410;
+export const SCREEN_SMALL_HEIGHT = 410;
+export const SCREEN_MEDIUM_WIDTH = 600;
+export const SCREEN_MEDIUM_HEIGHT = 680;
+// set the number of tiles to pad the map with (so the player cant see edge)
+export const MAP_PADDING_DISTANCE = 5;

@@ -1,31 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './styles.scss';
 
-const MicroDialog = (props) => {
+const MicroDialog = ({ no_button, onClose, children, fullsize, className, onKeyPress }) => {
 
-  const { no_button, onClose, children, fullsize, className } = props;
+  useEffect(() => {
+    if(onKeyPress) window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      if(onKeyPress) window.removeEventListener('keydown', handleKeyPress);
+    }
+  }, []);
 
-  let styles = {};
-
-  if(fullsize) {
-    styles = {
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0
-    };
+  function handleKeyPress(event) {
+    // case for 'enter' or 'space' key
+    if(event.keyCode === 13 || event.keyCode === 32) {
+      onKeyPress();
+    }
   }
 
+  const noSpacing = { top: 0, bottom: 0, left: 0, right: 0 };
+
   return(
-    <div className={'micro-dialog-container white-border ' + (className || '')} style={styles}>
+    <div style={fullsize ? noSpacing : {}}
+      className={`micro-dialog__container white-border ${className || ''}`}>
 
       {
-        no_button ?
-          null
-          :
-          <i onClick={onClose}
-            className={`fa fa-times micro-dialog-close-button`} />
+        !no_button &&
+          <button className='micro-dialog__close' onClick={onClose}>
+            <i className={`fa fa-times`} />
+          </button>
       }
 
       { children }

@@ -1,4 +1,5 @@
-import React from 'react';
+import React       from 'react';
+import { connect } from 'react-redux';
 
 import {
   GAME_VIEWPORT_SIZE,
@@ -7,9 +8,9 @@ import {
 
 import './viewport.scss';
 
-const Viewport = (props) => {
+const Viewport = ({ appState, children }) => {
 
-  const { largeView, sideMenu } = props;
+  const { largeView, sideMenu } = appState;
 
   const gameSize = (largeView ? GAME_VIEWPORT_SIZE_LG : GAME_VIEWPORT_SIZE);
   const margin = sideMenu ? '8px 0 0' : '8px auto 0';
@@ -21,13 +22,15 @@ const Viewport = (props) => {
   };
 
   return(
-    <div className='viewport-container white-border'
-      style={styles}>
+    <div style={styles}
+      className='viewport__container white-border'>
 
-      { props.children }
+      { children }
 
     </div>
   );
 }
 
-export default Viewport;
+const mapStateToProps = ({ appState }) => ({ appState });
+
+export default connect(mapStateToProps)(Viewport);

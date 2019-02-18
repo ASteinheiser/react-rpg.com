@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import { connect }          from 'react-redux';
-import { isMobile }         from 'react-device-detect';
+import React        from 'react';
+import { connect }  from 'react-redux';
+import { isMobile } from 'react-device-detect';
 
-import Button        from '../../../../components/button';
-import Dialog        from '../../../../components/dialog';
-import items         from '../../../../data/items';
-import store         from '../../../../config/store';
-import { START_MAP } from '../../../../config/constants';
+import Button                from '../../../../components/button';
+import Dialog                from '../../../../components/dialog';
+import loadStartingItems     from '../../../inventory/actions/load-starting-items';
+import showFirstStoryMessage from '../../actions/show-first-story-message';
 
 import ArrowKeys from './assets/arrow-keys.png';
 import DoubleTap from './assets/double-tap.png';
@@ -17,72 +16,29 @@ import WASDKeys  from './assets/wasd-keys.png';
 
 import './styles.scss';
 
-const GameInstructions = (props) => {
+const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
 
   let mobileVersion = false;
   if(window.location.search === '?nativeApp=true' || isMobile) {
     mobileVersion = true;
   }
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    }
-  }, []); // we pass empty array as the second param to make this only call on mount and not on any updates
-
-  function handleKeyPress(event) {
-    // case for 'enter' or 'space' key
-    if(event.keyCode === 13 || event.keyCode === 32) {
-      handleContinue();
-    }
-  }
-
   function handleContinue() {
-    handleShowMapMessage();
-    handleLoadStartingItems();
-  }
-
-  function handleShowMapMessage() {
-    const { message } = props.world.storyMaps[START_MAP];
-
-    store.dispatch({
-      type: 'PAUSE',
-      payload: {
-        pause: true,
-        gameText: {
-          title: message.title,
-          body: message.body
-        }
-      }
-    });
-  }
-
-  function handleLoadStartingItems() {
-    // give the player a rusty sword
-    store.dispatch({
-      type: 'GET_ITEM',
-      payload: items.weapons.RustySword
-    });
-    // and equip it
-    store.dispatch({
-      type: 'EQUIP_ITEM',
-      payload: store.getState().inventory.items[0]
-    });
+    loadStartingItems();
+    showFirstStoryMessage();
   }
 
   return(
-    <Dialog>
-      <div className='game-instructions-title'>
+    <Dialog onKeyPress={handleContinue}>
+
+      <div className='game-instructions__title'>
         {'Game Controls'}
       </div>
 
-      <div className='game-instructions-text'>
+      <div className='game-instructions__text'>
         {
-          mobileVersion ?
-            null
-            :
-            <span>
+          !mobileVersion &&
+            <span style={{paddingBottom: 12}}>
               {`MOVEMENT`}
             </span>
         }
@@ -90,25 +46,23 @@ const GameInstructions = (props) => {
         <div className={`flex-row align-center space-evenly`}>
           {
             mobileVersion ?
-              <React.Fragment>
+              <>
                 <img src={Swipe}
                   alt='swipe' />
-                <div className='native-text'>
+                <div className='game-instructions__native-text'>
                   {'SWIPE and HOLD to MOVE'}
                 </div>
-              </React.Fragment>
+              </>
               :
-              <React.Fragment>
+              <>
                 <img src={ArrowKeys} alt='arrow-keys' />
                 <img src={WASDKeys} alt='wasd-keys' />
-              </React.Fragment>
+              </>
           }
         </div>
 
         {
-          mobileVersion ?
-            null
-            :
+          !mobileVersion &&
             <span style={{paddingTop: 12}}>
               {`ATTACK`}
             </span>
@@ -117,32 +71,33 @@ const GameInstructions = (props) => {
         <div className={`flex-row align-center space-evenly`}>
           {
             mobileVersion ?
-              <React.Fragment>
+              <>
                 <img src={DoubleTap}
                   alt='double-tap' />
-                <div className='native-text'>
+                <div className='game-instructions__native-text'>
                   {'DOUBLE TAP to ATTACK'}
                 </div>
-              </React.Fragment>
+              </>
               :
-              <React.Fragment>
+              <>
                 <img src={Space} alt='space' />
                 <img src={Enter} alt='enter' />
-              </React.Fragment>
+              </>
           }
         </div>
 
       </div>
 
-      <div className='flex-column game-start-button'>
+      <div className='flex-column game-instructions__button'>
         <Button
           onClick={handleContinue}
           title={'Continue'} />
       </div>
+
     </Dialog>
   );
 }
 
-const mapStateToProps = ({ world }) => ({ world });
+const actions = { loadStartingItems, showFirstStoryMessage };
 
-export default connect(mapStateToProps)(GameInstructions);
+export default connect(null, actions)(GameInstructions);

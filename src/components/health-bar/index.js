@@ -3,17 +3,20 @@ import React from 'react';
 import './styles.scss';
 
 const HealthBar = ({ value, max }) => {
-  // dont show hp bars on full health units
+  // hide hp bars on full health units
+  const fullHp = (value === max);
+
   return(
     <span className='flex-row'>
-      <span className='health-bar-container'
+      <span className='health-bar__container'
         style={{
-          width: (value === max) ? 0 : '38px',
-          border: (value === max) ? '' : '1px solid var(--green)',
+          width: fullHp ? 0 : 38,
+          border: fullHp ? 'none' : '1px solid var(--green)'
         }}>
-        <span className='health-bar-value'
-          style={{ width: `${(value / max) * 100}%` }}>
-        </span>
+
+        <span className='health-bar__value'
+          style={{ width: `${(value / max) * 100}%` }} />
+
       </span>
     </span>
   );

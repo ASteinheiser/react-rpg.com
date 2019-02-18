@@ -1,17 +1,22 @@
 
 const initialState = {
-  optOutDownload: false
+  optOutDownload: false,
+  largeView: false,
+  sideMenu: false
 };
 
-const appStateReducer = (state = initialState, action) => {
+const appStateReducer = (state = initialState, { payload, type }) => {
 
-  let newState = Object.assign({}, state);
-
-  switch(action.type) {
+  switch(type) {
 
     case 'OPT_OUT_DOWNLOAD':
-      newState.optOutDownload = true;
-      return newState;
+      return { ...state, optOutDownload: true };
+
+    case 'SET_LARGE_VIEW':
+      return { ...state, largeView: payload };
+
+    case 'SET_SIDE_MENU':
+      return { ...state, sideMenu: payload };
 
     default:
       return state;

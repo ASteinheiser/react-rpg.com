@@ -1,4 +1,4 @@
-.download-app-container {
+.download-app__container {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -23,7 +23,7 @@
     cursor: pointer;
   }
 
-  .download-app-box {
+  .download-app__box {
     z-index: 10000;
 
     max-width: 300px;
@@ -35,50 +35,54 @@
 
     text-align: center;
 
-    span {
+    .download-app__title {
       font-size: 20px;
 
       letter-spacing: 1px;
       line-height: 30px;
     }
 
-    .ios-store-icon {
-      width: 75%;
+    .download-app__buttons {
+      padding: 32px 0;
 
-      padding: 48px 0 16px;
+      .ios-icon {
+        width: 75%;
 
-      cursor: pointer;
-    }
+        padding: 16px 0 16px;
 
-    .android-store-icon {
-      width: 75%;
+        cursor: pointer;
+      }
 
-      padding: 16px 0 48px;
+      .android-icon {
+        width: 75%;
 
-      cursor: pointer;
+        padding: 16px 0 16px;
+
+        cursor: pointer;
+      }
     }
 
     .close-option {
       font-size: 16px;
 
-      padding-top: 16px;
-
-      cursor: pointer;
+      margin: 16px 0 0 0;
     }
   }
 }
 
 @media(max-width: 500px) {
-  .download-app-container {
-    .download-app-box {
+  .download-app__container {
+    .download-app__box {
       padding: 16px;
       margin-bottom: 32px;
 
-      .ios-store-icon {
-        padding: 32px 0 16px;
-      }
-      .android-store-icon {
-        padding: 16px 0 32px;
+      .download-app__buttons {
+        .ios-icon {
+          padding: 32px 0 16px;
+        }
+        .android-icon {
+          padding: 16px 0 32px;
+        }
       }
     }
   }

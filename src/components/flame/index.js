@@ -5,22 +5,22 @@ import { SPRITE_SIZE } from '../../config/constants';
 
 import './styles.scss';
 
-const Flame = (props) => {
+const Flame = ({ children, position }) => {
 
-  const { position } = props;
-
-  const top = position ? (position[0] * SPRITE_SIZE) : 0;
-  const left = position ? (position[1] * SPRITE_SIZE) : 0;
+  const top = position ? (position[1] * SPRITE_SIZE) : 0;
+  const left = position ? (position[0] * SPRITE_SIZE) : 0;
 
   return (
-    <div className='flame-container'
+    <div className='flame__container'
       style={{
         top,
         left,
         backgroundImage: `url('${Flames}')`
       }}>
-        { props.children }
-      </div>
+
+      { children }
+
+    </div>
   );
 }
 

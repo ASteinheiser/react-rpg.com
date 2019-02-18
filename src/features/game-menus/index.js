@@ -9,9 +9,9 @@ import Stats        from '../stats';
 
 import './styles.scss';
 
-const GameMenus = (props) => {
+const GameMenus = ({ appState, dialog }) => {
 
-  const { sideMenu, dialog, largeView } = props;
+  const { sideMenu, largeView } = appState;
   const { gameOver, gameStart, paused, inventory, settings } = dialog;
 
   // disable the inventory button when we are in settings or paused and not in the inventory
@@ -21,11 +21,12 @@ const GameMenus = (props) => {
 
   return(
     <div className='flex-row centered'>
-      <div className={`game-menu-container ${sideMenu ? 'flex-column' : 'flex-row'}`}
+      <div className={`game-menu__container ${sideMenu ? 'flex-column' : 'flex-row'}`}
         style={{
           maxWidth: largeView ? 400 : 350,
           paddingLeft: sideMenu ? 8 : 0,
-          height: sideMenu ? '380px' : 'unset'
+          height: sideMenu ? '380px' : 'unset',
+          justifyContent: disableInventory ? 'flex-end' : 'center'
         }}>
 
         <Stats
@@ -51,6 +52,6 @@ const GameMenus = (props) => {
   );
 }
 
-const mapStateToProps = ({ dialog }) => ({ dialog });
+const mapStateToProps = ({ appState, dialog }) => ({ appState, dialog });
 
 export default connect(mapStateToProps)(GameMenus);
