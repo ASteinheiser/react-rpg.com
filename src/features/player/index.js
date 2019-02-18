@@ -13,8 +13,7 @@ import WalkSprite     from './assets/player_walk.png';
 import SwordSlash     from './assets/sword-slash.png';
 import MonsterSlash   from '../monsters/assets/monster-slash.png';
 // other local imports
-import playerControls from './controls';
-import store          from '../../config/store';
+import Controls                         from './controls';
 import { ANIMATION_SPEED, SPRITE_SIZE } from '../../config/constants';
 
 import './styles.scss';
@@ -41,7 +40,7 @@ class Player extends Component {
     // detemine when the player has moved
     if(prevProps.player.playerMoved !== this.props.player.playerMoved) {
       let animationWalkSound = null;
-      if(store.getState().gameMenu.sound) {
+      if(this.props.gameMenu.sound) {
         animationWalkSound = (
           <Sound
             url={PlayerStep}
@@ -58,7 +57,7 @@ class Player extends Component {
     // see if player died
     else if(prevProps.player.playerDied !== this.props.player.playerDied) {
       let playerDeath = null;
-      if(store.getState().gameMenu.sound) {
+      if(this.props.gameMenu.sound) {
         playerDeath = (
           <Sound
             url={PlayerDeath}
@@ -75,7 +74,7 @@ class Player extends Component {
     // see if a monster died
     else if(prevProps.player.monsterDied !== this.props.player.monsterDied) {
       let monsterDeath = null;
-      if(store.getState().gameMenu.sound) {
+      if(this.props.gameMenu.sound) {
         monsterDeath = (
           <Sound
             url={MonsterDeath}
@@ -92,7 +91,7 @@ class Player extends Component {
     // see if a monster attacked the player
     else if(prevProps.player.monsterAttacked !== this.props.player.monsterAttacked) {
       let monsterAnimationAttackSound = null;
-      if(store.getState().gameMenu.sound) {
+      if(this.props.gameMenu.sound) {
         monsterAnimationAttackSound = (
           <Sound
             url={MonsterAttack}
@@ -126,7 +125,7 @@ class Player extends Component {
         default:
       }
       let animationAttackSound = null;
-      if(store.getState().gameMenu.sound) {
+      if(this.props.gameMenu.sound) {
         animationAttackSound = (
           <Sound
             url={SwordSwish}
@@ -143,7 +142,9 @@ class Player extends Component {
   }
 
   render() {
-    const { animationPlay, attackAnimationPlay, attackAnimationLoc, animationWalkSound, animationAttackSound, monsterAnimationAttackSound, monsterAttackAnimationPlay, monsterDeath, playerDeath } = this.state;
+    const { animationPlay, attackAnimationPlay, attackAnimationLoc,
+      animationWalkSound,animationAttackSound, monsterAnimationAttackSound,
+      monsterAttackAnimationPlay, monsterDeath, playerDeath } = this.state;
     const { player, dialog } = this.props;
 
     const { gameStart } = dialog;
@@ -178,6 +179,8 @@ class Player extends Component {
           animationPlayState: animationPlay
         }}>
 
+        <Controls />
+
         { animationWalkSound }
         { animationAttackSound }
         { monsterAnimationAttackSound }
@@ -204,6 +207,6 @@ class Player extends Component {
   }
 }
 
-const mapStateToProps = ({ player, dialog }) => ({ player, dialog });
+const mapStateToProps = ({ gameMenu, player, dialog }) => ({ gameMenu, player, dialog });
 
-export default connect(mapStateToProps)(playerControls(ReactTimeout(Player)));
+export default connect(mapStateToProps)(ReactTimeout(Player));

@@ -9,9 +9,9 @@ const initialState = {
   monsterDied: false,
 };
 
-const playerReducer = (state = initialState, action) => {
+const playerReducer = (state = initialState, { type, payload }) => {
 
-  switch(action.type) {
+  switch(type) {
 
     case 'MONSTER_DIED':
       // trigger monster's death sound
@@ -33,7 +33,7 @@ const playerReducer = (state = initialState, action) => {
       return {
         ...state,
         playerMoved: !state.playerMoved,
-        ...action.payload
+        ...payload
       };
 
     case 'RESET':
