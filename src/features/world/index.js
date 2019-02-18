@@ -7,6 +7,7 @@ import Monsters         from '../monsters';
 import takeMonstersTurn from '../monsters/actions/take-monsters-turn';
 import loadMonsters     from '../monsters/actions/load-monsters';
 import Player           from '../player';
+import exploreTiles     from '../player/actions/explore-tiles';
 
 import './styles.scss';
 
@@ -41,12 +42,15 @@ class World extends Component {
   }
 
   handleMapTransition() {
+    const { player, exploreTiles } = this.props;
     // fade the map transition component to black
     this.setState({ opacity: 1 }, () => {
       // after a delay, fade the map transition with the new map loaded
       this.props.setTimeout(() => {
         this.setState({ opacity: 0 });
-      }, MAP_TRANSITION_DELAY);
+        exploreTiles(player.position);
+      },
+      MAP_TRANSITION_DELAY);
     });
   }
 
@@ -85,6 +89,6 @@ class World extends Component {
 
 const mapStateToProps = ({ appState, world, player, dialog }) => ({ appState, world, player, dialog });
 
-const actions = { loadMonsters, takeMonstersTurn };
+const actions = { exploreTiles, loadMonsters, takeMonstersTurn };
 
 export default connect(mapStateToProps, actions)(ReactTimeout(World));
