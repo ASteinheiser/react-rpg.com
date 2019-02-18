@@ -3,17 +3,18 @@ import { connect }   from 'react-redux';
 import Hammer        from 'hammerjs';
 import _debounce     from 'lodash.debounce';
 
-import movePlayer          from './actions/move-player';
 import attackMonster       from './actions/attack-monster';
+import movePlayer          from './actions/move-player';
+import isGamePaused        from '../dialog-manager/actions/is-game-paused';
 import { ANIMATION_SPEED } from '../../config/constants';
 
 var intervalId = null;
 
-const Controls = ({ dialog, attackMonster, movePlayer }) => {
+const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
 
   const _handleKeyDown = _debounce((event) => {
     // if the game is not paused by dialogs
-    if(!gamePaused()) handleKeyDown(event);
+    if(!isGamePaused()) handleKeyDown(event);
   },
     ANIMATION_SPEED,
     { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
@@ -21,7 +22,7 @@ const Controls = ({ dialog, attackMonster, movePlayer }) => {
 
   const _swipe = _debounce(({ direction, offsetDirection }) => {
     // return if the game is paused by dialogs
-    if(gamePaused()) return;
+    if(isGamePaused()) return;
     // if we get a bad pan, use the best guess
     if(direction === 1) direction = offsetDirection;
 
@@ -48,7 +49,7 @@ const Controls = ({ dialog, attackMonster, movePlayer }) => {
 
   const _swipeHold = _debounce(({ direction, offsetDirection }) => {
     // return if the game is paused by dialogs or in settings mode
-    if(gamePaused()) return;
+    if(isGamePaused()) return;
     // if we get a bad pan, use the best guess
     if(direction === 1) direction = offsetDirection;
 
@@ -77,7 +78,7 @@ const Controls = ({ dialog, attackMonster, movePlayer }) => {
 
   const _tap = _debounce(() => {
     // if the game is not paused by dialogs
-    if(!gamePaused()) attackMonster();
+    if(!isGamePaused()) attackMonster();
   },
     ANIMATION_SPEED,
     { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
@@ -111,12 +112,6 @@ const Controls = ({ dialog, attackMonster, movePlayer }) => {
     }
   }, []);
 
-  function gamePaused() {
-    const { paused, settings } = dialog;
-    if(paused || settings) return true;
-    else return false;
-  }
-
   function handleKeyDown(event) {
     event.preventDefault();
     // move with 'WASD' or Arrow keys
@@ -145,8 +140,6 @@ const Controls = ({ dialog, attackMonster, movePlayer }) => {
   return null;
 }
 
-const mapStateToProps = ({ dialog }) => ({ dialog });
+const actions = { attackMonster, movePlayer, isGamePaused };
 
-const actions = { attackMonster, movePlayer };
-
-export default connect(mapStateToProps, actions)(Controls);
+export default connect(null, actions)(Controls);

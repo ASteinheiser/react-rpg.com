@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 
+import Controls         from '../player/controls';
+import exploreTiles     from '../player/actions/explore-tiles';
+import Player           from '../player';
 import Map              from '../map';
 import Monsters         from '../monsters';
-import takeMonstersTurn from '../monsters/actions/take-monsters-turn';
 import loadMonsters     from '../monsters/actions/load-monsters';
-import Player           from '../player';
-import exploreTiles     from '../player/actions/explore-tiles';
+import takeMonstersTurn from '../monsters/actions/take-monsters-turn';
 
 import './styles.scss';
 
@@ -72,6 +73,8 @@ class World extends Component {
             top: worldTop,
             left: worldLeft
           }}>
+
+          <Controls />
 
           <Map />
 
