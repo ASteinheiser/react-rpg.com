@@ -1,5 +1,5 @@
+import attackPlayer    from './attack-player';
 import { SPRITE_SIZE } from '../../../config/constants';
-import calculateDamage from '../../../utils/calculate-damage';
 import getNextTile     from '../../../utils/get-next-tile';
 import { radiusTiles } from '../../../utils/get-surrounding-tiles';
 
@@ -35,37 +35,10 @@ export default function takeMonstersTurn() {
           payload: { id, map: currentMap }
         });
 
-        const { player, stats } = getState();
+        const { player } = getState();
         // check if player is in range
         if(playerInRange(player.position, monsterPos)) {
-          // calculate damage
-          let calculatedMonsterDamage = calculateDamage(damage, stats.defence);
-          // deal damage to player
-          dispatch({
-            type: 'DAMAGE_TO_PLAYER',
-            payload: calculatedMonsterDamage
-          });
-          // show the attack animation and play sound
-          dispatch({
-            type: 'MONSTER_ATTACK',
-            payload: null
-          });
-          // check if player died
-          if((stats.hp - calculatedMonsterDamage) <= 0) {
-            // play death sound
-            dispatch({
-              type: 'PLAYER_DIED',
-              payload: null
-            });
-            // if it did, game over
-            dispatch({
-              type: 'PAUSE',
-              payload: {
-                gameOver: true,
-                pause: true
-              }
-            });
-          }
+          dispatch(attackPlayer(damage));
         } else {
           // no player in range, time to move!
           // get the monsters actual position in pixels
