@@ -1,17 +1,5 @@
-import { MAP_DIMENSIONS, MAX_TUNNELS, MAX_LENGTH } from '../../../config/constants';
 import generateObjects from './generate-objects';
-
-// generate a map filled with wall tiles
-function createMapOfWalls(wallType) {
-  let array = [];
-  for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
-    array.push([]);
-    for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
-      array[i].push(wallType);
-    }
-  }
-  return array;
-}
+import { MAP_DIMENSIONS, MAX_TUNNELS, MAX_LENGTH } from '../../../config/constants';
 
 // generates a random dungeon map
 export default function generateMap(startPos, floorNum) {
@@ -68,4 +56,16 @@ export default function generateMap(startPos, floorNum) {
   // all our tunnels have been created and now we run placeObjects(),
   // which will complete our map, so lets return it to our render()
   return generateObjects(map, floorNum, startPos, wallType);
+}
+
+// generate a map filled with wall tiles
+function createMapOfWalls(wallType) {
+  let array = [];
+  for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
+    array.push([]);
+    for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
+      array[i].push(wallType);
+    }
+  }
+  return array;
 }
