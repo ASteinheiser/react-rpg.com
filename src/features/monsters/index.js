@@ -26,7 +26,7 @@ function Monsters({ monsters, world }) {
 
       setMonstersToRender(monsterArray);
     }
-  });
+  }, []);
 
   return ( monstersToRender );
 }
