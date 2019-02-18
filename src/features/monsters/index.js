@@ -14,7 +14,8 @@ function Monsters({ monsters, world }) {
     // don't try to load if no maps
     if(JSON.stringify(monsters.components) === JSON.stringify({})) {
       setMonstersToRender(null);
-    } else if(monsters.components[currentMap]) {
+    }
+    else if(monsters.components[currentMap]) {
       // find each monster on the current map
       Object.keys(monsters.components[currentMap]).forEach(uuid => {
         monsterArray.push(

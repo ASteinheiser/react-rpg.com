@@ -6,32 +6,32 @@ const initialState = {
   itemReceived: ''
 };
 
-const snackbarReducer = (state = initialState, action) => {
+const snackbarReducer = (state = initialState, { type, payload }) => {
 
-  switch(action.type) {
+  switch(type) {
 
     case 'NOT_ENOUGH_GOLD':
       return {
         ...state,
-        notEnoughGold: `${action.payload.name}-${new Date().getTime()}`
+        notEnoughGold: `${payload.name}-${new Date().getTime()}`
       };
 
     case 'TOO_MANY_ITEMS':
       return {
         ...state,
-        tooManyItems: `${action.payload.name}-${new Date().getTime()}`
+        tooManyItems: `${payload.name}-${new Date().getTime()}`
       };
 
     case 'GET_ITEM':
       return {
         ...state,
-        itemReceived: `${action.payload.name}-${new Date().getTime()}`
+        itemReceived: `${payload.name}-${new Date().getTime()}`
       };
 
     case 'DROP_ITEM':
       return {
         ...state,
-        itemDropped: `${action.payload.name}-${new Date().getTime()}`
+        itemDropped: `${payload.name}-${new Date().getTime()}`
       };
 
     case 'RESET':

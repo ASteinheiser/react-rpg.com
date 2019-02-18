@@ -36,12 +36,12 @@ class Snackbar extends Component {
     }
     else if(lastNotEnoughGold !== notEnoughGold && notEnoughGold && notEnoughGold !== undefined) {
       // see if player tried to buy item without enough gold
-      this.setState({ show: `NOT ENOUGH GOLD FOR: ${this.props.snackbar.notEnoughGold.split('-')[0]}` });
+      this.setState({ show: `NOT ENOUGH GOLD FOR: ${notEnoughGold.split('-')[0]}` });
       this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
     }
     else if(lastTooManyItems !== tooManyItems && tooManyItems && tooManyItems !== undefined) {
       // see if player tried to get item with full inventory
-      this.setState({ show: `NOT ENOUGH SPACE FOR: ${this.props.snackbar.tooManyItems.split('-')[0]}` });
+      this.setState({ show: `NOT ENOUGH SPACE FOR: ${tooManyItems.split('-')[0]}` });
       this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
     }
   }

@@ -30,7 +30,6 @@ class World extends Component {
       && prevProps.world.currentMap !== null
       && this.props.dialog.gameStart !== true) {
       this.handleMapTransition();
-      this.props.loadMonsters();
     }
     // if a turn has been taken, and the game hasn't just restarted, and the map didn't change
     else if(prevProps.world.turn !== this.props.world.turn
@@ -47,8 +46,9 @@ class World extends Component {
     this.setState({ opacity: 1 }, () => {
       // after a delay, fade the map transition with the new map loaded
       this.props.setTimeout(() => {
-        this.setState({ opacity: 0 });
         exploreTiles(player.position);
+        this.props.loadMonsters();
+        this.setState({ opacity: 0 });
       },
       MAP_TRANSITION_DELAY);
     });
