@@ -57,7 +57,7 @@ const BackpackItems = ({ view_item, inventory }) => {
       }
     </div>
   );
-}
+};
 
 const mapStateToProps = ({ inventory }) => ({ inventory });
 

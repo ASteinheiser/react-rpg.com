@@ -71,7 +71,7 @@ const App = ({ appState, world }) => {
       { showFooter && <Footer /> }
     </>
   );
-}
+};
 
 const mapStateToProps = ({ appState, world }) => ({ appState, world });
 

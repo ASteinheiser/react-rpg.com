@@ -31,7 +31,7 @@ const MainGameStart = ({ startMainGame, backToSelect }) => {
 
     </Dialog>
   );
-}
+};
 
 const actions = { backToSelect, startMainGame };
 

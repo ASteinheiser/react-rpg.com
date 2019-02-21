@@ -39,6 +39,6 @@ const InventoryDialog = () => {
       </div>
     </Dialog>
   );
-}
+};
 
 export default InventoryDialog;

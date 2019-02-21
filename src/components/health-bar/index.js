@@ -20,6 +20,6 @@ const HealthBar = ({ value, max }) => {
       </span>
     </span>
   );
-}
+};
 
 export default HealthBar;

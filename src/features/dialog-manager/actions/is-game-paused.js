@@ -5,5 +5,5 @@ export default function isGamePaused() {
     const { paused, settings } = getState().dialog;
 
     return (paused || settings);
-  }
+  };
 }

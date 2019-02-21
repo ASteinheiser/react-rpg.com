@@ -82,8 +82,8 @@ export default function attackMonster() {
 
     function observeImpassable(newPos) {
       const nextTile = getNextTile(getState().world, newPos);
-    
+
       return nextTile < 5;
     }
-  }
+  };
 }

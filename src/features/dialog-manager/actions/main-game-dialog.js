@@ -10,5 +10,5 @@ export default function mainGameDialog() {
         gameSelect: 'story'
       }
     });
-  }
+  };
 }

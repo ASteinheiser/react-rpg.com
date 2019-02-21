@@ -86,7 +86,7 @@ export default function takeMonstersTurn() {
         }
       }
     });
-  }
+  };
 }
 
 function playerInRange(playerPos, monsterPos) {

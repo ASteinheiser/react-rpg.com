@@ -60,5 +60,5 @@ export default function startEndlessGame() {
       type: 'EQUIP_ITEM',
       payload: getState().inventory.items[0]
     });
-  }
+  };
 }

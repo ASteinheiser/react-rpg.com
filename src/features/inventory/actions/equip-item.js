@@ -6,5 +6,5 @@ export default function equipItem(item) {
       type: 'EQUIP_ITEM',
       payload: item
     });
-  }
+  };
 }

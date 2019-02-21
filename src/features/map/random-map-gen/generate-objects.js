@@ -24,7 +24,7 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
   // show stairs down if floor is greater than 1
   if(floorNum > 1) {
     map[playerPos[1]][playerPos[0]] = 2;
-  };
+  }
 
   if(availableTiles.length > 0) {
     // generate stairs up OUTSIDE the player's sight if possible

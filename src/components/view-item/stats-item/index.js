@@ -38,6 +38,6 @@ const StatsItem = ({ stats }) => {
 
     </div>
   );
-}
+};
 
 export default StatsItem;

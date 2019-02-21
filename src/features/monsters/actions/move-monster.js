@@ -129,7 +129,7 @@ export default function moveMonster(direction, position, currentMap, id, count, 
             foundMonster = true;
           }
         }
-      })
+      });
 
       return foundMonster;
     }
@@ -139,5 +139,5 @@ export default function moveMonster(direction, position, currentMap, id, count, 
 
       return nextTile < 5 ? newPos : false;
     }
-  }
+  };
 }

@@ -8,7 +8,7 @@ import BootsOutline  from './assets/boots-outline.png';
 import HelmetOutline from './assets/helmet-outline.png';
 import BodyOutline   from './assets/body-outline.png';
 import GlovesOutline from './assets/gloves-outline.png';
-import PantsOutline  from './assets/pants-outline.png'
+import PantsOutline  from './assets/pants-outline.png';
 import RingOutline   from './assets/ring-outline.png';
 import SwordOutline  from './assets/sword-outline.png';
 import Character     from './assets/equipment-character.png';
@@ -152,7 +152,7 @@ const EquippedItems = ({ stats, unequipItem }) => {
 
     </div>
   );
-}
+};
 
 const mapStateToProps = ({ stats }) => ({ stats });
 

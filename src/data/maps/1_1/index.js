@@ -41,12 +41,12 @@ const monsters = [
 
 const stairs = {
   up: '1_2'
-}
+};
 
 const message = {
   title: 'As you enter the dungeon, you start coughing from the putrid scent...',
   body: `You try to ignore the smell as you recall your quest: Speak with the Old Spirit at his resting place.`
-}
+};
 
 export default {
   tiles,

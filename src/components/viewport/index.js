@@ -29,7 +29,7 @@ const Viewport = ({ appState, children }) => {
 
     </div>
   );
-}
+};
 
 const mapStateToProps = ({ appState }) => ({ appState });
 

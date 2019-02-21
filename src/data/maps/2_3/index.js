@@ -30,12 +30,12 @@ const monsters = [
 const stairs = {
   down: '2_2',
   up: '2_4'
-}
+};
 
 const message = {
   title: 'Entering this part of the dungeon, you notice stray gold coins accompanied by large burn markings. The voice speaks.',
   body: `"EQUAL PARTS BEAUTIFUL AND DANGEROUS... THESE CREATURES ARE THE ESSENCE OF GREED."`
-}
+};
 
 export default {
   tiles,

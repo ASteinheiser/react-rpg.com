@@ -38,12 +38,12 @@ const monsters = [
 const stairs = {
   down: '1_2',
   up: '1_4'
-}
+};
 
 const message = {
   title: 'As you inspect the walls, you notice a faint purple glow. Something definitely seemed off about those rats...',
   body: 'Up ahead, you notice a group of small humanoid creatures...'
-}
+};
 
 export default {
   tiles,

@@ -13,7 +13,7 @@ export let radiusTiles = (radiusSize = SIGHT_RADIUS) => {
     }
   }
   return radTiles;
-}
+};
 
 // takes an array of relative coordinates to the map size (20 x 15) i.e. [1, 1]
 export default function getSurroundingTiles(newPos) {

@@ -48,5 +48,5 @@ export default function sellItem(item) {
         payload: item
       });
     }
-  }
+  };
 }

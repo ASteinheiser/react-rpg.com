@@ -1,7 +1,7 @@
 import items      from '../../data/items';
 import { TIER_2 } from '../../config/constants';
 // returns the correct tier of items depending on player level
-const shopItems = (level) => {
+export default function shopItems(level) {
   if(level < TIER_2) {
     return [
       items.other.BackpackUpgrade,
@@ -32,5 +32,3 @@ const shopItems = (level) => {
     ];
   }
 }
-
-export default shopItems;

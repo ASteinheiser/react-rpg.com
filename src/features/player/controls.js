@@ -111,7 +111,7 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
       hammertime.off('panend', _clearInterval);
       hammertime.off('panstart', _swipeHold);  
       hammertime.off('tap', _tap);
-    }
+    };
   }, []);
 
   function handleKeyDown(event) {
@@ -140,7 +140,7 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
   }
 
   return null;
-}
+};
 
 const actions = { attackMonster, movePlayer, isGamePaused };
 

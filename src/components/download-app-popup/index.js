@@ -56,6 +56,6 @@ const DownloadAppPopup = ({ onClose, optOutDownload, open }) => {
 
     </div>
   );
-}
+};
 
 export default connect(null, { optOutDownload })(DownloadAppPopup);

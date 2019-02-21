@@ -1,9 +1,5 @@
 extends:
   - react-app
-env:
-  es6: true
-  browser: true
-parserOptions:
-  sourceType: module
 rules:
   semi: 1
+  no-extra-semi: 1

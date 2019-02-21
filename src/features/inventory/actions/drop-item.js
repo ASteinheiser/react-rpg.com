@@ -6,5 +6,5 @@ export default function dropItem(item) {
       type: 'DROP_ITEM',
       payload: item
     });
-  }
+  };
 }

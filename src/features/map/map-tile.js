@@ -39,39 +39,39 @@ const MapTile = ({ tile, index, sightBox }) => {
       </div>
     </GroundTile>
   );
-}
+};
 
 export function getTileSprite(type, variation) {
   switch(type) {
     case -2:
-      return 'chest-open'
+      return 'chest-open';
     case -1:
-      return 'blood-splatter'
+      return 'blood-splatter';
     case 0:
-      return `ground-${variation}`
+      return `ground-${variation}`;
     case 2:
-      return 'stairs-down'
+      return 'stairs-down';
     case 3:
-      return 'stairs-up'
+      return 'stairs-up';
     case 4:
-      return 'chest'
+      return 'chest';
     case 5:
-      return `brick-wall-${variation}`
+      return `brick-wall-${variation}`;
     case 6:
-      return `ornate-wall-${variation}`
+      return `ornate-wall-${variation}`;
     case 7:
-      return `blue-wall-${variation}`
+      return `blue-wall-${variation}`;
     case 8:
-      return `skull-wall-${variation}`
+      return `skull-wall-${variation}`;
     case 9:
-      return 'shop'
+      return 'shop';
     case 10:
-      return 'shrine'
+      return 'shrine';
     default:
   }
 }
 
-export function FogTile({ inSight, explored }) {
+export const FogTile = ({ inSight, explored }) => {
   // show the tile by default
   let opacity = '0';
   // if the tile is out of sight, show faded
@@ -89,9 +89,9 @@ export function FogTile({ inSight, explored }) {
         transition: 'opacity .5s linear'
       }} />
   );
-}
+};
 
-function GroundTile({ variation, children }) {
+const GroundTile = ({ variation, children }) => {
   return (
     <div style={{
         backgroundImage: `url('/tiles/ground-${variation}.png')`,
@@ -101,7 +101,7 @@ function GroundTile({ variation, children }) {
       }}>
       { children }
     </div>
-  )
-}
+  );
+};
 
 export default MapTile;

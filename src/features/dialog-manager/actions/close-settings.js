@@ -6,5 +6,5 @@ export default function closeSettings() {
       type: 'CLOSE_SETTINGS',
       payload: null
     });
-  }
+  };
 }

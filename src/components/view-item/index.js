@@ -215,7 +215,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
 
     </MicroDialog>
   );
-}
+};
 
 const mapStateToProps = ({ stats }) => ({ stats });
 

@@ -11,5 +11,5 @@ export default function consumePotion(item) {
       type: 'DROP_ITEM',
       payload: item
     });
-  }
+  };
 }

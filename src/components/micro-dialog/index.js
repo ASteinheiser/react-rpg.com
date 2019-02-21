@@ -8,7 +8,7 @@ const MicroDialog = ({ no_button, onClose, children, fullsize, className, onKeyP
     if(onKeyPress) window.addEventListener('keydown', handleKeyPress);
     return () => {
       if(onKeyPress) window.removeEventListener('keydown', handleKeyPress);
-    }
+    };
   }, []);
 
   function handleKeyPress(event) {
@@ -35,6 +35,6 @@ const MicroDialog = ({ no_button, onClose, children, fullsize, className, onKeyP
 
     </div>
   );
-}
+};
 
 export default MicroDialog;

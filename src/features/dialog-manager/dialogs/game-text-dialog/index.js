@@ -31,7 +31,7 @@ const GameTextDialog = ({ text1, text2, closeDialog }) => {
 
     </Dialog>
   );
-}
+};
 
 const actions = { closeDialog };
 

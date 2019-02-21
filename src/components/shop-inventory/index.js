@@ -79,7 +79,7 @@ const ShopInventory = ({ stats, inventory }) => {
 
     </div>
   );
-}
+};
 
 const mapStateToProps = ({ inventory, stats }) => ({ inventory, stats });
 

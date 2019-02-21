@@ -38,7 +38,7 @@ const monsters = [
 const stairs = {
   down: '2_1',
   up: '2_3'
-}
+};
 
 export default {
   tiles,

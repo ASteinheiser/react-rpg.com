@@ -91,7 +91,7 @@ export default function movePlayer(direction) {
 
       return nextTile;
     }
-  }
+  };
 }
 
 // returns `false` or the monster's id
@@ -111,7 +111,7 @@ export function checkForMonster(newPos) {
     });
 
     return isMonster;
-  }
+  };
 }
 
 export function getNewPosition(oldPos, direction) {

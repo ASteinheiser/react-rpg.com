@@ -34,12 +34,12 @@ const monsters = [
 const stairs = {
   down: '1_5',
   up: '2_2'
-}
+};
 
 const message = {
   title: 'You notice the walls are now a vibrant blue. But before you can do anything, a deep voice is heard from every direction.',
   body: `"AS LONG AS OUR SPIRITS RESIDE IN THESE WALLS, THE OLD SPIRIT REMAINS OUR PRISONER..."`
-}
+};
 
 export default {
   tiles,

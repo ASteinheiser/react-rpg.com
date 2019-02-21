@@ -51,9 +51,9 @@ const MapPadding = ({ tileType, tiles, sightBox }) => {
       </div>
     </>
   );
-}
+};
 
-function BoundaryTile({ tileType, variation, explored, sightBox, location }) {
+const BoundaryTile = ({ tileType, variation, explored, sightBox, location }) => {
 
   let inSight = false;
 
@@ -78,6 +78,6 @@ function BoundaryTile({ tileType, variation, explored, sightBox, location }) {
       <FogTile explored={explored} inSight={inSight} />
     </div>
   );
-}
+};
 
 export default MapPadding;

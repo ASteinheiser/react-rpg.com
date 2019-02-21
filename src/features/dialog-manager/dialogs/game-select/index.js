@@ -42,7 +42,7 @@ const GameSelect = ({ mainGameDialog, endlessGameDialog }) => {
       </div>
     </Dialog>
   );
-}
+};
 
 const actions = { mainGameDialog, endlessGameDialog };
 

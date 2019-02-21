@@ -48,6 +48,6 @@ const useGameViewportScaling = () => {
       payload: largeView
     });
   }
-}
+};
 
 export default useGameViewportScaling;

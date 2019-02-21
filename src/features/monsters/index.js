@@ -3,7 +3,7 @@ import { connect }                    from 'react-redux';
 
 import Monster from './monster';
 
-function Monsters({ monsters, world }) {
+const Monsters = ({ monsters, world }) => {
 
   const { currentMap } = world;
 
@@ -29,7 +29,7 @@ function Monsters({ monsters, world }) {
   }, [monsters]);
 
   return ( monstersToRender );
-}
+};
 
 const mapStateToProps = ({ monsters, world }) => ({ monsters, world });
 

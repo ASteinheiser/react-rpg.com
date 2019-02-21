@@ -21,5 +21,5 @@ export default function pickupItem() {
         payload: item
       });
     }
-  }
+  };
 }

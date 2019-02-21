@@ -22,7 +22,7 @@ const GameMusic = ({ sideMenu, gameSoundEnabled, setGameSound }) => {
       window.removeEventListener('keydown', handleKeyPress);
       window.removeEventListener('focus', handleFocus);
       window.removeEventListener('blur', handleBlur);
-    }
+    };
   }, []);
 
   function handleKeyPress() {
@@ -106,7 +106,7 @@ const GameMusic = ({ sideMenu, gameSoundEnabled, setGameSound }) => {
 
     </button>
   );
-}
+};
 
 const actions = { gameSoundEnabled, setGameSound };
 

@@ -46,7 +46,7 @@ const DialogManager = ({ dialog }) => {
       { SettingsComp }
     </>
   );
-}
+};
 
 const mapStateToProps = ({ dialog }) => ({ dialog });
 

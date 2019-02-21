@@ -68,7 +68,7 @@ const ChestLoot = ({ dialog, pickupItem, openChest, closeChestDialog }) => {
 
     </MicroDialog>
   );
-}
+};
 
 const mapStateToProps = ({ dialog }) => ({ dialog });
 

@@ -35,5 +35,5 @@ export default function startMainGame() {
         map: START_MAP
       }
     });
-  }
+  };
 }

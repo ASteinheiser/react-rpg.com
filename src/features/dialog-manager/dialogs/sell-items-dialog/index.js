@@ -30,6 +30,6 @@ const SellItemsDialog = ({ onClose }) => {
 
     </MicroDialog>
   );
-}
+};
 
 export default SellItemsDialog;
