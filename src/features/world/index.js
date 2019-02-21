@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 
-import Controls         from '../player/controls';
-import exploreTiles     from '../player/actions/explore-tiles';
-import Player           from '../player';
-import Map              from '../map';
-import Monsters         from '../monsters';
-import loadMonsters     from '../monsters/actions/load-monsters';
-import takeMonstersTurn from '../monsters/actions/take-monsters-turn';
+import Controls                 from '../player/controls';
+import exploreTiles             from '../player/actions/explore-tiles';
+import Player                   from '../player';
+import Map                      from '../map';
+import Monsters                 from '../monsters';
+import loadMonsters             from '../monsters/actions/load-monsters';
+import takeMonstersTurn         from '../monsters/actions/take-monsters-turn';
+import { MAP_TRANSITION_DELAY } from '../../config/constants';
 
 import './styles.scss';
 
 // animation time is 500(ms), adding +100 makes it smoother
-const MAP_TRANSITION_DELAY = 600;
+const MAP_TRANSITION = MAP_TRANSITION_DELAY + 100;
 
 class World extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class World extends Component {
     // reload the tiles and monsters if it's a new map
     // and there is a current map
     // and it's not the game start
-    if(prevProps.world.currentMap !== this.props.world.currentMap
+    if(prevProps.world.mapTransition !== this.props.world.mapTransition
       && prevProps.world.currentMap !== null
       && this.props.dialog.gameStart !== true) {
       this.handleMapTransition();
@@ -51,7 +52,7 @@ class World extends Component {
         this.props.loadMonsters();
         this.setState({ opacity: 0 });
       },
-      MAP_TRANSITION_DELAY);
+      MAP_TRANSITION);
     });
   }
 

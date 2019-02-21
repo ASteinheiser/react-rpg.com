@@ -10,7 +10,8 @@ const initialState = {
   turn: 0,
   storyMaps: {},
   randomMaps: [],
-  floorNum: null
+  floorNum: null,
+  mapTransition: false
 };
 
 const worldReducer = (state = initialState, { type, payload }) => {
@@ -19,6 +20,9 @@ const worldReducer = (state = initialState, { type, payload }) => {
   let currentMapData;
 
   switch(type) {
+
+    case 'MAP_TRANSITION':
+      return { ...state, mapTransition: !state.mapTransition };
 
     case 'ADD_BLOOD_SPILL':
       newState = _cloneDeep(state);

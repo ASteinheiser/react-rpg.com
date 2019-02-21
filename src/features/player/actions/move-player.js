@@ -45,6 +45,10 @@ export default function movePlayer(direction) {
     function handleInteractWithTile(nextTile, newPos) {
       // the player wants to use the stairs
       if(nextTile === 2 || nextTile === 3) {
+        dispatch({
+          type: 'MAP_TRANSITION',
+          payload: null
+        });
         dispatch(walkStairs(nextTile, newPos));
         return false;
       }
