@@ -26,7 +26,7 @@ const Monsters = ({ monsters, world }) => {
 
       setMonstersToRender(monsterArray);
     }
-  }, [monsters]);
+  }, [monsters, currentMap]);
 
   return ( monstersToRender );
 };
