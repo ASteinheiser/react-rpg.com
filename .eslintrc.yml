@@ -36,7 +36,12 @@ rules:
     - warn
     - never
   camelcase: warn
-  brace-style: 
+  brace-style:
     - warn
     - stroustrup
     - allowSingleLine: true
+  block-spacing: warn
+  array-element-newline:
+    - warn
+    - consistent
+  array-bracket-spacing: warn

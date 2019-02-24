@@ -117,13 +117,13 @@ export function checkForMonster(newPos) {
 export function getNewPosition(oldPos, direction) {
   switch(direction) {
     case 'WEST':
-      return [ oldPos[0] - SPRITE_SIZE, oldPos[1] ];
+      return [oldPos[0] - SPRITE_SIZE, oldPos[1]];
     case 'EAST':
-      return [ oldPos[0] + SPRITE_SIZE, oldPos[1] ];
+      return [oldPos[0] + SPRITE_SIZE, oldPos[1]];
     case 'NORTH':
-      return [ oldPos[0], oldPos[1] - SPRITE_SIZE ];
+      return [oldPos[0], oldPos[1] - SPRITE_SIZE];
     case 'SOUTH':
-      return [ oldPos[0], oldPos[1] + SPRITE_SIZE ];
+      return [oldPos[0], oldPos[1] + SPRITE_SIZE];
     default:
   }
 }

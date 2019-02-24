@@ -19,15 +19,15 @@ const tiles = [
 const monsters = [
   {
     type: 'stone-golem',
-    position: [ 1, 9 ]
+    position: [1, 9]
   },
   {
     type: 'stone-golem',
-    position: [ 10, 9 ]
+    position: [10, 9]
   },
   {
     type: 'stone-golem',
-    position: [ 18, 9 ]
+    position: [18, 9]
   }
 ];
 

@@ -19,19 +19,19 @@ const tiles = [
 const monsters = [
   {
     type: 'goblin',
-    position: [ 17, 11 ]
+    position: [17, 11]
   },
   {
     type: 'goblin',
-    position: [ 16, 8 ]
+    position: [16, 8]
   },
   {
     type: 'goblin',
-    position: [ 6, 3 ]
+    position: [6, 3]
   },
   {
     type: 'goblin',
-    position: [ 5, 12 ]
+    position: [5, 12]
   }
 ];
 

@@ -19,15 +19,15 @@ const tiles = [
 const monsters = [
   {
     type: 'imp',
-    position: [ 4, 5 ]
+    position: [4, 5]
   },
   {
     type: 'imp',
-    position: [ 5, 7 ]
+    position: [5, 7]
   },
   {
     type: 'imp',
-    position: [ 3, 8 ]
+    position: [3, 8]
   }
 ];
 

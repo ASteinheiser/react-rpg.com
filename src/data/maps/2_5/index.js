@@ -19,7 +19,7 @@ const tiles = [
 const monsters = [
   {
     type: 'lich',
-    position: [ 12, 12 ]
+    position: [12, 12]
   }
 ];
 

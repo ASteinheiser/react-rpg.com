@@ -19,11 +19,11 @@ const tiles = [
 const monsters = [
   {
     type: 'dragon',
-    position: [ 12, 4 ]
+    position: [12, 4]
   },
   {
     type: 'dragon',
-    position: [ 13, 2 ]
+    position: [13, 2]
   }
 ];
 
