@@ -21,11 +21,13 @@ class Inventory extends Component {
     let lastItemReceived = prevProps.snackbar.itemReceived;
     let lastItemDropped = prevProps.snackbar.itemDropped;
 
-    if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined && !inventory) {
+    if(lastItemDropped !== itemDropped && itemDropped &&
+      typeof itemDropped !== "undefined" && !inventory) {
       // see if any items were dropped
       this.setState({ newItemIndicator: true });
     }
-    else if(lastItemReceived !== itemReceived && itemReceived && itemReceived !== undefined && !inventory) {
+    else if(lastItemReceived !== itemReceived && itemReceived &&
+      typeof itemReceived !== "undefined" && !inventory) {
       // see if any items were received
       this.setState({ newItemIndicator: true });
     }

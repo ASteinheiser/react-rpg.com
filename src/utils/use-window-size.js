@@ -17,10 +17,7 @@ export default function useWindowSize() {
       window.removeEventListener('resize', updateWindowDimensions);
       window.removeEventListener('orientationchange', updateWindowDimensions);
     };
-  }, []);  // we pass empty array as the second param to make this only call on mount and not on any updates
+  }, []);
 
-  return {
-    width,
-    height
-  };
+  return { width, height };
 }

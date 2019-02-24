@@ -43,7 +43,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
       break;
 
     case 'weapon':
-      itemIsEquipped = (JSON.stringify(equipped['weapon']) === JSON.stringify(data));
+      itemIsEquipped = (JSON.stringify(equipped.weapon) === JSON.stringify(data));
       itemStats.push(<StatsItem stats={{ name: 'damage', value: data.damage }} key={uuidv4()} />);
       // if there's a bonus
       if(data.bonus) {
@@ -54,7 +54,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
       break;
 
     case 'ring':
-      itemIsEquipped = (JSON.stringify(equipped['ring']) === JSON.stringify(data));
+      itemIsEquipped = (JSON.stringify(equipped.ring) === JSON.stringify(data));
       // find each effect
       Object.keys(data.effect).forEach((name) => {
         itemStats.push(<StatsItem stats={{ name, value: data.effect[name] }} key={uuidv4()} />);
@@ -62,27 +62,27 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
       break;
 
     case 'armor::helmet':
-      itemIsEquipped = (equipped['armor'] && JSON.stringify(equipped['armor']['helmet']) === JSON.stringify(data));
+      itemIsEquipped = (equipped.armor && JSON.stringify(equipped.armor.helmet) === JSON.stringify(data));
       itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={uuidv4()} />);
       break;
 
     case 'armor::body':
-      itemIsEquipped = (equipped['armor'] && JSON.stringify(equipped['armor']['body']) === JSON.stringify(data));
+      itemIsEquipped = (equipped.armor && JSON.stringify(equipped.armor.body) === JSON.stringify(data));
       itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={uuidv4()} />);
       break;
 
     case 'armor::gloves':
-      itemIsEquipped = (equipped['armor'] && JSON.stringify(equipped['armor']['gloves']) === JSON.stringify(data));
+      itemIsEquipped = (equipped.armor && JSON.stringify(equipped.armor.gloves) === JSON.stringify(data));
       itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={uuidv4()} />);
       break;
 
     case 'armor::boots':
-      itemIsEquipped = (equipped['armor'] && JSON.stringify(equipped['armor']['boots']) === JSON.stringify(data));
+      itemIsEquipped = (equipped.armor && JSON.stringify(equipped.armor.boots) === JSON.stringify(data));
       itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={uuidv4()} />);
       break;
 
     case 'armor::pants':
-      itemIsEquipped = (equipped['armor'] && JSON.stringify(equipped['armor']['pants']) === JSON.stringify(data));
+      itemIsEquipped = (equipped.armor && JSON.stringify(equipped.armor.pants) === JSON.stringify(data));
       itemStats.push(<StatsItem stats={{ name: 'defence', value: data.defence }} key={uuidv4()} />);
       break;
 

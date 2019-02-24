@@ -32,32 +32,32 @@ const statsReducer = (state = initialState, { type, payload }) => {
       switch(payload.type) {
         case 'weapon':
           newState.damage -= payload.damage;
-          delete newState.equippedItems['weapon'];
+          delete newState.equippedItems.weapon;
           break;
 
         case 'armor::body':
           newState.defence -= payload.defence;
-          delete newState.equippedItems['armor']['body'];
+          delete newState.equippedItems.armor.body;
           break;
 
         case 'armor::helmet':
           newState.defence -= payload.defence;
-          delete newState.equippedItems['armor']['helmet'];
+          delete newState.equippedItems.armor.helmet;
           break;
 
         case 'armor::pants':
           newState.defence -= payload.defence;
-          delete newState.equippedItems['armor']['pants'];
+          delete newState.equippedItems.armor.pants;
           break;
 
         case 'armor::boots':
           newState.defence -= payload.defence;
-          delete newState.equippedItems['armor']['boots'];
+          delete newState.equippedItems.armor.boots;
           break;
 
         case 'armor::gloves':
           newState.defence -= payload.defence;
-          delete newState.equippedItems['armor']['gloves'];
+          delete newState.equippedItems.armor.gloves;
           break;
 
         case 'ring':
@@ -83,7 +83,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
               default:
             }
           });
-          delete newState.equippedItems['ring'];
+          delete newState.equippedItems.ring;
 
           break;
 
@@ -100,71 +100,71 @@ const statsReducer = (state = initialState, { type, payload }) => {
 
         case 'weapon':
           // if there's already a weapon
-          if(newState.equippedItems['weapon']) {
+          if(newState.equippedItems.weapon) {
             // subtract it's benefits
-            newState.damage -= newState.equippedItems['weapon'].damage;
+            newState.damage -= newState.equippedItems.weapon.damage;
           }
           newState.damage += item.damage;
-          newState.equippedItems['weapon'] = item;
+          newState.equippedItems.weapon = item;
           break;
 
         case 'armor::body':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['body']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.body) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['body'].defence;
+            newState.defence -= newState.equippedItems.armor.body.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { body: item });
+          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { body: item });
           break;
 
         case 'armor::helmet':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['helmet']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.helmet) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['helmet'].defence;
+            newState.defence -= newState.equippedItems.armor.helmet.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { helmet: item });
+          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { helmet: item });
           break;
 
         case 'armor::pants':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['pants']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.pants) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['pants'].defence;
+            newState.defence -= newState.equippedItems.armor.pants.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { pants: item });
+          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { pants: item });
           break;
 
         case 'armor::gloves':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['gloves']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.gloves) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['gloves'].defence;
+            newState.defence -= newState.equippedItems.armor.gloves.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { gloves: item });
+          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { gloves: item });
           break;
 
         case 'armor::boots':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['boots']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.boots) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['boots'].defence;
+            newState.defence -= newState.equippedItems.armor.boots.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { boots: item });
+          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { boots: item });
           break;
 
         case 'ring':
-          const equippedRing = newState.equippedItems['ring'];
+          const equippedRing = newState.equippedItems.ring;
           // if there's already a ring
           if(equippedRing) {
             // subtract it's benefits
@@ -213,7 +213,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
             }
           });
 
-          newState.equippedItems['ring'] = item;
+          newState.equippedItems.ring = item;
           break;
 
         default:

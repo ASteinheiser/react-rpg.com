@@ -3,3 +3,22 @@ extends:
 rules:
   semi: 1
   no-extra-semi: 1
+  no-irregular-whitespace: 1
+  no-unsafe-negation: 1
+  block-scoped-var: 1
+  dot-notation: 1
+  no-empty-function: 1
+  no-eq-null: 1
+  no-floating-decimal: 1
+  no-invalid-this: 1
+  no-implicit-globals: 1
+  no-implicit-coercion: 1
+  no-warning-comments: 1
+  no-useless-return: 1
+  no-new: 1
+  no-multi-spaces:
+    - 1
+    - exceptions:
+        ImportDeclaration: true
+  no-undef-init: 1
+  no-undefined: 1

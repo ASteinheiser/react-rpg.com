@@ -24,22 +24,26 @@ class Snackbar extends Component {
     const lastNotEnoughGold = prevProps.snackbar.notEnoughGold;
     const lastTooManyItems = prevProps.snackbar.tooManyItems;
 
-    if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined) {
+    if(lastItemDropped !== itemDropped && itemDropped &&
+      typeof itemDropped !== "undefined") {
       // see if any items were dropped
       this.setState({ show: `LOST AN ITEM: ${itemDropped.split('-')[0]}` });
       this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
     }
-    else if(lastItemReceived !== itemReceived && itemReceived && itemReceived !== undefined) {
+    else if(lastItemReceived !== itemReceived && itemReceived &&
+      typeof itemReceived !== "undefined") {
       // see if any items were received
       this.setState({ show: `GOT NEW ITEM: ${itemReceived.split('-')[0]}` });
       this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
     }
-    else if(lastNotEnoughGold !== notEnoughGold && notEnoughGold && notEnoughGold !== undefined) {
+    else if(lastNotEnoughGold !== notEnoughGold && notEnoughGold &&
+      typeof notEnoughGold !== "undefined") {
       // see if player tried to buy item without enough gold
       this.setState({ show: `NOT ENOUGH GOLD FOR: ${notEnoughGold.split('-')[0]}` });
       this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
     }
-    else if(lastTooManyItems !== tooManyItems && tooManyItems && tooManyItems !== undefined) {
+    else if(lastTooManyItems !== tooManyItems && tooManyItems &&
+      typeof tooManyItems !== "undefined") {
       // see if player tried to get item with full inventory
       this.setState({ show: `NOT ENOUGH SPACE FOR: ${tooManyItems.split('-')[0]}` });
       this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);

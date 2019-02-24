@@ -19,7 +19,7 @@ export default function attackMonster() {
         const { currentMap } = world;
         const { components } = monsters;
         const { weapon } = stats.equippedItems;
-        const weaponBonus = weapon ? weapon.bonus : undefined;
+        const weaponBonus = weapon ? weapon.bonus : null;
         // get monster
         const currMonster = components[currentMap][monsterId];
         const monsterPos = currMonster.position;
