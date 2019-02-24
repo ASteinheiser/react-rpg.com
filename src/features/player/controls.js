@@ -102,14 +102,14 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
     // bind touch control functions
     hammertime.on('swipe', _swipe);
     hammertime.on('panend', _clearInterval);
-    hammertime.on('panstart', _swipeHold);  
+    hammertime.on('panstart', _swipeHold);
     hammertime.on('tap', _tap);
     // make sure to unbind all listeners on unmount
     return () => {
       window.removeEventListener('keydown', _handleKeyDown);
       hammertime.off('swipe', _swipe);
       hammertime.off('panend', _clearInterval);
-      hammertime.off('panstart', _swipeHold);  
+      hammertime.off('panstart', _swipeHold);
       hammertime.off('tap', _tap);
     };
   }, []);

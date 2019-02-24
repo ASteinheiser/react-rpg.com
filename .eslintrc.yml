@@ -45,3 +45,22 @@ rules:
     - warn
     - consistent
   array-bracket-spacing: warn
+  array-bracket-newline:
+    - warn
+    - consistent
+  key-spacing: warn
+  jsx-quotes:
+    - warn
+    - prefer-single
+  implicit-arrow-linebreak: warn
+  func-style:
+    - warn
+    - declaration
+    - allowArrowFunctions: true
+  func-names: warn
+  func-name-matching: warn
+  func-call-spacing: warn
+  no-trailing-spaces: warn
+  no-tabs: warn
+  no-new-object: warn
+  no-nested-ternary: warn

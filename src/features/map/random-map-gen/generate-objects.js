@@ -69,7 +69,7 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
   // generate a shop every 4 floors
   if(floorNum % 4 === 0) {
     let availableWalls = [];
-    
+
     // get a list of available wall tiles
     for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
       for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {

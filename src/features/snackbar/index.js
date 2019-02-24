@@ -58,12 +58,17 @@ class Snackbar extends Component {
     const { sideMenu, largeView } = this.props;
     const { show } = this.state;
 
+    let width;
+    if(sideMenu) width = 180;
+    else if(largeView) width = 400;
+    else width = 350;
+
     return(
       <div className='snackbar__container white-border'
         style={{
           marginLeft: sideMenu ? 8 : 0,
           top: sideMenu ? 230 : 100,
-          width: sideMenu ? 180 : largeView ? 400 : 350,
+          width,
           fontSize: sideMenu ? 18 : 20,
           opacity: show === '' ? 0 : 1,
           zIndex: show === '' ? 0 : 101,

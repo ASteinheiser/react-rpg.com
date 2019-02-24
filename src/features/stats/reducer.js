@@ -64,7 +64,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
           // iterate over each effect
           Object.keys(payload.effect).forEach(effectName => {
 
-            switch (effectName) {
+            switch(effectName) {
 
               case 'defence':
                 newState.defence -= payload.effect[effectName];
@@ -170,7 +170,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
             // subtract it's benefits
             Object.keys(equippedRing.effect).forEach(effectName => {
 
-              switch (effectName) {
+              switch(effectName) {
 
                 case 'defence':
                   newState.defence -= equippedRing.effect[effectName];
@@ -194,7 +194,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
           // iterate over each new effect
           Object.keys(item.effect).forEach(effectName => {
 
-            switch (effectName) {
+            switch(effectName) {
 
               case 'defence':
                 newState.defence += item.effect[effectName];
