@@ -64,3 +64,6 @@ rules:
   no-tabs: warn
   no-new-object: warn
   no-nested-ternary: warn
+  no-negated-condition: warn
+  no-multiple-empty-lines: warn
+  

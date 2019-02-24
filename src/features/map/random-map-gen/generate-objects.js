@@ -37,17 +37,18 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
   else {
     let randomIndex = Math.floor(Math.random() * initialTiles.length);
     let tile = initialTiles[randomIndex];
-    // make sure we dont place it on top of the player
-    if(!(tile[0] === playerPos[1] && tile[1] === playerPos[0])) {
-      map[tile[0]][tile[1]] = 3;
-    } // remove the player's position from available tiles and get another random one
-    else {
+    // if the tile is occupied by the player
+    // remove the player's position from available tiles and get another random one
+    if(tile[0] === playerPos[1] && tile[1] === playerPos[0]) {
       initialTiles.splice(randomIndex, 1);
 
       let newRandomIndex = Math.floor(Math.random() * initialTiles.length);
       let newTile = initialTiles[newRandomIndex];
 
       map[newTile[0]][newTile[1]] = 3;
+    } // safely place the stairs
+    else {
+      map[tile[0]][tile[1]] = 3;
     }
   }
 
