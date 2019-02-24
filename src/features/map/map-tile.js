@@ -31,10 +31,10 @@ const MapTile = ({ tile, index, sightBox }) => {
   return (
     <GroundTile variation={tile.variation}>
       <div style={{
-          backgroundImage: `url(/tiles/${getTileSprite(tile.value, tile.variation)}.png)`,
-          height: SPRITE_SIZE,
-          width: SPRITE_SIZE,
-        }}>
+        backgroundImage: `url(/tiles/${getTileSprite(tile.value, tile.variation)}.png)`,
+        height: SPRITE_SIZE,
+        width: SPRITE_SIZE
+      }}>
         <FogTile explored={tile.explored} inSight={inSight} />
       </div>
     </GroundTile>
@@ -81,24 +81,24 @@ export const FogTile = ({ inSight, explored }) => {
   // render fog tiles
   return (
     <div style={{
-        backgroundColor: '#000',
-        opacity,
-        display: 'inline-flex',
-        height: SPRITE_SIZE,
-        width: SPRITE_SIZE,
-        transition: 'opacity .5s linear'
-      }} />
+      backgroundColor: '#000',
+      opacity,
+      display: 'inline-flex',
+      height: SPRITE_SIZE,
+      width: SPRITE_SIZE,
+      transition: 'opacity .5s linear'
+    }} />
   );
 };
 
 const GroundTile = ({ variation, children }) => {
   return (
     <div style={{
-        backgroundImage: `url('/tiles/ground-${variation}.png')`,
-        display: 'inline-flex',
-        height: SPRITE_SIZE,
-        width: SPRITE_SIZE,
-      }}>
+      backgroundImage: `url('/tiles/ground-${variation}.png')`,
+      display: 'inline-flex',
+      height: SPRITE_SIZE,
+      width: SPRITE_SIZE
+    }}>
       { children }
     </div>
   );

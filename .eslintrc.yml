@@ -1,24 +1,38 @@
 extends:
   - react-app
 rules:
-  semi: 1
-  no-extra-semi: 1
-  no-irregular-whitespace: 1
-  no-unsafe-negation: 1
-  block-scoped-var: 1
-  dot-notation: 1
-  no-empty-function: 1
-  no-eq-null: 1
-  no-floating-decimal: 1
-  no-invalid-this: 1
-  no-implicit-globals: 1
-  no-implicit-coercion: 1
-  no-warning-comments: 1
-  no-useless-return: 1
-  no-new: 1
+  semi: warn
+  no-extra-semi: warn
+  no-irregular-whitespace: warn
+  no-unsafe-negation: warn
+  block-scoped-var: warn
+  dot-notation: warn
+  no-empty-function: warn
+  no-eq-null: warn
+  no-floating-decimal: warn
+  no-invalid-this: warn
+  no-implicit-globals: warn
+  no-implicit-coercion: warn
+  no-warning-comments: warn
+  no-useless-return: warn
+  no-new: warn
   no-multi-spaces:
-    - 1
+    - warn
     - exceptions:
         ImportDeclaration: true
-  no-undef-init: 1
-  no-undefined: 1
+  no-undef-init: warn
+  no-undefined: warn
+  computed-property-spacing:
+    - warn
+    - never
+  comma-style:
+    - warn
+    - last
+  comma-spacing:
+    - warn
+    - before: false
+      after: true
+  comma-dangle:
+    - warn
+    - never
+  camelcase: warn

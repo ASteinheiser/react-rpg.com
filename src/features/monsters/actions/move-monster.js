@@ -10,7 +10,7 @@ export default function moveMonster(direction, position, currentMap, id, count, 
     // dont allow for infinite loops when monster can't move
     if(count >= 5) return;
 
-    let nextPos = [0,0];
+    let nextPos = [0, 0];
 
     switch(direction) {
       case 'up':

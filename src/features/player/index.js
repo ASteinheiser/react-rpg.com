@@ -140,7 +140,7 @@ class Player extends Component {
 
   render() {
     const { animationPlay, attackAnimationPlay, attackAnimationLoc,
-      animationWalkSound,animationAttackSound, monsterAnimationAttackSound,
+      animationWalkSound, animationAttackSound, monsterAnimationAttackSound,
       monsterAttackAnimationPlay, monsterDeath, playerDeath } = this.state;
     const { player, dialog } = this.props;
 

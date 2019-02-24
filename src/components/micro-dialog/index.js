@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import './styles.scss';
 
-const MicroDialog = ({ no_button, onClose, children, fullsize, className, onKeyPress }) => {
+const MicroDialog = ({ noButton, onClose, children, fullsize, className, onKeyPress }) => {
 
   useEffect(() => {
     if(onKeyPress) window.addEventListener('keydown', handleKeyPress);
@@ -25,7 +25,7 @@ const MicroDialog = ({ no_button, onClose, children, fullsize, className, onKeyP
       className={`micro-dialog__container white-border ${className || ''}`}>
 
       {
-        !no_button &&
+        !noButton &&
           <button className='micro-dialog__close' onClick={onClose}>
             <i className={`fa fa-times`} />
           </button>

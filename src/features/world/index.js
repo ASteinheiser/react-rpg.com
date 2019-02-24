@@ -5,7 +5,7 @@ import ReactTimeout         from 'react-timeout';
 import Controls                 from '../player/controls';
 import exploreTiles             from '../player/actions/explore-tiles';
 import Player                   from '../player';
-import Map                      from '../map';
+import GameMap                  from '../map';
 import Monsters                 from '../monsters';
 import loadMonsters             from '../monsters/actions/load-monsters';
 import takeMonstersTurn         from '../monsters/actions/take-monsters-turn';
@@ -77,7 +77,7 @@ class World extends Component {
 
           <Controls />
 
-          <Map />
+          <GameMap />
 
           <Player />
 
