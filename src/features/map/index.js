@@ -25,7 +25,8 @@ const GameMap = ({ map, world }) => {
 
   if(gameMode === 'story') {
     map = { ...map, ...storyMaps[currentMap] };
-  } else {
+  }
+  else {
     map = { ...map, ...randomMaps[floorNum - 1] };
   }
 

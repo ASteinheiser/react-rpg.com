@@ -144,7 +144,8 @@ const worldReducer = (state = initialState, { type, payload }) => {
   function getCurrentMap(stateObj) {
     if(stateObj.gameMode === 'story') {
       return stateObj.storyMaps[stateObj.currentMap];
-    } else {
+    }
+    else {
       return stateObj.randomMaps[stateObj.floorNum - 1];
     }
   }

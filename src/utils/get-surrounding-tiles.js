@@ -38,7 +38,8 @@ export default function getSurroundingTiles(newPos) {
       && offsetY >= 0 && offsetY < MAP_DIMENSIONS[0]) {
       // add to surrounding tile...
       surroundingTiles.push([offsetX, offsetY]);
-    } else {
+    } // otherwise add the tile to padding tiles array
+    else {
       paddingTiles.push([offsetX, offsetY]);
     }
   });

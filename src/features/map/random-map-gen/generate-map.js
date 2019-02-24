@@ -39,7 +39,8 @@ export default function generateMap(startPos, floorNum) {
           ((currentRow === MAP_DIMENSIONS[0] - 1) && (randomDirection[0] === 1)) ||
           ((currentColumn === MAP_DIMENSIONS[1] - 1) && (randomDirection[1] === 1))) {
         break;
-      } else {
+      }
+      else {
         map[currentRow][currentColumn] = 0; //set the value of the index in map to 0 (a tunnel, making it one longer)
         currentRow += randomDirection[0]; //add the value from randomDirection to row and col (-1, 0, or 1) to update our location
         currentColumn += randomDirection[1];

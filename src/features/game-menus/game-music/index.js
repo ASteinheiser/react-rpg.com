@@ -46,7 +46,8 @@ const GameMusic = ({ sideMenu, gameSoundEnabled, setGameSound }) => {
   function toggleMusic() {
     if(gameMusic) {
       turnOffSound();
-    } else {
+    }
+    else {
       turnOnSound();
     }
   }

@@ -26,15 +26,15 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
     map[playerPos[1]][playerPos[0]] = 2;
   }
 
+  // generate stairs up OUTSIDE the player's sight if possible
   if(availableTiles.length > 0) {
-    // generate stairs up OUTSIDE the player's sight if possible
     let randomIndex = Math.floor(Math.random() * availableTiles.length);
     let tile = availableTiles[randomIndex];
 
     map[tile[0]][tile[1]] = 3;
     availableTiles.splice(randomIndex, 1);
-  } else {
-    // if we don't have room outside player sight, place stairs on any floor tile
+  } // if we don't have room outside player sight, place stairs on any floor tile
+  else {
     let randomIndex = Math.floor(Math.random() * initialTiles.length);
     let tile = initialTiles[randomIndex];
     // make sure we dont place it on top of the player

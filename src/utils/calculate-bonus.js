@@ -11,8 +11,8 @@ export default function calculateBonus(playerDamage, monsterType, weaponBonus) {
   if(bonusType === monsterType) {
     // apply the bonus
     return playerDamage * bonusMult;
-  } else {
-    // otherwise return normal damage
+  } // otherwise return normal damage
+  else {
     return playerDamage;
   }
 }

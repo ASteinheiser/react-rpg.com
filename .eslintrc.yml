@@ -36,3 +36,7 @@ rules:
     - warn
     - never
   camelcase: warn
+  brace-style: 
+    - warn
+    - stroustrup
+    - allowSingleLine: true

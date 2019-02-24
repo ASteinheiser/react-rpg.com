@@ -15,7 +15,8 @@ export default function pickupItem() {
         type: 'GET_ITEM',
         payload: item
       });
-    } else {
+    }
+    else {
       dispatch({
         type: 'TOO_MANY_ITEMS',
         payload: item

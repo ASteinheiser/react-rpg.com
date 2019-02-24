@@ -18,8 +18,8 @@ export default function loadMonsters() {
           }
         });
       }
-    } else {
-      // load monsters for the story map
+    } // load monsters for the story map
+    else {
       dispatch({
         type: 'ADD_MONSTERS',
         payload: {

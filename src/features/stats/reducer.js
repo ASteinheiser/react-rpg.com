@@ -250,12 +250,11 @@ const statsReducer = (state = initialState, { type, payload }) => {
         // set next exp goal to be 1.5 times as much if player is 5 or less
         if(newState.level < 6) {
           newState.expToLevel = Math.floor(state.expToLevel * 1.5);
-        } else if(newState.level < 20) {
-          // otherwise set it to be 1.25 times as much
+        } // otherwise set it to be 1.25 times as much
+        else if(newState.level < 20) {
           newState.expToLevel = Math.floor(state.expToLevel * 1.25);
-        } else {
-          // let the exp goal remain static at this point (lv 20+)
         }
+        else {} // let the exp goal remain static if they are lv 20+
 
         // get more maxHp and currHp (roll 1-5)
         let moreHp = Math.floor(Math.random() * 5) + 1;

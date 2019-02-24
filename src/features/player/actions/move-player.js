@@ -31,8 +31,8 @@ export default function movePlayer(direction) {
           payload: null
         });
       }
-    } else {
-      // dont move the player
+    } // dont move the player
+    else {
       const { playerMoved, position } = getState().player;
       // turn the player but do not play the
       // walk animation triggered by a change in playerMoved

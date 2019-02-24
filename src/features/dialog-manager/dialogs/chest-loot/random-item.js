@@ -5,7 +5,8 @@ export default function randomItem(playerLv) {
   if(playerLv < TIER_2) {
     let randomNumber = Math.floor(Math.random() * randomItemsT1.length);
     return randomItemsT1[randomNumber];
-  } else {
+  }
+  else {
     let randomNumber = Math.floor(Math.random() * randomItemsT2.length);
     return randomItemsT2[randomNumber];
   }

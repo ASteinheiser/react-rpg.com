@@ -7,7 +7,8 @@ export default function toggleSettings() {
         type: 'CLOSE_SETTINGS',
         payload: null
       });
-    } else {
+    }
+    else {
       dispatch({
         type: 'OPEN_SETTINGS',
         payload: null

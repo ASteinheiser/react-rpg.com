@@ -71,8 +71,8 @@ export default function attackMonster() {
           type: 'TAKE_TURN',
           payload: null
         });
-      } else {
-        // no monster, just show sword swing
+      } // no monster, just show sword swing
+      else {
         dispatch({
           type: 'PLAYER_ATTACK',
           payload: null

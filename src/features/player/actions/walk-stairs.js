@@ -42,7 +42,8 @@ export default function walkStairs(nextTile, playerPos) {
               floorNum: floorNum + 1
             }
           });
-        } else {
+        }
+        else {
           // figure out the next map and set it as the current
           dispatch({
             type: 'SET_ENDLESS_MAP',
@@ -53,7 +54,8 @@ export default function walkStairs(nextTile, playerPos) {
             }
           });
         }
-      } else if(direction === 'down' && floorNum > 1) {
+      }
+      else if(direction === 'down' && floorNum > 1) {
         // figure out the previous map and set it as the current
         dispatch({
           type: 'SET_ENDLESS_MAP',
@@ -64,7 +66,8 @@ export default function walkStairs(nextTile, playerPos) {
           }
         });
       }
-    } else {
+    }
+    else {
       // change the story mode map
       dispatch({
         type: 'SET_STORY_MAP',

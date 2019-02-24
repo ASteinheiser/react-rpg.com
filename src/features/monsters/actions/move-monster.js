@@ -21,12 +21,14 @@ export default function moveMonster(direction, position, currentMap, id, count, 
           if(checkForOtherMonster(id, nextPos, currentMap)) {
             // move in a circle, but the opposite direction
             return dispatch(moveMonster(preference ? preference : 'left', position, currentMap, id, count));
-          } else {
+          }
+          else {
             // otherwise just move to the next spot
             position[1] -= SPRITE_SIZE;
           }
           break;
-        } else {
+        }
+        else {
           // otherwise move them to another spot
           return dispatch(moveMonster(preference ? preference : 'right', position, currentMap, id, count));
         }
@@ -38,12 +40,14 @@ export default function moveMonster(direction, position, currentMap, id, count, 
           if(checkForOtherMonster(id, nextPos, currentMap)) {
             // move in a circle, but the opposite direction
             return dispatch(moveMonster(preference ? preference : 'right', position, currentMap, id, count));
-          } else {
+          }
+          else {
             // otherwise just move to the next spot
             position[1] += SPRITE_SIZE;
           }
           break;
-        } else {
+        }
+        else {
           // otherwise move them to another spot
           return dispatch(moveMonster(preference ? preference : 'left', position, currentMap, id, count));
         }
@@ -55,12 +59,14 @@ export default function moveMonster(direction, position, currentMap, id, count, 
           if(checkForOtherMonster(id, nextPos, currentMap)) {
             // move in a circle, but the opposite direction
             return dispatch(moveMonster(preference ? preference : 'down', position, currentMap, id, count));
-          } else {
+          }
+          else {
             // otherwise just move to the next spot
             position[0] -= SPRITE_SIZE;
           }
           break;
-        } else {
+        }
+        else {
           // otherwise move them to another spot
           return dispatch(moveMonster(preference ? preference : 'up', position, currentMap, id, count));
         }
@@ -72,12 +78,14 @@ export default function moveMonster(direction, position, currentMap, id, count, 
           if(checkForOtherMonster(id, nextPos, currentMap)) {
             // move in a circle, but the opposite direction
             return dispatch(moveMonster(preference ? preference : 'up', position, currentMap, id, count));
-          } else {
+          }
+          else {
             // otherwise just move to the next spot
             position[0] += SPRITE_SIZE;
           }
           break;
-        } else {
+        }
+        else {
           // otherwise move them to another spot
           return dispatch(moveMonster(preference ? preference : 'down', position, currentMap, id, count));
         }
@@ -100,7 +108,8 @@ export default function moveMonster(direction, position, currentMap, id, count, 
         type: 'REVEAL_MONSTER',
         payload: { id, map: currentMap }
       });
-    } else {
+    }
+    else {
       // if the monster is now out of sight
       dispatch({
         type: 'HIDE_MONSTER',

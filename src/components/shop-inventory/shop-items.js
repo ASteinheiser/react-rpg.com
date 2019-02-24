@@ -14,7 +14,8 @@ export default function shopItems(level) {
       items.armor.LeatherArmor,
       items.weapons.SteelSword
     ];
-  } else {
+  }
+  else {
     return [
       items.other.BackpackUpgrade,
       items.other.GreatHpPotion,

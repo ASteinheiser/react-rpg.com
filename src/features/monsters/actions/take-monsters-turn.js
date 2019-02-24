@@ -39,7 +39,8 @@ export default function takeMonstersTurn() {
         // check if player is in range
         if(playerInRange(player.position, monsterPos)) {
           dispatch(attackPlayer(damage));
-        } else {
+        }
+        else {
           // no player in range, time to move!
           // get the monsters actual position in pixels
           let position = monsterPos.map(value => value * SPRITE_SIZE);
@@ -59,7 +60,8 @@ export default function takeMonstersTurn() {
               // move the monster 'down' relatively
               dispatch(moveMonster('down', position, currentMap, id, 0, xDiff >= 0 ? 'left' : 'right'));
             }
-          } else { // x axis is greater distance from player
+          } // x axis is greater distance from player
+          else {
             // if the monster is mostly to the right of the player
             if(xDiff > 0) {
               // move the monster 'left' relatively
@@ -72,8 +74,8 @@ export default function takeMonstersTurn() {
             }
           }
         }
-      } else {
-        // monster is too far away from the player
+      } // monster is too far away from the player
+      else {
         dispatch({
           type: 'HIDE_MONSTER',
           payload: { id, map: currentMap }

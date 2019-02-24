@@ -7,7 +7,8 @@ export default function getNextTile(world, newPos) {
   let currentMapData;
   if(gameMode === 'story') {
     currentMapData = storyMaps[currentMap];
-  } else {
+  }
+  else {
     currentMapData = randomMaps[floorNum - 1];
   }
 
