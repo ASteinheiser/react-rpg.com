@@ -34,7 +34,7 @@ const DialogManager = ({ dialog }) => {
     }
     if(gameWin) PauseComp = <GameWin />;
   }
-  if(settings) PauseComp = <SettingsDialog />;
+  if(settings) SettingsComp = <SettingsDialog />;
 
   return(
     <>

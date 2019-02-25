@@ -94,7 +94,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
 
     case 'EQUIP_ITEM':
       newState = _cloneDeep(state);
-      let item = payload;
+      const item = payload;
       // see what type of item it is
       switch(item.type) {
 
@@ -243,7 +243,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
 
         // calculate leftover exp if it isn't exactly enough
         if(!(newState.exp === expToLevel)) {
-          let leftoverExp = (newTotalExp) % expToLevel;
+          const leftoverExp = (newTotalExp) % expToLevel;
           newState.exp = leftoverExp;
         }
 
@@ -257,14 +257,14 @@ const statsReducer = (state = initialState, { type, payload }) => {
         else {} // let the exp goal remain static if they are lv 20+
 
         // get more maxHp and currHp (roll 1-5)
-        let moreHp = Math.floor(Math.random() * 5) + 1;
+        const moreHp = Math.floor(Math.random() * 5) + 1;
         newState.hp += moreHp;
         newState.maxHp += moreHp;
 
         // get more damage (+1)
         newState.damage += 1;
         // 25% chance to get +2 damage on lv
-        let chance = Math.floor(Math.random() * 100) + 1;
+        const chance = Math.floor(Math.random() * 100) + 1;
         if(chance <= 25) {
           newState.damage += 1;
         }

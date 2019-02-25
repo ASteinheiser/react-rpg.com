@@ -28,7 +28,7 @@ const ShopInventory = ({ stats, inventory }) => {
     }
   }
 
-  let shopInventoryItems = [];
+  const shopInventoryItems = [];
   // render the shop's items
   shopItems(stats.level).forEach(item => {
     // don't show backpack upgrade if it was purchased

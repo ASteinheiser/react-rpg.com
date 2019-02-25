@@ -7,7 +7,7 @@ import './styles.scss';
 
 const MapPadding = ({ tileType, tiles, sightBox }) => {
 
-  let PaddingTiles = {};
+  const PaddingTiles = {};
 
   Object.keys(tiles).forEach(direction => {
     PaddingTiles[direction] = tiles[direction].map((row, index) => {

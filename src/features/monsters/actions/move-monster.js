@@ -128,7 +128,7 @@ export default function moveMonster(direction, position, currentMap, id, count, 
 
     function checkForOtherMonster(id, position, currentMap) {
       // get current monsters
-      let monsterList = getState().monsters.components[currentMap];
+      const monsterList = getState().monsters.components[currentMap];
       let foundMonster = false;
       // check list of monsters
       Object.keys(monsterList).forEach(monsterId => {

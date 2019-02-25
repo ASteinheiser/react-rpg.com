@@ -10,7 +10,7 @@ const Monsters = ({ monsters, world }) => {
   const [monstersToRender, setMonstersToRender] = useState(null);
 
   useEffect(() => {
-    let monsterArray = [];
+    const monsterArray = [];
     // don't try to load if no maps
     if(JSON.stringify(monsters.components) === JSON.stringify({})) {
       setMonstersToRender(null);

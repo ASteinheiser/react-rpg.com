@@ -18,8 +18,8 @@ class Inventory extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { inventory } = this.props.dialog;
     const { itemReceived, itemDropped } = this.props.snackbar;
-    let lastItemReceived = prevProps.snackbar.itemReceived;
-    let lastItemDropped = prevProps.snackbar.itemDropped;
+    const lastItemReceived = prevProps.snackbar.itemReceived;
+    const lastItemDropped = prevProps.snackbar.itemDropped;
 
     if(lastItemDropped !== itemDropped && itemDropped &&
       typeof itemDropped !== "undefined" && !inventory) {

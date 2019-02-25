@@ -10,7 +10,7 @@ import { ANIMATION_SPEED } from '../../config/constants';
 
 const ANIMATION_HOLD_SPEED = ANIMATION_SPEED * 1.25;
 
-var intervalId = null;
+let intervalId = null;
 
 const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
 
@@ -94,7 +94,7 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
     // enable keyboard for player controls
     window.addEventListener('keydown', _handleKeyDown);
     // enable touch for player controls
-    let hammertime = new Hammer(document.getElementById('window'));
+    const hammertime = new Hammer(document.getElementById('window'));
     // settings for touch controls
     hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
     hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });

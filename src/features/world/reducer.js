@@ -74,7 +74,7 @@ const worldReducer = (state = initialState, { type, payload }) => {
       return newState;
 
     case 'LOAD_STORY_MAPS':
-      let _maps = _cloneDeep(maps);
+      const _maps = _cloneDeep(maps);
       // go over each story map and add explored values
       // and variation data to the tiles
       Object.keys(_maps).forEach(mapName => {
@@ -92,7 +92,7 @@ const worldReducer = (state = initialState, { type, payload }) => {
       return { ...state, storyMaps: _maps };
 
     case 'ADD_RANDOM_MAP':
-      let _randomMaps = _cloneDeep(state.randomMaps);
+      const _randomMaps = _cloneDeep(state.randomMaps);
 
       const randomTiles = attachMetaToTiles(payload.tiles);
       const randomPaddTiles = generatePaddingTiles();

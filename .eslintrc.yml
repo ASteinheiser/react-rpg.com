@@ -81,3 +81,9 @@ rules:
   space-before-function-paren:
     - warn
     - never
+  template-curly-spacing: warn
+  rest-spread-spacing: warn
+  prefer-template: warn
+  prefer-destructuring: warn
+  prefer-const: warn
+  no-var: warn

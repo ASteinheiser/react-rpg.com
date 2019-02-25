@@ -10,7 +10,7 @@ export default function movePlayer(direction) {
     const oldPos = getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
 
-    let nextTile = observeImpassable(newPos);
+    const nextTile = observeImpassable(newPos);
 
     if(observeBoundaries(newPos) && nextTile < 5
         && !dispatch(checkForMonster(newPos, direction))) {
@@ -99,11 +99,11 @@ export function checkForMonster(newPos) {
   return (_, getState) => {
 
     let isMonster = false;
-    let { currentMap } = getState().world;
+    const { currentMap } = getState().world;
     const monsters = getState().monsters.components;
     // check for monsters
     Object.keys(monsters[currentMap]).forEach(monsterId => {
-      let currMonster = monsters[currentMap][monsterId];
+      const currMonster = monsters[currentMap][monsterId];
       // if the new position contains a monster
       if(JSON.stringify(currMonster.position) === JSON.stringify(newPos)) {
         isMonster = currMonster.id;

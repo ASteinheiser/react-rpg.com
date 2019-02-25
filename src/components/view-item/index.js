@@ -27,7 +27,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
 
   if(!open) return null;
 
-  let itemStats = [];
+  const itemStats = [];
   let itemIsEquipped = false;
   const equipped = stats.equippedItems;
 
@@ -47,9 +47,9 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
       itemStats.push(<StatsItem stats={{ name: 'damage', value: data.damage }} key={uuidv4()} />);
       // if there's a bonus
       if(data.bonus) {
-        let bonusType = data.bonus.split('::')[0];
-        let bonusMult = parseFloat(data.bonus.split('::')[1], 10);
-        itemStats.push(<StatsItem stats={{ name: `VS. ${bonusType}`, value: bonusMult + 'x' }} key={uuidv4()} />);
+        const [bonusType] = data.bonus.split('::');
+        const bonusMult = parseFloat(data.bonus.split('::')[1], 10);
+        itemStats.push(<StatsItem stats={{ name: `VS. ${bonusType}`, value: `${bonusMult}x` }} key={uuidv4()} />);
       }
       break;
 

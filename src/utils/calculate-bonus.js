@@ -5,8 +5,8 @@ export default function calculateBonus(playerDamage, monsterType, weaponBonus) {
     return playerDamage;
   }
   // parse the bonus
-  let bonusType = weaponBonus.split('::')[0];
-  let bonusMult = parseFloat(weaponBonus.split('::')[1], 10);
+  const [bonusType] = weaponBonus.split('::');
+  const bonusMult = parseFloat(weaponBonus.split('::')[1], 10);
   // if we have a bonus with this monster
   if(bonusType === monsterType) {
     // apply the bonus
