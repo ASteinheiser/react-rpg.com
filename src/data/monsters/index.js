@@ -6,11 +6,11 @@ import Rat        from './rat';
 import StoneGolem from './stone-golem';
 
 const monsters = {
-  'dragon': Dragon,
-  'goblin': Goblin,
-  'imp': Imp,
-  'lich': Lich,
-  'rat': Rat,
+  dragon: Dragon,
+  goblin: Goblin,
+  imp: Imp,
+  lich: Lich,
+  rat: Rat,
   'stone-golem': StoneGolem
 };
 

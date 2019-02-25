@@ -116,7 +116,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { body: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, body: item };
           break;
 
         case 'armor::helmet':
@@ -127,7 +127,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { helmet: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, helmet: item };
           break;
 
         case 'armor::pants':
@@ -138,7 +138,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { pants: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, pants: item };
           break;
 
         case 'armor::gloves':
@@ -149,7 +149,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { gloves: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, gloves: item };
           break;
 
         case 'armor::boots':
@@ -160,7 +160,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems.armor = Object.assign({}, newState.equippedItems.armor, { boots: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, boots: item };
           break;
 
         case 'ring':

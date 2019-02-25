@@ -66,4 +66,18 @@ rules:
   no-nested-ternary: warn
   no-negated-condition: warn
   no-multiple-empty-lines: warn
-  
+  no-mixed-spaces-and-tabs: warn
+  max-lines:
+    - warn
+    - max: 500
+  quote-props:
+    - warn
+    - as-needed
+  prefer-object-spread: warn
+  one-var-declaration-per-line: warn
+  no-whitespace-before-property: warn
+  no-unneeded-ternary: warn
+  switch-colon-spacing: warn
+  space-before-function-paren:
+    - warn
+    - never
