@@ -33,6 +33,6 @@ const Button = ({ icon, title, iconStyle, style, indicator, onClick, small }) =>
 
     </button>
   );
-}
+};
 
 export default Button;

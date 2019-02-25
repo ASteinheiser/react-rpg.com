@@ -29,7 +29,7 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
   key: 'root',
-  storage: storage,
+  storage
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -38,6 +38,8 @@ const store = createStore(
   persistedReducer,
   compose(
     applyMiddleware(thunk),
+    // this mixed operated is needed, otherwise you get a weird error from redux about applying funcs
+    // eslint-disable-next-line
     process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() || compose
   )
 );

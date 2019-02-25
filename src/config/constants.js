@@ -33,3 +33,5 @@ export const SCREEN_MEDIUM_WIDTH = 600;
 export const SCREEN_MEDIUM_HEIGHT = 680;
 // set the number of tiles to pad the map with (so the player cant see edge)
 export const MAP_PADDING_DISTANCE = 5;
+// set the time for the map to transition in/out
+export const MAP_TRANSITION_DELAY = 500;

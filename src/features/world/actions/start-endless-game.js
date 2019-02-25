@@ -37,7 +37,7 @@ export default function startEndlessGame() {
       payload: {
         startMap: mapId,
         gameMode: 'endless',
-        floorNum: floorNum
+        floorNum
       }
     });
 
@@ -60,5 +60,5 @@ export default function startEndlessGame() {
       type: 'EQUIP_ITEM',
       payload: getState().inventory.items[0]
     });
-  }
+  };
 }

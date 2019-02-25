@@ -3,14 +3,14 @@ import { connect }                    from 'react-redux';
 
 import Monster from './monster';
 
-function Monsters({ monsters, world }) {
+const Monsters = ({ monsters, world }) => {
 
   const { currentMap } = world;
 
   const [monstersToRender, setMonstersToRender] = useState(null);
 
   useEffect(() => {
-    let monsterArray = [];
+    const monsterArray = [];
     // don't try to load if no maps
     if(JSON.stringify(monsters.components) === JSON.stringify({})) {
       setMonstersToRender(null);
@@ -26,10 +26,10 @@ function Monsters({ monsters, world }) {
 
       setMonstersToRender(monsterArray);
     }
-  }, [monsters]);
+  }, [monsters, currentMap]);
 
   return ( monstersToRender );
-}
+};
 
 const mapStateToProps = ({ monsters, world }) => ({ monsters, world });
 

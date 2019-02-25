@@ -1,3 +1,4 @@
+/*eslint-disable camelcase*/
 import map1_1 from './1_1';
 import map1_2 from './1_2';
 import map1_3 from './1_3';
@@ -21,5 +22,6 @@ const maps = {
   '2_4': map2_4,
   '2_5': map2_5
 };
+/*eslint-enable camelcase*/
 
 export default maps;

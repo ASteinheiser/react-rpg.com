@@ -8,16 +8,18 @@ import movePlayer          from './actions/move-player';
 import isGamePaused        from '../dialog-manager/actions/is-game-paused';
 import { ANIMATION_SPEED } from '../../config/constants';
 
-var intervalId = null;
+const ANIMATION_HOLD_SPEED = ANIMATION_SPEED * 1.25;
+
+let intervalId = null;
 
 const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
 
-  const _handleKeyDown = _debounce((event) => {
+  const _handleKeyDown = _debounce(event => {
     // if the game is not paused by dialogs
     if(!isGamePaused()) handleKeyDown(event);
   },
-    ANIMATION_SPEED,
-    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
+    ANIMATION_HOLD_SPEED,
+    { maxWait: ANIMATION_HOLD_SPEED, leading: true, trailing: false }
   );
 
   const _swipe = _debounce(({ direction, offsetDirection }) => {
@@ -70,7 +72,7 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
         default:
           // console.log(`Unmapped pan direction ${direction}`);
       }
-    }, ANIMATION_SPEED * 1.25);
+    }, ANIMATION_HOLD_SPEED);
   },
     ANIMATION_SPEED,
     { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
@@ -92,7 +94,7 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
     // enable keyboard for player controls
     window.addEventListener('keydown', _handleKeyDown);
     // enable touch for player controls
-    let hammertime = new Hammer(document.getElementById('window'));
+    const hammertime = new Hammer(document.getElementById('window'));
     // settings for touch controls
     hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
     hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
@@ -100,16 +102,16 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
     // bind touch control functions
     hammertime.on('swipe', _swipe);
     hammertime.on('panend', _clearInterval);
-    hammertime.on('panstart', _swipeHold);  
+    hammertime.on('panstart', _swipeHold);
     hammertime.on('tap', _tap);
     // make sure to unbind all listeners on unmount
     return () => {
       window.removeEventListener('keydown', _handleKeyDown);
       hammertime.off('swipe', _swipe);
       hammertime.off('panend', _clearInterval);
-      hammertime.off('panstart', _swipeHold);  
+      hammertime.off('panstart', _swipeHold);
       hammertime.off('tap', _tap);
-    }
+    };
   }, []);
 
   function handleKeyDown(event) {
@@ -138,7 +140,7 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
   }
 
   return null;
-}
+};
 
 const actions = { attackMonster, movePlayer, isGamePaused };
 

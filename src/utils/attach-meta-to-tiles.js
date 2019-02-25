@@ -2,7 +2,7 @@ import _cloneDeep from 'lodash.clonedeep';
 
 export default function attachMetaToTiles(tiles) {
 
-  let newTiles = _cloneDeep(tiles);
+  const newTiles = _cloneDeep(tiles);
 
   newTiles.forEach((_, tileRowIndex) => {
     newTiles[tileRowIndex].forEach((_, tileIndex) => {

@@ -140,7 +140,7 @@ class Player extends Component {
 
   render() {
     const { animationPlay, attackAnimationPlay, attackAnimationLoc,
-      animationWalkSound,animationAttackSound, monsterAnimationAttackSound,
+      animationWalkSound, animationAttackSound, monsterAnimationAttackSound,
       monsterAttackAnimationPlay, monsterDeath, playerDeath } = this.state;
     const { player, dialog } = this.props;
 
@@ -155,7 +155,7 @@ class Player extends Component {
         spriteLocation = `${SPRITE_SIZE*0}px`;
         break;
       case 'EAST':
-        spriteLocation = `${SPRITE_SIZE*1}px`;
+        spriteLocation = `${SPRITE_SIZE}px`;
         break;
       case 'WEST':
         spriteLocation = `${SPRITE_SIZE*2}px`;

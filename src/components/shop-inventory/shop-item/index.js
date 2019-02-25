@@ -25,6 +25,6 @@ const ShopItem = ({ item, buyItem }) => {
       </div>
     </button>
   );
-}
+};
 
 export default ShopItem;

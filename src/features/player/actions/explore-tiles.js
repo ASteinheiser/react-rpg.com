@@ -12,5 +12,5 @@ export default function exploreTiles(newPos) {
         paddingTiles
       }
     });
-  }
+  };
 }

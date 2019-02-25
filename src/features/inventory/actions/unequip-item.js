@@ -6,5 +6,5 @@ export default function unequipItem(item) {
       type: 'UNEQUIP_ITEM',
       payload: item
     });
-  }
+  };
 }

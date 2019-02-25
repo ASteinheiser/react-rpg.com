@@ -72,6 +72,6 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
     default:
       return state;
   }
-}
+};
 
 export default dialogManagerReducer;

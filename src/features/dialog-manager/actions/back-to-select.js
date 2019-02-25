@@ -8,5 +8,5 @@ export default function backToSelect() {
         gameStart: true
       }
     });
-  }
+  };
 }

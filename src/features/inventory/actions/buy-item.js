@@ -28,17 +28,19 @@ export default function buyItem(item) {
           type: 'GET_ITEM',
           payload: item
         });
-      } else {
+      }
+      else {
         dispatch({
           type: 'TOO_MANY_ITEMS',
           payload: item
         });
       }
-    } else {
+    }
+    else {
       dispatch({
         type: 'NOT_ENOUGH_GOLD',
         payload: item
       });
     }
-  }
+  };
 }

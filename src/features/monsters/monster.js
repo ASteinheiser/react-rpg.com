@@ -2,7 +2,7 @@ import React from 'react';
 
 import HealthBar from '../../components/health-bar';
 
-function Monster({ monster }) {
+const Monster = ({ monster }) => {
   return (
     <div style={{
         position: 'absolute',
@@ -19,6 +19,6 @@ function Monster({ monster }) {
 
     </div>
   );
-}
+};
 
 export default Monster;

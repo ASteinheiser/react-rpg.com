@@ -10,7 +10,7 @@ export default function movePlayer(direction) {
     const oldPos = getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
 
-    let nextTile = observeImpassable(newPos);
+    const nextTile = observeImpassable(newPos);
 
     if(observeBoundaries(newPos) && nextTile < 5
         && !dispatch(checkForMonster(newPos, direction))) {
@@ -31,8 +31,8 @@ export default function movePlayer(direction) {
           payload: null
         });
       }
-    } else {
-      // dont move the player
+    } // dont move the player
+    else {
       const { playerMoved, position } = getState().player;
       // turn the player but do not play the
       // walk animation triggered by a change in playerMoved
@@ -45,6 +45,10 @@ export default function movePlayer(direction) {
     function handleInteractWithTile(nextTile, newPos) {
       // the player wants to use the stairs
       if(nextTile === 2 || nextTile === 3) {
+        dispatch({
+          type: 'MAP_TRANSITION',
+          payload: null
+        });
         dispatch(walkStairs(nextTile, newPos));
         return false;
       }
@@ -87,7 +91,7 @@ export default function movePlayer(direction) {
 
       return nextTile;
     }
-  }
+  };
 }
 
 // returns `false` or the monster's id
@@ -95,11 +99,11 @@ export function checkForMonster(newPos) {
   return (_, getState) => {
 
     let isMonster = false;
-    let { currentMap } = getState().world;
+    const { currentMap } = getState().world;
     const monsters = getState().monsters.components;
     // check for monsters
     Object.keys(monsters[currentMap]).forEach(monsterId => {
-      let currMonster = monsters[currentMap][monsterId];
+      const currMonster = monsters[currentMap][monsterId];
       // if the new position contains a monster
       if(JSON.stringify(currMonster.position) === JSON.stringify(newPos)) {
         isMonster = currMonster.id;
@@ -107,19 +111,19 @@ export function checkForMonster(newPos) {
     });
 
     return isMonster;
-  }
+  };
 }
 
 export function getNewPosition(oldPos, direction) {
   switch(direction) {
     case 'WEST':
-      return [ oldPos[0] - SPRITE_SIZE, oldPos[1] ];
+      return [oldPos[0] - SPRITE_SIZE, oldPos[1]];
     case 'EAST':
-      return [ oldPos[0] + SPRITE_SIZE, oldPos[1] ];
+      return [oldPos[0] + SPRITE_SIZE, oldPos[1]];
     case 'NORTH':
-      return [ oldPos[0], oldPos[1] - SPRITE_SIZE ];
+      return [oldPos[0], oldPos[1] - SPRITE_SIZE];
     case 'SOUTH':
-      return [ oldPos[0], oldPos[1] + SPRITE_SIZE ];
+      return [oldPos[0], oldPos[1] + SPRITE_SIZE];
     default:
   }
 }

@@ -7,6 +7,6 @@ const phrases = [
 ];
 
 export default function randomPhrase() {
-  let randomNumber = Math.floor(Math.random() * phrases.length);
+  const randomNumber = Math.floor(Math.random() * phrases.length);
   return phrases[randomNumber];
 }

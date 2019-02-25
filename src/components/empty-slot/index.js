@@ -9,7 +9,7 @@ const EmptySlot = ({ margin, style, className, children }) => {
     backgroundImage: `url('${InventorySlot}')`,
     width: '40px',
     height: '40px',
-    margin: margin
+    margin
   };
 
   return (
@@ -17,7 +17,7 @@ const EmptySlot = ({ margin, style, className, children }) => {
       { children }
     </div>
   );
-}
+};
 
 export const DarkenSlot = () => {
   return (
@@ -27,6 +27,6 @@ export const DarkenSlot = () => {
       height: 40
     }} />
   );
-}
+};
 
 export default EmptySlot;

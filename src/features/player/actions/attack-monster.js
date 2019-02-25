@@ -19,7 +19,7 @@ export default function attackMonster() {
         const { currentMap } = world;
         const { components } = monsters;
         const { weapon } = stats.equippedItems;
-        const weaponBonus = weapon ? weapon.bonus : undefined;
+        const weaponBonus = weapon ? weapon.bonus : null;
         // get monster
         const currMonster = components[currentMap][monsterId];
         const monsterPos = currMonster.position;
@@ -71,8 +71,8 @@ export default function attackMonster() {
           type: 'TAKE_TURN',
           payload: null
         });
-      } else {
-        // no monster, just show sword swing
+      } // no monster, just show sword swing
+      else {
         dispatch({
           type: 'PLAYER_ATTACK',
           payload: null
@@ -82,8 +82,8 @@ export default function attackMonster() {
 
     function observeImpassable(newPos) {
       const nextTile = getNextTile(getState().world, newPos);
-    
+
       return nextTile < 5;
     }
-  }
+  };
 }

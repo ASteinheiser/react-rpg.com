@@ -22,6 +22,6 @@ const Flame = ({ children, position }) => {
 
     </div>
   );
-}
+};
 
 export default Flame;

@@ -6,5 +6,5 @@ export default function setGameSound(value) {
       type: 'SET_SOUND',
       payload: value
     });
-  }
+  };
 }

@@ -43,14 +43,34 @@ class Stats extends Component {
     let hpPercent = (hp / maxHp) * 100;
     if(hpPercent > 100) hpPercent = 100;
 
+    let hpBorder;
+    if(hpPercent >= 99) hpBorder = '5px';
+    else if(hpPercent >= 97) hpBorder = '5px 3px 3px 5px';
+    else hpBorder = '5px 0 0 5px';
+
+    let columnStyle = 'stats-column__spacing';
+    if(!sideMenu && largeView) {
+      columnStyle = 'stats-column__spacing--large';
+    }
+
+    let padding;
+    if(sideMenu) padding = '12px 0 12px 32px';
+    else if(largeView) padding = '12px 24px';
+    else padding = '12px';
+
+    let width;
+    if(sideMenu) width = 150;
+    else if(largeView) width = 350;
+    else width = 324;
+
     return (
       <div
         style={{
           alignItems: sideMenu ? 'flex-start' : 'center',
-          padding: sideMenu ? '12px 0 12px 32px' : largeView ? '12px 24px' : 12,
+          padding,
           backgroundColor: statsBgColor,
           height,
-          width: sideMenu ? 150 : largeView ? 350 : 324,
+          width,
           lineHeight: sideMenu ? 1.5 : 'unset'
         }}
         className={
@@ -87,7 +107,7 @@ class Stats extends Component {
 
               </div>
 
-              <div className={`flex-column ${sideMenu ? '' : largeView ? 'stats-column__spacing--large' : 'stats-column__spacing'}`}>
+              <div className={`flex-column ${columnStyle}`}>
 
                 <div className={`flex-row ${sideMenu ? '' : 'stats__row--spacing'}`}>
                   <span className='stats__text--spacing'>
@@ -109,7 +129,7 @@ class Stats extends Component {
 
               </div>
 
-              <div className={`flex-column ${sideMenu ? '' : largeView ? 'stats-column__spacing--large' : 'stats-column__spacing'}`}>
+              <div className={`flex-column ${columnStyle}`}>
 
                 <div className={`flex-row ${sideMenu ? '' : 'stats__row--spacing'}`}>
                   <div className='flex-row'
@@ -122,15 +142,8 @@ class Stats extends Component {
                       <span className='stats-hp-bar__value'
                         style={{
                           width: `${hpPercent}%`,
-                          borderRadius: (
-                            (hpPercent >= 97) ?
-                              (hpPercent >= 99) ?
-                                '5px'
-                                :
-                                '5px 3px 3px 5px'
-                              :
-                              '5px 0 0 5px'
-                          )}}>
+                          borderRadius: hpBorder
+                        }}>
                       </span>
                     </span>
                   </div>

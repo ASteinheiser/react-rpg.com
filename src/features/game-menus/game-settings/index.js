@@ -15,7 +15,7 @@ const GameSettings = ({ toggleSettings }) => {
 
     </button>
   );
-}
+};
 
 const actions = { toggleSettings };
 

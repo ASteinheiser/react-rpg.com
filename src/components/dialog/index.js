@@ -8,7 +8,7 @@ const Dialog = ({ children, goBack, onKeyPress }) => {
     if(onKeyPress) window.addEventListener('keydown', handleKeyPress);
     return () => {
       if(onKeyPress) window.removeEventListener('keydown', handleKeyPress);
-    }
+    };
   }, []);
 
   function handleKeyPress(event) {
@@ -29,6 +29,6 @@ const Dialog = ({ children, goBack, onKeyPress }) => {
       { children }
     </div>
   );
-}
+};
 
 export default Dialog;

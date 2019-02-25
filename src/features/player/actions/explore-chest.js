@@ -14,5 +14,5 @@ export default function exploreChest(x, y) {
         chest: true
       }
     });
-  }
+  };
 }

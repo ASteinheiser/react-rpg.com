@@ -29,6 +29,6 @@ const ConfirmDialog = ({ open, text, onClose, cancelIcon, cancelText, confirm, a
 
     </div>
   );
-}
+};
 
 export default ConfirmDialog;

@@ -18,7 +18,7 @@ export default function takeMonstersTurn() {
       // get monster id and position
       const { id, position, damage } = components[currentMap][monsterId];
       // find the relative position
-      let monsterPos = position.map(value => value / SPRITE_SIZE);
+      const monsterPos = position.map(value => value / SPRITE_SIZE);
 
       let monsterVisible = false;
       // look through each current sight box tile
@@ -39,14 +39,15 @@ export default function takeMonstersTurn() {
         // check if player is in range
         if(playerInRange(player.position, monsterPos)) {
           dispatch(attackPlayer(damage));
-        } else {
+        }
+        else {
           // no player in range, time to move!
           // get the monsters actual position in pixels
-          let position = monsterPos.map(value => value * SPRITE_SIZE);
+          const position = monsterPos.map(value => value * SPRITE_SIZE);
           // get distance from player on both axis
-          let xDiff = position[0] - player.position[0];
-          let yDiff = position[1] - player.position[1];
-          let greaterY = Math.abs(yDiff) > Math.abs(xDiff);
+          const xDiff = position[0] - player.position[0];
+          const yDiff = position[1] - player.position[1];
+          const greaterY = Math.abs(yDiff) > Math.abs(xDiff);
           // see if y axis is greater distance from player
           if(greaterY) {
             // if the monster is mostly below the player on the y axis
@@ -59,7 +60,8 @@ export default function takeMonstersTurn() {
               // move the monster 'down' relatively
               dispatch(moveMonster('down', position, currentMap, id, 0, xDiff >= 0 ? 'left' : 'right'));
             }
-          } else { // x axis is greater distance from player
+          } // x axis is greater distance from player
+          else {
             // if the monster is mostly to the right of the player
             if(xDiff > 0) {
               // move the monster 'left' relatively
@@ -72,21 +74,21 @@ export default function takeMonstersTurn() {
             }
           }
         }
-      } else {
-        // monster is too far away from the player
+      } // monster is too far away from the player
+      else {
         dispatch({
           type: 'HIDE_MONSTER',
           payload: { id, map: currentMap }
         });
         // give a 25% chance to move the monster when hidden
         if((Math.round(Math.random() * (4 - 1) + 1)) !== 4) {
-          let randomDirection = getRandomDirection();
+          const randomDirection = getRandomDirection();
           // move the monster in a random direction
           dispatch(moveMonster(randomDirection, position, currentMap, id, 0));
         }
       }
     });
-  }
+  };
 }
 
 function playerInRange(playerPos, monsterPos) {
@@ -94,8 +96,8 @@ function playerInRange(playerPos, monsterPos) {
   // for each tile around the monster
   radiusTiles(MONSTER_ATTACK_RADIUS).forEach(tile => {
     // add the monsters location
-    let offsetX = tile.x + monsterPos[0];
-    let offsetY = tile.y + monsterPos[1];
+    const offsetX = tile.x + monsterPos[0];
+    const offsetY = tile.y + monsterPos[1];
     // see if the player is in range
     const playerLocation = playerPos.map(value => value / SPRITE_SIZE);
     if(JSON.stringify([offsetX, offsetY]) === JSON.stringify(playerLocation)) {
@@ -106,7 +108,7 @@ function playerInRange(playerPos, monsterPos) {
 }
 
 function getRandomDirection() {
-  let directions = ['up', 'down', 'left', 'right'];
-  let randomNumber = Math.floor(Math.random() * directions.length);
+  const directions = ['up', 'down', 'left', 'right'];
+  const randomNumber = Math.floor(Math.random() * directions.length);
   return directions[randomNumber];
 }

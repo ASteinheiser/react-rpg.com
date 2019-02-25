@@ -1,10 +1,12 @@
+import _debounce from 'lodash.debounce';
+
 import generateMap        from '../../map/random-map-gen/generate-map';
 import randomMapMessage   from '../../map/random-map-gen/random-map-message';
 import uuidv4             from '../../../utils/uuid-v4';
-import { SPRITE_SIZE }    from '../../../config/constants';
+import { SPRITE_SIZE, MAP_TRANSITION_DELAY } from '../../../config/constants';
 
 export default function walkStairs(nextTile, playerPos) {
-  return (dispatch, getState) => {
+  return _debounce((dispatch, getState) => {
 
     const { gameMode, randomMaps, floorNum, currentMap, storyMaps } = getState().world;
 
@@ -40,7 +42,8 @@ export default function walkStairs(nextTile, playerPos) {
               floorNum: floorNum + 1
             }
           });
-        } else {
+        }
+        else {
           // figure out the next map and set it as the current
           dispatch({
             type: 'SET_ENDLESS_MAP',
@@ -51,7 +54,8 @@ export default function walkStairs(nextTile, playerPos) {
             }
           });
         }
-      } else if(direction === 'down' && floorNum > 1) {
+      }
+      else if(direction === 'down' && floorNum > 1) {
         // figure out the previous map and set it as the current
         dispatch({
           type: 'SET_ENDLESS_MAP',
@@ -62,12 +66,13 @@ export default function walkStairs(nextTile, playerPos) {
           }
         });
       }
-    } else {
+    }
+    else {
       // change the story mode map
       dispatch({
         type: 'SET_STORY_MAP',
         payload: { direction, currentMap, storyMaps }
       });
     }
-  }
+  }, MAP_TRANSITION_DELAY);
 }

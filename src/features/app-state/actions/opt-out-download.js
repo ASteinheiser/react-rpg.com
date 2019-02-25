@@ -5,5 +5,5 @@ export default function optOutDownload() {
       type: 'OPT_OUT_DOWNLOAD',
       payload: null
     });
-  }
+  };
 }

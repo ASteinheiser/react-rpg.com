@@ -57,7 +57,7 @@ const GameWin = ({ monsters, resetGameState, closeDialog }) => {
       }
     </Dialog>
   );
-}
+};
 
 const mapStateToProps = ({ monsters }) => ({ monsters });
 

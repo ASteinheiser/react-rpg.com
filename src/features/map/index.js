@@ -25,7 +25,8 @@ const GameMap = ({ map, world }) => {
 
   if(gameMode === 'story') {
     map = { ...map, ...storyMaps[currentMap] };
-  } else {
+  }
+  else {
     map = { ...map, ...randomMaps[floorNum - 1] };
   }
 
@@ -53,9 +54,9 @@ const GameMap = ({ map, world }) => {
 
     </div>
   );
-}
+};
 
-function MapRow(props) {
+const MapRow = props => {
   return (
     <div className='row'
       style={{ height: SPRITE_SIZE }}>
@@ -71,8 +72,8 @@ function MapRow(props) {
         })
       }
     </div>
-  )
-}
+  );
+};
 
 function getWallType(tiles) {
   for(let i = 0; i < tiles.length; i ++) {

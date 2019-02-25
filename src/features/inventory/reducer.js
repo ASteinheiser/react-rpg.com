@@ -16,11 +16,10 @@ const inventoryReducer = (state = initialState, { type, payload }) => {
 
     case 'DROP_ITEM':
       newState = _cloneDeep(state);
-      let item = payload;
 
       newState.items.find((itemData, index) => {
         // if you found the item
-        if(JSON.stringify(itemData) === JSON.stringify(item)) {
+        if(JSON.stringify(itemData) === JSON.stringify(payload)) {
           // remove it from the array
           return newState.items.splice(index, 1);
         }
@@ -31,9 +30,8 @@ const inventoryReducer = (state = initialState, { type, payload }) => {
 
     case 'GET_ITEM':
       newState = _cloneDeep(state);
-      let itemId = uuidv4();
       // save item to list with unique id for keeping track of duplicates
-      newState.items.push({ ...payload, id: itemId });
+      newState.items.push({ ...payload, id: uuidv4() });
 
       return newState;
 

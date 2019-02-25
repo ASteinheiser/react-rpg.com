@@ -15,7 +15,7 @@ export default function randomMapMessage(floorNum) {
         message = {
           title: `As you nearly approach the halfway point, you feel confident and charge forward!`,
           body: ''
-        };     
+        };
         break;
       case 60:
         message = {
@@ -48,5 +48,5 @@ export default function randomMapMessage(floorNum) {
         }
       });
     }
-  }
+  };
 }

@@ -3,14 +3,14 @@ import { MAP_DIMENSIONS, MAP_PADDING_DISTANCE } from '../config/constants';
 export default function generatePaddingTiles() {
   // we need to add padding tiles so the
   // player cannot see past the edge of the map
-  let top = [];
-  let bottom = [];
-  let left = [];
-  let right = [];
+  const top = [];
+  const bottom = [];
+  const left = [];
+  const right = [];
 
   for(let i = 0; i < MAP_PADDING_DISTANCE; i ++) {
-    let topRow = [];
-    let bottomRow = [];
+    const topRow = [];
+    const bottomRow = [];
 
     for(let j = 0; j < MAP_DIMENSIONS[1]; j ++) {
       topRow.push({
@@ -30,8 +30,8 @@ export default function generatePaddingTiles() {
   }
 
   for(let i = 0; i < MAP_DIMENSIONS[1] + MAP_PADDING_DISTANCE; i ++) {
-    let leftRow = [];
-    let rightRow = [];
+    const leftRow = [];
+    const rightRow = [];
 
     for(let j = 0; j < MAP_PADDING_DISTANCE; j ++) {
       leftRow.push({

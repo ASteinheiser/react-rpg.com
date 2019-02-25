@@ -31,7 +31,7 @@ const EndlessGameStart = ({ backToSelect, startEndlessGame }) => {
       </div>
     </Dialog>
   );
-}
+};
 
 const actions = { backToSelect, startEndlessGame };
 

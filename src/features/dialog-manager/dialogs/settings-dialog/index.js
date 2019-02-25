@@ -39,7 +39,7 @@ const SettingsDialog = ({ resetGameState, closeSettings }) => {
 
     </Dialog>
   );
-}
+};
 
 const actions = { resetGameState, closeSettings };
 

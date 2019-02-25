@@ -83,7 +83,7 @@ const ShopDialog = ({ closeDialog }) => {
       </div>
     </Dialog>
   );
-}
+};
 
 const actions = { closeDialog };
 

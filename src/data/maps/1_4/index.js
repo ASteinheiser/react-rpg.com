@@ -13,32 +13,32 @@ const tiles = [
   [6, 6, 0, 6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6],
   [6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6],
   [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
-  [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+  [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
 ];
 
 const monsters = [
   {
     type: 'goblin',
-    position: [ 15, 10 ]
+    position: [15, 10]
   },
   {
     type: 'goblin',
-    position: [ 12, 11 ]
+    position: [12, 11]
   },
   {
     type: 'goblin',
-    position: [ 14, 12 ]
+    position: [14, 12]
   },
   {
     type: 'stone-golem',
-    position: [ 2, 2 ]
+    position: [2, 2]
   }
 ];
 
 const stairs = {
   down: '1_3',
   up: '1_5'
-}
+};
 
 export default {
   tiles,

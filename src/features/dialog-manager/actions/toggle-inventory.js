@@ -7,7 +7,8 @@ export default function toggleInventory() {
         type: 'PAUSE',
         payload: { pause: false }
       });
-    } else {
+    }
+    else {
       dispatch({
         type: 'PAUSE',
         payload: {
@@ -16,5 +17,5 @@ export default function toggleInventory() {
         }
       });
     }
-  }
+  };
 }

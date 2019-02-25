@@ -18,14 +18,16 @@ class Inventory extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { inventory } = this.props.dialog;
     const { itemReceived, itemDropped } = this.props.snackbar;
-    let lastItemReceived = prevProps.snackbar.itemReceived;
-    let lastItemDropped = prevProps.snackbar.itemDropped;
+    const lastItemReceived = prevProps.snackbar.itemReceived;
+    const lastItemDropped = prevProps.snackbar.itemDropped;
 
-    if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined && !inventory) {
+    if(lastItemDropped !== itemDropped && itemDropped &&
+      typeof itemDropped !== "undefined" && !inventory) {
       // see if any items were dropped
       this.setState({ newItemIndicator: true });
     }
-    else if(lastItemReceived !== itemReceived && itemReceived && itemReceived !== undefined && !inventory) {
+    else if(lastItemReceived !== itemReceived && itemReceived &&
+      typeof itemReceived !== "undefined" && !inventory) {
       // see if any items were received
       this.setState({ newItemIndicator: true });
     }
@@ -60,7 +62,7 @@ class Inventory extends Component {
               title={open ?
                 'Close' : 'Inventory'}
               style={{
-                width: 'fit-content',
+                width: open ? 135 : 195,
                 transition: 'width .25s ease-out',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',

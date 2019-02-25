@@ -6,7 +6,7 @@ const initialState = {
   playerAttacked: false,
   monsterAttacked: false,
   playerDied: false,
-  monsterDied: false,
+  monsterDied: false
 };
 
 const playerReducer = (state = initialState, { type, payload }) => {

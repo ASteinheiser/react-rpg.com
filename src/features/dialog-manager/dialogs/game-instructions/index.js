@@ -96,7 +96,7 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
 
     </Dialog>
   );
-}
+};
 
 const actions = { loadStartingItems, showFirstStoryMessage };
 

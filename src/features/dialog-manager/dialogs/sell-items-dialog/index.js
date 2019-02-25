@@ -24,12 +24,12 @@ const SellItemsDialog = ({ onClose }) => {
         style={{backgroundImage: `url(${Backpack})`}}>
 
         <BackpackItems
-          view_item={item => setSellItem(item)} />
+          viewItem={item => setSellItem(item)} />
 
       </div>
 
     </MicroDialog>
   );
-}
+};
 
 export default SellItemsDialog;

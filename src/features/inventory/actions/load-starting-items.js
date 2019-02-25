@@ -12,5 +12,5 @@ export default function loadStartingItems() {
       type: 'EQUIP_ITEM',
       payload: getState().inventory.items[0]
     });
-  }
+  };
 }

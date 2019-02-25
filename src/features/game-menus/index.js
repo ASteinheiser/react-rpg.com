@@ -50,7 +50,7 @@ const GameMenus = ({ appState, dialog }) => {
       </div>
     </div>
   );
-}
+};
 
 const mapStateToProps = ({ appState, dialog }) => ({ appState, dialog });
 

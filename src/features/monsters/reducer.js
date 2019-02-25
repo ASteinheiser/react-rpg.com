@@ -41,7 +41,7 @@ const monstersReducer = (state = initialState, { type, payload }) => {
         // render monsters
         payload.monsters.forEach(monster => {
           // generate a unique id (for tracking purposes)
-          let uuid = uuidv4();
+          const uuid = uuidv4();
           // merge the id, monster stats, and position
           // set the position from tile(x,y) to actual pixel size
           monster = {

@@ -10,5 +10,5 @@ export default function closeChestDialog() {
       type: 'PAUSE',
       payload: { pause: false }
     });
-  }
+  };
 }

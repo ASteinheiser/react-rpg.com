@@ -9,6 +9,6 @@ const ShopKeep = () => {
     <div className='shop-keep-animated'
       style={{backgroundImage: `url(${ShopKeepSprite})`}}/>
   );
-}
+};
 
 export default ShopKeep;

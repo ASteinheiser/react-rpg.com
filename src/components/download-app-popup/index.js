@@ -32,11 +32,11 @@ const DownloadAppPopup = ({ onClose, optOutDownload, open }) => {
 
         <div className='download-app__buttons'>
 
-          <a href={IOS_URL} target='_blank' rel="noopener noreferrer">
+          <a href={IOS_URL} target='_blank' rel='noopener noreferrer'>
             <img className='ios-icon' src={iosStore} alt='ios-store' />
           </a>
 
-          <a href={ANDROID_URL} target='_blank' rel="noopener noreferrer">
+          <a href={ANDROID_URL} target='_blank' rel='noopener noreferrer'>
             <img className='android-icon' src={androidStore} alt='android-store' />
           </a>
 
@@ -56,6 +56,6 @@ const DownloadAppPopup = ({ onClose, optOutDownload, open }) => {
 
     </div>
   );
-}
+};
 
 export default connect(null, { optOutDownload })(DownloadAppPopup);

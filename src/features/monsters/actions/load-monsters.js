@@ -6,9 +6,9 @@ export default function loadMonsters() {
     const { world, monsters, player, stats } = getState();
     const { gameMode, currentMap, randomMaps, floorNum, storyMaps } = world;
 
-    // if it's endless mode and we don't have monsters for the current map
-    if(gameMode === 'endless') {
-      if(!monsters.components[currentMap]) {
+    if(!monsters.components[currentMap]) {
+      // if it's endless mode and we don't have monsters for the current map
+      if(gameMode === 'endless') {
         // let's generate some monsters and set them!
         dispatch({
           type: 'ADD_MONSTERS',
@@ -17,16 +17,16 @@ export default function loadMonsters() {
             map: currentMap
           }
         });
+      } // load monsters for the story map
+      else {
+        dispatch({
+          type: 'ADD_MONSTERS',
+          payload: {
+            monsters: storyMaps[currentMap].monsters,
+            map: currentMap
+          }
+        });
       }
-    } else {
-      // load monsters for the story map
-      dispatch({
-        type: 'ADD_MONSTERS',
-        payload: {
-          monsters: storyMaps[currentMap].monsters,
-          map: currentMap
-        }
-      });
     }
-  }
+  };
 }

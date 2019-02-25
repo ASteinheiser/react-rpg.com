@@ -6,5 +6,5 @@ export default function closeDialog() {
       type: 'PAUSE',
       payload: { pause: false }
     });
-  }
+  };
 }

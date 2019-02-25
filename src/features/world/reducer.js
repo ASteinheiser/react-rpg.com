@@ -10,7 +10,8 @@ const initialState = {
   turn: 0,
   storyMaps: {},
   randomMaps: [],
-  floorNum: null
+  floorNum: null,
+  mapTransition: false
 };
 
 const worldReducer = (state = initialState, { type, payload }) => {
@@ -19,6 +20,9 @@ const worldReducer = (state = initialState, { type, payload }) => {
   let currentMapData;
 
   switch(type) {
+
+    case 'MAP_TRANSITION':
+      return { ...state, mapTransition: !state.mapTransition };
 
     case 'ADD_BLOOD_SPILL':
       newState = _cloneDeep(state);
@@ -70,7 +74,7 @@ const worldReducer = (state = initialState, { type, payload }) => {
       return newState;
 
     case 'LOAD_STORY_MAPS':
-      let _maps = _cloneDeep(maps);
+      const _maps = _cloneDeep(maps);
       // go over each story map and add explored values
       // and variation data to the tiles
       Object.keys(_maps).forEach(mapName => {
@@ -88,7 +92,7 @@ const worldReducer = (state = initialState, { type, payload }) => {
       return { ...state, storyMaps: _maps };
 
     case 'ADD_RANDOM_MAP':
-      let _randomMaps = _cloneDeep(state.randomMaps);
+      const _randomMaps = _cloneDeep(state.randomMaps);
 
       const randomTiles = attachMetaToTiles(payload.tiles);
       const randomPaddTiles = generatePaddingTiles();
@@ -140,7 +144,8 @@ const worldReducer = (state = initialState, { type, payload }) => {
   function getCurrentMap(stateObj) {
     if(stateObj.gameMode === 'story') {
       return stateObj.storyMaps[stateObj.currentMap];
-    } else {
+    }
+    else {
       return stateObj.randomMaps[stateObj.floorNum - 1];
     }
   }

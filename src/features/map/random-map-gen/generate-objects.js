@@ -4,7 +4,7 @@ import { MAP_DIMENSIONS }  from '../../../config/constants';
 // randomly generates chests, stairs and shops onto an existing random map
 export default function generateObjects(map, floorNum, playerPos, wallType) {
 
-  let initialTiles = [];
+  const initialTiles = [];
   const vision = getSurroundingTiles(playerPos).tiles;
 
   for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
@@ -16,7 +16,7 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
     }
   }
 
-  let availableTiles = initialTiles.filter(value => {
+  const availableTiles = initialTiles.filter(value => {
     // remove the available tiles that are vision tiles
     return !arrContainArr(vision, value);
   });
@@ -24,30 +24,31 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
   // show stairs down if floor is greater than 1
   if(floorNum > 1) {
     map[playerPos[1]][playerPos[0]] = 2;
-  };
+  }
 
+  // generate stairs up OUTSIDE the player's sight if possible
   if(availableTiles.length > 0) {
-    // generate stairs up OUTSIDE the player's sight if possible
-    let randomIndex = Math.floor(Math.random() * availableTiles.length);
-    let tile = availableTiles[randomIndex];
+    const randomIndex = Math.floor(Math.random() * availableTiles.length);
+    const tile = availableTiles[randomIndex];
 
     map[tile[0]][tile[1]] = 3;
     availableTiles.splice(randomIndex, 1);
-  } else {
-    // if we don't have room outside player sight, place stairs on any floor tile
-    let randomIndex = Math.floor(Math.random() * initialTiles.length);
-    let tile = initialTiles[randomIndex];
-    // make sure we dont place it on top of the player
-    if(!(tile[0] === playerPos[1] && tile[1] === playerPos[0])) {
-      map[tile[0]][tile[1]] = 3;
-    } // remove the player's position from available tiles and get another random one
-    else {
+  } // if we don't have room outside player sight, place stairs on any floor tile
+  else {
+    const randomIndex = Math.floor(Math.random() * initialTiles.length);
+    const tile = initialTiles[randomIndex];
+    // if the tile is occupied by the player
+    // remove the player's position from available tiles and get another random one
+    if(tile[0] === playerPos[1] && tile[1] === playerPos[0]) {
       initialTiles.splice(randomIndex, 1);
 
-      let newRandomIndex = Math.floor(Math.random() * initialTiles.length);
-      let newTile = initialTiles[newRandomIndex];
+      const newRandomIndex = Math.floor(Math.random() * initialTiles.length);
+      const newTile = initialTiles[newRandomIndex];
 
       map[newTile[0]][newTile[1]] = 3;
+    } // safely place the stairs
+    else {
+      map[tile[0]][tile[1]] = 3;
     }
   }
 
@@ -58,8 +59,8 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
   // place the chests on empty tiles
   for(let x = 0; x < randomChests; x++) {
     if(availableTiles.length > 0) {
-      let randomIndex = Math.floor(Math.random() * availableTiles.length);
-      let tile = availableTiles[randomIndex];
+      const randomIndex = Math.floor(Math.random() * availableTiles.length);
+      const tile = availableTiles[randomIndex];
 
       map[tile[0]][tile[1]] = 4;
       availableTiles.splice(randomIndex, 1);
@@ -68,8 +69,8 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
 
   // generate a shop every 4 floors
   if(floorNum % 4 === 0) {
-    let availableWalls = [];
-    
+    const availableWalls = [];
+
     // get a list of available wall tiles
     for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
       for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
@@ -93,7 +94,7 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
 function generateShop(map, availableWalls) {
   if(availableWalls.length > 0) {
     const randomIndex = Math.floor(Math.random() * availableWalls.length);
-    let tile = availableWalls[randomIndex];
+    const tile = availableWalls[randomIndex];
 
     map[tile[0]][tile[1]] = 9;
   }
