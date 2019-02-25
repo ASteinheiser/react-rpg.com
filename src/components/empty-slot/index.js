@@ -9,7 +9,7 @@ const EmptySlot = ({ margin, style, className, children }) => {
     backgroundImage: `url('${InventorySlot}')`,
     width: '40px',
     height: '40px',
-    margin: margin
+    margin
   };
 
   return (

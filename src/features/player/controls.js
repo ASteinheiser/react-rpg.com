@@ -14,7 +14,7 @@ let intervalId = null;
 
 const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
 
-  const _handleKeyDown = _debounce((event) => {
+  const _handleKeyDown = _debounce(event => {
     // if the game is not paused by dialogs
     if(!isGamePaused()) handleKeyDown(event);
   },

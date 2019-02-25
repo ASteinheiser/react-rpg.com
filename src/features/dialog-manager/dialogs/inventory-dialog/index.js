@@ -31,7 +31,7 @@ const InventoryDialog = () => {
             style={{backgroundImage: `url(${Backpack})`}}>
 
             <BackpackItems
-              viewItem={(item) => setViewItem(item)} />
+              viewItem={item => setViewItem(item)} />
 
           </div>
         </div>

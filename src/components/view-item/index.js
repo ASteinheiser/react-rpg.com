@@ -56,7 +56,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
     case 'ring':
       itemIsEquipped = (JSON.stringify(equipped.ring) === JSON.stringify(data));
       // find each effect
-      Object.keys(data.effect).forEach((name) => {
+      Object.keys(data.effect).forEach(name => {
         itemStats.push(<StatsItem stats={{ name, value: data.effect[name] }} key={uuidv4()} />);
       });
       break;

@@ -87,3 +87,13 @@ rules:
   prefer-destructuring: warn
   prefer-const: warn
   no-var: warn
+  prefer-arrow-callback: warn
+  object-shorthand: warn
+  no-class-assign: warn
+  no-duplicate-imports: warn
+  no-confusing-arrow: warn
+  constructor-super: warn
+  arrow-spacing: warn
+  arrow-parens:
+    - warn
+    - as-needed

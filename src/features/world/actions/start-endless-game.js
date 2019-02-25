@@ -37,7 +37,7 @@ export default function startEndlessGame() {
       payload: {
         startMap: mapId,
         gameMode: 'endless',
-        floorNum: floorNum
+        floorNum
       }
     });
 
