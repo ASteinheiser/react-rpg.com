@@ -14,7 +14,7 @@ React RPG is an Open-Source RPG made with React and Redux.
 ### Game Description
 React RPG is a turn-based, dungeon crawler. Comes with two game modes: Story and Endless. Story mode will lead you through a short story while introducing you to the most powerful creatures. In Endless mode, a unique challenge waits around every corner, as no two maps are the same.
 
-# (View Roadmap)[ROADMAP.md]
+# [View Roadmap](ROADMAP.md)
 
 # Want to Contribute?
 ## 1. Create a Github Issue that outlines the feature you want to add.
