@@ -1,9 +1,7 @@
 # React RPG
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
-React RPG is an Open-Source RPG made with React and Redux.
-
-[Play the latest Beta version here!](http://staging.react-rpg.com)
+React RPG is an Open-Source RPG made with React and Redux. The game is a turn-based, dungeon crawler that comes with two game modes: Story and Endless. Story mode will lead you through a short story while introducing you to the most powerful creatures. In Endless mode, a unique challenge waits around every corner, as no two maps are the same.
 
 [Play the Web version here!](https://react-rpg.com)
 
@@ -11,30 +9,13 @@ React RPG is an Open-Source RPG made with React and Redux.
 
 [Play the iOS version here!](https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1450907766&mt=8)
 
-### Game Description
-React RPG is a turn-based, dungeon crawler. Comes with two game modes: Story and Endless. Story mode will lead you through a short story while introducing you to the most powerful creatures. In Endless mode, a unique challenge waits around every corner, as no two maps are the same.
+You can also test the latest changes from the Staging branch before they go live:
+
+[Play the Beta version here!](http://staging.react-rpg.com)
 
 # [View Roadmap](ROADMAP.md)
 
-# Want to Contribute?
-## 1. Create a Github Issue that outlines the feature you want to add.
-## 2. Let's discuss to make sure that we are moving the project in the right direction.
-## 3. Install
-```
-git clone https://github.com/ASteinheiser/react-rpg.com
-cd react-rpg.com
-nvm use
-yarn install
-```
-## 4. Develop Locally
-```
-yarn start
-```
-## 5. Run Tests
-```
-yarn test
-```
-## 6. Submit a Pull Request to Staging
+# [Want to Contribute?](CONTRIBUTING.md)
 
 # Contributors
 

@@ -41,7 +41,7 @@
   - 2 specialty weapons (bonus to monster types: dragon, lich)
 
 ## Where we are going
-To start, I think the game needs a thoughtful rebalance. (#41)
+To start, I think the game needs a thoughtful rebalance.
 
 If we make leveling more meaningful, we could offer a stat point on level up that the player can distribute. This would also create the need for more stat values.
 
