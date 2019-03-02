@@ -13,9 +13,9 @@ You can also test the latest changes from the Staging branch before they go live
 
 [Play the Beta version here!](http://staging.react-rpg.com)
 
-# [View Roadmap](ROADMAP.md)
+# [View Roadmap](docs/ROADMAP.md)
 
-# [Want to Contribute?](CONTRIBUTING.md)
+# [Want to Contribute?](docs/CONTRIBUTING.md)
 
 # Contributors
 
