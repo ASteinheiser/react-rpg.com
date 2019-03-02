@@ -1,57 +1,38 @@
-import React, { useEffect } from 'react';
+import React       from 'react';
+import { connect } from 'react-redux';
 
-import Button from '../../../../components/button';
-import Dialog from '../../../../components/dialog';
-import store  from '../../../../config/store';
+import Button      from '../../../../components/button';
+import Dialog      from '../../../../components/dialog';
+import closeDialog from '../../actions/close-dialog';
 
 import './styles.scss';
 
-const GameTextDialog = (props) => {
-
-  const { text1, text2 } = props;
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    }
-  }, []); // we pass empty array as the second param to make this only call on mount and not on any updates
-
-  function handleKeyPress(event) {
-    // case for 'enter' or 'space' key
-    if(event.keyCode === 13 || event.keyCode === 32) {
-      handleCloseDialog();
-    }
-  }
-
-  function handleCloseDialog() {
-    store.dispatch({
-      type: 'PAUSE',
-      payload: { pause: false }
-    });
-  }
+const GameTextDialog = ({ text1, text2, closeDialog }) => {
 
   return(
-    <Dialog>
+    <Dialog onKeyPress={closeDialog}>
 
-      <div className='flex-column game-text-dialog-container'>
+      <div className='flex-column game-text-dialog__container'>
 
-        <div className='game-text-dialog-text'>
+        <span className='game-text-dialog__text'>
           { text1 || '' }
-        </div>
+        </span>
 
-        <div className='game-text-dialog-text'>
+        <span className='game-text-dialog__text'>
           { text2 || '' }
-        </div>
+        </span>
 
-        <div className='game-text-dialog-button'>
+        <div className='game-text-dialog__button'>
           <Button
-            onClick={handleCloseDialog}
+            onClick={closeDialog}
             title='Continue' />
         </div>
       </div>
+
     </Dialog>
   );
-}
+};
 
-export default GameTextDialog;
+const actions = { closeDialog };
+
+export default connect(null, actions)(GameTextDialog);

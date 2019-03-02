@@ -1,22 +1,11 @@
-.chest-loot-title {
+.chest-loot__title {
   font-size: 26px;
   text-align: center;
 
   padding: 25px 0;
 }
 
-.chest-loot-button-container {
-  justify-content: flex-end;
-
-  align-items: center;
-  padding: 25px 0;
-}
-
-.chest-loot-value-spacing {
-  justify-content: space-between;
-}
-
-.chest-loot-contents {
+.chest-loot__contents {
   flex: 1;
   font-size: 22px;
 
@@ -24,15 +13,26 @@
   align-self: center;
 
   min-width: 150px;
+
+  .chest-loot__value--spacing {
+    justify-content: space-between;
+  }
+
+  .chest-loot__item {
+    font-size: 24px;
+    text-align: center;
+
+    .chest-loot__item-name {
+      padding-left: 15px;
+
+      justify-content: center;
+    }
+  }
 }
 
-.chest-loot-item {
-  font-size: 24px;
-  text-align: center;
-}
+.chest-loot__buttons {
+  justify-content: flex-end;
 
-.chest-loot-item-name {
-  padding-left: 15px;
-
-  justify-content: center;
+  align-items: center;
+  padding: 25px 0;
 }

@@ -1,4 +1,4 @@
-.endless-floor-counter {
+.floor-counter__container {
   position: absolute;
   top: 4px;
   left: 0;
@@ -18,15 +18,15 @@
   width: fit-content;
   margin: auto;
   padding: 0 7px;
-  
+
   background: rgba(173, 173, 173, 0.5);
   border-radius: 7px;
 
   user-select: none;
-}
 
-.endless-floor-value {
-  font-size: 28px;
+  .floor-counter__value {
+    font-size: 28px;
 
-  padding-left: 12px;
+    padding-left: 12px;
+  }
 }

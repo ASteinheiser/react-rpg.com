@@ -2,9 +2,7 @@ import React from 'react';
 
 import './styles.scss';
 
-const Button = (props) => {
-
-  const { icon, title, iconStyle, style, indicator, onClick, small } = props;
+const Button = ({ icon, title, iconStyle, style, indicator, onClick, small }) => {
 
   function handleClick() {
     if(typeof onClick === 'function') {
@@ -15,28 +13,26 @@ const Button = (props) => {
   if(!title) return null;
 
   return(
-    <div className={`button-container white-border ${small ? 'button-container-small' : ''}`}
+    <button
+      className={`button__container white-border ${small ? 'button__container--small' : ''}`}
       style={style || {}}
       onClick={handleClick}>
+
       {
-        icon ?
-          <i className={`fa fa-${icon} button-icon`}
-            style={iconStyle ? iconStyle : {}}>
+        icon &&
+          <i className={`fa fa-${icon} button__icon`}
+            style={iconStyle || {}}>
             {
-              indicator ?
-                <div className='button-indicator' />
-                :
-                null
+              indicator &&
+                <div className='button__indicator' />
             }
           </i>
-          :
-          null
       }
-      <span>
-        { title }
-      </span>
-    </div>
+
+      <span>{ title }</span>
+
+    </button>
   );
-}
+};
 
 export default Button;

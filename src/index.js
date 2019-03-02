@@ -7,7 +7,6 @@ import store, { persistor } from './config/store';
 import App                  from './App';
 import Spinner              from './components/spinner';
 
-// import fonts
 import 'typeface-roboto';
 import 'typeface-montserrat';
 
@@ -22,7 +21,7 @@ soundManager.setup({
   ignoreMobileRestrictions: true
 });
 
-ReactDOM.render((
+const ConnectedApp = () => (
   <Provider store={store}>
     <PersistGate
       loading={<Spinner />}
@@ -32,4 +31,6 @@ ReactDOM.render((
 
     </PersistGate>
   </Provider>
-), document.getElementById('root'));
+);
+
+ReactDOM.render(<ConnectedApp />, document.getElementById('react-rpg'));

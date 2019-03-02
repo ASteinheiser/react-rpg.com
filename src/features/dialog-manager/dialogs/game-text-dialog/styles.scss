@@ -1,10 +1,10 @@
-.game-text-dialog-container {
+.game-text-dialog__container {
   flex: 1;
   justify-content: space-between;
   padding: 16px;
 }
 
-.game-text-dialog-text {
+.game-text-dialog__text {
   font-family: Montserrat;
   font-size: 18px;
   text-transform: none;
@@ -13,7 +13,7 @@
   line-height: 1.5;
 }
 
-.game-text-dialog-button {
+.game-text-dialog__button {
   display: flex;
   justify-content: center;
 }

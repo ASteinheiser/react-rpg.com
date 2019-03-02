@@ -1,4 +1,4 @@
-.confirm-dialog-container {
+.confirm-dialog__container {
   display: flex;
   flex-direction: column;
 
@@ -13,20 +13,20 @@
 
   cursor: default;
   user-select: none;
-}
 
-.confirm-dialog-text {
-  display: flex;
-  flex: 1;
-  align-items: center;
+  .confirm-dialog__text {
+    display: flex;
+    flex: 1;
+    align-items: center;
 
-  font-size: 22px;
-  text-align: center;
+    font-size: 22px;
+    text-align: center;
 
-  padding: 16px;
-}
+    padding: 16px;
+  }
 
-.confirm-dialog-button-child {
-  justify-content: space-around;
-  padding-bottom: 16px;
+  .confirm-dialog__buttons {
+    justify-content: space-around;
+    padding-bottom: 16px;
+  }
 }

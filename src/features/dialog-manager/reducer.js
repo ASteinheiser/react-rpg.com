@@ -14,51 +14,38 @@ const initialState = {
   inventory: false
 };
 
-const dialogManagerReducer = (state = initialState, action) => {
+const dialogManagerReducer = (state = initialState, { type, payload }) => {
 
-  let newState = Object.assign({}, state);
+  switch(type) {
 
-  switch(action.type) {
-
-    // set the paused prop to the dialog component
     case 'PAUSE':
-      // check if pause type is shop
-      newState.shop = action.payload.shop || false;
-      // check if pause type is chest
-      newState.chest = action.payload.chest || false;
-      // check if pause type is game start
-      newState.gameStart = action.payload.gameStart || false;
-      // check if pause type is inventory
-      newState.inventory = action.payload.inventory || false;
-      // check if pause type is game over
-      newState.gameOver = action.payload.gameOver || false;
-      // check if pause type is game text
-      newState.gameText = action.payload.gameText || false;
-      // check if pause type is game win
-      newState.gameWin = action.payload.gameWin || false;
-      // check if pause type is for game select
-      newState.gameSelect = action.payload.gameSelect || null;
-      // check if pause type is for game instructions
-      newState.gameInstructions = action.payload.gameInstructions || false;
-      // check if pausing or unpausing
-      newState.paused = action.payload.pause;
+      const { shop, chest, gameStart, inventory, gameOver, gameText, gameWin, gameSelect, gameInstructions, pause } = payload;
 
-      return newState;
+      return {
+        ...state,
+        shop: shop || false,
+        chest: chest || false,
+        gameStart: gameStart || false,
+        inventory: inventory || false,
+        gameOver: gameOver || false,
+        gameText: gameText || false,
+        gameWin: gameWin || false,
+        gameSelect: gameSelect || null,
+        gameInstructions: gameInstructions || false,
+        paused: pause
+      };
 
     case 'SET_CHEST_DATA':
-      newState.chestOpen = action.payload;
-      return newState;
+      return { ...state, chestOpen: payload };
 
     case 'OPEN_SETTINGS':
-      newState.settings = true;
-      return newState;
+      return { ...state, settings: true };
 
     case 'CLOSE_SETTINGS':
-      newState.settings = false;
-      return newState;
+      return { ...state, settings: false };
 
-    case 'LOAD_NEXT_MAP':
-      const { direction, currentMap, storyMaps } = action.payload;
+    case 'SET_STORY_MAP':
+      const { direction, currentMap, storyMaps } = payload;
 
       const { stairs } = storyMaps[currentMap];
 
@@ -67,14 +54,17 @@ const dialogManagerReducer = (state = initialState, action) => {
       const { message } = storyMaps[nextMap];
       // if the map has a message and player is going up, display message
       if(message && direction === 'up') {
-        newState.paused = true;
-        newState.gameText = {
-          title: message.title,
-          body: message.body
+        return {
+          ...state,
+          paused: true,
+          gameText: {
+            title: message.title,
+            body: message.body
+          }
         };
       }
 
-      return newState;
+      return state;
 
     case 'RESET':
       return initialState;
@@ -82,6 +72,6 @@ const dialogManagerReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default dialogManagerReducer;

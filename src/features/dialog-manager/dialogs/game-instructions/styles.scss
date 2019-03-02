@@ -1,11 +1,11 @@
-.game-instructions-title {
+.game-instructions__title {
   font-size: 26px;
   text-align: center;
 
   padding: 12px 0;
 }
 
-.game-instructions-text {
+.game-instructions__text {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -20,17 +20,13 @@
 
   padding: 0 36px;
 
-  span {
-    padding-bottom: 12px;
-  }
-
-  .native-text {
+  .game-instructions__native-text {
     padding-left: 8px;
     max-width: 175px;
   }
 }
 
-.game-start-button {
+.game-instructions__button {
   padding: 12px 0 16px;
 
   align-items: center;

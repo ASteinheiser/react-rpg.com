@@ -1,13 +1,14 @@
-.health-bar-container {
+.health-bar__container {
   height: 7px;
 
-  background: var(--red);
   border-radius: 3px;
+
+  background: var(--red);
 
   position: relative;
 }
 
-.health-bar-value {
+.health-bar__value {
   height: 7px;
 
   background: var(--green);

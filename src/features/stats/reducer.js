@@ -1,3 +1,4 @@
+import _cloneDeep from 'lodash.clonedeep';
 
 const initialState = {
   hp: 10,
@@ -11,82 +12,78 @@ const initialState = {
   equippedItems: {}
 };
 
-const statsReducer = (state = initialState, action) => {
+const statsReducer = (state = initialState, { type, payload }) => {
 
-  let newState = Object.assign({}, state);
+  let newState;
 
-  switch(action.type) {
+  switch(type) {
 
     case 'GET_GOLD':
       // add gold to current gold
-      newState.gold += action.payload.value;
-
-      return newState;
+      return { ...state, gold: state.gold + payload };
 
     case 'LOSE_GOLD':
       // add gold to current gold
-      newState.gold -= action.payload.value;
-
-      return newState;
+      return { ...state, gold: state.gold - payload };
 
     case 'UNEQUIP_ITEM':
-      let data = action.payload.data;
+      newState = _cloneDeep(state);
       // check the type
-      switch(data.type) {
+      switch(payload.type) {
         case 'weapon':
-          newState.damage -= data.damage;
-          delete newState.equippedItems['weapon'];
+          newState.damage -= payload.damage;
+          delete newState.equippedItems.weapon;
           break;
 
         case 'armor::body':
-          newState.defence -= data.defence;
-          delete newState.equippedItems['armor']['body'];
+          newState.defence -= payload.defence;
+          delete newState.equippedItems.armor.body;
           break;
 
         case 'armor::helmet':
-          newState.defence -= data.defence;
-          delete newState.equippedItems['armor']['helmet'];
+          newState.defence -= payload.defence;
+          delete newState.equippedItems.armor.helmet;
           break;
 
         case 'armor::pants':
-          newState.defence -= data.defence;
-          delete newState.equippedItems['armor']['pants'];
+          newState.defence -= payload.defence;
+          delete newState.equippedItems.armor.pants;
           break;
 
         case 'armor::boots':
-          newState.defence -= data.defence;
-          delete newState.equippedItems['armor']['boots'];
+          newState.defence -= payload.defence;
+          delete newState.equippedItems.armor.boots;
           break;
 
         case 'armor::gloves':
-          newState.defence -= data.defence;
-          delete newState.equippedItems['armor']['gloves'];
+          newState.defence -= payload.defence;
+          delete newState.equippedItems.armor.gloves;
           break;
 
         case 'ring':
           // iterate over each effect
-          Object.keys(data.effect).forEach(effectName => {
+          Object.keys(payload.effect).forEach(effectName => {
 
-            switch (effectName) {
+            switch(effectName) {
 
               case 'defence':
-                newState.defence -= data.effect[effectName];
+                newState.defence -= payload.effect[effectName];
                 break;
 
               case 'damage':
-                newState.damage -= data.effect[effectName];
+                newState.damage -= payload.effect[effectName];
                 break;
 
               case 'hp':
-                newState.hp -= data.effect[effectName];
+                newState.hp -= payload.effect[effectName];
                 if(newState.hp < 1) newState.hp = 1;
-                newState.maxHp -= data.effect[effectName];
+                newState.maxHp -= payload.effect[effectName];
                 break;
 
               default:
             }
           });
-          delete newState.equippedItems['ring'];
+          delete newState.equippedItems.ring;
 
           break;
 
@@ -96,83 +93,84 @@ const statsReducer = (state = initialState, action) => {
       return newState;
 
     case 'EQUIP_ITEM':
-      let item = action.payload;
+      newState = _cloneDeep(state);
+      const item = payload;
       // see what type of item it is
       switch(item.type) {
 
         case 'weapon':
           // if there's already a weapon
-          if(newState.equippedItems['weapon']) {
+          if(newState.equippedItems.weapon) {
             // subtract it's benefits
-            newState.damage -= newState.equippedItems['weapon'].damage;
+            newState.damage -= newState.equippedItems.weapon.damage;
           }
           newState.damage += item.damage;
-          newState.equippedItems['weapon'] = item;
+          newState.equippedItems.weapon = item;
           break;
 
         case 'armor::body':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['body']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.body) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['body'].defence;
+            newState.defence -= newState.equippedItems.armor.body.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { body: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, body: item };
           break;
 
         case 'armor::helmet':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['helmet']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.helmet) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['helmet'].defence;
+            newState.defence -= newState.equippedItems.armor.helmet.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { helmet: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, helmet: item };
           break;
 
         case 'armor::pants':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['pants']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.pants) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['pants'].defence;
+            newState.defence -= newState.equippedItems.armor.pants.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { pants: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, pants: item };
           break;
 
         case 'armor::gloves':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['gloves']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.gloves) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['gloves'].defence;
+            newState.defence -= newState.equippedItems.armor.gloves.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { gloves: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, gloves: item };
           break;
 
         case 'armor::boots':
           // if there's already armor
-          if(newState.equippedItems['armor'] && newState.equippedItems['armor']['boots']) {
+          if(newState.equippedItems.armor && newState.equippedItems.armor.boots) {
             // subtract it's benefits
-            newState.defence -= newState.equippedItems['armor']['boots'].defence;
+            newState.defence -= newState.equippedItems.armor.boots.defence;
           }
           newState.defence += item.defence;
           // safely add new armor peice to object
-          newState.equippedItems['armor'] = Object.assign({}, newState.equippedItems['armor'], { boots: item });
+          newState.equippedItems.armor = { ...newState.equippedItems.armor, boots: item };
           break;
 
         case 'ring':
-          const equippedRing = newState.equippedItems['ring'];
+          const equippedRing = newState.equippedItems.ring;
           // if there's already a ring
           if(equippedRing) {
             // subtract it's benefits
             Object.keys(equippedRing.effect).forEach(effectName => {
 
-              switch (effectName) {
+              switch(effectName) {
 
                 case 'defence':
                   newState.defence -= equippedRing.effect[effectName];
@@ -196,7 +194,7 @@ const statsReducer = (state = initialState, action) => {
           // iterate over each new effect
           Object.keys(item.effect).forEach(effectName => {
 
-            switch (effectName) {
+            switch(effectName) {
 
               case 'defence':
                 newState.defence += item.effect[effectName];
@@ -215,7 +213,7 @@ const statsReducer = (state = initialState, action) => {
             }
           });
 
-          newState.equippedItems['ring'] = item;
+          newState.equippedItems.ring = item;
           break;
 
         default:
@@ -224,23 +222,20 @@ const statsReducer = (state = initialState, action) => {
 
     case 'HEAL_HP':
       // heal the hp
-      newState.hp += action.payload.value;
+      let _hp = state.hp + payload;
       // dont go above max hp
-      if(newState.hp > newState.maxHp) newState.hp = newState.maxHp;
+      if(_hp > state.maxHp) _hp = state.maxHp;
 
-      return newState;
+      return { ...state, hp: _hp };
 
     case 'DAMAGE_TO_PLAYER':
-      const { damage } = action.payload;
-      // deal damage to player
-      newState.hp -= damage;
-
-      return newState;
+      return { ...state, hp: (state.hp - payload) };
 
     case 'GET_EXP':
-      let newExp = action.payload.value;
-      let newTotalExp = state.exp + newExp;
-      let expToLevel = state.expToLevel;
+      newState = _cloneDeep(state);
+
+      const newTotalExp = state.exp + payload;
+      const { expToLevel } = state;
       // if they are leveling up
       if(newTotalExp >= expToLevel) {
         // increment level
@@ -248,52 +243,41 @@ const statsReducer = (state = initialState, action) => {
 
         // calculate leftover exp if it isn't exactly enough
         if(!(newState.exp === expToLevel)) {
-          let leftoverExp = (newTotalExp) % expToLevel;
+          const leftoverExp = (newTotalExp) % expToLevel;
           newState.exp = leftoverExp;
         }
 
         // set next exp goal to be 1.5 times as much if player is 5 or less
         if(newState.level < 6) {
           newState.expToLevel = Math.floor(state.expToLevel * 1.5);
-        } else if(newState.level < 20) {
-          // otherwise set it to be 1.25 times as much
+        } // otherwise set it to be 1.25 times as much
+        else if(newState.level < 20) {
           newState.expToLevel = Math.floor(state.expToLevel * 1.25);
-        } else {
-          // let the exp goal remain static at this point (lv 20+)
         }
+        else {} // let the exp goal remain static if they are lv 20+
 
         // get more maxHp and currHp (roll 1-5)
-        let moreHp = Math.floor(Math.random() * 5) + 1;
+        const moreHp = Math.floor(Math.random() * 5) + 1;
         newState.hp += moreHp;
         newState.maxHp += moreHp;
 
         // get more damage (+1)
         newState.damage += 1;
         // 25% chance to get +2 damage on lv
-        let chance = Math.floor(Math.random() * 100) + 1;
+        const chance = Math.floor(Math.random() * 100) + 1;
         if(chance <= 25) {
           newState.damage += 1;
         }
-
-      } else {
+      }
+      else {
         // they aren't leveling up
-        newState.exp += newExp;
+        newState.exp += payload;
       }
 
       return newState;
 
     case 'RESET':
-      return {
-        hp: 10,
-        maxHp: 10,
-        damage: 3,
-        defence: 0,
-        level: 1,
-        exp: 0,
-        expToLevel: 20,
-        gold: 0,
-        equippedItems: {}
-      };
+      return initialState;
 
     default:
       return state;

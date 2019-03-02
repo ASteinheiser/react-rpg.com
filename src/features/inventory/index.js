@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
-import Button from '../../components/button';
-import store  from '../../config/store';
+import Button          from '../../components/button';
+import toggleInventory from '../dialog-manager/actions/toggle-inventory';
 
 import './styles.scss';
 
@@ -12,42 +12,33 @@ class Inventory extends Component {
 
     this.state = {
       newItemIndicator: false
-    }
-  }
-
-  handleOpenInventory() {
-    this.setState({ newItemIndicator: false }, () => {
-      store.dispatch({
-        type: 'PAUSE',
-        payload: {
-          pause: true,
-          inventory: true
-        }
-      });
-    });
-  }
-
-  handleCloseInventory() {
-    store.dispatch({
-      type: 'PAUSE',
-      payload: { pause: false }
-    });
+    };
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { inventory } = this.props.dialog;
-    const { itemReceived, itemDropped } = this.props.inventory;
-    let lastItemReceived = prevProps.inventory.itemReceived;
-    let lastItemDropped = prevProps.inventory.itemDropped;
+    const { itemReceived, itemDropped } = this.props.snackbar;
+    const lastItemReceived = prevProps.snackbar.itemReceived;
+    const lastItemDropped = prevProps.snackbar.itemDropped;
 
-    if(lastItemDropped !== itemDropped && itemDropped && itemDropped !== undefined && !inventory) {
+    if(lastItemDropped !== itemDropped && itemDropped &&
+      typeof itemDropped !== "undefined" && !inventory) {
       // see if any items were dropped
       this.setState({ newItemIndicator: true });
     }
-    else if(lastItemReceived !== itemReceived && itemReceived && itemReceived !== undefined && !inventory) {
+    else if(lastItemReceived !== itemReceived && itemReceived &&
+      typeof itemReceived !== "undefined" && !inventory) {
       // see if any items were received
       this.setState({ newItemIndicator: true });
     }
+  }
+
+  _toggleInventory() {
+    // We can turn off the indicator if the inventory is opened
+    // If we are closing the inventory, it is okay to turn off
+    // indicator since it should be false already
+    this.setState({ newItemIndicator: false });
+    this.props.toggleInventory();
   }
 
   render() {
@@ -57,16 +48,13 @@ class Inventory extends Component {
     const open = dialog.inventory;
 
     return (
-      <div className='flex-row inventory-container'>
+      <div className='flex-row inventory__container'>
         {
-          disabled ?
-            null
-            :
+          !disabled &&
             <Button
               small={sideMenu}
               indicator={newItemIndicator}
-              onClick={open ?
-                this.handleCloseInventory.bind(this) : this.handleOpenInventory.bind(this)}
+              onClick={this._toggleInventory.bind(this)}
               icon={open ?
                 'times' : 'briefcase'}
               iconStyle={open ?
@@ -74,10 +62,11 @@ class Inventory extends Component {
               title={open ?
                 'Close' : 'Inventory'}
               style={{
-                width: (open ? '110px' : (sideMenu ? '150px' : '170px')),
+                width: open ? 135 : 195,
                 transition: 'width .25s ease-out',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
+                backgroundColor: 'var(--dark-gray)'
               }} />
         }
       </div>
@@ -85,6 +74,8 @@ class Inventory extends Component {
   }
 }
 
-const mapStateToProps = ({ inventory, dialog }) => ({ inventory, dialog });
+const mapStateToProps = ({ snackbar, dialog }) => ({ snackbar, dialog });
 
-export default connect(mapStateToProps)(Inventory);
+const actions = { toggleInventory };
+
+export default connect(mapStateToProps, actions)(Inventory);

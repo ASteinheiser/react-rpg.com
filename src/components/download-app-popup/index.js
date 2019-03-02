@@ -1,57 +1,61 @@
-import React from 'react';
+import React       from 'react';
+import { connect } from 'react-redux';
 
-import store from '../../config/store';
-
-import iosStore     from './ios-store.png';
-import androidStore from './android-store.png';
+import optOutDownload from '../../features/app-state/actions/opt-out-download';
+import iosStore       from './assets/ios-store.png';
+import androidStore   from './assets/android-store.png';
 
 import './styles.scss';
 
 const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.reactrpgnative';
 const IOS_URL = 'https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1450907766&mt=8';
 
-const DownloadAppPopup = (props) => {
+const DownloadAppPopup = ({ onClose, optOutDownload, open }) => {
 
-  const { onClose } = props;
+  if(!open) return null;
 
-  function handleOptOut() {
-    store.dispatch({
-      type: 'OPT_OUT_DOWNLOAD',
-      payload: {}
-    });
+  function handleOptOutDownload() {
+    optOutDownload();
     onClose();
   }
 
   return(
-    <div className='download-app-container'>
+    <div className='download-app__container'>
 
       <div onClick={onClose} className='background-close' />
 
-      <div className='download-app-box white-border'>
-        <span>
+      <div className='download-app__box white-border'>
+
+        <span className='download-app__title'>
           {'React RPG is now on iOS and Android!'}
         </span>
 
-        <a href={IOS_URL} target='_blank' rel="noopener noreferrer">
-          <img className='ios-store-icon' src={iosStore} alt='ios-store' />
-        </a>
+        <div className='download-app__buttons'>
 
-        <a href={ANDROID_URL} target='_blank' rel="noopener noreferrer">
-          <img className='android-store-icon' src={androidStore} alt='android-store' />
-        </a>
+          <a href={IOS_URL} target='_blank' rel='noopener noreferrer'>
+            <img className='ios-icon' src={iosStore} alt='ios-store' />
+          </a>
+
+          <a href={ANDROID_URL} target='_blank' rel='noopener noreferrer'>
+            <img className='android-icon' src={androidStore} alt='android-store' />
+          </a>
+
+        </div>
 
         <div className='flex-row space-between'>
-          <div className='close-option' onClick={handleOptOut}>
+          <button className='close-option' onClick={handleOptOutDownload}>
             {`Don't show again`}
-          </div>
-          <div className='close-option' onClick={onClose}>
+          </button>
+
+          <button className='close-option' onClick={onClose}>
             {`Close`}
-          </div>
+          </button>
         </div>
+
       </div>
 
     </div>
   );
-}
+};
 
-export default DownloadAppPopup;
+export default connect(null, { optOutDownload })(DownloadAppPopup);

@@ -1,4 +1,4 @@
-.game-select-title {
+.game-select__title {
   justify-content: center;
 
   padding: 16px 16px 0;
@@ -6,7 +6,7 @@
   font-size: 26px;
 }
 
-.game-select-text {
+.game-select__text {
   flex: 1;
 
   font-size: 20px;
@@ -18,7 +18,7 @@
   padding: 0 32px;
 }
 
-.game-select-button {
+.game-select__button {
   padding: 16px;
 
   margin-right: 50px;
@@ -26,13 +26,13 @@
   align-items: center;
 }
 
-.game-select-flame-container-1 {
+.game-select__flame--1 {
   position: absolute;
   bottom: 68px;
   right: 52px;
 }
 
-.game-select-flame-container-2 {
+.game-select__flame--2 {
   position: absolute;
   bottom: 142px;
   right: 52px;

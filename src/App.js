@@ -1,89 +1,77 @@
-import React, { useEffect, useState }                 from 'react';
-import { connect }                                    from 'react-redux';
-import { isMobile }                                   from 'react-device-detect';
+import React, { useEffect, useState } from 'react';
+import { connect }                    from 'react-redux';
+import { isMobile }                   from 'react-device-detect';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-import DownloadAppPopup    from './components/download-app-popup';
-import DialogManager       from './features/dialog-manager';
-import EndlessFloorCounter from './components/endless-floor-counter';
-import Footer              from './components/footer';
-import GameMenus           from './features/game-menus';
-import World               from './features/world';
-import Viewport            from './components/viewport';
-import useWindowSize       from './modules/use-window-size';
+import DownloadAppPopup       from './components/download-app-popup';
+import DialogManager          from './features/dialog-manager';
+import EndlessFloorCounter    from './components/endless-floor-counter';
+import Footer                 from './components/footer';
+import GameMenus              from './features/game-menus';
+import World                  from './features/world';
+import Viewport               from './components/viewport';
+import useGameViewportScaling from './features/app-state/actions/use-game-viewport-scaling';
 
-const App = (props) => {
+const App = ({ appState, world }) => {
 
-  const [showDl, setShowDl] = useState(false);
+  useGameViewportScaling();
 
-  let mobileVersion = false;
-
-  const nativeApp = window.location.search === '?nativeApp=true';
-
-  if(nativeApp || isMobile) {
-    mobileVersion = true;
-  }
-
-  const { optOutDownload } = props.appState;
-  const { gameMode, floorNum } = props.world;
-  const { height, width } = useWindowSize();
+  const [showDownloadPopup, setShowDownloadPopup] = useState(false);
 
   // disable scrolling of the page
   // prevents iOS Safari bouncing during movement
   useEffect(() => {
-    disableBodyScroll(document.getElementById('root'));
+    disableBodyScroll(document.getElementById('react-rpg'));
     return clearAllBodyScrollLocks;
   }, []);
 
-  // check if we are on the webView version, and if not
+  // if this is not the react native app and they haven't opted out,
   // show the user a dialog to download the app
   useEffect(() => {
     if(!nativeApp && !optOutDownload) {
-      setShowDl(true);
+      setShowDownloadPopup(true);
     }
   }, []);
 
-  let largeView = false;
-  let sideMenu = false;
-  // if we have a wide screen size
-  if(width > 410) {
-    largeView = true;
-    // if the screen size is too short
-    if(height < 680) sideMenu = true;
-    if(height <= 410) largeView = false;
-  }
-  // don't switch to side menu if there's no horizontal room
-  if(width < 600) {
-    sideMenu = false;
+  const { optOutDownload, sideMenu } = appState;
+  const { gameMode, floorNum } = world;
+
+  let showFooter = true;
+
+  const nativeApp = window.location.search === '?nativeApp=true';
+  // don't show the footer if on a mobile device
+  // or using the native app query param
+  if(nativeApp || isMobile) {
+    showFooter = false;
   }
 
   return(
-    <React.Fragment>
-
-      { showDl ? <DownloadAppPopup onClose={() => setShowDl(false)} /> : null }
+    <>
+      <DownloadAppPopup
+        open={showDownloadPopup}
+        onClose={() => setShowDownloadPopup(false)} />
 
       <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
 
-        <Viewport largeView={largeView} sideMenu={sideMenu}>
+        <Viewport>
 
-          <World largeView={largeView} />
+          <World />
 
           <DialogManager />
 
           {/* Show the floor counter when playing endless mode */}
-          { gameMode === 'endless' ? <EndlessFloorCounter floor={floorNum} /> : null }
+          { gameMode === 'endless' && <EndlessFloorCounter floor={floorNum} /> }
 
         </Viewport>
 
-        <GameMenus sideMenu={sideMenu} largeView={largeView} />
+        <GameMenus />
 
       </div>
 
-      { mobileVersion ? null : <Footer /> }
-
-    </React.Fragment>
+      { showFooter && <Footer /> }
+    </>
   );
-}
+};
 
 const mapStateToProps = ({ appState, world }) => ({ appState, world });
 

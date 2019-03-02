@@ -2,23 +2,16 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 import Sound                from 'react-sound';
-// player/monster sounds
+
+import MonsterAttack  from '../monsters/assets/monster-attack.wav';
 import MonsterDeath   from '../monsters/assets/monster-death.wav';
+import MonsterSlash   from '../monsters/assets/monster-slash.png';
 import PlayerDeath    from './assets/player-death.mp3';
+import SwordSlash     from './assets/sword-slash.png';
 import PlayerStep     from './assets/player-step.wav';
 import SwordSwish     from './assets/player-sword-swish.wav';
-import MonsterAttack  from '../monsters/assets/monster-attack.wav';
-// player/monster animation spritesheets
 import WalkSprite     from './assets/player_walk.png';
-import SwordSlash     from './assets/sword-slash.png';
-import MonsterSlash   from '../monsters/assets/monster-slash.png';
-// other local imports
-import store          from '../../config/store';
-import playerControls from './controls';
-import {
-  ANIMATION_SPEED,
-  SPRITE_SIZE
-} from '../../config/constants';
+import { ANIMATION_SPEED, SPRITE_SIZE } from '../../config/constants';
 
 import './styles.scss';
 
@@ -44,7 +37,7 @@ class Player extends Component {
     // detemine when the player has moved
     if(prevProps.player.playerMoved !== this.props.player.playerMoved) {
       let animationWalkSound = null;
-      if(store.getState().world.sound) {
+      if(this.props.gameMenu.sound) {
         animationWalkSound = (
           <Sound
             url={PlayerStep}
@@ -61,7 +54,7 @@ class Player extends Component {
     // see if player died
     else if(prevProps.player.playerDied !== this.props.player.playerDied) {
       let playerDeath = null;
-      if(store.getState().world.sound) {
+      if(this.props.gameMenu.sound) {
         playerDeath = (
           <Sound
             url={PlayerDeath}
@@ -78,7 +71,7 @@ class Player extends Component {
     // see if a monster died
     else if(prevProps.player.monsterDied !== this.props.player.monsterDied) {
       let monsterDeath = null;
-      if(store.getState().world.sound) {
+      if(this.props.gameMenu.sound) {
         monsterDeath = (
           <Sound
             url={MonsterDeath}
@@ -95,7 +88,7 @@ class Player extends Component {
     // see if a monster attacked the player
     else if(prevProps.player.monsterAttacked !== this.props.player.monsterAttacked) {
       let monsterAnimationAttackSound = null;
-      if(store.getState().world.sound) {
+      if(this.props.gameMenu.sound) {
         monsterAnimationAttackSound = (
           <Sound
             url={MonsterAttack}
@@ -129,7 +122,7 @@ class Player extends Component {
         default:
       }
       let animationAttackSound = null;
-      if(store.getState().world.sound) {
+      if(this.props.gameMenu.sound) {
         animationAttackSound = (
           <Sound
             url={SwordSwish}
@@ -146,7 +139,9 @@ class Player extends Component {
   }
 
   render() {
-    const { animationPlay, attackAnimationPlay, attackAnimationLoc, animationWalkSound, animationAttackSound, monsterAnimationAttackSound, monsterAttackAnimationPlay, monsterDeath, playerDeath } = this.state;
+    const { animationPlay, attackAnimationPlay, attackAnimationLoc,
+      animationWalkSound, animationAttackSound, monsterAnimationAttackSound,
+      monsterAttackAnimationPlay, monsterDeath, playerDeath } = this.state;
     const { player, dialog } = this.props;
 
     const { gameStart } = dialog;
@@ -160,7 +155,7 @@ class Player extends Component {
         spriteLocation = `${SPRITE_SIZE*0}px`;
         break;
       case 'EAST':
-        spriteLocation = `${SPRITE_SIZE*1}px`;
+        spriteLocation = `${SPRITE_SIZE}px`;
         break;
       case 'WEST':
         spriteLocation = `${SPRITE_SIZE*2}px`;
@@ -172,7 +167,7 @@ class Player extends Component {
     }
 
     return (
-      <div className='player-animation'
+      <div className='player__animation'
         style={{
           top: player.position[1],
           left: player.position[0],
@@ -188,29 +183,25 @@ class Player extends Component {
         { playerDeath }
 
         {
-          monsterAttackAnimationPlay === 'running' ?
-            <div className='monster-slash'
+          monsterAttackAnimationPlay === 'running' &&
+            <div className='monster__slash'
               style={{ backgroundImage: `url('${MonsterSlash}')` }} />
-            :
-            null
         }
 
         {
-          attackAnimationPlay === 'running' ?
-            <div className='sword-slash'
+          attackAnimationPlay === 'running' &&
+            <div className='sword__slash'
               style={{
                 top: attackAnimationLoc[1],
                 left: attackAnimationLoc[0],
                 backgroundImage: `url('${SwordSlash}')`
               }} />
-            :
-            null
         }
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ player, dialog }) => ({ player, dialog });
+const mapStateToProps = ({ gameMenu, player, dialog }) => ({ gameMenu, player, dialog });
 
-export default connect(mapStateToProps)(playerControls(ReactTimeout(Player)));
+export default connect(mapStateToProps)(ReactTimeout(Player));

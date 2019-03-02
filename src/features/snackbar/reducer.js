@@ -1,23 +1,41 @@
 
 const initialState = {
-  notEnoughGold: ''
+  notEnoughGold: '',
+  tooManyItems: '',
+  itemDropped: '',
+  itemReceived: ''
 };
 
-const snackbarReducer = (state = initialState, action) => {
+const snackbarReducer = (state = initialState, { type, payload }) => {
 
-  let newState = Object.assign({}, state);
-
-  switch(action.type) {
+  switch(type) {
 
     case 'NOT_ENOUGH_GOLD':
-      newState.notEnoughGold = action.payload.name + '-' + (new Date().getTime());
+      return {
+        ...state,
+        notEnoughGold: `${payload.name}-${new Date().getTime()}`
+      };
 
-      return newState;
+    case 'TOO_MANY_ITEMS':
+      return {
+        ...state,
+        tooManyItems: `${payload.name}-${new Date().getTime()}`
+      };
+
+    case 'GET_ITEM':
+      return {
+        ...state,
+        itemReceived: `${payload.name}-${new Date().getTime()}`
+      };
+
+    case 'DROP_ITEM':
+      return {
+        ...state,
+        itemDropped: `${payload.name}-${new Date().getTime()}`
+      };
 
     case 'RESET':
-      return {
-        notEnoughGold: ''
-      };
+      return initialState;
 
     default:
       return state;

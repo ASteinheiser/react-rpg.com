@@ -1,99 +1,74 @@
-import React from 'react';
+import _cloneDeep from 'lodash.clonedeep';
 
-import Monsters        from '../../data/monsters';
 import { SPRITE_SIZE } from '../../config/constants';
-import { uuidv4 }      from '../../modules/uuid-v4.js';
+import monsterData     from '../../data/monsters';
+import uuidv4          from '../../utils/uuid-v4.js';
 
 const initialState = {
   components: {}
 };
 
-const monstersReducer = (state = initialState, action) => {
+const monstersReducer = (state = initialState, { type, payload }) => {
 
-  let newState = Object.assign({}, state);
+  let newState;
 
-  switch(action.type) {
+  switch(type) {
 
     case 'MOVE_MONSTER':
-      let update = action.payload;
+      newState = _cloneDeep(state);
 
-      newState.components[update.map][update.id].props.monster.position = update.position;
-
-      return newState;
-
-    case 'KILL_MONSTER':
-      delete newState.components[action.payload.map][action.payload.id];
+      newState.components[payload.map][payload.id].position = payload.position;
 
       return newState;
 
-    // deal damage to individual monster
     case 'DAMAGE_TO_MONSTER':
-      const { id, damage } = action.payload;
-      // deal damage to monster
-      newState.components[action.payload.map][id].props.monster.hp -= damage;
+      newState = _cloneDeep(state);
+      // subtract the damage from monster hp
+      newState.components[payload.map][payload.id].hp -= payload.damage;
+      // if monster has 0 or less hp, kill it
+      if(newState.components[payload.map][payload.id].hp <= 0) {
+        delete newState.components[payload.map][payload.id];
+      }
 
       return newState;
 
     // load a new set of monsters
     case 'ADD_MONSTERS':
-      let { monsters, map } = action.payload;
+      newState = _cloneDeep(state);
       // save monsters by the map
-      if(!newState.components[map]) {
-        newState.components[map] = {};
+      if(!newState.components[payload.map]) {
+        newState.components[payload.map] = {};
         // render monsters
-        monsters.forEach(monster => {
+        payload.monsters.forEach(monster => {
           // generate a unique id (for tracking purposes)
-          let uuid = uuidv4();
-          monster.id = uuid;
-          // merge the initial position with monster stats
-          monster = Object.assign({}, monster, Monsters[monster.type].stats);
+          const uuid = uuidv4();
+          // merge the id, monster stats, and position
           // set the position from tile(x,y) to actual pixel size
-          monster.position = monster.position.map(value => value * SPRITE_SIZE);
-          // set component key with monster id
-          const { Comp } = Monsters[monster.type];
-          newState.components[map][uuid] = ( <Comp monster={monster} key={uuid} /> );
+          monster = {
+            id: uuid,
+            position: monster.position.map(value => value * SPRITE_SIZE),
+            ...monsterData[monster.type]
+          };
+          newState.components[payload.map][uuid] = monster;
         });
       }
 
       return newState;
 
     case 'REVEAL_MONSTER':
-      // update the current monster's visible prop
-      newState.components[action.payload.map][action.payload.id].props.monster.visible = true;
+      newState = _cloneDeep(state);
+
+      newState.components[payload.map][payload.id].visible = true;
       return newState;
 
     case 'HIDE_MONSTER':
-      // update the current monster's visible prop
-      newState.components[action.payload.map][action.payload.id].props.monster.visible = false;
+      newState = _cloneDeep(state);
+
+      newState.components[payload.map][payload.id].visible = false;
       return newState;
 
     case 'RESET':
-      return {
-        components: {}
-      };
-
-    case 'persist/REHYDRATE':
-      if(!action.payload) return state;
-
-      const { components } = action.payload.monsters;
-      const maps = Object.keys(components);
-
-      // return if there are no maps persisted
-      if(maps.length === 0) return state;
-
-      // find the monster data on each map and load the react components
-      for(let i = 0; i < maps.length; i ++) {
-        const monstersForMap = components[maps[i]];
-        newState.components[maps[i]] = {};
-        for(let j = 0; j < Object.keys(monstersForMap).length; j ++) {
-          const monsterObj = monstersForMap[Object.keys(monstersForMap)[j]];
-          const monster = monsterObj.props.monster;
-          // set component key with monster id
-          const { Comp } = Monsters[monster.type];
-          newState.components[maps[i]][monsterObj.key] = ( <Comp monster={monster} key={monsterObj.key} /> );
-        }
-      }
-      return newState;
+      return initialState;
 
     default:
       return state;

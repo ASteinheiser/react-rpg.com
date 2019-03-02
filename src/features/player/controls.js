@@ -1,17 +1,121 @@
-import Hammer    from 'hammerjs';
-import _debounce from 'lodash.debounce';
+import { useEffect } from 'react';
+import { connect }   from 'react-redux';
+import Hammer        from 'hammerjs';
+import _debounce     from 'lodash.debounce';
 
-import movePlayer          from './movement';
-import attackMonster       from './attack-monster';
-import store               from '../../config/store';
+import attackMonster       from './actions/attack-monster';
+import movePlayer          from './actions/move-player';
+import isGamePaused        from '../dialog-manager/actions/is-game-paused';
 import { ANIMATION_SPEED } from '../../config/constants';
 
-var intervalId = null;
+const ANIMATION_HOLD_SPEED = ANIMATION_SPEED * 1.25;
 
-export default function Controls(player) {
+let intervalId = null;
+
+const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
+
+  const _handleKeyDown = _debounce(event => {
+    // if the game is not paused by dialogs
+    if(!isGamePaused()) handleKeyDown(event);
+  },
+    ANIMATION_HOLD_SPEED,
+    { maxWait: ANIMATION_HOLD_SPEED, leading: true, trailing: false }
+  );
+
+  const _swipe = _debounce(({ direction, offsetDirection }) => {
+    // return if the game is paused by dialogs
+    if(isGamePaused()) return;
+    // if we get a bad pan, use the best guess
+    if(direction === 1) direction = offsetDirection;
+
+    switch(direction) {
+      case 8:
+        movePlayer('NORTH');
+        break;
+      case 16:
+        movePlayer('SOUTH');
+        break;
+      case 2:
+        movePlayer('WEST');
+        break;
+      case 4:
+        movePlayer('EAST');
+        break;
+      default:
+        // console.log(`Unmapped pan direction ${direction}`);
+    }
+  },
+    ANIMATION_SPEED,
+    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
+  );
+
+  const _swipeHold = _debounce(({ direction, offsetDirection }) => {
+    // return if the game is paused by dialogs or in settings mode
+    if(isGamePaused()) return;
+    // if we get a bad pan, use the best guess
+    if(direction === 1) direction = offsetDirection;
+
+    intervalId = setInterval(() => {
+      switch(direction) {
+        case 8:
+          movePlayer('NORTH');
+          break;
+        case 16:
+          movePlayer('SOUTH');
+          break;
+        case 2:
+          movePlayer('WEST');
+          break;
+        case 4:
+          movePlayer('EAST');
+          break;
+        default:
+          // console.log(`Unmapped pan direction ${direction}`);
+      }
+    }, ANIMATION_HOLD_SPEED);
+  },
+    ANIMATION_SPEED,
+    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
+  );
+
+  const _tap = _debounce(() => {
+    // if the game is not paused by dialogs
+    if(!isGamePaused()) attackMonster();
+  },
+    ANIMATION_SPEED,
+    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
+  );
+
+  const _clearInterval = () => {
+    clearInterval(intervalId);
+  };
+
+  useEffect(() => {
+    // enable keyboard for player controls
+    window.addEventListener('keydown', _handleKeyDown);
+    // enable touch for player controls
+    const hammertime = new Hammer(document.getElementById('window'));
+    // settings for touch controls
+    hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+    hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+    hammertime.get('tap').set({ taps: 2 });
+    // bind touch control functions
+    hammertime.on('swipe', _swipe);
+    hammertime.on('panend', _clearInterval);
+    hammertime.on('panstart', _swipeHold);
+    hammertime.on('tap', _tap);
+    // make sure to unbind all listeners on unmount
+    return () => {
+      window.removeEventListener('keydown', _handleKeyDown);
+      hammertime.off('swipe', _swipe);
+      hammertime.off('panend', _clearInterval);
+      hammertime.off('panstart', _swipeHold);
+      hammertime.off('tap', _tap);
+    };
+  }, []);
+
   function handleKeyDown(event) {
     event.preventDefault();
-
     // move with 'WASD' or Arrow keys
     switch(event.keyCode) {
       case 37:
@@ -35,89 +139,9 @@ export default function Controls(player) {
     }
   }
 
-  // enable keyboard for player controls
-  window.addEventListener('keydown', _debounce((event) => {
-    // if the game is not paused by dialogs
-    if(!(store.getState().dialog.paused)) handleKeyDown(event);
-  },
-    ANIMATION_SPEED,
-    { maxWait: ANIMATION_SPEED, leading: true, trailing: false })
-  );
+  return null;
+};
 
-  // enable touch for player controls
-  let hammertime = new Hammer(document.getElementById('window'));
+const actions = { attackMonster, movePlayer, isGamePaused };
 
-  hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-  hammertime.get('tap').set({ taps: 2 });
-
-  hammertime.on('swipe', _debounce(({ direction, offsetDirection }) => {
-    // return if the game is paused by dialogs
-    if(store.getState().dialog.paused) return;
-    // if we get a bad pan, use the best guess
-    if(direction === 1) direction = offsetDirection;
-
-    switch(direction) {
-      case 8:
-        movePlayer('NORTH');
-        break;
-      case 16:
-        movePlayer('SOUTH');
-        break;
-      case 2:
-        movePlayer('WEST');
-        break;
-      case 4:
-        movePlayer('EAST');
-        break;
-      default:
-        // console.log(`Unmapped pan direction ${direction}`);
-    }
-  },
-    ANIMATION_SPEED,
-    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
-  ));
-
-  hammertime.on('panend', _ => {
-    clearInterval(intervalId);
-  });
-
-  hammertime.on('panstart', _debounce(({ direction, offsetDirection }) => {
-    // return if the game is paused by dialogs
-    if(store.getState().dialog.paused) return;
-    // if we get a bad pan, use the best guess
-    if(direction === 1) direction = offsetDirection;
-
-    intervalId = setInterval(() => {
-      switch(direction) {
-        case 8:
-          movePlayer('NORTH');
-          break;
-        case 16:
-          movePlayer('SOUTH');
-          break;
-        case 2:
-          movePlayer('WEST');
-          break;
-        case 4:
-          movePlayer('EAST');
-          break;
-        default:
-          // console.log(`Unmapped pan direction ${direction}`);
-      }
-    }, ANIMATION_SPEED * 1.25);
-  },
-    ANIMATION_SPEED,
-    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
-  ));
-
-  hammertime.on('tap', _debounce(() => {
-    // if the game is not paused by dialogs
-    if(!(store.getState().dialog.paused)) attackMonster();
-  },
-    ANIMATION_SPEED,
-    { maxWait: ANIMATION_SPEED, leading: true, trailing: false })
-  );
-
-  return player;
-}
+export default connect(null, actions)(Controls);

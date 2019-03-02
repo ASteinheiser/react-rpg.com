@@ -1,31 +1,22 @@
-import React from 'react';
+import React       from 'react';
+import { connect } from 'react-redux';
 
-import store from '../../../config/store';
+import toggleSettings from '../../dialog-manager/actions/toggle-settings';
 
 import './styles.scss';
 
-const GameSettings = (props) => {
-
-  function toggleSettings() {
-    if(store.getState().dialog.settings) {
-      store.dispatch({
-        type: 'CLOSE_SETTINGS',
-        payload: {}
-      });
-    } else {
-      store.dispatch({
-        type: 'OPEN_SETTINGS',
-        payload: {}
-      });
-    }
-  }
+const GameSettings = ({ toggleSettings }) => {
 
   return(
-    <div className='game-settings-box white-border'
-      onClick={toggleSettings}>
-      <i className={`fa fa-cog game-settings-button`} />
-    </div>
-  );
-}
+    <button onClick={toggleSettings}
+      className='game-settings__button white-border'>
 
-export default GameSettings;
+      <i className={`fa fa-cog game-settings__icon`} />
+
+    </button>
+  );
+};
+
+const actions = { toggleSettings };
+
+export default connect(null, actions)(GameSettings);

@@ -1,30 +1,24 @@
 import React, { useState } from 'react';
+import { connect }         from 'react-redux';
 
 import Button         from '../../../../components/button';
 import ConfirmDialog  from '../../../../components/confirm-dialog';
 import Dialog         from '../../../../components/dialog';
-import store          from '../../../../config/store';
-import resetGameState from '../../../../modules/reset-game-state';
+import closeSettings  from '../../actions/close-settings';
+import resetGameState from '../../../world/actions/reset-game-state';
 
 import './settings-dialog.scss';
 
-const SettingsDialog = (props) => {
+const SettingsDialog = ({ resetGameState, closeSettings }) => {
 
   const [confirmQuit, setConfirmQuit] = useState(false);
 
-  function handleClose() {
-    store.dispatch({
-      type: 'CLOSE_SETTINGS',
-      payload: {}
-    });
-  }
-
   return(
     <Dialog>
-      <div className='flex-column settings-dialog-container'>
-        <div className='settings-dialog-title'>
+      <div className='flex-column settings-dialog__container'>
+        <span className='settings-dialog__title'>
           {'Settings'}
-        </div>
+        </span>
 
         <Button
           onClick={() => setConfirmQuit(true)}
@@ -32,23 +26,21 @@ const SettingsDialog = (props) => {
           title='Return to Menu' />
 
         <Button
-          onClick={handleClose}
+          onClick={closeSettings}
           icon='times'
           title='Close' />
       </div>
 
-      {
-        confirmQuit ?
-          <ConfirmDialog
-            text='Are you sure you want to quit? You will lose all progress...'
-            onClose={() => setConfirmQuit(false)}
-            confirm={resetGameState} />
-          :
-          null
-      }
+      <ConfirmDialog
+        open={confirmQuit}
+        text='Are you sure you want to quit? You will lose all progress...'
+        onClose={() => setConfirmQuit(false)}
+        confirm={resetGameState} />
 
     </Dialog>
   );
-}
+};
 
-export default SettingsDialog;
+const actions = { resetGameState, closeSettings };
+
+export default connect(null, actions)(SettingsDialog);

@@ -2,7 +2,9 @@ import React from 'react';
 
 import './styles.scss';
 
-const StatsItem = (props) => {
+const StatsItem = ({ stats }) => {
+
+  let { name } = stats;
 
   function getColor(name) {
     switch(name) {
@@ -21,21 +23,21 @@ const StatsItem = (props) => {
     }
   }
 
-  const { stats } = props;
-
-  let name = stats.name;
   if(name === 'damage') name = 'attack';
 
   return(
-    <div className='flex-row stats-item-container'>
-      <span>
-        { name }
-      </span>
+    <div className='flex-row stats-item__container'>
+
+      <span>{ name }</span>
+
       <span style={{ color: `var(--${getColor(stats.name)})` }}>
-        { '+' + stats.value + (stats.name === 'heal' ? '%' : '') }
+
+        { `+${stats.value}${stats.name === 'heal' ? '%' : ''}` }
+
       </span>
+
     </div>
   );
-}
+};
 
 export default StatsItem;

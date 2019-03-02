@@ -1,28 +1,13 @@
-import React from 'react';
-
-import Monster    from '../../../features/monsters/monster';
 import LichSprite from './lich.png';
 
-function Lich(props) {
-  const { monster } = props;
-
-  monster.sprite = LichSprite;
-
-  return (
-    <Monster monster={monster} />
-  );
-}
-
-const stats = {
+const Lich = {
   hp: 100,
   maxHp: 100,
   damage: 22,
   defence: 12,
   exp: 1000,
-  type: 'lich'
+  type: 'lich',
+  sprite: LichSprite
 };
 
-export default {
-  Comp: Lich,
-  stats
-};
+export default Lich;
