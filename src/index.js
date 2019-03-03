@@ -1,7 +1,7 @@
-import React           from 'react';
-import ReactDOM        from 'react-dom';
-import { Provider }    from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import React, { Component } from 'react';
+import ReactDOM             from 'react-dom';
+import { Provider }         from 'react-redux';
+import { PersistGate }      from 'redux-persist/integration/react';
 
 import store, { persistor } from './config/store';
 import App                  from './App';
@@ -21,16 +21,27 @@ soundManager.setup({
   ignoreMobileRestrictions: true
 });
 
-const ConnectedApp = () => (
-  <Provider store={store}>
-    <PersistGate
-      loading={<Spinner />}
-      persistor={persistor}>
+class ConnectedApp extends Component {
 
-      <App />
+  // refresh the local storage in case the redux store structure is old
+  componentDidCatch() {
+    localStorage.clear();
+    window.location.reload();
+  }
 
-    </PersistGate>
-  </Provider>
-);
+  render() {
+    return(
+      <Provider store={store}>
+        <PersistGate
+          loading={<Spinner />}
+          persistor={persistor}>
+
+          <App />
+
+        </PersistGate>
+      </Provider>
+    );
+  }
+}
 
 ReactDOM.render(<ConnectedApp />, document.getElementById('react-rpg'));
