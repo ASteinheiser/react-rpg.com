@@ -173,6 +173,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
         acceptIcon={'trash'}
         confirm={() => {
           dropItem(data);
+          setConfirmDrop(false);
           onClose();
         }}
         onClose={() => setConfirmDrop(false)} />
@@ -185,6 +186,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
         acceptIcon={'coins'}
         confirm={() => {
           sellItem(data);
+          setConfirmSell(false);
           onClose();
         }}
         onClose={() => setConfirmSell(false)} />
@@ -197,6 +199,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
         acceptIcon={'coins'}
         confirm={() => {
           buyItem(data);
+          setConfirmBuy(false);
           onClose();
         }}
         onClose={() => setConfirmBuy(false)} />
@@ -209,6 +212,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
         acceptIcon={'medkit'}
         confirm={() => {
           consumePotion(data);
+          setConfirmPotion(false);
           onClose();
         }}
         onClose={() => setConfirmPotion(false)} />
