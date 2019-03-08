@@ -13,6 +13,10 @@ You can also test the latest changes from the Staging branch before they go live
 
 [Play the Beta version here!](http://staging.react-rpg.com)
 
+## Read more about React RPG
+- [Medium: Making an RPG with React + Redux](https://medium.com/@andrewsteinheiser/making-an-rpg-with-react-redux-dcfffdb06797)
+- [Made With React Native Interview](http://madewithreactnative.com/react-rpg/)
+
 # [View Roadmap](docs/ROADMAP.md)
 
 # [Want to Contribute?](docs/CONTRIBUTING.md)
