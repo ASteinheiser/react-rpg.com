@@ -6,13 +6,14 @@ import _debounce     from 'lodash.debounce';
 import attackMonster       from './actions/attack-monster';
 import movePlayer          from './actions/move-player';
 import isGamePaused        from '../dialog-manager/actions/is-game-paused';
+import toggleInventory     from '../dialog-manager/actions/toggle-inventory';
 import { ANIMATION_SPEED } from '../../config/constants';
 
 const ANIMATION_HOLD_SPEED = ANIMATION_SPEED * 1.25;
 
 let intervalId = null;
 
-const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
+const Controls = ({ isGamePaused, attackMonster, movePlayer, toggleInventory }) => {
 
   const _handleKeyDown = _debounce(event => {
     // if the game is not paused by dialogs
@@ -134,6 +135,9 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
       case 32:
         // attack with enter or space key
         return attackMonster();
+      case 73:
+        // open inventory with "I" key
+        return toggleInventory();
       default:
         // console.log('key not mapped: ', event.keyCode);
     }
@@ -142,6 +146,6 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
   return null;
 };
 
-const actions = { attackMonster, movePlayer, isGamePaused };
+const actions = { attackMonster, movePlayer, toggleInventory, isGamePaused };
 
 export default connect(null, actions)(Controls);
