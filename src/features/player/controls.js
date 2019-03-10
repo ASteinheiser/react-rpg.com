@@ -18,6 +18,9 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer, toggleInventory }) 
   const _handleKeyDown = _debounce(event => {
     // if the game is not paused by dialogs
     if(!isGamePaused()) handleKeyDown(event);
+
+    // toggle inventory visibility regardless of whether it is paused by dialogs
+    handleInventoryVisibilityKeyDown(event);
   },
     ANIMATION_HOLD_SPEED,
     { maxWait: ANIMATION_HOLD_SPEED, leading: true, trailing: false }
@@ -115,6 +118,12 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer, toggleInventory }) 
     };
   }, []);
 
+  function handleInventoryVisibilityKeyDown(event) {
+    event.preventDefault();
+    // open inventory with "I" key
+    if(event.keyCode === 73) return toggleInventory();
+  }
+
   function handleKeyDown(event) {
     event.preventDefault();
     // move with 'WASD' or Arrow keys
@@ -135,9 +144,6 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer, toggleInventory }) 
       case 32:
         // attack with enter or space key
         return attackMonster();
-      case 73:
-        // open inventory with "I" key
-        return toggleInventory();
       default:
         // console.log('key not mapped: ', event.keyCode);
     }
