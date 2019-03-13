@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
-import Button          from '../../components/button';
+import InventoryButton from './button';
 import toggleInventory from '../dialog-manager/actions/toggle-inventory';
 
 import './styles.scss';
@@ -33,6 +33,24 @@ class Inventory extends Component {
     }
   }
 
+  handleKeyDown(event) {
+    event.preventDefault();
+    switch(event.keyCode) {
+      case 13:
+      case 32:
+        // Don't toggle the inventory visibility with any of these keys
+        // because right now, they're being used for the attack order.
+        break;
+      case 73:
+        // Don't trigger any of the other active keydown listeners.
+        event.stopPropagation();
+        // Toggle inventory with the "I" key.
+        this._toggleInventory();
+        break;
+      default:
+    }
+  }
+
   _toggleInventory() {
     // We can turn off the indicator if the inventory is opened
     // If we are closing the inventory, it is okay to turn off
@@ -51,10 +69,11 @@ class Inventory extends Component {
       <div className='flex-row inventory__container'>
         {
           !disabled &&
-            <Button
+            <InventoryButton
               small={sideMenu}
               indicator={newItemIndicator}
               onClick={this._toggleInventory.bind(this)}
+              onKeyDown={this.handleKeyDown.bind(this)}
               icon={open ?
                 'times' : 'briefcase'}
               iconStyle={open ?
