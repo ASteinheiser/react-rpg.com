@@ -6,21 +6,17 @@ import _debounce     from 'lodash.debounce';
 import attackMonster       from './actions/attack-monster';
 import movePlayer          from './actions/move-player';
 import isGamePaused        from '../dialog-manager/actions/is-game-paused';
-import toggleInventory     from '../dialog-manager/actions/toggle-inventory';
 import { ANIMATION_SPEED } from '../../config/constants';
 
 const ANIMATION_HOLD_SPEED = ANIMATION_SPEED * 1.25;
 
 let intervalId = null;
 
-const Controls = ({ isGamePaused, attackMonster, movePlayer, toggleInventory }) => {
+const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
 
   const _handleKeyDown = _debounce(event => {
     // if the game is not paused by dialogs
     if(!isGamePaused()) handleKeyDown(event);
-
-    // toggle inventory visibility regardless of whether it is paused by dialogs
-    handleInventoryVisibilityKeyDown(event);
   },
     ANIMATION_HOLD_SPEED,
     { maxWait: ANIMATION_HOLD_SPEED, leading: true, trailing: false }
@@ -118,12 +114,6 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer, toggleInventory }) 
     };
   }, []);
 
-  function handleInventoryVisibilityKeyDown(event) {
-    event.preventDefault();
-    // open inventory with "I" key
-    if(event.keyCode === 73) return toggleInventory();
-  }
-
   function handleKeyDown(event) {
     event.preventDefault();
     // move with 'WASD' or Arrow keys
@@ -152,6 +142,6 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer, toggleInventory }) 
   return null;
 };
 
-const actions = { attackMonster, movePlayer, toggleInventory, isGamePaused };
+const actions = { attackMonster, movePlayer, isGamePaused };
 
 export default connect(null, actions)(Controls);

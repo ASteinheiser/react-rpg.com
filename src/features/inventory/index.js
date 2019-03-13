@@ -15,6 +15,16 @@ class Inventory extends Component {
     };
   }
 
+  componentDidMount() {
+    // Attach this to listen for the inventory visibility toggle key.
+    window.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    // Clean up the event listener when this component unmounts.
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { inventory } = this.props.dialog;
     const { itemReceived, itemDropped } = this.props.snackbar;
@@ -34,12 +44,18 @@ class Inventory extends Component {
   }
 
   handleKeyDown = event => {
+    event.preventDefault();
     switch(event.keyCode) {
       case 13:
       case 32:
         // Don't toggle the inventory visibility with any of these keys
         // because right now, they're being used for the attack order.
-        event.preventDefault();
+        break;
+      case 73:
+        // Don't trigger any of the other active keydown listeners.
+        event.stopPropagation();
+        // Toggle inventory with the "I" key.
+        this._toggleInventory();
         break;
       default:
     }
