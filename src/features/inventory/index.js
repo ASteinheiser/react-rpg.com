@@ -63,7 +63,7 @@ class Inventory extends Component {
     }
   }
 
-  _toggleInventory() {
+  _toggleInventory = event => {
     // We can turn off the indicator if the inventory is opened
     // If we are closing the inventory, it is okay to turn off
     // indicator since it should be false already
@@ -84,7 +84,7 @@ class Inventory extends Component {
             <Button
               small={sideMenu}
               indicator={newItemIndicator}
-              onClick={this._toggleInventory.bind(this)}
+              onClick={this._toggleInventory}
               onKeyDown={this.handleKeyDown}
               icon={open ?
                 'times' : 'briefcase'}
