@@ -52,6 +52,8 @@ class Inventory extends Component {
         // because right now, they're being used for the attack order.
         break;
       case 73:
+        // Don't trigger the inventory when the button is hidden.
+        if (this.props.disabled) return; // Inventory hasn't been unmounted yet!
         // Don't trigger any of the other active keydown listeners.
         event.stopPropagation();
         // Toggle inventory with the "I" key.
