@@ -19,6 +19,14 @@ class Player extends Component {
   constructor(props) {
     super(props);
 
+    this.canvasRef = React.createRef();
+    this.directionMap = {
+      SOUTH: 0, // facing down, line 1 of spritesheet
+      NORTH: 1, // facinf up, line 2 of spritesheet
+      WEST: 2, // facing left, line 3 of spritesheet
+      EAST: 3 // facing right, line 4 of spritesheet
+    };
+
     this.state = {
       animationPlay: 'paused',
       attackAnimationPlay: 'paused',
@@ -32,10 +40,75 @@ class Player extends Component {
     };
   }
 
+  avatar(action, dir = 0) {
+    if (this.canvasRef && this.canvasRef.current) {
+      const ctx = this.canvasRef.current.getContext('2d');
+      const spriteLine = dir * SPRITE_SIZE;
+
+      let currentFrame = 0;
+      let currentTick = 0;
+      const ticksPerFrame = 5;
+
+      const draw = frame => {
+        ctx.clearRect(0, 0, SPRITE_SIZE, SPRITE_SIZE);
+        ctx.drawImage(
+          this.sprite,
+          frame * SPRITE_SIZE,
+          spriteLine,
+          SPRITE_SIZE,
+          SPRITE_SIZE,
+          0,
+          0,
+          SPRITE_SIZE,
+          SPRITE_SIZE
+        );
+      };
+
+      const update = () => {
+        currentTick += 1;
+
+        if (currentTick > ticksPerFrame) {
+          currentTick = 0;
+          currentFrame += 1;
+        }
+      };
+
+      const main = () => {
+        draw(currentFrame);
+        update();
+        const id = window.requestAnimationFrame(main);
+        if (currentFrame === 5) {
+          window.cancelAnimationFrame(id);
+          currentFrame = 0;
+        }
+      };
+
+      if (action === 'draw') {
+        draw(0);
+      }
+
+      if (action === 'animate') {
+        main();
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.sprite = new Image();
+    this.sprite.src = WalkSprite;
+    this.sprite.onload = () => {
+      this.avatar('draw', this.directionMap[this.props.player.direction]);
+    };
+  }
+
   // this is used to tell when to animate the player
   componentDidUpdate(prevProps, prevState) {
+    this.avatar('draw', this.directionMap[this.props.player.direction]);
+
     // detemine when the player has moved
     if(prevProps.player.playerMoved !== this.props.player.playerMoved) {
+      this.avatar('animate', this.directionMap[this.props.player.direction]);
+
       let animationWalkSound = null;
       if(this.props.gameMenu.sound) {
         animationWalkSound = (
@@ -46,10 +119,7 @@ class Player extends Component {
             volume={100} />
         );
       }
-      // animate the player
-      this.setState({ animationPlay: 'running', animationWalkSound });
-      // pause the infinite animation after 1 iteration
-      this.props.setTimeout(() => this.setState({ animationPlay: 'paused', animationWalkSound: null }), ANIMATION_SPEED);
+      this.props.setTimeout(() => this.setState({ animationWalkSound }), ANIMATION_SPEED);
     }
     // see if player died
     else if(prevProps.player.playerDied !== this.props.player.playerDied) {
@@ -139,8 +209,8 @@ class Player extends Component {
   }
 
   render() {
-    const { animationPlay, attackAnimationPlay, attackAnimationLoc,
-      animationWalkSound, animationAttackSound, monsterAnimationAttackSound,
+    const { attackAnimationPlay, attackAnimationLoc, animationWalkSound,
+      animationAttackSound, monsterAnimationAttackSound,
       monsterAttackAnimationPlay, monsterDeath, playerDeath } = this.state;
     const { player, dialog } = this.props;
 
@@ -148,33 +218,14 @@ class Player extends Component {
     // game start menu open, hide the player
     if(gameStart) return null;
 
-    // calculate pixel offset for the correct facing direction sprite
-    let spriteLocation;
-    switch(player.direction) {
-      case 'SOUTH':
-        spriteLocation = `${SPRITE_SIZE*0}px`;
-        break;
-      case 'EAST':
-        spriteLocation = `${SPRITE_SIZE}px`;
-        break;
-      case 'WEST':
-        spriteLocation = `${SPRITE_SIZE*2}px`;
-        break;
-      case 'NORTH':
-        spriteLocation = `${SPRITE_SIZE*3}px`;
-        break;
-      default:
-    }
-
     return (
       <div className='player__animation'
         style={{
           top: player.position[1],
-          left: player.position[0],
-          backgroundImage: `url('${WalkSprite}')`,
-          backgroundPositionY: spriteLocation,
-          animationPlayState: animationPlay
+          left: player.position[0]
         }}>
+
+        <canvas ref={this.canvasRef} width={40} height={40} />
 
         { animationWalkSound }
         { animationAttackSound }
