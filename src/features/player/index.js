@@ -14,6 +14,7 @@ import WalkSprite     from './assets/player_walk.png';
 import { ANIMATION_SPEED, SPRITE_SIZE } from '../../config/constants';
 
 import './styles.scss';
+import { throws } from 'assert';
 
 class Player extends Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class Player extends Component {
     };
 
     this.state = {
-      animationPlay: 'paused',
       attackAnimationPlay: 'paused',
       attackAnimationLoc: [0, 0],
       animationWalkSound: null,
@@ -37,7 +37,8 @@ class Player extends Component {
       monsterAnimationAttackSound: null,
       monsterDeath: null,
       playerDeath: null,
-      leftSideStride: true
+      leftSideStride: true,
+      stamp: 0
     };
   }
 
@@ -75,22 +76,16 @@ class Player extends Component {
       };
 
       const main = () => {
-        console.log(currentFrame, this.state.leftSideStride);
         draw(currentFrame);
         update();
         const id = window.requestAnimationFrame(main);
-        console.log(id);
-        if (this.state.leftSideStride && currentFrame === 5) {
+        if (this.state.leftSideStride && currentFrame >= 5) {
           window.cancelAnimationFrame(id);
-          this.setState({leftSideStride: !this.state.leftSideStride});
+          this.setState({ leftSideStride: false });
         }
-        if (!this.state.leftSideStride && currentFrame === 8) {
+        if (!this.state.leftSideStride && currentFrame >= 8) {
           window.cancelAnimationFrame(id);
-          this.setState({leftSideStride: !this.state.leftSideStride});
-        }
-        if (currentFrame > 8) {
-          window.cancelAnimationFrame(id);
-          currentFrame = 0;
+          this.setState({ leftSideStride: true });
         }
       };
 
@@ -117,9 +112,7 @@ class Player extends Component {
     this.avatar('draw', this.directionMap[this.props.player.direction]);
 
     // detemine when the player has moved
-    if(prevProps.player.playerMoved !== this.props.player.playerMoved) {
-      this.avatar('animate', this.directionMap[this.props.player.direction]);
-
+    if(prevProps.player.playerMoved !== this.props.player.playerMoved && this.state.stamp + ANIMATION_SPEED < Date.now()) {
       let animationWalkSound = null;
       if(this.props.gameMenu.sound) {
         animationWalkSound = (
@@ -130,7 +123,10 @@ class Player extends Component {
             volume={100} />
         );
       }
-      this.props.setTimeout(() => this.setState({ animationWalkSound }), ANIMATION_SPEED);
+      this.setState(
+        { stamp: Date.now(), animationWalkSound },
+        () => { this.avatar('animate', this.directionMap[this.props.player.direction]); }
+      );
     }
     // see if player died
     else if(prevProps.player.playerDied !== this.props.player.playerDied) {
