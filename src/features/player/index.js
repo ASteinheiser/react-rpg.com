@@ -36,7 +36,8 @@ class Player extends Component {
       monsterAttackAnimationPlay: 'paused',
       monsterAnimationAttackSound: null,
       monsterDeath: null,
-      playerDeath: null
+      playerDeath: null,
+      leftSideStride: true
     };
   }
 
@@ -45,7 +46,7 @@ class Player extends Component {
       const ctx = this.canvasRef.current.getContext('2d');
       const spriteLine = dir * SPRITE_SIZE;
 
-      let currentFrame = 0;
+      let currentFrame = this.state.leftSideStride ? 0 : 5;
       let currentTick = 0;
       const ticksPerFrame = 5;
 
@@ -74,10 +75,20 @@ class Player extends Component {
       };
 
       const main = () => {
+        console.log(currentFrame, this.state.leftSideStride);
         draw(currentFrame);
         update();
         const id = window.requestAnimationFrame(main);
-        if (currentFrame === 5) {
+        console.log(id);
+        if (this.state.leftSideStride && currentFrame === 5) {
+          window.cancelAnimationFrame(id);
+          this.setState({leftSideStride: !this.state.leftSideStride});
+        }
+        if (!this.state.leftSideStride && currentFrame === 8) {
+          window.cancelAnimationFrame(id);
+          this.setState({leftSideStride: !this.state.leftSideStride});
+        }
+        if (currentFrame > 8) {
           window.cancelAnimationFrame(id);
           currentFrame = 0;
         }
