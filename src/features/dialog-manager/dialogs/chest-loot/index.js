@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { connect }          from 'react-redux';
-
-import Button           from '../../../../components/button';
-import MicroDialog      from '../../../../components/micro-dialog';
-import pickupItem       from '../../../inventory/actions/pickup-item';
-import openChest        from '../../actions/open-chest';
+import { connect } from 'react-redux';
+import Button from '../../../../components/button';
+import MicroDialog from '../../../../components/micro-dialog';
+import pickupItem from '../../../inventory/actions/pickup-item';
+import openChest from '../../actions/open-chest';
 import closeChestDialog from '../../actions/close-chest-dialog';
+import { SPRITE_SIZE } from '../../../../config/constants';
 
 import './styles.scss';
 
@@ -49,8 +49,8 @@ const ChestLoot = ({ dialog, pickupItem, openChest, closeChestDialog }) => {
             <div className='flex-row chest-loot__item'>
               <div style={{
                   backgroundImage: `url('${item.image}')`,
-                  width: '40px',
-                  height: '40px'
+                  width: `${SPRITE_SIZE}px`,
+                  height: `${SPRITE_SIZE}px`
                 }} />
                 <span className='flex-column chest-loot__item-name'>
                   {item.name}

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { SPRITE_SIZE } from '../../config/constants';
 import InventorySlot from './inventory-slot.png';
 
 const EmptySlot = ({ margin, style, className, children }) => {
@@ -7,8 +7,8 @@ const EmptySlot = ({ margin, style, className, children }) => {
   const styles = {
     ...style,
     backgroundImage: `url('${InventorySlot}')`,
-    width: '40px',
-    height: '40px',
+    width: `${SPRITE_SIZE}px`,
+    height: `${SPRITE_SIZE}px`,
     margin
   };
 
@@ -23,8 +23,8 @@ export const DarkenSlot = () => {
   return (
     <div style={{
       backgroundColor: 'rgba(0, 0, 0, 0.25)',
-      width: 40,
-      height: 40
+      width: `${SPRITE_SIZE}px`,
+      height: `${SPRITE_SIZE}px`
     }} />
   );
 };

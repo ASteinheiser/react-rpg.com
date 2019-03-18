@@ -1,13 +1,11 @@
-import React       from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-
-import EmptySlot             from '../empty-slot';
-import { MAX_ITEMS_UPGRADE } from '../../config/constants';
-
+import EmptySlot from '../empty-slot';
+import { MAX_ITEMS_UPGRADE, SPRITE_SIZE } from '../../config/constants';
 import './styles.scss';
 
-const STANDARD_HEIGHT = 80;
-const EXTENDED_HEIGHT = 120;
+const initialHeight = SPRITE_SIZE * 2;
+const upgradedHeight= SPRITE_SIZE * 3;
 
 const BackpackItems = ({ viewItem, inventory }) => {
 
@@ -21,8 +19,8 @@ const BackpackItems = ({ viewItem, inventory }) => {
         onClick={() => viewItem(items[i])}
         style={{
           backgroundImage: `url('${items[i].image}')`,
-          width: '40px',
-          height: '40px',
+          width: `${SPRITE_SIZE}px`,
+          height: `${SPRITE_SIZE}px`,
           cursor: 'pointer'
         }} />
     );
@@ -30,7 +28,7 @@ const BackpackItems = ({ viewItem, inventory }) => {
 
   return (
     <div className='flex-column white-border backpack-items__container'
-      style={{ minHeight: maxItems === MAX_ITEMS_UPGRADE ? EXTENDED_HEIGHT : STANDARD_HEIGHT }}>
+      style={{ minHeight: maxItems === MAX_ITEMS_UPGRADE ? upgradedHeight: initialHeight }}>
 
       <div className='flex-row'>
         <EmptySlot>{ itemSlots[0] }</EmptySlot>

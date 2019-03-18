@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { connect }         from 'react-redux';
-
-import Button        from '../button';
+import { connect } from 'react-redux';
+import Button from '../button';
 import ConfirmDialog from '../confirm-dialog';
-import EmptySlot     from '../empty-slot';
-import MicroDialog   from '../micro-dialog';
-import StatsItem     from './stats-item';
-import uuidv4        from '../../utils/uuid-v4';
-
+import EmptySlot from '../empty-slot';
+import MicroDialog from '../micro-dialog';
+import StatsItem from './stats-item';
+import { SPRITE_SIZE } from '../../config/constants';
+import uuidv4 from '../../utils/uuid-v4';
 import consumePotion from '../../features/inventory/actions/consume-potion';
-import buyItem       from '../../features/inventory/actions/buy-item';
-import dropItem      from '../../features/inventory/actions/drop-item';
-import equipItem     from '../../features/inventory/actions/equip-item';
-import unequipItem   from '../../features/inventory/actions/unequip-item';
-import sellItem      from '../../features/inventory/actions/sell-item';
+import buyItem from '../../features/inventory/actions/buy-item';
+import dropItem from '../../features/inventory/actions/drop-item';
+import equipItem from '../../features/inventory/actions/equip-item';
+import unequipItem from '../../features/inventory/actions/unequip-item';
+import sellItem from '../../features/inventory/actions/sell-item';
 
 import './styles.scss';
 
@@ -144,8 +143,8 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
         <EmptySlot className='white-border view-item__image'>
           <div style={{
               backgroundImage: `url('${data.image}')`,
-              width: '40px',
-              height: '40px'
+              width: `${SPRITE_SIZE}px`,
+              height: `${SPRITE_SIZE}px`
             }} />
         </EmptySlot>
 

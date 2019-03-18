@@ -1,5 +1,5 @@
 # React RPG
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 React RPG is an Open-Source RPG made with React and Redux. The game is a turn-based, dungeon crawler that comes with two game modes: Story and Endless. Story mode will lead you through a short story while introducing you to the most powerful creatures. In Endless mode, a unique challenge waits around every corner, as no two maps are the same.
 
@@ -27,8 +27,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars1.githubusercontent.com/u/9949512?v=4" width="100px;" alt="Andrew Steinheiser"/><br /><sub><b>Andrew Steinheiser</b></sub>](http://iamandrew.io)<br />[🤔](#ideas-ASteinheiser "Ideas, Planning, & Feedback") [💬](#question-ASteinheiser "Answering Questions") [⚠️](https://github.com/ASteinheiser/react-rpg.com/commits?author=ASteinheiser "Tests") [💻](https://github.com/ASteinheiser/react-rpg.com/commits?author=ASteinheiser "Code") [📖](https://github.com/ASteinheiser/react-rpg.com/commits?author=ASteinheiser "Documentation") [🚧](#maintenance-ASteinheiser "Maintenance") [🔧](#tool-ASteinheiser "Tools") [👀](#review-ASteinheiser "Reviewed Pull Requests") | [<img src="https://avatars0.githubusercontent.com/u/9552208?v=4" width="100px;" alt="Alphanumber"/><br /><sub><b>Alphanumber</b></sub>](https://github.com/Alphanumber)<br />[🤔](#ideas-Alphanumber "Ideas, Planning, & Feedback") |
-| :---: | :---: |
+| [<img src="https://avatars1.githubusercontent.com/u/9949512?v=4" width="100px;" alt="Andrew Steinheiser"/><br /><sub><b>Andrew Steinheiser</b></sub>](http://iamandrew.io)<br />[🤔](#ideas-ASteinheiser "Ideas, Planning, & Feedback") [💬](#question-ASteinheiser "Answering Questions") [⚠️](https://github.com/ASteinheiser/react-rpg.com/commits?author=ASteinheiser "Tests") [💻](https://github.com/ASteinheiser/react-rpg.com/commits?author=ASteinheiser "Code") [📖](https://github.com/ASteinheiser/react-rpg.com/commits?author=ASteinheiser "Documentation") [🚧](#maintenance-ASteinheiser "Maintenance") [🔧](#tool-ASteinheiser "Tools") [👀](#review-ASteinheiser "Reviewed Pull Requests") | [<img src="https://avatars0.githubusercontent.com/u/9552208?v=4" width="100px;" alt="Alphanumber"/><br /><sub><b>Alphanumber</b></sub>](https://github.com/Alphanumber)<br />[🤔](#ideas-Alphanumber "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/15240432?v=4" width="100px;" alt="Alaric von Teplitz"/><br /><sub><b>Alaric von Teplitz</b></sub>](http://www.alaric.us)<br />[💬](#question-Alaricus "Answering Questions") [🤔](#ideas-Alaricus "Ideas, Planning, & Feedback") |
+| :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
