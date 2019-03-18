@@ -3,14 +3,14 @@ import { connect }          from 'react-redux';
 import ReactTimeout         from 'react-timeout';
 import Sound                from 'react-sound';
 
-import MonsterAttack  from '../monsters/assets/monster-attack.wav';
-import MonsterDeath   from '../monsters/assets/monster-death.wav';
-import MonsterSlash   from '../monsters/assets/monster-slash.png';
-import PlayerDeath    from './assets/player-death.mp3';
-import SwordSlash     from './assets/sword-slash.png';
-import PlayerStep     from './assets/player-step.wav';
-import SwordSwish     from './assets/player-sword-swish.wav';
-import WalkSprite     from './assets/player_walk.png';
+import MonsterAttack from '../monsters/assets/monster-attack.wav';
+import MonsterDeath  from '../monsters/assets/monster-death.wav';
+import MonsterSlash  from '../monsters/assets/monster-slash.png';
+import PlayerDeath   from './assets/player-death.mp3';
+import SwordSlash    from './assets/sword-slash.png';
+import PlayerStep    from './assets/player-step.wav';
+import SwordSwish    from './assets/player-sword-swish.wav';
+import WalkSprite    from './assets/player_walk.png';
 import { ANIMATION_SPEED, SPRITE_SIZE } from '../../config/constants';
 
 import './styles.scss';
@@ -28,7 +28,6 @@ class Player extends Component {
     };
 
     this.state = {
-      animationPlay: 'paused',
       attackAnimationPlay: 'paused',
       attackAnimationLoc: [0, 0],
       animationWalkSound: null,
@@ -36,7 +35,9 @@ class Player extends Component {
       monsterAttackAnimationPlay: 'paused',
       monsterAnimationAttackSound: null,
       monsterDeath: null,
-      playerDeath: null
+      playerDeath: null,
+      leftSideStride: true,
+      stamp: 0
     };
   }
 
@@ -45,7 +46,7 @@ class Player extends Component {
       const ctx = this.canvasRef.current.getContext('2d');
       const spriteLine = dir * SPRITE_SIZE;
 
-      let currentFrame = 0;
+      let currentFrame = this.state.leftSideStride ? 0 : 5;
       let currentTick = 0;
       const ticksPerFrame = 5;
 
@@ -77,9 +78,13 @@ class Player extends Component {
         draw(currentFrame);
         update();
         const id = window.requestAnimationFrame(main);
-        if (currentFrame === 5) {
+        if (this.state.leftSideStride && currentFrame >= 5) {
           window.cancelAnimationFrame(id);
-          currentFrame = 0;
+          this.setState({ leftSideStride: false });
+        }
+        if (!this.state.leftSideStride && currentFrame >= 8) {
+          window.cancelAnimationFrame(id);
+          this.setState({ leftSideStride: true });
         }
       };
 
@@ -106,9 +111,7 @@ class Player extends Component {
     this.avatar('draw', this.directionMap[this.props.player.direction]);
 
     // detemine when the player has moved
-    if(prevProps.player.playerMoved !== this.props.player.playerMoved) {
-      this.avatar('animate', this.directionMap[this.props.player.direction]);
-
+    if(prevProps.player.playerMoved !== this.props.player.playerMoved && this.state.stamp + ANIMATION_SPEED < Date.now()) {
       let animationWalkSound = null;
       if(this.props.gameMenu.sound) {
         animationWalkSound = (
@@ -119,7 +122,10 @@ class Player extends Component {
             volume={100} />
         );
       }
-      this.props.setTimeout(() => this.setState({ animationWalkSound }), ANIMATION_SPEED);
+      this.setState(
+        { stamp: Date.now(), animationWalkSound },
+        () => { this.avatar('animate', this.directionMap[this.props.player.direction]); }
+      );
     }
     // see if player died
     else if(prevProps.player.playerDied !== this.props.player.playerDied) {
