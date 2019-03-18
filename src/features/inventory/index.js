@@ -13,6 +13,9 @@ class Inventory extends Component {
     this.state = {
       newItemIndicator: false
     };
+
+    this._toggleInventory = this._toggleInventory.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -33,7 +36,7 @@ class Inventory extends Component {
     }
   }
 
-  handleKeyDown = event => {
+  handleKeyDown(event) {
     switch(event.keyCode) {
       case 13:
       case 32:
@@ -66,7 +69,7 @@ class Inventory extends Component {
             <Button
               small={sideMenu}
               indicator={newItemIndicator}
-              onClick={this._toggleInventory.bind(this)}
+              onClick={this._toggleInventory}
               onKeyDown={this.handleKeyDown}
               icon={open ?
                 'times' : 'briefcase'}
