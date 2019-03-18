@@ -50,9 +50,9 @@ export function getTileSprite(type, variation) {
     case 0:
       return `ground-${variation}`;
     case 2:
-      return 'stairs-down';
-    case 3:
       return 'stairs-up';
+    case 3:
+      return 'stairs-down';
     case 4:
       return 'chest';
     case 5:
