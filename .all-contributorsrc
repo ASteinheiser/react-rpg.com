@@ -41,14 +41,10 @@
       "profile": "http://www.alaric.us",
       "contributions": [
         "question",
-<<<<<<< HEAD
-        "ideas"
-=======
         "ideas",
         "review",
         "code",
         "bug"
->>>>>>> master
       ]
     }
   ],
