@@ -12,7 +12,7 @@ const MapPadding = ({ tileType, tiles, sightBox }) => {
   Object.keys(tiles).forEach(direction => {
     PaddingTiles[direction] = tiles[direction].map((row, index) => {
       return (
-        <div className='row' style={{ height: SPRITE_SIZE }} key={`${direction}-${index}`}>
+        <div className='row' style={{ height: `${SPRITE_SIZE}px` }} key={`${direction}-${index}`}>
           {
             row.map(rowTile => {
               return (
@@ -72,8 +72,8 @@ const BoundaryTile = ({ tileType, variation, explored, sightBox, location }) => 
     <div style={{
       backgroundImage: `url(/tiles/${getTileSprite(tileType, variation)}.png)`,
       display: 'inline-flex',
-      height: SPRITE_SIZE,
-      width: SPRITE_SIZE
+      height: `${SPRITE_SIZE}px`,
+      width: `${SPRITE_SIZE}px`
     }}>
       <FogTile explored={explored} inSight={inSight} />
     </div>

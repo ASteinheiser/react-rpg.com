@@ -59,7 +59,7 @@ const GameMap = ({ map, world }) => {
 const MapRow = props => {
   return (
     <div className='row'
-      style={{ height: SPRITE_SIZE }}>
+      style={{ height: `${SPRITE_SIZE}px` }}>
       {
         props.tiles.map((tile, index) => {
           return(

@@ -32,8 +32,8 @@ const MapTile = ({ tile, index, sightBox }) => {
     <GroundTile variation={tile.variation}>
       <div style={{
         backgroundImage: `url(/tiles/${getTileSprite(tile.value, tile.variation)}.png)`,
-        height: SPRITE_SIZE,
-        width: SPRITE_SIZE
+        height: `${SPRITE_SIZE}px`,
+        width: `${SPRITE_SIZE}px`
       }}>
         <FogTile explored={tile.explored} inSight={inSight} />
       </div>
@@ -84,8 +84,8 @@ export const FogTile = ({ inSight, explored }) => {
       backgroundColor: '#000',
       opacity,
       display: 'inline-flex',
-      height: SPRITE_SIZE,
-      width: SPRITE_SIZE,
+      height: `${SPRITE_SIZE}px`,
+      width: `${SPRITE_SIZE}px`,
       transition: 'opacity .5s linear'
     }} />
   );
@@ -96,8 +96,8 @@ const GroundTile = ({ variation, children }) => {
     <div style={{
       backgroundImage: `url('/tiles/ground-${variation}.png')`,
       display: 'inline-flex',
-      height: SPRITE_SIZE,
-      width: SPRITE_SIZE
+      height: `${SPRITE_SIZE}px`,
+      width: `${SPRITE_SIZE}px`
     }}>
       { children }
     </div>
