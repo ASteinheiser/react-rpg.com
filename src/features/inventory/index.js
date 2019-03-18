@@ -33,6 +33,18 @@ class Inventory extends Component {
     }
   }
 
+  handleKeyDown = event => {
+    switch(event.keyCode) {
+      case 13:
+      case 32:
+        // Don't toggle the inventory visibility with any of these keys
+        // because right now, they're being used for the attack order.
+        event.preventDefault();
+        break;
+      default:
+    }
+  }
+
   _toggleInventory() {
     // We can turn off the indicator if the inventory is opened
     // If we are closing the inventory, it is okay to turn off
@@ -55,6 +67,7 @@ class Inventory extends Component {
               small={sideMenu}
               indicator={newItemIndicator}
               onClick={this._toggleInventory.bind(this)}
+              onKeyDown={this.handleKeyDown}
               icon={open ?
                 'times' : 'briefcase'}
               iconStyle={open ?

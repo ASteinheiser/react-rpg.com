@@ -2,11 +2,17 @@ import React from 'react';
 
 import './styles.scss';
 
-const Button = ({ icon, title, iconStyle, style, indicator, onClick, small }) => {
+const Button = ({ icon, title, iconStyle, style, indicator, onClick, onKeyDown, small }) => {
 
   function handleClick() {
     if(typeof onClick === 'function') {
       onClick();
+    }
+  }
+
+  function handleKeyDown(event) {
+    if(typeof onKeyDown === 'function') {
+      onKeyDown(event);
     }
   }
 
@@ -16,7 +22,8 @@ const Button = ({ icon, title, iconStyle, style, indicator, onClick, small }) =>
     <button
       className={`button__container white-border ${small ? 'button__container--small' : ''}`}
       style={style || {}}
-      onClick={handleClick}>
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}>
 
       {
         icon &&
