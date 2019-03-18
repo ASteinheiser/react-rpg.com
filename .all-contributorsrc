@@ -41,7 +41,10 @@
       "profile": "http://www.alaric.us",
       "contributions": [
         "question",
-        "ideas"
+        "ideas",
+        "review",
+        "code",
+        "bug"
       ]
     }
   ],
