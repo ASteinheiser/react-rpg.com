@@ -13,8 +13,6 @@ class Snackbar extends Component {
     this.state = {
       show: ''
     };
-
-    this.handleHideSnack = this.handleHideSnack.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -50,7 +48,7 @@ class Snackbar extends Component {
     }
   }
 
-  handleHideSnack() {
+  handleHideSnack = () => {
     this.setState({ show: '' });
   }
 

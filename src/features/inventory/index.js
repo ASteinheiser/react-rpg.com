@@ -13,9 +13,6 @@ class Inventory extends Component {
     this.state = {
       newItemIndicator: false
     };
-
-    this._toggleInventory = this._toggleInventory.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -36,7 +33,7 @@ class Inventory extends Component {
     }
   }
 
-  handleKeyDown(event) {
+  handleKeyDown = event => {
     switch(event.keyCode) {
       case 13:
       case 32:
@@ -48,7 +45,7 @@ class Inventory extends Component {
     }
   }
 
-  _toggleInventory() {
+  _toggleInventory = () => {
     // We can turn off the indicator if the inventory is opened
     // If we are closing the inventory, it is okay to turn off
     // indicator since it should be false already

@@ -13,8 +13,6 @@ class Stats extends Component {
     this.state = {
       statsBgColor: 'var(--dark-gray)'
     };
-
-    this.stopAnimation = this.stopAnimation.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -28,7 +26,7 @@ class Stats extends Component {
     }
   }
 
-  stopAnimation() {
+  stopAnimation = () => {
     this.setState({ statsBgColor: 'var(--dark-gray)' });
   }
 
