@@ -10,7 +10,6 @@ rules:
   no-empty-function: warn
   no-eq-null: warn
   no-floating-decimal: warn
-  no-invalid-this: warn
   no-implicit-globals: warn
   no-implicit-coercion: warn
   no-warning-comments: warn
