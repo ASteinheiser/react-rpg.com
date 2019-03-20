@@ -5,7 +5,7 @@ import { MAX_ITEMS_UPGRADE, SPRITE_SIZE } from '../../config/constants';
 import './styles.scss';
 
 const initialHeight = SPRITE_SIZE * 2;
-const upgradedHeight= SPRITE_SIZE * 3;
+const upgradedHeight = SPRITE_SIZE * 3;
 
 const BackpackItems = ({ viewItem, inventory }) => {
 

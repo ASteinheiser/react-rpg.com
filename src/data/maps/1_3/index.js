@@ -36,8 +36,8 @@ const monsters = [
 ];
 
 const stairs = {
-  down: '1_2',
-  up: '1_4'
+  up: '1_2',
+  down: '1_4'
 };
 
 const message = {

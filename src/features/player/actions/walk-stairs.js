@@ -13,13 +13,13 @@ export default function walkStairs(nextTile, playerPos) {
     playerPos = playerPos.map(value => value / SPRITE_SIZE);
 
     let direction;
-    // player wants to go down
-    if(nextTile === 2) direction = 'down';
-    // player wants to go up
-    if(nextTile === 3) direction = 'up';
+    // player wants to go back up
+    if(nextTile === 2) direction = 'up';
+    // player wants to go further down
+    if(nextTile === 3) direction = 'down';
 
     if(gameMode === 'endless') {
-      if(direction === 'up') {
+      if(direction === 'down') {
         // conditionally show a message based on floorNum
         dispatch(randomMapMessage(floorNum));
         // if we have reached a new floor
@@ -55,7 +55,7 @@ export default function walkStairs(nextTile, playerPos) {
           });
         }
       }
-      else if(direction === 'down' && floorNum > 1) {
+      else if(direction === 'up' && floorNum > 1) {
         // figure out the previous map and set it as the current
         dispatch({
           type: 'SET_ENDLESS_MAP',
@@ -69,6 +69,7 @@ export default function walkStairs(nextTile, playerPos) {
     }
     else {
       // change the story mode map
+      console.log(direction, currentMap, storyMaps);
       dispatch({
         type: 'SET_STORY_MAP',
         payload: { direction, currentMap, storyMaps }

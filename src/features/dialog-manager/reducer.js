@@ -52,8 +52,8 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
       const nextMap = stairs[direction];
 
       const { message } = storyMaps[nextMap];
-      // if the map has a message and player is going up, display message
-      if(message && direction === 'up') {
+      // if the map has a message and player is going down, display message
+      if(message && direction === 'down') {
         return {
           ...state,
           paused: true,

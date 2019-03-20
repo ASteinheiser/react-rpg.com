@@ -32,8 +32,8 @@ const monsters = [
 ];
 
 const stairs = {
-  down: '2_3',
-  up: '2_5'
+  up: '2_3',
+  down: '2_5'
 };
 
 export default {

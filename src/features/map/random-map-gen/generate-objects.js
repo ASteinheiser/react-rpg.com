@@ -24,12 +24,12 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
     return !arrContainArr(vision, value);
   });
 
-  // show stairs down if floor is greater than 1
+  // show stairs up if floor is greater than 1
   if(floorNum > 1) {
     map[playerPos[1]][playerPos[0]] = 2;
   }
 
-  // generate stairs up OUTSIDE the player's sight if possible
+  // generate stairs down OUTSIDE the player's sight if possible
   if(availableTiles.length > 0) {
     const randomIndex = Math.floor(Math.random() * availableTiles.length);
     const tile = availableTiles[randomIndex];
