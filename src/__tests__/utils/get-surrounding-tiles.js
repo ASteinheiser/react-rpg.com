@@ -20,14 +20,14 @@ describe('getSurroundingTiles tests:', () => {
   });
 
   describe('when startPos is out of bounds ->', () => {
-    test('startPos height > MAX_HEIGHT: [15, 0]', () => { // THIS TEST IS INCORRECT, should be [MAP_DIMENSIONS[0], 0] 
+    test('startPos height > MAX_HEIGHT: [0, 15]', () => {
       const startPos = [0, MAP_DIMENSIONS[0]];
 
       expect(getSurroundingTiles(startPos)).toBeFalsy();
     });
 
-    test('startPos width > MAX_WIDTH: [0, 20]', () => { // THIS TEST IS INCORRECT, should be [0, MAP_DIMENSIONS[1]] 
-      const startPos = [MAP_DIMENSIONS[1],0];
+    test('startPos width > MAX_WIDTH: [20, 0]', () => {
+      const startPos = [MAP_DIMENSIONS[1], 0];
 
       expect(getSurroundingTiles(startPos)).toBeFalsy();
     });
@@ -58,25 +58,25 @@ describe('getSurroundingTiles tests:', () => {
       expect(getSurroundingTiles(startPos).tiles).toEqual(expected);
     });
 
-    test('startPos is top right corner: [0, 19]', () => { 
-      const startPos = [0, MAP_DIMENSIONS[1]-1];
+    test('startPos is top right corner: [19, 0]', () => { 
+      const startPos = [(MAP_DIMENSIONS[1] - 1), 0];
       const expected = [
-        [0, 16],
-        [0, 17], [1, 17], [2, 17],
-        [0, 18], [1, 18], [2, 18],
-        [0, 19], [1, 19], [2, 19], [3, 19]
+        [16, 0], [17, 0], [18, 0], [19, 0],
+                 [17, 1], [18, 1], [19, 1],
+                 [17, 2], [18, 2], [19, 2],
+                                   [19, 3]
       ];
 
       expect(getSurroundingTiles(startPos).tiles).toEqual(expected);
     });
 
-    test('startPos is bottom right corner: [14, 19]', () => {
-      const startPos = [(MAP_DIMENSIONS[0] - 1), (MAP_DIMENSIONS[1] - 1)];
+    test('startPos is bottom right corner: [19, 14]', () => {
+      const startPos = [(MAP_DIMENSIONS[1] - 1), (MAP_DIMENSIONS[0] - 1)];
       const expected = [
-        [14, 16],
-        [12, 17], [13, 17], [14, 17],
-        [12, 18], [13, 18], [14, 18],
-        [11, 19], [12, 19], [13, 19], [14, 19]
+                                      [19, 11],
+                  [17, 12], [18, 12], [19, 12],
+                  [17, 13], [18, 13], [19, 13],
+        [16, 14], [17, 14], [18, 14], [19, 14]
       ];
 
       expect(getSurroundingTiles(startPos).tiles).toEqual(expected);
@@ -85,9 +85,11 @@ describe('getSurroundingTiles tests:', () => {
     test('startPos is bottom left corner: [0, 14]', () => {
       const startPos = [0, (MAP_DIMENSIONS[0] - 1)];
       const expected = [
-        [0, 11], [0, 12], [1, 12], [2, 12], 
-        [0, 13], [1, 13], [2, 13], [0, 14], 
-        [1, 14], [2, 14], [3, 14]];
+        [0, 11],
+        [0, 12], [1, 12], [2, 12],
+        [0, 13], [1, 13], [2, 13],
+        [0, 14], [1, 14], [2, 14], [3, 14]
+      ];
 
       expect(getSurroundingTiles(startPos).tiles).toEqual(expected);
     });
