@@ -21,13 +21,13 @@ describe('getSurroundingTiles tests:', () => {
 
   describe('when startPos is out of bounds ->', () => {
     test('startPos height > MAX_HEIGHT: [0, 15]', () => {
-      const startPos = [0, MAP_DIMENSIONS[0]];
+      const startPos = [0, MAP_DIMENSIONS[1]];
 
       expect(getSurroundingTiles(startPos)).toBeFalsy();
     });
 
     test('startPos width > MAX_WIDTH: [20, 0]', () => {
-      const startPos = [MAP_DIMENSIONS[1], 0];
+      const startPos = [MAP_DIMENSIONS[0], 0];
 
       expect(getSurroundingTiles(startPos)).toBeFalsy();
     });
@@ -59,7 +59,7 @@ describe('getSurroundingTiles tests:', () => {
     });
 
     test('startPos is top right corner: [19, 0]', () => { 
-      const startPos = [(MAP_DIMENSIONS[1] - 1), 0];
+      const startPos = [(MAP_DIMENSIONS[0] - 1), 0];
       const expected = [
         [16, 0], [17, 0], [18, 0], [19, 0],
                  [17, 1], [18, 1], [19, 1],
@@ -71,7 +71,7 @@ describe('getSurroundingTiles tests:', () => {
     });
 
     test('startPos is bottom right corner: [19, 14]', () => {
-      const startPos = [(MAP_DIMENSIONS[1] - 1), (MAP_DIMENSIONS[0] - 1)];
+      const startPos = [(MAP_DIMENSIONS[0] - 1), (MAP_DIMENSIONS[1] - 1)];
       const expected = [
                                       [19, 11],
                   [17, 12], [18, 12], [19, 12],
@@ -83,7 +83,7 @@ describe('getSurroundingTiles tests:', () => {
     });
 
     test('startPos is bottom left corner: [0, 14]', () => {
-      const startPos = [0, (MAP_DIMENSIONS[0] - 1)];
+      const startPos = [0, (MAP_DIMENSIONS[1] - 1)];
       const expected = [
         [0, 11],
         [0, 12], [1, 12], [2, 12],

@@ -10,8 +10,8 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
   // but for the random map gen, we need them in (x, y)
   const vision = getSurroundingTiles(playerPos).tiles.map(tile => tile.reverse());
 
-  for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
-    for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
+  for (let i = 0; i < MAP_DIMENSIONS[1]; i++) {
+    for (let j = 0; j < MAP_DIMENSIONS[0]; j++) {
       // get a list of floor tiles
       if(map[i][j] === 0) {
         initialTiles.push([i, j]);
@@ -75,14 +75,14 @@ export default function generateObjects(map, floorNum, playerPos, wallType) {
     const availableWalls = [];
 
     // get a list of available wall tiles
-    for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
-      for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
+    for (let i = 0; i < MAP_DIMENSIONS[1]; i++) {
+      for (let j = 0; j < MAP_DIMENSIONS[0]; j++) {
         // make sure the wall tile touches a path so it can be reached
         if(map[i][j] === wallType &&
           (((i - 1 > 0) && map[i - 1][j] === 0)
-          || ((i + 1 < MAP_DIMENSIONS[0]) && map[i + 1][j] === 0)
+          || ((i + 1 < MAP_DIMENSIONS[1]) && map[i + 1][j] === 0)
           || ((j - 1 > 0) && map[i][j - 1] === 0)
-          || ((j + 1 < MAP_DIMENSIONS[1]) && map[i][j + 1] === 0))) {
+          || ((j + 1 < MAP_DIMENSIONS[0]) && map[i][j + 1] === 0))) {
           availableWalls.push([i, j]);
         }
       }

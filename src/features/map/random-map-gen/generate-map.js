@@ -12,8 +12,8 @@ export default function generateMap(startPos, floorNum) {
   const map = createMapOfWalls(wallType), // create a map of walls to carve rooms and hallways from
       directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]; // array to get a random direction from (left,right,up,down)
   let maxTunnels = MAX_TUNNELS, // store the max tunnels in a local variable that can be decremented
-    currentRow = startPos ? startPos[1] : Math.floor(Math.random() * MAP_DIMENSIONS[0]), // our current row - start at a random spot
-    currentColumn = startPos ? startPos[0] : Math.floor(Math.random() * MAP_DIMENSIONS[1]), // our current column - start at a random spot
+    currentRow = startPos ? startPos[1] : Math.floor(Math.random() * MAP_DIMENSIONS[1]), // our current row - start at a random spot
+    currentColumn = startPos ? startPos[0] : Math.floor(Math.random() * MAP_DIMENSIONS[0]), // our current column - start at a random spot
     lastDirection = [], // save the last direction we went
     randomDirection; // next turn/direction - holds a value from directions
 
@@ -36,8 +36,8 @@ export default function generateMap(startPos, floorNum) {
       //break the loop if it is going out of the map
       if (((currentRow === 0) && (randomDirection[0] === -1)) ||
           ((currentColumn === 0) && (randomDirection[1] === -1)) ||
-          ((currentRow === MAP_DIMENSIONS[0] - 1) && (randomDirection[0] === 1)) ||
-          ((currentColumn === MAP_DIMENSIONS[1] - 1) && (randomDirection[1] === 1))) {
+          ((currentRow === MAP_DIMENSIONS[1] - 1) && (randomDirection[0] === 1)) ||
+          ((currentColumn === MAP_DIMENSIONS[0] - 1) && (randomDirection[1] === 1))) {
         break;
       }
       else {
@@ -62,9 +62,9 @@ export default function generateMap(startPos, floorNum) {
 // generate a map filled with wall tiles
 function createMapOfWalls(wallType) {
   const array = [];
-  for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
+  for (let i = 0; i < MAP_DIMENSIONS[1]; i++) {
     array.push([]);
-    for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
+    for (let j = 0; j < MAP_DIMENSIONS[0]; j++) {
       array[i].push(wallType);
     }
   }

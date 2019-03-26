@@ -23,8 +23,8 @@ export default function getSurroundingTiles(newPos) {
   // set tile to relative tile position
   const startPos = [x, y];
   // make sure the start position is within the bounds
-  if(startPos[0] >= MAP_DIMENSIONS[1] || startPos[0] < 0
-    || startPos[1] >= MAP_DIMENSIONS[0] || startPos[1] < 0) return false;
+  if(startPos[0] >= MAP_DIMENSIONS[0] || startPos[0] < 0
+    || startPos[1] >= MAP_DIMENSIONS[1] || startPos[1] < 0) return false;
   // then calculate the surrounding tiles according to the bounds
   const surroundingTiles = [];
   const paddingTiles = [];
@@ -34,8 +34,8 @@ export default function getSurroundingTiles(newPos) {
     const offsetX = x + startPos[0];
     const offsetY = y + startPos[1];
     // if it is inside the bounds
-    if(offsetX >= 0 && offsetX < MAP_DIMENSIONS[1]
-      && offsetY >= 0 && offsetY < MAP_DIMENSIONS[0]) {
+    if(offsetX >= 0 && offsetX < MAP_DIMENSIONS[0]
+      && offsetY >= 0 && offsetY < MAP_DIMENSIONS[1]) {
       // add to surrounding tile...
       surroundingTiles.push([offsetX, offsetY]);
     } // otherwise add the tile to padding tiles array
