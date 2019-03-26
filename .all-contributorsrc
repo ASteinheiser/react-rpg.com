@@ -46,6 +46,17 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "Saintroi",
+      "name": "Drew Nelson",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/13038366?v=4",
+      "profile": "https://github.com/Saintroi",
+      "contributions": [
+        "test",
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7
