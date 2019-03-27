@@ -11,8 +11,8 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
   // but for the random map gen, we need them in (x, y)
   const vision = getSurroundingTiles(playerPos).tiles.map(tile => tile.reverse());
 
-  for (let i = 0; i < MAP_DIMENSIONS[0]; i++) {
-    for (let j = 0; j < MAP_DIMENSIONS[1]; j++) {
+  for (let i = 0; i < MAP_DIMENSIONS[1]; i++) {
+    for (let j = 0; j < MAP_DIMENSIONS[0]; j++) {
       // some maps have their meta attached, some dont, so we need to read the value either way
       const mapValue = typeof map[i][j] === 'object' ? map[i][j].value : map[i][j];
       // get a list of floor tiles
