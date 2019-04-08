@@ -35,3 +35,59 @@ export const SCREEN_MEDIUM_HEIGHT = 680;
 export const MAP_PADDING_DISTANCE = 5;
 // set the time for the map to transition in/out
 export const MAP_TRANSITION_DELAY = 500;
+
+//Monster kill count and kill count increment
+export const MONSTER_KILLS = {dragon: 0, goblin: 0, imp: 0, lich: 0, rat: 0, golem: 0, total: 0};
+export function killDragon(){
+    MONSTER_KILLS.dragon++;
+    MONSTER_KILLS.total++;
+}
+export function killGoblin(){
+    MONSTER_KILLS.goblin++;
+    MONSTER_KILLS.total++;
+}
+export function killImp(){
+    MONSTER_KILLS.imp++;
+    MONSTER_KILLS.total++;
+}
+export function killLich(){
+    MONSTER_KILLS.lich++;
+    MONSTER_KILLS.total++;
+}
+export function killRat(){
+    MONSTER_KILLS.rat++;
+    MONSTER_KILLS.total++;
+}
+export function killGolem(){
+    MONSTER_KILLS.golem++;
+    MONSTER_KILLS.total++;
+}
+export function monsterKillReset(){
+    MONSTER_KILLS.dragon = 0;
+    MONSTER_KILLS.goblin = 0;
+    MONSTER_KILLS.imp = 0;
+    MONSTER_KILLS.lich = 0;
+    MONSTER_KILLS.rat = 0;
+    MONSTER_KILLS.golem = 0;
+    MONSTER_KILLS.total = 0;
+}
+
+//Player death count and increment
+export let PLAYER_DEATH_COUNT = 0;
+export function playerDies(){
+    PLAYER_DEATH_COUNT++;
+}
+
+//Highscore
+export const TOP_KILLS = {dragon: 0, goblin: 0, imp: 0, lich: 0, rat: 0, golem: 0, total: 0};
+export function setHighscore(){
+    if(MONSTER_KILLS.total > TOP_KILLS.total){
+        TOP_KILLS.dragon = MONSTER_KILLS.dragon;
+        TOP_KILLS.goblin = MONSTER_KILLS.goblin;
+        TOP_KILLS.imp = MONSTER_KILLS.imp;
+        TOP_KILLS.lich = MONSTER_KILLS.lich;
+        TOP_KILLS.rat = MONSTER_KILLS.rat;
+        TOP_KILLS.golem = MONSTER_KILLS.golem;
+        TOP_KILLS.total = MONSTER_KILLS.total;
+    }
+}
