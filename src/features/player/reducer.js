@@ -1,4 +1,7 @@
 
+
+import { playerDies, monsterKillReset, setHighscore } from '../../config/constants';
+
 const initialState = {
   direction: 'SOUTH',
   position: [0, 0],
@@ -6,20 +9,24 @@ const initialState = {
   playerAttacked: false,
   monsterAttacked: false,
   playerDied: false,
+  playerDeaths: 0,
   monsterDied: false
 };
 
-const playerReducer = (state = initialState, { type, payload }) => {
+export const playerReducer = (state = initialState, { type, payload }) => {
 
   switch(type) {
 
     case 'MONSTER_DIED':
       // trigger monster's death sound
-      return { ...state, monsterDied: !state.monsterDied };
+      return { ...state, monsterDied: !state.monsterDied};
 
     case 'PLAYER_DIED':
-      // trigger player's death sound
-      return { ...state, playerDied: !state.playerDied };
+      // trigger player's death sound, death count increment, set a highscore if applicable, reset monster kills
+      playerDies();
+      setHighscore();
+      monsterKillReset();
+      return { ...state, playerDied: !state.playerDied, playerDeaths: state.playerDeaths+1 };
 
     case 'MONSTER_ATTACK':
       // trigger monster's attack animation on player
