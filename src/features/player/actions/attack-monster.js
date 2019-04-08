@@ -2,7 +2,7 @@ import { checkForMonster, getNewPosition, observeBoundaries } from './move-playe
 import calculateDamage from '../../../utils/calculate-damage';
 import calculateBonus  from '../../../utils/calculate-bonus';
 import getNextTile     from '../../../utils/get-next-tile';
-import { SPRITE_SIZE } from '../../../config/constants';
+import { SPRITE_SIZE, killDragon, killGolem, killImp, killRat, killGoblin, killLich, MONSTER_KILLS } from '../../../config/constants';
 
 export default function attackMonster() {
   return (dispatch, getState) => {
@@ -45,6 +45,31 @@ export default function attackMonster() {
 
         // check if monster died
         if((currMonster.hp - damage) <= 0) {
+          if(currMonster.type === "dragon"){
+            killDragon();
+            //console.log("Killed: " + MONSTER_KILLS.dragon + " Dragon(s)");
+          }
+          else if(currMonster.type === "goblin"){
+            killGoblin();
+            //console.log("Killed: " + MONSTER_KILLS.goblin + " Goblin(s)");
+          }
+          else if(currMonster.type === 'imp'){
+            killImp();
+            //console.log("Killed: " + MONSTER_KILLS.imp + " Imp(s)");
+          }
+          else if(currMonster.type === 'lich'){
+            killLich();
+            //console.log("Killed: " + MONSTER_KILLS.lich + " Lich");
+          }
+          else if(currMonster.type === 'rat'){
+            killRat();
+            //console.log("Killed: " + MONSTER_KILLS.rat + " Rat(s)");
+          }
+          else if(currMonster.type === 'stone-golem'){
+            killGolem();
+            //console.log("Killed: " + MONSTER_KILLS.golem + " Stone Golem(s)");
+          }
+
           // and get some exp
           dispatch({
             type: 'GET_EXP',
