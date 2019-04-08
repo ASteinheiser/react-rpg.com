@@ -11,9 +11,10 @@ import SwordSlash    from './assets/sword-slash.png';
 import PlayerStep    from './assets/player-step.wav';
 import SwordSwish    from './assets/player-sword-swish.wav';
 import WalkSprite    from './assets/player_walk.png';
-import { ANIMATION_SPEED, SPRITE_SIZE } from '../../config/constants';
+import { ANIMATION_SPEED, SPRITE_SIZE, PLAYER_DEATH_COUNT, TOP_KILLS } from '../../config/constants';
 
 import './styles.scss';
+
 
 class Player extends Component {
   constructor(props) {
@@ -129,6 +130,8 @@ class Player extends Component {
     }
     // see if player died
     else if(prevProps.player.playerDied !== this.props.player.playerDied) {
+      //console.log("Player Deaths:" + PLAYER_DEATH_COUNT);
+      //console.log(TOP_KILLS);
       let playerDeath = null;
       if(this.props.gameMenu.sound) {
         playerDeath = (
