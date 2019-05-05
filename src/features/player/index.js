@@ -51,6 +51,9 @@ class Player extends Component {
       const ticksPerFrame = 5;
 
       const draw = frame => {
+        // don't allow invalid frames
+        if(frame > 7 || frame < 0) frame = 0;
+
         ctx.clearRect(0, 0, SPRITE_SIZE, SPRITE_SIZE);
         ctx.drawImage(
           this.sprite,
@@ -78,13 +81,11 @@ class Player extends Component {
         draw(currentFrame);
         update();
         const id = window.requestAnimationFrame(main);
-        if (this.state.leftSideStride && currentFrame >= 5) {
+        if (this.state.leftSideStride && currentFrame > 4) {
           window.cancelAnimationFrame(id);
-          this.setState({ leftSideStride: false });
         }
-        if (!this.state.leftSideStride && currentFrame >= 8) {
+        if (!this.state.leftSideStride && currentFrame > 8) {
           window.cancelAnimationFrame(id);
-          this.setState({ leftSideStride: true });
         }
       };
 
@@ -122,10 +123,13 @@ class Player extends Component {
             volume={100} />
         );
       }
-      this.setState(
-        { stamp: Date.now(), animationWalkSound },
-        () => { this.avatar('animate', this.directionMap[this.props.player.direction]); }
-      );
+      this.setState({
+        stamp: Date.now(),
+        animationWalkSound,
+        leftSideStride: !this.state.leftSideStride
+      }, () => {
+        this.avatar('animate', this.directionMap[this.props.player.direction]);
+      });
     }
     // see if player died
     else if(prevProps.player.playerDied !== this.props.player.playerDied) {

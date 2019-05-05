@@ -8,7 +8,7 @@ import movePlayer          from './actions/move-player';
 import isGamePaused        from '../dialog-manager/actions/is-game-paused';
 import { ANIMATION_SPEED } from '../../config/constants';
 
-const ANIMATION_HOLD_SPEED = ANIMATION_SPEED * 1.25;
+const ANIMATION_WITH_PADDING = ANIMATION_SPEED * 1.25;
 
 let intervalId = null;
 
@@ -18,8 +18,8 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
     // if the game is not paused by dialogs
     if(!isGamePaused()) handleKeyDown(event);
   },
-    ANIMATION_HOLD_SPEED,
-    { maxWait: ANIMATION_HOLD_SPEED, leading: true, trailing: false }
+    ANIMATION_WITH_PADDING,
+    { maxWait: ANIMATION_WITH_PADDING, leading: true, trailing: false }
   );
 
   const _swipe = _debounce(({ direction, offsetDirection }) => {
@@ -45,8 +45,8 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
         // console.log(`Unmapped pan direction ${direction}`);
     }
   },
-    ANIMATION_SPEED,
-    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
+    ANIMATION_WITH_PADDING,
+    { maxWait: ANIMATION_WITH_PADDING, leading: true, trailing: false }
   );
 
   const _swipeHold = _debounce(({ direction, offsetDirection }) => {
@@ -72,18 +72,18 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
         default:
           // console.log(`Unmapped pan direction ${direction}`);
       }
-    }, ANIMATION_HOLD_SPEED);
+    }, ANIMATION_WITH_PADDING);
   },
-    ANIMATION_SPEED,
-    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
+    ANIMATION_WITH_PADDING,
+    { maxWait: ANIMATION_WITH_PADDING, leading: true, trailing: false }
   );
 
   const _tap = _debounce(() => {
     // if the game is not paused by dialogs
     if(!isGamePaused()) attackMonster();
   },
-    ANIMATION_SPEED,
-    { maxWait: ANIMATION_SPEED, leading: true, trailing: false }
+    ANIMATION_WITH_PADDING,
+    { maxWait: ANIMATION_WITH_PADDING, leading: true, trailing: false }
   );
 
   const _clearInterval = () => {
