@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM             from 'react-dom';
 import { Provider }         from 'react-redux';
 import { PersistGate }      from 'redux-persist/integration/react';
+import ReactGA              from 'react-ga';
 
 import store, { persistor } from './config/store';
 import App                  from './App';
@@ -20,6 +21,12 @@ soundManager.setup({
   debugMode: false,
   ignoreMobileRestrictions: true
 });
+
+if(process.env.REACT_APP_GOOGLE_ANALYTICS) {
+  console.info('reporting page view to Google Analytics...');
+  ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
+  ReactGA.pageview('/');
+}
 
 class ConnectedApp extends Component {
 
