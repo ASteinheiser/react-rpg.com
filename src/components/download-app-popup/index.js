@@ -1,4 +1,4 @@
-import React       from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import optOutDownload from '../../features/app-state/actions/opt-out-download';
@@ -11,13 +11,20 @@ const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.reactrpgn
 const IOS_URL = 'https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1450907766&mt=8';
 
 const DownloadAppPopup = ({ onClose, optOutDownload, open }) => {
+  const [ready, setReady] = useState(false);
 
-  if(!open) return null;
+  useEffect(() => {
+    if (open) {
+      setTimeout(() => setReady(true), 5000);
+    }
+  }, [open]);
 
   function handleOptOutDownload() {
     optOutDownload();
     onClose();
   }
+
+  if(!open || !ready) return null;
 
   return(
     <div className='download-app__container'>

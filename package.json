@@ -1,6 +1,6 @@
 {
   "name": "react-rpg.com",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "body-scroll-lock": "^2.6.1",
