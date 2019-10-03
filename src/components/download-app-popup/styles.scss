@@ -11,6 +11,8 @@
   justify-content: center;
   align-items: center;
 
+  animation: fadein 2s;
+
   .background-close {
     position: absolute;
     top: 0;
@@ -80,10 +82,21 @@
         .ios-icon {
           padding: 32px 0 16px;
         }
+
         .android-icon {
           padding: 16px 0 32px;
         }
       }
     }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

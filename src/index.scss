@@ -8,7 +8,7 @@ html {
   --orange: #daa43d;
   --light-red: #ff593b;
   --purple: #8000ed;
-  --transparent: rgba(0,0,0,0);
+  --transparent: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -38,6 +38,7 @@ button {
 
   cursor: pointer;
 }
+
 a {
   outline-color: var(--gray);
 }
