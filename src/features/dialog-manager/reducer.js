@@ -11,7 +11,8 @@ const initialState = {
   chestOpen: false,
   shop: false,
   settings: false,
-  inventory: false
+  inventory: false,
+  levelUp: false
 };
 
 const dialogManagerReducer = (state = initialState, { type, payload }) => {
@@ -19,10 +20,11 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
   switch(type) {
 
     case 'PAUSE':
-      const { shop, chest, gameStart, inventory, gameOver, gameText, gameWin, gameSelect, gameInstructions, pause } = payload;
+      const { shop, chest, gameStart, inventory, gameOver, gameText, gameWin, gameSelect, gameInstructions, levelUp, pause } = payload;
 
       return {
         ...state,
+        levelUp: levelUp || false,
         shop: shop || false,
         chest: chest || false,
         gameStart: gameStart || false,

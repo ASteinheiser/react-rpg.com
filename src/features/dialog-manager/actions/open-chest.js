@@ -3,7 +3,8 @@ import randomItem from '../dialogs/chest-loot/random-item';
 export default function openChest() {
   return (dispatch, getState) => {
 
-    const { level } = getState().stats;
+    const { stats } = getState();
+    const { level, expToLevel } = stats;
     // give the player a 25% chance to get a random item
     let itemDrop = false;
     const chance = Math.floor(Math.random() * 100) + 1;
@@ -31,5 +32,15 @@ export default function openChest() {
         item: itemDrop
       }
     });
+    if (exp + stats.exp >= expToLevel) {
+      dispatch({
+        type: 'PAUSE',
+        payload: {
+          pause: true,
+          levelUp: true,
+          chest: true
+        }
+      });
+    }
   };
 }
