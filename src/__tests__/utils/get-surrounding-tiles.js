@@ -58,7 +58,7 @@ describe('getSurroundingTiles tests:', () => {
       expect(getSurroundingTiles(startPos).tiles).toEqual(expected);
     });
 
-    test('startPos is top right corner: [19, 0]', () => { 
+    test('startPos is top right corner: [19, 0]', () => {
       const startPos = [(MAP_DIMENSIONS[0] - 1), 0];
       const expected = [
         [16, 0], [17, 0], [18, 0], [19, 0],
