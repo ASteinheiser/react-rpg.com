@@ -31,7 +31,7 @@ const App = ({ appState, world }) => {
     if(!nativeApp && !optOutDownload) {
       setShowDownloadPopup(true);
     }
-  }, []);
+  }, [nativeApp, optOutDownload]);
 
   const { optOutDownload, sideMenu } = appState;
   const { gameMode, floorNum } = world;

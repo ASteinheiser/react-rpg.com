@@ -15,13 +15,13 @@ rules:
   no-implicit-coercion: warn
   no-warning-comments: warn
   no-useless-return: warn
+  no-use-before-define: off
   no-new: warn
   no-multi-spaces:
     - warn
     - exceptions:
         ImportDeclaration: true
   no-undef-init: warn
-  no-undefined: warn
   computed-property-spacing:
     - warn
     - never
@@ -41,9 +41,6 @@ rules:
     - stroustrup
     - allowSingleLine: true
   block-spacing: warn
-  array-element-newline:
-    - warn
-    - consistent
   array-bracket-spacing: warn
   array-bracket-newline:
     - warn
