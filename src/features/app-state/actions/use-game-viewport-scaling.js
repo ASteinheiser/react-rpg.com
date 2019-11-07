@@ -36,7 +36,7 @@ const useGameViewportScaling = () => {
 
     _updateViewportScale({ largeView, sideMenu });
 
-  }, [height, width, _updateViewportScale]);
+  }, [height, width]);
 
   function updateViewportScale({ largeView, sideMenu }) {
     store.dispatch({

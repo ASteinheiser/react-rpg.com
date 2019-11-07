@@ -16,7 +16,7 @@ const ChestLoot = ({ dialog, pickupItem, openChest, closeChestDialog }) => {
 
   useEffect(() => {
     if(!chestOpen) openChest();
-  }, [chestOpen, openChest]);
+  }, []);
 
   function handleContinue() {
     pickupItem();
@@ -44,18 +44,19 @@ const ChestLoot = ({ dialog, pickupItem, openChest, closeChestDialog }) => {
           <span>{ exp }</span>
         </div>
 
-        {item && (
-          <div className='flex-row chest-loot__item'>
-            <div style={{
-                backgroundImage: `url('${item.image}')`,
-                width: '40px',
-                height: '40px'
-              }} />
-              <span className='flex-column chest-loot__item-name'>
-                {item.name}
-              </span>
-          </div>
-        )}
+        {
+          item &&
+            <div className='flex-row chest-loot__item'>
+              <div style={{
+                  backgroundImage: `url('${item.image}')`,
+                  width: '40px',
+                  height: '40px'
+                }} />
+                <span className='flex-column chest-loot__item-name'>
+                  {item.name}
+                </span>
+            </div>
+        }
       </div>
 
       <div className='flex-column chest-loot__buttons'>
