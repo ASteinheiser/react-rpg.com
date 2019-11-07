@@ -50,6 +50,15 @@ export default function attackMonster() {
             type: 'GET_EXP',
             payload: currMonster.exp
           });
+          if (stats.exp + currMonster.exp >= stats.expToLevel) {
+            dispatch({
+              type: 'PAUSE',
+              payload: {
+                pause: true,
+                levelUp: true
+              }
+            });
+          }
           // play death sound
           dispatch({
             type: 'MONSTER_DIED',

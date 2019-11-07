@@ -1,0 +1,27 @@
+.level-up__title {
+  font-size: 26px;
+  text-align: center;
+
+  padding: 25px 0;
+}
+
+.level-up__contents {
+  flex: 1;
+  font-size: 22px;
+
+  justify-content: space-around;
+  align-self: center;
+
+  min-width: 150px;
+
+  .level-up__value--spacing {
+    justify-content: space-between;
+  }
+}
+
+.level-up__buttons {
+  justify-content: flex-end;
+
+  align-items: center;
+  padding: 25px 0;
+}
