@@ -5,6 +5,18 @@
   padding: 25px 0;
 }
 
+.level-up__level {
+  color: var(--orange);
+}
+
+.level-up__hp {
+  color: var(--green);
+}
+
+.level-up__dmg {
+  color: var(--light-red);
+}
+
 .level-up__contents {
   flex: 1;
   font-size: 22px;
