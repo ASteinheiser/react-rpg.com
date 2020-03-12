@@ -78,7 +78,10 @@ const MapRow = props => {
 function getWallType(tiles) {
   for(let i = 0; i < tiles.length; i ++) {
     for(let j = 0; j < tiles[i].length; j ++) {
-      if (tiles[i][j].value >= 5 && tiles[i][j] <= 8) return tiles[i][j];
+      if(tiles[i][j].value === 5) return 5;
+      if(tiles[i][j].value === 6) return 6;
+      if(tiles[i][j].value === 7) return 7;
+      if(tiles[i][j].value === 8) return 8;
     }
   }
 }
