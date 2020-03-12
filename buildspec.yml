@@ -3,15 +3,13 @@ version: 0.2
 phases:
   install:
     commands:
-      - npm install
+      - yarn install
   build:
     commands:
-      - env REACT_APP_GOOGLE_ANALYTICS=${GoogleAnalyticsKey} npm run build
+      -  yarn build
   post_build:
     commands:
-      - aws s3 rm s3://${HostingBucket}/ --recursive
-      - aws s3 sync build/ s3://${HostingBucket}/
-      - aws cloudfront create-invalidation --distribution-id ${HostingBucketCloudFrontDistro} --paths '/*'
+      - gh-pages -b gh-pages
 cache:
   paths:
     - 'node_modules/**/*'
