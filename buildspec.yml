@@ -9,7 +9,7 @@ phases:
       -  yarn build
   post_build:
     commands:
-      - gh-pages -b gh-pages
+      - gh-pages -d build
 cache:
   paths:
     - 'node_modules/**/*'
