@@ -10,7 +10,6 @@
     "lodash.debounce": "^4.0.8",
     "node-sass": "^4.11.0",
     "react": "^16.8.1",
-    "react-app-rewired": "^2.1.0",
     "react-device-detect": "^1.6.2",
     "react-dom": "^16.8.1",
     "react-ga": "^2.5.7",
@@ -25,9 +24,9 @@
     "typeface-roboto": "^0.0.54"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "browserslist": [
