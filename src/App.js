@@ -3,7 +3,6 @@ import { connect }                    from 'react-redux';
 import { isMobile }                   from 'react-device-detect';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-import DownloadAppPopup       from './components/download-app-popup';
 import DialogManager          from './features/dialog-manager';
 import EndlessFloorCounter    from './components/endless-floor-counter';
 import Footer                 from './components/footer';
@@ -16,8 +15,6 @@ const App = ({ appState, world }) => {
 
   useGameViewportScaling();
 
-  const [showDownloadPopup, setShowDownloadPopup] = useState(false);
-
   // disable scrolling of the page
   // prevents iOS Safari bouncing during movement
   useEffect(() => {
@@ -25,15 +22,7 @@ const App = ({ appState, world }) => {
     return clearAllBodyScrollLocks;
   }, []);
 
-  // if this is not the react native app and they haven't opted out,
-  // show the user a dialog to download the app
-  useEffect(() => {
-    if(!nativeApp && !optOutDownload) {
-      setShowDownloadPopup(true);
-    }
-  }, []);
-
-  const { optOutDownload, sideMenu } = appState;
+  const { sideMenu } = appState;
   const { gameMode, floorNum } = world;
 
   let showFooter = true;
@@ -47,9 +36,6 @@ const App = ({ appState, world }) => {
 
   return(
     <>
-      <DownloadAppPopup
-        open={showDownloadPopup}
-        onClose={() => setShowDownloadPopup(false)} />
 
       <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
 
