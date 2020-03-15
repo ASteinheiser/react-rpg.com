@@ -18,7 +18,7 @@ const App = ({ appState, world }) => {
   // disable scrolling of the page
   // prevents iOS Safari bouncing during movement
   useEffect(() => {
-    disableBodyScroll(document.getElementById('react-rpg'));
+    disableBodyScroll(document.getElementById('roll-for-reaction'));
     return clearAllBodyScrollLocks;
   }, []);
 
