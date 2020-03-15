@@ -22,11 +22,11 @@ soundManager.setup({
   ignoreMobileRestrictions: true
 });
 
-if(process.env.REACT_APP_GOOGLE_ANALYTICS) {
+/* if(process.env.REACT_APP_GOOGLE_ANALYTICS) {
   console.info('reporting page view to Google Analytics...');
   ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
   ReactGA.pageview('/');
-}
+}*/
 
 class ConnectedApp extends Component {
 
@@ -51,4 +51,4 @@ class ConnectedApp extends Component {
   }
 }
 
-ReactDOM.render(<ConnectedApp />, document.getElementById('react-rpg'));
+ReactDOM.render(<ConnectedApp />, document.getElementById('roll-for-reaction'));
