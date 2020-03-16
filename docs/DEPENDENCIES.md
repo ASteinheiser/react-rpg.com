@@ -9,7 +9,7 @@ Self-explanatory title. Concerns itself with separating scrolling of body from a
 
 - [hammerjs](https://hammerjs.github.io/)
 
-Used to detect mulit-touch -- useful for mobile deployment.
+Used to detect multi-touch -- useful for mobile deployment.
 
 - lodash.clonedeep
 - lodash.debounce
@@ -69,3 +69,11 @@ Middleware for Redux.
 - [typeface-roboto](https://www.npmjs.com/package/typeface-roboto)
 
 Both of the above are simply fonts. They are likely to be removed depending on how we decided to redesign the game.
+
+## Dependencies to be removed
+
+`react-ga`
+`hammerjs`
+`lodash`
+`typeface-montserrat`
+`typeface-robot`
