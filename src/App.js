@@ -40,7 +40,6 @@ const App = ({ appState, world }) => {
             >
                 <Viewport>
                     <World />
-
                     <DialogManager />
 
                     {/* Show the floor counter when playing endless mode */}
