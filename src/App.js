@@ -1,62 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import { connect }                    from 'react-redux';
-import { isMobile }                   from 'react-device-detect';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { isMobile } from 'react-device-detect';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-import DialogManager          from './features/dialog-manager';
-import EndlessFloorCounter    from './components/endless-floor-counter';
-import Footer                 from './components/footer';
-import GameMenus              from './features/game-menus';
-import World                  from './features/world';
-import Viewport               from './components/viewport';
+import DialogManager from './features/dialog-manager';
+import EndlessFloorCounter from './components/endless-floor-counter';
+import Footer from './components/footer';
+import GameMenus from './features/game-menus';
+import World from './features/world';
+import Viewport from './components/viewport';
 import useGameViewportScaling from './features/app-state/actions/use-game-viewport-scaling';
 
 const App = ({ appState, world }) => {
+    useGameViewportScaling();
 
-  useGameViewportScaling();
+    // disable scrolling of the page
+    // prevents iOS Safari bouncing during movement
+    useEffect(() => {
+        disableBodyScroll(document.getElementById('roll-for-reaction'));
+        return clearAllBodyScrollLocks;
+    }, []);
 
-  // disable scrolling of the page
-  // prevents iOS Safari bouncing during movement
-  useEffect(() => {
-    disableBodyScroll(document.getElementById('roll-for-reaction'));
-    return clearAllBodyScrollLocks;
-  }, []);
+    const { sideMenu } = appState;
+    const { gameMode, floorNum } = world;
 
-  const { sideMenu } = appState;
-  const { gameMode, floorNum } = world;
+    let showFooter = true;
 
-  let showFooter = true;
+    const nativeApp = window.location.search === '?nativeApp=true';
+    // don't show the footer if on a mobile device
+    // or using the native app query param
+    if (nativeApp || isMobile) {
+        showFooter = false;
+    }
 
-  const nativeApp = window.location.search === '?nativeApp=true';
-  // don't show the footer if on a mobile device
-  // or using the native app query param
-  if(nativeApp || isMobile) {
-    showFooter = false;
-  }
+    return (
+        <>
+            <div
+                className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}
+            >
+                <Viewport>
+                    <World />
 
-  return(
-    <>
+                    <DialogManager />
 
-      <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
+                    {/* Show the floor counter when playing endless mode */}
+                    {gameMode === 'endless' && (
+                        <EndlessFloorCounter floor={floorNum} />
+                    )}
+                </Viewport>
 
-        <Viewport>
+                <GameMenus />
+            </div>
 
-          <World />
-
-          <DialogManager />
-
-          {/* Show the floor counter when playing endless mode */}
-          { gameMode === 'endless' && <EndlessFloorCounter floor={floorNum} /> }
-
-        </Viewport>
-
-        <GameMenus />
-
-      </div>
-
-      { showFooter && <Footer /> }
-    </>
-  );
+            {showFooter && <Footer />}
+        </>
+    );
 };
 
 const mapStateToProps = ({ appState, world }) => ({ appState, world });
