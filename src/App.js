@@ -1,76 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import { connect }                    from 'react-redux';
-import { isMobile }                   from 'react-device-detect';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { isMobile } from 'react-device-detect';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-import DownloadAppPopup       from './components/download-app-popup';
-import DialogManager          from './features/dialog-manager';
-import EndlessFloorCounter    from './components/endless-floor-counter';
-import Footer                 from './components/footer';
-import GameMenus              from './features/game-menus';
-import World                  from './features/world';
-import Viewport               from './components/viewport';
+import DialogManager from './features/dialog-manager';
+import EndlessFloorCounter from './components/endless-floor-counter';
+import Footer from './components/footer';
+import GameMenus from './features/game-menus';
+import World from './features/world';
+import Viewport from './components/viewport';
 import useGameViewportScaling from './features/app-state/actions/use-game-viewport-scaling';
 
 const App = ({ appState, world }) => {
+    useGameViewportScaling();
 
-  useGameViewportScaling();
+    // disable scrolling of the page
+    // prevents iOS Safari bouncing during movement
+    useEffect(() => {
+        disableBodyScroll(document.getElementById('roll-for-reaction'));
+        return clearAllBodyScrollLocks;
+    }, []);
 
-  const [showDownloadPopup, setShowDownloadPopup] = useState(false);
+    const { sideMenu } = appState;
+    const { gameMode, floorNum } = world;
 
-  // disable scrolling of the page
-  // prevents iOS Safari bouncing during movement
-  useEffect(() => {
-    disableBodyScroll(document.getElementById('react-rpg'));
-    return clearAllBodyScrollLocks;
-  }, []);
+    let showFooter = true;
 
-  // if this is not the react native app and they haven't opted out,
-  // show the user a dialog to download the app
-  useEffect(() => {
-    if(!nativeApp && !optOutDownload) {
-      setShowDownloadPopup(true);
+    const nativeApp = window.location.search === '?nativeApp=true';
+    // don't show the footer if on a mobile device
+    // or using the native app query param
+    if (nativeApp || isMobile) {
+        showFooter = false;
     }
-  }, []);
 
-  const { optOutDownload, sideMenu } = appState;
-  const { gameMode, floorNum } = world;
+    return (
+        <>
+            <div
+                className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}
+            >
+                <Viewport>
+                    <World />
+                    <DialogManager />
 
-  let showFooter = true;
+                    {/* Show the floor counter when playing endless mode */}
+                    {gameMode === 'endless' && (
+                        <EndlessFloorCounter floor={floorNum} />
+                    )}
+                </Viewport>
 
-  const nativeApp = window.location.search === '?nativeApp=true';
-  // don't show the footer if on a mobile device
-  // or using the native app query param
-  if(nativeApp || isMobile) {
-    showFooter = false;
-  }
+                <GameMenus />
+            </div>
 
-  return(
-    <>
-      <DownloadAppPopup
-        open={showDownloadPopup}
-        onClose={() => setShowDownloadPopup(false)} />
-
-      <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
-
-        <Viewport>
-
-          <World />
-
-          <DialogManager />
-
-          {/* Show the floor counter when playing endless mode */}
-          { gameMode === 'endless' && <EndlessFloorCounter floor={floorNum} /> }
-
-        </Viewport>
-
-        <GameMenus />
-
-      </div>
-
-      { showFooter && <Footer /> }
-    </>
-  );
+            {showFooter && <Footer />}
+        </>
+    );
 };
 
 const mapStateToProps = ({ appState, world }) => ({ appState, world });

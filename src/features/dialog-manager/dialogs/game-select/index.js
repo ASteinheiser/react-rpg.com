@@ -14,7 +14,7 @@ const GameSelect = ({ mainGameDialog, endlessGameDialog }) => {
   return(
     <Dialog>
       <span className='flex-row game-select__title'>
-        {'React RPG'}
+        {'Roll For Reaction'}
       </span>
 
       <span className='flex-column game-select__text'>
