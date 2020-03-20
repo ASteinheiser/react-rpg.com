@@ -2,6 +2,7 @@
     "name": "roll-for-reaction",
     "version": "1.1.0",
     "private": true,
+    "homepage": "https://matteas.nz/roll-for-reaction",
     "eslintConfig": {
         "extends": [
             "react-app",
@@ -48,13 +49,16 @@
         "gh-pages": "^2.2.0",
         "husky": "^4.2.3",
         "lint-staged": "^10.0.8",
-        "prettier": "^1.19.1"
+        "prettier": "^1.19.1",
+        "gh-pages": "^2.1.1"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "predeploy": "yarn build",
+        "deploy": "gh-pages -d build"
     },
     "browserslist": [
         ">0.2%",
