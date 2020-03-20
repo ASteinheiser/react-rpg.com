@@ -47,13 +47,14 @@
 
   position: relative;
 
-  border: 1px solid var(--blue);
+  border: 1px solid purple;
   border-radius: 7px;
 
   .exp-bar__value {
     height: 20px;
 
-    background: var(--blue);
+    //background: var(--blue);
+    background: purple;
 
     border-radius: 5px 0px 0px 4px;
 
@@ -85,10 +86,14 @@
   }
 }
 
-.stats-bar__text {
+.stats-health-bar__text {
   height: 20px;
   font-size: 22px;
-  color: var(--dark-gray);
+  text-shadow: -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+  color: lightgray;
 
   font-weight: 500;
 
@@ -100,3 +105,25 @@
   left: 0;
   right: 0;
 }
+
+
+.stats-exp-bar__text {
+  height: 20px;
+  font-size: 22px;
+  text-shadow: -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+  color: lightyellow;
+
+  font-weight: 500;
+
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+}
+
