@@ -96,8 +96,8 @@ class Stats extends Component {
                   style={{paddingTop: sideMenu ? 12 : 0}}>
 
                   <span className='exp-bar__container'>
-                    <span className='flex-row stats-bar__text'>
-                      {'EXP'}
+                    <span className='flex-row stats-exp-bar__text'>
+                      {exp + "/" + expToLevel}
                     </span>
                     <span className='exp-bar__value'
                       style={{ width: `${(exp / expToLevel) * 100}%` }}>
@@ -136,8 +136,8 @@ class Stats extends Component {
                     style={{paddingBottom: sideMenu ? 12 : 0}}>
 
                     <span className='stats-hp-bar__container'>
-                      <span className='flex-row stats-bar__text'>
-                        {'HP'}
+                      <span className='flex-row stats-health-bar__text'>
+                        {hp + "/" + maxHp}
                       </span>
                       <span className='stats-hp-bar__value'
                         style={{
