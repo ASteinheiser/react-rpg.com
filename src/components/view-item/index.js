@@ -39,7 +39,7 @@ const ViewItem = ({ sell, buy, onClose, data, stats, unequipItem, buyItem,
       break;
 
     case 'potion':
-      itemStats.push(<StatsItem stats={{ name: 'heal', value: Math.ceil((data.hp / stats.maxHp) * 100) }} key={uuidv4()} />);
+      itemStats.push(<StatsItem stats={{ name: 'heal', value: data.hp }} key={uuidv4()} />);
       break;
 
     case 'weapon':

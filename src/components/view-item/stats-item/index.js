@@ -32,7 +32,7 @@ const StatsItem = ({ stats }) => {
 
       <span style={{ color: `var(--${getColor(stats.name)})` }}>
 
-        { `+${stats.value}${stats.name === 'heal' ? '%' : ''}` }
+        { `+${stats.value}` }
 
       </span>
 
