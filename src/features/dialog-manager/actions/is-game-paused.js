@@ -1,9 +1,7 @@
-
 export default function isGamePaused() {
-  return (_, getState) => {
+    return (_, getState) => {
+        const { paused, settings } = getState().dialog;
 
-    const { paused, settings } = getState().dialog;
-
-    return (paused || settings);
-  };
+        return paused || settings;
+    };
 }
