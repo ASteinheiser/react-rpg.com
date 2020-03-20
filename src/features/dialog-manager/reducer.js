@@ -1,79 +1,88 @@
-
 const initialState = {
-  gameText: false,
-  gameOver: false,
-  gameStart: true,
-  gameInstructions: false,
-  gameSelect: null,
-  gameWin: false,
-  paused: true,
-  chest: false,
-  chestOpen: false,
-  shop: false,
-  settings: false,
-  inventory: false,
-  levelUp: false
+    gameText: false,
+    gameOver: false,
+    gameStart: true,
+    gameInstructions: false,
+    gameSelect: null,
+    gameWin: false,
+    paused: true,
+    chest: false,
+    chestOpen: false,
+    shop: false,
+    settings: false,
+    inventory: false,
+    levelUp: false,
 };
 
 const dialogManagerReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
+        case 'PAUSE':
+            const {
+                shop,
+                chest,
+                gameStart,
+                inventory,
+                gameOver,
+                gameText,
+                gameWin,
+                gameSelect,
+                gameInstructions,
+                levelUp,
+                pause,
+            } = payload;
 
-  switch(type) {
+            return {
+                ...state,
+                levelUp: levelUp || false,
+                shop: shop || false,
+                chest: chest || false,
+                gameStart: gameStart || false,
+                inventory: inventory || false,
+                gameOver: gameOver || false,
+                gameText: gameText || false,
+                gameWin: gameWin || false,
+                gameSelect: gameSelect || null,
+                gameInstructions: gameInstructions || false,
+                paused: pause,
+            };
 
-    case 'PAUSE':
-      const { shop, chest, gameStart, inventory, gameOver, gameText, gameWin, gameSelect, gameInstructions, levelUp, pause } = payload;
+        case 'SET_CHEST_DATA':
+            return { ...state, chestOpen: payload };
 
-      return {
-        ...state,
-        levelUp: levelUp || false,
-        shop: shop || false,
-        chest: chest || false,
-        gameStart: gameStart || false,
-        inventory: inventory || false,
-        gameOver: gameOver || false,
-        gameText: gameText || false,
-        gameWin: gameWin || false,
-        gameSelect: gameSelect || null,
-        gameInstructions: gameInstructions || false,
-        paused: pause
-      };
+        case 'OPEN_SETTINGS':
+            return { ...state, settings: true };
 
-    case 'SET_CHEST_DATA':
-      return { ...state, chestOpen: payload };
+        case 'CLOSE_SETTINGS':
+            return { ...state, settings: false };
 
-    case 'OPEN_SETTINGS':
-      return { ...state, settings: true };
+        case 'SET_STORY_MAP':
+            const { direction, currentMap, storyMaps } = payload;
 
-    case 'CLOSE_SETTINGS':
-      return { ...state, settings: false };
+            const { stairs } = storyMaps[currentMap];
 
-    case 'SET_STORY_MAP':
-      const { direction, currentMap, storyMaps } = payload;
+            const nextMap = stairs[direction];
 
-      const { stairs } = storyMaps[currentMap];
+            const { message } = storyMaps[nextMap];
+            // if the map has a message and player is going up, display message
+            if (message && direction === 'up') {
+                return {
+                    ...state,
+                    paused: true,
+                    gameText: {
+                        title: message.title,
+                        body: message.body,
+                    },
+                };
+            }
 
-      const nextMap = stairs[direction];
+            return state;
 
-      const { message } = storyMaps[nextMap];
-      // if the map has a message and player is going up, display message
-      if(message && direction === 'up') {
-        return {
-          ...state,
-          paused: true,
-          gameText: {
-            title: message.title,
-            body: message.body
-          }
-        };
-      }
+        case 'RESET':
+            return initialState;
 
-      return state;
-
-    case 'RESET':
-      return initialState;
-
-    default:
-      return state;
-  }
+        default:
+            return state;
+    }
 };
 
 export default dialogManagerReducer;

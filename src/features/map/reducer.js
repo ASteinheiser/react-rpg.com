@@ -1,27 +1,24 @@
-
 const initialState = {
-  sightBox: [],
-  paddingSightBox: []
+    sightBox: [],
+    paddingSightBox: [],
 };
 
 const mapReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
+        case 'EXPLORE_TILES':
+            const { tiles, paddingTiles } = payload;
 
-  switch(type) {
+            return {
+                sightBox: tiles,
+                paddingSightBox: paddingTiles,
+            };
 
-    case 'EXPLORE_TILES':
-      const { tiles, paddingTiles } = payload;
+        case 'RESET':
+            return initialState;
 
-      return {
-        sightBox: tiles,
-        paddingSightBox: paddingTiles
-      };
-
-    case 'RESET':
-      return initialState;
-
-    default:
-      return state;
-  }
+        default:
+            return state;
+    }
 };
 
 export default mapReducer;
