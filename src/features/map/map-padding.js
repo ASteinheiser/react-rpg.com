@@ -55,6 +55,11 @@ const BoundaryTile = ({
     location,
 }) => {
     let inSight = false;
+    // Load the tile directly from the public folder
+    let tilesrc = `${process.env.PUBLIC_URL}/tiles/${getTileSprite(
+        tileType,
+        variation
+    )}.png`;
 
     if (sightBox) {
         // check the sight box tiles
@@ -70,10 +75,7 @@ const BoundaryTile = ({
     return (
         <div
             style={{
-                backgroundImage: `url(/tiles/${getTileSprite(
-                    tileType,
-                    variation
-                )}.png)`,
+                backgroundImage: `url(${tilesrc})`,
                 display: 'inline-flex',
                 height: SPRITE_SIZE,
                 width: SPRITE_SIZE,
