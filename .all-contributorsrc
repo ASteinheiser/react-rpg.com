@@ -9,6 +9,7 @@
   "imageSize": 100,
   "commit": true,
   "commitConvention": "eslint",
+  "contributorsSortAlphabetically": true,
   "contributors": [
     {
       "login": "Matteas-Eden",
