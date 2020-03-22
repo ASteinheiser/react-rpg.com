@@ -39,6 +39,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "KimberleyEvans-Parker",
+      "name": "Kimberley",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/45865186?v=4",
+      "profile": "https://github.com/KimberleyEvans-Parker",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7
