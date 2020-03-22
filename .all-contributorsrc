@@ -1,58 +1,25 @@
 {
   "projectName": "roll-for-reaction",
-  "projectOwner": "Matteas-Eden",
+  "projectOwner": "matteas-eden",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
     "README.md"
   ],
   "imageSize": 100,
-  "contributorsSortAlphabetically": true,
-  "skipCI": true,
+  "commit": true,
+  "commitConvention": "eslint",
   "contributors": [
     {
       "login": "Matteas-Eden",
       "name": "Matt Eden",
       "avatar_url": "https://avatars0.githubusercontent.com/u/45587386?v=4",
-      "profile": "https://matteas.nz",
+      "profile": "http://matteas.nz",
       "contributions": [
-        "ideas",
         "code",
-        "doc",
-        "review"
-      ]
-    },
-    {
-      "login": "KimberleyEvans-Parker",
-      "name": "Kimberley Evans-Parker",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/45865186?v=4",
-      "profile": "https://github.com/KimberleyEvans-Parker",
-      "contributions": [
-        "ideas",
-        "design",
-        "review"
-      ]
-    },
-    {
-      "login": "Pyxxil",
-      "name": "Josh Hill",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/12526499?v=4",
-      "profile": "https://github.com/Pyxxil",
-      "contributions": [
-        "ideas",
-        "review"
-      ]
-    },
-    {
-      "login": "Frosty273",
-      "name": "Kelvin Ngor",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/39424472?v=4",
-      "profile": "https://github.com/Frosty273",
-      "contributions": [
-        "ideas",
-        "review"
+        "doc"
       ]
     }
   ],
-  "contributorsPerLine": 6
+  "contributorsPerLine": 7
 }
