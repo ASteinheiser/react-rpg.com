@@ -38,7 +38,3 @@ Thanks goes to these wonderful people who helped in making this project a succes
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-- Matt Eden
-- Kimberley Evans-Parker
-- Josh Hill
-- Kelvin Ngor
