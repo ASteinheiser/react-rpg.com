@@ -58,10 +58,10 @@ const GameMusic = ({ sideMenu, gameSoundEnabled, setGameSound }) => {
         }
     }
 
-    function handleBlur() {
+    /*function handleBlur() {
         // during blur, don't change the sound redux state, just turn off music
         setGameMusic(null);
-    }
+    }*/
 
     function turnOffSound() {
         setGameMusic(null);

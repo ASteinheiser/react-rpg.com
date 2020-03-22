@@ -1,18 +1,16 @@
-
 export default function resetGameState() {
-  return dispatch => {
+    return dispatch => {
+        dispatch({
+            type: 'RESET',
+            payload: null,
+        });
 
-    dispatch({
-      type: 'RESET',
-      payload: null
-    });
-
-    dispatch({
-      type: 'PAUSE',
-      payload: {
-        pause: true,
-        gameStart: true
-      }
-    });
-  };
+        dispatch({
+            type: 'PAUSE',
+            payload: {
+                pause: true,
+                gameStart: true,
+            },
+        });
+    };
 }
