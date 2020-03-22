@@ -1,6 +1,6 @@
 # Roll For Reaction
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 #### SOFTENG 750/COMPSCI 732
 
@@ -29,6 +29,7 @@ Thanks goes to these wonderful people who helped in making this project a succes
 <table>
   <tr>
     <td align="center"><a href="http://matteas.nz"><img src="https://avatars0.githubusercontent.com/u/45587386?v=4" width="100px;" alt=""/><br /><sub><b>Matt Eden</b></sub></a><br /><a href="https://github.com/matteas-eden/roll-for-reaction/commits?author=Matteas-Eden" title="Code">💻</a> <a href="https://github.com/matteas-eden/roll-for-reaction/commits?author=Matteas-Eden" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Pyxxil"><img src="https://avatars1.githubusercontent.com/u/12526499?v=4" width="100px;" alt=""/><br /><sub><b>Josh Hill</b></sub></a><br /><a href="https://github.com/matteas-eden/roll-for-reaction/commits?author=Pyxxil" title="Code">💻</a> <a href="https://github.com/matteas-eden/roll-for-reaction/commits?author=Pyxxil" title="Documentation">📖</a></td>
   </tr>
 </table>
 
