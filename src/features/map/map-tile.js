@@ -5,6 +5,11 @@ import { SPRITE_SIZE } from '../../config/constants';
 
 const MapTile = ({ tile, index, sightBox }) => {
     let inSight = false;
+    // Load the tile directly from the public folder
+    let tilesrc = `${process.env.PUBLIC_URL}/tiles/${getTileSprite(
+        tile.value,
+        tile.variation
+    )}.png`;
     // if you need to render the sightBox
     if (sightBox) {
         // check the sight box tiles
@@ -31,10 +36,7 @@ const MapTile = ({ tile, index, sightBox }) => {
         <GroundTile variation={tile.variation}>
             <div
                 style={{
-                    backgroundImage: `url(/tiles/${getTileSprite(
-                        tile.value,
-                        tile.variation
-                    )}.png)`,
+                    backgroundImage: `url(${tilesrc}`,
                     height: SPRITE_SIZE,
                     width: SPRITE_SIZE,
                 }}
@@ -98,10 +100,12 @@ export const FogTile = ({ inSight, explored }) => {
 };
 
 const GroundTile = ({ variation, children }) => {
+    // Load the tile directly from the public folder
+    let tilesrc = `${process.env.PUBLIC_URL}/tiles/ground-${variation}.png`;
     return (
         <div
             style={{
-                backgroundImage: `url('/tiles/ground-${variation}.png')`,
+                backgroundImage: `url(${tilesrc})`,
                 display: 'inline-flex',
                 height: SPRITE_SIZE,
                 width: SPRITE_SIZE,
