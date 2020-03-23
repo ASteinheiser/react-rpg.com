@@ -42,6 +42,7 @@
         "typeface-roboto": "^0.0.54"
     },
     "devDependencies": {
+        "all-contributors-cli": "^6.14.0",
         "eslint-config-prettier": "^6.10.0",
         "eslint-plugin-prettier": "^3.1.2",
         "gh-pages": "^2.2.0",
