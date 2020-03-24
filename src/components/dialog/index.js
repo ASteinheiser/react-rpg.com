@@ -12,8 +12,8 @@ const Dialog = ({ children, goBack, onKeyPress }) => {
     }, []);
 
     function handleKeyPress(event) {
-        // case for 'enter' or 'space' key
-        if (event.keyCode === 13 || event.keyCode === 32) {
+        // case for 'enter'
+        if (event.keyCode === 13) {
             onKeyPress();
         }
     }

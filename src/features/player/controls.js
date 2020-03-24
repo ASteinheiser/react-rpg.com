@@ -133,9 +133,8 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
             case 40:
             case 83:
                 return movePlayer('SOUTH');
-            case 13:
             case 32:
-                // attack with enter or space key
+                // attack with space key
                 return attackMonster();
             default:
             // console.log('key not mapped: ', event.keyCode);
