@@ -36,7 +36,7 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
                     <span style={{ paddingBottom: 12 }}>{`MOVEMENT`}</span>
                 )}
 
-                <div className={`flex-row align-center space-evenly`}>
+                <div className={`align-center space-evenly`}>
                     {mobileVersion ? (
                         <>
                             <img src={Swipe} alt="swipe" />
@@ -62,12 +62,12 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
                 ) : (
                     <>
                         <span style={{ paddingTop: 12 }}>{`ATTACK`}</span>
-                        <div className={`flex-row align-center space-evenly`}>
+                        <div className={`align-center space-evenly`}>
                             <img src={Space} alt="space" />
                         </div>
 
                         <span style={{ paddingTop: 12 }}>{`CONTINUE`}</span>
-                        <div className={`flex-row align-center space-evenly`}>
+                        <div className={`align-center space-evenly`}>
                             <img src={Enter} alt="enter" />
                         </div>
                     </>
