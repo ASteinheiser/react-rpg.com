@@ -52,25 +52,26 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
                     )}
                 </div>
 
-                {!mobileVersion && (
-                    <span style={{ paddingTop: 12 }}>{`ATTACK`}</span>
-                )}
-
-                <div className={`flex-row align-center space-evenly`}>
-                    {mobileVersion ? (
-                        <>
-                            <img src={DoubleTap} alt="double-tap" />
-                            <div className="game-instructions__native-text">
-                                {'DOUBLE TAP to ATTACK'}
-                            </div>
-                        </>
-                    ) : (
-                        <>
+                {mobileVersion ? (
+                    <>
+                        <img src={DoubleTap} alt="double-tap" />
+                        <div className="game-instructions__native-text">
+                            {'DOUBLE TAP to ATTACK'}
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <span style={{ paddingTop: 12 }}>{`ATTACK`}</span>
+                        <div className={`flex-row align-center space-evenly`}>
                             <img src={Space} alt="space" />
+                        </div>
+
+                        <span style={{ paddingTop: 12 }}>{`CONTINUE`}</span>
+                        <div className={`flex-row align-center space-evenly`}>
                             <img src={Enter} alt="enter" />
-                        </>
-                    )}
-                </div>
+                        </div>
+                    </>
+                )}
             </div>
 
             <div className="flex-column game-instructions__button">
