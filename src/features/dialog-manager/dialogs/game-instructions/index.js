@@ -63,12 +63,12 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
                     <>
                         <span style={{ paddingTop: 12 }}>{`ATTACK`}</span>
                         <div className={`align-center space-evenly`}>
-                            <img src={Space} alt="space" />
+                            <img src={Space} alt="space" height="35em" />
                         </div>
 
                         <span style={{ paddingTop: 12 }}>{`CONTINUE`}</span>
                         <div className={`align-center space-evenly`}>
-                            <img src={Enter} alt="enter" />
+                            <img src={Enter} alt="enter" height="45em" />
                         </div>
                     </>
                 )}
