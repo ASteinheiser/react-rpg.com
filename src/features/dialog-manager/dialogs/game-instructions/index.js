@@ -50,7 +50,6 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
                                 src={ArrowKeys}
                                 alt="arrow-keys"
                                 style={{ paddingRight: '2em' }}
-                                // marginRight="2em"
                             />
                             <img src={WASDKeys} alt="wasd-keys" />
                         </>
