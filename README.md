@@ -22,6 +22,33 @@
 
 > Races include Human, Elf and Dwarf
 
+## Install Instructions
+
+The game is hosted via GitHub pages at https://matteas.nz/roll-for-reaction, but for development purposes it is a requirement to be able to run the game locally. 
+
+#### Requirements
+In order to run *Roll for Reaction* locally, you must ensure you have setup, installed and tested:
+- `git`
+- `yarn`
+
+This implementation is fully supported and tested on Arch Linux and Windows 10.
+
+1. Clone the repo
+
+`git clone git@github.com:Matteas-Eden/roll-for-reaction` or `git clone https://github.com/Matteas-Eden/roll-for-reaction`
+
+2. Change to the directory containing the repository
+
+`cd roll-for-reaction`
+
+3. Install the dependencies
+
+`yarn install --frozen-lockfile`
+
+4. Start the game locally
+
+`yarn start`
+
 ## Contributors
 
 Thanks goes to these wonderful people who helped in making this project a success: 
