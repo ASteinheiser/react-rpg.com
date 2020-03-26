@@ -32,7 +32,9 @@
       "contributions": [
         "code",
         "ideas",
-        "review"
+        "review",
+        "doc",
+        "maintenance"
       ]
     },
     {
@@ -43,7 +45,10 @@
       "contributions": [
         "code",
         "ideas",
-        "design"
+        "design",
+        "review",
+        "doc",
+        "maintenance"
       ]
     },
     {
@@ -53,7 +58,11 @@
       "profile": "https://github.com/KimberleyEvans-Parker",
       "contributions": [
         "design",
-        "ideas"
+        "ideas",
+        "doc",
+        "review",
+        "code",
+        "maintenance"
       ]
     }
   ],
