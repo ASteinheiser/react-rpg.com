@@ -49,7 +49,7 @@ class Stats extends Component {
         } = stats;
         const { statsBgColor } = this.state;
 
-        let height = disabled ? 66 : 64;
+        let height = disabled ? 66 : 120;
         if (sideMenu) height = disabled ? 202 : 200;
 
         let hpPercent = (hp / maxHp) * 100;
@@ -92,11 +92,7 @@ class Stats extends Component {
                 {!disabled && (
                     <>
                         <div className="flex-column">
-                            <div
-                                className={`flex-row ${
-                                    sideMenu ? '' : 'stats__row--spacing'
-                                }`}
-                            >
+                            <div className="flex-row">
                                 <span className="stats__text--spacing">
                                     {'LEVEL: '}
                                 </span>
@@ -104,51 +100,46 @@ class Stats extends Component {
                                     {level}
                                 </span>
                             </div>
-
-                            <div
-                                className="flex-row flex-1"
-                                style={{ paddingTop: sideMenu ? 12 : 0 }}
-                            >
-                                <span className="exp-bar__container">
-                                    <span className="flex-row stats-exp-bar__text">
-                                        {exp + '/' + expToLevel}
-                                    </span>
-                                    <span
-                                        className="exp-bar__value"
-                                        style={{
-                                            width: `${(exp / expToLevel) *
-                                                100}%`,
-                                        }}
-                                    ></span>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className={`flex-column ${columnStyle}`}>
                             <div
                                 className={`flex-row ${
                                     sideMenu ? '' : 'stats__row--spacing'
                                 }`}
                             >
                                 <span className="stats__text--spacing">
-                                    {'ATK: '}
+                                    {'GOLD: '}
                                 </span>
-                                <span className="stats__text--damage">
-                                    {damage}
+                                <span className="stats__text--gold">
+                                    {gold}
                                 </span>
                             </div>
 
                             <div className="flex-row">
                                 <span className="stats__text--spacing">
-                                    {'DEF: '}
+                                    {'STR: '}
                                 </span>
-                                <span className="stats__text--defence">
-                                    {defence}
+                                <span className="stats__text--melee">
+                                    {damage + ' (+' + '4' + ')'}
+                                </span>
+                            </div>
+
+                            <div className="flex-row">
+                                <span className="stats__text--spacing">
+                                    {'CON: '}
+                                </span>
+                                <span className="stats__text--melee">
+                                    {defence + ' (+' + '4' + ')'}
                                 </span>
                             </div>
                         </div>
 
                         <div className={`flex-column ${columnStyle}`}>
+                            <div className="flex-row">
+                                <span className="stats__text--spacing">{}</span>
+                                <span className="stats__text--black">
+                                    {123123}
+                                </span>
+                            </div>
+
                             <div
                                 className={`flex-row ${
                                     sideMenu ? '' : 'stats__row--spacing'
@@ -175,10 +166,70 @@ class Stats extends Component {
 
                             <div className="flex-row">
                                 <span className="stats__text--spacing">
-                                    {'GOLD: '}
+                                    {'DEX: '}
                                 </span>
-                                <span className="stats__text--gold">
-                                    {gold}
+                                <span className="stats__text--ranged">
+                                    {2 + ' (+' + '4' + ')'}
+                                </span>
+                            </div>
+
+                            <div className="flex-row">
+                                <span className="stats__text--spacing">
+                                    {'CHR: '}
+                                </span>
+                                <span className="stats__text--ranged">
+                                    {2 + ' (+' + '4' + ')'}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className={`flex-column ${columnStyle}`}>
+                            <div className="flex-row">
+                                <span className="stats__text--spacing">{}</span>
+                                <span className="stats__text--black">
+                                    {123123}
+                                </span>
+                            </div>
+
+                            <div
+                                className={`flex-row ${
+                                    sideMenu ? '' : 'stats__row--spacing'
+                                }`}
+                            >
+                                <div
+                                    className="flex-row flex-1"
+                                    style={{ paddingTop: sideMenu ? 12 : 0 }}
+                                >
+                                    <span className="exp-bar__container">
+                                        <span className="flex-row stats-exp-bar__text">
+                                            {exp + '/' + expToLevel}
+                                        </span>
+                                        <span
+                                            className="exp-bar__value"
+                                            style={{
+                                                width: `${(exp / expToLevel) *
+                                                    100}%`,
+                                            }}
+                                        ></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div className="flex-row">
+                                <span className="stats__text--spacing">
+                                    {'INT: '}
+                                </span>
+                                <span className="stats__text--magic">
+                                    {2 + ' (+' + '4' + ')'}
+                                </span>
+                            </div>
+
+                            <div className="flex-row">
+                                <span className="stats__text--spacing">
+                                    {'WIS: '}
+                                </span>
+                                <span className="stats__text--magic">
+                                    {2 + ' (+' + '4' + ')'}
                                 </span>
                             </div>
                         </div>

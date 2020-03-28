@@ -1,129 +1,137 @@
 .stats__container {
-  justify-content: center;
+    justify-content: center;
 
-  transition: background .5s ease-in-out;
+    transition: background 0.5s ease-in-out;
 
-  cursor: default;
-  user-select: none;
+    cursor: default;
+    user-select: none;
 }
 
 .stats__row--spacing {
-  padding-bottom: 15px;
+    padding-bottom: 15px;
 }
 
 .stats__text--spacing {
-  padding-right: 15px;
+    padding-right: 10px;
+    font-size: 15px;
+    text-indent: -5px;
 }
 
 .stats__text--level {
-  color: var(--blue);
+    color: var(--blue);
+    font-size: 18px;
 }
 
 .stats__text--gold {
-  color: var(--orange);
+    color: var(--orange);
+    font-size: 18px;
+}
+.stats__text--black {
+    color: var(--text-color, black);
 }
 
-.stats__text--damage {
-  color: var(--light-red);
+.stats__text--melee {
+    color: var(--light-red);
+    font-size: 15px;
 }
 
-.stats__text--defence {
-  color: var(--purple);
+.stats__text--ranged {
+    color: var(--green);
+    font-size: 15px;
+}
+
+.stats__text--magic {
+    color: var(--blue);
+    font-size: 15px;
 }
 
 .stats-column__spacing {
-  padding-left: 12px;
+    padding-left: 12px;
 }
 
 .stats-column__spacing--large {
-  padding-left: 24px;
+    padding-left: 24px;
 }
 
 .exp-bar__container {
-  width: 110px;
-  height: 20px;
-
-  background: var(--gray);
-
-  position: relative;
-
-  border: 1px solid purple;
-  border-radius: 7px;
-
-  .exp-bar__value {
+    width: 100px;
     height: 20px;
 
-    //background: var(--blue);
-    background: purple;
+    background: var(--gray);
 
-    border-radius: 5px 0px 0px 4px;
+    position: relative;
 
-    position: absolute;
+    border: 1px solid purple;
+    border-radius: 7px;
 
-    transition: width 1s ease-in-out;
-  }
+    .exp-bar__value {
+        height: 20px;
+
+        //background: var(--blue);
+        background: purple;
+
+        border-radius: 5px 0px 0px 4px;
+
+        position: absolute;
+
+        transition: width 1s ease-in-out;
+    }
 }
 
 .stats-hp-bar__container {
-  width: 115px;
-  height: 20px;
-
-  background: var(--red);
-
-  position: relative;
-
-  border: 1px solid var(--green);
-  border-radius: 7px;
-
-  .stats-hp-bar__value {
+    width: 100px;
     height: 20px;
 
-    background: var(--green);
+    background: var(--red);
 
-    position: absolute;
+    position: relative;
 
-    transition: width 1s ease-in-out;
-  }
+    border: 1px solid var(--green);
+    border-radius: 7px;
+
+    .stats-hp-bar__value {
+        height: 20px;
+
+        background: var(--green);
+
+        position: absolute;
+
+        transition: width 1s ease-in-out;
+    }
 }
 
 .stats-health-bar__text {
-  height: 20px;
-  font-size: 22px;
-  text-shadow: -1px -1px 0 #000,
-  1px -1px 0 #000,
-  -1px 1px 0 #000,
-  1px 1px 0 #000;
-  color: lightgray;
+    height: 20px;
+    font-size: 22px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+    color: lightgray;
 
-  font-weight: 500;
+    font-weight: 500;
 
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 
-  position: absolute;
-  z-index: 1000;
-  left: 0;
-  right: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    right: 0;
 }
-
 
 .stats-exp-bar__text {
-  height: 20px;
-  font-size: 22px;
-  text-shadow: -1px -1px 0 #000,
-  1px -1px 0 #000,
-  -1px 1px 0 #000,
-  1px 1px 0 #000;
-  color: lightyellow;
+    height: 20px;
+    font-size: 22px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+    color: lightyellow;
 
-  font-weight: 500;
+    font-weight: 500;
 
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 
-  position: absolute;
-  z-index: 1000;
-  left: 0;
-  right: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    right: 0;
 }
-
