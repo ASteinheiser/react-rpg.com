@@ -50,7 +50,7 @@ class Stats extends Component {
         const { statsBgColor } = this.state;
 
         let height = disabled ? 66 : 120;
-        if (sideMenu) height = disabled ? 202 : 200;
+        if (sideMenu) height = disabled ? 100 : 110;
 
         let hpPercent = (hp / maxHp) * 100;
         if (hpPercent > 100) hpPercent = 100;
@@ -71,7 +71,7 @@ class Stats extends Component {
         else padding = '12px';
 
         let width;
-        if (sideMenu) width = 150;
+        if (sideMenu) width = 320;
         else if (largeView) width = 350;
         else width = 324;
 
@@ -87,7 +87,7 @@ class Stats extends Component {
                 }}
                 className={`stats__container
           ${disabled ? '' : 'white-border'}
-          ${sideMenu ? 'flex-column-reverse' : 'flex-row'}`}
+          ${sideMenu ? 'flex-row' : 'flex-row'}`}
             >
                 {!disabled && (
                     <>
@@ -133,7 +133,8 @@ class Stats extends Component {
                         </div>
 
                         <div className={`flex-column ${columnStyle}`}>
-                            <div className="flex-row">
+                            <div className="flex-row"
+                            style={{ display: sideMenu ? "none" : "" }}>
                                 <span className="stats__text--spacing">{}</span>
                                 <span className="stats__text--black">
                                     {123123}
@@ -147,7 +148,7 @@ class Stats extends Component {
                             >
                                 <div
                                     className="flex-row"
-                                    style={{ paddingBottom: sideMenu ? 12 : 0 }}
+                                    style={{ paddingBottom: sideMenu ? 32 : 0 }}
                                 >
                                     <span className="stats-hp-bar__container">
                                         <span className="flex-row stats-health-bar__text">
@@ -184,10 +185,11 @@ class Stats extends Component {
                         </div>
 
                         <div className={`flex-column ${columnStyle}`}>
-                            <div className="flex-row">
+                            <div className="flex-row"
+                            style={{ display: sideMenu ? "none" : "" }}>
                                 <span className="stats__text--spacing">{}</span>
                                 <span className="stats__text--black">
-                                    {123123}
+                                    {columnStyle}
                                 </span>
                             </div>
 
@@ -197,8 +199,10 @@ class Stats extends Component {
                                 }`}
                             >
                                 <div
-                                    className="flex-row flex-1"
-                                    style={{ paddingTop: sideMenu ? 12 : 0 }}
+                                    className={`flex-row ${
+                                        sideMenu ? '' : 'flex-1'
+                                    }`}
+                                    style={{ paddingBottom: sideMenu ? 32 : 0 }}
                                 >
                                     <span className="exp-bar__container">
                                         <span className="flex-row stats-exp-bar__text">
