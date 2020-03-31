@@ -26,8 +26,9 @@
     color: var(--orange);
     font-size: 18px;
 }
-.stats__text--black {
+.stats__text--blank {
     color: var(--text-color, black);
+    display: none;
 }
 
 .stats__text--melee {
