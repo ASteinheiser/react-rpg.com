@@ -133,10 +133,9 @@ class Stats extends Component {
                         </div>
 
                         <div className={`flex-column ${columnStyle}`}>
-                            <div className="flex-row"
-                            style={{ display: sideMenu ? "none" : "" }}>
+                            <div className="flex-row">
                                 <span className="stats__text--spacing">{}</span>
-                                <span className="stats__text--black">
+                                <span className="stats__text--blank">
                                     {123123}
                                 </span>
                             </div>
@@ -165,7 +164,10 @@ class Stats extends Component {
                                 </div>
                             </div>
 
-                            <div className="flex-row">
+                            <div
+                                className="flex-row"
+                                style={{ paddingTop: sideMenu ? 0 : 25 }}
+                            >
                                 <span className="stats__text--spacing">
                                     {'DEX: '}
                                 </span>
@@ -185,11 +187,10 @@ class Stats extends Component {
                         </div>
 
                         <div className={`flex-column ${columnStyle}`}>
-                            <div className="flex-row"
-                            style={{ display: sideMenu ? "none" : "" }}>
+                            <div className="flex-row">
                                 <span className="stats__text--spacing">{}</span>
-                                <span className="stats__text--black">
-                                    {columnStyle}
+                                <span className="stats__text--blank">
+                                    {123123}
                                 </span>
                             </div>
 
@@ -219,7 +220,10 @@ class Stats extends Component {
                                 </div>
                             </div>
 
-                            <div className="flex-row">
+                            <div
+                                className="flex-row"
+                                style={{ paddingTop: sideMenu ? 0 : 25 }}
+                            >
                                 <span className="stats__text--spacing">
                                     {'INT: '}
                                 </span>
