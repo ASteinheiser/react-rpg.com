@@ -1,5 +1,4 @@
 import randomItem from '../dialogs/chest-loot/random-item';
-import { SPRITE_SIZE } from '../../../config/constants';
 
 export default function openChest() {
     return (dispatch, getState) => {
