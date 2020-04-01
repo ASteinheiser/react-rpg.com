@@ -37,10 +37,11 @@ const worldReducer = (state = initialState, { type, payload }) => {
             newState = _cloneDeep(state);
             currentMapData = getCurrentMap(newState);
 
-            console.log('PAYLOAD ', payload);
-            const { x, y, item } = payload;
-            if (item === null) {
-                currentMapData.tiles[y][x].value = -2;
+            if (payload) {
+                const { x, y, item } = payload;
+                if (item === null) {
+                    currentMapData.tiles[y][x].value = -2;
+                }
             }
 
             return newState;

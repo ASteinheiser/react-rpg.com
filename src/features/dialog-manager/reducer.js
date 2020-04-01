@@ -47,12 +47,15 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
             };
 
         case 'SET_CHEST_DATA':
-            const { gold, exp, item } = payload;
-            return {
-                ...state,
-                chestOpen: { gold: gold, exp: exp, item: item },
-            };
-
+            if (payload) {
+                const { gold, exp, item } = payload;
+                return {
+                    ...state,
+                    chestOpen: { gold: gold, exp: exp, item: item },
+                };
+            } else {
+                return { ...state, chestOpen: false };
+            }
         case 'OPEN_SETTINGS':
             return { ...state, settings: true };
 

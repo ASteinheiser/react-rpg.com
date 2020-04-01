@@ -1,15 +1,23 @@
 import randomItem from '../dialogs/chest-loot/random-item';
+import { SPRITE_SIZE } from '../../../config/constants';
 
 export default function openChest() {
     return (dispatch, getState) => {
-        const { stats, dialog } = getState();
+        const { stats, dialog, player } = getState();
         const { level, expToLevel } = stats;
 
         const { chestOpen } = dialog;
         const { item } = chestOpen;
+        const { position } = player;
 
-        let itemDrop = false;
-        if (item === undefined || item === null) {
+        let x = position[0] / SPRITE_SIZE;
+        let y = position[1] / SPRITE_SIZE;
+
+        let itemDrop = null;
+        if (
+            (x !== chestOpen.x || y !== chestOpen.y) &&
+            (item === undefined || item === null)
+        ) {
             // give the player a 25% chance to get a random item
             const chance = Math.floor(Math.random() * 100) + 1;
             if (chance <= 25) {
@@ -38,6 +46,8 @@ export default function openChest() {
                 exp,
                 gold,
                 item: itemDrop,
+                x: x,
+                y: y,
             },
         });
         if (exp + stats.exp >= expToLevel) {
