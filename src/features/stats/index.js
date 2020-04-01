@@ -72,7 +72,7 @@ class Stats extends Component {
 
         let width;
         if (sideMenu) width = 320;
-        else if (largeView) width = 350;
+        else if (largeView) width = 360;
         else width = 324;
 
         return (
@@ -118,7 +118,7 @@ class Stats extends Component {
                                     {'STR: '}
                                 </span>
                                 <span className="stats__text--melee">
-                                    {damage + ' (+' + '4' + ')'}
+                                    {damage + ' (+' + '10' + ')'}
                                 </span>
                             </div>
 
@@ -127,7 +127,7 @@ class Stats extends Component {
                                     {'CON: '}
                                 </span>
                                 <span className="stats__text--melee">
-                                    {defence + ' (+' + '4' + ')'}
+                                    {defence + ' (+' + '10' + ')'}
                                 </span>
                             </div>
                         </div>
@@ -172,7 +172,7 @@ class Stats extends Component {
                                     {'DEX: '}
                                 </span>
                                 <span className="stats__text--ranged">
-                                    {2 + ' (+' + '4' + ')'}
+                                    {30 + ' (+' + '10' + ')'}
                                 </span>
                             </div>
 
@@ -181,7 +181,7 @@ class Stats extends Component {
                                     {'CHR: '}
                                 </span>
                                 <span className="stats__text--ranged">
-                                    {2 + ' (+' + '4' + ')'}
+                                    {30 + ' (+' + '10' + ')'}
                                 </span>
                             </div>
                         </div>
@@ -228,7 +228,7 @@ class Stats extends Component {
                                     {'INT: '}
                                 </span>
                                 <span className="stats__text--magic">
-                                    {2 + ' (+' + '4' + ')'}
+                                    {30 + ' (+' + '10' + ')'}
                                 </span>
                             </div>
 
@@ -237,7 +237,7 @@ class Stats extends Component {
                                     {'WIS: '}
                                 </span>
                                 <span className="stats__text--magic">
-                                    {2 + ' (+' + '4' + ')'}
+                                    {30 + ' (+' + '10' + ')'}
                                 </span>
                             </div>
                         </div>
