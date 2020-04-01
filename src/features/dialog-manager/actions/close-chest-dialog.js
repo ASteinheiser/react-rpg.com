@@ -1,4 +1,4 @@
-import { SPRITE_SIZE } from '../../../config/constants';
+import { spriteToCoordinates } from '../../../config/constants';
 
 export default function closeChestDialog() {
     return (dispatch, getState) => {
@@ -6,14 +6,17 @@ export default function closeChestDialog() {
         const { chestOpen } = dialog;
         const { position } = player;
 
+        const { x, y } = spriteToCoordinates(position);
+
+        // Ensure that if any items are left in the chest, that stays in the chest
         dispatch({
             type: 'SET_CHEST_DATA',
             payload: {
                 gold: 0,
                 exp: 0,
                 item: chestOpen.item,
-                x: position[0] / SPRITE_SIZE,
-                y: position[1] / SPRITE_SIZE,
+                x: x,
+                y: y,
             },
         });
         dispatch({

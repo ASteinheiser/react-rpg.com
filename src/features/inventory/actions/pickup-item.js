@@ -1,4 +1,4 @@
-import { SPRITE_SIZE } from '../../../config/constants';
+import { spriteToCoordinates } from '../../../config/constants';
 
 export default function pickupItem() {
     return (dispatch, getState) => {
@@ -12,15 +12,18 @@ export default function pickupItem() {
 
         const { items, maxItems } = inventory;
 
+        const { x, y } = spriteToCoordinates(position);
+
         if (items.length < maxItems) {
+            // The item has now been taken, so make sure it gets deleted
             dispatch({
                 type: 'SET_CHEST_DATA',
                 payload: {
                     exp: 0,
                     gold: 0,
                     item: null,
-                    x: position[0] / SPRITE_SIZE,
-                    y: position[1] / SPRITE_SIZE,
+                    x: x,
+                    y: y,
                 },
             });
             dispatch({
@@ -28,14 +31,15 @@ export default function pickupItem() {
                 payload: item,
             });
         } else {
+            // The item now needs to stay in the chest, so put it there
             dispatch({
                 type: 'SET_CHEST_DATA',
                 payload: {
                     exp: 0,
                     gold: 0,
                     item: item,
-                    x: position[0] / SPRITE_SIZE,
-                    y: position[1] / SPRITE_SIZE,
+                    x: x,
+                    y: y,
                 },
             });
             dispatch({

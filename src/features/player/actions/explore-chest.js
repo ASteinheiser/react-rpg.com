@@ -1,16 +1,19 @@
+import { chestName } from '../../../config/constants';
+
 export default function exploreChest(x, y) {
     return (dispatch, getState) => {
         // replace the closed chest img with open
         const { world } = getState();
         const { chests } = world;
 
-        if (x + ',' + y in chests) {
+        const chest = chests[chestName(x, y)];
+        if (chest !== undefined) {
             dispatch({
                 type: 'SET_CHEST_DATA',
                 payload: {
                     gold: 0,
                     exp: 0,
-                    item: chests[x + ',' + y].item,
+                    item: chest.item,
                     x: x,
                     y: y,
                 },

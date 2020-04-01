@@ -1,5 +1,5 @@
 import randomItem from '../dialogs/chest-loot/random-item';
-import { SPRITE_SIZE } from '../../../config/constants';
+import { spriteToCoordinates } from '../../../config/constants';
 
 export default function openChest() {
     return (dispatch, getState) => {
@@ -10,20 +10,20 @@ export default function openChest() {
         const { item } = chestOpen;
         const { position } = player;
 
-        let x = position[0] / SPRITE_SIZE;
-        let y = position[1] / SPRITE_SIZE;
+        let { x, y } = spriteToCoordinates(position);
 
         let itemDrop = null;
         if (
             (x !== chestOpen.x || y !== chestOpen.y) &&
             (item === undefined || item === null)
         ) {
-            // give the player a 25% chance to get a random item
+            // Give the player a 25% chance to get a random item, only if there isn't an item already in it
             const chance = Math.floor(Math.random() * 100) + 1;
             if (chance <= 25) {
                 itemDrop = randomItem(level);
             }
         } else {
+            // An item is already in the chest, so let's use it
             itemDrop = item;
         }
 

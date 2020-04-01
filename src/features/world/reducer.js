@@ -4,6 +4,8 @@ import attachMetaToTiles from '../../utils/attach-meta-to-tiles';
 import generatePaddingTiles from '../../utils/generate-padding-tiles';
 import maps from '../../data/maps';
 
+import { chestName } from '../../config/constants';
+
 const initialState = {
     currentMap: null,
     gameMode: null,
@@ -39,11 +41,15 @@ const worldReducer = (state = initialState, { type, payload }) => {
             currentMapData = getCurrentMap(newState);
 
             if (payload) {
+                // We pass 'false' around if we're setting up a new chest, so here we've got an existing chest
                 const { x, y, item } = payload;
                 if (item === null) {
+                    // This chest has either been completely looted, or there never was an item in it.
+                    // This will make the chest appear to the player as open.
                     currentMapData.tiles[y][x].value = -2;
                 } else if (x !== undefined && y !== undefined) {
-                    newState.chests[x + ',' + y] = { item: item };
+                    // We still have an item in this chest, so let's ensure it stays there.
+                    newState.chests[chestName(x, y)] = { item: item };
                 }
             }
 
@@ -51,13 +57,14 @@ const worldReducer = (state = initialState, { type, payload }) => {
 
         case 'OPEN_CHEST':
             const { x, y } = payload;
-            if (!(x + ',' + y in state.chests)) {
-                state.chests[x + ',' + y] = { item: null };
+            const chest = state.chests[chestName(x, y)];
+            if (chest === undefined) {
+                // This chest hasn't been opened before, so let's generate one
+                state.chests[chestName(x, y)] = { item: null };
             }
 
             newState = _cloneDeep(state);
             currentMapData = getCurrentMap(newState);
-            // set current chest to ground tile
 
             return newState;
 
