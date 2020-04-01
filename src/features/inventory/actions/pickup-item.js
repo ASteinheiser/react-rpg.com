@@ -30,7 +30,13 @@ export default function pickupItem() {
         } else {
             dispatch({
                 type: 'SET_CHEST_DATA',
-                payload: { exp: 0, gold: 0, item: item },
+                payload: {
+                    exp: 0,
+                    gold: 0,
+                    item: item,
+                    x: position[0] / SPRITE_SIZE,
+                    y: position[1] / SPRITE_SIZE,
+                },
             });
             dispatch({
                 type: 'TOO_MANY_ITEMS',

@@ -10,6 +10,7 @@ const initialState = {
     turn: 0,
     storyMaps: {},
     randomMaps: [],
+    chests: {},
     floorNum: null,
     mapTransition: false,
 };
@@ -41,12 +42,19 @@ const worldReducer = (state = initialState, { type, payload }) => {
                 const { x, y, item } = payload;
                 if (item === null) {
                     currentMapData.tiles[y][x].value = -2;
+                } else if (x !== undefined && y !== undefined) {
+                    newState.chests[x + ',' + y] = { item: item };
                 }
             }
 
             return newState;
 
         case 'OPEN_CHEST':
+            const { x, y } = payload;
+            if (!(x + ',' + y in state.chests)) {
+                state.chests[x + ',' + y] = { item: null };
+            }
+
             newState = _cloneDeep(state);
             currentMapData = getCurrentMap(newState);
             // set current chest to ground tile
