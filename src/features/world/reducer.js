@@ -49,7 +49,9 @@ const worldReducer = (state = initialState, { type, payload }) => {
                     currentMapData.tiles[y][x].value = -2;
                 } else if (x !== undefined && y !== undefined) {
                     // We still have an item in this chest, so let's ensure it stays there.
-                    newState.chests[chestName(x, y)] = { item: item };
+                    newState.chests[chestName(state.currentMap, x, y)] = {
+                        item: item,
+                    };
                 }
             }
 
@@ -60,7 +62,9 @@ const worldReducer = (state = initialState, { type, payload }) => {
             const chest = state.chests[chestName(x, y)];
             if (chest === undefined) {
                 // This chest hasn't been opened before, so let's generate one
-                state.chests[chestName(x, y)] = { item: null };
+                state.chests[chestName(state.currentMap, x, y)] = {
+                    item: null,
+                };
             }
 
             newState = _cloneDeep(state);

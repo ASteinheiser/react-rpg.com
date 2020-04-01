@@ -37,8 +37,8 @@ export const MAP_PADDING_DISTANCE = 5;
 export const MAP_TRANSITION_DELAY = 500;
 
 // Create the chest's name given it's (x, y) coordinates.
-export function chestName(x, y) {
-    return x + ',' + y;
+export function chestName(map, x, y) {
+    return map + '(' + x + ',' + y + ')';
 }
 
 // Retrieve a coordinate (x, y) from a position.

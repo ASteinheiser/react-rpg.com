@@ -6,7 +6,8 @@ export default function exploreChest(x, y) {
         const { world } = getState();
         const { chests } = world;
 
-        const chest = chests[chestName(x, y)];
+        const { currentMap } = world;
+        const chest = chests[chestName(currentMap, x, y)];
         if (chest !== undefined) {
             dispatch({
                 type: 'SET_CHEST_DATA',
