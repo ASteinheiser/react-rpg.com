@@ -71,7 +71,7 @@ class Stats extends Component {
         else padding = '12px';
 
         let width;
-        if (sideMenu) width = 320;
+        if (sideMenu) width = 330;
         else if (largeView) width = 360;
         else width = 324;
 
