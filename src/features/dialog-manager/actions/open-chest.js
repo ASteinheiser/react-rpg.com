@@ -1,15 +1,25 @@
 import randomItem from '../dialogs/chest-loot/random-item';
+import { SPRITE_SIZE } from '../../../config/constants';
 
 export default function openChest() {
     return (dispatch, getState) => {
-        const { stats } = getState();
+        const { stats, dialog } = getState();
         const { level, expToLevel } = stats;
-        // give the player a 25% chance to get a random item
+
+        const { chestOpen } = dialog;
+        const { item } = chestOpen;
+
         let itemDrop = false;
-        const chance = Math.floor(Math.random() * 100) + 1;
-        if (chance <= 25) {
-            itemDrop = randomItem(level);
+        if (item === undefined || item === null) {
+            // give the player a 25% chance to get a random item
+            const chance = Math.floor(Math.random() * 100) + 1;
+            if (chance <= 25) {
+                itemDrop = randomItem(level);
+            }
+        } else {
+            itemDrop = item;
         }
+
         // get a random amount of gold between 1 and 8 PLUS player level x3
         const gold = Math.floor(Math.random() * 8) + 1 + level * 3;
         // get some level based exp

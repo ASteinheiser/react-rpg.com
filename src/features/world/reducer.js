@@ -33,11 +33,23 @@ const worldReducer = (state = initialState, { type, payload }) => {
             }
             return newState;
 
+        case 'SET_CHEST_DATA':
+            newState = _cloneDeep(state);
+            currentMapData = getCurrentMap(newState);
+
+            console.log('PAYLOAD ', payload);
+            const { x, y, item } = payload;
+            if (item === null) {
+                currentMapData.tiles[y][x].value = -2;
+            }
+
+            return newState;
+
         case 'OPEN_CHEST':
             newState = _cloneDeep(state);
             currentMapData = getCurrentMap(newState);
             // set current chest to ground tile
-            currentMapData.tiles[payload.y][payload.x].value = -2;
+
             return newState;
 
         case 'EXPLORE_TILES':
