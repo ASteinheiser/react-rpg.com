@@ -18,7 +18,7 @@ export default function openChest() {
         ) {
             // Give the player a 25% chance to get a random item, only if there isn't an item already in it
             const chance = Math.floor(Math.random() * 100) + 1;
-            if (chance <= 250) {
+            if (chance <= 25) {
                 itemDrop = randomItem(level);
             }
         } else {
