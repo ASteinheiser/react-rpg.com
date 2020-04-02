@@ -47,8 +47,13 @@ const worldReducer = (state = initialState, { type, payload }) => {
                     // This chest has either been completely looted, or there never was an item in it.
                     // This will make the chest appear to the player as open.
                     currentMapData.tiles[y][x].value = -2;
-                } else if (x !== undefined && y !== undefined) {
-                    // We still have an item in this chest, so let's ensure it stays there.
+                }
+
+                if (x !== undefined && y !== undefined) {
+                    // This will either:
+                    //   1. Ensure any item's left in the chest are still there, or
+                    //   2. Ensure that the item for this chest is null (meaning it
+                    //      either never had an item, or it was just looted completely)
                     newState.chests[chestName(state.currentMap, x, y)] = {
                         item: item,
                     };
