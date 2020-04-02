@@ -2,17 +2,38 @@ import { spriteToCoordinates } from '../../../config/constants';
 
 export default function pickupItem() {
     return (dispatch, getState) => {
-        const { inventory, dialog, player } = getState();
+        const { inventory, dialog, player, stats } = getState();
 
-        const { item } = dialog.chestOpen;
+        const { gold, exp, item } = dialog.chestOpen;
+
+        if (gold > 0) {
+            dispatch({
+                type: 'GET_GOLD',
+                payload: gold,
+            });
+        }
+
+        if (exp > 0) {
+            dispatch({
+                type: 'GET_EXP',
+                payload: exp,
+            });
+
+            if (exp + stats.exp >= stats.expToLevel) {
+                dispatch({
+                    type: 'PAUSE',
+                    payload: {
+                        pause: true,
+                        levelUp: true,
+                    },
+                });
+            }
+        }
 
         if (!item) return;
 
-        const { position } = player;
-
         const { items, maxItems } = inventory;
-
-        const { x, y } = spriteToCoordinates(position);
+        const { x, y } = spriteToCoordinates(player.position);
 
         if (items.length < maxItems) {
             // The item has now been taken, so make sure it gets deleted

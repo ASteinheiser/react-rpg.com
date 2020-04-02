@@ -4,13 +4,12 @@ import { spriteToCoordinates } from '../../../config/constants';
 export default function openChest() {
     return (dispatch, getState) => {
         const { stats, dialog, player } = getState();
-        const { level, expToLevel } = stats;
+        const { level } = stats;
 
         const { chestOpen } = dialog;
         const { item } = chestOpen;
-        const { position } = player;
 
-        let { x, y } = spriteToCoordinates(position);
+        const { x, y } = spriteToCoordinates(player.position);
 
         let itemDrop = null;
         if (
@@ -19,7 +18,7 @@ export default function openChest() {
         ) {
             // Give the player a 25% chance to get a random item, only if there isn't an item already in it
             const chance = Math.floor(Math.random() * 100) + 1;
-            if (chance <= 25) {
+            if (chance <= 250) {
                 itemDrop = randomItem(level);
             }
         } else {
@@ -33,14 +32,6 @@ export default function openChest() {
         const exp = level * 5 + 5;
 
         dispatch({
-            type: 'GET_GOLD',
-            payload: gold,
-        });
-        dispatch({
-            type: 'GET_EXP',
-            payload: exp,
-        });
-        dispatch({
             type: 'SET_CHEST_DATA',
             payload: {
                 exp,
@@ -50,15 +41,5 @@ export default function openChest() {
                 y: y,
             },
         });
-        if (exp + stats.exp >= expToLevel) {
-            dispatch({
-                type: 'PAUSE',
-                payload: {
-                    pause: true,
-                    levelUp: true,
-                    chest: true,
-                },
-            });
-        }
     };
 }

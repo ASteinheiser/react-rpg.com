@@ -18,8 +18,11 @@ const ChestLoot = ({ dialog, pickupItem, openChest, closeChestDialog }) => {
     }, []);
 
     function handleContinue() {
-        pickupItem();
+        // Do it this way so this dialog is closed first
         closeChestDialog();
+        // ... before we actually give them their items, which allows
+        //     the level up dialog to occur after this dialog.
+        pickupItem();
     }
 
     return (
