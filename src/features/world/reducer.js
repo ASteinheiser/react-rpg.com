@@ -64,7 +64,7 @@ const worldReducer = (state = initialState, { type, payload }) => {
 
         case 'OPEN_CHEST':
             const { x, y } = payload;
-            const chest = state.chests[chestName(x, y)];
+            const chest = state.chests[chestName(state.currentMap, x, y)];
             if (chest === undefined) {
                 // This chest hasn't been opened before, so let's generate one
                 state.chests[chestName(state.currentMap, x, y)] = {
