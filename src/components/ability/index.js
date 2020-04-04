@@ -12,7 +12,7 @@ const Ability = ({ name, value, increment, decrement }) => {
                 <div className="ability-score-dialog__button">
                     <Button
                         title=" "
-                        icon="chevron-left"
+                        icon="caret-left"
                         onClick={decrement}
                         tiny={true}
                         noBorder={true}
@@ -22,7 +22,7 @@ const Ability = ({ name, value, increment, decrement }) => {
                     </span>
                     <Button
                         title=" "
-                        icon="chevron-right"
+                        icon="caret-right"
                         onClick={increment}
                         tiny={true}
                         noBorder={true}
