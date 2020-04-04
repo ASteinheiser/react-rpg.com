@@ -90,7 +90,7 @@ class Snackbar extends Component {
                 className="snackbar__container white-border"
                 style={{
                     marginLeft: sideMenu ? -402 : 0,
-                    top: sideMenu ? 340 : -50,
+                    top: sideMenu ? 350 : -50,
                     width,
                     height: sideMenu ? 50 : 40,
                     fontSize: sideMenu ? 18 : 20,
