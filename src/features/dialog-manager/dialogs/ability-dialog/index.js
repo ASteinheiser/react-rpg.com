@@ -14,6 +14,8 @@ import decrementConstitution from './actions/decrement-constitution';
 import incrementConstitution from './actions/increment-constitution';
 import decrementDexterity from './actions/decrement-dexterity';
 import incrementDexterity from './actions/increment-dexterity';
+import decrementCharisma from './actions/decrement-charisma';
+import incrementCharisma from './actions/increment-charisma';
 
 import closeDialog from '../../actions/close-dialog';
 import Dialog from '../../../../components/dialog';
@@ -23,8 +25,8 @@ import './styles.scss';
 const AbilityDialog = ({
     stats,
     closeDialog,
-    incrementIntelligence,
     decrementIntelligence,
+    incrementIntelligence,
     decrementWisdom,
     incrementWisdom,
     decrementStrength,
@@ -33,6 +35,8 @@ const AbilityDialog = ({
     incrementConstitution,
     decrementDexterity,
     incrementDexterity,
+    decrementCharisma,
+    incrementCharisma,
 }) => {
     const {
         constitution,
@@ -40,6 +44,7 @@ const AbilityDialog = ({
         intelligence,
         strength,
         wisdom,
+        charisma,
     } = stats.abilities;
     return (
         <>
@@ -48,6 +53,12 @@ const AbilityDialog = ({
                     <span className="game-text-dialog__text">
                         Modify your Abilities
                     </span>
+                    <Ability
+                        name="Charisma"
+                        value={charisma}
+                        increment={incrementCharisma}
+                        decrement={decrementCharisma}
+                    />
                     <Ability
                         name="Constitution"
                         value={constitution}
@@ -98,8 +109,8 @@ const AbilityDialog = ({
 const mapStateToProps = ({ stats }) => ({ stats });
 const actions = {
     closeDialog,
-    incrementIntelligence,
     decrementIntelligence,
+    incrementIntelligence,
     decrementWisdom,
     incrementWisdom,
     decrementStrength,
@@ -108,5 +119,7 @@ const actions = {
     incrementConstitution,
     decrementDexterity,
     incrementDexterity,
+    decrementCharisma,
+    incrementCharisma,
 };
 export default connect(mapStateToProps, actions)(AbilityDialog);

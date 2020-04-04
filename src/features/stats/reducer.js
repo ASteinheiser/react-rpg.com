@@ -9,6 +9,7 @@ const initialState = {
         strength: 8,
         wisdom: 8,
         intelligence: 8,
+        charisma: 8,
     },
     points: 40,
     hp: 10,
@@ -32,6 +33,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
         strength,
         dexterity,
         wisdom,
+        charisma,
     } = abilities;
 
     switch (type) {
@@ -43,6 +45,24 @@ const statsReducer = (state = initialState, { type, payload }) => {
             // add gold to current gold
             return { ...state, gold: state.gold - payload };
 
+        case 'INCREMENT_CHARISMA':
+            if (points < 1 || charisma >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, charisma: charisma + 1 },
+                points: points - 1,
+            };
+        case 'DECREMENT_CHARISMA':
+            if (charisma < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, charisma: charisma - 1 },
+                points: points + 1,
+            };
         case 'INCREMENT_CONSTITUTION':
             if (points < 1 || constitution >= MAX_ABILITY_SCORE) {
                 return { ...state };
