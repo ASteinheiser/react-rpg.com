@@ -1,41 +1,52 @@
 .button__container {
-  padding: 15px;
+    padding: 15px;
 
-  user-select: none;
+    user-select: none;
 
-  .button__icon {
-    position: relative;
+    .button__icon {
+        position: relative;
 
-    padding-right: 15px;
-    padding-left: 5px;
+        padding-right: 15px;
+        padding-left: 5px;
 
-    font-size: 22px;
-  }
+        font-size: 22px;
+    }
 
-  .button__indicator {
-    position: absolute;
-    bottom: -5px;
-    right: 7px;
+    .button__indicator {
+        position: absolute;
+        bottom: -5px;
+        right: 7px;
 
-    border-radius: 10px;
+        border-radius: 10px;
 
-    width: 15px;
-    height: 15px;
+        width: 15px;
+        height: 15px;
 
-    background: var(--light-red);
+        background: var(--light-red);
 
-    animation: fade 4s ease-in-out infinite;
-    opacity: 1;
-  }
+        animation: fade 4s ease-in-out infinite;
+        opacity: 1;
+    }
 }
 
 .button__container--small {
-  font-size: 18px;
-  padding: 12px;
+    font-size: 18px;
+    padding: 12px;
+}
+
+.button__container--tiny {
+    font-size: 1px;
+    padding: 6px;
 }
 
 @keyframes fade {
-  0%   { opacity: 1; }
-  50%  { opacity: .5; }
-  100% { opacity: 1; }
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
 }

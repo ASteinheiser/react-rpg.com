@@ -13,6 +13,7 @@ import MainGameStart from './dialogs/main-game-start';
 import SettingsDialog from './dialogs/settings-dialog';
 import ShopDialog from './dialogs/shop-dialog';
 import LevelUp from './dialogs/level-up';
+import AbilityScores from './dialogs/ability-dialog';
 
 const DialogManager = ({ dialog }) => {
     const {
@@ -28,6 +29,7 @@ const DialogManager = ({ dialog }) => {
         settings,
         shop,
         levelUp,
+        abilities,
     } = dialog;
 
     let PauseComp = null;
@@ -50,6 +52,7 @@ const DialogManager = ({ dialog }) => {
             if (gameSelect === 'endless') PauseComp = <EndlessGameStart />;
         }
         if (gameWin) PauseComp = <GameWin />;
+        if (abilities) PauseComp = <AbilityScores />;
     }
     if (settings) SettingsComp = <SettingsDialog />;
     if (levelUp) LevelUpComp = <LevelUp />;

@@ -1,0 +1,33 @@
+.ability-score-dialog__container {
+    flex: 1;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.ability-score-dialog__text {
+    font-family: Montserrat;
+    font-size: 12px;
+    text-transform: none;
+
+    letter-spacing: 2px;
+    line-height: 1.5;
+
+    text-align: left;
+    display: inline-block;
+}
+
+.ability-score-dialog__button {
+    justify-content: center;
+    float: right;
+}
+
+.ability-score-dialog__score-text {
+    font-family: Montserrat;
+    font-size: 12px;
+    text-transform: none;
+
+    letter-spacing: 2px;
+    line-height: 1.5;
+
+    margin: 20px;
+}

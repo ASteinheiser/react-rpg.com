@@ -35,6 +35,8 @@ export const SCREEN_MEDIUM_HEIGHT = 680;
 export const MAP_PADDING_DISTANCE = 5;
 // set the time for the map to transition in/out
 export const MAP_TRANSITION_DELAY = 500;
+// The max value any ability score can have
+export const MAX_ABILITY_SCORE = 20;
 
 // Create the chest's name given it's (x, y) coordinates.
 export function chestName(map, x, y) {

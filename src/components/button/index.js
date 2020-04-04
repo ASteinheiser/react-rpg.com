@@ -10,6 +10,8 @@ const Button = ({
     indicator,
     onClick,
     small,
+    tiny,
+    noBorder,
 }) => {
     function handleClick() {
         if (typeof onClick === 'function') {
@@ -21,8 +23,12 @@ const Button = ({
 
     return (
         <button
-            className={`button__container white-border ${
-                small ? 'button__container--small' : ''
+            className={`button__container ${noBorder ? '' : 'white-border'} ${
+                small
+                    ? 'button__container--small'
+                    : tiny
+                    ? 'button__container--tiny'
+                    : ''
             }`}
             style={style || {}}
             onClick={handleClick}

@@ -1,6 +1,16 @@
 import _cloneDeep from 'lodash.clonedeep';
 
+import { MAX_ABILITY_SCORE } from '../../config/constants';
+
 const initialState = {
+    abilities: {
+        constitution: 8,
+        dexterity: 8,
+        strength: 8,
+        wisdom: 8,
+        intelligence: 8,
+    },
+    points: 40,
     hp: 10,
     maxHp: 10,
     damage: 3,
@@ -15,6 +25,14 @@ const initialState = {
 
 const statsReducer = (state = initialState, { type, payload }) => {
     let newState;
+    const { points, abilities } = state;
+    const {
+        constitution,
+        intelligence,
+        strength,
+        dexterity,
+        wisdom,
+    } = abilities;
 
     switch (type) {
         case 'GET_GOLD':
@@ -24,6 +42,102 @@ const statsReducer = (state = initialState, { type, payload }) => {
         case 'LOSE_GOLD':
             // add gold to current gold
             return { ...state, gold: state.gold - payload };
+
+        case 'INCREMENT_CONSTITUTION':
+            if (points < 1 || constitution >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, constitution: constitution + 1 },
+                points: points - 1,
+            };
+
+        case 'DECREMENT_CONSTITUTION':
+            if (constitution < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, constitution: constitution - 1 },
+                points: points + 1,
+            };
+
+        case 'INCREMENT_STRENGTH':
+            if (points < 1 || strength >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, strength: strength + 1 },
+                points: points - 1,
+            };
+        case 'DECREMENT_STRENGTH':
+            if (strength < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, strength: strength - 1 },
+                points: points + 1,
+            };
+
+        case 'INCREMENT_WISDOM':
+            if (points < 1 || wisdom >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, wisdom: wisdom + 1 },
+                points: points - 1,
+            };
+        case 'DECREMENT_WISDOM':
+            if (wisdom < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, wisdom: wisdom - 1 },
+                points: points + 1,
+            };
+
+        case 'INCREMENT_DEXTERITY':
+            if (points < 1 || dexterity >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, dexterity: dexterity + 1 },
+                points: points - 1,
+            };
+        case 'DECREMENT_DEXTERITY':
+            if (dexterity < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, dexterity: dexterity - 1 },
+                points: points + 1,
+            };
+
+        case 'INCREMENT_INTELLIGENCE':
+            if (points < 1 || intelligence >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, intelligence: intelligence + 1 },
+                points: points - 1,
+            };
+        case 'DECREMENT_INTELLIGENCE':
+            if (intelligence < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: { ...abilities, intelligence: intelligence - 1 },
+                points: points + 1,
+            };
 
         case 'UNEQUIP_ITEM':
             newState = _cloneDeep(state);
