@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import Button from '../../../../../../components/button';
 
-import decrementWisdom from '../../../../actions/decrement-wisdom';
-import incrementWisdom from '../../../../actions/increment-wisdom';
+import decrementWisdom from './actions/decrement-wisdom';
+import incrementWisdom from './actions/increment-wisdom';
 
 const WisdomAbility = ({ stats, decrementWisdom, incrementWisdom }) => {
     const { wisdom } = stats.abilities;

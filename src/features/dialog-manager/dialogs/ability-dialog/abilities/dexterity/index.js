@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import Button from '../../../../../../components/button';
 
-import decrementDexterity from '../../../../actions/decrement-dexterity';
-import incrementDexterity from '../../../../actions/increment-dexterity';
+import decrementDexterity from './actions/decrement-dexterity';
+import incrementDexterity from './actions/increment-dexterity';
 
 import '../../styles.scss';
 

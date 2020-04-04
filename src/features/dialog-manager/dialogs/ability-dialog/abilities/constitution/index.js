@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import Button from '../../../../../../components/button';
 
-import decrementConstitution from '../../../../actions/decrement-constitution';
-import incrementConstitution from '../../../../actions/increment-constitution';
+import decrementConstitution from './actions/decrement-constitution';
+import incrementConstitution from './actions/increment-constitution';
 
 import '../../styles.scss';
 

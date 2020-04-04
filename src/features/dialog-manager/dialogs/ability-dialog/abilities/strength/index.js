@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import Button from '../../../../../../components/button';
 
-import decrementStrength from '../../../../actions/decrement-strength';
-import incrementStrength from '../../../../actions/increment-strength';
+import decrementStrength from './actions/decrement-strength';
+import incrementStrength from './actions/increment-strength';
 
 const StrengthAbility = ({ stats, decrementStrength, incrementStrength }) => {
     const { strength } = stats.abilities;

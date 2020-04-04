@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import Button from '../../../../../../components/button';
 
-import decrementIntelligence from '../../../../actions/decrement-intelligence';
-import incrementIntelligence from '../../../../actions/increment-intelligence';
+import decrementIntelligence from './actions/decrement-intelligence';
+import incrementIntelligence from './actions/increment-intelligence';
 
 import '../../styles.scss';
 
