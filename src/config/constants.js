@@ -37,6 +37,8 @@ export const MAP_PADDING_DISTANCE = 5;
 export const MAP_TRANSITION_DELAY = 500;
 // The max value any ability score can have
 export const MAX_ABILITY_SCORE = 20;
+// The default value of an ability score
+export const STARTING_ABILITY_SCORE_VALUE = 8;
 
 // Create the chest's name given it's (x, y) coordinates.
 export function chestName(map, x, y) {

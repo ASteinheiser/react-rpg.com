@@ -1,15 +1,18 @@
 import _cloneDeep from 'lodash.clonedeep';
 
-import { MAX_ABILITY_SCORE } from '../../config/constants';
+import {
+    MAX_ABILITY_SCORE,
+    STARTING_ABILITY_SCORE_VALUE,
+} from '../../config/constants';
 
 const initialState = {
     abilities: {
-        constitution: 8,
-        dexterity: 8,
-        strength: 8,
-        wisdom: 8,
-        intelligence: 8,
-        charisma: 8,
+        constitution: STARTING_ABILITY_SCORE_VALUE,
+        dexterity: STARTING_ABILITY_SCORE_VALUE,
+        strength: STARTING_ABILITY_SCORE_VALUE,
+        wisdom: STARTING_ABILITY_SCORE_VALUE,
+        intelligence: STARTING_ABILITY_SCORE_VALUE,
+        charisma: STARTING_ABILITY_SCORE_VALUE,
     },
     points: 40,
     hp: 10,
