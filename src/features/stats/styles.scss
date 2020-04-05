@@ -100,6 +100,28 @@
     }
 }
 
+.stats-mana-bar__container {
+    width: 100px;
+    height: 20px;
+
+    background: var(--grey);
+
+    position: relative;
+
+    border: 1px solid var(--blue);
+    border-radius: 7px;
+
+    .stats-mana-bar__value {
+        height: 20px;
+
+        background: var(--blue);
+
+        position: absolute;
+
+        transition: width 1s ease-in-out;
+    }
+}
+
 .stats-health-bar__text {
     height: 20px;
     font-size: 22px;
@@ -119,6 +141,24 @@
 }
 
 .stats-exp-bar__text {
+    height: 20px;
+    font-size: 22px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+    color: lightyellow;
+
+    font-weight: 500;
+
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+}
+
+.stats-mana-bar__text {
     height: 20px;
     font-size: 22px;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
