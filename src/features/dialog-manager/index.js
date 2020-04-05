@@ -29,7 +29,7 @@ const DialogManager = ({ dialog }) => {
         settings,
         shop,
         levelUp,
-        abilities,
+        abilityDialog,
     } = dialog;
 
     let PauseComp = null;
@@ -52,7 +52,7 @@ const DialogManager = ({ dialog }) => {
             if (gameSelect === 'endless') PauseComp = <EndlessGameStart />;
         }
         if (gameWin) PauseComp = <GameWin />;
-        if (abilities) PauseComp = <AbilityScores />;
+        if (abilityDialog) PauseComp = <AbilityScores />;
     }
     if (settings) SettingsComp = <SettingsDialog />;
     if (levelUp) LevelUpComp = <LevelUp />;

@@ -39,6 +39,8 @@ export const MAP_TRANSITION_DELAY = 500;
 export const MAX_ABILITY_SCORE = 20;
 // The default value of an ability score
 export const STARTING_ABILITY_SCORE_VALUE = 8;
+// The starting points a player can allocate
+export const STARTING_ABILITY_POINTS = 40;
 
 // Create the chest's name given it's (x, y) coordinates.
 export function chestName(map, x, y) {

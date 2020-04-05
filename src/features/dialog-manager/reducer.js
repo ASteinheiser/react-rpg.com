@@ -1,3 +1,9 @@
+import {
+    STARTING_ABILITY_POINTS,
+    STARTING_ABILITY_SCORE_VALUE,
+    MAX_ABILITY_SCORE,
+} from '../../config/constants';
+
 const initialState = {
     gameText: false,
     gameOver: false,
@@ -12,10 +18,30 @@ const initialState = {
     settings: false,
     inventory: false,
     levelUp: false,
-    abilities: false,
+    abilityDialog: false,
+    abilities: {
+        constitution: STARTING_ABILITY_SCORE_VALUE,
+        dexterity: STARTING_ABILITY_SCORE_VALUE,
+        strength: STARTING_ABILITY_SCORE_VALUE,
+        wisdom: STARTING_ABILITY_SCORE_VALUE,
+        intelligence: STARTING_ABILITY_SCORE_VALUE,
+        charisma: STARTING_ABILITY_SCORE_VALUE,
+        points: STARTING_ABILITY_POINTS,
+    },
 };
 
 const dialogManagerReducer = (state = initialState, { type, payload }) => {
+    const { abilities } = state;
+    const {
+        constitution,
+        intelligence,
+        strength,
+        dexterity,
+        wisdom,
+        charisma,
+        points,
+    } = abilities;
+
     switch (type) {
         case 'PAUSE':
             const {
@@ -29,7 +55,7 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
                 gameSelect,
                 gameInstructions,
                 levelUp,
-                abilities,
+                abilityDialog,
                 pause,
             } = payload;
 
@@ -45,7 +71,7 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
                 gameWin: gameWin || false,
                 gameSelect: gameSelect || null,
                 gameInstructions: gameInstructions || false,
-                abilities: abilities || false,
+                abilityDialog: abilityDialog || false,
                 paused: pause,
             };
 
@@ -86,6 +112,156 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
             }
 
             return state;
+
+        case 'INCREMENT_CHARISMA':
+            if (points < 1 || charisma >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    charisma: charisma + 1,
+                    points: points - 1,
+                },
+            };
+        case 'DECREMENT_CHARISMA':
+            if (charisma < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    charisma: charisma - 1,
+                    points: points + 1,
+                },
+            };
+        case 'INCREMENT_CONSTITUTION':
+            if (points < 1 || constitution >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    constitution: constitution + 1,
+                    points: points - 1,
+                },
+            };
+
+        case 'DECREMENT_CONSTITUTION':
+            if (constitution < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    constitution: constitution - 1,
+                    points: points + 1,
+                },
+            };
+
+        case 'INCREMENT_STRENGTH':
+            if (points < 1 || strength >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    strength: strength + 1,
+                    points: points - 1,
+                },
+            };
+        case 'DECREMENT_STRENGTH':
+            if (strength < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    strength: strength - 1,
+                    points: points + 1,
+                },
+            };
+
+        case 'INCREMENT_WISDOM':
+            if (points < 1 || wisdom >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    wisdom: wisdom + 1,
+                    points: points - 1,
+                },
+            };
+        case 'DECREMENT_WISDOM':
+            if (wisdom < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    wisdom: wisdom - 1,
+                    points: points + 1,
+                },
+            };
+
+        case 'INCREMENT_DEXTERITY':
+            if (points < 1 || dexterity >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    dexterity: dexterity + 1,
+                    points: points - 1,
+                },
+            };
+        case 'DECREMENT_DEXTERITY':
+            if (dexterity < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    dexterity: dexterity - 1,
+                    points: points + 1,
+                },
+            };
+
+        case 'INCREMENT_INTELLIGENCE':
+            if (points < 1 || intelligence >= MAX_ABILITY_SCORE) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    intelligence: intelligence + 1,
+                    points: points - 1,
+                },
+            };
+        case 'DECREMENT_INTELLIGENCE':
+            if (intelligence < 1) {
+                return { ...state };
+            }
+            return {
+                ...state,
+                abilities: {
+                    ...abilities,
+                    intelligence: intelligence - 1,
+                    points: points + 1,
+                },
+            };
 
         case 'RESET':
             return initialState;

@@ -7,14 +7,13 @@ import {
 
 const initialState = {
     abilities: {
-        constitution: STARTING_ABILITY_SCORE_VALUE,
-        dexterity: STARTING_ABILITY_SCORE_VALUE,
-        strength: STARTING_ABILITY_SCORE_VALUE,
-        wisdom: STARTING_ABILITY_SCORE_VALUE,
-        intelligence: STARTING_ABILITY_SCORE_VALUE,
-        charisma: STARTING_ABILITY_SCORE_VALUE,
+        constitution: 0,
+        dexterity: 0,
+        strength: 0,
+        wisdom: 0,
+        intelligence: 0,
+        charisma: 0,
     },
-    points: 40,
     hp: 10,
     maxHp: 10,
     damage: 3,
@@ -48,119 +47,8 @@ const statsReducer = (state = initialState, { type, payload }) => {
             // add gold to current gold
             return { ...state, gold: state.gold - payload };
 
-        case 'INCREMENT_CHARISMA':
-            if (points < 1 || charisma >= MAX_ABILITY_SCORE) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, charisma: charisma + 1 },
-                points: points - 1,
-            };
-        case 'DECREMENT_CHARISMA':
-            if (charisma < 1) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, charisma: charisma - 1 },
-                points: points + 1,
-            };
-        case 'INCREMENT_CONSTITUTION':
-            if (points < 1 || constitution >= MAX_ABILITY_SCORE) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, constitution: constitution + 1 },
-                points: points - 1,
-            };
-
-        case 'DECREMENT_CONSTITUTION':
-            if (constitution < 1) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, constitution: constitution - 1 },
-                points: points + 1,
-            };
-
-        case 'INCREMENT_STRENGTH':
-            if (points < 1 || strength >= MAX_ABILITY_SCORE) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, strength: strength + 1 },
-                points: points - 1,
-            };
-        case 'DECREMENT_STRENGTH':
-            if (strength < 1) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, strength: strength - 1 },
-                points: points + 1,
-            };
-
-        case 'INCREMENT_WISDOM':
-            if (points < 1 || wisdom >= MAX_ABILITY_SCORE) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, wisdom: wisdom + 1 },
-                points: points - 1,
-            };
-        case 'DECREMENT_WISDOM':
-            if (wisdom < 1) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, wisdom: wisdom - 1 },
-                points: points + 1,
-            };
-
-        case 'INCREMENT_DEXTERITY':
-            if (points < 1 || dexterity >= MAX_ABILITY_SCORE) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, dexterity: dexterity + 1 },
-                points: points - 1,
-            };
-        case 'DECREMENT_DEXTERITY':
-            if (dexterity < 1) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, dexterity: dexterity - 1 },
-                points: points + 1,
-            };
-
-        case 'INCREMENT_INTELLIGENCE':
-            if (points < 1 || intelligence >= MAX_ABILITY_SCORE) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, intelligence: intelligence + 1 },
-                points: points - 1,
-            };
-        case 'DECREMENT_INTELLIGENCE':
-            if (intelligence < 1) {
-                return { ...state };
-            }
-            return {
-                ...state,
-                abilities: { ...abilities, intelligence: intelligence - 1 },
-                points: points + 1,
-            };
+        case 'SET_ABILITY_SCORES':
+            return { ...state, abilities: payload.abilities };
 
         case 'UNEQUIP_ITEM':
             newState = _cloneDeep(state);

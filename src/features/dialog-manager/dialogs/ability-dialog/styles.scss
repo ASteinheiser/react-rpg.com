@@ -1,3 +1,7 @@
+.game-text-dialog__text {
+    text-align: center;
+}
+
 .ability-score-dialog__container {
     flex: 1;
     justify-content: space-between;
@@ -14,6 +18,10 @@
 
     text-align: left;
     display: inline-block;
+
+    margin-top: 6px;
+    margin-bottom: -6px;
+    height: 34px;
 }
 
 .ability-score-dialog__button {
@@ -30,4 +38,10 @@
     line-height: 1.5;
 
     margin: 20px;
+}
+
+.ability-score-dialog__points {
+    width: max-content;
+    float: right;
+    margin-right: 47px;
 }

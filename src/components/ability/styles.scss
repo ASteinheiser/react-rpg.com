@@ -1,10 +1,10 @@
-.ability-score-dialog__container {
+.ability-score__container {
     flex: 1;
     justify-content: space-between;
-    padding: 16px;
+    // padding: 6px;
 }
 
-.ability-score-dialog__text {
+.ability-score__text {
     font-family: Montserrat;
     font-size: 12px;
     text-transform: none;
@@ -16,18 +16,21 @@
     display: inline-block;
 }
 
-.ability-score-dialog__button {
+.ability-score__button {
     justify-content: center;
     float: right;
 }
 
-.ability-score-dialog__score-text {
+.ability-score__score-text {
     font-family: Montserrat;
     font-size: 12px;
     text-transform: none;
-
     letter-spacing: 2px;
     line-height: 1.5;
-
-    margin: 20px;
+    margin-right: 8px;
+    margin-top: 8px;
+    width: 20px;
+    float: right;
+    text-align: right;
+    vertical-align: auto;
 }
