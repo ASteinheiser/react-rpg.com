@@ -17,15 +17,14 @@ import incrementDexterity from './actions/increment-dexterity';
 import decrementCharisma from './actions/decrement-charisma';
 import incrementCharisma from './actions/increment-charisma';
 
-import setAbilityScores from '../../actions/set-ability-scores';
-import closeDialog from '../../actions/close-dialog';
+import confirmAbilityScoreDialog from '../../actions/confirm-ability-score-dialog';
 import Dialog from '../../../../components/dialog';
 
 import './styles.scss';
 
 const AbilityDialog = ({
     dialog,
-    closeDialog,
+    confirmAbilityScoreDialog,
     decrementIntelligence,
     incrementIntelligence,
     decrementWisdom,
@@ -38,7 +37,6 @@ const AbilityDialog = ({
     incrementDexterity,
     decrementCharisma,
     incrementCharisma,
-    setAbilityScores,
 }) => {
     const {
         constitution,
@@ -51,8 +49,7 @@ const AbilityDialog = ({
     } = dialog.abilities;
 
     const finishAllocation = () => {
-        setAbilityScores();
-        closeDialog();
+        confirmAbilityScoreDialog();
     };
 
     return (
@@ -117,7 +114,7 @@ const AbilityDialog = ({
 
 const mapStateToProps = ({ dialog }) => ({ dialog });
 const actions = {
-    closeDialog,
+    confirmAbilityScoreDialog,
     decrementIntelligence,
     incrementIntelligence,
     decrementWisdom,
@@ -130,6 +127,5 @@ const actions = {
     incrementDexterity,
     decrementCharisma,
     incrementCharisma,
-    setAbilityScores,
 };
 export default connect(mapStateToProps, actions)(AbilityDialog);

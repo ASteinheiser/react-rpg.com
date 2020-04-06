@@ -3,26 +3,26 @@ import { connect } from 'react-redux';
 
 import Button from '../../../../components/button';
 import Dialog from '../../../../components/dialog';
-import abilityScoreDialog from '../../actions/ability-score-dialog';
+import closeDialog from '../../actions/close-dialog';
 
 import './styles.scss';
 
-const GameTextDialog = ({ text1, text2, abilityScoreDialog }) => {
+const GameTextDialog = ({ text1, text2, closeDialog }) => {
     return (
-        <Dialog onKeyPress={abilityScoreDialog}>
+        <Dialog onKeyPress={closeDialog}>
             <div className="flex-column game-text-dialog__container">
                 <span className="game-text-dialog__text">{text1 || ''}</span>
 
                 <span className="game-text-dialog__text">{text2 || ''}</span>
 
                 <div className="game-text-dialog__button">
-                    <Button onClick={abilityScoreDialog} title="Continue" />
+                    <Button onClick={closeDialog} title="Continue" />
                 </div>
             </div>
         </Dialog>
     );
 };
 
-const actions = { abilityScoreDialog };
+const actions = { closeDialog };
 
 export default connect(null, actions)(GameTextDialog);

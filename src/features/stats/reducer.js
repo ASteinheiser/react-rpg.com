@@ -1,10 +1,5 @@
 import _cloneDeep from 'lodash.clonedeep';
 
-import {
-    MAX_ABILITY_SCORE,
-    STARTING_ABILITY_SCORE_VALUE,
-} from '../../config/constants';
-
 const initialState = {
     abilities: {
         constitution: 0,
@@ -28,15 +23,6 @@ const initialState = {
 
 const statsReducer = (state = initialState, { type, payload }) => {
     let newState;
-    const { points, abilities } = state;
-    const {
-        constitution,
-        intelligence,
-        strength,
-        dexterity,
-        wisdom,
-        charisma,
-    } = abilities;
 
     switch (type) {
         case 'GET_GOLD':

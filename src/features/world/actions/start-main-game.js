@@ -7,7 +7,7 @@ export default function startMainGame() {
             type: 'PAUSE',
             payload: {
                 pause: true,
-                gameInstructions: true,
+                abilityDialog: true,
             },
         });
 
