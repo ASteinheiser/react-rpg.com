@@ -15,6 +15,7 @@
     padding-right: 10px;
     font-size: 15px;
     text-indent: -5px;
+    font-family: 'Roboto Mono';
 }
 
 .stats__text--level {
@@ -26,9 +27,9 @@
     color: var(--orange);
     font-size: 18px;
 }
+
 .stats__text--blank {
     color: var(--text-color, black);
-    display: none;
 }
 
 .stats__text--melee {

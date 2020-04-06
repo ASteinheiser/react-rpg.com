@@ -205,7 +205,7 @@ class Stats extends Component {
 
                             <div
                                 className="flex-row"
-                                style={{ paddingTop: sideMenu ?  10 : 0 }}
+                                style={{ paddingTop: sideMenu ? 10 : 0 }}
                             >
                                 <span className="stats__text--spacing">
                                     {'DEX: '}
@@ -242,9 +242,19 @@ class Stats extends Component {
                         </div>
 
                         <div className={`flex-column ${columnStyle}`}>
-                            <div className="flex-row">
+                            <div
+                                className="flex-row"
+                                style={{ paddingTop: sideMenu ? 7 : 37 }}
+                            >
                                 <span className="stats__text--spacing">{}</span>
-                                <span className="stats__text--blank">{}</span>
+                                <span
+                                    className="stats__text--blank"
+                                    style={{
+                                        display: sideMenu ? 'inline' : 'none',
+                                    }}
+                                >
+                                    {1}
+                                </span>
                             </div>
 
                             <div
@@ -256,7 +266,10 @@ class Stats extends Component {
                                     className={`flex-row ${
                                         sideMenu ? '' : 'flex-1'
                                     }`}
-                                    style={{ paddingTop: sideMenu ? 38 : 36 }}
+                                    style={
+                                        ({ paddingTop: sideMenu ? 0 : 36 },
+                                        { paddingRight: sideMenu ? 30 : 0 })
+                                    }
                                 >
                                     <span className="exp-bar__container">
                                         <span className="flex-row stats-exp-bar__text">
