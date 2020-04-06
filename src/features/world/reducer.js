@@ -4,7 +4,7 @@ import attachMetaToTiles from '../../utils/attach-meta-to-tiles';
 import generatePaddingTiles from '../../utils/generate-padding-tiles';
 import maps from '../../data/maps';
 
-import { chestName } from '../../config/constants';
+import { getChestName } from '../../utils/get-chest-name';
 
 const initialState = {
     currentMap: null,
@@ -54,7 +54,7 @@ const worldReducer = (state = initialState, { type, payload }) => {
                     //   1. Ensure any item's left in the chest are still there, or
                     //   2. Ensure that the item for this chest is null (meaning it
                     //      either never had an item, or it was just looted completely)
-                    newState.chests[chestName(state.currentMap, x, y)] = {
+                    newState.chests[getChestName(state.currentMap, x, y)] = {
                         item: item,
                     };
                 }
@@ -64,10 +64,10 @@ const worldReducer = (state = initialState, { type, payload }) => {
 
         case 'OPEN_CHEST':
             const { x, y } = payload;
-            const chest = state.chests[chestName(state.currentMap, x, y)];
+            const chest = state.chests[getChestName(state.currentMap, x, y)];
             if (chest === undefined) {
                 // This chest hasn't been opened before, so let's generate one
-                state.chests[chestName(state.currentMap, x, y)] = {
+                state.chests[getChestName(state.currentMap, x, y)] = {
                     item: null,
                 };
             }

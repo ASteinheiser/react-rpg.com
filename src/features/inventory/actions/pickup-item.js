@@ -1,4 +1,4 @@
-import { spriteToCoordinates } from '../../../config/constants';
+import { spriteToCoordinates } from '../../../utils/sprite-to-coordinates';
 
 export default function pickupItem() {
     return (dispatch, getState) => {

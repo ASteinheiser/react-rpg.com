@@ -1,5 +1,5 @@
 import randomItem from '../dialogs/chest-loot/random-item';
-import { spriteToCoordinates } from '../../../config/constants';
+import { spriteToCoordinates } from '../../../utils/sprite-to-coordinates';
 
 export default function openChest() {
     return (dispatch, getState) => {
