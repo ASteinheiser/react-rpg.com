@@ -4,18 +4,22 @@ import { connect } from 'react-redux';
 import Button from '../../../../components/button';
 import MicroDialog from '../../../../components/micro-dialog';
 import closeLevelUpDialog from '../../actions/close-level-up-dialog';
+import abilityScoreDialog from '../../actions/ability-score-dialog';
+
+import isAbilityAllocationLevel from '../../../../utils/is-ability-allocation-level';
 
 import './styles.scss';
 
-const LevelUp = ({ stats, closeLevelUpDialog }) => {
+const LevelUp = ({ stats, closeLevelUpDialog, abilityScoreDialog }) => {
     const { level, levelUp } = stats;
     const { dmg, hp } = levelUp;
 
+    const nextDialog = isAbilityAllocationLevel(level)
+        ? abilityScoreDialog
+        : closeLevelUpDialog;
+
     return (
-        <MicroDialog
-            onClose={closeLevelUpDialog}
-            onKeyPress={closeLevelUpDialog}
-        >
+        <MicroDialog onClose={nextDialog} onKeyPress={nextDialog}>
             <span className="level-up__title">
                 Level<span className="level-up__level">{` ${level}`}</span>
             </span>
@@ -32,11 +36,7 @@ const LevelUp = ({ stats, closeLevelUpDialog }) => {
             </div>
 
             <div className="flex-column level-up__buttons">
-                <Button
-                    onClick={closeLevelUpDialog}
-                    title={'Okay'}
-                    icon={'check'}
-                />
+                <Button onClick={nextDialog} title={'Okay'} icon={'check'} />
             </div>
         </MicroDialog>
     );
@@ -44,6 +44,6 @@ const LevelUp = ({ stats, closeLevelUpDialog }) => {
 
 const mapStateToProps = ({ stats }) => ({ stats });
 
-const actions = { closeLevelUpDialog };
+const actions = { closeLevelUpDialog, abilityScoreDialog };
 
 export default connect(mapStateToProps, actions)(LevelUp);
