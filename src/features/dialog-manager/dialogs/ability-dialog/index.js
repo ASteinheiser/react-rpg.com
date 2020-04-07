@@ -48,13 +48,9 @@ const AbilityDialog = ({
         points,
     } = dialog.abilities;
 
-    const finishAllocation = () => {
-        confirmAbilityScoreDialog();
-    };
-
     return (
         <>
-            <Dialog onKeyPress={finishAllocation}>
+            <Dialog onKeyPress={confirmAbilityScoreDialog}>
                 <div className="flex-column ability-score-dialog__container">
                     <span className="game-text-dialog__text">
                         Modify your Abilities
@@ -103,7 +99,7 @@ const AbilityDialog = ({
                     </span>
                     <Button
                         title="Confirm"
-                        onClick={finishAllocation}
+                        onClick={confirmAbilityScoreDialog}
                         small={true}
                     />
                 </div>
