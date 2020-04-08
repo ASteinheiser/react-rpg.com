@@ -2,6 +2,7 @@ const initialState = {
     notEnoughGold: '',
     tooManyItems: '',
     itemDropped: '',
+    itemUsed: '',
     itemReceived: '',
     item: null,
 };
