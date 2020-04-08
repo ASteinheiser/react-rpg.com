@@ -36,6 +36,13 @@ const snackbarReducer = (state = initialState, { type, payload }) => {
                 item: payload,
             };
 
+        case 'USE_ITEM':
+            return {
+                ...state,
+                itemUsed: `${payload.name}-${new Date().getTime()}`,
+                item: payload,
+            };
+
         case 'RESET':
             return initialState;
 

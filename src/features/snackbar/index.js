@@ -22,17 +22,31 @@ class Snackbar extends Component {
     componentDidUpdate(prevProps, prevState) {
         const {
             itemReceived,
+            itemUsed,
             itemDropped,
             notEnoughGold,
             tooManyItems,
             item,
         } = this.props.snackbar;
+
         const lastItemReceived = prevProps.snackbar.itemReceived;
         const lastItemDropped = prevProps.snackbar.itemDropped;
+        const lastItemUsed = prevProps.snackbar.itemUsed;
         const lastNotEnoughGold = prevProps.snackbar.notEnoughGold;
         const lastTooManyItems = prevProps.snackbar.tooManyItems;
 
         if (
+            lastItemUsed !== itemUsed &&
+            itemUsed &&
+            typeof itemUsed !== 'undefined'
+        ) {
+            // see if any items were used
+            this.setState({
+                show: `USED AN ITEM: ${itemUsed.split('-')[0]}`,
+                item: item,
+            });
+            this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
+        } else if (
             lastItemDropped !== itemDropped &&
             itemDropped &&
             typeof itemDropped !== 'undefined'

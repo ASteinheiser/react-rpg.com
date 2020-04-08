@@ -6,7 +6,7 @@ export default function consumePotion(item) {
         });
 
         dispatch({
-            type: 'DROP_ITEM',
+            type: 'USE_ITEM',
             payload: item,
         });
     };

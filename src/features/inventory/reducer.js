@@ -13,6 +13,7 @@ const inventoryReducer = (state = initialState, { type, payload }) => {
 
     switch (type) {
         case 'DROP_ITEM':
+        case 'USE_ITEM':
             newState = _cloneDeep(state);
 
             newState.items.find((itemData, index) => {
