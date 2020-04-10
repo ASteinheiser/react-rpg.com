@@ -5,6 +5,7 @@ import ChestLoot from './dialogs/chest-loot';
 import EndlessGameStart from './dialogs/endless-game-start';
 import InventoryDialog from './dialogs/inventory-dialog';
 import GameInstructions from './dialogs/game-instructions';
+import CharacterCreation from './dialogs/character-creation';
 import GameTextDialog from './dialogs/game-text-dialog';
 import GameSelect from './dialogs/game-select';
 import GameWin from './dialogs/game-win';
@@ -25,6 +26,7 @@ const DialogManager = ({ dialog }) => {
         gameSelect,
         gameWin,
         gameInstructions,
+        characterCreation,
         paused,
         settings,
         shop,
@@ -44,6 +46,8 @@ const DialogManager = ({ dialog }) => {
             PauseComp = (
                 <GameTextDialog text1={gameText.title} text2={gameText.body} />
             );
+        if (abilityDialog) PauseComp = <AbilityScores />;
+        if (characterCreation) PauseComp = <CharacterCreation />;
         if (gameInstructions) PauseComp = <GameInstructions />;
         if (gameOver) PauseComp = <GameOver />;
         if (gameStart) PauseComp = <GameSelect />;
@@ -52,7 +56,6 @@ const DialogManager = ({ dialog }) => {
             if (gameSelect === 'endless') PauseComp = <EndlessGameStart />;
         }
         if (gameWin) PauseComp = <GameWin />;
-        if (abilityDialog) PauseComp = <AbilityScores />;
     }
     if (settings) SettingsComp = <SettingsDialog />;
     if (levelUp) LevelUpComp = <LevelUp />;

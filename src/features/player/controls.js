@@ -43,7 +43,6 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
                     movePlayer('EAST');
                     break;
                 default:
-                // console.log(`Unmapped pan direction ${direction}`);
             }
         },
         ANIMATION_WITH_PADDING,
@@ -72,7 +71,6 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
                         movePlayer('EAST');
                         break;
                     default:
-                    // console.log(`Unmapped pan direction ${direction}`);
                 }
             }, ANIMATION_WITH_PADDING);
         },
@@ -137,7 +135,6 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
                 // attack with space key
                 return attackMonster();
             default:
-            // console.log('key not mapped: ', event.keyCode);
         }
     }
 

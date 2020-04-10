@@ -12,6 +12,7 @@ const Button = ({
     small,
     tiny,
     noBorder,
+    extraClass,
 }) => {
     function handleClick() {
         if (typeof onClick === 'function') {
@@ -29,7 +30,7 @@ const Button = ({
                     : tiny
                     ? 'button__container--tiny'
                     : ''
-            }`}
+            } ${extraClass ? extraClass : ''}`}
             style={style || {}}
             onClick={handleClick}
         >

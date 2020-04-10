@@ -1,0 +1,52 @@
+.character-creation__title {
+    font-size: 26px;
+    text-align: center;
+
+    padding: 12px 0;
+}
+
+.character-creation__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    font-size: 20px;
+    color: var(--gray);
+
+    letter-spacing: 1px;
+    text-transform: none;
+    text-align: center;
+
+    padding: 0 36px;
+
+    .character-creation__native-text {
+        padding-left: 8px;
+        max-width: 175px;
+    }
+}
+
+.character-creation__button {
+    padding: 12px 0 16px;
+    align-items: center;
+}
+
+.character-creation__input {
+    height: 2.5em;
+    background-color: black;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.container {
+    padding-top: 0.5em;
+    display: flex;
+}
+.container.space-around {
+    justify-content: space-around;
+}
+.container.space-between {
+    justify-content: space-between;
+}
