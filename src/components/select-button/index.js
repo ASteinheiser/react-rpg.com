@@ -7,7 +7,7 @@ import Button from '../button';
 const SelectButton = ({
     icon,
     title,
-    selectedValue,
+    selected,
     iconStyle,
     indicator,
     onClick,
@@ -27,9 +27,7 @@ const SelectButton = ({
     return (
         <Button
             title={title}
-            extraClass={`select-button ${
-                title === selectedValue ? 'selected ' : ''
-            } 
+            extraClass={`select-button ${selected ? 'selected ' : ''} 
                 ${extraClass ? extraClass : ''}`}
             onClick={handleClick}
             icon={icon}

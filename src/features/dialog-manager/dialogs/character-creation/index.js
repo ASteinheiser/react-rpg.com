@@ -41,17 +41,17 @@ const CharacterCreation = ({ dialog, createCharacter, setClass, setRace }) => {
                 <div className="container space-around">
                     <SelectButton
                         title={'Human'}
-                        selectedValue={dialog.character.characterRace}
+                        selected={dialog.character.characterRace === 'Human'}
                         onClick={setRace}
                     />
                     <SelectButton
                         title={'Elf'}
-                        selectedValue={dialog.character.characterRace}
+                        selected={dialog.character.characterRace === 'Elf'}
                         onClick={setRace}
                     />
                     <SelectButton
                         title={'Dwarf'}
-                        selectedValue={dialog.character.characterRace}
+                        selected={dialog.character.characterRace === 'Dwarf'}
                         onClick={setRace}
                     />
                 </div>
@@ -60,17 +60,17 @@ const CharacterCreation = ({ dialog, createCharacter, setClass, setRace }) => {
                 <div className="container space-around">
                     <SelectButton
                         title={'Fighter'}
-                        selectedValue={dialog.character.characterClass}
+                        selected={dialog.character.characterClass === 'Fighter'}
                         onClick={setClass}
                     />
                     <SelectButton
                         title={'Wizard'}
-                        selectedValue={dialog.character.characterClass}
+                        selected={dialog.character.characterClass === 'Wizard'}
                         onClick={setClass}
                     />
                     <SelectButton
                         title={'Ranger'}
-                        selectedValue={dialog.character.characterClass}
+                        selected={dialog.character.characterClass === 'Ranger'}
                         onClick={setClass}
                     />
                 </div>
