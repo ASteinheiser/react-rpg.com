@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import SelectButton from '../../../../components/select-button';
+import SelectButtonGroup from '../../../../components/select-button-group';
 import Button from '../../../../components/button';
 import Dialog from '../../../../components/dialog';
 import createCharacter from '../../actions/create-character';
@@ -39,38 +39,22 @@ const CharacterCreation = ({ dialog, createCharacter, setClass, setRace }) => {
 
                 <span style={{ paddingTop: 12 }}>{`Your Race`}</span>
                 <div className="container space-around">
-                    <SelectButton
-                        title={'Human'}
-                        selected={dialog.character.characterRace === 'Human'}
-                        onClick={setRace}
-                    />
-                    <SelectButton
-                        title={'Elf'}
-                        selected={dialog.character.characterRace === 'Elf'}
-                        onClick={setRace}
-                    />
-                    <SelectButton
-                        title={'Dwarf'}
-                        selected={dialog.character.characterRace === 'Dwarf'}
+                    <SelectButtonGroup
+                        values={['Human', 'Elf', 'Dwarf']}
+                        select={value =>
+                            value === dialog.character.characterRace
+                        }
                         onClick={setRace}
                     />
                 </div>
 
                 <span style={{ paddingTop: 12 }}>{`Your Class`}</span>
                 <div className="container space-around">
-                    <SelectButton
-                        title={'Fighter'}
-                        selected={dialog.character.characterClass === 'Fighter'}
-                        onClick={setClass}
-                    />
-                    <SelectButton
-                        title={'Wizard'}
-                        selected={dialog.character.characterClass === 'Wizard'}
-                        onClick={setClass}
-                    />
-                    <SelectButton
-                        title={'Ranger'}
-                        selected={dialog.character.characterClass === 'Ranger'}
+                    <SelectButtonGroup
+                        values={['Fighter', 'Wizard', 'Ranger']}
+                        select={value =>
+                            value === dialog.character.characterClass
+                        }
                         onClick={setClass}
                     />
                 </div>
