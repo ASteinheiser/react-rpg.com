@@ -4,6 +4,7 @@ const GreatHpPotion = {
     name: 'Great HP Potion',
     type: 'potion',
     hp: 40,
+    hpReset: 40,
     image: GreatHpPotionImg,
     value: 80,
 };

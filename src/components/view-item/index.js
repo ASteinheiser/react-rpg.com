@@ -14,6 +14,8 @@ import dropItem from '../../features/inventory/actions/drop-item';
 import equipItem from '../../features/inventory/actions/equip-item';
 import unequipItem from '../../features/inventory/actions/unequip-item';
 import sellItem from '../../features/inventory/actions/sell-item';
+import calculateModifier from '../../utils/calculate-modifier';
+import calculateWisdomPotionBonus from '../../utils/calculate-wisdom-potion-bonus';
 
 import './styles.scss';
 
@@ -54,9 +56,15 @@ const ViewItem = ({
             break;
 
         case 'potion':
+            data.hp = data.hpReset;
+            let potionRestore = calculateWisdomPotionBonus(
+                data.hp,
+                calculateModifier(stats.abilities.wisdom)
+            );
+            data.hp = potionRestore;
             itemStats.push(
                 <StatsItem
-                    stats={{ name: 'heal', value: data.hp }}
+                    stats={{ name: 'heal', value: potionRestore }}
                     key={uuidv4()}
                 />
             );
