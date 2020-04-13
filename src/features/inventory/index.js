@@ -37,6 +37,9 @@ class Inventory extends Component {
         ) {
             // see if any items were received
             this.setState({ newItemIndicator: true });
+        } else if (inventory && prevState.newItemIndicator) {
+            // see if inventory is opened and there was a new item
+            this.setState({ newItemIndicator: false });
         }
     }
 

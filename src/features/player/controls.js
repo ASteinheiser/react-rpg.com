@@ -7,12 +7,18 @@ import attackMonster from './actions/attack-monster';
 import movePlayer from './actions/move-player';
 import isGamePaused from '../dialog-manager/actions/is-game-paused';
 import { ANIMATION_SPEED } from '../../config/constants';
+import toggleInventory from '../dialog-manager/actions/toggle-inventory';
 
 const ANIMATION_WITH_PADDING = ANIMATION_SPEED * 1.25;
 
 let intervalId = null;
 
-const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
+const Controls = ({
+    isGamePaused,
+    attackMonster,
+    movePlayer,
+    toggleInventory,
+}) => {
     const _handleKeyDown = _debounce(
         event => {
             // if the game is not paused by dialogs
@@ -134,6 +140,9 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
             case 32:
                 // attack with space key
                 return attackMonster();
+            case 73:
+                // open inventory with i key
+                return toggleInventory();
             default:
         }
     }
@@ -141,6 +150,6 @@ const Controls = ({ isGamePaused, attackMonster, movePlayer }) => {
     return null;
 };
 
-const actions = { attackMonster, movePlayer, isGamePaused };
+const actions = { attackMonster, movePlayer, isGamePaused, toggleInventory };
 
 export default connect(null, actions)(Controls);
