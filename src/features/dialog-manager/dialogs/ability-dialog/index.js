@@ -50,7 +50,10 @@ const AbilityDialog = ({
 
     return (
         <>
-            <Dialog onKeyPress={confirmAbilityScoreDialog}>
+            <Dialog
+                onKeyPress={confirmAbilityScoreDialog}
+                keys={dialog.playerOpenedAbilityDialog ? [85] : null}
+            >
                 <div className="flex-column ability-score-dialog__container">
                     <span className="game-text-dialog__text">
                         Modify your Abilities
@@ -92,7 +95,7 @@ const AbilityDialog = ({
                         decrement={decrementWisdom}
                     />
                     <span className="ability-score-dialog__text">
-                        Ability Points remaining:{' '}
+                        Ability Points remaining:
                         <span className="ability-score-dialog__points">
                             {points}
                         </span>

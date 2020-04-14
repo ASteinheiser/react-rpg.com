@@ -8,6 +8,7 @@ const initialState = {
         wisdom: 0,
         intelligence: 0,
         charisma: 0,
+        points: 0,
     },
     hp: 10,
     maxHp: 10,

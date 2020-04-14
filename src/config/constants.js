@@ -40,6 +40,6 @@ export const MAX_ABILITY_SCORE = 20;
 // The default value of an ability score
 export const STARTING_ABILITY_SCORE_VALUE = 8;
 // The starting points a player can allocate
-export const STARTING_ABILITY_POINTS = 40;
+export const STARTING_ABILITY_POINTS = 12;
 // The number of ability points the player gets to allocate on levelling up
 export const LEVEL_UP_ABILITY_POINTS = 2;

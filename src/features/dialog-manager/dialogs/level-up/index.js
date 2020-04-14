@@ -15,7 +15,9 @@ const LevelUp = ({ stats, closeLevelUpDialog, abilityScoreDialog }) => {
     const { dmg, hp } = levelUp;
 
     const nextDialog = isAbilityAllocationLevel(level)
-        ? abilityScoreDialog
+        ? () => {
+              abilityScoreDialog(true);
+          }
         : closeLevelUpDialog;
 
     return (

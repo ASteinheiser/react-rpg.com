@@ -8,6 +8,7 @@ import movePlayer from './actions/move-player';
 import isGamePaused from '../dialog-manager/actions/is-game-paused';
 import { ANIMATION_SPEED } from '../../config/constants';
 import toggleInventory from '../dialog-manager/actions/toggle-inventory';
+import abilityScoreDialog from '../dialog-manager/actions/ability-score-dialog';
 
 const ANIMATION_WITH_PADDING = ANIMATION_SPEED * 1.25;
 
@@ -18,6 +19,7 @@ const Controls = ({
     attackMonster,
     movePlayer,
     toggleInventory,
+    abilityScoreDialog,
 }) => {
     const _handleKeyDown = _debounce(
         event => {
@@ -124,6 +126,7 @@ const Controls = ({
     function handleKeyDown(event) {
         event.preventDefault();
         // move with 'WASD' or Arrow keys
+        console.log('HANDLING EVENT', event);
         switch (event.keyCode) {
             case 37:
             case 65:
@@ -143,6 +146,9 @@ const Controls = ({
             case 73:
                 // open inventory with i key
                 return toggleInventory();
+            case 85:
+                // open ability dialog with the u key
+                return abilityScoreDialog(false);
             default:
         }
     }
@@ -150,6 +156,12 @@ const Controls = ({
     return null;
 };
 
-const actions = { attackMonster, movePlayer, isGamePaused, toggleInventory };
+const actions = {
+    attackMonster,
+    movePlayer,
+    isGamePaused,
+    toggleInventory,
+    abilityScoreDialog,
+};
 
 export default connect(null, actions)(Controls);
