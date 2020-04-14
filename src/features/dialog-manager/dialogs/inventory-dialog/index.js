@@ -8,6 +8,8 @@ import EquippedItems from '../../../../components/equipped-items';
 import ViewItem from '../../../../components/view-item';
 import toggleInventory from '../../actions/toggle-inventory';
 
+import { I_KEY } from '../../../../config/constants';
+
 import './styles.scss';
 
 const InventoryDialog = ({ toggleInventory }) => {
@@ -15,7 +17,7 @@ const InventoryDialog = ({ toggleInventory }) => {
 
     return (
         <Dialog
-            keys={[73]}
+            keys={[I_KEY]}
             onKeyPress={() => {
                 toggleInventory();
             }}

@@ -43,3 +43,16 @@ export const STARTING_ABILITY_SCORE_VALUE = 8;
 export const STARTING_ABILITY_POINTS = 12;
 // The number of ability points the player gets to allocate on levelling up
 export const LEVEL_UP_ABILITY_POINTS = 2;
+// Set macros for key codes
+export const UP_KEY = 38;
+export const DOWN_KEY = 40;
+export const LEFT_KEY = 37;
+export const RIGHT_KEY = 39;
+export const W_KEY = 87;
+export const S_KEY = 83;
+export const A_KEY = 65;
+export const D_KEY = 68;
+export const U_KEY = 85;
+export const I_KEY = 73;
+export const SPACE_KEY = 32;
+export const ENTER_KEY = 13;

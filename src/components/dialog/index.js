@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import { ENTER_KEY } from '../../config/constants';
+
 import './styles.scss';
 
 const Dialog = ({ children, goBack, onKeyPress, keys }) => {
@@ -13,7 +15,7 @@ const Dialog = ({ children, goBack, onKeyPress, keys }) => {
 
     function handleKeyPress(event) {
         // check if a key is pressed and bound to an action
-        if (keys ? keys.includes(event.keyCode) : event.keyCode === 13) {
+        if (keys ? keys.includes(event.keyCode) : event.keyCode === ENTER_KEY) {
             onKeyPress();
         }
     }

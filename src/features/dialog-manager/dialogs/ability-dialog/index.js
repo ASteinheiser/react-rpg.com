@@ -20,6 +20,8 @@ import incrementCharisma from './actions/increment-charisma';
 import confirmAbilityScoreDialog from '../../actions/confirm-ability-score-dialog';
 import Dialog from '../../../../components/dialog';
 
+import { U_KEY } from '../../../../config/constants';
+
 import './styles.scss';
 
 const AbilityDialog = ({
@@ -52,7 +54,7 @@ const AbilityDialog = ({
         <>
             <Dialog
                 onKeyPress={confirmAbilityScoreDialog}
-                keys={dialog.playerOpenedAbilityDialog ? [85] : null}
+                keys={dialog.playerOpenedAbilityDialog ? [U_KEY] : null}
             >
                 <div className="flex-column ability-score-dialog__container">
                     <span className="game-text-dialog__text">

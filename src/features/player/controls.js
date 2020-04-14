@@ -6,9 +6,23 @@ import _debounce from 'lodash.debounce';
 import attackMonster from './actions/attack-monster';
 import movePlayer from './actions/move-player';
 import isGamePaused from '../dialog-manager/actions/is-game-paused';
-import { ANIMATION_SPEED } from '../../config/constants';
 import toggleInventory from '../dialog-manager/actions/toggle-inventory';
 import abilityScoreDialog from '../dialog-manager/actions/ability-score-dialog';
+
+import {
+    ANIMATION_SPEED,
+    W_KEY,
+    S_KEY,
+    A_KEY,
+    D_KEY,
+    U_KEY,
+    I_KEY,
+    UP_KEY,
+    DOWN_KEY,
+    LEFT_KEY,
+    RIGHT_KEY,
+    SPACE_KEY,
+} from '../../config/constants';
 
 const ANIMATION_WITH_PADDING = ANIMATION_SPEED * 1.25;
 
@@ -125,29 +139,29 @@ const Controls = ({
 
     function handleKeyDown(event) {
         event.preventDefault();
-        // move with 'WASD' or Arrow keys
+        // move with 'WASD' or Arrow keys,
+        // attack with 'SPACE',
+        // open inventory with 'I',
+        // open ability dialog with 'U'
         console.log('HANDLING EVENT', event);
         switch (event.keyCode) {
-            case 37:
-            case 65:
+            case LEFT_KEY:
+            case A_KEY:
                 return movePlayer('WEST');
-            case 38:
-            case 87:
+            case UP_KEY:
+            case W_KEY:
                 return movePlayer('NORTH');
-            case 39:
-            case 68:
+            case RIGHT_KEY:
+            case D_KEY:
                 return movePlayer('EAST');
-            case 40:
-            case 83:
+            case DOWN_KEY:
+            case S_KEY:
                 return movePlayer('SOUTH');
-            case 32:
-                // attack with space key
+            case SPACE_KEY:
                 return attackMonster();
-            case 73:
-                // open inventory with i key
+            case I_KEY:
                 return toggleInventory();
-            case 85:
-                // open ability dialog with the u key
+            case U_KEY:
                 return abilityScoreDialog(false);
             default:
         }

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import { ENTER_KEY } from '../../config/constants';
+
 import './styles.scss';
 
 const MicroDialog = ({
@@ -20,7 +22,7 @@ const MicroDialog = ({
 
     function handleKeyPress(event) {
         // case for 'enter'
-        if (event.keyCode === 13) {
+        if (event.keyCode === ENTER_KEY) {
             onKeyPress();
         }
     }
