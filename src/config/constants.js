@@ -43,6 +43,8 @@ export const STARTING_ABILITY_SCORE_VALUE = 8;
 export const STARTING_ABILITY_POINTS = 12;
 // The number of ability points the player gets to allocate on levelling up
 export const LEVEL_UP_ABILITY_POINTS = 2;
+// Starting player health
+export const BASE_HEALTH = 10;
 // Set macros for key codes
 export const UP_KEY = 38;
 export const DOWN_KEY = 40;
