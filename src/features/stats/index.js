@@ -38,8 +38,25 @@ class Stats extends Component {
 
     render() {
         const { disabled, stats, sideMenu, largeView } = this.props;
-        const { abilities, level, exp, expToLevel, hp, maxHp, gold } = stats;
+        const {
+            abilities,
+            level,
+            exp,
+            expToLevel,
+            hp,
+            maxHp,
+            mana,
+            maxMana,
+            gold,
+        } = stats;
         const { statsBgColor } = this.state;
+
+        let strBonus = calculateModifier(abilities.strength);
+        let conBonus = calculateModifier(abilities.constitution);
+        let dexBonus = calculateModifier(abilities.dexterity);
+        let chrBonus = calculateModifier(abilities.charisma);
+        let intBonus = calculateModifier(abilities.intelligence);
+        let wisBonus = calculateModifier(abilities.wisdom);
 
         let height = disabled ? 66 : 120;
         if (sideMenu) height = disabled ? 100 : 110;
@@ -51,6 +68,14 @@ class Stats extends Component {
         if (hpPercent >= 99) hpBorder = '5px';
         else if (hpPercent >= 97) hpBorder = '5px 3px 3px 5px';
         else hpBorder = '5px 0 0 5px';
+
+        let manaPercent = (mana / maxMana) * 100;
+        if (manaPercent > 100) manaPercent = 100;
+
+        let manaBorder;
+        if (manaPercent >= 99) manaBorder = '5px';
+        else if (manaPercent >= 97) manaBorder = '5px 3px 3px 5px';
+        else manaBorder = '5px 0 0 5px';
 
         let columnStyle = 'stats-column__spacing';
         if (!sideMenu && largeView) {
@@ -66,13 +91,6 @@ class Stats extends Component {
         if (sideMenu) width = 340;
         else if (largeView) width = 360;
         else width = 324;
-
-        let STRbonus = calculateModifier(abilities.strength);
-        let CONbonus = calculateModifier(abilities.constitution);
-        let DEXbonus = calculateModifier(abilities.dexterity);
-        let CHRbonus = calculateModifier(abilities.charisma);
-        let INTbonus = calculateModifier(abilities.intelligence);
-        let WISbonus = calculateModifier(abilities.wisdom);
 
         return (
             <div
@@ -132,14 +150,14 @@ class Stats extends Component {
                                     {'STR: '}
                                 </span>
                                 <span className="stats__text--melee">
-                                    {STRbonus > 0
+                                    {strBonus > 0
                                         ? abilities.strength +
                                           ' (+' +
-                                          STRbonus +
+                                          strBonus +
                                           ')'
                                         : abilities.strength +
                                           ' (' +
-                                          STRbonus +
+                                          strBonus +
                                           ')'}
                                 </span>
                             </div>
@@ -149,14 +167,14 @@ class Stats extends Component {
                                     {'CON: '}
                                 </span>
                                 <span className="stats__text--melee">
-                                    {CONbonus > 0
+                                    {conBonus > 0
                                         ? abilities.constitution +
                                           ' (+' +
-                                          CONbonus +
+                                          conBonus +
                                           ')'
                                         : abilities.constitution +
                                           ' (' +
-                                          CONbonus +
+                                          conBonus +
                                           ')'}
                                 </span>
                             </div>
@@ -190,13 +208,13 @@ class Stats extends Component {
                                 >
                                     <span className="stats-mana-bar__container">
                                         <span className="flex-row stats-mana-bar__text">
-                                            {hp + '/' + maxHp}
+                                            {mana + '/' + maxMana}
                                         </span>
                                         <span
                                             className="stats-mana-bar__value"
                                             style={{
-                                                width: `${hpPercent}%`,
-                                                borderRadius: hpBorder,
+                                                width: `${manaPercent}%`,
+                                                borderRadius: manaBorder,
                                             }}
                                         ></span>
                                     </span>
@@ -211,14 +229,14 @@ class Stats extends Component {
                                     {'DEX: '}
                                 </span>
                                 <span className="stats__text--ranged">
-                                    {DEXbonus > 0
+                                    {dexBonus > 0
                                         ? abilities.dexterity +
                                           ' (+' +
-                                          DEXbonus +
+                                          dexBonus +
                                           ')'
                                         : abilities.dexterity +
                                           ' (' +
-                                          DEXbonus +
+                                          dexBonus +
                                           ')'}
                                 </span>
                             </div>
@@ -228,14 +246,14 @@ class Stats extends Component {
                                     {'CHR: '}
                                 </span>
                                 <span className="stats__text--ranged">
-                                    {CHRbonus > 0
+                                    {chrBonus > 0
                                         ? abilities.charisma +
                                           ' (+' +
-                                          CHRbonus +
+                                          chrBonus +
                                           ')'
                                         : abilities.charisma +
                                           ' (' +
-                                          CHRbonus +
+                                          chrBonus +
                                           ')'}
                                 </span>
                             </div>
@@ -294,14 +312,14 @@ class Stats extends Component {
                                     {'INT: '}
                                 </span>
                                 <span className="stats__text--magic">
-                                    {INTbonus > 0
+                                    {intBonus > 0
                                         ? abilities.intelligence +
                                           ' (+' +
-                                          INTbonus +
+                                          intBonus +
                                           ')'
                                         : abilities.intelligence +
                                           ' (' +
-                                          INTbonus +
+                                          intBonus +
                                           ')'}
                                 </span>
                             </div>
@@ -311,14 +329,14 @@ class Stats extends Component {
                                     {'WIS: '}
                                 </span>
                                 <span className="stats__text--magic">
-                                    {WISbonus > 0
+                                    {wisBonus > 0
                                         ? abilities.wisdom +
                                           ' (+' +
-                                          WISbonus +
+                                          wisBonus +
                                           ')'
                                         : abilities.wisdom +
                                           ' (' +
-                                          WISbonus +
+                                          wisBonus +
                                           ')'}
                                 </span>
                             </div>
