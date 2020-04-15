@@ -1,10 +1,6 @@
-export default function createCharacter() {
+export default function createCharacter(characterName) {
     return (dispatch, getState) => {
-        const {
-            characterName,
-            characterRace,
-            characterClass,
-        } = getState().dialog.character;
+        const { characterRace, characterClass } = getState().dialog.character;
 
         dispatch({
             type: 'CREATE_CHARACTER',

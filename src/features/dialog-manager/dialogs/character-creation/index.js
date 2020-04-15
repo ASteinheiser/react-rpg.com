@@ -4,18 +4,29 @@ import { connect } from 'react-redux';
 import SelectButtonGroup from '../../../../components/select-button-group';
 import Button from '../../../../components/button';
 import Dialog from '../../../../components/dialog';
+import errorMessage from '../../actions/error-message';
 import createCharacter from './actions/create-character';
 import setClass from './actions/set-class';
 import setRace from './actions/set-race';
 
 import './styles.scss';
 
-const CharacterCreation = ({ dialog, createCharacter, setClass, setRace }) => {
+const CharacterCreation = ({
+    dialog,
+    createCharacter,
+    errorMessage,
+    setClass,
+    setRace,
+}) => {
     function handleContinue() {
-        dialog.character.characterName = document.getElementById(
-            'characterName'
-        ).value;
-        createCharacter();
+        const characterName = document
+            .getElementById('characterName')
+            .value.trim();
+        if (characterName) {
+            createCharacter(characterName);
+        } else {
+            errorMessage('Please enter a name');
+        }
     }
 
     return (
@@ -68,6 +79,6 @@ const CharacterCreation = ({ dialog, createCharacter, setClass, setRace }) => {
 };
 
 const mapStateToProps = ({ dialog }) => ({ dialog });
-const actions = { createCharacter, setClass, setRace };
+const actions = { createCharacter, errorMessage, setClass, setRace };
 
 export default connect(mapStateToProps, actions)(CharacterCreation);
