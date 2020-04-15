@@ -16,6 +16,7 @@ const SelectButtonGroup = ({
 }) => {
     return values.map(value => (
         <SelectButton
+            key={value}
             title={value}
             selected={select(value)}
             onClick={onClick}
