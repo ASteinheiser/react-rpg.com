@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import SelectButtonGroup from '../../../../components/select-button-group';
 import Button from '../../../../components/button';
 import Dialog from '../../../../components/dialog';
-import createCharacter from '../../actions/create-character';
-import setClass from '../../actions/set-class';
-import setRace from '../../actions/set-race';
+import createCharacter from './actions/create-character';
+import setClass from './actions/set-class';
+import setRace from './actions/set-race';
 
 import './styles.scss';
 
