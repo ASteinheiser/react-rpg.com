@@ -143,7 +143,6 @@ const Controls = ({
         // attack with 'SPACE',
         // open inventory with 'I',
         // open ability dialog with 'U'
-        console.log('HANDLING EVENT', event);
         switch (event.keyCode) {
             case LEFT_KEY:
             case A_KEY:

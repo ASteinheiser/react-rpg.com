@@ -9,8 +9,32 @@ import resetGameState from '../../../world/actions/reset-game-state';
 
 import './settings-dialog.scss';
 
-const SettingsDialog = ({ resetGameState, closeSettings }) => {
+const SettingsDialog = ({ state, resetGameState, closeSettings }) => {
     const [confirmQuit, setConfirmQuit] = useState(false);
+
+    const saveGame = () => {
+        const blob = new Blob([JSON.stringify(state)]);
+        const filename = state.dialog.character.characterName + '.json';
+
+        if (window.navigator.msSaveBlob) {
+            // Internet Explorer/Edge
+            window.navigator.msSaveBlob(blob, filename);
+        } else {
+            // Chrome/Firefox
+            const save = document.getElementById('save-game-dialog');
+            const url = window.URL.createObjectURL(blob, {
+                type: 'octet/stream',
+            });
+            save.href = url;
+            save.download = filename;
+            save.click();
+            window.URL.revokeObjectURL(url);
+        }
+    };
+
+    const playerCreated =
+        state.dialog.character.characterName ||
+        state.dialog.character.characterName.length > 0;
 
     return (
         <Dialog>
@@ -22,6 +46,23 @@ const SettingsDialog = ({ resetGameState, closeSettings }) => {
                     icon="caret-square-left"
                     title="Return to Menu"
                 />
+
+                {playerCreated && (
+                    <>
+                        <Button
+                            onClick={saveGame}
+                            icon="save"
+                            title="Save Game"
+                        />
+                        <a
+                            href="#save"
+                            id="save-game-dialog"
+                            style={{ display: 'none' }}
+                        >
+                            Save
+                        </a>
+                    </>
+                )}
 
                 <Button onClick={closeSettings} icon="times" title="Close" />
             </div>
@@ -36,6 +77,9 @@ const SettingsDialog = ({ resetGameState, closeSettings }) => {
     );
 };
 
+const mapStateToProps = state => ({
+    state,
+});
 const actions = { resetGameState, closeSettings };
 
-export default connect(null, actions)(SettingsDialog);
+export default connect(mapStateToProps, actions)(SettingsDialog);

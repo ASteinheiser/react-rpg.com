@@ -71,6 +71,9 @@ const monstersReducer = (state = initialState, { type, payload }) => {
         case 'RESET':
             return initialState;
 
+        case 'LOAD_DATA':
+            return { ...initialState, ...payload.monsters };
+
         default:
             return state;
     }
