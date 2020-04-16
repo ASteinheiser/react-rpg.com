@@ -1,6 +1,13 @@
+import calculateModifier from '../../../utils/calculate-modifier';
+import calculateSellPrice from '../../../utils/calculate-sell-price';
+
 export default function sellItem(item) {
     return (dispatch, getState) => {
-        const sellPrice = Math.ceil(item.value / 2);
+        const { stats } = getState();
+        const sellPrice = calculateSellPrice(
+            item.value,
+            calculateModifier(stats.abilities.charisma)
+        );
 
         dispatch({
             type: 'GET_GOLD',
@@ -12,7 +19,7 @@ export default function sellItem(item) {
             payload: item,
         });
 
-        const { equippedItems } = getState().stats;
+        const { equippedItems } = stats;
         let itemEquipped = false;
         // check if the item was equipped, then take it off
         switch (item.type) {

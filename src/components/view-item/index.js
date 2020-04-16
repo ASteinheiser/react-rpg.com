@@ -16,6 +16,8 @@ import unequipItem from '../../features/inventory/actions/unequip-item';
 import sellItem from '../../features/inventory/actions/sell-item';
 import calculateModifier from '../../utils/calculate-modifier';
 import calculateWisdomPotionBonus from '../../utils/calculate-wisdom-potion-bonus';
+import calculateBuyPrice from '../../utils/calculate-buy-price';
+import calculateSellPrice from '../../utils/calculate-sell-price';
 
 import './styles.scss';
 
@@ -272,7 +274,10 @@ const ViewItem = ({
                 open={confirmSell}
                 text={`Are you sure you want to sell your ${
                     data.name
-                } for ${Math.ceil(data.value / 2)} gold ?`}
+                } for ${calculateSellPrice(
+                    data.value,
+                    calculateModifier(stats.abilities.charisma)
+                )} gold ?`}
                 cancelText={'Cancel'}
                 acceptText={'Sell'}
                 acceptIcon={'coins'}
@@ -286,7 +291,12 @@ const ViewItem = ({
 
             <ConfirmDialog
                 open={confirmBuy}
-                text={`Are you sure you want to buy ${data.name} for ${data.value} gold ?`}
+                text={`Are you sure you want to buy ${
+                    data.name
+                } for ${calculateBuyPrice(
+                    data.value,
+                    calculateModifier(stats.abilities.charisma)
+                )} gold ?`}
                 cancelText={'Cancel'}
                 acceptText={'Buy'}
                 acceptIcon={'coins'}

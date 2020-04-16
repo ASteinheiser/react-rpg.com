@@ -1,16 +1,24 @@
+import calculateModifier from '../../../utils/calculate-modifier';
+import calculateBuyPrice from '../../../utils/calculate-buy-price';
+
 export default function buyItem(item) {
     return (dispatch, getState) => {
         const { stats, inventory } = getState();
         const { gold } = stats;
         const { items, maxItems } = inventory;
 
+        const buyPrice = calculateBuyPrice(
+            item.value,
+            calculateModifier(stats.abilities.charisma)
+        );
+
         // make sure player has enough gold
-        if (gold >= item.value) {
+        if (gold >= buyPrice) {
             // if it's a backpack upgrade
             if (item.type === 'upgrade::backpack') {
                 dispatch({
                     type: 'LOSE_GOLD',
-                    payload: item.value,
+                    payload: buyPrice,
                 });
                 dispatch({
                     type: 'UPGRADE_PACK',
@@ -20,7 +28,7 @@ export default function buyItem(item) {
             else if (items.length < maxItems) {
                 dispatch({
                     type: 'LOSE_GOLD',
-                    payload: item.value,
+                    payload: buyPrice,
                 });
                 dispatch({
                     type: 'GET_ITEM',

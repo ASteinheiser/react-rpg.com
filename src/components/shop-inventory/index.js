@@ -5,6 +5,7 @@ import ShopItem from './shop-item';
 import shopItems from './shop-items';
 import ViewItem from '../view-item';
 import uuidv4 from '../../utils/uuid-v4';
+import calculateModifier from '../../utils/calculate-modifier';
 import { MAX_ITEMS_UPGRADE } from '../../config/constants';
 
 import './styles.scss';
@@ -42,6 +43,7 @@ const ShopInventory = ({ stats, inventory }) => {
                 key={uuidv4()}
                 item={item}
                 buyItem={() => setBuyItem(item)}
+                charismaModifier={calculateModifier(stats.abilities.charisma)}
             />
         );
     });
