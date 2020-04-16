@@ -14,7 +14,13 @@
 .stats__text--spacing {
     padding-right: 10px;
     font-size: 15px;
-    text-indent: -5px;
+    font-family: 'Roboto Mono';
+}
+
+.stats__text--info {
+    color: var(--white);
+    font-size: 16px;
+    text-transform: none;
     font-family: 'Roboto Mono';
 }
 
@@ -55,80 +61,52 @@
     padding-left: 24px;
 }
 
-.exp-bar__container {
+.stats-bar__container {
     width: 100px;
     height: 20px;
-
-    background: var(--gray);
-
     position: relative;
-
-    border: 1px solid purple;
     border-radius: 7px;
 
-    .exp-bar__value {
+    .stats-bar__value {
         height: 20px;
-
-        background: purple;
-
         border-radius: 5px 0px 0px 4px;
-
         position: absolute;
-
         transition: width 1s ease-in-out;
+    }
+}
+
+.exp-bar__container {
+    background: var(--gray);
+    border: 1px solid purple;
+
+    .exp-bar__value {
+        background: purple;
     }
 }
 
 .stats-hp-bar__container {
-    width: 100px;
-    height: 20px;
-
     background: var(--red);
-
-    position: relative;
-
     border: 1px solid var(--green);
-    border-radius: 7px;
 
     .stats-hp-bar__value {
-        height: 20px;
-
         background: var(--green);
-
-        position: absolute;
-
-        transition: width 1s ease-in-out;
     }
 }
 
 .stats-mana-bar__container {
-    width: 100px;
-    height: 20px;
-
     background: var(--grey);
-
-    position: relative;
-
     border: 1px solid var(--blue);
-    border-radius: 7px;
 
     .stats-mana-bar__value {
-        height: 20px;
-
         background: var(--blue);
-
-        position: absolute;
-
-        transition: width 1s ease-in-out;
     }
 }
 
-.stats-health-bar__text {
+.stats-bar__text {
     height: 20px;
     font-size: 22px;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
         1px 1px 0 #000;
-    color: lightgray;
 
     font-weight: 500;
 
@@ -139,40 +117,16 @@
     z-index: 1000;
     left: 0;
     right: 0;
+}
+
+.stats-health-bar__text {
+    color: lightgray;
 }
 
 .stats-exp-bar__text {
-    height: 20px;
-    font-size: 22px;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-        1px 1px 0 #000;
     color: lightyellow;
-
-    font-weight: 500;
-
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    z-index: 1000;
-    left: 0;
-    right: 0;
 }
 
 .stats-mana-bar__text {
-    height: 20px;
-    font-size: 22px;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-        1px 1px 0 #000;
     color: lightyellow;
-
-    font-weight: 500;
-
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    z-index: 1000;
-    left: 0;
-    right: 0;
 }

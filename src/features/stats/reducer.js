@@ -13,6 +13,11 @@ const initialState = {
         charisma: 0,
         points: 0,
     },
+    character: {
+        characterName: '',
+        characterRace: '',
+        characterClass: '',
+    },
     hp: 0,
     abilityModifierHp: 0,
     extraHp: 0,
@@ -33,6 +38,16 @@ const statsReducer = (state = initialState, { type, payload }) => {
     let newState;
 
     switch (type) {
+        case 'CREATE_CHARACTER':
+            return {
+                ...state,
+                character: {
+                    characterName: payload.characterName,
+                    characterRace: payload.characterRace,
+                    characterClass: payload.characterClass,
+                },
+            };
+
         case 'GET_GOLD':
             // add gold to current gold
             return { ...state, gold: state.gold + payload };

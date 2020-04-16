@@ -44,9 +44,8 @@ const stairs = {
 };
 
 const message = {
-    title:
-        'As you enter the dungeon, you start coughing from the putrid scent...',
-    body: `You try to ignore the smell as you recall your quest: Speak with the Old Spirit at his resting place.`,
+    title: `As <> enters the dungeon, they start coughing from the putrid scent...`,
+    body: `<> tries to ignore the smell as they recall their quest: Speak with the Old Spirit at his resting place.`,
 };
 
 export default {

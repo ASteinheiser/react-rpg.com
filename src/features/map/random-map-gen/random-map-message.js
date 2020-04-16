@@ -5,25 +5,25 @@ export default function randomMapMessage(floorNum) {
         switch (floorNum + 1) {
             case 20:
                 message = {
-                    title: `As you march onward, you notice the walls have a faint purple glow to them...`,
+                    title: `As <> marches onward, they notice the walls have a faint purple glow to them...`,
                     body: `"THE JOURNEY HAS JUST BEGUN"`,
                 };
                 break;
             case 40:
                 message = {
-                    title: `As you nearly approach the halfway point, you feel confident and charge forward!`,
+                    title: `As <> nearly approaches the halfway point, they feel confident and charge forward!`,
                     body: '',
                 };
                 break;
             case 60:
                 message = {
-                    title: `As you turn the corner, now well past the halfway point, you hear the shadowy voice...`,
+                    title: `As <> turns the corner, now well past the halfway point, they hear the shadowy voice...`,
                     body: `"WELL DONE ADVENTURER... ONLY A LITTLE FURTHER"`,
                 };
                 break;
             case 80:
                 message = {
-                    title: `Now very close to the hundredth floor, you can feel the darkness pulling you towards it as it appears to swirl on the walls.`,
+                    title: `Now very close to the hundredth floor, <> can feel the darkness pulling them towards it as it appears to swirl on the walls.`,
                     body: '',
                 };
                 break;

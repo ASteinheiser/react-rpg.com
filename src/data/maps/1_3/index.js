@@ -42,8 +42,8 @@ const stairs = {
 
 const message = {
     title:
-        'As you inspect the walls, you notice a faint purple glow. Something definitely seemed off about those rats...',
-    body: 'Up ahead, you notice a group of small humanoid creatures...',
+        'As <> inspects the walls, they notice a faint purple glow. Something definitely seemed off about those rats...',
+    body: 'Up ahead, <> notices a group of small humanoid creatures...',
 };
 
 export default {

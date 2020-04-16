@@ -40,6 +40,7 @@ class Stats extends Component {
         const { disabled, stats, sideMenu, largeView } = this.props;
         const {
             abilities,
+            character,
             level,
             exp,
             expToLevel,
@@ -58,8 +59,8 @@ class Stats extends Component {
         let intBonus = calculateModifier(abilities.intelligence);
         let wisBonus = calculateModifier(abilities.wisdom);
 
-        let height = disabled ? 66 : 120;
-        if (sideMenu) height = disabled ? 100 : 110;
+        let height = disabled ? 96 : 150;
+        if (sideMenu) height = disabled ? 130 : 140;
 
         let hpPercent = (hp / maxHp) * 100;
         if (hpPercent > 100) hpPercent = 100;
@@ -83,13 +84,13 @@ class Stats extends Component {
         }
 
         let padding;
-        if (sideMenu) padding = '12px 0 12px 32px';
-        else if (largeView) padding = '12px 24px';
+        if (sideMenu) padding = '10px 0 12px 10px';
+        else if (largeView) padding = '12px 15px';
         else padding = '12px';
 
         let width;
-        if (sideMenu) width = 340;
-        else if (largeView) width = 360;
+        if (sideMenu) width = 380;
+        else if (largeView) width = 380;
         else width = 324;
 
         return (
@@ -108,10 +109,31 @@ class Stats extends Component {
             >
                 {!disabled && (
                     <>
-                        <div className="flex-column">
+                        <div
+                            className="flex-column"
+                            style={{ padding: '0', margin: '0', border: '0' }}
+                        >
                             <div
                                 className="flex-row"
-                                style={{ paddingBottom: sideMenu ? 0 : 15 }}
+                                style={{
+                                    paddingBottom: sideMenu ? 0 : 5,
+                                    borderBottom: 'solid',
+                                }}
+                            >
+                                <span className="stats__text--info">
+                                    {character.characterName.length <= 11
+                                        ? character.characterName
+                                        : character.characterName.substr(0, 9) +
+                                          '...'}
+                                </span>
+                            </div>
+
+                            <div
+                                className="flex-row"
+                                style={{
+                                    paddingBottom: sideMenu ? 0 : 15,
+                                    paddingTop: sideMenu ? 0 : 15,
+                                }}
                             >
                                 <span className="stats__text--spacing">
                                     {'LEVEL: '}
@@ -128,12 +150,12 @@ class Stats extends Component {
                                     paddingTop: sideMenu ? 10 : 0,
                                 }}
                             >
-                                <span className="stats-hp-bar__container">
-                                    <span className="flex-row stats-health-bar__text">
+                                <span className="stats-bar__container stats-hp-bar__container">
+                                    <span className="stats-bar__text flex-row stats-health-bar__text">
                                         {hp + '/' + maxHp}
                                     </span>
                                     <span
-                                        className="stats-hp-bar__value"
+                                        className="stats-bar__value stats-hp-bar__value"
                                         style={{
                                             width: `${hpPercent}%`,
                                             borderRadius: hpBorder,
@@ -182,9 +204,25 @@ class Stats extends Component {
 
                         <div className={`flex-column ${columnStyle}`}>
                             <div
+                                className="flex-row"
+                                style={{
+                                    paddingBottom: sideMenu ? 0 : 5,
+                                    borderBottom: 'solid',
+                                }}
+                            >
+                                <span className="stats__text--info">
+                                    {character.characterRace}
+                                </span>
+                            </div>
+
+                            <div
                                 className={`flex-row ${
                                     sideMenu ? '' : 'stats__row--spacing'
                                 }`}
+                                style={{
+                                    paddingBottom: sideMenu ? 0 : 15,
+                                    paddingTop: sideMenu ? 0 : 15,
+                                }}
                             >
                                 <span className="stats__text--spacing">
                                     {'GOLD: '}
@@ -206,12 +244,12 @@ class Stats extends Component {
                                         { paddingTop: sideMenu ? 10 : 0 })
                                     }
                                 >
-                                    <span className="stats-mana-bar__container">
-                                        <span className="flex-row stats-mana-bar__text">
+                                    <span className="stats-bar__container stats-mana-bar__container">
+                                        <span className="stats-bar__text flex-row stats-mana-bar__text">
                                             {mana + '/' + maxMana}
                                         </span>
                                         <span
-                                            className="stats-mana-bar__value"
+                                            className="stats-bar__value stats-mana-bar__value"
                                             style={{
                                                 width: `${manaPercent}%`,
                                                 borderRadius: manaBorder,
@@ -262,7 +300,19 @@ class Stats extends Component {
                         <div className={`flex-column ${columnStyle}`}>
                             <div
                                 className="flex-row"
-                                style={{ paddingTop: sideMenu ? 7 : 37 }}
+                                style={{
+                                    paddingBottom: sideMenu ? 0 : 5,
+                                    borderBottom: 'solid',
+                                }}
+                            >
+                                <span className="stats__text--info">
+                                    {character.characterClass}
+                                </span>
+                            </div>
+
+                            <div
+                                className="flex-row"
+                                style={{ paddingTop: sideMenu ? 7 : 52 }}
                             >
                                 <span className="stats__text--spacing">{}</span>
                                 <span
@@ -289,12 +339,12 @@ class Stats extends Component {
                                         { paddingRight: sideMenu ? 30 : 0 })
                                     }
                                 >
-                                    <span className="exp-bar__container">
-                                        <span className="flex-row stats-exp-bar__text">
+                                    <span className="stats-bar__container exp-bar__container">
+                                        <span className="stats-bar__text flex-row stats-exp-bar__text">
                                             {exp + '/' + expToLevel}
                                         </span>
                                         <span
-                                            className="exp-bar__value"
+                                            className="stats-bar__value exp-bar__value"
                                             style={{
                                                 width: `${(exp / expToLevel) *
                                                     100}%`,

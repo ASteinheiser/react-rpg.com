@@ -17,7 +17,7 @@ export default function startEndlessGame() {
             payload: {
                 pause: true,
                 gameText: {
-                    title: `As you stare into the dark dungeon, it greets you with a cold chill... and a message...`,
+                    title: `As <> stares into the dark dungeon, it greets them with a cold chill... and a message...`,
                     body: `"JOURNEY ONE HUNDRED FLOORS AND ALL WILL BE GRANTED"`,
                 },
             },
