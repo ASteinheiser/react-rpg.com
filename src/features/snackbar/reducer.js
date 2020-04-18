@@ -6,6 +6,7 @@ const initialState = {
     itemReceived: '',
     item: null,
     errorMessage: '',
+    itemSold: '',
 };
 
 const snackbarReducer = (state = initialState, { type, payload }) => {
@@ -34,6 +35,13 @@ const snackbarReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 itemReceived: `${payload.name}-${new Date().getTime()}`,
+                item: payload,
+            };
+
+        case 'SELL_ITEM':
+            return {
+                ...state,
+                itemSold: `${payload.name}-${new Date().getTime()}`,
                 item: payload,
             };
 

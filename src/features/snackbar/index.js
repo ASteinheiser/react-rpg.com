@@ -29,6 +29,7 @@ class Snackbar extends Component {
             tooManyItems,
             item,
             errorMessage,
+            itemSold,
         } = this.props.snackbar;
 
         const lastItemReceived = prevProps.snackbar.itemReceived;
@@ -37,6 +38,7 @@ class Snackbar extends Component {
         const lastNotEnoughGold = prevProps.snackbar.notEnoughGold;
         const lastTooManyItems = prevProps.snackbar.tooManyItems;
         const lastErrorMessage = prevProps.snackbar.errorMessage;
+        const lastItemSold = prevProps.snackbar.itemSold;
 
         if (lastErrorMessage !== errorMessage && errorMessage) {
             this.setState({
@@ -94,6 +96,16 @@ class Snackbar extends Component {
             // see if player tried to get item with full inventory
             this.setState({
                 show: `NO ROOM FOR: ${tooManyItems.split('-')[0]}`,
+                item: item,
+            });
+            this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
+        } else if (
+            lastItemSold !== itemSold &&
+            itemSold &&
+            typeof itemSold !== 'undefined'
+        ) {
+            this.setState({
+                show: `SOLD ITEM: ${itemSold.split('-')[0]}`,
                 item: item,
             });
             this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);

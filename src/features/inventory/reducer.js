@@ -12,6 +12,7 @@ const inventoryReducer = (state = initialState, { type, payload }) => {
     let newState;
 
     switch (type) {
+        case 'SELL_ITEM':
         case 'DROP_ITEM':
         case 'USE_ITEM':
             newState = _cloneDeep(state);

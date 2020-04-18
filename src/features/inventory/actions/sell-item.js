@@ -15,7 +15,7 @@ export default function sellItem(item) {
         });
 
         dispatch({
-            type: 'DROP_ITEM',
+            type: 'SELL_ITEM',
             payload: item,
         });
 
