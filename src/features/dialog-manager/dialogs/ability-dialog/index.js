@@ -49,6 +49,14 @@ const AbilityDialog = ({
         charisma,
         points,
     } = dialog.abilities;
+    const {
+        min_constitution,
+        min_intelligence,
+        min_strength,
+        min_dexterity,
+        min_wisdom,
+        min_charisma,
+    } = dialog.abilities_minimum;
 
     return (
         <>
@@ -63,36 +71,42 @@ const AbilityDialog = ({
                     <Ability
                         name="Strength"
                         value={strength}
+                        minValue={min_strength}
                         increment={incrementStrength}
                         decrement={decrementStrength}
                     />
                     <Ability
                         name="Constitution"
                         value={constitution}
+                        minValue={min_constitution}
                         increment={incrementConstitution}
                         decrement={decrementConstitution}
                     />
                     <Ability
                         name="Dexterity"
                         value={dexterity}
+                        minValue={min_dexterity}
                         increment={incrementDexterity}
                         decrement={decrementDexterity}
                     />
                     <Ability
                         name="Charisma"
                         value={charisma}
+                        minValue={min_charisma}
                         increment={incrementCharisma}
                         decrement={decrementCharisma}
                     />
                     <Ability
                         name="Intelligence"
                         value={intelligence}
+                        minValue={min_intelligence}
                         increment={incrementIntelligence}
                         decrement={decrementIntelligence}
                     />
                     <Ability
                         name="Wisdom"
                         value={wisdom}
+                        minValue={min_wisdom}
                         increment={incrementWisdom}
                         decrement={decrementWisdom}
                     />

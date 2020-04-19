@@ -39,6 +39,8 @@ export const MAP_TRANSITION_DELAY = 500;
 export const MAX_ABILITY_SCORE = 20;
 // The default value of an ability score
 export const STARTING_ABILITY_SCORE_VALUE = 8;
+// The default value of an ability score with race bonus
+export const RACE_ABILITY_BONUS = 2;
 // The starting points a player can allocate
 export const STARTING_ABILITY_POINTS = 12;
 // The number of ability points the player gets to allocate on levelling up

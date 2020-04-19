@@ -3,6 +3,8 @@ import {
     STARTING_ABILITY_SCORE_VALUE,
     MAX_ABILITY_SCORE,
 } from '../../config/constants';
+import resetAbilityScoreValues from '../../utils/reset-starting-abilities';
+import setRaceBonus from '../../utils/set-race-bonus';
 
 const initialState = {
     gameText: false,
@@ -48,6 +50,7 @@ const initialState = {
 
 const dialogManagerReducer = (state = initialState, { type, payload }) => {
     const { abilities, abilities_minimum, character } = state;
+
     const {
         constitution,
         intelligence,
@@ -163,6 +166,8 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
             };
 
         case 'CREATE_CHARACTER':
+            resetAbilityScoreValues(abilities, abilities_minimum);
+            setRaceBonus(character.characterRace, abilities, abilities_minimum);
             return {
                 ...state,
                 character: {
