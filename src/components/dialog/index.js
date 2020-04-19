@@ -4,7 +4,7 @@ import { ENTER_KEY } from '../../config/constants';
 
 import './styles.scss';
 
-const Dialog = ({ children, goBack, onKeyPress, keys }) => {
+const Dialog = ({ className, style, children, goBack, onKeyPress, keys }) => {
     useEffect(() => {
         if (onKeyPress) window.addEventListener('keydown', handleKeyPress);
         return () => {
@@ -21,7 +21,10 @@ const Dialog = ({ children, goBack, onKeyPress, keys }) => {
     }
 
     return (
-        <div className="dialog__container white-border">
+        <div
+            className={className || 'dialog__container white-border'}
+            style={style}
+        >
             {goBack && (
                 <button onClick={goBack} className="dialog__back-button">
                     <i className={`fa fa-arrow-left`} />

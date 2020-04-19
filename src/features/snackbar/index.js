@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import ReactTimeout from 'react-timeout';
 import { connect } from 'react-redux';
 
-import { SNACK_DURATION } from '../../config/constants';
+import { SNACK_DURATION, E_KEY } from '../../config/constants';
 import equipItem from '../inventory/actions/equip-item';
 import clearNotification from './actions/clear-notification';
+import Dialog from '../../components/dialog';
 
 import './styles.scss';
 
@@ -15,6 +16,7 @@ class Snackbar extends Component {
         this.state = {
             show: '',
             item: null,
+            equip: false,
         };
 
         this.handleHideSnack = this.handleHideSnack.bind(this);
@@ -43,6 +45,8 @@ class Snackbar extends Component {
         if (lastErrorMessage !== errorMessage && errorMessage) {
             this.setState({
                 show: errorMessage.split('-')[0],
+                item: null,
+                equip: false,
             });
             this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
         } else if (
@@ -54,6 +58,7 @@ class Snackbar extends Component {
             this.setState({
                 show: `USED ITEM: ${itemUsed.split('-')[0]}`,
                 item: item,
+                equip: false,
             });
             this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
         } else if (
@@ -65,6 +70,7 @@ class Snackbar extends Component {
             this.setState({
                 show: `LOST ITEM: ${itemDropped.split('-')[0]}`,
                 item: item,
+                equip: false,
             });
             this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
         } else if (
@@ -76,6 +82,7 @@ class Snackbar extends Component {
             this.setState({
                 show: `NEW ITEM: ${itemReceived.split('-')[0]}`,
                 item: item,
+                equip: item.type !== 'potion' && item.name !== 'Rusty Sword',
             });
             this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
         } else if (
@@ -86,6 +93,8 @@ class Snackbar extends Component {
             // see if player tried to buy item without enough gold
             this.setState({
                 show: `NOT ENOUGH GOLD`,
+                item: item,
+                equip: false,
             });
             this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
         } else if (
@@ -97,6 +106,7 @@ class Snackbar extends Component {
             this.setState({
                 show: `NO ROOM FOR: ${tooManyItems.split('-')[0]}`,
                 item: item,
+                equip: false,
             });
             this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
         } else if (
@@ -107,6 +117,7 @@ class Snackbar extends Component {
             this.setState({
                 show: `SOLD ITEM: ${itemSold.split('-')[0]}`,
                 item: item,
+                equip: false,
             });
             this.props.setTimeout(this.handleHideSnack, SNACK_DURATION);
         }
@@ -117,20 +128,29 @@ class Snackbar extends Component {
         this.props.clearNotification();
     }
 
+    handleEquip() {
+        this.props.equipItem(
+            this.props.inventory.items[this.props.inventory.items.length - 1]
+        );
+        this.handleHideSnack();
+    }
+
     render() {
         const { sideMenu, largeView } = this.props;
-        const { show, item } = this.state;
+        const { show, equip } = this.state;
 
         let width;
         if (sideMenu) width = 400;
         else if (largeView) width = 398;
         else width = 350;
 
-        let showType = show ? show.substring(0, show.indexOf(':')) : show;
-
         return (
-            <div
+            <Dialog
                 className="snackbar__container white-border"
+                keys={[E_KEY]}
+                onKeyPress={() => {
+                    if (this.state.equip) this.handleEquip();
+                }}
                 style={{
                     marginLeft: sideMenu ? -402 : 0,
                     top: sideMenu ? 360 : -50,
@@ -145,23 +165,13 @@ class Snackbar extends Component {
                             : 'opacity .35s ease-in-out, z-index .35s step-start',
                 }}
             >
-                {showType === 'NEW ITEM' &&
-                item.type !== 'potion' &&
-                item.name !== 'Rusty Sword' ? (
+                {equip ? (
                     <div>
                         <span className="snackbar__equip__text">
                             {show}
                             <button
                                 className="snackbar__equip__button white-border"
-                                onClick={() => {
-                                    this.props.equipItem(
-                                        this.props.inventory.items[
-                                            this.props.inventory.items.length -
-                                                1
-                                        ]
-                                    );
-                                    this.handleHideSnack();
-                                }}
+                                onClick={() => this.handleEquip()}
                             >
                                 <i className="fa fa-hand-paper button__icon" />
                             </button>
@@ -170,7 +180,7 @@ class Snackbar extends Component {
                 ) : (
                     <span className="snackbar__text">{show}</span>
                 )}
-            </div>
+            </Dialog>
         );
     }
 }
