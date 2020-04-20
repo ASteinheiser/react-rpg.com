@@ -18,6 +18,7 @@ import calculateModifier from '../../utils/calculate-modifier';
 import calculateWisdomPotionBonus from '../../utils/calculate-wisdom-potion-bonus';
 import calculateBuyPrice from '../../utils/calculate-buy-price';
 import calculateSellPrice from '../../utils/calculate-sell-price';
+import { calculateDamageRange } from '../../utils/dice';
 
 import './styles.scss';
 
@@ -78,6 +79,17 @@ const ViewItem = ({
             itemStats.push(
                 <StatsItem
                     stats={{ name: 'damage', value: data.damage }}
+                    key={uuidv4()}
+                />
+            );
+
+            const damageRange = calculateDamageRange(data.damage);
+            itemStats.push(
+                <StatsItem
+                    stats={{
+                        name: 'range',
+                        value: damageRange[0] + ' - ' + damageRange[1],
+                    }}
                     key={uuidv4()}
                 />
             );

@@ -3,8 +3,7 @@ import {
     getNewPosition,
     observeBoundaries,
 } from './move-player';
-import calculateDamage from '../../../utils/calculate-damage';
-import calculateBonus from '../../../utils/calculate-bonus';
+import calculateDamage from '../../../utils/dice';
 import getNextTile from '../../../utils/get-next-tile';
 import { SPRITE_SIZE } from '../../../config/constants';
 
@@ -22,19 +21,12 @@ export default function attackMonster() {
                 const { currentMap } = world;
                 const { components } = monsters;
                 const { weapon } = stats.equippedItems;
-                const weaponBonus = weapon ? weapon.bonus : null;
                 // get monster
                 const currMonster = components[currentMap][monsterId];
                 const monsterPos = currMonster.position;
-                // gather stats
-                const monsterDefence = currMonster.defence;
-                const monsterType = currMonster.type;
-                const playerDamage = stats.damage;
-                const damage = calculateDamage(
-                    calculateBonus(playerDamage, monsterType, weaponBonus),
-                    monsterDefence
-                );
-                // show sword swing
+
+                const damage = calculateDamage(weapon.damage);
+
                 dispatch({
                     type: 'PLAYER_ATTACK',
                     payload: null,

@@ -29,7 +29,7 @@ const StatsItem = ({ stats }) => {
             <span>{name}</span>
 
             <span style={{ color: `var(--${getColor(stats.name)})` }}>
-                {`+${stats.value}`}
+                {`${stats.value}`}
             </span>
         </div>
     );

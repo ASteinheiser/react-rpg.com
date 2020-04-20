@@ -4,7 +4,7 @@ const SteelSword = {
     name: 'Steel Sword',
     type: 'weapon',
     range: 'melee',
-    damage: 4,
+    damage: '1d6 + 1',
     image: SteelSwordImg,
     value: 35,
 };

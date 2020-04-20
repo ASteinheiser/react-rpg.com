@@ -4,7 +4,7 @@ const RustySword = {
     name: 'Rusty Sword',
     type: 'weapon',
     range: 'melee',
-    damage: 1,
+    damage: '1d4',
     image: RustySwordImg,
     value: 10,
 };
