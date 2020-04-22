@@ -1,4 +1,4 @@
-import calculateDamage from '../../../utils/dice';
+import { calculateDamage } from '../../../utils/dice';
 
 export default function attackPlayer(attackValue, dice) {
     return (dispatch, getState) => {
