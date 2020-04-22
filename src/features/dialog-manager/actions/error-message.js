@@ -1,7 +1,7 @@
 export default function errorMessage(errorMessage) {
     return dispatch => {
         dispatch({
-            type: 'ERROR_MESSAGE',
+            type: 'NOTIFY_PLAYER',
             payload: errorMessage,
         });
     };

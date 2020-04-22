@@ -19,7 +19,7 @@ class GameOver extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         // delay the new game button for 1 second to prevent
         // accidental click during double click on mobile
         this.props.setTimeout(() => {

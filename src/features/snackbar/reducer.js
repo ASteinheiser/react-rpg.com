@@ -11,10 +11,10 @@ const initialState = {
 
 const snackbarReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case 'ERROR_MESSAGE':
+        case 'NOTIFY_PLAYER':
             return {
                 ...state,
-                errorMessage: `${payload}-${new Date().getTime()}`,
+                message: `${payload}-${new Date().getTime()}`,
             };
 
         case 'NOT_ENOUGH_GOLD':

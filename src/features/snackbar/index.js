@@ -30,7 +30,7 @@ class Snackbar extends Component {
             notEnoughGold,
             tooManyItems,
             item,
-            errorMessage,
+            message,
             itemSold,
         } = this.props.snackbar;
 
@@ -39,12 +39,12 @@ class Snackbar extends Component {
         const lastItemUsed = prevProps.snackbar.itemUsed;
         const lastNotEnoughGold = prevProps.snackbar.notEnoughGold;
         const lastTooManyItems = prevProps.snackbar.tooManyItems;
-        const lastErrorMessage = prevProps.snackbar.errorMessage;
+        const lastMessage = prevProps.snackbar.message;
         const lastItemSold = prevProps.snackbar.itemSold;
 
-        if (lastErrorMessage !== errorMessage && errorMessage) {
+        if (lastMessage !== message && message) {
             this.setState({
-                show: errorMessage.split('-')[0],
+                show: message.split('-')[0],
                 item: null,
                 equip: false,
             });

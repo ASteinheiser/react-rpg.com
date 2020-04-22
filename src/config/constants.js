@@ -61,3 +61,6 @@ export const U_KEY = 85;
 export const I_KEY = 73;
 export const SPACE_KEY = 32;
 export const ENTER_KEY = 13;
+
+// If the player is unarmed, we need them to still be able to attack
+export const UNARMED_DAMAGE = '1d4';
