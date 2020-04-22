@@ -116,7 +116,7 @@ const lex = expression => {
         .reduce((output, token) => {
             if (token in ops) {
                 output.push(token);
-            } else if (token == '(' || token == ')') {
+            } else if (token === '(' || token === ')') {
                 output.push(token);
             } else if (token.trim().length > 0) {
                 if (output.length > 0 && isNumber(output[output.length - 1])) {
