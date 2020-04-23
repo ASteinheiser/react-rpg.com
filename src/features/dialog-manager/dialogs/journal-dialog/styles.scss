@@ -1,0 +1,22 @@
+.journal-dialog__container {
+    flex: 1;
+}
+
+.journal-log {
+    background-color: var(--dark-gray);
+    width: 100%;
+
+    justify-content: center;
+
+    color: var(--white);
+    font-size: 14px;
+    line-height: 2;
+    text-transform: none;
+    font-family: 'Roboto Mono';
+
+    padding: 12px 15px;
+
+    resize: none;
+
+    border: none;
+}

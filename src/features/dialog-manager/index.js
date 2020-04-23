@@ -15,8 +15,9 @@ import SettingsDialog from './dialogs/settings-dialog';
 import ShopDialog from './dialogs/shop-dialog';
 import LevelUp from './dialogs/level-up';
 import AbilityScores from './dialogs/ability-dialog';
+import JournalDialog from './dialogs/journal-dialog';
 
-const DialogManager = ({ dialog }) => {
+const DialogManager = ({ dialog, journal }) => {
     const {
         chest,
         inventory,
@@ -33,6 +34,7 @@ const DialogManager = ({ dialog }) => {
         shop,
         levelUp,
         abilityDialog,
+        journalDialog,
     } = dialog;
 
     let PauseComp = null;
@@ -43,6 +45,8 @@ const DialogManager = ({ dialog }) => {
         if (chest) PauseComp = <ChestLoot />;
         if (shop) PauseComp = <ShopDialog />;
         if (inventory) PauseComp = <InventoryDialog />;
+        if (journalDialog)
+            PauseComp = <JournalDialog entries={journal.entries} />;
         if (gameText)
             PauseComp = (
                 <GameTextDialog
@@ -84,6 +88,6 @@ const DialogManager = ({ dialog }) => {
     );
 };
 
-const mapStateToProps = ({ dialog }) => ({ dialog });
+const mapStateToProps = ({ dialog, journal }) => ({ dialog, journal });
 
 export default connect(mapStateToProps)(DialogManager);

@@ -6,15 +6,24 @@ import GameSettings from './game-settings';
 import Inventory from '../inventory';
 import Snackbar from '../snackbar';
 import Stats from '../stats';
+import Journal from '../journal';
 
 import './styles.scss';
 
 const GameMenus = ({ appState, dialog }) => {
     const { sideMenu, largeView } = appState;
-    const { gameOver, gameStart, paused, inventory, settings } = dialog;
+    const {
+        gameOver,
+        gameStart,
+        paused,
+        inventory,
+        journalDialog,
+        settings,
+    } = dialog;
 
     // disable the inventory button when we are in settings or paused and not in the inventory
-    const disableInventory = settings || (paused && !inventory);
+    const disableInventory =
+        settings || (paused && !inventory && !journalDialog);
     // disable the stats view when in game start or game over or settings
     const disableStats = gameStart || gameOver || settings;
 
@@ -39,6 +48,7 @@ const GameMenus = ({ appState, dialog }) => {
                 />
 
                 <Inventory sideMenu={sideMenu} disabled={disableInventory} />
+                <Journal sideMenu={sideMenu} disabled={disableInventory} />
 
                 <Snackbar largeView={largeView} sideMenu={sideMenu} />
 

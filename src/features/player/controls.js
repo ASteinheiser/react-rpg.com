@@ -8,6 +8,7 @@ import movePlayer from './actions/move-player';
 import isGamePaused from '../dialog-manager/actions/is-game-paused';
 import toggleInventory from '../dialog-manager/actions/toggle-inventory';
 import abilityScoreDialog from '../dialog-manager/actions/ability-score-dialog';
+import toggleJournal from '../dialog-manager/actions/toggle-journal';
 
 import {
     ANIMATION_SPEED,
@@ -17,6 +18,7 @@ import {
     D_KEY,
     U_KEY,
     I_KEY,
+    J_KEY,
     UP_KEY,
     DOWN_KEY,
     LEFT_KEY,
@@ -33,6 +35,7 @@ const Controls = ({
     attackMonster,
     movePlayer,
     toggleInventory,
+    toggleJournal,
     abilityScoreDialog,
 }) => {
     const _handleKeyDown = _debounce(
@@ -160,6 +163,8 @@ const Controls = ({
                 return attackMonster();
             case I_KEY:
                 return toggleInventory();
+            case J_KEY:
+                return toggleJournal();
             case U_KEY:
                 return abilityScoreDialog(false);
             default:
@@ -174,6 +179,7 @@ const actions = {
     movePlayer,
     isGamePaused,
     toggleInventory,
+    toggleJournal,
     abilityScoreDialog,
 };
 

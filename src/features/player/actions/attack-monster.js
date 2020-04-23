@@ -26,8 +26,18 @@ export default function attackMonster() {
                 const currMonster = components[currentMap][monsterId];
                 const monsterPos = currMonster.position;
 
-                const attack_value =
-                    d20() + calculateModifier(stats.abilities.strength);
+                const modifier = calculateModifier(stats.abilities.strength);
+                const attack_value = d20() + modifier;
+
+                dispatch({
+                    type: 'ABILITY_CHECK',
+                    payload: {
+                        notation: 'd20 + ' + modifier,
+                        roll: attack_value,
+                        ability: 'strength',
+                        check: currMonster.defence,
+                    },
+                });
 
                 const damage =
                     attack_value >= currMonster.defence
@@ -37,61 +47,53 @@ export default function attackMonster() {
                         : 0;
 
                 if (damage > 0) {
+                    // Only show the attack animation if they hit the monster
                     dispatch({
                         type: 'PLAYER_ATTACK',
                         payload: null,
                     });
+                }
 
-                    // deal damage to monster
+                // deal damage to monster
+                dispatch({
+                    type: 'DAMAGE_TO_MONSTER',
+                    payload: {
+                        damage,
+                        id: currMonster.id,
+                        map: currentMap,
+                        type: currMonster.type,
+                    },
+                });
+
+                // check if monster died
+                if (currMonster.hp - damage <= 0) {
+                    // and get some exp
                     dispatch({
-                        type: 'DAMAGE_TO_MONSTER',
-                        payload: {
-                            damage,
-                            id: currMonster.id,
-                            map: currentMap,
-                        },
+                        type: 'GET_EXP',
+                        payload: currMonster.exp,
                     });
-
-                    dispatch({
-                        type: 'NOTIFY_PLAYER',
-                        payload: 'You dealt ' + damage + ' damage!',
-                    });
-
-                    // check if monster died
-                    if (currMonster.hp - damage <= 0) {
-                        // and get some exp
+                    if (stats.exp + currMonster.exp >= stats.expToLevel) {
                         dispatch({
-                            type: 'GET_EXP',
-                            payload: currMonster.exp,
-                        });
-                        if (stats.exp + currMonster.exp >= stats.expToLevel) {
-                            dispatch({
-                                type: 'PAUSE',
-                                payload: {
-                                    pause: true,
-                                    levelUp: true,
-                                },
-                            });
-                        }
-                        // play death sound
-                        dispatch({
-                            type: 'MONSTER_DIED',
-                            payload: null,
-                        });
-                        // replace monster will blood spill
-                        // need to pass relative tile index
-                        dispatch({
-                            type: 'ADD_BLOOD_SPILL',
+                            type: 'PAUSE',
                             payload: {
-                                x: monsterPos[0] / SPRITE_SIZE,
-                                y: monsterPos[1] / SPRITE_SIZE,
+                                pause: true,
+                                levelUp: true,
                             },
                         });
                     }
-                } else {
+                    // play death sound
                     dispatch({
-                        type: 'NOTIFY_PLAYER',
-                        payload: 'You missed!',
+                        type: 'MONSTER_DIED',
+                        payload: null,
+                    });
+                    // replace monster will blood spill
+                    // need to pass relative tile index
+                    dispatch({
+                        type: 'ADD_BLOOD_SPILL',
+                        payload: {
+                            x: monsterPos[0] / SPRITE_SIZE,
+                            y: monsterPos[1] / SPRITE_SIZE,
+                        },
                     });
                 }
 

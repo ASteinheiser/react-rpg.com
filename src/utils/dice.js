@@ -215,6 +215,6 @@ export const calculateDamageRange = notation => {
 };
 
 // Calculates damage to deal based on Dice Notation (https://en.wikipedia.org/wiki/Dice_notation)
-export const calculateDamage = notation => parse(notation, unbiased());
+export const calculateDamage = notation => parse(notation, unbiased);
 
 export const d20 = () => Math.floor(Math.random() * 20) + 1;
