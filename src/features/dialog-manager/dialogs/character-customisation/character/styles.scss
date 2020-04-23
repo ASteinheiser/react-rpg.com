@@ -1,0 +1,45 @@
+$sprite-top-offset: 6.5rem;
+$sprite-left-offset: 1rem;
+
+.character-customisation__sprite-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex: 0;
+}
+
+.character-customisation__hair {
+    position: absolute;
+    top: $sprite-top-offset;
+    left: $sprite-left-offset;
+}
+
+.character-customisation__eyes {
+    position: absolute;
+    top: $sprite-top-offset;
+    left: $sprite-left-offset;
+}
+
+.character-customisation__armour {
+    position: absolute;
+    top: $sprite-top-offset;
+    left: $sprite-left-offset;
+}
+
+.character-customisation__clothes {
+    position: absolute;
+    top: $sprite-top-offset;
+    left: $sprite-left-offset;
+}
+
+.character-customisation__skin {
+    position: absolute;
+    top: $sprite-top-offset;
+    left: $sprite-left-offset;
+}
+
+.character-customisation__outline {
+    position: absolute;
+    top: $sprite-top-offset;
+    left: $sprite-left-offset;
+}

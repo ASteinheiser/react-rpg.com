@@ -14,7 +14,7 @@
 | ![cross][cross] DnD Classes and Races             | ![cross][cross] Final Fantasy-esque Turn Based Combat | ![cross][cross] Character Dialogue  |
 | ![cross][checkmark] Dice-based Combat             | ![check][checkmark] Save/Load System                  | ![cross][cross] Cinematic Cutscenes |
 | ![cross][cross] New Maps/Levels                   | ![cross][cross] New Enemy Types                       | ![cross][cross] Online Multiplayer  |
-| ![check][checkmark] Character Creation            | ![cross][cross] Customisable Outfit Colour            | ![cross][cross] Party System        |
+| ![check][checkmark] Character Creation            | ![cross][checkmark] Customisable Outfit Colour        | ![cross][cross] Party System        |
 | ![cross][cross] Additional Items in Shop          | ![cross][cross] Split Screen Local Multiplayer        |                                     |
 | ![cross][cross] Spellcasting System               |                                                       |                                     |
 

@@ -15,7 +15,7 @@ export default function createCharacter(characterName) {
             type: 'PAUSE',
             payload: {
                 pause: true,
-                abilityDialog: true,
+                characterCustomisation: true,
             },
         });
     };

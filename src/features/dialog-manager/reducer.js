@@ -23,6 +23,7 @@ const initialState = {
     levelUp: false,
     fromLevelUp: false,
     abilityDialog: false,
+    characterCustomisation: false,
     playerOpenedAbilityDialog: false,
     abilities: {
         constitution: STARTING_ABILITY_SCORE_VALUE,
@@ -32,6 +33,13 @@ const initialState = {
         intelligence: STARTING_ABILITY_SCORE_VALUE,
         charisma: STARTING_ABILITY_SCORE_VALUE,
         points: STARTING_ABILITY_POINTS,
+    },
+    appearance: {
+        hairColour: 0,
+        skinColour: 0,
+        eyeColour: 0,
+        armourColour: 0,
+        clothesColour: 0,
     },
     abilities_minimum: {
         min_constitution: 0,
@@ -50,8 +58,7 @@ const initialState = {
 };
 
 const dialogManagerReducer = (state = initialState, { type, payload }) => {
-    const { abilities, abilities_minimum, character } = state;
-
+    const { abilities, abilities_minimum, character, appearance } = state;
     const {
         constitution,
         intelligence,
@@ -87,6 +94,7 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
                 levelUp,
                 fromLevelUp,
                 abilityDialog,
+                characterCustomisation,
                 playerOpenedAbilityDialog,
                 pause,
                 journalDialog,
@@ -107,6 +115,7 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
                 gameInstructions: gameInstructions || false,
                 abilityDialog: abilityDialog || false,
                 playerOpenedAbilityDialog: playerOpenedAbilityDialog || false,
+                characterCustomisation: characterCustomisation || false,
                 characterCreation: characterCreation || false,
                 journalDialog: journalDialog || false,
                 paused: pause,
@@ -177,6 +186,64 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
                     characterName: payload.characterName,
                     characterRace: payload.characterRace,
                     characterClass: payload.characterClass,
+                },
+            };
+
+        case 'SET_HAIR_COLOUR':
+            return {
+                ...state,
+                appearance: {
+                    ...appearance,
+                    hairColour: payload,
+                },
+            };
+
+        case 'SET_EYE_COLOUR':
+            return {
+                ...state,
+                appearance: {
+                    ...appearance,
+                    eyeColour: payload,
+                },
+            };
+
+        case 'SET_SKIN_COLOUR':
+            return {
+                ...state,
+                appearance: {
+                    ...appearance,
+                    skinColour: payload,
+                },
+            };
+
+        case 'SET_ARMOUR_COLOUR':
+            return {
+                ...state,
+                appearance: {
+                    ...appearance,
+                    armourColour: payload,
+                },
+            };
+
+        case 'SET_CLOTHES_COLOUR':
+            return {
+                ...state,
+                appearance: {
+                    ...appearance,
+                    clothesColour: payload,
+                },
+            };
+
+        case 'SET_PLAYER_APPEARANCE':
+            return {
+                ...state,
+                appearance: {
+                    ...appearance,
+                    hairColour: payload.hairColour,
+                    eyeColour: payload.eyeColour,
+                    skinColour: payload.skinColour,
+                    armourColour: payload.armourColour,
+                    clothesColour: payload.clothesColour,
                 },
             };
 

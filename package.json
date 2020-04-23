@@ -30,6 +30,7 @@
         "lodash.debounce": "^4.0.8",
         "node-sass": "^4.11.0",
         "react": "^16.8.1",
+        "react-color": "^2.18.0",
         "react-device-detect": "^1.6.2",
         "react-dom": "^16.8.1",
         "react-redux": "^5.0.7",

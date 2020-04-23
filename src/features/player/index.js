@@ -10,7 +10,14 @@ import PlayerDeath from './assets/player-death.mp3';
 import SwordSlash from './assets/sword-slash.png';
 import PlayerStep from './assets/player-step.wav';
 import SwordSwish from './assets/player-sword-swish.wav';
-import WalkSprite from './assets/player_walk.png';
+
+import PlayerHair from './assets/player-hair.png';
+import PlayerEyes from './assets/player-eyes.png';
+import PlayerSkin from './assets/player-skin.png';
+import PlayerArmour from './assets/player-armour.png';
+import PlayerClothes from './assets/player-clothes.png';
+import PlayerOutline from './assets/player-outline.png';
+
 import { ANIMATION_SPEED, SPRITE_SIZE } from '../../config/constants';
 
 import './styles.scss';
@@ -50,22 +57,42 @@ class Player extends Component {
             let currentTick = 0;
             const ticksPerFrame = 5;
 
+            const {
+                hairColour,
+                skinColour,
+                armourColour,
+                clothesColour,
+            } = this.props.dialog.appearance;
+
+            const colours = [
+                ['hair', `hue-rotate(${hairColour - 10}deg)`],
+                ['skin', `hue-rotate(${skinColour - 10}deg)`],
+                ['armour', `hue-rotate(${armourColour - 10}deg)`],
+                ['clothes', `hue-rotate(${clothesColour - 10}deg)`],
+                ['outline', 'none'],
+                ['eyes', 'none'],
+            ];
+
             const draw = frame => {
                 // don't allow invalid frames
                 if (frame > 7 || frame < 0) frame = 0;
 
                 ctx.clearRect(0, 0, SPRITE_SIZE, SPRITE_SIZE);
-                ctx.drawImage(
-                    this.sprite,
-                    frame * SPRITE_SIZE,
-                    spriteLine,
-                    SPRITE_SIZE,
-                    SPRITE_SIZE,
-                    0,
-                    0,
-                    SPRITE_SIZE,
-                    SPRITE_SIZE
-                );
+
+                colours.forEach(colour => {
+                    ctx.filter = colour[1];
+                    ctx.drawImage(
+                        this.sprite[colour[0]],
+                        frame * SPRITE_SIZE,
+                        spriteLine,
+                        SPRITE_SIZE,
+                        SPRITE_SIZE,
+                        0,
+                        0,
+                        SPRITE_SIZE,
+                        SPRITE_SIZE
+                    );
+                });
             };
 
             const update = () => {
@@ -100,8 +127,22 @@ class Player extends Component {
     }
 
     componentDidMount() {
-        this.sprite = new Image();
-        this.sprite.src = WalkSprite;
+        this.sprite = {
+            hair: new Image(),
+            eyes: new Image(),
+            skin: new Image(),
+            armour: new Image(),
+            clothes: new Image(),
+            outline: new Image(),
+        };
+
+        this.sprite.hair.src = PlayerHair;
+        this.sprite.eyes.src = PlayerEyes;
+        this.sprite.skin.src = PlayerSkin;
+        this.sprite.armour.src = PlayerArmour;
+        this.sprite.clothes.src = PlayerClothes;
+        this.sprite.outline.src = PlayerOutline;
+
         this.sprite.onload = () => {
             this.avatar('draw', this.directionMap[this.props.player.direction]);
         };

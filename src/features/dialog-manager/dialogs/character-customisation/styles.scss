@@ -1,0 +1,23 @@
+.character-customisation__container {
+    flex: 1;
+    justify-content: space-between;
+    padding: 12px 0 16px;
+    align-items: center;
+}
+
+.character-customisation__title {
+    font-size: 26px;
+    text-align: center;
+
+    padding: 10px 0;
+}
+
+.character-customisation__text {
+    font-family: 'Roboto Mono';
+}
+
+.character-customisation__options-container {
+    flex: 1;
+    align-items: flex-start;
+    margin-left: 4rem;
+}
