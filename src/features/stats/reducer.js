@@ -20,9 +20,9 @@ const initialState = {
     },
     hp: 0,
     abilityModifierHp: 0,
-    extraHp: 0,
     maxHp: 0,
     mana: 0,
+    abilityModifierMana: 0,
     maxMana: 0,
     defence: 0,
     level: 1,
@@ -56,11 +56,17 @@ const statsReducer = (state = initialState, { type, payload }) => {
             return { ...state, gold: state.gold - payload };
 
         case 'SET_ABILITY_SCORES':
-            const newMaxMana = calculateMaxManaPool(
+            // calculate new mana
+            const newAbilityModifierMana = calculateMaxManaPool(
+                state.level,
                 calculateModifier(payload.abilities.intelligence)
             );
-            state.mana += newMaxMana - state.maxMana;
-            state.maxMana = newMaxMana;
+            const manaDifference =
+                newAbilityModifierMana - state.abilityModifierMana;
+
+            state.mana += manaDifference;
+            state.maxMana += manaDifference;
+            state.abilityModifierMana = newAbilityModifierMana;
 
             // calculate new hp
             const newAbilityModifierHp = calculateMaxHpPool(
@@ -68,6 +74,10 @@ const statsReducer = (state = initialState, { type, payload }) => {
                 calculateModifier(payload.abilities.constitution)
             );
             const hpDifference = newAbilityModifierHp - state.abilityModifierHp;
+
+            state.hp += hpDifference;
+            state.maxHp += hpDifference;
+            state.abilityModifierHp = newAbilityModifierHp;
 
             const previous_dex = calculateModifier(state.abilities.dexterity);
             const current_dex = calculateModifier(payload.abilities.dexterity);
@@ -77,10 +87,6 @@ const statsReducer = (state = initialState, { type, payload }) => {
             } else {
                 state.defence = state.defence - previous_dex + current_dex;
             }
-
-            state.hp += hpDifference;
-            state.maxHp += hpDifference;
-            state.abilityModifierHp = newAbilityModifierHp;
 
             return { ...state, abilities: payload.abilities };
 
@@ -336,6 +342,27 @@ const statsReducer = (state = initialState, { type, payload }) => {
                 newState.hp += newState.levelUp.hp;
                 newState.maxHp += newState.levelUp.hp;
                 newState.abilityModifierHp = newAbilityModifierHp;
+
+                // calculate new mana
+                const newAbilityModifierMana = calculateMaxManaPool(
+                    newState.level,
+                    calculateModifier(state.abilities.intelligence)
+                );
+                newState.levelUp.mana =
+                    newAbilityModifierMana - state.abilityModifierMana;
+                newState.mana += newState.levelUp.mana;
+                newState.maxMana += newState.levelUp.mana;
+                newState.abilityModifierMana = newAbilityModifierMana;
+
+                // get more damage (+1)
+                let moreDmg = 1;
+                // 25% chance to get +2 damage on lv
+                const chance = Math.floor(Math.random() * 100) + 1;
+                if (chance <= 25) {
+                    moreDmg += 1;
+                }
+                newState.damage += moreDmg;
+                newState.levelUp.dmg = moreDmg;
             } else {
                 // they aren't leveling up
                 newState.exp += payload;
