@@ -5,10 +5,12 @@ import _debounce from 'lodash.debounce';
 
 import attackMonster from './actions/attack-monster';
 import movePlayer from './actions/move-player';
+import castSpell from './actions/cast-spell';
 import isGamePaused from '../dialog-manager/actions/is-game-paused';
 import toggleInventory from '../dialog-manager/actions/toggle-inventory';
 import abilityScoreDialog from '../dialog-manager/actions/ability-score-dialog';
 import toggleJournal from '../dialog-manager/actions/toggle-journal';
+import toggleSpellbookDialog from '../dialog-manager/actions/toggle-spellbook-dialog';
 
 import {
     ANIMATION_SPEED,
@@ -19,6 +21,8 @@ import {
     U_KEY,
     I_KEY,
     J_KEY,
+    C_KEY,
+    B_KEY,
     UP_KEY,
     DOWN_KEY,
     LEFT_KEY,
@@ -33,10 +37,12 @@ let intervalId = null;
 const Controls = ({
     isGamePaused,
     attackMonster,
+    castSpell,
     movePlayer,
     toggleInventory,
     toggleJournal,
     abilityScoreDialog,
+    toggleSpellbookDialog,
 }) => {
     const _handleKeyDown = _debounce(
         event => {
@@ -161,12 +167,16 @@ const Controls = ({
                 return movePlayer('SOUTH');
             case SPACE_KEY:
                 return attackMonster();
+            case C_KEY:
+                return castSpell();
             case I_KEY:
                 return toggleInventory();
             case J_KEY:
                 return toggleJournal();
             case U_KEY:
                 return abilityScoreDialog(false);
+            case B_KEY:
+                return toggleSpellbookDialog();
             default:
         }
     }
@@ -176,11 +186,13 @@ const Controls = ({
 
 const actions = {
     attackMonster,
+    castSpell,
     movePlayer,
     isGamePaused,
     toggleInventory,
     toggleJournal,
     abilityScoreDialog,
+    toggleSpellbookDialog,
 };
 
 export default connect(null, actions)(Controls);

@@ -10,6 +10,7 @@ import PlayerDeath from './assets/player-death.mp3';
 import SwordSlash from './assets/sword-slash.png';
 import PlayerStep from './assets/player-step.wav';
 import SwordSwish from './assets/player-sword-swish.wav';
+import { CastSpell } from '../../components/spell';
 
 import PlayerHair from './assets/player-hair.png';
 import PlayerEyes from './assets/player-eyes.png';
@@ -264,7 +265,51 @@ class Player extends Component {
             );
         }
         // see if the player attacked
-        else if (
+        else if (prevProps.player.spellCast !== this.props.player.spellCast) {
+            let attackAnimationLoc = [0, 0];
+            // calculate which way the sword should slash
+            switch (this.props.player.direction) {
+                case 'SOUTH':
+                    attackAnimationLoc = [0, SPRITE_SIZE];
+                    break;
+                case 'EAST':
+                    attackAnimationLoc = [SPRITE_SIZE, 0];
+                    break;
+                case 'WEST':
+                    attackAnimationLoc = [-SPRITE_SIZE, 0];
+                    break;
+                case 'NORTH':
+                    attackAnimationLoc = [0, -SPRITE_SIZE];
+                    break;
+                default:
+            }
+            let animationAttackSound = null;
+            if (this.props.gameMenu.sound) {
+                animationAttackSound = (
+                    <Sound
+                        url={SwordSwish}
+                        playStatus={'PLAYING'}
+                        autoLoad={true}
+                        volume={100}
+                    />
+                );
+            }
+            // animate the sword slash
+            this.setState({
+                attackAnimationPlay: 'spell',
+                attackAnimationLoc,
+                animationAttackSound,
+            });
+            // pause the infinite animation after 1 iteration
+            this.props.setTimeout(
+                () =>
+                    this.setState({
+                        attackAnimationPlay: 'paused',
+                        animationAttackSound: null,
+                    }),
+                ANIMATION_SPEED
+            );
+        } else if (
             prevProps.player.playerAttacked !== this.props.player.playerAttacked
         ) {
             let attackAnimationLoc = [0, 0];
@@ -361,6 +406,18 @@ class Player extends Component {
                             left: attackAnimationLoc[0],
                             backgroundImage: `url('${SwordSlash}')`,
                         }}
+                    />
+                )}
+
+                {attackAnimationPlay === 'spell' && (
+                    <CastSpell
+                        spell={player.spell}
+                        startPosition={attackAnimationLoc}
+                        endPosition={[
+                            player.targetPosition[0] - player.position[0],
+                            player.targetPosition[1] - player.position[1],
+                        ]}
+                        direction={player.direction}
                     />
                 )}
             </div>

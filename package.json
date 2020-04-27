@@ -40,6 +40,7 @@
         "redux": "^4.0.0",
         "redux-persist": "^5.10.0",
         "redux-thunk": "^2.3.0",
+        "styled-components": "^5.1.0",
         "typeface-montserrat": "^0.0.54",
         "typeface-roboto": "^0.0.54",
         "typeface-roboto-mono": "^0.0.75"

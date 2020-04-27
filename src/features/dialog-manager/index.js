@@ -17,6 +17,7 @@ import LevelUp from './dialogs/level-up';
 import AbilityScores from './dialogs/ability-dialog';
 import CharacterCustomisation from './dialogs/character-customisation';
 import JournalDialog from './dialogs/journal-dialog';
+import SpellbookDialog from './dialogs/spellbook-dialog';
 
 const DialogManager = ({ dialog, journal }) => {
     const {
@@ -37,6 +38,7 @@ const DialogManager = ({ dialog, journal }) => {
         abilityDialog,
         characterCustomisation,
         journalDialog,
+        spellbookDialog,
     } = dialog;
 
     let PauseComp = null;
@@ -49,6 +51,7 @@ const DialogManager = ({ dialog, journal }) => {
         if (inventory) PauseComp = <InventoryDialog />;
         if (journalDialog)
             PauseComp = <JournalDialog entries={journal.entries} />;
+        if (spellbookDialog) PauseComp = <SpellbookDialog />;
         if (gameText)
             PauseComp = (
                 <GameTextDialog

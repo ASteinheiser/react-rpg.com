@@ -12,15 +12,20 @@ export default function attackMonster() {
     return (dispatch, getState) => {
         // get player direction and the location of position to attack
         const { position, direction } = getState().player;
-        const newPos = getNewPosition(position, direction);
+        let newPos = getNewPosition(position, direction);
+
         // if the attacked tile is in bounds
-        if (observeBoundaries(newPos) && observeImpassable(newPos)) {
+        if (
+            observeBoundaries(newPos) &&
+            observeImpassable(newPos, getState().world)
+        ) {
             // if theres a monster
             const monsterId = dispatch(checkForMonster(newPos));
             if (monsterId) {
                 const { stats, world, monsters } = getState();
                 const { currentMap } = world;
                 const { components } = monsters;
+
                 const { weapon } = stats.equippedItems;
                 // get monster
                 const currMonster = components[currentMap][monsterId];
@@ -110,11 +115,11 @@ export default function attackMonster() {
                 });
             }
         }
-
-        function observeImpassable(newPos) {
-            const nextTile = getNextTile(getState().world, newPos);
-
-            return nextTile < 5;
-        }
     };
+}
+
+export function observeImpassable(newPos, world) {
+    const nextTile = getNextTile(world, newPos);
+
+    return nextTile < 5;
 }

@@ -23,7 +23,7 @@ const journalReducer = (state = initialState, { type, payload }) => {
         case 'ABILITY_CHECK':
             newState = cloneDeep(state);
             newState.entries.push(
-                'You rolled a ' +
+                'You rolled a(n) ' +
                     payload.ability +
                     ' check and got ' +
                     payload.roll
@@ -64,6 +64,11 @@ const journalReducer = (state = initialState, { type, payload }) => {
                           payload.type +
                           '!'
             );
+            return newState;
+
+        case 'CAST_SPELL':
+            newState = cloneDeep(state);
+            newState.entries.push('You cast ' + payload.spell.name);
             return newState;
 
         case 'LOAD_DATA':

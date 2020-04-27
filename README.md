@@ -16,7 +16,7 @@
 | ![cross][cross] New Maps/Levels                   | ![cross][cross] New Enemy Types                       | ![cross][cross] Online Multiplayer  |
 | ![check][checkmark] Character Creation            | ![cross][checkmark] Customisable Outfit Colour        | ![cross][cross] Party System        |
 | ![cross][cross] Additional Items in Shop          | ![cross][cross] Split Screen Local Multiplayer        |                                     |
-| ![cross][cross] Spellcasting System               |                                                       |                                     |
+| ![cross][checkmark] Spellcasting System           |                                                       |                                     |
 
 > Classes include Fighter, Ranger and Wizard
 
