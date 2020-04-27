@@ -74,6 +74,7 @@ const AbilityDialog = ({
                         minValue={min_strength}
                         increment={incrementStrength}
                         decrement={decrementStrength}
+                        points={points}
                     />
                     <Ability
                         name="Constitution"
@@ -81,6 +82,7 @@ const AbilityDialog = ({
                         minValue={min_constitution}
                         increment={incrementConstitution}
                         decrement={decrementConstitution}
+                        points={points}
                     />
                     <Ability
                         name="Dexterity"
@@ -88,6 +90,7 @@ const AbilityDialog = ({
                         minValue={min_dexterity}
                         increment={incrementDexterity}
                         decrement={decrementDexterity}
+                        points={points}
                     />
                     <Ability
                         name="Charisma"
@@ -95,6 +98,7 @@ const AbilityDialog = ({
                         minValue={min_charisma}
                         increment={incrementCharisma}
                         decrement={decrementCharisma}
+                        points={points}
                     />
                     <Ability
                         name="Intelligence"
@@ -102,6 +106,7 @@ const AbilityDialog = ({
                         minValue={min_intelligence}
                         increment={incrementIntelligence}
                         decrement={decrementIntelligence}
+                        points={points}
                     />
                     <Ability
                         name="Wisdom"
@@ -109,6 +114,7 @@ const AbilityDialog = ({
                         minValue={min_wisdom}
                         increment={incrementWisdom}
                         decrement={decrementWisdom}
+                        points={points}
                     />
                     <span className="ability-score-dialog__text">
                         Ability Points remaining:
