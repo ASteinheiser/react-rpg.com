@@ -33,11 +33,6 @@ const LevelUp = ({ stats, closeLevelUpDialog, abilityScoreDialog }) => {
                         Hp
                     </div>
                 )}
-
-                <div className="level-up__value--spacing">
-                    Gained<span className="level-up__dmg">{` +${dmg} `}</span>
-                    Attack
-                </div>
             </div>
 
             <div className="flex-column level-up__buttons">

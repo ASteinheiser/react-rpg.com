@@ -3,7 +3,7 @@ import GoblinSprite from './goblin.png';
 const Goblin = {
     hp: 12,
     maxHp: 12,
-    attack: 4,
+    attackValue: 4,
     defence: 3,
     dice: '1d6',
     exp: 25,

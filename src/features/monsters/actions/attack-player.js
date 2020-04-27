@@ -12,7 +12,7 @@ export default function attackPlayer(attackValue, dice, type) {
         dispatch({
             type: 'MONSTER_ABILITY_CHECK',
             payload: {
-                attack_value: attackValue,
+                attackValue: attackValue,
                 check: Math.max(stats.defence, 0),
                 type: type,
             },

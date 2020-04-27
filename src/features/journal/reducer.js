@@ -14,7 +14,7 @@ const journalReducer = (state = initialState, { type, payload }) => {
                 'The ' +
                     payload.type +
                     ' attacked you with an attack value of ' +
-                    payload.attack_value +
+                    payload.attackValue +
                     ' against your defense value of ' +
                     payload.check
             );

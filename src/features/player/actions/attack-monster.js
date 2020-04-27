@@ -27,20 +27,20 @@ export default function attackMonster() {
                 const monsterPos = currMonster.position;
 
                 const modifier = calculateModifier(stats.abilities.strength);
-                const attack_value = d20() + modifier;
+                const attackValue = d20() + modifier;
 
                 dispatch({
                     type: 'ABILITY_CHECK',
                     payload: {
                         notation: 'd20 + ' + modifier,
-                        roll: attack_value,
+                        roll: attackValue,
                         ability: 'strength',
                         check: currMonster.defence,
                     },
                 });
 
                 const damage =
-                    attack_value >= currMonster.defence
+                    attackValue >= currMonster.defence
                         ? calculateDamage(
                               weapon ? weapon.damage : UNARMED_DAMAGE
                           )

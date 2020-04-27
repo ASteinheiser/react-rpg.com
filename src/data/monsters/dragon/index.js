@@ -3,7 +3,7 @@ import DragonSprite from './dragon.png';
 const Dragon = {
     hp: 60,
     maxHp: 60,
-    attack: 15,
+    attackValue: 15,
     defence: 8,
     dice: '2d8 + 1',
     exp: 400,

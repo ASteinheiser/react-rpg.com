@@ -15,9 +15,9 @@ export default function takeMonstersTurn() {
         // find each monster
         Object.keys(components[currentMap]).forEach(monsterId => {
             // get monster id and position
-            const { id, position, attack, dice, type } = components[currentMap][
-                monsterId
-            ];
+            const { id, position, attackValue, dice, type } = components[
+                currentMap
+            ][monsterId];
             // find the relative position
             const monsterPos = position.map(value => value / SPRITE_SIZE);
 
@@ -39,7 +39,7 @@ export default function takeMonstersTurn() {
                 const { player } = getState();
                 // check if player is in range
                 if (playerInRange(player.position, monsterPos)) {
-                    dispatch(attackPlayer(attack, dice, type));
+                    dispatch(attackPlayer(attackValue, dice, type));
                 } else {
                     // no player in range, time to move!
                     // get the monsters actual position in pixels
