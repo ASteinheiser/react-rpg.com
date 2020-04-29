@@ -186,6 +186,18 @@ const ViewItem = ({
         default:
     }
 
+    itemStats.push(
+        <StatsItem
+            stats={{
+                name: 'value',
+                value: calculateSellPrice(
+                    data.value,
+                    calculateModifier(stats.abilities.charisma)
+                ),
+            }}
+        />
+    );
+
     let ViewItemButtons = null;
 
     if (buy)
