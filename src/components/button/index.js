@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EmptySlot from '../empty-slot';
+
 import './styles.scss';
 
 const Button = ({
@@ -11,6 +13,7 @@ const Button = ({
     onClick,
     small,
     tiny,
+    image,
     noBorder,
     extraClass,
 }) => {
@@ -41,6 +44,17 @@ const Button = ({
                 >
                     {indicator && <div className="button__indicator" />}
                 </i>
+            )}
+            {image && (
+                <EmptySlot className="white-border button__image">
+                    <div
+                        style={{
+                            backgroundImage: `url('${image}')`,
+                            width: '40px',
+                            height: '40px',
+                        }}
+                    />
+                </EmptySlot>
             )}
 
             <span>{title}</span>

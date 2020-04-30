@@ -1,0 +1,21 @@
+.spellbook__container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+
+    button {
+        width: 100%;
+        height: 100%;
+    }
+
+    i {
+        padding: 0 !important;
+    }
+}
+
+.spell {
+    margin-top: 4px;
+}

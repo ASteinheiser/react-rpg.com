@@ -1,3 +1,7 @@
+.spellbook-dialog__container {
+    overflow-y: scroll;
+}
+
 .spellbook-dialog__title {
     font-size: 28px;
     font-weight: 500;
@@ -8,14 +12,9 @@
 
 .spellbook-spell {
     margin: 8px 16px 0;
-    width: 90%;
 }
 
 .spellbook-spell button {
     width: 100%;
     margin: auto;
-}
-
-.selected-spell {
-    background-color: #383838 !important;
 }

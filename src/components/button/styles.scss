@@ -3,6 +3,11 @@
 
     user-select: none;
 
+    .button__image {
+        position: relative;
+        float: left;
+    }
+
     .button__icon {
         position: relative;
 
