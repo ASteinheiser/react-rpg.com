@@ -16,8 +16,7 @@ import unequipItem from '../../features/inventory/actions/unequip-item';
 import sellItem from '../../features/inventory/actions/sell-item';
 import calculateModifier from '../../utils/calculate-modifier';
 import calculateWisdomPotionBonus from '../../utils/calculate-wisdom-potion-bonus';
-import calculateBuyPrice from '../../utils/calculate-buy-price';
-import calculateSellPrice from '../../utils/calculate-sell-price';
+import calculatePrices from '../../utils/calculate-prices';
 import setActiveSpell from '../../features/dialog-manager/actions/set-active-spell';
 import { calculateDamageRange } from '../../utils/dice';
 
@@ -49,6 +48,11 @@ const ViewItem = ({
     const itemStats = [];
     let itemIsEquipped = false;
     const equipped = stats.equippedItems;
+
+    const { sellPrice, buyPrice } = calculatePrices(
+        data.value,
+        calculateModifier(stats.abilities.charisma)
+    );
 
     // find the type of item
     switch (data.type) {
@@ -238,10 +242,7 @@ const ViewItem = ({
         <StatsItem
             stats={{
                 name: 'value',
-                value: calculateSellPrice(
-                    data.value,
-                    calculateModifier(stats.abilities.charisma)
-                ),
+                value: sellPrice,
             }}
             key={uuidv4()}
         />
@@ -389,12 +390,7 @@ const ViewItem = ({
 
             <ConfirmDialog
                 open={confirmSell}
-                text={`Are you sure you want to sell your ${
-                    data.name
-                } for ${calculateSellPrice(
-                    data.value,
-                    calculateModifier(stats.abilities.charisma)
-                )} gold ?`}
+                text={`Are you sure you want to sell your ${data.name} for ${sellPrice} gold ?`}
                 cancelText={'Cancel'}
                 acceptText={'Sell'}
                 acceptIcon={'coins'}
@@ -409,12 +405,7 @@ const ViewItem = ({
 
             <ConfirmDialog
                 open={confirmBuy}
-                text={`Are you sure you want to buy ${
-                    data.name
-                } for ${calculateBuyPrice(
-                    data.value,
-                    calculateModifier(stats.abilities.charisma)
-                )} gold ?`}
+                text={`Are you sure you want to buy ${data.name} for ${buyPrice} gold ?`}
                 cancelText={'Cancel'}
                 acceptText={'Buy'}
                 acceptIcon={'coins'}

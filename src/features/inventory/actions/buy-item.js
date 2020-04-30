@@ -1,5 +1,5 @@
 import calculateModifier from '../../../utils/calculate-modifier';
-import calculateBuyPrice from '../../../utils/calculate-buy-price';
+import calculatePrices from '../../../utils/calculate-prices';
 
 export default function buyItem(item) {
     return (dispatch, getState) => {
@@ -7,7 +7,7 @@ export default function buyItem(item) {
         const { gold } = stats;
         const { items, maxItems } = inventory;
 
-        const buyPrice = calculateBuyPrice(
+        const { buyPrice } = calculatePrices(
             item.value,
             calculateModifier(stats.abilities.charisma)
         );

@@ -72,3 +72,8 @@ export const ESC_KEY = 27;
 
 // If the player is unarmed, we need them to still be able to attack
 export const UNARMED_DAMAGE = '1d4';
+
+// For calculating buy/sell prices
+export const MIN_PRICE_PERCENT = 0.1;
+export const MID_PRICE_PERCENT = 0.6;
+export const MAX_PRICE_PERCENT = 1.2;

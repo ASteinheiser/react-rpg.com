@@ -1,10 +1,10 @@
 import calculateModifier from '../../../utils/calculate-modifier';
-import calculateSellPrice from '../../../utils/calculate-sell-price';
+import calculatePrices from '../../../utils/calculate-prices';
 
 export default function sellItem(item) {
     return (dispatch, getState) => {
         const { stats } = getState();
-        const sellPrice = calculateSellPrice(
+        const { sellPrice } = calculatePrices(
             item.value,
             calculateModifier(stats.abilities.charisma)
         );

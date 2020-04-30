@@ -1,11 +1,13 @@
 import React from 'react';
 
 import EmptySlot from '../../empty-slot';
-import calculateBuyPrice from '../../../utils/calculate-buy-price';
+import calculatePrices from '../../../utils/calculate-prices';
 
 import './styles.scss';
 
 const ShopItem = ({ item, buyItem, charismaModifier }) => {
+    const { buyPrice } = calculatePrices(item.value, charismaModifier);
+
     return (
         <button
             onClick={buyItem}
@@ -21,9 +23,7 @@ const ShopItem = ({ item, buyItem, charismaModifier }) => {
             <div className="flex-row shop-item__text">
                 <span className="flex-row shop-item__title">{item.name}</span>
 
-                <span className="flex-row shop-item__price">
-                    {calculateBuyPrice(item.value, charismaModifier)}
-                </span>
+                <span className="flex-row shop-item__price">{buyPrice}</span>
             </div>
         </button>
     );
