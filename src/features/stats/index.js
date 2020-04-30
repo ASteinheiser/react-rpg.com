@@ -49,6 +49,7 @@ class Stats extends Component {
             mana,
             maxMana,
             gold,
+            defence,
         } = stats;
         const { statsBgColor } = this.state;
 
@@ -311,17 +312,19 @@ class Stats extends Component {
                             </div>
 
                             <div
-                                className="flex-row"
-                                style={{ paddingTop: sideMenu ? 7 : 52 }}
+                                className={`flex-row ${
+                                    sideMenu ? '' : 'stats__row--spacing'
+                                }`}
+                                style={{
+                                    paddingBottom: sideMenu ? 10 : 15,
+                                    paddingTop: sideMenu ? 0 : 15,
+                                }}
                             >
-                                <span className="stats__text--spacing">{}</span>
-                                <span
-                                    className="stats__text--blank"
-                                    style={{
-                                        display: sideMenu ? 'inline' : 'none',
-                                    }}
-                                >
-                                    {1}
+                                <span className="stats__text--spacing">
+                                    {'DEFENCE: '}
+                                </span>
+                                <span className="stats__text--defence">
+                                    {defence}
                                 </span>
                             </div>
 
