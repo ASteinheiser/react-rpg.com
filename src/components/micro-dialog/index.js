@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { ENTER_KEY } from '../../config/constants';
+import { ENTER_KEY, ESC_KEY } from '../../config/constants';
 
 import './styles.scss';
 
@@ -12,20 +12,25 @@ const MicroDialog = ({
     className,
     onKeyPress,
 }) => {
-    useEffect(() => {
-        if (onKeyPress) window.addEventListener('keydown', handleKeyPress);
-        return () => {
-            if (onKeyPress)
-                window.removeEventListener('keydown', handleKeyPress);
-        };
-    }, []);
-
-    function handleKeyPress(event) {
-        // case for 'enter'
+    const handleKeyPress = event => {
         if (event.keyCode === ENTER_KEY) {
             onKeyPress();
+        } else if (event.keyCode === ESC_KEY) {
+            onClose();
         }
-    }
+    };
+
+    useEffect(() => {
+        if (onKeyPress && typeof onKeyPress === 'function') {
+            window.addEventListener('keydown', handleKeyPress);
+        }
+
+        return () => {
+            if (onKeyPress && typeof onKeyPress === 'function') {
+                window.removeEventListener('keydown', handleKeyPress);
+            }
+        };
+    });
 
     const noSpacing = { top: 0, bottom: 0, left: 0, right: 0 };
 

@@ -9,6 +9,7 @@ import ShopInventory from '../../../../components/shop-inventory';
 import closeDialog from '../../actions/close-dialog';
 
 import './styles.scss';
+import { ENTER_KEY, ESC_KEY } from '../../../../config/constants';
 
 const ShopDialog = ({ closeDialog }) => {
     const [welcome, setWelcome] = useState(true);
@@ -20,7 +21,16 @@ const ShopDialog = ({ closeDialog }) => {
 
     if (welcome) {
         return (
-            <Dialog>
+            <Dialog
+                keys={[ENTER_KEY, ESC_KEY]}
+                onKeyPress={key => {
+                    if (key === ENTER_KEY) {
+                        setWelcome(false);
+                    } else {
+                        closeDialog();
+                    }
+                }}
+            >
                 <div className="flex-column space-between flex-1">
                     <span className="shop-dialog__title">{'Shop'}</span>
 
@@ -53,7 +63,12 @@ const ShopDialog = ({ closeDialog }) => {
     }
 
     return (
-        <Dialog>
+        <Dialog
+            keys={[ESC_KEY]}
+            onKeyPress={_key => {
+                closeDialog();
+            }}
+        >
             {sellItems}
 
             <div className="flex-column shop-dialog__container">

@@ -5,14 +5,14 @@ import Dialog from '../../../../components/dialog';
 import Button from '../../../../components/button';
 import spells from '../../../../data/spells';
 import setActiveSpell from '../../actions/set-active-spell';
-import { B_KEY } from '../../../../config/constants';
+import { B_KEY, ESC_KEY } from '../../../../config/constants';
 import toggleSpellbookDialog from '../../actions/toggle-spellbook-dialog';
 
 import './styles.scss';
 
 const SpellbookDialog = ({ player, setActiveSpell, toggleSpellbookDialog }) => {
     return (
-        <Dialog keys={[B_KEY]} onKeyPress={toggleSpellbookDialog}>
+        <Dialog keys={[B_KEY, ESC_KEY]} onKeyPress={toggleSpellbookDialog}>
             <span className="spellbook-dialog__title">{'Spellbook'}</span>
             {spells.map(spell => (
                 <div

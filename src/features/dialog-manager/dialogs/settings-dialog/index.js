@@ -8,6 +8,7 @@ import closeSettings from '../../actions/close-settings';
 import resetGameState from '../../../world/actions/reset-game-state';
 
 import './settings-dialog.scss';
+import { ENTER_KEY, ESC_KEY } from '../../../../config/constants';
 
 const SettingsDialog = ({ state, resetGameState, closeSettings }) => {
     const [confirmQuit, setConfirmQuit] = useState(false);
@@ -37,7 +38,16 @@ const SettingsDialog = ({ state, resetGameState, closeSettings }) => {
         state.dialog.character.characterName.length > 0;
 
     return (
-        <Dialog>
+        <Dialog
+            keys={[ENTER_KEY, ESC_KEY]}
+            onKeyPress={key => {
+                if (key === ENTER_KEY) {
+                    setConfirmQuit(true);
+                } else {
+                    closeSettings();
+                }
+            }}
+        >
             <div className="flex-column settings-dialog__container">
                 <span className="settings-dialog__title">{'Settings'}</span>
 
@@ -71,6 +81,7 @@ const SettingsDialog = ({ state, resetGameState, closeSettings }) => {
                 open={confirmQuit}
                 text="Are you sure you want to quit? You will lose all progress..."
                 onClose={() => setConfirmQuit(false)}
+                acceptKeys
                 confirm={resetGameState}
             />
         </Dialog>

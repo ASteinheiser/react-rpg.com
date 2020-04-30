@@ -8,6 +8,7 @@ import randomPhrase from './random-phrase';
 import resetGameState from '../../../world/actions/reset-game-state';
 
 import './styles.scss';
+import { ENTER_KEY } from '../../../../config/constants';
 
 class GameOver extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class GameOver extends Component {
         const { resetGameState } = this.props;
 
         return (
-            <Dialog>
+            <Dialog keys={[ENTER_KEY]} onKeyPress={resetGameState}>
                 <span className="game-over__title">{'Game Over!'}</span>
 
                 <span className="game-over__text">{phrase}</span>

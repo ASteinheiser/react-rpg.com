@@ -1,24 +1,45 @@
 import React, { useEffect } from 'react';
 
-import { ENTER_KEY } from '../../config/constants';
+import { ENTER_KEY, ESC_KEY } from '../../config/constants';
 
 import './styles.scss';
 
 const Dialog = ({ className, style, children, goBack, onKeyPress, keys }) => {
-    useEffect(() => {
-        if (onKeyPress) window.addEventListener('keydown', handleKeyPress);
-        return () => {
-            if (onKeyPress)
-                window.removeEventListener('keydown', handleKeyPress);
-        };
-    }, []);
-
-    function handleKeyPress(event) {
-        // check if a key is pressed and bound to an action
-        if (keys ? keys.includes(event.keyCode) : event.keyCode === ENTER_KEY) {
-            onKeyPress();
+    const handleKeyPress = event => {
+        if (onKeyPress && typeof onKeyPress === 'function') {
+            if (
+                keys
+                    ? keys.includes(event.keyCode)
+                    : event.keyCode === ENTER_KEY
+            ) {
+                onKeyPress(event.keyCode);
+            }
         }
-    }
+
+        if (goBack && typeof goBack === 'function') {
+            if (event.keyCode === ESC_KEY) {
+                goBack();
+            }
+        }
+    };
+
+    useEffect(() => {
+        if (
+            (onKeyPress && typeof onKeyPress === 'function') ||
+            (goBack && typeof onKeyPress === 'function')
+        ) {
+            window.addEventListener('keydown', handleKeyPress);
+        }
+
+        return () => {
+            if (
+                (onKeyPress && typeof onKeyPress === 'function') ||
+                (goBack && typeof onKeyPress === 'function')
+            ) {
+                window.removeEventListener('keydown', handleKeyPress);
+            }
+        };
+    });
 
     return (
         <div

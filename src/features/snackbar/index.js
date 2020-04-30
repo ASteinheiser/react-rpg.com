@@ -144,6 +144,8 @@ class Snackbar extends Component {
         else if (largeView) width = 398;
         else width = 350;
 
+        if (show.length === 0) return null;
+
         return (
             <Dialog
                 className="snackbar__container white-border"

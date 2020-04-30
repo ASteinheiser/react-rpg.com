@@ -10,6 +10,7 @@ import isGamePaused from '../dialog-manager/actions/is-game-paused';
 import toggleInventory from '../dialog-manager/actions/toggle-inventory';
 import abilityScoreDialog from '../dialog-manager/actions/ability-score-dialog';
 import toggleJournal from '../dialog-manager/actions/toggle-journal';
+import toggleSettings from '../dialog-manager/actions/toggle-settings';
 import toggleSpellbookDialog from '../dialog-manager/actions/toggle-spellbook-dialog';
 
 import {
@@ -28,6 +29,7 @@ import {
     LEFT_KEY,
     RIGHT_KEY,
     SPACE_KEY,
+    ESC_KEY,
 } from '../../config/constants';
 
 const ANIMATION_WITH_PADDING = ANIMATION_SPEED * 1.25;
@@ -42,6 +44,7 @@ const Controls = ({
     toggleInventory,
     toggleJournal,
     abilityScoreDialog,
+    toggleSettings,
     toggleSpellbookDialog,
 }) => {
     const _handleKeyDown = _debounce(
@@ -175,6 +178,8 @@ const Controls = ({
                 return toggleJournal();
             case U_KEY:
                 return abilityScoreDialog(false);
+            case ESC_KEY:
+                return toggleSettings();
             case B_KEY:
                 return toggleSpellbookDialog();
             default:
@@ -192,6 +197,7 @@ const actions = {
     toggleInventory,
     toggleJournal,
     abilityScoreDialog,
+    toggleSettings,
     toggleSpellbookDialog,
 };
 

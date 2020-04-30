@@ -2,33 +2,9 @@ import { spriteToCoordinates } from '../../../utils/sprite-to-coordinates';
 
 export default function pickupItem() {
     return (dispatch, getState) => {
-        const { inventory, dialog, player, stats } = getState();
+        const { inventory, dialog, player } = getState();
 
-        const { gold, exp, item } = dialog.chestOpen;
-
-        if (gold > 0) {
-            dispatch({
-                type: 'GET_GOLD',
-                payload: gold,
-            });
-        }
-
-        if (exp > 0) {
-            dispatch({
-                type: 'GET_EXP',
-                payload: exp,
-            });
-
-            if (exp + stats.exp >= stats.expToLevel) {
-                dispatch({
-                    type: 'PAUSE',
-                    payload: {
-                        pause: true,
-                        levelUp: true,
-                    },
-                });
-            }
-        }
+        const { item } = dialog.chestOpen;
 
         if (!item) return;
 

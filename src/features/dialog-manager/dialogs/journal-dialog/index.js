@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import Dialog from '../../../../components/dialog';
 import toggleJournal from '../../actions/toggle-journal';
-import { J_KEY } from '../../../../config/constants';
+import { J_KEY, ESC_KEY } from '../../../../config/constants';
 
 import './styles.scss';
 
 class JournalDialog extends Component {
-    componentDidMount(prevProps, prevState) {
+    componentDidMount(_prevProps, _prevState) {
         const journal = document.getElementById('journal');
         if (journal !== null) {
             journal.scrollTop = journal.scrollHeight;
@@ -18,7 +18,7 @@ class JournalDialog extends Component {
     render() {
         return (
             <Dialog
-                keys={[J_KEY]}
+                keys={[J_KEY, ESC_KEY]}
                 onKeyPress={() => this.props.toggleJournal()}
             >
                 <div className="flex-row journal-dialog__container">

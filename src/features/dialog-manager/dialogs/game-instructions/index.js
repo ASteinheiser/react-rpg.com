@@ -6,6 +6,7 @@ import Button from '../../../../components/button';
 import Dialog from '../../../../components/dialog';
 import loadStartingItems from '../../../inventory/actions/load-starting-items';
 import showFirstStoryMessage from '../../actions/show-first-story-message';
+import showEndlessMessage from '../../actions/show-endless-message';
 
 import ArrowKeys from './assets/arrow-keys.png';
 import DoubleTap from './assets/double-tap.png';
@@ -16,15 +17,24 @@ import WASDKeys from './assets/wasd-keys.png';
 
 import './styles.scss';
 
-const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
+const GameInstructions = ({
+    dialog,
+    loadStartingItems,
+    showFirstStoryMessage,
+    showEndlessMessage,
+}) => {
     let mobileVersion = false;
     if (window.location.search === '?nativeApp=true' || isMobile) {
         mobileVersion = true;
     }
 
     function handleContinue() {
-        loadStartingItems();
-        showFirstStoryMessage();
+        if (dialog.gameType === 'endless') {
+            showEndlessMessage();
+        } else {
+            loadStartingItems();
+            showFirstStoryMessage();
+        }
     }
 
     return (
@@ -85,6 +95,11 @@ const GameInstructions = ({ loadStartingItems, showFirstStoryMessage }) => {
     );
 };
 
-const actions = { loadStartingItems, showFirstStoryMessage };
+const mapStateToProps = ({ dialog }) => ({ dialog });
+const actions = {
+    loadStartingItems,
+    showFirstStoryMessage,
+    showEndlessMessage,
+};
 
-export default connect(null, actions)(GameInstructions);
+export default connect(mapStateToProps, actions)(GameInstructions);
