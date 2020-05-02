@@ -119,75 +119,36 @@ const ViewItem = ({
         case 'ring':
             itemIsEquipped =
                 JSON.stringify(equipped.ring) === JSON.stringify(data);
-            // find each effect
-            Object.keys(data.effect).forEach(name => {
-                itemStats.push(
-                    <StatsItem
-                        stats={{ name, value: data.effect[name] }}
-                        key={uuidv4()}
-                    />
-                );
-            });
             break;
 
         case 'armor::helmet':
             itemIsEquipped =
                 equipped.armor &&
                 JSON.stringify(equipped.armor.helmet) === JSON.stringify(data);
-            itemStats.push(
-                <StatsItem
-                    stats={{ name: 'defence', value: data.defence }}
-                    key={uuidv4()}
-                />
-            );
             break;
 
         case 'armor::body':
             itemIsEquipped =
                 equipped.armor &&
                 JSON.stringify(equipped.armor.body) === JSON.stringify(data);
-            itemStats.push(
-                <StatsItem
-                    stats={{ name: 'defence', value: data.defence }}
-                    key={uuidv4()}
-                />
-            );
             break;
 
         case 'armor::gloves':
             itemIsEquipped =
                 equipped.armor &&
                 JSON.stringify(equipped.armor.gloves) === JSON.stringify(data);
-            itemStats.push(
-                <StatsItem
-                    stats={{ name: 'defence', value: data.defence }}
-                    key={uuidv4()}
-                />
-            );
             break;
 
         case 'armor::boots':
             itemIsEquipped =
                 equipped.armor &&
                 JSON.stringify(equipped.armor.boots) === JSON.stringify(data);
-            itemStats.push(
-                <StatsItem
-                    stats={{ name: 'defence', value: data.defence }}
-                    key={uuidv4()}
-                />
-            );
             break;
 
         case 'armor::pants':
             itemIsEquipped =
                 equipped.armor &&
                 JSON.stringify(equipped.armor.pants) === JSON.stringify(data);
-            itemStats.push(
-                <StatsItem
-                    stats={{ name: 'defence', value: data.defence }}
-                    key={uuidv4()}
-                />
-            );
             break;
 
         case 'spell':
@@ -236,6 +197,18 @@ const ViewItem = ({
             break;
 
         default:
+    }
+
+    if (data.effect) {
+        // find each effect
+        Object.keys(data.effect).forEach(name => {
+            itemStats.push(
+                <StatsItem
+                    stats={{ name, value: data.effect[name] }}
+                    key={uuidv4()}
+                />
+            );
+        });
     }
 
     itemStats.push(

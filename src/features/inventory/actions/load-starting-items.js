@@ -4,7 +4,7 @@ export default function loadStartingItems() {
     return (dispatch, getState) => {
         dispatch({
             type: 'GET_ITEM',
-            payload: items.weapons.RustySword,
+            payload: items.weapons.swords.RustySword,
         });
 
         dispatch({

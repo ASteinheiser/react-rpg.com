@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Dialog from '../../../../components/dialog';
 import SpellButtom from './spell-button';
 import spells from '../../../../data/spells';
-import setActiveSpell from '../../actions/set-active-spell';
 import { B_KEY, ESC_KEY } from '../../../../config/constants';
 import toggleSpellbookDialog from '../../actions/toggle-spellbook-dialog';
 import ViewItem from '../../../../components/view-item';

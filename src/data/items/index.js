@@ -1,53 +1,101 @@
 import BackpackUpgrade from './other/backpack-upgrade';
-import LeatherArmor from './armor/leather-armor';
-import LeatherBoots from './armor/leather-boots';
-import LeatherCap from './armor/leather-cap';
-import LeatherGloves from './armor/leather-gloves';
-import LeatherPants from './armor/leather-pants';
-import SteelArmor from './armor/steel-armor';
-import SteelBoots from './armor/steel-boots';
-import SteelHelm from './armor/steel-helm';
-import SteelGloves from './armor/steel-gloves';
-import SteelPants from './armor/steel-pants';
+import LeatherArmor from './clothes/armor/leather-armor';
+import LeatherBoots from './clothes/armor/leather-boots';
+import LeatherCap from './clothes/armor/leather-cap';
+import LeatherGloves from './clothes/armor/leather-gloves';
+import LeatherPants from './clothes/armor/leather-pants';
+import SteelArmor from './clothes/armor/steel-armor';
+import SteelBoots from './clothes/armor/steel-boots';
+import SteelHelm from './clothes/armor/steel-helm';
+import SteelGloves from './clothes/armor/steel-gloves';
+import SteelPants from './clothes/armor/steel-pants';
+import BlackRobes from './clothes/robes/black-robes';
+import BrownRobes from './clothes/robes/brown-robes';
+import RedRobes from './clothes/robes/red-robes';
+import TealRobes from './clothes/robes/teal-robes';
+import SkullRobes from './clothes/robes/skull-robes';
 import DiamondRing from './rings/diamond-ring';
 import AmethystRing from './rings/amethyst-ring';
 import OldRing from './rings/old-ring';
-import BroadSword from './weapons/broad-sword';
-import RustySword from './weapons/rusty-sword';
-import SteelSword from './weapons/steel-sword';
-import DragonsBane from './weapons/dragons-bane';
-import LichBane from './weapons/lich-bane';
-import HpPotion from './other/hp-potion';
-import GreatHpPotion from './other/great-hp-potion';
+import BroadSword from './weapons/swords/broad-sword';
+import RustySword from './weapons/swords/rusty-sword';
+import SteelSword from './weapons/swords/steel-sword';
+import DragonsBane from './weapons/swords/dragons-bane';
+import LichBane from './weapons/swords/lich-bane';
+import BlackStaff from './weapons/staffs/black-staff';
+import BrownStaff from './weapons/staffs/brown-staff';
+import RedStaff from './weapons/staffs/red-staff';
+import TealStaff from './weapons/staffs/teal-staff';
+import SkullStaff from './weapons/staffs/skull-staff';
+import Boomerang from './weapons/ranged/boomerang';
+import Slingshot from './weapons/ranged/slingshot';
+import Bow from './weapons/ranged/bow';
+import Crossbow from './weapons/ranged/crossbow';
+import HpPotion from './potions/hp-potion';
+import GreatHpPotion from './potions/great-hp-potion';
+import MightyHpPotion from './potions/mighty-hp-potion';
+import DivineHpPotion from './potions/divine-hp-potion';
+import MightyManaPotion from './potions/mighty-mana-potion';
+import DivineManaPotion from './potions/divine-mana-potion';
 
 const items = {
     weapons: {
-        BroadSword,
-        RustySword,
-        SteelSword,
-        DragonsBane,
-        LichBane,
+        swords: {
+            BroadSword,
+            RustySword,
+            SteelSword,
+            DragonsBane,
+            LichBane,
+        },
+        ranged: {
+            Boomerang,
+            Slingshot,
+            Bow,
+            Crossbow,
+        },
+        staffs: {
+            BlackStaff,
+            BrownStaff,
+            RedStaff,
+            TealStaff,
+            SkullStaff,
+        },
     },
-    armor: {
-        LeatherArmor,
-        LeatherBoots,
-        LeatherCap,
-        LeatherGloves,
-        LeatherPants,
-        SteelArmor,
-        SteelBoots,
-        SteelHelm,
-        SteelGloves,
-        SteelPants,
+    clothes: {
+        armor: {
+            LeatherArmor,
+            LeatherBoots,
+            LeatherCap,
+            LeatherGloves,
+            LeatherPants,
+            SteelArmor,
+            SteelBoots,
+            SteelHelm,
+            SteelGloves,
+            SteelPants,
+        },
+        robes: {
+            BlackRobes,
+            BrownRobes,
+            RedRobes,
+            TealRobes,
+            SkullRobes,
+        },
     },
     rings: {
         AmethystRing,
         DiamondRing,
         OldRing,
     },
-    other: {
+    potions: {
         HpPotion,
         GreatHpPotion,
+        MightyHpPotion,
+        DivineHpPotion,
+        MightyManaPotion,
+        DivineManaPotion,
+    },
+    other: {
         BackpackUpgrade,
     },
 };
@@ -60,6 +108,12 @@ export const randomItemsT1 = [
     LeatherGloves,
     LeatherPants,
     OldRing,
+    BlackRobes,
+    BrownRobes,
+    BlackStaff,
+    BrownStaff,
+    // Boomerang,
+    // Slingshot,
 ];
 
 export const randomItemsT2 = [
@@ -72,6 +126,14 @@ export const randomItemsT2 = [
     SteelPants,
     AmethystRing,
     DiamondRing,
+    RedRobes,
+    TealRobes,
+    SkullRobes,
+    RedStaff,
+    TealStaff,
+    SkullStaff,
+    // Bow,
+    // Crossbow,
 ];
 
 export default items;

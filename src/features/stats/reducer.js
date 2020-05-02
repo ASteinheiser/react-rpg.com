@@ -92,6 +92,30 @@ const statsReducer = (state = initialState, { type, payload }) => {
 
         case 'UNEQUIP_ITEM':
             newState = _cloneDeep(state);
+
+            // iterate over each effect
+            Object.keys(payload.effect).forEach(effectName => {
+                switch (effectName) {
+                    case 'defence':
+                        newState.defence -= payload.effect[effectName];
+                        break;
+
+                    case 'hp':
+                        newState.hp -= payload.effect[effectName];
+                        if (newState.hp < 1) newState.hp = 1;
+                        newState.maxHp -= payload.effect[effectName];
+                        break;
+
+                    case 'mana':
+                        newState.mana -= payload.effect[effectName];
+                        if (newState.mana < 1) newState.mana = 1;
+                        newState.maxMana -= payload.effect[effectName];
+                        break;
+
+                    default:
+                }
+            });
+
             // check the type
             switch (payload.type) {
                 case 'weapon':
@@ -99,47 +123,26 @@ const statsReducer = (state = initialState, { type, payload }) => {
                     break;
 
                 case 'armor::body':
-                    newState.defence -= payload.defence;
                     delete newState.equippedItems.armor.body;
                     break;
 
                 case 'armor::helmet':
-                    newState.defence -= payload.defence;
                     delete newState.equippedItems.armor.helmet;
                     break;
 
                 case 'armor::pants':
-                    newState.defence -= payload.defence;
                     delete newState.equippedItems.armor.pants;
                     break;
 
                 case 'armor::boots':
-                    newState.defence -= payload.defence;
                     delete newState.equippedItems.armor.boots;
                     break;
 
                 case 'armor::gloves':
-                    newState.defence -= payload.defence;
                     delete newState.equippedItems.armor.gloves;
                     break;
 
                 case 'ring':
-                    // iterate over each effect
-                    Object.keys(payload.effect).forEach(effectName => {
-                        switch (effectName) {
-                            case 'defence':
-                                newState.defence -= payload.effect[effectName];
-                                break;
-
-                            case 'hp':
-                                newState.hp -= payload.effect[effectName];
-                                if (newState.hp < 1) newState.hp = 1;
-                                newState.maxHp -= payload.effect[effectName];
-                                break;
-
-                            default:
-                        }
-                    });
                     delete newState.equippedItems.ring;
 
                     break;
@@ -168,7 +171,6 @@ const statsReducer = (state = initialState, { type, payload }) => {
                         newState.defence -=
                             newState.equippedItems.armor.body.defence;
                     }
-                    newState.defence += item.defence;
                     // safely add new armor peice to object
                     newState.equippedItems.armor = {
                         ...newState.equippedItems.armor,
@@ -186,7 +188,6 @@ const statsReducer = (state = initialState, { type, payload }) => {
                         newState.defence -=
                             newState.equippedItems.armor.helmet.defence;
                     }
-                    newState.defence += item.defence;
                     // safely add new armor peice to object
                     newState.equippedItems.armor = {
                         ...newState.equippedItems.armor,
@@ -204,7 +205,6 @@ const statsReducer = (state = initialState, { type, payload }) => {
                         newState.defence -=
                             newState.equippedItems.armor.pants.defence;
                     }
-                    newState.defence += item.defence;
                     // safely add new armor peice to object
                     newState.equippedItems.armor = {
                         ...newState.equippedItems.armor,
@@ -222,7 +222,6 @@ const statsReducer = (state = initialState, { type, payload }) => {
                         newState.defence -=
                             newState.equippedItems.armor.gloves.defence;
                     }
-                    newState.defence += item.defence;
                     // safely add new armor peice to object
                     newState.equippedItems.armor = {
                         ...newState.equippedItems.armor,
@@ -240,7 +239,6 @@ const statsReducer = (state = initialState, { type, payload }) => {
                         newState.defence -=
                             newState.equippedItems.armor.boots.defence;
                     }
-                    newState.defence += item.defence;
                     // safely add new armor peice to object
                     newState.equippedItems.armor = {
                         ...newState.equippedItems.armor,
@@ -273,27 +271,32 @@ const statsReducer = (state = initialState, { type, payload }) => {
                         });
                     }
 
-                    // iterate over each new effect
-                    Object.keys(item.effect).forEach(effectName => {
-                        switch (effectName) {
-                            case 'defence':
-                                newState.defence += item.effect[effectName];
-                                break;
-
-                            case 'hp':
-                                newState.hp += item.effect[effectName];
-                                newState.maxHp += item.effect[effectName];
-                                break;
-
-                            default:
-                        }
-                    });
-
                     newState.equippedItems.ring = item;
                     break;
 
                 default:
             }
+
+            // iterate over each new effect
+            Object.keys(item.effect).forEach(effectName => {
+                switch (effectName) {
+                    case 'defence':
+                        newState.defence += item.effect[effectName];
+                        break;
+
+                    case 'hp':
+                        newState.hp += item.effect[effectName];
+                        newState.maxHp += item.effect[effectName];
+                        break;
+
+                    case 'mana':
+                        newState.mana += payload.effect[effectName];
+                        newState.maxMana += payload.effect[effectName];
+                        break;
+
+                    default:
+                }
+            });
             return newState;
 
         case 'HEAL_HP':
