@@ -4,11 +4,21 @@ import LeatherBoots from './clothes/armor/leather-boots';
 import LeatherCap from './clothes/armor/leather-cap';
 import LeatherGloves from './clothes/armor/leather-gloves';
 import LeatherPants from './clothes/armor/leather-pants';
+import IronArmor from './clothes/armor/iron-armor';
+import IronBoots from './clothes/armor/iron-boots';
+import IronHelm from './clothes/armor/iron-helm';
+import IronGloves from './clothes/armor/iron-gloves';
+import IronPants from './clothes/armor/iron-pants';
 import SteelArmor from './clothes/armor/steel-armor';
 import SteelBoots from './clothes/armor/steel-boots';
 import SteelHelm from './clothes/armor/steel-helm';
 import SteelGloves from './clothes/armor/steel-gloves';
 import SteelPants from './clothes/armor/steel-pants';
+import MithrilArmor from './clothes/armor/mithril-armor';
+import MithrilBoots from './clothes/armor/mithril-boots';
+import MithrilHelm from './clothes/armor/mithril-helm';
+import MithrilGloves from './clothes/armor/mithril-gloves';
+import MithrilPants from './clothes/armor/mithril-pants';
 import BlackRobes from './clothes/robes/black-robes';
 import BrownRobes from './clothes/robes/brown-robes';
 import RedRobes from './clothes/robes/red-robes';
@@ -68,11 +78,21 @@ const items = {
             LeatherCap,
             LeatherGloves,
             LeatherPants,
+            IronArmor,
+            IronBoots,
+            IronHelm,
+            IronGloves,
+            IronPants,
             SteelArmor,
             SteelBoots,
             SteelHelm,
             SteelGloves,
             SteelPants,
+            MithrilArmor,
+            MithrilBoots,
+            MithrilHelm,
+            MithrilGloves,
+            MithrilPants,
         },
         robes: {
             BlackRobes,
@@ -109,30 +129,51 @@ export const randomItemsT1 = [
     LeatherPants,
     OldRing,
     BlackRobes,
-    BrownRobes,
     BlackStaff,
-    BrownStaff,
     // Boomerang,
-    // Slingshot,
 ];
 
 export const randomItemsT2 = [
     ...randomItemsT1,
     BroadSword,
+    IronArmor,
+    IronBoots,
+    IronHelm,
+    IronGloves,
+    IronPants,
+    BroadSword,
+    AmethystRing,
+    BrownRobes,
+    BrownStaff,
+    // Slingshot,
+];
+
+export const randomItemsT3 = [
+    ...randomItemsT2,
+    DragonsBane,
     SteelArmor,
     SteelBoots,
     SteelHelm,
     SteelGloves,
     SteelPants,
-    AmethystRing,
-    DiamondRing,
     RedRobes,
     TealRobes,
-    SkullRobes,
     RedStaff,
     TealStaff,
-    SkullStaff,
     // Bow,
+    DiamondRing,
+];
+
+export const randomItemsT4 = [
+    ...randomItemsT3,
+    LichBane,
+    MithrilArmor,
+    MithrilBoots,
+    MithrilHelm,
+    MithrilGloves,
+    MithrilPants,
+    SkullRobes,
+    SkullStaff,
     // Crossbow,
 ];
 
