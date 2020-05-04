@@ -45,8 +45,10 @@ import HpPotion from './potions/hp-potion';
 import GreatHpPotion from './potions/great-hp-potion';
 import MightyHpPotion from './potions/mighty-hp-potion';
 import DivineHpPotion from './potions/divine-hp-potion';
-import MightyManaPotion from './potions/mighty-mana-potion';
-import DivineManaPotion from './potions/divine-mana-potion';
+import MpPotion from './potions/mp-potion';
+import GreatMpPotion from './potions/great-mp-potion';
+import MightyMpPotion from './potions/mighty-mp-potion';
+import DivineMpPotion from './potions/divine-mp-potion';
 
 const items = {
     weapons: {
@@ -110,10 +112,12 @@ const items = {
     potions: {
         HpPotion,
         GreatHpPotion,
+        MpPotion,
+        GreatMpPotion,
         MightyHpPotion,
         DivineHpPotion,
-        MightyManaPotion,
-        DivineManaPotion,
+        MightyMpPotion,
+        DivineMpPotion,
     },
     other: {
         BackpackUpgrade,

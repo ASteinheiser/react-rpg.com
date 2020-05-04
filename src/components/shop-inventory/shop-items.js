@@ -9,25 +9,25 @@ import { TIER_2, TIER_3, TIER_4 } from '../../config/constants';
 const purchaseOnlyT1 = [
     items.other.BackpackUpgrade,
     items.potions.HpPotion,
-    // items.potions.MpPotion,
+    items.potions.MpPotion,
 ];
 
 const purchaseOnlyT2 = [
     ...purchaseOnlyT1,
     items.potions.GreatHpPotion,
-    // items.potions.GreatMpPotion,
+    items.potions.GreatMpPotion,
 ];
 
 const purchaseOnlyT3 = [
     ...purchaseOnlyT2,
     items.potions.MightyManaPotion,
-    // items.potions.MightyHpPotion,
+    items.potions.MightyHpPotion,
 ];
 
 const purchaseOnlyT4 = [
     ...purchaseOnlyT3,
     items.potions.DivineHpPotion,
-    // items.potions.DivineManaPotion,
+    items.potions.DivineManaPotion,
 ];
 
 // returns the correct tier of items depending on player level

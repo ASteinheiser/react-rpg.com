@@ -1,8 +1,10 @@
+// Credit: https://craftpix.net/freebies/free-game-icons-of-fantasy-potions-pack-1/
 import DivineHpPotionImg from './divine-hp-potion.png';
 
 const DivineHpPotion = {
-    name: 'Divine HP Potion',
+    name: 'Divine Health Potion',
     type: 'potion',
+    kind: 'health',
     hp: 100,
     hpReset: 100,
     image: DivineHpPotionImg,

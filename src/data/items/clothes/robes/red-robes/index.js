@@ -1,3 +1,4 @@
+// Credit: https://craftpix.net/freebies/free-game-icons-fantasy-mage-outfit-pack-7/
 import RedRobesImg from './red-robes.png';
 
 const RedRobes = {

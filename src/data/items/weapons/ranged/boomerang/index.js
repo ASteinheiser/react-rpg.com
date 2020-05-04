@@ -1,3 +1,4 @@
+// Credit: https://shikashiassets.itch.io/shikashis-fantasy-icons-pack
 import BoomerangImg from './boomerang.png';
 
 const Boomerang = {

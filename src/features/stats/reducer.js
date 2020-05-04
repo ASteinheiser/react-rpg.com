@@ -307,6 +307,14 @@ const statsReducer = (state = initialState, { type, payload }) => {
 
             return { ...state, hp: _hp };
 
+        case 'RESTORE_MANA':
+            // regenerate the mana
+            let _mana = state.mana + payload.amount;
+            // don't go above max mana
+            if (_mana > state.maxMana) _mana = state.maxMana;
+
+            return { ...state, mana: _mana };
+
         case 'CAST_SPELL':
             return { ...state, mana: state.mana - payload.spell.manaCost };
 

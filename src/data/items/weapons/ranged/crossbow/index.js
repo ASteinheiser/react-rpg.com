@@ -1,3 +1,4 @@
+// Credit: https://shikashiassets.itch.io/shikashis-fantasy-icons-pack
 import CrossbowImg from './crossbow.png';
 
 const Crossbow = {
