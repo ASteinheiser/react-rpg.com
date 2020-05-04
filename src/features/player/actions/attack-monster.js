@@ -41,6 +41,8 @@ export default function attackMonster() {
                         roll: attackValue,
                         ability: 'strength',
                         check: currMonster.defence,
+                        entity: currMonster.type,
+                        against: 'defence',
                     },
                 });
 
@@ -66,7 +68,7 @@ export default function attackMonster() {
                         damage,
                         id: currMonster.id,
                         map: currentMap,
-                        type: currMonster.type,
+                        entity: currMonster.type,
                     },
                 });
 
@@ -89,7 +91,7 @@ export default function attackMonster() {
                     // play death sound
                     dispatch({
                         type: 'MONSTER_DIED',
-                        payload: null,
+                        payload: currMonster.type,
                     });
                     // replace monster will blood spill
                     // need to pass relative tile index

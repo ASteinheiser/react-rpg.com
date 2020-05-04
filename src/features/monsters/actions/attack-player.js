@@ -14,7 +14,8 @@ export default function attackPlayer(attackValue, dice, type) {
             payload: {
                 attackValue: attackValue,
                 check: Math.max(stats.defence, 0),
-                type: type,
+                against: 'defence',
+                entity: type,
             },
         });
 
@@ -28,7 +29,7 @@ export default function attackPlayer(attackValue, dice, type) {
 
         dispatch({
             type: 'DAMAGE_TO_PLAYER',
-            payload: { damage: calculatedMonsterDamage, type: type },
+            payload: { damage: calculatedMonsterDamage, entity: type },
         });
 
         // check if player died

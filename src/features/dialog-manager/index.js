@@ -19,7 +19,7 @@ import CharacterCustomisation from './dialogs/character-customisation';
 import JournalDialog from './dialogs/journal-dialog';
 import SpellbookDialog from './dialogs/spellbook-dialog';
 
-const DialogManager = ({ dialog, journal }) => {
+const DialogManager = ({ dialog }) => {
     const {
         chest,
         inventory,
@@ -49,8 +49,7 @@ const DialogManager = ({ dialog, journal }) => {
         if (chest) PauseComp = <ChestLoot />;
         if (shop) PauseComp = <ShopDialog />;
         if (inventory) PauseComp = <InventoryDialog />;
-        if (journalDialog)
-            PauseComp = <JournalDialog entries={journal.entries} />;
+        if (journalDialog) PauseComp = <JournalDialog />;
         if (spellbookDialog) PauseComp = <SpellbookDialog />;
         if (gameText)
             PauseComp = (
@@ -94,6 +93,6 @@ const DialogManager = ({ dialog, journal }) => {
     );
 };
 
-const mapStateToProps = ({ dialog, journal }) => ({ dialog, journal });
+const mapStateToProps = ({ dialog }) => ({ dialog });
 
 export default connect(mapStateToProps)(DialogManager);

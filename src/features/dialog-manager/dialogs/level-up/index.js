@@ -5,20 +5,27 @@ import Button from '../../../../components/button';
 import MicroDialog from '../../../../components/micro-dialog';
 import closeLevelUpDialog from '../../actions/close-level-up-dialog';
 import abilityScoreDialog from '../../actions/ability-score-dialog';
+import logLevelUp from '../../actions/log-level-up';
 
 import isAbilityAllocationLevel from '../../../../utils/is-ability-allocation-level';
 
 import './styles.scss';
 
-const LevelUp = ({ stats, closeLevelUpDialog, abilityScoreDialog }) => {
+const LevelUp = ({
+    stats,
+    closeLevelUpDialog,
+    abilityScoreDialog,
+    logLevelUp,
+}) => {
     const { level, levelUp } = stats;
     const { hp, mana } = levelUp;
 
-    const nextDialog = isAbilityAllocationLevel(level)
-        ? () => {
-              abilityScoreDialog(true);
-          }
-        : closeLevelUpDialog;
+    const nextDialog = () => {
+        logLevelUp();
+        isAbilityAllocationLevel(level)
+            ? abilityScoreDialog(true)
+            : closeLevelUpDialog();
+    };
 
     return (
         <MicroDialog onClose={nextDialog} onKeyPress={nextDialog}>
@@ -54,6 +61,6 @@ const LevelUp = ({ stats, closeLevelUpDialog, abilityScoreDialog }) => {
 
 const mapStateToProps = ({ stats }) => ({ stats });
 
-const actions = { closeLevelUpDialog, abilityScoreDialog };
+const actions = { closeLevelUpDialog, abilityScoreDialog, logLevelUp };
 
 export default connect(mapStateToProps, actions)(LevelUp);

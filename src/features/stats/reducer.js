@@ -31,7 +31,7 @@ const initialState = {
     expToLevel: 20,
     gold: 0,
     equippedItems: {},
-    levelUp: { level: 0, hp: 0 },
+    levelUp: { level: 0, hp: 0, mana: 0 },
 };
 
 const statsReducer = (state = initialState, { type, payload }) => {
@@ -368,15 +368,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
                 newState.maxMana += newState.levelUp.mana;
                 newState.abilityModifierMana = newAbilityModifierMana;
 
-                // get more damage (+1)
-                let moreDmg = 1;
-                // 25% chance to get +2 damage on lv
-                const chance = Math.floor(Math.random() * 100) + 1;
-                if (chance <= 25) {
-                    moreDmg += 1;
-                }
-                newState.damage += moreDmg;
-                newState.levelUp.dmg = moreDmg;
+                newState.levelUp.level = newState.level;
             } else {
                 // they aren't leveling up
                 newState.exp += payload;

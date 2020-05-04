@@ -10,7 +10,6 @@ export default function castSpell() {
         const { position, direction, spell } = player;
 
         if (spell === null) {
-            // TODO: perhaps notify the player that they need to 'equip' a spell?
             dispatch(errorMessage('Select a spell first ("b")'));
             return;
         } else if (spell.manaCost > stats.mana) {
@@ -113,7 +112,8 @@ export default function castSpell() {
                 const modifier = calculateModifier(
                     stats.abilities.intelligence
                 );
-                const attack_value = d20() + modifier;
+
+                const attackValue = d20() + modifier;
 
                 dispatch({
                     type: 'CAST_SPELL',
@@ -124,14 +124,16 @@ export default function castSpell() {
                     type: 'ABILITY_CHECK',
                     payload: {
                         notation: 'd20 + ' + modifier,
-                        roll: attack_value,
+                        roll: attackValue,
                         ability: 'intelligence',
                         check: currMonster.defence,
+                        entity: currMonster.type,
+                        against: 'defence',
                     },
                 });
 
                 const damage =
-                    attack_value >= currMonster.defence
+                    attackValue >= currMonster.defence
                         ? calculateDamage(spell.damage)
                         : 0;
 
@@ -142,7 +144,7 @@ export default function castSpell() {
                         damage,
                         id: currMonster.id,
                         map: currentMap,
-                        type: currMonster.type,
+                        entity: currMonster.type,
                     },
                 });
 
@@ -165,7 +167,7 @@ export default function castSpell() {
                     // play death sound
                     dispatch({
                         type: 'MONSTER_DIED',
-                        payload: null,
+                        payload: currMonster.type,
                     });
                     // replace monster will blood spill
                     // need to pass relative tile index

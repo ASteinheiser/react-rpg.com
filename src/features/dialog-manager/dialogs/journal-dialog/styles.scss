@@ -1,5 +1,7 @@
 .journal-dialog__container {
     flex: 1;
+
+    overflow-y: scroll;
 }
 
 .journal-log {
@@ -9,14 +11,51 @@
     justify-content: center;
 
     color: var(--white);
-    font-size: 14px;
-    line-height: 2;
     text-transform: none;
-    font-family: 'Roboto Mono';
 
     padding: 12px 15px;
 
     resize: none;
 
     border: none;
+}
+
+.journal-entry {
+    font-size: 12px;
+    font-family: 'Montserrat';
+    padding: 0px 5px;
+    line-height: 1.5;
+    margin: -5px 0;
+}
+
+.gold,
+.type {
+    color: var(--orange);
+}
+
+.damage-to-player {
+    color: var(--light-red);
+}
+
+.damage-to-monster {
+    color: var(--light-red);
+}
+
+.experience,
+.level,
+.ability {
+    color: var(--purple);
+}
+
+.mana-gain,
+.restore-mana,
+.score {
+    color: var(--blue);
+}
+
+.restore-health,
+.health-gain,
+.spell,
+.get-item {
+    color: var(--green);
 }
