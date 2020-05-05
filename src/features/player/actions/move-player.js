@@ -14,13 +14,16 @@ export default function movePlayer(direction) {
     return (dispatch, getState) => {
         const oldPos = getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
+        const facing = getState().player.direction;
 
         const nextTile = observeImpassable(newPos);
 
         if (
             observeBoundaries(newPos) &&
             nextTile < 5 &&
-            !dispatch(checkForMonster(newPos, direction))
+            !dispatch(checkForMonster(newPos, direction)) &&
+            (facing === direction ||
+                !dispatch(monstersWithinRange(newPos, OUT_OF_COMBAT_RANGE)))
         ) {
             // explore new tiles
             dispatch(exploreTiles(newPos));
