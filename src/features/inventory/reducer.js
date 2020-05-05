@@ -28,6 +28,7 @@ const inventoryReducer = (state = initialState, { type, payload }) => {
 
             return newState;
 
+        case 'STARTING_ITEM':
         case 'GET_ITEM':
             newState = _cloneDeep(state);
             // save item to list with unique id for keeping track of duplicates
