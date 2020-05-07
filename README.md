@@ -15,11 +15,11 @@ _Roll For Reaction_ is an open-source fork of [react-rpg](https://github.com/ASt
 | Definitely                                        | Hopefully                                             | Maybe                               |
 | ------------------------------------------------- | ----------------------------------------------------- | ----------------------------------- |
 | ![check][checkmark] DnD Ability Scores for Player | ![check][checkmark] UI/UX Improvements                | ![cross][cross] Particle Effects    |
-| ![check][checkmark] DnD Classes and Races         | ![cross][cross] Final Fantasy-esque Turn Based Combat | ![cross][cross] Character Dialogue  |
-| ![check][checkmark] Dice-based Combat             | ![check][checkmark] Save/Load System                  | ![cross][cross] Cinematic Cutscenes |
-| ![cross][cross] New Maps/Levels                   | ![cross][cross] New Enemy Types                       | ![cross][cross] Online Multiplayer  |
-| ![check][checkmark] Character Creation            | ![check][checkmark] Customisable Outfit Colour        | ![cross][cross] Party System        |
-| ![check][checkmark] Additional Items in Shop      | ![cross][cross] Split Screen Local Multiplayer        |                                     |
+| ![check][checkmark] DnD Classes and Races         | ![cross][cross] Tutorial                              | ![cross][cross] Class-specific Abilities  |
+| ![check][checkmark] Dice-based Combat             | ![check][checkmark] Save/Load System                  | ![cross][cross] Party System |
+| ![cross][cross] New Maps/Levels                   | ![cross][cross] New Enemies                           | ![cross][cross] Additional Game Modes  |
+| ![check][checkmark] Character Creation            | ![check][checkmark] Customisable Outfit Colour        |         |
+| ![check][checkmark] Additional Items in Shop      | ![cross][cross] Diversity in Enemy Attacks            |                                     |
 | ![check][checkmark] Spellcasting System           |                                                       |                                     |
 
 > Classes include Fighter, Ranger and Wizard
