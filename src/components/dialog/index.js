@@ -4,7 +4,15 @@ import { ENTER_KEY, ESC_KEY } from '../../config/constants';
 
 import './styles.scss';
 
-const Dialog = ({ className, style, children, goBack, onKeyPress, keys }) => {
+const Dialog = ({
+    className,
+    style,
+    children,
+    goBack,
+    onKeyPress,
+    keys,
+    extraClass,
+}) => {
     const handleKeyPress = event => {
         if (onKeyPress && typeof onKeyPress === 'function') {
             if (
@@ -43,7 +51,8 @@ const Dialog = ({ className, style, children, goBack, onKeyPress, keys }) => {
 
     return (
         <div
-            className={className || 'dialog__container white-border'}
+            className={`${extraClass && extraClass}
+                ${className || 'dialog__container white-border'}`}
             style={style}
         >
             {goBack && (

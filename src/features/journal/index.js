@@ -9,23 +9,23 @@ import './styles.scss';
 const Journal = ({ disabled, sideMenu, dialog, toggleJournal }) => {
     const open = dialog.journalDialog;
 
+    if (disabled) return null;
+
     return (
         <div className="flex-row journal__container">
-            {!disabled && (
-                <Button
-                    small={sideMenu}
-                    onClick={toggleJournal}
-                    icon={open ? 'times' : 'book'}
-                    title={open ? 'Close' : 'Journal'}
-                    style={{
-                        width: 160,
-                        transition: 'width .25s ease-out',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        backgroundColor: 'var(--dark-gray)',
-                    }}
-                />
-            )}
+            <Button
+                small={sideMenu}
+                onClick={toggleJournal}
+                icon={open ? 'times' : 'book'}
+                title={open ? 'Close' : 'Journal'}
+                style={{
+                    width: 160,
+                    transition: 'width .25s ease-out',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    backgroundColor: 'var(--dark-gray)',
+                }}
+            />
         </div>
     );
 };

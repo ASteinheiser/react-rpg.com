@@ -104,9 +104,8 @@ class Stats extends Component {
                     width,
                     lineHeight: sideMenu ? 1.5 : 'unset',
                 }}
-                className={`stats__container
-          ${disabled ? '' : 'white-border'}
-          ${sideMenu ? 'flex-row' : 'flex-row'}`}
+                className={`stats__container flex-row
+          ${disabled ? '' : 'white-border'}`}
             >
                 {!disabled && (
                     <>

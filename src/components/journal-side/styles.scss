@@ -6,6 +6,15 @@
     overflow-y: scroll;
 }
 
+.journal-container {
+    position: relative;
+    margin-top: 8px;
+    margin-right: 8px;
+    width: 20em;
+    height: 20em;
+    float: right;
+}
+
 .journal-log {
     background-color: var(--dark-gray);
     width: 100%;

@@ -5,7 +5,7 @@ export default function toggleJournal() {
                 type: 'PAUSE',
                 payload: { pause: false },
             });
-        } else {
+        } else if (!getState().appState.journalSideMenu) {
             dispatch({
                 type: 'PAUSE',
                 payload: {
