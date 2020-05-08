@@ -18,12 +18,20 @@ const tiles = [
 
 const monsters = [
     {
-        type: 'dragon',
+        type: 'medusa',
         position: [12, 4],
     },
     {
-        type: 'dragon',
+        type: 'medusa',
         position: [13, 2],
+    },
+    {
+        type: 'warlock',
+        position: [4, 7],
+    },
+    {
+        type: 'warlock',
+        position: [4, 11],
     },
 ];
 

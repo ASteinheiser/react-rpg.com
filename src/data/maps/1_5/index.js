@@ -22,7 +22,7 @@ const monsters = [
         position: [1, 9],
     },
     {
-        type: 'stone-golem',
+        type: 'orc',
         position: [10, 9],
     },
     {

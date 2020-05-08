@@ -22,8 +22,12 @@ const monsters = [
         position: [4, 5],
     },
     {
-        type: 'imp',
+        type: 'orc',
         position: [5, 7],
+    },
+    {
+        type: 'orc',
+        position: [5, 11],
     },
     {
         type: 'imp',

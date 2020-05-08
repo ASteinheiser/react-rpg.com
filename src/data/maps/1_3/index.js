@@ -22,15 +22,19 @@ const monsters = [
         position: [17, 11],
     },
     {
+        type: 'wolf',
+        position: [16, 10],
+    },
+    {
         type: 'goblin',
         position: [16, 8],
     },
     {
-        type: 'goblin',
+        type: 'wolf',
         position: [6, 3],
     },
     {
-        type: 'goblin',
+        type: 'bat',
         position: [5, 12],
     },
 ];
