@@ -7,6 +7,7 @@ import setJournalScrolling from '../../actions/set-journal-scrolling';
 import { J_KEY, ESC_KEY } from '../../../../config/constants';
 
 import './styles.scss';
+import './entry-styles.scss';
 
 class JournalDialog extends Component {
     componentDidMount(_prevProps, _prevState) {

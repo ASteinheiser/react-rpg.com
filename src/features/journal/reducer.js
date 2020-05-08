@@ -150,8 +150,24 @@ const journalReducer = (state = initialState, { type, payload }) => {
             return newState;
         }
 
+        case 'USE_PROJECTILE': {
+            const { name, information } = payload.projectile;
+
+            newState = cloneDeep(state);
+            newState.entries.push({
+                key: uuidv4(),
+                entry: (
+                    <p key={uuidv4()}>
+                        You {information} {colourise(name, 'projectile')}
+                    </p>
+                ),
+            });
+
+            return newState;
+        }
+
         case 'CAST_SPELL': {
-            const { name } = payload.spell;
+            const { name } = payload.projectile;
 
             newState = cloneDeep(state);
             newState.entries.push({

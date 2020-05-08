@@ -28,8 +28,8 @@ const CharacterCreation = ({
     );
 
     function handleContinue() {
-        if (characterName) {
-            createCharacter(characterName);
+        if (characterName.trim().length > 0) {
+            createCharacter(characterName.trim());
         } else {
             errorMessage('Please enter a name');
         }
@@ -76,9 +76,7 @@ const CharacterCreation = ({
                     id="characterName"
                     className="white-border character-creation__input"
                     value={characterName}
-                    onChange={event =>
-                        setCharacterName(event.target.value.trim())
-                    }
+                    onChange={event => setCharacterName(event.target.value)}
                 />
 
                 <span style={{ paddingTop: 12 }}>{`Your Race`}</span>

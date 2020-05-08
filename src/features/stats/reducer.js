@@ -316,7 +316,7 @@ const statsReducer = (state = initialState, { type, payload }) => {
             return { ...state, mana: _mana };
 
         case 'CAST_SPELL':
-            return { ...state, mana: state.mana - payload.spell.manaCost };
+            return { ...state, mana: state.mana - payload.projectile.manaCost };
 
         case 'DAMAGE_TO_PLAYER':
             return { ...state, hp: state.hp - payload.damage };

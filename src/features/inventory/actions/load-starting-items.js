@@ -12,9 +12,7 @@ export default function loadStartingItems() {
                 weapon = items.weapons.staffs.BlackStaff;
                 break;
             case 'Ranger':
-                // TODO: When ranged attack #188 is implemented, starting item should be changed to Boomerang
-                weapon = items.weapons.swords.RustySword;
-                // weapon = items.weapons.ranged.Boomerang;
+                weapon = items.weapons.ranged.Boomerang;
                 break;
             default:
                 weapon = items.weapons.swords.RustySword;
@@ -39,7 +37,6 @@ export default function loadStartingItems() {
                 break;
         }
 
-        // TODO: give starting items based on race and class
         dispatch({
             type: 'STARTING_ITEM',
             payload: weapon,

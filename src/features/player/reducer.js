@@ -35,13 +35,21 @@ const playerReducer = (state = initialState, { type, payload }) => {
         case 'SET_ACTIVE_SPELL':
             return { ...state, spell: cloneDeep(payload.spell) };
 
+        case 'USE_PROJECTILE':
+            return {
+                ...state,
+                playerAttacked: !state.playerAttacked,
+                targetPosition: payload ? payload.position : [],
+                turnsOutOfCombat: 0,
+            };
+
         case 'CAST_SPELL':
             return {
                 ...state,
                 spellCast: !state.spellCast,
                 targetPosition: payload ? payload.position : [],
                 turnsOutOfCombat:
-                    payload.spell.kind === 'combat'
+                    payload.projectile.kind === 'combat'
                         ? 0
                         : state.turnsOutOfCombat,
             };

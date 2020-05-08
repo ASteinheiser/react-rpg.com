@@ -3,8 +3,9 @@ import SteelSwordImg from './steel-sword.png';
 const SteelSword = {
     name: 'Steel Sword',
     type: 'weapon',
+    kind: 'melee',
     effect: {},
-    range: 'melee',
+    range: 1,
     damage: '1d8 + 2',
     image: SteelSwordImg,
     value: 35,

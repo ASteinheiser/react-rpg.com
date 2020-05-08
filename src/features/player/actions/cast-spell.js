@@ -1,8 +1,9 @@
-import { checkForMonster, getNewPosition } from './move-player';
+import { checkForMonster } from './move-player';
 import { calculateDamage, d20 } from '../../../utils/dice';
 import calculateModifier from '../../../utils/calculate-modifier';
 import { SPRITE_SIZE } from '../../../config/constants';
 import errorMessage from '../../dialog-manager/actions/error-message';
+import { findTarget } from './attack-monster';
 
 export default function castSpell() {
     return (dispatch, getState) => {
@@ -22,7 +23,7 @@ export default function castSpell() {
         if (target[0] === 'self') {
             dispatch({
                 type: 'CAST_SPELL',
-                payload: { position: position, spell: spell },
+                payload: { position: position, projectile: spell },
             });
 
             const healAmount =
@@ -41,64 +42,9 @@ export default function castSpell() {
                 payload: null,
             });
         } else if (target[0] === 'enemy') {
-            var spellPosition = null;
-            const range = spell.range * SPRITE_SIZE;
-
-            switch (direction) {
-                case 'NORTH':
-                    for (
-                        let y = position[1];
-                        y > position[1] - range;
-                        y -= SPRITE_SIZE
-                    ) {
-                        const pos = getNewPosition([position[0], y], direction);
-                        spellPosition = pos;
-                        if (dispatch(checkForMonster(pos))) {
-                            break;
-                        }
-                    }
-                    break;
-                case 'SOUTH':
-                    for (
-                        let y = position[1];
-                        y < position[1] + range;
-                        y += SPRITE_SIZE
-                    ) {
-                        const pos = getNewPosition([position[0], y], direction);
-                        spellPosition = pos;
-                        if (dispatch(checkForMonster(pos))) {
-                            break;
-                        }
-                    }
-                    break;
-                case 'EAST':
-                    for (
-                        let x = position[0];
-                        x < position[0] + range;
-                        x += SPRITE_SIZE
-                    ) {
-                        const pos = getNewPosition([x, position[1]], direction);
-                        spellPosition = pos;
-                        if (dispatch(checkForMonster(pos))) {
-                            break;
-                        }
-                    }
-                    break;
-                case 'WEST':
-                    for (
-                        let x = position[0];
-                        x > position[0] - range;
-                        x -= SPRITE_SIZE
-                    ) {
-                        const pos = getNewPosition([x, position[1]], direction);
-                        spellPosition = pos;
-                        if (dispatch(checkForMonster(pos))) {
-                            break;
-                        }
-                    }
-                    break;
-                default:
-            }
+            const spellPosition = dispatch(
+                findTarget(position, direction, spell.range * SPRITE_SIZE)
+            );
 
             const { currentMap } = world;
             const { components } = monsters;
@@ -117,7 +63,7 @@ export default function castSpell() {
 
                 dispatch({
                     type: 'CAST_SPELL',
-                    payload: { position: spellPosition, spell: spell },
+                    payload: { position: spellPosition, projectile: spell },
                 });
 
                 dispatch({
@@ -189,7 +135,7 @@ export default function castSpell() {
                 // Hit a wall or something else
                 dispatch({
                     type: 'CAST_SPELL',
-                    payload: { position: spellPosition, spell: spell },
+                    payload: { position: spellPosition, projectile: spell },
                 });
             }
         }

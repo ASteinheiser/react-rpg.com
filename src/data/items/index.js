@@ -134,7 +134,7 @@ export const randomItemsT1 = [
     OldRing,
     BlackRobes,
     BlackStaff,
-    // Boomerang,
+    Boomerang,
 ];
 
 export const randomItemsT2 = [
@@ -149,7 +149,7 @@ export const randomItemsT2 = [
     AmethystRing,
     BrownRobes,
     BrownStaff,
-    // Slingshot,
+    Slingshot,
 ];
 
 export const randomItemsT3 = [
@@ -164,7 +164,7 @@ export const randomItemsT3 = [
     TealRobes,
     RedStaff,
     TealStaff,
-    // Bow,
+    Bow,
     DiamondRing,
 ];
 
@@ -178,7 +178,7 @@ export const randomItemsT4 = [
     MithrilPants,
     SkullRobes,
     SkullStaff,
-    // Crossbow,
+    Crossbow,
 ];
 
 export default items;

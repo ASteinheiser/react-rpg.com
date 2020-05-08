@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import '../../features/dialog-manager/dialogs/journal-dialog/entry-styles.scss';
 import './styles.scss';
 
 class JournalSide extends Component {
