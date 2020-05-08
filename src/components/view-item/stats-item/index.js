@@ -15,6 +15,7 @@ const StatsItem = ({ stats }) => {
             case 'hp':
             case 'heal':
                 return 'green';
+            case 'mana cost':
             case 'mana':
                 return 'blue';
             case 'slots':

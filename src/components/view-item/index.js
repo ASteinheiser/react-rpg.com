@@ -191,6 +191,13 @@ const ViewItem = ({
 
             itemStats.push(
                 <StatsItem
+                    stats={{ name: 'mana cost', value: data.manaCost }}
+                    key={uuidv4()}
+                />
+            );
+
+            itemStats.push(
+                <StatsItem
                     stats={{ name: 'description', value: data.description }}
                     key={uuidv4()}
                 />
