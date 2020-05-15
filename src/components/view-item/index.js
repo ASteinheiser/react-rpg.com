@@ -18,7 +18,6 @@ import calculateModifier from '../../utils/calculate-modifier';
 import calculateWisdomPotionBonus from '../../utils/calculate-wisdom-potion-bonus';
 import calculatePrices from '../../utils/calculate-prices';
 import setActiveSpell from '../../features/dialog-manager/actions/set-active-spell';
-import { calculateDamageRange } from '../../utils/dice';
 
 import './styles.scss';
 
@@ -90,18 +89,6 @@ const ViewItem = ({
                     key={uuidv4()}
                 />
             );
-
-            const damageRange = calculateDamageRange(data.damage);
-            itemStats.push(
-                <StatsItem
-                    stats={{
-                        name: 'range',
-                        value: damageRange[0] + ' - ' + damageRange[1],
-                    }}
-                    key={uuidv4()}
-                />
-            );
-            // if there's a bonus
             if (data.bonus) {
                 const [bonusType] = data.bonus.split('::');
                 const bonusMult = parseFloat(data.bonus.split('::')[1], 10);
@@ -154,36 +141,16 @@ const ViewItem = ({
 
         case 'spell':
             if (data.target.includes('self')) {
-                const healRange = calculateDamageRange(data.damage);
                 itemStats.push(
                     <StatsItem
                         stats={{ name: 'heal', value: data.damage }}
                         key={uuidv4()}
                     />
                 );
-                itemStats.push(
-                    <StatsItem
-                        stats={{
-                            name: 'range',
-                            value: healRange[0] + ' - ' + healRange[1],
-                        }}
-                        key={uuidv4()}
-                    />
-                );
             } else {
-                const damageRange = calculateDamageRange(data.damage);
                 itemStats.push(
                     <StatsItem
                         stats={{ name: 'damage', value: data.damage }}
-                        key={uuidv4()}
-                    />
-                );
-                itemStats.push(
-                    <StatsItem
-                        stats={{
-                            name: 'range',
-                            value: damageRange[0] + ' - ' + damageRange[1],
-                        }}
                         key={uuidv4()}
                     />
                 );
@@ -195,6 +162,43 @@ const ViewItem = ({
                     key={uuidv4()}
                 />
             );
+
+            if (data.effects && data.effects.changeAI) {
+                itemStats.push(
+                    <StatsItem
+                        stats={{
+                            name: 'effect',
+                            value: data.effects.changeAI.effect,
+                        }}
+                        key={uuidv4()}
+                    />
+                );
+
+                if (data.effects.changeAI.proc) {
+                    itemStats.push(
+                        <StatsItem
+                            stats={{
+                                name: 'chance',
+                                value: data.effects.changeAI.chance,
+                            }}
+                            key={uuidv4()}
+                        />
+                    );
+                }
+
+                if (data.effects.changeAI.extraDamage) {
+                    const { damage, times } = data.effects.changeAI.extraDamage;
+                    itemStats.push(
+                        <StatsItem
+                            stats={{
+                                name: 'DMG over time',
+                                value: times + ' * ' + damage,
+                            }}
+                            key={uuidv4()}
+                        />
+                    );
+                }
+            }
 
             itemStats.push(
                 <StatsItem
@@ -246,11 +250,7 @@ const ViewItem = ({
     } else if (sell) {
         onKeyPress = () => setConfirmSell(true);
         ViewItemButtons = (
-            <Button
-                onClick={() => setConfirmSell(true)}
-                icon="coins"
-                title={'Sell Item'}
-            />
+            <Button onClick={onKeyPress} icon="coins" title={'Sell Item'} />
         );
     } else if (itemIsEquipped) {
         onKeyPress = () => {
@@ -258,28 +258,33 @@ const ViewItem = ({
             onClose();
         };
         ViewItemButtons = (
-            <Button
-                onClick={() => {
-                    unequipItem(data);
-                    onClose();
-                }}
-                icon="archive"
-                title={'Un-equip'}
-            />
+            <Button onClick={onKeyPress} icon="archive" title={'Un-equip'} />
         );
     } else if (data.type === 'spell') {
-        onKeyPress = () => setActiveSpell(data);
+        const unlocked = data.unlockLevel <= stats.level;
+        onKeyPress = () => {
+            if (player.spell && player.spell.name === data.name) {
+                setActiveSpell(null);
+            } else if (unlocked) {
+                setActiveSpell(data);
+            }
+        };
         ViewItemButtons = (
             <>
                 {player.spell && player.spell.name === data.name ? (
                     <Button
-                        onClick={() => setActiveSpell(null)}
+                        onClick={onKeyPress}
                         title={'Remove Active Spell'}
                     />
                 ) : (
                     <Button
-                        onClick={() => setActiveSpell(data)}
-                        title={'Set Active Spell'}
+                        extraClass={unlocked ? '' : 'selected'}
+                        onClick={onKeyPress}
+                        title={
+                            unlocked
+                                ? 'Set Active Spell'
+                                : `Unlocked at level ${data.unlockLevel}`
+                        }
                     />
                 )}
             </>

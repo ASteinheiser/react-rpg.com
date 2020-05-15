@@ -4,11 +4,18 @@ import EmptySlot from '../../../../../components/empty-slot';
 
 import './styles.scss';
 
-const SpellButton = ({ title, onClick, image, selected }) => {
+const SpellButton = ({
+    title,
+    onClick,
+    image,
+    active,
+    locked,
+    unlockLevel,
+}) => {
     return (
         <button
             className={`spellbook-button__container white-border ${
-                selected ? 'selected' : ''
+                active ? 'active' : ''
             }`}
             onClick={onClick}
         >
@@ -25,9 +32,15 @@ const SpellButton = ({ title, onClick, image, selected }) => {
             )}
 
             <span>{title}</span>
-            {selected && (
-                <div className="active">
-                    <span>Active Spell</span>
+
+            {active && (
+                <div className="active-spell">
+                    <span>Active</span>
+                </div>
+            )}
+            {locked && (
+                <div className="locked">
+                    <span>Unlocked at level {unlockLevel}</span>
                 </div>
             )}
         </button>

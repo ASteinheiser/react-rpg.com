@@ -9,6 +9,8 @@ const Ghost = {
     exp: 200,
     type: 'ghost',
     sprite: GhostSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Ghost;

@@ -9,6 +9,8 @@ const Lich = {
     exp: 1000,
     type: 'lich',
     sprite: LichSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Lich;

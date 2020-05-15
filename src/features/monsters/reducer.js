@@ -18,6 +18,8 @@ const monstersReducer = (state = initialState, { type, payload }) => {
             newState.components[payload.map][payload.id].position =
                 payload.position;
 
+            newState.components[payload.map][payload.id].aiTurns -= 1;
+
             return newState;
 
         case 'DAMAGE_TO_MONSTER':
@@ -66,6 +68,14 @@ const monstersReducer = (state = initialState, { type, payload }) => {
             newState = _cloneDeep(state);
 
             newState.components[payload.map][payload.id].visible = false;
+            return newState;
+
+        case 'CHANGE_AI':
+            newState = _cloneDeep(state);
+
+            newState.components[payload.map][payload.id].ai = payload.ai;
+            newState.components[payload.map][payload.id].aiTurns =
+                payload.turns;
             return newState;
 
         case 'RESET':

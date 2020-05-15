@@ -12,6 +12,10 @@ const initialState = {
 const snackbarReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case 'DAMAGE_TO_MONSTER':
+            if (payload.from !== 'player') {
+                return state;
+            }
+
             return {
                 ...state,
                 message:

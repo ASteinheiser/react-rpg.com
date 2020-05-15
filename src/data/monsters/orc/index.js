@@ -9,6 +9,8 @@ const Orc = {
     exp: 40,
     type: 'orc',
     sprite: OrcSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Orc;

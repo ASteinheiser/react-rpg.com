@@ -9,6 +9,8 @@ const Dragon = {
     exp: 400,
     type: 'dragon',
     sprite: DragonSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Dragon;

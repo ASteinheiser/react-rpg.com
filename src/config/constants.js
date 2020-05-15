@@ -76,6 +76,13 @@ export const ESC_KEY = 27;
 
 // If the player is unarmed, we need them to still be able to attack
 export const UNARMED_DAMAGE = '1d4';
+export const FISTS = {
+    name: 'fists',
+    kind: 'melee',
+    range: 1,
+    damage: UNARMED_DAMAGE,
+    type: 'weapon',
+};
 
 export const PASSIVE_MANA_RESTORE_TURNS = 5;
 export const OUT_OF_COMBAT_RANGE = 4;
@@ -84,3 +91,10 @@ export const OUT_OF_COMBAT_RANGE = 4;
 export const MIN_PRICE_PERCENT = 0.1;
 export const MID_PRICE_PERCENT = 0.6;
 export const MAX_PRICE_PERCENT = 1.2;
+
+// The number of turns an AI change stays in effect
+export const AI_CHANGE_TURNS = 3;
+// Damage inflicted by poison every time it hits
+export const POISON_DAMAGE = '1d4';
+export const TURNS_FOR_POISON = 3;
+export const SHOCK_DAMAGE = '1d4';

@@ -116,23 +116,38 @@ const journalReducer = (state = initialState, { type, payload }) => {
         }
 
         case 'DAMAGE_TO_MONSTER': {
-            const { entity, damage } = payload;
+            const { entity, damage, from } = payload;
 
             newState = cloneDeep(state);
-            newState.entries.push({
-                key: uuidv4(),
-                entry:
-                    damage === 0 ? (
+
+            if (from === 'player') {
+                newState.entries.push({
+                    key: uuidv4(),
+                    entry:
+                        damage === 0 ? (
+                            <p key={uuidv4()}>
+                                You missed the {colourise(entity, 'type')}!
+                            </p>
+                        ) : (
+                            <p key={uuidv4()}>
+                                You dealt{' '}
+                                {colourise(damage, 'damage-to-monster')} damage
+                                to the {colourise(entity, 'type')}!
+                            </p>
+                        ),
+                });
+            } else {
+                newState.entries.push({
+                    key: uuidv4(),
+                    entry: (
                         <p key={uuidv4()}>
-                            You missed the {colourise(entity, 'type')}!
-                        </p>
-                    ) : (
-                        <p key={uuidv4()}>
-                            You dealt {colourise(damage, 'damage-to-monster')}{' '}
-                            damage to the {colourise(entity, 'type')}!
+                            The {colourise(entity, 'type')} took{' '}
+                            {colourise(damage, 'damage-to-monster')} damage from{' '}
+                            {colourise(from, 'damage-type')}!
                         </p>
                     ),
-            });
+                });
+            }
             return newState;
         }
 
@@ -179,6 +194,36 @@ const journalReducer = (state = initialState, { type, payload }) => {
             return newState;
         }
 
+        case 'CHANGE_AI': {
+            const { from, ai, entity } = payload;
+
+            newState = cloneDeep(state);
+
+            if (from !== 'normal') {
+                newState.entries.push({
+                    key: uuidv4(),
+                    entry: (
+                        <p key={uuidv4()}>
+                            The {colourise(entity, 'type')} stopped being{' '}
+                            {colourise(from, 'ai')}!
+                        </p>
+                    ),
+                });
+            } else {
+                newState.entries.push({
+                    key: uuidv4(),
+                    entry: (
+                        <p key={uuidv4()}>
+                            The {colourise(entity, 'type')} was{' '}
+                            {colourise(ai, 'ai')}!
+                        </p>
+                    ),
+                });
+            }
+
+            return newState;
+        }
+
         case 'GET_ITEM': {
             const { name } = payload;
 
@@ -200,7 +245,7 @@ const journalReducer = (state = initialState, { type, payload }) => {
                 key: uuidv4(),
                 entry: (
                     <p key={uuidv4()}>
-                        You have gained {colourise(payload, 'experience')}{' '}
+                        You gained {colourise(payload, 'experience')}{' '}
                         experience!
                     </p>
                 ),
@@ -215,7 +260,7 @@ const journalReducer = (state = initialState, { type, payload }) => {
                 key: uuidv4(),
                 entry: (
                     <p key={uuidv4()}>
-                        You have gained {colourise(payload, 'gold')} gold!
+                        You gained {colourise(payload, 'gold')} gold!
                     </p>
                 ),
             });

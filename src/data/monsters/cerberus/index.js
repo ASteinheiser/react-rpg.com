@@ -9,6 +9,8 @@ const Cerberus = {
     exp: 1000,
     type: 'cerberus',
     sprite: CerberusSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Cerberus;

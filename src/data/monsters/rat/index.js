@@ -9,6 +9,8 @@ const Rat = {
     exp: 8,
     type: 'rat',
     sprite: RatSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Rat;

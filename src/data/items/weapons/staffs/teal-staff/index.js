@@ -4,10 +4,11 @@ import TealStaffImg from './teal-staff.png';
 const TealStaff = {
     name: 'Teal Staff',
     type: 'weapon',
+    kind: 'magic',
     effect: {
         mana: 7,
     },
-    range: 'melee',
+    range: 1,
     damage: '1d4 + 3',
     image: TealStaffImg,
     value: 45,

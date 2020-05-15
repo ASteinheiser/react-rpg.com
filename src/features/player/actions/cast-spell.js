@@ -91,6 +91,7 @@ export default function castSpell() {
                         id: currMonster.id,
                         map: currentMap,
                         entity: currMonster.type,
+                        from: 'player',
                     },
                 });
 
@@ -124,6 +125,40 @@ export default function castSpell() {
                             y: monsterPos[1] / SPRITE_SIZE,
                         },
                     });
+                } else {
+                    if (spell.effects && spell.effects.changeAI) {
+                        const { to, turns, proc } = spell.effects.changeAI;
+
+                        // If we have a probabilty to hit, then use that to check if we do
+                        if (proc) {
+                            if (proc()) {
+                                dispatch({
+                                    type: 'CHANGE_AI',
+                                    payload: {
+                                        from: currMonster.ai,
+                                        ai: to,
+                                        turns,
+                                        id: currMonster.id,
+                                        map: currentMap,
+                                        entity: currMonster.type,
+                                    },
+                                });
+                            }
+                        } else {
+                            // Otherwise, just set the AI to whatever it is
+                            dispatch({
+                                type: 'CHANGE_AI',
+                                payload: {
+                                    from: currMonster.ai,
+                                    ai: to,
+                                    turns,
+                                    id: currMonster.id,
+                                    map: currentMap,
+                                    entity: currMonster.type,
+                                },
+                            });
+                        }
+                    }
                 }
 
                 // take a turn if the player attacked something

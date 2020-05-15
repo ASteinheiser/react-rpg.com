@@ -15,6 +15,7 @@ const Mend = {
     image: MendImage,
     sprite: MendSprite,
     description: 'Mend the wounds you got fighting those big bad enemies',
+    unlockLevel: 1,
 };
 
 export default Mend;

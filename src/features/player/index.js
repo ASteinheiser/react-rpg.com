@@ -19,7 +19,7 @@ import PlayerArmour from './assets/player-armour.png';
 import PlayerClothes from './assets/player-clothes.png';
 import PlayerOutline from './assets/player-outline.png';
 
-import { ANIMATION_SPEED, SPRITE_SIZE } from '../../config/constants';
+import { ANIMATION_SPEED, SPRITE_SIZE, FISTS } from '../../config/constants';
 
 import './styles.scss';
 
@@ -341,7 +341,7 @@ class Player extends Component {
                 );
             }
 
-            const weapon = this.props.stats.equippedItems.weapon;
+            const weapon = this.props.stats.equippedItems.weapon || FISTS;
 
             // animate the sword slash
             this.setState({

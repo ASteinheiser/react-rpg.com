@@ -9,6 +9,8 @@ const Wolf = {
     exp: 22,
     type: 'wolf',
     sprite: WolfSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Wolf;

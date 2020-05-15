@@ -9,6 +9,8 @@ const Warlock = {
     exp: 320,
     type: 'warlock',
     sprite: WarlockSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Warlock;

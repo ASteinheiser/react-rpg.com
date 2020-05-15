@@ -9,6 +9,8 @@ const Imp = {
     exp: 150,
     type: 'imp',
     sprite: ImpSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Imp;

@@ -7,9 +7,11 @@ const StatsItem = ({ stats }) => {
 
     function getColor(name) {
         switch (name) {
+            case 'DMG over time':
             case 'damage':
                 return 'light-red';
-            case 'range':
+            case 'effect':
+            case 'damage range':
             case 'defence':
                 return 'purple';
             case 'hp':
@@ -18,6 +20,7 @@ const StatsItem = ({ stats }) => {
             case 'mana cost':
             case 'mana':
                 return 'blue';
+            case 'chance':
             case 'slots':
             case 'VS. dragon':
             case 'VS. lich':
@@ -29,18 +32,9 @@ const StatsItem = ({ stats }) => {
 
     if (name === 'description') {
         return (
-            <>
-                <div
-                    className="flex-row stats-item__container"
-                    style={{ paddingTop: '20px' }}
-                >
-                    <span>{name}:</span>
-                </div>
-
-                <span className="flex-row stats-item__description">
-                    {stats.value}
-                </span>
-            </>
+            <span className="flex-row stats-item__description">
+                "{stats.value}"
+            </span>
         );
     }
 

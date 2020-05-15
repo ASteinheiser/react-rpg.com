@@ -15,6 +15,7 @@ const Fireball = {
     image: FireballImage,
     sprite: FireballSprite,
     description: 'Throw a ball of fire at the enemy (or a wall, your choice)',
+    unlockLevel: 3,
 };
 
 export default Fireball;

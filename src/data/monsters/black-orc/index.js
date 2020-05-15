@@ -9,6 +9,8 @@ const BlackOrc = {
     exp: 280,
     type: 'blackOrc',
     sprite: BlackOrcSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default BlackOrc;

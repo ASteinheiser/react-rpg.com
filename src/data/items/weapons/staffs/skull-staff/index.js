@@ -4,10 +4,11 @@ import SkullStaffImg from './skull-staff.png';
 const SkullStaff = {
     name: 'Steel Staff',
     type: 'weapon',
+    kind: 'magic',
     effect: {
         mana: 9,
     },
-    range: 'melee',
+    range: 1,
     damage: '1d4 + 4',
     image: SkullStaffImg,
     value: 55,

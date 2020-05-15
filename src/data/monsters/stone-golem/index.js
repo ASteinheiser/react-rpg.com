@@ -9,6 +9,8 @@ const StoneGolem = {
     exp: 60,
     type: 'stone-golem',
     sprite: GolemSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default StoneGolem;

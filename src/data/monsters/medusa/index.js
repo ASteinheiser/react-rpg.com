@@ -9,6 +9,8 @@ const Medusa = {
     exp: 320,
     type: 'medusa',
     sprite: MedusaSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Medusa;

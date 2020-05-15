@@ -9,6 +9,8 @@ const Goblin = {
     exp: 25,
     type: 'goblin',
     sprite: GoblinSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Goblin;

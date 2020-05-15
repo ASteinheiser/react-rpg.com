@@ -9,6 +9,8 @@ const Bat = {
     exp: 16,
     type: 'bat',
     sprite: BatSprite,
+    ai: 'normal',
+    aiTurns: 0,
 };
 
 export default Bat;

@@ -10,7 +10,7 @@ import ViewItem from '../../../../components/view-item';
 
 import './styles.scss';
 
-const SpellbookDialog = ({ player, toggleSpellbookDialog }) => {
+const SpellbookDialog = ({ player, stats, toggleSpellbookDialog }) => {
     const [viewSpell, setViewSpell] = useState(false);
 
     return (
@@ -21,17 +21,19 @@ const SpellbookDialog = ({ player, toggleSpellbookDialog }) => {
                 onClose={() => setViewSpell(false)}
             />
             <span className="spellbook-dialog__title">{'Spellbook'}</span>
-            <div className="spellbook_dialog__container">
+            <div className="spellbook-dialog__container">
                 {spells.map(spell => (
                     <div key={spell.name} className="spellbook-spell">
                         <SpellButtom
                             title={spell.name}
                             onClick={() => setViewSpell(spell)}
                             image={spell.image}
-                            selected={
+                            active={
                                 player.spell !== null &&
                                 player.spell.name === spell.name
                             }
+                            locked={stats.level < spell.unlockLevel}
+                            unlockLevel={spell.unlockLevel}
                         />
                     </div>
                 ))}
@@ -40,7 +42,7 @@ const SpellbookDialog = ({ player, toggleSpellbookDialog }) => {
     );
 };
 
-const mapStateToProps = ({ player }) => ({ player });
+const mapStateToProps = ({ player, stats }) => ({ player, stats });
 const actions = { toggleSpellbookDialog };
 
 export default connect(mapStateToProps, actions)(SpellbookDialog);
