@@ -55,7 +55,7 @@ export const LEVEL_UP_ABILITY_POINTS = 2;
 export const BASE_HEALTH = 10;
 export const BASE_MANA = 5;
 // Base health/mana level up values
-export const MIN_HEALTH_BONUS = 1;
+export const MIN_HEALTH_BONUS = 2;
 export const MIN_MANA_BONUS = 5;
 // Set macros for key codes
 export const UP_KEY = 38;
