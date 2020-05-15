@@ -17,7 +17,7 @@ _Roll For Reaction_ is an open-source fork of [react-rpg](https://github.com/ASt
 | ![check][checkmark] DnD Ability Scores for Player | ![check][checkmark] UI/UX Improvements                | ![cross][cross] Particle Effects          |
 | ![check][checkmark] DnD Classes and Races         | ![cross][cross] Tutorial                              | ![cross][cross] Class-specific Abilities  |
 | ![check][checkmark] Dice-based Combat             | ![check][checkmark] Save/Load System                  | ![cross][cross] Party System              |
-| ![cross][cross] New Maps/Levels                   | ![check][checkmark] New Enemies                           | ![cross][cross] Additional Game Modes     |
+| ![check][checkmark] New Maps/Levels                   | ![check][checkmark] New Enemies                           | ![cross][cross] Additional Game Modes     |
 | ![check][checkmark] Character Creation            | ![check][checkmark] Customisable Outfit Colour        |                                           |
 | ![check][checkmark] Additional Items in Shop      | ![cross][cross] Diversity in Enemy Attacks            |                                           |
 | ![check][checkmark] Spellcasting System           |                                                       |                                           |

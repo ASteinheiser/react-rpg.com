@@ -5,7 +5,7 @@ import { SPRITE_SIZE } from '../../config/constants';
 
 import './styles.scss';
 
-const MapPadding = ({ tileType, tiles, sightBox }) => {
+const MapPadding = ({ tileType, wallType, tiles, sightBox }) => {
     const PaddingTiles = {};
 
     Object.keys(tiles).forEach(direction => {
@@ -20,6 +20,7 @@ const MapPadding = ({ tileType, tiles, sightBox }) => {
                         return (
                             <BoundaryTile
                                 tileType={tileType}
+                                wallType={wallType}
                                 variation={rowTile.variation}
                                 explored={rowTile.explored}
                                 sightBox={sightBox}
@@ -49,6 +50,7 @@ const MapPadding = ({ tileType, tiles, sightBox }) => {
 
 const BoundaryTile = ({
     tileType,
+    wallType,
     variation,
     explored,
     sightBox,
@@ -58,7 +60,8 @@ const BoundaryTile = ({
     // Load the tile directly from the public folder
     let tilesrc = `${process.env.PUBLIC_URL}/tiles/${getTileSprite(
         tileType,
-        variation
+        variation,
+        wallType
     )}.png`;
 
     if (sightBox) {

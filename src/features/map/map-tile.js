@@ -3,12 +3,13 @@ import React from 'react';
 import Flame from '../../components/flame';
 import { SPRITE_SIZE } from '../../config/constants';
 
-const MapTile = ({ tile, index, sightBox }) => {
+const MapTile = ({ tile, wallType, index, sightBox }) => {
     let inSight = false;
     // Load the tile directly from the public folder
     let tilesrc = `${process.env.PUBLIC_URL}/tiles/${getTileSprite(
         tile.value,
-        tile.variation
+        tile.variation,
+        wallType
     )}.png`;
     // if you need to render the sightBox
     if (sightBox) {
@@ -22,7 +23,7 @@ const MapTile = ({ tile, index, sightBox }) => {
         });
     }
     // case for rendering animated flame tile
-    if (tile.value === 20) {
+    if (tile.value === 6) {
         return (
             <GroundTile variation={tile.variation}>
                 <Flame position={index}>
@@ -47,7 +48,7 @@ const MapTile = ({ tile, index, sightBox }) => {
     );
 };
 
-export function getTileSprite(type, variation) {
+export function getTileSprite(type, variation, wallType) {
     switch (type) {
         case -2:
             return 'chest-open';
@@ -62,13 +63,9 @@ export function getTileSprite(type, variation) {
         case 4:
             return 'chest';
         case 5:
-            return `brick-wall-${variation}`;
-        case 6:
-            return `ornate-wall-${variation}`;
-        case 7:
-            return `blue-wall-${variation}`;
-        case 8:
-            return `skull-wall-${variation}`;
+            return `walls/${wallType}/${wallType}-${variation}`;
+        // case 6:
+        // fire
         case 9:
             return 'shop';
         case 10:

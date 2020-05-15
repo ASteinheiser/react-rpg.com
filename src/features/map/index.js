@@ -22,12 +22,13 @@ const GameMap = ({ map, world }) => {
         map = { ...map, ...randomMaps[floorNum - 1] };
     }
 
-    const wallType = getWallType(map.tiles);
+    const tileType = getWallType(map.tiles);
 
     return (
         <div style={mapStyle}>
             <MapPadding
-                tileType={wallType}
+                tileType={tileType}
+                wallType={map.wallType}
                 tiles={map.paddingTiles}
                 sightBox={map.paddingSightBox}
             />
@@ -36,6 +37,7 @@ const GameMap = ({ map, world }) => {
                 return (
                     <MapRow
                         tiles={row}
+                        wallType={map.wallType}
                         index={index}
                         sightBox={map.sightBox}
                         key={JSON.stringify(row) + index}
@@ -53,6 +55,7 @@ const MapRow = props => {
                 return (
                     <MapTile
                         tile={tile}
+                        wallType={props.wallType}
                         index={[index, props.index]}
                         sightBox={props.sightBox}
                         key={JSON.stringify(tile) + index}
@@ -66,11 +69,7 @@ const MapRow = props => {
 function getWallType(tiles) {
     for (let i = 0; i < tiles.length; i++) {
         for (let j = 0; j < tiles[i].length; j++) {
-            if (
-                typeof (tiles[i][j] === 'number') &&
-                tiles[i][j].value >= 5 &&
-                tiles[i][j].value <= 8
-            )
+            if (typeof (tiles[i][j] === 'number') && tiles[i][j].value === 5)
                 return tiles[i][j].value;
         }
     }

@@ -20,14 +20,14 @@ const purchaseOnlyT2 = [
 
 const purchaseOnlyT3 = [
     ...purchaseOnlyT2,
-    items.potions.MightyManaPotion,
+    items.potions.MightyMpPotion,
     items.potions.MightyHpPotion,
 ];
 
 const purchaseOnlyT4 = [
     ...purchaseOnlyT3,
     items.potions.DivineHpPotion,
-    items.potions.DivineManaPotion,
+    items.potions.DivineMpPotion,
 ];
 
 // returns the correct tier of items depending on player level

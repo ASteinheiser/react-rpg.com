@@ -46,7 +46,7 @@ const GameWin = ({ monsters, resetGameState, closeDialog }) => {
                 <>
                     <span className="flex-column game-win__text">
                         {
-                            'The old spirit speaks: "Greetings warrior! I cannot thank you enough for freeing me from the evil spirits. Now I may finally rest..."'
+                            'The old sword speaks: "Greetings warrior! I cannot thank you enough for freeing me from the evil spirits. Now I may finally rest..."'
                         }
                     </span>
 
