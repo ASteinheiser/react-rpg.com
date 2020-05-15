@@ -46,7 +46,9 @@ export const STARTING_ABILITY_SCORE_VALUE = 8;
 // The default value of an ability score with race bonus
 export const RACE_ABILITY_BONUS = 2;
 // The starting points a player can allocate
-export const STARTING_ABILITY_POINTS = 12;
+export const STARTING_ABILITY_POINTS = 8;
+// The number of levels a player needs to level up to gain ability points
+export const LEVELS_BETWEEN_ABILITY_POINT_GAIN = 3;
 // The number of ability points the player gets to allocate on levelling up
 export const LEVEL_UP_ABILITY_POINTS = 2;
 // Base player health/mana values
