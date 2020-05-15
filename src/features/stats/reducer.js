@@ -158,7 +158,10 @@ const statsReducer = (state = initialState, { type, payload }) => {
             // see what type of item it is
             switch (item.type) {
                 case 'weapon':
-                    if (newState.equippedItems.weapon.effect) {
+                    if (
+                        newState.equippedItems.weapon &&
+                        newState.equippedItems.weapon.effect
+                    ) {
                         removeEffects(newState.equippedItems.weapon, newState);
                     }
                     newState.equippedItems.weapon = item;
@@ -167,7 +170,8 @@ const statsReducer = (state = initialState, { type, payload }) => {
                 case 'armor::body':
                     if (
                         newState.equippedItems.armor &&
-                        newState.equippedItems.armor.body
+                        newState.equippedItems.armor.body &&
+                        newState.equippedItems.armor.body.effect
                     ) {
                         removeEffects(
                             newState.equippedItems.armor.body,
@@ -186,7 +190,8 @@ const statsReducer = (state = initialState, { type, payload }) => {
                     // if there's already armor
                     if (
                         newState.equippedItems.armor &&
-                        newState.equippedItems.armor.helmet
+                        newState.equippedItems.armor.helmet &&
+                        newState.equippedItems.armor.helmet.effect
                     ) {
                         removeEffects(
                             newState.equippedItems.armor.helmet,
@@ -204,7 +209,8 @@ const statsReducer = (state = initialState, { type, payload }) => {
                     // if there's already armor
                     if (
                         newState.equippedItems.armor &&
-                        newState.equippedItems.armor.pants
+                        newState.equippedItems.armor.pants &&
+                        newState.equippedItems.armor.pants.effect
                     ) {
                         removeEffects(
                             newState.equippedItems.armor.pants,
@@ -222,7 +228,8 @@ const statsReducer = (state = initialState, { type, payload }) => {
                     // if there's already armor
                     if (
                         newState.equippedItems.armor &&
-                        newState.equippedItems.armor.gloves
+                        newState.equippedItems.armor.gloves &&
+                        newState.equippedItems.armor.gloves.effect
                     ) {
                         removeEffects(
                             newState.equippedItems.armor.gloves,
@@ -240,7 +247,8 @@ const statsReducer = (state = initialState, { type, payload }) => {
                     // if there's already armor
                     if (
                         newState.equippedItems.armor &&
-                        newState.equippedItems.armor.boots
+                        newState.equippedItems.armor.boots &&
+                        newState.equippedItems.armor.boots.effect
                     ) {
                         removeEffects(
                             newState.equippedItems.armor.boots,
