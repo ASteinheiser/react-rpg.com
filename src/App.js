@@ -11,6 +11,7 @@ import World from './features/world';
 import Viewport from './components/viewport';
 import useGameViewportScaling from './features/app-state/actions/use-game-viewport-scaling';
 import Spellbook from './features/spellbook';
+import Tutorial from './features/tutorial';
 
 import JournalSide from './components/journal-side';
 
@@ -93,6 +94,7 @@ const App = ({ appState, world, dialog }) => {
                         <Viewport>
                             <World />
                             <DialogManager />
+                            <Tutorial />
                             <Spellbook />
 
                             {/* Show the floor counter when playing endless mode */}

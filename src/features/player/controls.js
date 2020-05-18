@@ -12,6 +12,7 @@ import abilityScoreDialog from '../dialog-manager/actions/ability-score-dialog';
 import toggleJournal from '../dialog-manager/actions/toggle-journal';
 import toggleSettings from '../dialog-manager/actions/toggle-settings';
 import toggleSpellbookDialog from '../dialog-manager/actions/toggle-spellbook-dialog';
+import toggleTutorial from '../dialog-manager/actions/toggle-tutorial';
 
 import {
     ANIMATION_SPEED,
@@ -20,6 +21,7 @@ import {
     A_KEY,
     D_KEY,
     U_KEY,
+    H_KEY,
     I_KEY,
     J_KEY,
     C_KEY,
@@ -46,6 +48,7 @@ const Controls = ({
     abilityScoreDialog,
     toggleSettings,
     toggleSpellbookDialog,
+    toggleTutorial,
 }) => {
     const _handleKeyDown = _debounce(
         event => {
@@ -182,6 +185,8 @@ const Controls = ({
                 return toggleSettings();
             case B_KEY:
                 return toggleSpellbookDialog();
+            case H_KEY:
+                return toggleTutorial();
             default:
         }
     }
@@ -199,6 +204,7 @@ const actions = {
     abilityScoreDialog,
     toggleSettings,
     toggleSpellbookDialog,
+    toggleTutorial,
 };
 
 export default connect(null, actions)(Controls);

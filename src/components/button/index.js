@@ -6,6 +6,7 @@ import './styles.scss';
 
 const Button = ({
     icon,
+    iconRight,
     title,
     iconStyle,
     style,
@@ -58,6 +59,15 @@ const Button = ({
             )}
 
             <span>{title}</span>
+
+            {iconRight && (
+                <i
+                    className={`fa fa-${iconRight} button__icon-right`}
+                    style={iconStyle || {}}
+                >
+                    {indicator && <div className="button__indicator" />}
+                </i>
+            )}
         </button>
     );
 };

@@ -1,7 +1,7 @@
 .ability-score__container {
     flex: 1;
     justify-content: space-between;
-    // padding: 6px;
+    align-items: center;
 }
 
 .ability-score__text {
@@ -33,4 +33,39 @@
     float: right;
     text-align: right;
     vertical-align: auto;
+}
+
+.ability-score__tooltip {
+    float: right;
+    justify-content: center;
+    margin-top: 2px;
+
+    .ability-score__tooltip-text {
+        font-family: Montserrat;
+        font-size: 14px;
+        text-transform: none;
+        font-weight: 400;
+        line-height: 1;
+        visibility: hidden;
+
+        padding: 2px;
+
+        width: 120px;
+
+        background-color: var(--dark-gray);
+        border: 0.5px var(--gray) solid;
+
+        color: var(--gray);
+
+        /* Position the tooltip */
+
+        position: absolute;
+        right: 2.75rem;
+
+        z-index: 1;
+    }
+}
+
+.ability-score__tooltip:hover .ability-score__tooltip-text {
+    visibility: visible;
 }

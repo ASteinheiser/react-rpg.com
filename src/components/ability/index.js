@@ -5,11 +5,24 @@ import { MAX_ABILITY_SCORE } from '../../config/constants';
 
 import './styles.scss';
 
-const Ability = ({ name, value, minValue, increment, decrement, points }) => {
+const Ability = ({
+    name,
+    value,
+    minValue,
+    increment,
+    decrement,
+    points,
+    tooltip,
+}) => {
     return (
         <>
             <div className="ability-score__container">
                 <span className="ability-score__text">{name}:</span>
+                <i className="fa fa-question-circle ability-score__tooltip">
+                    <span className="ability-score__tooltip-text">
+                        {tooltip}
+                    </span>
+                </i>
                 <div
                     className="ability-score__button"
                     style={{

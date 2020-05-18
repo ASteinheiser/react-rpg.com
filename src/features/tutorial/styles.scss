@@ -1,7 +1,7 @@
-.spellbook__container {
+.tutorial__container {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 45px;
     width: 40px;
     height: 40px;
     padding: 4px;
@@ -14,8 +14,4 @@
     i {
         padding: 0 !important;
     }
-}
-
-.spell {
-    margin-top: 5px;
 }

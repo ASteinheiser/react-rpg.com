@@ -68,6 +68,7 @@ export const A_KEY = 65;
 export const D_KEY = 68;
 export const E_KEY = 69;
 export const U_KEY = 85;
+export const H_KEY = 72;
 export const I_KEY = 73;
 export const J_KEY = 74;
 export const C_KEY = 67;

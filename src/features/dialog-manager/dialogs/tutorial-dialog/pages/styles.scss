@@ -1,0 +1,82 @@
+.tutorial-page__title {
+    position: relative;
+    top: 5px;
+    width: 20rem;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    padding-left: 30px;
+}
+
+.tutorial-page__movement {
+    position: relative;
+    margin-top: 10px;
+    padding: 0px 5px 5px 5px;
+    text-transform: none;
+}
+
+.tutorial-page__item {
+    position: relative;
+    margin-top: 10px;
+    padding: 0px 5px 5px 5px;
+    text-transform: none;
+}
+
+.tutorial-page__item-locations {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.tutorial-page__item-types {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.tutorial-page__combat {
+    position: relative;
+    padding: 15px 5px 5px 5px;
+    text-transform: none;
+}
+
+.tutorial-page__combat-buttons {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.tutorial-page__ability {
+    flex: 1;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px 5px 5px 5px;
+    line-height: 0.75;
+    text-transform: none;
+}
+
+.tutorial-page__ability-text {
+    font-size: 15px;
+}
+.tutorial-page__ability-description {
+    display: inline-block;
+    line-height: 1;
+    overflow-wrap: break-word;
+    margin-top: 1px;
+    margin-left: 10px;
+    font-size: 15px;
+    text-align: left;
+}
+
+.tutorial-page__spell {
+    position: relative;
+    padding: 10px 5px 5px 5px;
+    text-transform: none;
+}
+
+.tutorial-page__hotkeys {
+    margin: auto;
+    position: relative;
+    padding: 10px 5px 5px 5px;
+    text-transform: none;
+}
