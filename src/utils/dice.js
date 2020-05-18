@@ -14,7 +14,7 @@ const biased = to => {
 const ops = {
     '+': {
         precedence: 1,
-        op: (left, right, _) => {
+        op: (left, right) => {
             if (Array.isArray(left)) {
                 left = left.reduce((sum, value) => sum + value);
             }
@@ -26,7 +26,7 @@ const ops = {
     },
     '-': {
         precedence: 1,
-        op: (left, right, _) => {
+        op: (left, right) => {
             if (Array.isArray(left)) {
                 left = left.reduce((sum, value) => sum + value);
             }
@@ -38,7 +38,7 @@ const ops = {
     },
     '*': {
         precedence: 2,
-        op: (left, right, _) => {
+        op: (left, right) => {
             if (Array.isArray(left)) {
                 left = left.reduce((sum, value) => sum + value);
             }
@@ -50,7 +50,7 @@ const ops = {
     },
     '/': {
         precedence: 2,
-        op: (left, right, _) => {
+        op: (left, right) => {
             if (Array.isArray(left)) {
                 left = left.reduce((sum, value) => sum + value);
             }
@@ -62,24 +62,24 @@ const ops = {
     },
     l: {
         precedence: 3,
-        op: (left, right, _) => {
+        op: (left, right) => {
             // Remove the lowest `right` number of rolls
             return left.sort().splice(right);
         },
     },
     h: {
         precedence: 3,
-        op: (left, right, _) => {
+        op: (left, right) => {
             // Select the highest `right` number of rolls
             return left.sort((l, r) => r - l).splice(right);
         },
     },
     d: {
         precedence: 4,
-        op: (left, right, die) => {
-            let mul = parseInt(left);
-            let sides = parseInt(right);
-            let rolls = [];
+        op: (left, right, criticalHit, die) => {
+            const mul = parseInt(left) * criticalHit ? 2 : 1;
+            const sides = parseInt(right);
+            const rolls = [];
             for (let i = 0; i < mul; i++) {
                 rolls.push(die(sides));
             }
@@ -185,14 +185,14 @@ const yard = infix => {
 };
 
 // Evaluate a reverse polish notation (postfix) expression
-const rpn = (postfix, die) => {
+const rpn = (postfix, criticalHit, die) => {
     const evaluated = postfix
         .split(' ')
         .reduce((stack, token) => {
             if (token in ops) {
                 let right = stack.pop();
                 let left = stack.pop();
-                stack.push(ops[token].op(left, right, die));
+                stack.push(ops[token].op(left, right, criticalHit, die));
             } else {
                 stack.push(token);
             }
@@ -206,7 +206,8 @@ const rpn = (postfix, die) => {
         : evaluated;
 };
 
-const parse = (notation, dice) => rpn(yard(lex(notation)), dice);
+const parse = (notation, criticalHit, dice) =>
+    rpn(yard(lex(notation)), criticalHit, dice);
 
 export const calculateDamageRange = notation => {
     const min = parse(notation, biased('min'));
@@ -215,6 +216,7 @@ export const calculateDamageRange = notation => {
 };
 
 // Calculates damage to deal based on Dice Notation (https://en.wikipedia.org/wiki/Dice_notation)
-export const calculateDamage = notation => parse(notation, unbiased);
+export const calculateDamage = (notation, criticalHit) =>
+    parse(notation, criticalHit, unbiased);
 
 export const d20 = () => Math.floor(Math.random() * 20) + 1;

@@ -106,7 +106,8 @@ export default function attackMonster() {
                         : 'intelligence';
 
                 const modifier = calculateModifier(stats.abilities[ability]);
-                const attackValue = d20() + modifier;
+                const roll = d20();
+                const attackValue = roll + modifier;
 
                 if (weapon.projectile) {
                     dispatch({
@@ -118,21 +119,34 @@ export default function attackMonster() {
                     });
                 }
 
-                dispatch({
-                    type: 'ABILITY_CHECK',
-                    payload: {
-                        notation: 'd20 + ' + modifier,
-                        roll: attackValue,
-                        ability,
-                        check: currMonster.defence,
-                        entity: currMonster.type,
-                        against: 'defence',
-                    },
-                });
+                if (roll === 20) {
+                    dispatch({
+                        type: 'CRITICAL_HIT',
+                        payload: {
+                            notation: 'd20 + ' + modifier,
+                            roll: roll,
+                            ability,
+                        },
+                    });
+                } else {
+                    dispatch({
+                        type: 'ABILITY_CHECK',
+                        payload: {
+                            notation: 'd20 + ' + modifier,
+                            roll: attackValue,
+                            ability,
+                            check: currMonster.defence,
+                            entity: currMonster.type,
+                            against: 'defence',
+                        },
+                    });
+                }
 
                 const damage =
-                    attackValue >= currMonster.defence
-                        ? calculateDamage(weapon.damage)
+                    roll === 20
+                        ? calculateDamage(weapon.damage, true)
+                        : attackValue >= currMonster.defence
+                        ? calculateDamage(weapon.damage, false)
                         : 0;
 
                 if (damage > 0) {
