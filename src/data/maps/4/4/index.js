@@ -45,7 +45,7 @@ const stairs = {
 const message = {
     title:
         '<> looked down a path that looked strangely familiar. Many people had gotten lost in the jungle before.',
-    body: `'Let's just hope I don't get lost in here,' <> thought, wishing they'd brought some breadcrumbs.`,
+    body: `"Let's just hope I don't get lost in here," <> thought, wishing they'd brought some breadcrumbs.`,
 };
 
 export default {

@@ -52,7 +52,7 @@ const stairs = {
 const message = {
     title:
         'The walls become cracked and <> frowned at the green light pouring out from between the cracks.',
-    body: `'What was the dungeon changing into?', <> wondered.`,
+    body: `"What was the dungeon changing into?", <> wondered.`,
 };
 
 export default {

@@ -59,7 +59,7 @@ const stairs = {
 };
 
 const message = {
-    title: '<> was faced with a choice.  A short cut lied to their right.',
+    title: '<> was faced with a choice.  A shortcut lay to their right.',
     body:
         'The sounds of many hungry foes echoed down the corridor, making the shortcut look more promising.  But what treasures might they miss if they took it?',
 };

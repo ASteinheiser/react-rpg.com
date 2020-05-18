@@ -43,8 +43,8 @@ const stairs = {
 };
 
 const message = {
-    title: `<> thought back to all the monsters they've slain.`,
-    body: `'I hope someone else is cleaning up the blood, cause I'm not getting paid enough to do that...'`,
+    title: `<> thought back to all the monsters they'd slain.`,
+    body: `"I hope someone else is cleaning up the blood, cause I'm not getting paid enough to do that..."`,
 };
 
 export default {

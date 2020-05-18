@@ -44,7 +44,7 @@ const stairs = {
 
 const message = {
     title: 'Choices faced <> every which way.',
-    body: `Left or right?  Up or Down? To be or not to be?`,
+    body: `Left or right?  Up or down? To be or not to be?`,
 };
 
 export default {

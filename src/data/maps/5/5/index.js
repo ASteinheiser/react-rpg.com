@@ -119,7 +119,7 @@ const stairs = {
 
 const message = {
     title:
-        'The final batlle.  <> felt the magic sword resonating where it rested just beyond the final swarm of monsters.',
+        'The final battle.  <> felt the magic sword resonating where it rested just beyond the final swarm of monsters.',
     body: `Every monster they had faced was here.  <> hadn't long to go now, one more battle and they would be triumphant.`,
 };
 
