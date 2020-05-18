@@ -3,6 +3,7 @@ import { calculateDamage } from '../../../utils/dice';
 export default function attackPlayer(attackValue, dice, type) {
     return (dispatch, getState) => {
         const { stats } = getState();
+        attackValue = calculateDamage(attackValue);
 
         const calculatedMonsterDamage =
             attackValue >= Math.max(stats.defence, 0)

@@ -3,7 +3,7 @@ import RatSprite from './rat.png';
 const Rat = {
     hp: 6,
     maxHp: 6,
-    attackValue: 2,
+    attackValue: '1d4',
     defence: 0,
     dice: '1d4',
     exp: 8,

@@ -50,7 +50,7 @@ const journalReducer = (state = initialState, { type, payload }) => {
                 entry: (
                     <p key={uuidv4()}>
                         You performed {aOrAn(ability)}{' '}
-                        {colourise(ability, 'ability')} check and rolled a{' '}
+                        {colourise(ability, 'ability')} check and rolled{' '}
                         {colourise(roll, 'score')}, which{' '}
                         {roll >= check ? 'succeeded' : 'failed'} against the{' '}
                         {colourise(against, 'ability')} value of{' '}
