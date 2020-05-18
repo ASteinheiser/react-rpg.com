@@ -6,10 +6,10 @@ const BrownStaff = {
     type: 'weapon',
     kind: 'magic',
     effect: {
-        mana: 3,
+        mana: 10,
     },
     range: 1,
-    damage: '1d4 + 1',
+    damage: '1d4+2',
     image: BrownStaffImg,
     value: 35,
 };

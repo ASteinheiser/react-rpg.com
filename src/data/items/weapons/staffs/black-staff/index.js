@@ -6,12 +6,12 @@ const BlackStaff = {
     type: 'weapon',
     kind: 'magic',
     effect: {
-        mana: 1,
+        mana: 5,
     },
     range: 1,
     damage: '1d4',
     image: BlackStaffImg,
-    value: 25,
+    value: 10,
 };
 
 export default BlackStaff;

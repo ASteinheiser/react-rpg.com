@@ -6,7 +6,7 @@ const BroadSword = {
     kind: 'melee',
     effect: {},
     range: 1,
-    damage: '2d8',
+    damage: '2d8 + 2',
     image: BroadSwordImg,
     value: 110,
 };

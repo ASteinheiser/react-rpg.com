@@ -18,7 +18,7 @@ const Boomerang = {
         sprite: BoomerangAnimated,
         information: 'threw a',
     },
-    value: 35,
+    value: 10,
 };
 
 export default Boomerang;

@@ -33,13 +33,13 @@ const purchaseOnlyT4 = [
 // returns the correct tier of items depending on player level
 export default function shopItems(level) {
     if (level < TIER_2) {
-        return [...randomItemsT1, ...purchaseOnlyT1];
+        return [...purchaseOnlyT1, ...randomItemsT1];
     }
     if (level < TIER_3) {
-        return [...randomItemsT2, ...purchaseOnlyT2];
+        return [...purchaseOnlyT2, ...randomItemsT2];
     }
     if (level < TIER_4) {
-        return [...randomItemsT3, ...purchaseOnlyT3];
+        return [...purchaseOnlyT3, ...randomItemsT3];
     }
-    return [...randomItemsT4, ...purchaseOnlyT4];
+    return [...purchaseOnlyT4, ...randomItemsT4];
 }

@@ -6,7 +6,7 @@ const SteelSword = {
     kind: 'melee',
     effect: {},
     range: 1,
-    damage: '1d8 + 2',
+    damage: '1d8 + 4',
     image: SteelSwordImg,
     value: 35,
 };

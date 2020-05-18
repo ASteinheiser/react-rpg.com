@@ -6,7 +6,7 @@ const RustySword = {
     kind: 'melee',
     effect: {},
     range: 1,
-    damage: '1d4 + 2',
+    damage: '1d4 + 4',
     image: RustySwordImg,
     value: 10,
 };

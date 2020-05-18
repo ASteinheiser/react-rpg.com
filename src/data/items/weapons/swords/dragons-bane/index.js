@@ -6,7 +6,7 @@ const DragonsBane = {
     kind: 'melee',
     effect: {},
     range: 1,
-    damage: '2d10 + 2',
+    damage: '3d10 + 6',
     bonus: 'dragon::2.5',
     image: DragonsBaneImg,
     value: 300,

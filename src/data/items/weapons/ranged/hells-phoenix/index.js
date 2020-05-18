@@ -3,13 +3,13 @@ import BowImg from './bow.png';
 import ArrowImg from './arrow.png';
 import { SIGHT_RADIUS } from '../../../../../config/constants';
 
-const Bow = {
-    name: 'Bow',
+const HellsPhoenix = {
+    name: "Hell's Pheonix",
     type: 'weapon',
     kind: 'ranged',
     effect: {},
     range: SIGHT_RADIUS,
-    damage: '2d10 + 2',
+    damage: '2d8',
     image: BowImg,
     projectile: {
         name: 'arrow',
@@ -18,7 +18,7 @@ const Bow = {
         sprite: ArrowImg,
         information: 'fired an',
     },
-    value: 300,
+    value: 110,
 };
 
-export default Bow;
+export default HellsPhoenix;

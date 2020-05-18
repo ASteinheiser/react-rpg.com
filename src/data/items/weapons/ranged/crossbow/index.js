@@ -3,13 +3,13 @@ import CrossbowImg from './crossbow.png';
 import BoltImg from './bolt.png';
 import { SIGHT_RADIUS } from '../../../../../config/constants';
 
-const Crossbow = {
-    name: 'Crossbow',
+const PhantasmCrossbow = {
+    name: 'Phantasm Crossbow',
     type: 'weapon',
     kind: 'ranged',
     effect: {},
     range: SIGHT_RADIUS,
-    damage: '4d8 + 4',
+    damage: '2d10 + 4',
     image: CrossbowImg,
     projectile: {
         name: 'bolt',
@@ -18,7 +18,7 @@ const Crossbow = {
         sprite: BoltImg,
         information: 'discharged a',
     },
-    value: 666,
+    value: 300,
 };
 
-export default Crossbow;
+export default PhantasmCrossbow;

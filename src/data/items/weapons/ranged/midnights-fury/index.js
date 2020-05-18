@@ -1,24 +1,24 @@
 // Credit: https://shikashiassets.itch.io/shikashis-fantasy-icons-pack
-import SlingshotImg from './slingshot.png';
-import StoneImg from './stone.png';
+import BowImg from './bow.png';
+import ArrowImg from './arrow.png';
 import { SIGHT_RADIUS } from '../../../../../config/constants';
 
-const Slingshot = {
-    name: 'Slingshot',
+const MidnightsFury = {
+    name: "Midnight's Fury",
     type: 'weapon',
     kind: 'ranged',
     effect: {},
     range: SIGHT_RADIUS,
-    damage: '1d8 + 2',
-    image: SlingshotImg,
+    damage: '3d10 + 4',
+    image: BowImg,
     projectile: {
-        name: 'stone',
+        name: 'arrow',
         target: 'enemy',
         size: { width: 40, height: 40, total: 560 },
-        sprite: StoneImg,
-        information: 'flung a',
+        sprite: ArrowImg,
+        information: 'fired an',
     },
-    value: 35,
+    value: 666,
 };
 
-export default Slingshot;
+export default MidnightsFury;

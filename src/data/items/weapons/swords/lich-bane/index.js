@@ -6,7 +6,7 @@ const LichBane = {
     kind: 'melee',
     effect: {},
     range: 1,
-    damage: '4d8 + 4',
+    damage: '2d10 + 6',
     bonus: 'lich::2',
     image: LichBaneImg,
     value: 666,

@@ -39,8 +39,9 @@ import TealStaff from './weapons/staffs/teal-staff';
 import SkullStaff from './weapons/staffs/skull-staff';
 import Boomerang from './weapons/ranged/boomerang';
 import Slingshot from './weapons/ranged/slingshot';
-import Bow from './weapons/ranged/bow';
-import Crossbow from './weapons/ranged/crossbow';
+import HellsPhoenix from './weapons/ranged/hells-phoenix';
+import PhantasmCrossbow from './weapons/ranged/crossbow';
+import MidnightsFury from './weapons/ranged/midnights-fury';
 import HpPotion from './potions/hp-potion';
 import GreatHpPotion from './potions/great-hp-potion';
 import MightyHpPotion from './potions/mighty-hp-potion';
@@ -53,17 +54,18 @@ import DivineMpPotion from './potions/divine-mp-potion';
 const items = {
     weapons: {
         swords: {
-            BroadSword,
             RustySword,
             SteelSword,
+            BroadSword,
             DragonsBane,
             LichBane,
         },
         ranged: {
             Boomerang,
             Slingshot,
-            Bow,
-            Crossbow,
+            HellsPhoenix,
+            PhantasmCrossbow,
+            MidnightsFury,
         },
         staffs: {
             BlackStaff,
@@ -133,8 +135,9 @@ export const randomItemsT1 = [
     LeatherPants,
     OldRing,
     BlackRobes,
-    BlackStaff,
-    Boomerang,
+    BrownRobes,
+    BrownStaff,
+    Slingshot,
 ];
 
 export const randomItemsT2 = [
@@ -145,11 +148,10 @@ export const randomItemsT2 = [
     IronHelm,
     IronGloves,
     IronPants,
-    BroadSword,
     AmethystRing,
-    BrownRobes,
-    BrownStaff,
-    Slingshot,
+    RedStaff,
+    RedRobes,
+    HellsPhoenix,
 ];
 
 export const randomItemsT3 = [
@@ -160,12 +162,10 @@ export const randomItemsT3 = [
     SteelHelm,
     SteelGloves,
     SteelPants,
-    RedRobes,
     TealRobes,
-    RedStaff,
     TealStaff,
-    Bow,
     DiamondRing,
+    PhantasmCrossbow,
 ];
 
 export const randomItemsT4 = [
@@ -178,7 +178,7 @@ export const randomItemsT4 = [
     MithrilPants,
     SkullRobes,
     SkullStaff,
-    Crossbow,
+    MidnightsFury,
 ];
 
 export default items;
