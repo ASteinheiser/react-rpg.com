@@ -36,7 +36,7 @@ const monsters = [
         position: [12, 10],
     },
     {
-        type: 'bat',
+        type: 'snake',
         position: [14, 12],
     },
 ];

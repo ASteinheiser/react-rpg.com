@@ -20,11 +20,11 @@ const wallType = 'green-brick';
 
 const monsters = [
     {
-        type: 'black-orc',
+        type: 'black orc',
         position: [1, 4],
     },
     {
-        type: 'black-orc',
+        type: 'pumpkin ghost',
         position: [11, 7],
     },
     {
@@ -32,7 +32,7 @@ const monsters = [
         position: [0, 8],
     },
     {
-        type: 'black-orc',
+        type: 'black orc',
         position: [7, 4],
     },
 ];

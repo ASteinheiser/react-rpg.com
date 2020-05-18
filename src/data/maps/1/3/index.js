@@ -24,15 +24,15 @@ const monsters = [
         position: [17, 11],
     },
     {
-        type: 'rat',
+        type: 'snake',
         position: [16, 10],
     },
     {
-        type: 'bat',
+        type: 'snake',
         position: [16, 8],
     },
     {
-        type: 'wolf',
+        type: 'bat',
         position: [6, 3],
     },
     {

@@ -20,15 +20,15 @@ const wallType = 'ornate';
 
 const monsters = [
     {
-        type: 'goblin',
+        type: 'water spirit',
         position: [1, 9],
     },
     {
-        type: 'orc',
+        type: 'water spirit',
         position: [10, 9],
     },
     {
-        type: 'orc',
+        type: 'goblin',
         position: [18, 9],
     },
 ];

@@ -32,7 +32,7 @@ const monsters = [
         position: [7, 7],
     },
     {
-        type: 'stone-golem',
+        type: 'stone golem',
         position: [6, 9],
     },
 ];

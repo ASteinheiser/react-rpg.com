@@ -3,7 +3,7 @@ import WolfSprite from './wolf.png';
 const Wolf = {
     hp: 10,
     maxHp: 10,
-    attackValue: 9,
+    attackValue: 8,
     defence: 1,
     dice: '1d4 + 1',
     exp: 22,

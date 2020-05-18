@@ -19,7 +19,7 @@ const tiles = [
 const wallType = 'purple-brick';
 const monsters = [
     {
-        type: 'medusa',
+        type: 'plantera',
         position: [2, 6],
     },
     {
@@ -27,7 +27,7 @@ const monsters = [
         position: [8, 6],
     },
     {
-        type: 'warlock',
+        type: 'black orc',
         position: [10, 6],
     },
     {

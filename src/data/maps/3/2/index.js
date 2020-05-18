@@ -20,11 +20,11 @@ const wallType = 'purple';
 
 const monsters = [
     {
-        type: 'imp',
+        type: 'fire spirit',
         position: [2, 2],
     },
     {
-        type: 'imp',
+        type: 'poison cloud',
         position: [8, 1],
     },
     {
@@ -36,7 +36,7 @@ const monsters = [
         position: [13, 7],
     },
     {
-        type: 'stone-golem',
+        type: 'poison cloud',
         position: [19, 7],
     },
 ];

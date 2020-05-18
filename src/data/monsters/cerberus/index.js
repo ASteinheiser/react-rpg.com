@@ -3,7 +3,7 @@ import CerberusSprite from './cerberus.png';
 const Cerberus = {
     hp: 100,
     maxHp: 100,
-    attackValue: 45,
+    attackValue: 48,
     defence: 12,
     dice: '3d20',
     exp: 1000,

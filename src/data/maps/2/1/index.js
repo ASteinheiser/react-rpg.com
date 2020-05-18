@@ -20,19 +20,19 @@ const wallType = 'blue';
 
 const monsters = [
     {
-        type: 'goblin',
+        type: 'fungi bulb',
         position: [4, 5],
     },
     {
-        type: 'orc',
+        type: 'gas cloud',
         position: [5, 7],
     },
     {
-        type: 'orc',
+        type: 'gas cloud',
         position: [5, 11],
     },
     {
-        type: 'ghost',
+        type: 'fungi bulb',
         position: [3, 8],
     },
 ];

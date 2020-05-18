@@ -21,59 +21,95 @@ const wallType = 'skull';
 const monsters = [
     {
         type: 'rat',
-        position: [8, 4],
+        position: [8, 6],
     },
     {
         type: 'bat',
-        position: [8, 11],
+        position: [9, 4],
+    },
+    {
+        type: 'snake',
+        position: [9, 8],
     },
     {
         type: 'wolf',
-        position: [10, 3],
+        position: [10, 10],
+    },
+    {
+        type: 'salamander',
+        position: [10, 7],
+    },
+    {
+        type: 'water spirit',
+        position: [10, 5],
     },
     {
         type: 'goblin',
-        position: [10, 9],
+        position: [10, 2],
     },
     {
-        type: 'orc',
-        position: [12, 4],
+        type: 'gas cloud',
+        position: [11, 3],
     },
     {
-        type: 'ghost',
-        position: [12, 11],
-    },
-    {
-        type: 'stone-golem',
-        position: [14, 3],
-    },
-    {
-        type: 'warlock',
-        position: [14, 9],
-    },
-    {
-        type: 'imp',
-        position: [16, 4],
-    },
-    {
-        type: 'medusa',
-        position: [16, 11],
-    },
-    {
-        type: 'black-orc',
-        position: [9, 6],
-    },
-    {
-        type: 'dragon',
+        type: 'fungi bulb',
         position: [11, 6],
     },
     {
-        type: 'lich',
+        type: 'orc',
+        position: [11, 9],
+    },
+    {
+        type: 'ghost',
+        position: [12, 8],
+    },
+    {
+        type: 'stone golem',
+        position: [12, 4],
+    },
+    {
+        type: 'imp',
+        position: [13, 2],
+    },
+    {
+        type: 'poison cloud',
         position: [13, 6],
     },
     {
+        type: 'fire spirit',
+        position: [13, 10],
+    },
+    {
+        type: 'warlock',
+        position: [14, 6],
+    },
+    {
+        type: 'black orc',
+        position: [14, 4],
+    },
+    {
+        type: 'medusa',
+        position: [15, 3],
+    },
+    {
+        type: 'plantera',
+        position: [15, 9],
+    },
+    {
+        type: 'pumpkin ghost',
+        position: [16, 4],
+    },
+    {
+        type: 'dragon',
+        position: [16, 8],
+    },
+    {
+        type: 'lich',
+        position: [16, 6],
+    },
+    {
         type: 'cerberus',
-        position: [15, 6],
+        position: [17, 6],
     },
 ];
 

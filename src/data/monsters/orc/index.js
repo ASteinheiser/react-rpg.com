@@ -3,10 +3,10 @@ import OrcSprite from './orc.png';
 const Orc = {
     hp: 20,
     maxHp: 20,
-    attackValue: 15,
+    attackValue: 20,
     defence: 4,
     dice: '1d6 + 2',
-    exp: 40,
+    exp: 44,
     type: 'orc',
     sprite: OrcSprite,
     ai: 'normal',

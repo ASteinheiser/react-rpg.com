@@ -20,7 +20,7 @@ const wallType = 'blue-pattern';
 
 const monsters = [
     {
-        type: 'stone-golem',
+        type: 'stone golem',
         position: [12, 4],
     },
     {
@@ -28,7 +28,7 @@ const monsters = [
         position: [13, 2],
     },
     {
-        type: 'stone-golem',
+        type: 'stone golem',
         position: [4, 7],
     },
     {
