@@ -26,9 +26,14 @@ export default function castSpell() {
                 payload: { position: position, projectile: spell },
             });
 
+            const intelligenceModifier = calculateModifier(
+                stats.abilities.intelligence
+            );
             const healAmount =
                 calculateDamage(spell.damage) +
-                calculateModifier(stats.abilities.intelligence);
+                (intelligenceModifier > 0 ? intelligenceModifier : 0);
+
+            console.log(intelligenceModifier, healAmount);
 
             if (target[1] === 'heal') {
                 dispatch({

@@ -13,10 +13,13 @@ class JournalSide extends Component {
     }
 
     render() {
-        if (this.props.disabled) return null;
-
         return (
-            <div className="journal-container white-border">
+            <div
+                className="journal-container white-border"
+                style={{
+                    visibility: this.props.disabled ? 'hidden' : 'visible',
+                }}
+            >
                 <div
                     className="flex-column journal-dialog__container"
                     id="journal-side"
@@ -44,9 +47,4 @@ const mapStateToProps = ({ journal }) => ({
     journal,
 });
 
-const actions = {
-    // toggleJournal,
-    // setJournalScrolling,
-};
-
-export default connect(mapStateToProps, actions)(JournalSide);
+export default connect(mapStateToProps)(JournalSide);

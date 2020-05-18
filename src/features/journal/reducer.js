@@ -3,7 +3,10 @@ import cloneDeep from 'lodash.clonedeep';
 
 import uuidv4 from '../../utils/uuid-v4';
 import isAbilityAllocationLevel from '../../utils/is-ability-allocation-level';
-import { LEVEL_UP_ABILITY_POINTS } from '../../config/constants';
+import {
+    LEVEL_UP_ABILITY_POINTS,
+    MAX_JOURNAL_ENTRIES,
+} from '../../config/constants';
 
 const initialState = {
     entries: [],
@@ -21,6 +24,13 @@ const colourise = (value, type) => (
 
 const journalReducer = (state = initialState, { type, payload }) => {
     let newState;
+
+    if (state.entries.length > MAX_JOURNAL_ENTRIES) {
+        // Make sure we don't keep too many entries so we use less memory and don't slow down the game
+        state.entries = state.entries.slice(
+            state.entries.length - MAX_JOURNAL_ENTRIES
+        );
+    }
 
     switch (type) {
         case 'MONSTER_ABILITY_CHECK': {

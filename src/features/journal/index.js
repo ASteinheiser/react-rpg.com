@@ -7,7 +7,7 @@ import toggleJournal from '../dialog-manager/actions/toggle-journal';
 import './styles.scss';
 
 const Journal = ({ disabled, sideMenu, dialog, toggleJournal }) => {
-    const open = dialog.journalDialog;
+    const open = dialog.journalDialog || dialog.journalSideMenuOpen;
 
     if (disabled) return null;
 

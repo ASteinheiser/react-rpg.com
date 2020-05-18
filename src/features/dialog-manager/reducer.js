@@ -21,6 +21,7 @@ const initialState = {
     settings: false,
     inventory: false,
     journalDialog: false,
+    journalSideMenuOpen: false,
     spellbookDialog: false,
     levelUp: false,
     fromLevelUp: false,
@@ -103,6 +104,10 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
                 spellbookDialog,
             } = payload;
 
+            if (journalDialog !== undefined) {
+                state.journalSideMenuOpen = journalDialog;
+            }
+
             return {
                 ...state,
                 levelUp: levelUp || false,
@@ -124,6 +129,12 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
                 journalDialog: journalDialog || false,
                 spellbookDialog: spellbookDialog || false,
                 paused: pause,
+            };
+
+        case 'SET_SHOW_JOURNAL':
+            return {
+                ...state,
+                journalSideMenuOpen: payload,
             };
 
         case 'SET_CHEST_DATA':

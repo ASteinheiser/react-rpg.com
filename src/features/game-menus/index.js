@@ -11,7 +11,7 @@ import Journal from '../journal';
 import './styles.scss';
 
 const GameMenus = ({ appState, dialog }) => {
-    const { sideMenu, largeView, journalSideMenu } = appState;
+    const { sideMenu, largeView } = appState;
     const {
         gameOver,
         gameStart,
@@ -27,7 +27,7 @@ const GameMenus = ({ appState, dialog }) => {
     // disable the stats view when in game start or game over or settings
     const disableStats = gameStart || gameOver || settings;
 
-    const disableJournal = disableInventory || journalSideMenu;
+    const disableJournal = disableInventory;
 
     return (
         <div className="flex-row centered">

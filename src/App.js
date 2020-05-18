@@ -26,9 +26,10 @@ const App = ({ appState, world, dialog }) => {
 
     const { sideMenu, journalSideMenu } = appState;
     const { gameMode, floorNum } = world;
-    const { gameStart, gameOver } = dialog;
+    const { gameStart, gameOver, journalSideMenuOpen } = dialog;
 
-    const disableJournal = gameStart || gameOver || !journalSideMenu;
+    const disableJournal =
+        gameStart || gameOver || !journalSideMenu || !journalSideMenuOpen;
 
     let showFooter = true;
 
@@ -39,10 +40,50 @@ const App = ({ appState, world, dialog }) => {
         showFooter = false;
     }
 
+    if (sideMenu) {
+        return (
+            <>
+                <div className={`centered flex-row`}>
+                    <JournalSide disabled={disableJournal} />
+                    <div
+                        className={`centered ${
+                            sideMenu ? 'flex-row' : 'flex-column'
+                        }`}
+                    >
+                        <div className={'centered flex-row'}>
+                            <Viewport>
+                                <World />
+                                <DialogManager />
+                                <Spellbook />
+
+                                {/* Show the floor counter when playing endless mode */}
+                                {gameMode === 'endless' && (
+                                    <EndlessFloorCounter floor={floorNum} />
+                                )}
+                            </Viewport>
+                        </div>
+
+                        <GameMenus />
+                    </div>
+                </div>
+                {showFooter && <Footer />}
+            </>
+        );
+    }
+
     return (
         <>
-            <div className={`centered flex-row`}>
+            <div style={{ float: 'left' }}>
                 <JournalSide disabled={disableJournal} />
+            </div>
+            <div
+                className={`centered flex-row`}
+                style={{
+                    position: 'relative',
+                    top: '-410px',
+                    width: '100%',
+                }}
+            >
                 <div
                     className={`centered ${
                         sideMenu ? 'flex-row' : 'flex-column'
@@ -64,8 +105,9 @@ const App = ({ appState, world, dialog }) => {
                     <GameMenus />
                 </div>
             </div>
-
-            {showFooter && <Footer />}
+            <div style={{ position: 'absolute', top: '700px' }}>
+                {showFooter && <Footer />}
+            </div>
         </>
     );
 };

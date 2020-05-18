@@ -33,7 +33,7 @@ export const SCREEN_SMALL_WIDTH = 410;
 export const SCREEN_SMALL_HEIGHT = 410;
 export const SCREEN_MEDIUM_WIDTH = 600;
 export const SCREEN_MEDIUM_HEIGHT = 680;
-export const MIN_WIDTH_FOR_JOURNAL = 825;
+export const MIN_WIDTH_FOR_JOURNAL = 1230;
 export const MIN_SIDESCREEN_WIDTH_FOR_JOURNAL = 1230;
 // set the number of tiles to pad the map with (so the player cant see edge)
 export const MAP_PADDING_DISTANCE = 5;
@@ -100,3 +100,6 @@ export const AI_CHANGE_TURNS = 3;
 export const POISON_DAMAGE = '1d4';
 export const TURNS_FOR_POISON = 3;
 export const SHOCK_DAMAGE = '1d4';
+
+// The maximum amount of journal entries. If this is too large it can slow the game down
+export const MAX_JOURNAL_ENTRIES = 100;

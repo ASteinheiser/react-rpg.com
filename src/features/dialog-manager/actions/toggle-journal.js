@@ -1,6 +1,14 @@
 export default function toggleJournal() {
     return (dispatch, getState) => {
-        if (getState().dialog.journalDialog) {
+        if (getState().appState.journalSideMenu) {
+            dispatch({
+                type: 'PAUSE',
+                payload: {
+                    pause: false,
+                    journalDialog: !getState().dialog.journalDialog,
+                },
+            });
+        } else if (getState().dialog.journalDialog) {
             dispatch({
                 type: 'PAUSE',
                 payload: { pause: false },
