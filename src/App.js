@@ -74,17 +74,16 @@ const App = ({ appState, world, dialog }) => {
 
     return (
         <>
-            <div style={{ float: 'left' }}>
-                <JournalSide disabled={disableJournal} />
-            </div>
             <div
-                className={`centered flex-row`}
                 style={{
-                    position: 'relative',
-                    top: '-410px',
-                    width: '100%',
+                    float: 'left',
+                    marginRight: '-200px',
+                    display: disableJournal ? 'none' : 'block',
                 }}
             >
+                <JournalSide disabled={disableJournal} />
+            </div>
+            <div className={`centered flex-row`}>
                 <div
                     className={`centered ${
                         sideMenu ? 'flex-row' : 'flex-column'
@@ -107,9 +106,7 @@ const App = ({ appState, world, dialog }) => {
                     <GameMenus />
                 </div>
             </div>
-            <div style={{ position: 'absolute', top: '700px' }}>
-                {showFooter && <Footer />}
-            </div>
+            {showFooter && <Footer />}
         </>
     );
 };

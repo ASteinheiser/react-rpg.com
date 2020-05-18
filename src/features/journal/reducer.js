@@ -333,8 +333,27 @@ const journalReducer = (state = initialState, { type, payload }) => {
             newState.scroll = payload;
             return newState;
 
-        case 'LOAD_DATA':
-            return { ...initialState, ...payload.journal };
+        case 'LOAD_DATA': {
+            newState = cloneDeep(payload.journal);
+            newState.entries = newState.entries.map(({ key, entry }) => ({
+                key,
+                entry: (
+                    <p key={entry.key}>
+                        {entry.props.children.map(child => {
+                            if (child.props) {
+                                return colourise(
+                                    child.props.children,
+                                    child.props.className
+                                );
+                            } else {
+                                return child;
+                            }
+                        })}
+                    </p>
+                ),
+            }));
+            return { ...initialState, ...newState };
+        }
 
         case 'RESET':
             return { ...initialState };
