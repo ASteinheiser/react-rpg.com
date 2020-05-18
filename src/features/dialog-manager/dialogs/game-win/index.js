@@ -29,7 +29,7 @@ const GameWin = ({ monsters, resetGameState, closeDialog }) => {
             {numMonstersRemain ? (
                 <span className="flex-column game-win__text">
                     {`${numMonstersRemain} monster${
-                        numMonstersRemain == 1 ? '' : 's'
+                        numMonstersRemain === 1 ? '' : 's'
                     } escaped your wrath`}
                 </span>
             ) : (

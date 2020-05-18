@@ -23,7 +23,8 @@ class Stats extends Component {
         if (
             JSON.stringify(prevProps.stats) !==
                 JSON.stringify(this.props.stats) &&
-            !this.props.disabled
+            !this.props.disabled &&
+            prevProps.stats.level !== this.props.stats.level
         ) {
             // animate the container
             this.setState({ statsBgColor: 'var(--gray)' });
