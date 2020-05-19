@@ -1,4 +1,4 @@
-// Credit: https://shikashiassets.itch.io/shikashis-fantasy-icons-pack
+// Credit: https://opengameart.org/content/dungeon-crawl-32x32-tiles-supplemental
 import CrossbowImg from './crossbow.png';
 import BoltImg from './bolt.png';
 import { SIGHT_RADIUS } from '../../../../../config/constants';

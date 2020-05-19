@@ -21,7 +21,7 @@ const wallType = 'green-brick';
 const monsters = [
     {
         type: 'black orc',
-        position: [1, 4],
+        position: [1, 2],
     },
     {
         type: 'pumpkin ghost',
