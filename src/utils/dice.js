@@ -77,7 +77,7 @@ const ops = {
     d: {
         precedence: 4,
         op: (left, right, criticalHit, die) => {
-            const mul = parseInt(left) * criticalHit ? 2 : 1;
+            const mul = parseInt(left) * (criticalHit ? 2 : 1);
             const sides = parseInt(right);
             const rolls = [];
             for (let i = 0; i < mul; i++) {
@@ -203,15 +203,15 @@ const rpn = (postfix, criticalHit, die) => {
 
     return Array.isArray(evaluated) // We can either get a value here, or an array (indicating the last item is a dice roll)
         ? evaluated.reduce((sum, value) => sum + value, 0)
-        : evaluated;
+        : parseInt(evaluated || '0', 10); // In case of evaluated being an empty string
 };
 
 const parse = (notation, criticalHit, dice) =>
     rpn(yard(lex(notation)), criticalHit, dice);
 
-export const calculateDamageRange = notation => {
-    const min = parse(notation, biased('min'));
-    const max = parse(notation, biased('max'));
+export const calculateDamageRange = (notation, criticalHit) => {
+    const min = parse(notation, criticalHit, biased('min'));
+    const max = parse(notation, criticalHit, biased('max'));
     return [min, max];
 };
 
