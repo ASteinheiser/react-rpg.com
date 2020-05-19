@@ -9,7 +9,7 @@ const Boomerang = {
     kind: 'ranged',
     effect: {},
     range: SIGHT_RADIUS,
-    damage: '1d8 + 2',
+    damage: '1d4 + 2',
     image: BoomerangImg,
     projectile: {
         name: 'boomerang',
