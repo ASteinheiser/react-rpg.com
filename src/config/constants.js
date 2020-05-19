@@ -87,7 +87,7 @@ export const FISTS = {
     type: 'weapon',
 };
 
-export const PASSIVE_MANA_RESTORE_TURNS = 5;
+export const PASSIVE_MANA_RESTORE_TURNS = 10;
 export const OUT_OF_COMBAT_RANGE = 4;
 
 // For calculating buy/sell prices

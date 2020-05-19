@@ -43,8 +43,9 @@ export default function movePlayer(direction) {
                 });
 
                 if (
-                    getState().player.turnsOutOfCombat >=
-                        PASSIVE_MANA_RESTORE_TURNS &&
+                    getState().player.turnsOutOfCombat %
+                        PASSIVE_MANA_RESTORE_TURNS ===
+                        0 &&
                     !dispatch(monstersWithinRange(newPos, OUT_OF_COMBAT_RANGE))
                 ) {
                     dispatch({
