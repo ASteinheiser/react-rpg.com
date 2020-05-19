@@ -4,7 +4,7 @@ import ArrowImg from './arrow.png';
 import { SIGHT_RADIUS } from '../../../../../config/constants';
 
 const HellsPhoenix = {
-    name: "Hell's Pheonix",
+    name: "Hell's Phoenix",
     type: 'weapon',
     kind: 'ranged',
     effect: {},

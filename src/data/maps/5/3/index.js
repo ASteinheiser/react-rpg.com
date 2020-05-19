@@ -48,7 +48,7 @@ const monsters = [
         position: [18, 6],
     },
     {
-        type: 'firs spirit',
+        type: 'fire spirit',
         position: [14, 6],
     },
 ];
