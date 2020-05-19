@@ -6,7 +6,7 @@ import Shop from './assets/shop.png';
 import Broadsword from '../../../../../data/items/weapons/swords/broad-sword/broad-sword.png';
 import HealthPotion from '../../../../../data/items/potions/hp-potion/hp-potion.png';
 import SteelArmour from '../../../../../data/items/clothes/armor/steel-armor/steel-armor.png';
-import Bow from '../../../../../data/items/weapons/ranged/bow/bow.png';
+import Crossbow from '../../../../../data/items/weapons/ranged/crossbow/crossbow.png';
 import ManaPotion from '../../../../../data/items/potions/mp-potion/mp-potion.png';
 import AmethystRing from '../../../../../data/items/rings/amethyst-ring/amethyst-ring.png';
 
@@ -33,7 +33,7 @@ const ItemTutorial = () => {
                     <img src={Broadsword} alt="broadsword" width={50} />
                     <img src={HealthPotion} alt="health potion" width={50} />
                     <img src={SteelArmour} alt="steel armour" width={50} />
-                    <img src={Bow} alt="bow" width={50} />
+                    <img src={Crossbow} alt="crossbow" width={50} />
                     <img src={ManaPotion} alt="mana potion" width={50} />
                     <img src={AmethystRing} alt="amethyst ring" width={50} />
                 </div>
