@@ -1,4 +1,5 @@
 import PoisonCloudSprite from './poison-cloud.png';
+import PoisonCloudSpell from '../../spells/poison-cloud';
 
 const PoisonCloud = {
     hp: 30,
@@ -8,8 +9,11 @@ const PoisonCloud = {
     dice: '3d4+2',
     exp: 230,
     type: 'poison cloud',
-    sprite: PoisonCloudSprite,
-    ai: 'normal',
+    sprite: { WEST: PoisonCloudSprite, EAST: PoisonCloudSprite },
+    ai: 'magical',
+    originalAI: 'magical',
+    projectile: PoisonCloudSpell,
+    direction: 'WEST',
     aiTurns: 0,
 };
 

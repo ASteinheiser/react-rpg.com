@@ -1,4 +1,6 @@
 import DragonSprite from './dragon.png';
+import DragonFloppedSprite from './dragon-flopped.png';
+import Mend from '../../spells/mend';
 
 const Dragon = {
     hp: 60,
@@ -8,8 +10,11 @@ const Dragon = {
     dice: '2d20',
     exp: 400,
     type: 'dragon',
-    sprite: DragonSprite,
-    ai: 'normal',
+    sprite: { WEST: DragonSprite, EAST: DragonFloppedSprite },
+    ai: 'healer',
+    originalAI: 'healer',
+    projectile: Mend,
+    direction: 'WEST',
     aiTurns: 0,
 };
 

@@ -1,4 +1,5 @@
 import MedusaSprite from './medusa.png';
+import MedusaFloppedSprite from './medusa-flopped.png';
 
 const Medusa = {
     hp: 40,
@@ -8,8 +9,10 @@ const Medusa = {
     dice: '1d20 + 4',
     exp: 350,
     type: 'medusa',
-    sprite: MedusaSprite,
+    sprite: { WEST: MedusaSprite, EAST: MedusaFloppedSprite },
     ai: 'normal',
+    originalAI: 'normal',
+    direction: 'WEST',
     aiTurns: 0,
 };
 

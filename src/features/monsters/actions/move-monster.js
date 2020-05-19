@@ -9,10 +9,14 @@ export function getRandomDirection() {
     return directions[randomNumber];
 }
 
-export function playerInRange(playerPos, monsterPos) {
+export function playerInRange(
+    playerPos,
+    monsterPos,
+    range = MONSTER_ATTACK_RADIUS
+) {
     let inRange = false;
     // for each tile around the monster
-    radiusTiles(MONSTER_ATTACK_RADIUS).forEach(tile => {
+    radiusTiles(range).forEach(tile => {
         // add the monsters location
         const offsetX = tile.x + monsterPos[0];
         const offsetY = tile.y + monsterPos[1];
@@ -41,18 +45,16 @@ export function checkForOtherMonster(id, position, currentMap) {
         // get current monsters
         const monsterList = getState().monsters.components[currentMap];
         // check list of monsters
-        Object.keys(monsterList).forEach(monsterId => {
-            // see if there's another monster in the next position
-            if (
-                JSON.stringify(monsterList[monsterId].position) ===
-                JSON.stringify(position)
-            ) {
-                if (monsterId !== id) {
-                    return monsterId;
-                }
-            }
-        });
-
-        return undefined;
+        return Object.keys(monsterList)
+            .filter(monsterID => {
+                const monster = monsterList[monsterID];
+                // see if there's another monster in the next position
+                return (
+                    monsterID !== id &&
+                    monster.position[0] === position[0] &&
+                    monster.position[1] === position[1]
+                );
+            })
+            .pop();
     };
 }

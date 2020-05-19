@@ -8,8 +8,10 @@ const BlackOrc = {
     dice: '3d8',
     exp: 280,
     type: 'black orc',
-    sprite: BlackOrcSprite,
+    sprite: { WEST: BlackOrcSprite, EAST: BlackOrcSprite },
     ai: 'normal',
+    originalAI: 'normal',
+    direction: 'WEST',
     aiTurns: 0,
 };
 

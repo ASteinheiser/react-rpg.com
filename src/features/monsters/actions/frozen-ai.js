@@ -2,7 +2,7 @@ import { SPRITE_SIZE } from '../../../config/constants';
 
 export default function frozen(sightBox, currentMap, monster) {
     return dispatch => {
-        const { id, position } = monster;
+        const { id, position, direction } = monster;
 
         const monsterPosition = position.map(pos => pos / SPRITE_SIZE);
 
@@ -30,7 +30,12 @@ export default function frozen(sightBox, currentMap, monster) {
 
         dispatch({
             type: 'MOVE_MONSTER',
-            payload: { map: currentMap, id, position },
+            payload: {
+                map: currentMap,
+                id,
+                position,
+                direction,
+            },
         });
 
         if (monster.aiTurns === 0) {
@@ -38,7 +43,7 @@ export default function frozen(sightBox, currentMap, monster) {
                 type: 'CHANGE_AI',
                 payload: {
                     map: currentMap,
-                    ai: 'normal',
+                    ai: monster.originalAI,
                     id,
                     from: 'frozen',
                     turns: 0,

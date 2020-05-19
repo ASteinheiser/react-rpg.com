@@ -8,8 +8,10 @@ const Orc = {
     dice: '1d6 + 2',
     exp: 44,
     type: 'orc',
-    sprite: OrcSprite,
+    sprite: { WEST: OrcSprite, EAST: OrcSprite },
     ai: 'normal',
+    originalAI: 'normal',
+    direction: 'WEST',
     aiTurns: 0,
 };
 

@@ -14,16 +14,18 @@ export default function attackMonster(
         const { dice, attackValue } = attackingMonster;
         const { defence, type, hp, position } = defender;
 
+        const attack = calculateDamage(attackValue);
         const calculatedMonsterDamage =
-            attackValue >= Math.max(defence, 0) ? calculateDamage(dice) : 0;
+            attack >= Math.max(defence, 0) ? calculateDamage(dice) : 0;
 
         dispatch({
             type: 'MONSTER_ABILITY_CHECK',
             payload: {
-                attackValue: attackValue,
+                attackValue: attack,
                 check: Math.max(defence, 0),
                 against: 'defence',
-                entity: type,
+                entity: attackingMonster.type,
+                defender: type,
             },
         });
 
@@ -37,7 +39,13 @@ export default function attackMonster(
 
         dispatch({
             type: 'DAMAGE_TO_MONSTER',
-            payload: { damage: calculatedMonsterDamage, entity: type },
+            payload: {
+                damage: calculatedMonsterDamage,
+                id: defendingMonsterID,
+                map: currentMap,
+                from: attackingMonster.type,
+                entity: type,
+            },
         });
 
         // check if player died

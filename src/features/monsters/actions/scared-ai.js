@@ -5,7 +5,7 @@ import { SPRITE_SIZE } from '../../../config/constants';
 function moveScared(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
         const playerPosition = getState().player.position;
-        const { id, position } = monster;
+        const { id, position, direction } = monster;
 
         const possibleDirections = [];
         if (
@@ -121,6 +121,12 @@ function moveScared(sightBox, currentMap, monster) {
                         map: currentMap,
                         id,
                         position: newPosition,
+                        direction:
+                            newPosition[0] < position[0]
+                                ? 'WEST'
+                                : newPosition[0] > position[0]
+                                ? 'EAST'
+                                : direction,
                     },
                 });
             }
@@ -157,7 +163,7 @@ export default function scared(sightBox, currentMap, monster) {
                 type: 'CHANGE_AI',
                 payload: {
                     map: currentMap,
-                    ai: 'normal',
+                    ai: monster.originalAI,
                     id: monster.id,
                     from: 'scared',
                     turns: 0,

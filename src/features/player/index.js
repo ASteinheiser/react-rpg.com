@@ -42,6 +42,7 @@ class Player extends Component {
             animationAttackSound: null,
             monsterAttackAnimationPlay: 'paused',
             monsterAnimationAttackSound: null,
+            monsterProjectileAnimation: null,
             monsterDeath: null,
             playerDeath: null,
             leftSideStride: true,
@@ -236,9 +237,12 @@ class Player extends Component {
         // see if a monster attacked the player
         else if (
             prevProps.player.monsterAttacked !==
-            this.props.player.monsterAttacked
+                this.props.player.monsterAttacked ||
+            prevProps.player.monsterUseProjectile !==
+                this.props.player.monsterUseProjectile
         ) {
             let monsterAnimationAttackSound = null;
+            let monsterProjectileAnimation = null;
             if (this.props.gameMenu.sound) {
                 monsterAnimationAttackSound = (
                     <Sound
@@ -249,10 +253,28 @@ class Player extends Component {
                     />
                 );
             }
+
+            if (
+                prevProps.player.monsterUseProjectile !==
+                this.props.player.monsterUseProjectile
+            ) {
+                monsterProjectileAnimation = (
+                    <Animation
+                        projectile={this.props.player.monsterProjectile}
+                        startPosition={
+                            this.props.player.monsterProjectileTargetPosition
+                        }
+                        endPosition={[0, 0]}
+                        direction={this.props.player.monsterProjectileDirection}
+                    />
+                );
+            }
+
             // animate the player
             this.setState({
                 monsterAttackAnimationPlay: 'running',
                 monsterAnimationAttackSound,
+                monsterProjectileAnimation,
             });
             // pause the infinite animation after 1 iteration plus delay time (250ms)
             this.props.setTimeout(
@@ -260,6 +282,7 @@ class Player extends Component {
                     this.setState({
                         monsterAttackAnimationPlay: 'paused',
                         monsterAnimationAttackSound: null,
+                        monsterProjectileAnimation: null,
                     }),
                 ANIMATION_SPEED + 250
             );
@@ -369,6 +392,7 @@ class Player extends Component {
             animationAttackSound,
             monsterAnimationAttackSound,
             monsterAttackAnimationPlay,
+            monsterProjectileAnimation,
             monsterDeath,
             playerDeath,
         } = this.state;
@@ -400,6 +424,7 @@ class Player extends Component {
                 {monsterAnimationAttackSound}
                 {monsterDeath}
                 {playerDeath}
+                {monsterProjectileAnimation}
 
                 {monsterAttackAnimationPlay === 'running' && (
                     <div

@@ -12,15 +12,15 @@
 
 _Roll For Reaction_ is an open-source fork of [react-rpg](https://github.com/ASteinheiser/react-rpg.com) created for SOFTENG750/COMPSCI 732 at the University of Auckland. This project aims to enhance the systems already present in the base game by modifying and adding elements to lightly emulate the popular tabletop role-playing game _Dungeons and Dragons: 5th Edition_. In doing so, the following features are planned to be added:
 
-| Definitely                                        | Hopefully                                             | Maybe                                     |
-| ------------------------------------------------- | ----------------------------------------------------- | -----------------------------------       |
-| ![check][checkmark] DnD Ability Scores for Player | ![check][checkmark] UI/UX Improvements                | ![cross][cross] Particle Effects          |
-| ![check][checkmark] DnD Classes and Races         | ![check][checkmark] Tutorial                              | ![cross][cross] Class-specific Abilities  |
-| ![check][checkmark] Dice-based Combat             | ![check][checkmark] Save/Load System                  | ![cross][cross] Party System              |
-| ![check][checkmark] New Maps/Levels                   | ![check][checkmark] New Enemies                           | ![cross][cross] Additional Game Modes     |
-| ![check][checkmark] Character Creation            | ![check][checkmark] Customisable Outfit Colour        |                                           |
-| ![check][checkmark] Additional Items in Shop      | ![cross][cross] Diversity in Enemy Attacks            |                                           |
-| ![check][checkmark] Spellcasting System           |                                                       |                                           |
+| Definitely                                        | Hopefully                                      | Maybe                                    |
+| ------------------------------------------------- | ---------------------------------------------- | ---------------------------------------- |
+| ![check][checkmark] DnD Ability Scores for Player | ![check][checkmark] UI/UX Improvements         | ![cross][cross] Particle Effects         |
+| ![check][checkmark] DnD Classes and Races         | ![cross][checkmark] Tutorial                   | ![cross][cross] Class-specific Abilities |
+| ![check][checkmark] Dice-based Combat             | ![check][checkmark] Save/Load System           | ![cross][cross] Party System             |
+| ![check][checkmark] New Maps/Levels               | ![check][checkmark] New Enemies                | ![cross][cross] Additional Game Modes    |
+| ![check][checkmark] Character Creation            | ![check][checkmark] Customisable Outfit Colour |                                          |
+| ![check][checkmark] Additional Items in Shop      | ![check][checkmark] Diversity in Enemy Attacks |                                          |
+| ![check][checkmark] Spellcasting System           |                                                |                                          |
 
 > Classes include Fighter, Ranger and Wizard
 
@@ -78,5 +78,5 @@ Thanks goes to all of these wonderful people who helped in making this project a
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-[checkmark]: https://api.iconify.design/octicon:check.svg?color=green 'cross'
-[cross]: https://api.iconify.design/octicon:x.svg?color=red&height=16 'check'
+[checkmark]: https://api.iconify.design/octicon:check.svg?color=green 'check'
+[cross]: https://api.iconify.design/octicon:x.svg?color=red&height=16 'cross'

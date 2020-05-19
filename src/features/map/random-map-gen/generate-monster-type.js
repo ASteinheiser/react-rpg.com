@@ -15,7 +15,7 @@ export default function generateMonsterType(playerLv) {
     else if (playerLv <= 6 && playerLv >= 3) {
         if (chance <= 10) {
             // 10% chance to spawn stone golem
-            return 'stone-golem';
+            return 'stone golem';
         } // 40% chance to spawn goblin
         else if (chance <= 50 && chance > 10) {
             return 'goblin';
@@ -30,7 +30,7 @@ export default function generateMonsterType(playerLv) {
             return 'imp';
         } // 40% chance to spawn stone golem
         else if (chance <= 50 && chance > 10) {
-            return 'stone-golem';
+            return 'stone golem';
         } // 50% chance to spawn a goblin
         else {
             return 'goblin';
@@ -42,7 +42,7 @@ export default function generateMonsterType(playerLv) {
             return 'imp';
         } // 40% chance to spawn stone golem
         else if (chance <= 70 && chance > 30) {
-            return 'stone-golem';
+            return 'stone golem';
         } // 30% chance to spawn goblin
         else {
             return 'goblin';
@@ -57,7 +57,7 @@ export default function generateMonsterType(playerLv) {
             return 'imp';
         } // 50% chance to spawn a stone-golem
         else {
-            return 'stone-golem';
+            return 'stone golem';
         }
     } // if player is level 16 - 18
     else if (playerLv <= 18 && playerLv >= 16) {
@@ -69,7 +69,7 @@ export default function generateMonsterType(playerLv) {
             return 'imp';
         } // 30% chance to spawn a stone-golem
         else {
-            return 'stone-golem';
+            return 'stone golem';
         }
     } // if player is level 19 - 21
     else if (playerLv <= 21 && playerLv >= 19) {

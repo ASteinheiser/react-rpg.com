@@ -16,10 +16,17 @@ const GameMap = ({ map, world }) => {
 
     if (!currentMap) return <div style={mapStyle} />;
 
+    let wallType = null;
+
     if (gameMode === 'story') {
         map = { ...map, ...storyMaps[currentMap] };
+        wallType = map.wallType;
     } else {
         map = { ...map, ...randomMaps[floorNum - 1] };
+        if (floorNum < 30) wallType = 'brick';
+        else if (floorNum < 60) wallType = 'ornate';
+        else if (floorNum < 90) wallType = 'purple';
+        else if (floorNum >= 90) wallType = 'inca-dark';
     }
 
     const tileType = getWallType(map.tiles);
@@ -28,7 +35,7 @@ const GameMap = ({ map, world }) => {
         <div style={mapStyle}>
             <MapPadding
                 tileType={tileType}
-                wallType={map.wallType}
+                wallType={wallType}
                 tiles={map.paddingTiles}
                 sightBox={map.paddingSightBox}
             />
@@ -37,7 +44,7 @@ const GameMap = ({ map, world }) => {
                 return (
                     <MapRow
                         tiles={row}
-                        wallType={map.wallType}
+                        wallType={wallType}
                         index={index}
                         sightBox={map.sightBox}
                         key={JSON.stringify(row) + index}

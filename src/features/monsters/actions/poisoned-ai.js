@@ -68,7 +68,7 @@ export default function poisoned(sightBox, currentMap, monster) {
                 type: 'CHANGE_AI',
                 payload: {
                     map: currentMap,
-                    ai: 'normal',
+                    ai: monster.originalAI,
                     id: monster.id,
                     from: 'poisoned',
                     turns: 0,

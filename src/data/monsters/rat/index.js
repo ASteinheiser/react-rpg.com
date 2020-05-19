@@ -1,4 +1,5 @@
 import RatSprite from './rat.png';
+import RatFloppedSprite from './rat-flopped.png';
 
 const Rat = {
     hp: 6,
@@ -8,8 +9,10 @@ const Rat = {
     dice: '1d4',
     exp: 8,
     type: 'rat',
-    sprite: RatSprite,
+    sprite: { WEST: RatSprite, EAST: RatFloppedSprite },
     ai: 'normal',
+    originalAI: 'normal',
+    direction: 'WEST',
     aiTurns: 0,
 };
 

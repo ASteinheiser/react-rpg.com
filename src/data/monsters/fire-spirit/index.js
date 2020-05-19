@@ -1,4 +1,5 @@
 import FireSpiritSprite from './fire-spirit.png';
+import Fireball from '../../spells/fireball';
 
 const FireSpirit = {
     hp: 30,
@@ -8,8 +9,11 @@ const FireSpirit = {
     dice: '3d4',
     exp: 180,
     type: 'fire spirit',
-    sprite: FireSpiritSprite,
-    ai: 'normal',
+    sprite: { WEST: FireSpiritSprite, EAST: FireSpiritSprite },
+    ai: 'magical',
+    originalAI: 'magical',
+    projectile: Fireball,
+    direction: 'WEST',
     aiTurns: 0,
 };
 

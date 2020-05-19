@@ -3,6 +3,10 @@ import frozen from './frozen-ai';
 import poisoned from './poisoned-ai';
 import shocked from './shocked-ai';
 import scared from './scared-ai';
+import suicidal from './suicidal-ai';
+import magical from './magical-ai';
+import healer from './healer-ai';
+import ranged from './ranged-ai';
 import frightened from './frightened-ai';
 
 export default function takeMonstersTurn() {
@@ -14,8 +18,21 @@ export default function takeMonstersTurn() {
         const { currentMap } = world;
         // find each monster
 
-        Object.entries(components[currentMap]).forEach(([, monster]) => {
+        Object.keys(components[currentMap]).forEach(monsterID => {
+            const monster = getState().monsters.components[currentMap][
+                monsterID
+            ];
+            // In the case that one of the other monsters before this one attacked it and killed it
+            if (monster === undefined) return;
+
             switch (monster.ai) {
+                case 'suicidal':
+                    dispatch(suicidal(sightBox, currentMap, monster));
+                    break;
+                case 'ranged':
+                    dispatch(ranged(sightBox, currentMap, monster));
+                    break;
+                case 'boss':
                 case 'normal':
                     dispatch(moveNormally(sightBox, currentMap, monster));
                     break;
@@ -33,6 +50,12 @@ export default function takeMonstersTurn() {
                     break;
                 case 'scared':
                     dispatch(scared(sightBox, currentMap, monster));
+                    break;
+                case 'magical':
+                    dispatch(magical(sightBox, currentMap, monster));
+                    break;
+                case 'healer':
+                    dispatch(healer(sightBox, currentMap, monster));
                     break;
                 default:
                     break;

@@ -9,7 +9,14 @@ import { SPRITE_SIZE } from '../../../config/constants';
 
 // recursive function for moving the monster to the next available tile
 // will try to go towards the player if possible
-function move(direction, position, currentMap, id, count, preference = false) {
+export function move(
+    direction,
+    position,
+    currentMap,
+    id,
+    count,
+    preference = false
+) {
     return (dispatch, getState) => {
         count++;
         // dont allow for infinite loops when monster can't move
@@ -185,6 +192,7 @@ function move(direction, position, currentMap, id, count, preference = false) {
                 payload: { id, map: currentMap },
             });
         }
+        const monster = getState().monsters.components[currentMap][id];
         // move the monster
         dispatch({
             type: 'MOVE_MONSTER',
@@ -192,6 +200,12 @@ function move(direction, position, currentMap, id, count, preference = false) {
                 map: currentMap,
                 id,
                 position,
+                direction:
+                    direction === 'up' || direction === 'down'
+                        ? monster.direction
+                        : direction === 'left'
+                        ? 'WEST'
+                        : 'EAST',
             },
         });
     };
@@ -199,7 +213,7 @@ function move(direction, position, currentMap, id, count, preference = false) {
 
 export default function moveNormally(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
-        const { id, position, attackValue, dice, type } = monster;
+        const { id, position } = monster;
 
         const monsterPosition = position.map(pos => pos / SPRITE_SIZE);
 
@@ -221,7 +235,7 @@ export default function moveNormally(sightBox, currentMap, monster) {
             const { player } = getState();
             // check if player is in range
             if (playerInRange(player.position, monsterPosition)) {
-                dispatch(attackPlayer(attackValue, dice, type));
+                dispatch(attackPlayer(monster));
             } else {
                 // no player in range, time to move!
                 // get the monsters actual position in pixels

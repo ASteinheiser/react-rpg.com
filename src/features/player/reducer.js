@@ -12,6 +12,17 @@ const initialState = {
     targetPosition: [],
     spell: null,
     turnsOutOfCombat: 0,
+    monsterUseProjectile: false,
+    monsterProjectileTargetPosition: [],
+    monsterProjectileDirection: '',
+    monsterProjectile: null,
+    effects: {
+        poisoned: {
+            turns: 0,
+            immunityTurns: 0,
+            damage: '0',
+        },
+    },
 };
 
 const playerReducer = (state = initialState, { type, payload }) => {
@@ -32,6 +43,17 @@ const playerReducer = (state = initialState, { type, payload }) => {
                 turnsOutOfCombat: 0,
             };
 
+        case 'MONSTER_CAST_SPELL':
+            return {
+                ...state,
+                monsterAttacked: !state.monsterAttacked,
+                turnsOutOfCombat: 0,
+                monsterUseProjectile: !state.monsterUseProjectile,
+                monsterProjectileTargetPosition: payload.position,
+                monsterProjectileDirection: payload.direction,
+                monsterProjectile: payload.spell,
+            };
+
         case 'SET_ACTIVE_SPELL':
             return { ...state, spell: cloneDeep(payload.spell) };
 
@@ -42,6 +64,34 @@ const playerReducer = (state = initialState, { type, payload }) => {
                 targetPosition: payload ? payload.position : [],
                 turnsOutOfCombat: 0,
             };
+
+        case 'MONSTER_USE_PROJECTILE':
+            return {
+                ...state,
+                monsterAttacked: !state.monsterAttacked,
+                turnsOutOfCombat: 0,
+                monsterUseProjectile: !state.monsterUseProjectile,
+                monsterProjectileTargetPosition: payload.position,
+                monsterProjectileDirection: payload.direction,
+                monsterProjectile: payload.projectile,
+            };
+
+        case 'EFFECT_PLAYER': {
+            const { effect, turns, damage, from } = payload;
+
+            return {
+                ...state,
+                effects: {
+                    ...state.effects,
+                    [effect]: {
+                        turns,
+                        immunityTurns: turns * 5,
+                        damage,
+                        from,
+                    },
+                },
+            };
+        }
 
         case 'CAST_SPELL':
             return {
@@ -70,6 +120,14 @@ const playerReducer = (state = initialState, { type, payload }) => {
             };
 
         case 'TAKE_TURN':
+            Object.keys(state.effects).forEach(effect => {
+                const props = state.effects[effect];
+                state.effects[effect] = {
+                    ...props,
+                    turns: props.turns - 1,
+                    immunityTurns: props.immunityTurns - 1,
+                };
+            });
             return {
                 ...state,
                 turnsOutOfCombat: state.turnsOutOfCombat + 1,

@@ -1,4 +1,5 @@
 import WaterSpiritSprite from './water-spirit.png';
+import IceShard from '../../spells/ice-shard';
 
 const WaterSpirit = {
     hp: 10,
@@ -8,8 +9,11 @@ const WaterSpirit = {
     dice: '1d4',
     exp: 28,
     type: 'water spirit',
-    sprite: WaterSpiritSprite,
-    ai: 'normal',
+    sprite: { WEST: WaterSpiritSprite, EAST: WaterSpiritSprite },
+    ai: 'magical',
+    originalAI: 'magical',
+    projectile: IceShard,
+    direction: 'WEST',
     aiTurns: 0,
 };
 

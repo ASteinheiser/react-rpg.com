@@ -9,7 +9,7 @@ const Monster = ({ monster }) => {
                 position: 'absolute',
                 top: monster.position[1],
                 left: monster.position[0],
-                backgroundImage: `url('${monster.sprite}')`,
+                backgroundImage: `url('${monster.sprite[monster.direction]}')`,
                 opacity: monster.visible ? 1 : 0,
                 width: '40px',
                 height: '40px',

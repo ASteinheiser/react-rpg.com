@@ -8,8 +8,10 @@ const StoneGolem = {
     dice: '2d8 + 2',
     exp: 200,
     type: 'stone golem',
-    sprite: GolemSprite,
+    sprite: { WEST: GolemSprite, EAST: GolemSprite },
     ai: 'normal',
+    originalAI: 'normal',
+    direction: 'WEST',
     aiTurns: 0,
 };
 

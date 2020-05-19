@@ -20,6 +20,9 @@ const monstersReducer = (state = initialState, { type, payload }) => {
 
             newState.components[payload.map][payload.id].aiTurns -= 1;
 
+            newState.components[payload.map][payload.id].direction =
+                payload.direction;
+
             return newState;
 
         case 'DAMAGE_TO_MONSTER':
@@ -29,6 +32,19 @@ const monstersReducer = (state = initialState, { type, payload }) => {
             // if monster has 0 or less hp, kill it
             if (newState.components[payload.map][payload.id].hp <= 0) {
                 delete newState.components[payload.map][payload.id];
+            }
+
+            return newState;
+
+        case 'MONSTER_HEAL_HP':
+            newState = _cloneDeep(state);
+            newState.components[payload.map][payload.id].hp +=
+                payload.healAmount;
+            const health = newState.components[payload.map][payload.id].hp;
+            const maxHealth =
+                newState.components[payload.map][payload.id].maxHp;
+            if (health > maxHealth) {
+                newState.components[payload.map][payload.id].hp = maxHealth;
             }
 
             return newState;

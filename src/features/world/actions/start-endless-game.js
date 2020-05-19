@@ -1,4 +1,3 @@
-import items from '../../../data/items';
 import generateMap from '../../map/random-map-gen/generate-map';
 import generateMonsters from '../../map/random-map-gen/generate-monsters';
 import exploreTiles from '../../../features/player/actions/explore-tiles';
@@ -50,16 +49,6 @@ export default function startEndlessGame() {
                 ),
                 map: mapId,
             },
-        });
-
-        dispatch({
-            type: 'GET_ITEM',
-            payload: items.weapons.RustySword,
-        });
-
-        dispatch({
-            type: 'EQUIP_ITEM',
-            payload: getState().inventory.items[0],
         });
     };
 }

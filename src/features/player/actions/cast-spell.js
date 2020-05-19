@@ -1,4 +1,4 @@
-import { checkForMonster } from './move-player';
+import { checkForMonster, applyEffects } from './move-player';
 import { calculateDamage, d20 } from '../../../utils/dice';
 import calculateModifier from '../../../utils/calculate-modifier';
 import { SPRITE_SIZE } from '../../../config/constants';
@@ -33,8 +33,6 @@ export default function castSpell() {
                 calculateDamage(spell.damage) +
                 (intelligenceModifier > 0 ? intelligenceModifier : 0);
 
-            console.log(intelligenceModifier, healAmount);
-
             if (target[1] === 'heal') {
                 dispatch({
                     type: 'HEAL_HP',
@@ -46,6 +44,7 @@ export default function castSpell() {
                 type: 'TAKE_TURN',
                 payload: null,
             });
+            dispatch(applyEffects());
         } else if (target[0] === 'enemy') {
             const spellPosition = dispatch(
                 findTarget(position, direction, spell.range * SPRITE_SIZE)
@@ -144,7 +143,7 @@ export default function castSpell() {
                             y: monsterPos[1] / SPRITE_SIZE,
                         },
                     });
-                } else {
+                } else if (damage > 0) {
                     if (spell.effects && spell.effects.changeAI) {
                         const { to, turns, proc } = spell.effects.changeAI;
 
@@ -185,6 +184,8 @@ export default function castSpell() {
                     type: 'TAKE_TURN',
                     payload: null,
                 });
+
+                dispatch(applyEffects());
             } else {
                 // Hit a wall or something else
                 dispatch({

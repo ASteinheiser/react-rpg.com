@@ -29,10 +29,10 @@ const GameInstructions = ({
     }
 
     function handleContinue() {
+        loadStartingItems();
         if (dialog.gameType === 'endless') {
             showEndlessMessage();
         } else {
-            loadStartingItems();
             showFirstStoryMessage();
         }
     }

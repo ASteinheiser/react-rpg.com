@@ -8,8 +8,10 @@ const Cerberus = {
     dice: '3d20',
     exp: 1000,
     type: 'cerberus',
-    sprite: CerberusSprite,
-    ai: 'normal',
+    sprite: { WEST: CerberusSprite, EAST: CerberusSprite },
+    ai: 'boss',
+    originalAI: 'boss',
+    direction: 'WEST',
     aiTurns: 0,
 };
 

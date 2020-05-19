@@ -8,8 +8,10 @@ const FungiBulb = {
     dice: '1d6',
     exp: 38,
     type: 'fungi bulb',
-    sprite: FungiBulbSprite,
-    ai: 'normal',
+    sprite: { WEST: FungiBulbSprite, EAST: FungiBulbSprite },
+    ai: 'suicidal',
+    originalAI: 'suicidal',
+    direction: 'WEST',
     aiTurns: 0,
 };
 

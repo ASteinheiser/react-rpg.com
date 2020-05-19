@@ -1,4 +1,5 @@
 import WolfSprite from './wolf.png';
+import WolfFloppedSprite from './wolf-flopped.png';
 
 const Wolf = {
     hp: 10,
@@ -8,8 +9,10 @@ const Wolf = {
     dice: '1d4 + 1',
     exp: 22,
     type: 'wolf',
-    sprite: WolfSprite,
+    sprite: { WEST: WolfSprite, EAST: WolfFloppedSprite },
     ai: 'normal',
+    originalAI: 'normal',
+    direction: 'WEST',
     aiTurns: 0,
 };
 
