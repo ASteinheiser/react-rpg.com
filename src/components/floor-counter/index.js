@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.scss';
 
-const EndlessFloorCounter = ({ floor }) => {
+const FloorCounter = ({ floor }) => {
     return (
         <div className="floor-counter__container">
             <span>{'FLOOR'}</span>
@@ -12,4 +12,4 @@ const EndlessFloorCounter = ({ floor }) => {
     );
 };
 
-export default EndlessFloorCounter;
+export default FloorCounter;
