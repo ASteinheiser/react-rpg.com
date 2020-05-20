@@ -25,7 +25,7 @@ const StatsItem = ({ stats }) => {
             case 'slots':
             case 'VS. dragon':
             case 'VS. lich':
-            case 'value':
+            case 'price':
                 return 'orange';
             default:
         }
