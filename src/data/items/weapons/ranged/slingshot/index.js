@@ -12,7 +12,7 @@ const Slingshot = {
     damage: '1d8 + 2',
     image: SlingshotImg,
     projectile: Stone,
-    value: 110,
+    value: 35,
 };
 
 export default Slingshot;

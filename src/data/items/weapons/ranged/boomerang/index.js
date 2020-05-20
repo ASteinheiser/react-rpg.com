@@ -12,7 +12,7 @@ const Boomerang = {
     damage: '1d4 + 2',
     image: BoomerangImg,
     projectile: BoomerangAmmo,
-    value: 35,
+    value: 10,
 };
 
 export default Boomerang;
