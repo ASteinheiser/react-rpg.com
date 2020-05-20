@@ -30,6 +30,7 @@ const initialState = {
     playerOpenedAbilityDialog: false,
     tutorialDialog: false,
     tutorialPage: 'movement',
+    diedFrom: null,
     abilities: {
         constitution: STARTING_ABILITY_SCORE_VALUE,
         dexterity: STARTING_ABILITY_SCORE_VALUE,
@@ -140,6 +141,9 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
                 tutorialDialog: tutorialDialog || false,
                 paused: pause,
             };
+
+        case 'PLAYER_DIED':
+            return { ...state, diedFrom: payload.entity };
 
         case 'SET_SHOW_JOURNAL':
             return {

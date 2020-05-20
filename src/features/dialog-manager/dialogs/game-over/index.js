@@ -30,13 +30,26 @@ class GameOver extends Component {
 
     render() {
         const { phrase, ready } = this.state;
-        const { resetGameState } = this.props;
+        const { resetGameState, dialog } = this.props;
+
+        const { characterName } = dialog.character;
 
         return (
             <Dialog keys={[ENTER_KEY]} onKeyPress={resetGameState}>
                 <span className="game-over__title">{'Game Over!'}</span>
 
                 <span className="game-over__text">{phrase}</span>
+
+                <p className="game-over__text">
+                    Here lies the grave of{' '}
+                    <span className="game-over__player">
+                        {characterName.length <= 11
+                            ? characterName
+                            : characterName.substr(0, 9) + '...'}
+                    </span>
+                    . They were slain by a mighty{' '}
+                    <span className="game-over__killer">{dialog.diedFrom}</span>
+                </p>
 
                 <div className="game-over__button">
                     <Button
@@ -50,6 +63,7 @@ class GameOver extends Component {
     }
 }
 
+const mapStateToProps = ({ dialog }) => ({ dialog });
 const actions = { resetGameState };
 
-export default connect(null, actions)(ReactTimeout(GameOver));
+export default connect(mapStateToProps, actions)(ReactTimeout(GameOver));

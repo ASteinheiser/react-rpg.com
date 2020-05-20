@@ -120,7 +120,7 @@ export default function monsterCastSpell(monster) {
                 // play death sound
                 dispatch({
                     type: 'PLAYER_DIED',
-                    payload: null,
+                    payload: { entity: type },
                 });
                 // if it did, game over
                 dispatch({
