@@ -34,6 +34,19 @@
     justify-content: space-evenly;
 }
 
+.tutorial-page__shop {
+    position: relative;
+    margin-top: 10px;
+    text-transform: none;
+    width: 200px;
+}
+
+.tutorial-page__shop-tiers {
+    position: relative;
+    margin-left: 10px;
+    text-transform: none;
+}
+
 .tutorial-page__combat {
     position: relative;
     padding: 15px 5px 5px 5px;
@@ -75,6 +88,13 @@
 }
 
 .tutorial-page__hotkeys {
+    margin: auto;
+    position: relative;
+    padding: 10px 5px 5px 5px;
+    text-transform: none;
+}
+
+.tutorial-page__dice {
     margin: auto;
     position: relative;
     padding: 10px 5px 5px 5px;

@@ -38,7 +38,9 @@
 .ability-score__tooltip {
     float: right;
     justify-content: center;
-    margin-top: 2px;
+    margin-top: 5px;
+    margin-left: 15px;
+    font-size: 14px;
 
     .ability-score__tooltip-text {
         font-family: Montserrat;
@@ -48,9 +50,7 @@
         line-height: 1;
         visibility: hidden;
 
-        padding: 2px;
-
-        width: 120px;
+        padding: 5px;
 
         background-color: var(--dark-gray);
         border: 0.5px var(--gray) solid;
@@ -60,7 +60,7 @@
         /* Position the tooltip */
 
         position: absolute;
-        right: 2.75rem;
+        right: 2.5rem;
 
         z-index: 1;
     }

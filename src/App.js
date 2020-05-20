@@ -55,6 +55,7 @@ const App = ({ appState, world, dialog }) => {
                             <Viewport>
                                 <World />
                                 <DialogManager />
+                                <Tutorial />
                                 <Spellbook />
 
                                 {/* Show the floor counter when playing endless mode */}

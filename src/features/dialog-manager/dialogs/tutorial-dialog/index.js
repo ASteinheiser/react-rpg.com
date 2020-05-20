@@ -9,6 +9,8 @@ import SpellTutorial from './pages/spell-tutorial';
 import MovementTutorial from './pages/movement-tutorial';
 import CombatTutorial from './pages/combat-tutorial';
 import ItemTutorial from './pages/item-tutorial';
+import ShopTutorial from './pages/shop-tutorial';
+import DicePage from './pages/dice-page';
 import HotkeyPage from './pages/hotkey-page';
 
 import getNextPage from './actions/get-next-page';
@@ -33,6 +35,10 @@ const TutorialDialog = ({ dialog, toggleTutorial, changeTutorialPage }) => {
                 return <AbilityTutorial />;
             case 'item':
                 return <ItemTutorial />;
+            case 'shop':
+                return <ShopTutorial />;
+            case 'dice':
+                return <DicePage />;
             case 'hotkey':
                 return <HotkeyPage />;
             default:
