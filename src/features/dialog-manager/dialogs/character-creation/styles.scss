@@ -52,3 +52,35 @@
 .container.space-between {
     justify-content: space-between;
 }
+
+.character-creation__tooltip {
+    justify-content: center;
+    margin-left: 10px;
+    font-size: 16px;
+
+    .character-creation__tooltip-text {
+        font-family: Montserrat;
+        font-size: 14px;
+        text-transform: none;
+        font-weight: 400;
+        line-height: 1;
+        visibility: hidden;
+
+        padding: 5px;
+        margin-top: -5px;
+
+        background-color: var(--dark-gray);
+        border: 0.5px var(--gray) solid;
+
+        color: var(--gray);
+
+        /* Position the tooltip */
+        position: absolute;
+        left: 60px;
+        z-index: 1;
+    }
+}
+
+.character-creation__tooltip:hover .character-creation__tooltip-text {
+    visibility: visible;
+}

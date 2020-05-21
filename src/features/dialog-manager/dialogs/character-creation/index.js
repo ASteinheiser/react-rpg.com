@@ -79,7 +79,14 @@ const CharacterCreation = ({
                     onChange={event => setCharacterName(event.target.value)}
                 />
 
-                <span style={{ paddingTop: 12 }}>{`Your Race`}</span>
+                <span style={{ paddingTop: 12 }}>
+                    {`Your Race`}
+                    <i className="fa fa-question-circle character-creation__tooltip">
+                        <span className="character-creation__tooltip-text">
+                            {'Affects starting stats'}
+                        </span>
+                    </i>
+                </span>
                 <div className="container space-around">
                     <SelectButtonGroup
                         values={['Human', 'Elf', 'Dwarf']}
@@ -90,7 +97,14 @@ const CharacterCreation = ({
                     />
                 </div>
 
-                <span style={{ paddingTop: 12 }}>{`Your Class`}</span>
+                <span style={{ paddingTop: 12 }}>
+                    {`Your Class`}
+                    <i className="fa fa-question-circle character-creation__tooltip">
+                        <span className="character-creation__tooltip-text">
+                            {'Affects starting items'}
+                        </span>
+                    </i>
+                </span>
                 <div className="container space-around">
                     <SelectButtonGroup
                         values={['Fighter', 'Wizard', 'Ranger']}
