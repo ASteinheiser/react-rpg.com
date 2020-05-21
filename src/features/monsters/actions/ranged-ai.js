@@ -1,4 +1,4 @@
-import { playerInRange, getRandomDirection } from './move-monster';
+import { getRandomDirection, playerInView } from './move-monster';
 import { move } from './normal-ai';
 import { SPRITE_SIZE, SIGHT_RADIUS } from '../../../config/constants';
 import attackPlayer from './attack-player';
@@ -26,11 +26,7 @@ export default function ranged(sightBox, currentMap, monster) {
 
             const { player } = getState();
             // check if player is in range
-            if (
-                playerInRange(player.position, monsterPosition, SIGHT_RADIUS) &&
-                (player.position[0] === position[0] ||
-                    player.position[1] === position[1])
-            ) {
+            if (dispatch(playerInView(monsterPosition, SIGHT_RADIUS))) {
                 dispatch(attackPlayer(monster));
             } else {
                 // no player in range, time to move!

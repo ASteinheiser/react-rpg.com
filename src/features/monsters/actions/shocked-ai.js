@@ -63,6 +63,7 @@ export default function shocked(sightBox, currentMap, monster) {
                     from: 'shocked',
                     turns: 0,
                     entity: monster.type,
+                    original: monster.originalAI,
                 },
             });
         }

@@ -159,6 +159,7 @@ export default function castSpell() {
                                         id: currMonster.id,
                                         map: currentMap,
                                         entity: currMonster.type,
+                                        original: currMonster.originalAI,
                                     },
                                 });
                             }
@@ -173,6 +174,7 @@ export default function castSpell() {
                                     id: currMonster.id,
                                     map: currentMap,
                                     entity: currMonster.type,
+                                    original: currMonster.originalAI,
                                 },
                             });
                         }

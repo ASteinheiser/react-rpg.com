@@ -48,6 +48,7 @@ export default function frozen(sightBox, currentMap, monster) {
                     from: 'frozen',
                     turns: 0,
                     entity: monster.type,
+                    original: monster.originalAI,
                 },
             });
         }

@@ -339,11 +339,11 @@ const journalReducer = (state = initialState, { type, payload }) => {
         }
 
         case 'CHANGE_AI': {
-            const { from, ai, entity } = payload;
+            const { from, ai, entity, original } = payload;
 
             newState = cloneDeep(state);
 
-            if (from !== 'normal' && from !== ai) {
+            if (from !== original && from !== ai) {
                 newState.entries.push({
                     key: uuidv4(),
                     entry: (

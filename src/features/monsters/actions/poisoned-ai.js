@@ -73,6 +73,7 @@ export default function poisoned(sightBox, currentMap, monster) {
                     from: 'poisoned',
                     turns: 0,
                     entity: monster.type,
+                    original: monster.originalAI,
                 },
             });
         }

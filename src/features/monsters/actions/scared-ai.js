@@ -168,6 +168,7 @@ export default function scared(sightBox, currentMap, monster) {
                     from: 'scared',
                     turns: 0,
                     entity: monster.type,
+                    original: monster.originalAI,
                 },
             });
         }

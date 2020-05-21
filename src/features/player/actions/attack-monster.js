@@ -10,7 +10,7 @@ import getNextTile from '../../../utils/get-next-tile';
 import { SPRITE_SIZE, FISTS } from '../../../config/constants';
 
 export const findTarget = (position, direction, range) => {
-    return dispatch => {
+    return (dispatch, getState) => {
         let targetPosition = null;
         switch (direction) {
             case 'NORTH':
@@ -21,7 +21,10 @@ export const findTarget = (position, direction, range) => {
                 ) {
                     const pos = getNewPosition([position[0], y], direction);
                     targetPosition = pos;
-                    if (dispatch(checkForMonster(pos))) {
+                    if (
+                        !observeImpassable(pos, getState().world) ||
+                        dispatch(checkForMonster(pos))
+                    ) {
                         break;
                     }
                 }
@@ -34,7 +37,10 @@ export const findTarget = (position, direction, range) => {
                 ) {
                     const pos = getNewPosition([position[0], y], direction);
                     targetPosition = pos;
-                    if (dispatch(checkForMonster(pos))) {
+                    if (
+                        !observeImpassable(pos, getState().world) ||
+                        dispatch(checkForMonster(pos))
+                    ) {
                         break;
                     }
                 }
@@ -47,7 +53,10 @@ export const findTarget = (position, direction, range) => {
                 ) {
                     const pos = getNewPosition([x, position[1]], direction);
                     targetPosition = pos;
-                    if (dispatch(checkForMonster(pos))) {
+                    if (
+                        !observeImpassable(pos, getState().world) ||
+                        dispatch(checkForMonster(pos))
+                    ) {
                         break;
                     }
                 }
@@ -60,7 +69,10 @@ export const findTarget = (position, direction, range) => {
                 ) {
                     const pos = getNewPosition([x, position[1]], direction);
                     targetPosition = pos;
-                    if (dispatch(checkForMonster(pos))) {
+                    if (
+                        !observeImpassable(pos, getState().world) ||
+                        dispatch(checkForMonster(pos))
+                    ) {
                         break;
                     }
                 }

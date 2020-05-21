@@ -1,3 +1,4 @@
+import { getNewPosition } from '../../player/actions/move-player';
 import getNextTile from '../../../utils/get-next-tile';
 import { SPRITE_SIZE } from '../../../config/constants';
 import { radiusTiles } from '../../../utils/get-surrounding-tiles';
@@ -8,6 +9,64 @@ export function getRandomDirection() {
     const randomNumber = Math.floor(Math.random() * directions.length);
     return directions[randomNumber];
 }
+
+export const playerInView = (monsterPosition, range) => {
+    return (dispatch, getState) => {
+        const { position } = getState().player;
+
+        monsterPosition = monsterPosition.map(val => val * SPRITE_SIZE);
+        range *= SPRITE_SIZE;
+
+        for (
+            let y = monsterPosition[1];
+            y > monsterPosition[1] - range;
+            y -= SPRITE_SIZE
+        ) {
+            const pos = getNewPosition([monsterPosition[0], y], 'NORTH');
+            if (!dispatch(observeImpassable(pos))) break;
+            if (position[0] === pos[0] && position[1] === pos[1]) {
+                return true;
+            }
+        }
+        for (
+            let y = monsterPosition[1];
+            y < monsterPosition[1] + range;
+            y += SPRITE_SIZE
+        ) {
+            const pos = getNewPosition([monsterPosition[0], y], 'SOUTH');
+            if (!dispatch(observeImpassable(pos))) break;
+            if (position[0] === pos[0] && position[1] === pos[1]) {
+                return true;
+            }
+        }
+
+        for (
+            let x = monsterPosition[0];
+            x < monsterPosition[0] + range;
+            x += SPRITE_SIZE
+        ) {
+            const pos = getNewPosition([x, monsterPosition[1]], 'EAST');
+            if (!dispatch(observeImpassable(pos))) break;
+            if (position[0] === pos[0] && position[1] === pos[1]) {
+                return true;
+            }
+        }
+
+        for (
+            let x = monsterPosition[0];
+            x > monsterPosition[0] - range;
+            x -= SPRITE_SIZE
+        ) {
+            const pos = getNewPosition([x, monsterPosition[1]], 'WEST');
+            if (!dispatch(observeImpassable(pos))) break;
+            if (position[0] === pos[0] && position[1] === pos[1]) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+};
 
 export function playerInRange(
     playerPos,
