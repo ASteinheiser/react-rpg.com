@@ -87,6 +87,12 @@
     text-transform: none;
 }
 
+.tutorial-page__spell-icons {
+    flex: 1;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
 .tutorial-page__hotkeys {
     margin: auto;
     position: relative;

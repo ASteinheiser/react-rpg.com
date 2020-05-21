@@ -21,7 +21,6 @@ const DicePage = () => {
                     "'1d4 + 2' means roll a 4-sided die once, then add 2 to the result."
                 }
                 <br />
-                <br />
                 {"'2d8' means roll an 8-sided die twice, and sum the results."}
             </div>
         </div>

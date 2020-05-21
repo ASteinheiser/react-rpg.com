@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import Dialog from '../../../../components/dialog';
+import MicroDialog from '../../../../components/micro-dialog';
 import SpellButtom from './spell-button';
 import spells from '../../../../data/spells';
 import { B_KEY, ESC_KEY } from '../../../../config/constants';
@@ -14,7 +14,12 @@ const SpellbookDialog = ({ player, stats, toggleSpellbookDialog }) => {
     const [viewSpell, setViewSpell] = useState(false);
 
     return (
-        <Dialog keys={[B_KEY, ESC_KEY]} onKeyPress={toggleSpellbookDialog}>
+        <MicroDialog
+            fullsize
+            keys={[B_KEY, ESC_KEY]}
+            onClose={toggleSpellbookDialog}
+            onKeyPress={toggleSpellbookDialog}
+        >
             <ViewItem
                 open={Boolean(viewSpell)}
                 data={viewSpell}
@@ -38,7 +43,7 @@ const SpellbookDialog = ({ player, stats, toggleSpellbookDialog }) => {
                     </div>
                 ))}
             </div>
-        </Dialog>
+        </MicroDialog>
     );
 };
 

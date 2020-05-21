@@ -17,7 +17,7 @@ const EndlessGameStart = ({ backToSelect, startEndlessGame }) => {
 
             <span className="flex-column endless-start__text">
                 {
-                    'Up for a challenge..? These randomly generated dungeons will run you into oblivion.'
+                    'Up for a challenge...? These randomly generated dungeons will run you into oblivion.'
                 }
             </span>
 
