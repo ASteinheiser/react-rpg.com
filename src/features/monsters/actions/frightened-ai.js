@@ -49,18 +49,17 @@ function moveFrightened(sightBox, currentMap, monster) {
                 possibleDirections[
                     Math.floor(Math.random() * possibleDirections.length)
                 ];
+            const newMonsterPos = newPosition.map(value => value / SPRITE_SIZE);
 
             let inSight = false;
             // look through each current sight box tile
             sightBox.forEach(tile => {
                 // if the monster is in sight
-                const newMonsterPos = newPosition.map(
-                    value => value / SPRITE_SIZE
-                );
                 if (JSON.stringify(tile) === JSON.stringify(newMonsterPos)) {
                     inSight = true;
                 }
             });
+
             // if the monster is now in sight
             if (inSight) {
                 dispatch({
@@ -81,6 +80,12 @@ function moveFrightened(sightBox, currentMap, monster) {
                     map: currentMap,
                     id,
                     position: newPosition,
+                    direction:
+                        newPosition[0] < position[0]
+                            ? 'WEST'
+                            : newPosition[0] > position[0]
+                            ? 'EAST'
+                            : monster.direction,
                 },
             });
         }
@@ -117,8 +122,8 @@ export default function frightened(sightBox, currentMap, monster) {
                 payload: {
                     map: currentMap,
                     ai: 'normal',
-                    id: monster.id,
-                    from: 'scared',
+                    id,
+                    from: 'frightened',
                     turns: 0,
                     entity: monster.type,
                     original: monster.originalAI,

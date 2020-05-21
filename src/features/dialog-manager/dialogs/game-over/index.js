@@ -31,6 +31,7 @@ class GameOver extends Component {
     render() {
         const { phrase, ready } = this.state;
         const { resetGameState, dialog } = this.props;
+        const { entity, from } = dialog.diedFrom;
 
         const { characterName } = dialog.character;
 
@@ -47,8 +48,18 @@ class GameOver extends Component {
                             ? characterName
                             : characterName.substr(0, 9) + '...'}
                     </span>
-                    . They were slain by a mighty{' '}
-                    <span className="game-over__killer">{dialog.diedFrom}</span>
+                    .{' '}
+                    {entity ? (
+                        <>
+                            They were slain by a mighty{' '}
+                            <span className="game-over__killer">{entity}</span>
+                        </>
+                    ) : (
+                        <>
+                            <span className="game-over__killer">{from}</span>{' '}
+                            did them in.
+                        </>
+                    )}
                 </p>
 
                 <div className="game-over__button">

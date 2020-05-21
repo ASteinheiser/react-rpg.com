@@ -13,7 +13,7 @@ import { calculateDamage } from '../../../utils/dice';
 
 export function applyEffects() {
     return (dispatch, getState) => {
-        const { player } = getState();
+        const { player, stats } = getState();
 
         Object.keys(player.effects).forEach(effect => {
             const props = player.effects[effect];
@@ -24,6 +24,23 @@ export function applyEffects() {
                         type: 'DAMAGE_TO_PLAYER',
                         payload: { damage, effect: props.from },
                     });
+
+                    // check if player died
+                    if (stats.hp - damage <= 0) {
+                        // play death sound
+                        dispatch({
+                            type: 'PLAYER_DIED',
+                            payload: { from: props.from },
+                        });
+                        // if it did, game over
+                        dispatch({
+                            type: 'PAUSE',
+                            payload: {
+                                gameOver: true,
+                                pause: true,
+                            },
+                        });
+                    }
                 }
             }
         });

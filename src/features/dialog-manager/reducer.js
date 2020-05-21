@@ -143,7 +143,7 @@ const dialogManagerReducer = (state = initialState, { type, payload }) => {
             };
 
         case 'PLAYER_DIED':
-            return { ...state, diedFrom: payload.entity };
+            return { ...state, diedFrom: payload };
 
         case 'SET_SHOW_JOURNAL':
             return {
