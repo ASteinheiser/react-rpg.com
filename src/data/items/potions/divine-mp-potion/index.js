@@ -5,8 +5,8 @@ const DivineMpPotion = {
     name: 'Divine Mana Potion',
     type: 'potion',
     kind: 'mana',
-    mp: 100,
-    mpReset: 100,
+    mp: Infinity,
+    mpReset: Infinity,
     image: DivineMpPotionImg,
     value: 200,
 };

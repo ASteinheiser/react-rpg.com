@@ -74,7 +74,11 @@ const ViewItem = ({
 
             itemStats.push(
                 <StatsItem
-                    stats={{ name: data.kind, value: potionRestore }}
+                    stats={{
+                        name: data.kind,
+                        value:
+                            potionRestore == Infinity ? 'MAX' : potionRestore,
+                    }}
                     key={uuidv4()}
                 />
             );
@@ -326,6 +330,8 @@ const ViewItem = ({
             </>
         );
     }
+    const HpDiff = stats.maxHp - stats.hp;
+    const MpDiff = stats.maxMp - stats.mp;
 
     return (
         <MicroDialog
@@ -413,7 +419,10 @@ const ViewItem = ({
                 acceptText={data.kind === 'health' ? 'Heal' : 'Restore'}
                 acceptIcon={'medkit'}
                 confirm={() => {
-                    consumePotion(data);
+                    consumePotion(
+                        data,
+                        data.kind === 'health' ? HpDiff : MpDiff
+                    );
                     setConfirmPotion(false);
                     onClose();
                 }}

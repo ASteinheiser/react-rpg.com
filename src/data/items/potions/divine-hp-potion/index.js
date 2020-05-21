@@ -5,8 +5,8 @@ const DivineHpPotion = {
     name: 'Divine Health Potion',
     type: 'potion',
     kind: 'health',
-    hp: 100,
-    hpReset: 100,
+    hp: Infinity,
+    hpReset: Infinity,
     image: DivineHpPotionImg,
     value: 180,
 };
