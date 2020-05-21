@@ -9,6 +9,8 @@ import logLevelUp from '../../actions/log-level-up';
 
 import isAbilityAllocationLevel from '../../../../utils/is-ability-allocation-level';
 
+import spells from '../../../../data/spells';
+
 import './styles.scss';
 
 const LevelUp = ({
@@ -26,6 +28,10 @@ const LevelUp = ({
             ? abilityScoreDialog(true)
             : closeLevelUpDialog();
     };
+
+    const unlockedSpell = spells
+        .filter(spell => spell.unlockLevel === stats.level)
+        .pop();
 
     return (
         <MicroDialog onClose={nextDialog} onKeyPress={nextDialog}>
@@ -48,6 +54,18 @@ const LevelUp = ({
                         Gained
                         <span className="level-up__mana">{` +${mana} `}</span>
                         Mana
+                    </div>
+                )}
+            </div>
+
+            <div className="flex-column level-up__contents">
+                {unlockedSpell && (
+                    <div className="level-up__value--spacing">
+                        You just unlocked the{' '}
+                        <span className="level-up__unlock_spell">
+                            {unlockedSpell.name}
+                        </span>{' '}
+                        spell
                     </div>
                 )}
             </div>

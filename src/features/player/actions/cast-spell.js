@@ -5,6 +5,44 @@ import { SPRITE_SIZE } from '../../../config/constants';
 import errorMessage from '../../dialog-manager/actions/error-message';
 import { findTarget } from './attack-monster';
 
+function doesProcOnBoss() {
+    // Give the bosses some chance to not have their AI changed when hit
+    return Math.random() * 100 < 20;
+}
+
+function changeBossAI(spell, currMonster, criticalHit) {
+    return dispatch => {
+        if (criticalHit || doesProcOnBoss())
+            dispatch(changeMonsterAI(spell, currMonster));
+    };
+}
+
+function changeMonsterAI(spell, currMonster, criticalHit) {
+    return (dispatch, getState) => {
+        const { currentMap } = getState().world;
+        const { to, turns, proc } = spell.effects.changeAI;
+
+        // If they're already under the effects of something, don't apply a new effect
+        if (currMonster.ai !== currMonster.originalAI) return;
+
+        // If we have a probabilty to hit, then use that to check if we do
+        if (!proc || proc()) {
+            dispatch({
+                type: 'CHANGE_AI',
+                payload: {
+                    from: currMonster.ai,
+                    ai: to,
+                    turns,
+                    id: currMonster.id,
+                    map: currentMap,
+                    entity: currMonster.type,
+                    original: currMonster.originalAI,
+                },
+            });
+        }
+    };
+}
+
 export default function castSpell() {
     return (dispatch, getState) => {
         const { stats, player, monsters, world } = getState();
@@ -64,6 +102,7 @@ export default function castSpell() {
                 );
 
                 const roll = d20();
+                const criticalHit = roll === 20;
                 const attackValue = roll + modifier;
 
                 dispatch({
@@ -71,7 +110,7 @@ export default function castSpell() {
                     payload: { position: spellPosition, projectile: spell },
                 });
 
-                if (roll === 20) {
+                if (criticalHit) {
                     dispatch({
                         type: 'CRITICAL_HIT',
                         payload: {
@@ -94,12 +133,11 @@ export default function castSpell() {
                     });
                 }
 
-                const damage =
-                    roll === 20
-                        ? calculateDamage(spell.damage, true)
-                        : attackValue >= currMonster.defence
-                        ? calculateDamage(spell.damage, false)
-                        : 0;
+                const damage = criticalHit
+                    ? calculateDamage(spell.damage, true)
+                    : attackValue >= currMonster.defence
+                    ? calculateDamage(spell.damage, false)
+                    : 0;
 
                 // deal damage to monster
                 dispatch({
@@ -143,41 +181,17 @@ export default function castSpell() {
                             y: monsterPos[1] / SPRITE_SIZE,
                         },
                     });
-                } else if (damage > 0) {
-                    if (spell.effects && spell.effects.changeAI) {
-                        const { to, turns, proc } = spell.effects.changeAI;
-
-                        // If we have a probabilty to hit, then use that to check if we do
-                        if (proc) {
-                            if (proc()) {
-                                dispatch({
-                                    type: 'CHANGE_AI',
-                                    payload: {
-                                        from: currMonster.ai,
-                                        ai: to,
-                                        turns,
-                                        id: currMonster.id,
-                                        map: currentMap,
-                                        entity: currMonster.type,
-                                        original: currMonster.originalAI,
-                                    },
-                                });
-                            }
-                        } else {
-                            // Otherwise, just set the AI to whatever it is
-                            dispatch({
-                                type: 'CHANGE_AI',
-                                payload: {
-                                    from: currMonster.ai,
-                                    ai: to,
-                                    turns,
-                                    id: currMonster.id,
-                                    map: currentMap,
-                                    entity: currMonster.type,
-                                    original: currMonster.originalAI,
-                                },
-                            });
-                        }
+                } else if (
+                    damage > 0 &&
+                    spell.effects &&
+                    spell.effects.changeAI
+                ) {
+                    if (currMonster.originalAI === 'boss') {
+                        dispatch(changeBossAI(spell, currMonster, criticalHit));
+                    } else {
+                        dispatch(
+                            changeMonsterAI(spell, currMonster, criticalHit)
+                        );
                     }
                 }
 

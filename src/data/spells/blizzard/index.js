@@ -10,12 +10,12 @@ const Blizzard = {
     kind: 'combat',
     range: SIGHT_RADIUS,
     damage: '2d6',
-    manaCost: 40,
+    manaCost: 52,
     size: { width: 40, height: 40, total: 200 },
     image: BlizzardImage,
     sprite: BlizzardSprite,
     description: 'I told you to chill out! You should have listened...',
-    unlockLevel: 20,
+    unlockLevel: 17,
     effects: {
         changeAI: {
             to: 'frozen',

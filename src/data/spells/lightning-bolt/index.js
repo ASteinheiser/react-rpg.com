@@ -13,14 +13,14 @@ const LightningBolt = {
     target: 'enemy',
     kind: 'combat',
     range: SIGHT_RADIUS,
-    damage: '1d6',
-    manaCost: 23,
+    damage: '1d6 + 3',
+    manaCost: 26,
     size: { width: 40, height: 40, total: 200 },
     image: LightningBoltImage,
     sprite: LightningBoltSprite,
     description:
         'Ever wanted to be a Greek god? Well, this is all you get buddy.',
-    unlockLevel: 11,
+    unlockLevel: 8,
     effects: {
         changeAI: {
             to: 'shocked',

@@ -10,7 +10,7 @@ const Mend = {
     kind: 'assist',
     range: 0,
     damage: '1d6',
-    manaCost: 3,
+    manaCost: 5,
     size: { width: 40, height: 40, total: 2480 },
     image: MendImage,
     sprite: MendSprite,

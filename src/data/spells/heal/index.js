@@ -9,7 +9,7 @@ const Heal = {
     target: 'self::heal',
     kind: 'assist',
     range: 0,
-    damage: '2d8',
+    damage: '2d6',
     manaCost: 30,
     size: { width: 40, height: 40, total: 2480 },
     image: HealImage,

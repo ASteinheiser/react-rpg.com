@@ -7,6 +7,7 @@ import {
     LEVEL_UP_ABILITY_POINTS,
     MAX_JOURNAL_ENTRIES,
 } from '../../config/constants';
+import spells from '../../data/spells';
 
 const initialState = {
     entries: [],
@@ -435,6 +436,22 @@ const journalReducer = (state = initialState, { type, payload }) => {
                             You gained{' '}
                             {colourise(LEVEL_UP_ABILITY_POINTS, 'level')}{' '}
                             ability points!
+                        </p>
+                    ),
+                });
+            }
+
+            const unlockedSpell = spells
+                .filter(spell => spell.unlockLevel === level)
+                .pop();
+
+            if (unlockedSpell) {
+                newState.entries.push({
+                    key: uuidv4(),
+                    entry: (
+                        <p key={uuidv4()}>
+                            You unlocked the{' '}
+                            {colourise(unlockedSpell.name, 'level')} spell!
                         </p>
                     ),
                 });

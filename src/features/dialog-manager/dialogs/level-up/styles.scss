@@ -28,6 +28,7 @@
 
     .level-up__value--spacing {
         justify-content: space-between;
+        text-align: center;
     }
 }
 
@@ -36,4 +37,8 @@
 
     align-items: center;
     padding: 25px 0;
+}
+
+.level-up__unlock_spell {
+    color: var(--purple);
 }

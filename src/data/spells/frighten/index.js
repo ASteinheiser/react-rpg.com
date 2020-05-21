@@ -10,7 +10,7 @@ const Frighten = {
     kind: 'combat',
     range: SIGHT_RADIUS,
     damage: '2d6',
-    manaCost: 27,
+    manaCost: 40,
     size: { width: 40, height: 40, total: 200 },
     image: FrightenImage,
     sprite: FrightenSprite,

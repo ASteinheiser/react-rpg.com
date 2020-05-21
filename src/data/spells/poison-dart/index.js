@@ -15,12 +15,12 @@ const PoisonDart = {
     kind: 'combat',
     range: SIGHT_RADIUS,
     damage: '2d4',
-    manaCost: 18,
+    manaCost: 21,
     size: { width: 40, height: 40, total: 200 },
     image: PoisonDartImage,
     sprite: PoisonDartSprite,
     description: 'Life is easier when no-one else is around.',
-    unlockLevel: 8,
+    unlockLevel: 5,
     effects: {
         changeAI: {
             to: 'poisoned',
