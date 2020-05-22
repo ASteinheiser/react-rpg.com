@@ -4,8 +4,9 @@ const AmethystRing = {
     name: 'Amethyst Ring',
     type: 'ring',
     effect: {
-        defence: 5,
-        hp: 15,
+        defence: 3,
+        hp: 7,
+        mana: 3,
     },
     image: AmethystRingImg,
     value: 125,

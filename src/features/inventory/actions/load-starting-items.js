@@ -24,11 +24,11 @@ export default function loadStartingItems() {
         switch (characterRace) {
             case 'Human':
                 dispatchType = 'STARTING_ITEM';
-                startingItem = items.clothes.armor.LeatherBoots;
+                startingItem = items.clothes.armor.leather.LeatherBoots;
                 break;
             case 'Elf':
                 dispatchType = 'STARTING_ITEM';
-                startingItem = items.clothes.armor.LeatherGloves;
+                startingItem = items.clothes.armor.leather.LeatherGloves;
                 break;
             case 'Dwarf':
             default:

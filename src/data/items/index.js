@@ -24,9 +24,10 @@ import BrownRobes from './clothes/robes/brown-robes';
 import RedRobes from './clothes/robes/red-robes';
 import TealRobes from './clothes/robes/teal-robes';
 import SkullRobes from './clothes/robes/skull-robes';
-import DiamondRing from './rings/diamond-ring';
-import AmethystRing from './rings/amethyst-ring';
 import OldRing from './rings/old-ring';
+import AmethystRing from './rings/amethyst-ring';
+import SaphireRing from './rings/saphire-ring';
+import DiamondRing from './rings/diamond-ring';
 import BroadSword from './weapons/swords/broad-sword';
 import RustySword from './weapons/swords/rusty-sword';
 import SteelSword from './weapons/swords/steel-sword';
@@ -77,26 +78,34 @@ const items = {
     },
     clothes: {
         armor: {
-            LeatherArmor,
-            LeatherBoots,
-            LeatherCap,
-            LeatherGloves,
-            LeatherPants,
-            IronArmor,
-            IronBoots,
-            IronHelm,
-            IronGloves,
-            IronPants,
-            SteelArmor,
-            SteelBoots,
-            SteelHelm,
-            SteelGloves,
-            SteelPants,
-            MithrilArmor,
-            MithrilBoots,
-            MithrilHelm,
-            MithrilGloves,
-            MithrilPants,
+            leather: {
+                LeatherArmor,
+                LeatherBoots,
+                LeatherCap,
+                LeatherGloves,
+                LeatherPants,
+            },
+            iron: {
+                IronArmor,
+                IronBoots,
+                IronHelm,
+                IronGloves,
+                IronPants,
+            },
+            steel: {
+                SteelArmor,
+                SteelBoots,
+                SteelHelm,
+                SteelGloves,
+                SteelPants,
+            },
+            mithril: {
+                MithrilArmor,
+                MithrilBoots,
+                MithrilHelm,
+                MithrilGloves,
+                MithrilPants,
+            },
         },
         robes: {
             BlackRobes,
@@ -107,9 +116,10 @@ const items = {
         },
     },
     rings: {
-        AmethystRing,
-        DiamondRing,
         OldRing,
+        AmethystRing,
+        SaphireRing,
+        DiamondRing,
     },
     potions: {
         HpPotion,
@@ -187,7 +197,7 @@ export const randomItemsT3 = [
     PhantasmCrossbow,
     RedStaff,
     TealStaff,
-    AmethystRing,
+    SaphireRing,
 ];
 
 export const randomItemsT4 = [
