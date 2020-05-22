@@ -20,7 +20,7 @@ const wallType = 'skull';
 
 const monsters = [
     {
-        type: 'lich',
+        type: 'lich king',
         position: [12, 7],
     },
     {

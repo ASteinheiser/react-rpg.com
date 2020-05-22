@@ -8,7 +8,7 @@ const SteelPants = {
         defence: 12,
     },
     image: SteelPantsImg,
-    value: 120,
+    value: 175,
 };
 
 export default SteelPants;

@@ -1,3 +1,4 @@
+// Credit: https://pipoya.itch.io/free-rpg-monster-pack
 import PoisonCloudSprite from './poison-cloud.png';
 import PoisonCloudSpell from '../../spells/poison-cloud';
 

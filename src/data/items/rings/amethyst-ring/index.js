@@ -4,10 +4,11 @@ const AmethystRing = {
     name: 'Amethyst Ring',
     type: 'ring',
     effect: {
-        defence: 3,
+        defence: 5,
+        hp: 15,
     },
     image: AmethystRingImg,
-    value: 120,
+    value: 125,
 };
 
 export default AmethystRing;

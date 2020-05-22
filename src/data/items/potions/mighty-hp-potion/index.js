@@ -5,10 +5,10 @@ const MightyHpPotion = {
     name: 'Mighty Health Potion',
     type: 'potion',
     kind: 'health',
-    hp: 50,
-    hpReset: 50,
+    hp: 80,
+    hpReset: 80,
     image: MightyHpPotionImg,
-    value: 90,
+    value: 100,
 };
 
 export default MightyHpPotion;

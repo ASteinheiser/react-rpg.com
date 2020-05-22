@@ -5,10 +5,10 @@ const SkullRobes = {
     name: 'Skull Robes',
     type: 'armor::body',
     effect: {
-        mana: 9,
+        mana: 90,
     },
     image: SkullRobesImg,
-    value: 65,
+    value: 125,
 };
 
 export default SkullRobes;

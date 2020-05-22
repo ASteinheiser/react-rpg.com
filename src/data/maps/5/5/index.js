@@ -104,7 +104,7 @@ const monsters = [
         position: [16, 8],
     },
     {
-        type: 'lich',
+        type: 'lich king',
         position: [16, 6],
     },
     {

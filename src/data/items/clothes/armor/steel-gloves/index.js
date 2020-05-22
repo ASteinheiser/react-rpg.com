@@ -5,10 +5,10 @@ const SteelGloves = {
     name: 'Steel Gloves',
     type: 'armor::gloves',
     effect: {
-        defence: 8,
+        defence: 7,
     },
     image: SteelGlovesImg,
-    value: 80,
+    value: 120,
 };
 
 export default SteelGloves;

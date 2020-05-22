@@ -3,9 +3,9 @@ import GolemSprite from './stone-golem.png';
 const StoneGolem = {
     hp: 30,
     maxHp: 30,
-    attackValue: '1d10 + 15',
+    attackValue: '2d10 + 5',
     defence: 5,
-    dice: '2d8 + 2',
+    dice: '2d8',
     exp: 200,
     type: 'stone golem',
     sprite: { WEST: GolemSprite, EAST: GolemSprite },

@@ -1,3 +1,4 @@
+// Credit: https://pipoya.itch.io/free-rpg-monster-pack
 import GasCloudSprite from './gas-cloud.png';
 
 const GasCloud = {

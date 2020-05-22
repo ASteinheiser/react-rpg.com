@@ -1,10 +1,11 @@
+// Credit: Made on www.pixelart.com by Kelvin Ngor
 import WolfSprite from './wolf.png';
 import WolfFloppedSprite from './wolf-flopped.png';
 
 const Wolf = {
     hp: 10,
     maxHp: 10,
-    attackValue: '1d4 + 2',
+    attackValue: '2d4 + 3',
     defence: 1,
     dice: '1d4 + 1',
     exp: 22,

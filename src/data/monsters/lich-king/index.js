@@ -1,14 +1,14 @@
 import LichSprite from './lich.png';
 import LichFloppedSprite from './lich-flopped.png';
 
-const Lich = {
-    hp: 80,
-    maxHp: 80,
-    attackValue: '2d20+10',
+const LichKing = {
+    hp: 100,
+    maxHp: 100,
+    attackValue: '3d20 + 30',
     defence: 12,
-    dice: '2d8 + 10',
+    dice: '1d20 + 10',
     exp: 1000,
-    type: 'lich',
+    type: 'lich king',
     sprite: { WEST: LichSprite, EAST: LichFloppedSprite },
     ai: 'boss',
     originalAI: 'boss',
@@ -16,4 +16,4 @@ const Lich = {
     aiTurns: 0,
 };
 
-export default Lich;
+export default LichKing;

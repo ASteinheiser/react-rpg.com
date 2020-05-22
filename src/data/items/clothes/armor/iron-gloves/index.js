@@ -4,7 +4,7 @@ const IronGloves = {
     name: 'Iron Gloves',
     type: 'armor::gloves',
     effect: {
-        defence: 5,
+        defence: 4,
     },
     image: IronGlovesImg,
     value: 50,

@@ -8,7 +8,7 @@ const SteelBoots = {
         defence: 7,
     },
     image: SteelBootsImg,
-    value: 90,
+    value: 120,
 };
 
 export default SteelBoots;

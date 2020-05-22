@@ -1,3 +1,4 @@
+// Credit: https://pipoya.itch.io/free-rpg-monster-pack
 import FungiBulbSprite from './fungi-bulb.png';
 
 const FungiBulb = {

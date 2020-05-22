@@ -1,10 +1,11 @@
+// Credit: https://mobilegamegraphics.itch.io/adventure-game-kit
 import MedusaSprite from './medusa.png';
 import MedusaFloppedSprite from './medusa-flopped.png';
 
 const Medusa = {
     hp: 40,
     maxHp: 40,
-    attackValue: '3d10 + 20',
+    attackValue: '5d6 + 25',
     defence: 5,
     dice: '1d20 + 4',
     exp: 350,

@@ -5,7 +5,7 @@ const BlackRobes = {
     name: 'Black Robes',
     type: 'armor::body',
     effect: {
-        mana: 1,
+        mana: 10,
     },
     image: BlackRobesImg,
     value: 25,

@@ -5,7 +5,7 @@ const MithrilGloves = {
     name: 'Mithril Gloves',
     type: 'armor::gloves',
     effect: {
-        defence: 15,
+        defence: 10,
     },
     image: MithrilGlovesImg,
     value: 150,

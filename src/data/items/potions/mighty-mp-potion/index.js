@@ -1,12 +1,12 @@
-// Credit: https://craftpix.net/freebies/free-game-icons-of-fantasy-potions-pack-1/
+//Credit: https://kyrise.itch.io/kyrises-free-16x16-rpg-icon-pack
 import MightyMpPotionImg from './mighty-mp-potion.png';
 
 const MightyMpPotion = {
     name: 'Mighty Mana Potion',
     type: 'potion',
     kind: 'mana',
-    mp: 60,
-    mpReset: 60,
+    mp: 80,
+    mpReset: 80,
     image: MightyMpPotionImg,
     value: 100,
 };

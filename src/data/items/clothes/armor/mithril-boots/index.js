@@ -8,7 +8,7 @@ const MithrilBoots = {
         defence: 10,
     },
     image: MithrilBootsImg,
-    value: 130,
+    value: 150,
 };
 
 export default MithrilBoots;

@@ -1,5 +1,6 @@
+// Credit: https://pipoya.itch.io/free-rpg-monster-pack
 import PlanteraSprite from './plantera.png';
-import Stone from '../../ammo/stone';
+import Pea from '../../ammo/pea';
 
 const Plantera = {
     hp: 40,
@@ -12,7 +13,7 @@ const Plantera = {
     sprite: { WEST: PlanteraSprite, EAST: PlanteraSprite },
     ai: 'ranged',
     originalAI: 'ranged',
-    projectile: Stone,
+    projectile: Pea,
     direction: 'WEST',
     aiTurns: 0,
 };

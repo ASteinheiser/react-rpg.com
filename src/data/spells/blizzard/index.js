@@ -1,4 +1,4 @@
-// Credit: https://kvsr.itch.io/pixelarteffectfx017
+// Credit: https://kvsr.itch.io/ice-shard
 import BlizzardSprite from './Blizzard.png';
 import BlizzardImage from './Blizzard-image.png';
 import { SIGHT_RADIUS, AI_CHANGE_TURNS } from '../../../config/constants';

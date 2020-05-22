@@ -7,7 +7,7 @@ const IronArmor = {
         defence: 10,
     },
     image: IronArmorImg,
-    value: 90,
+    value: 100,
 };
 
 export default IronArmor;

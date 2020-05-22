@@ -1,4 +1,4 @@
-// Credit: https://tfonez.itch.io/pixel-assets
+//Credit: https://kyrise.itch.io/kyrises-free-16x16-rpg-icon-pack
 import GreatMpPotionImg from './great-mp-potion.png';
 
 const GreatMpPotion = {

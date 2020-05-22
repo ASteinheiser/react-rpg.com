@@ -5,7 +5,7 @@ const Stone = {
     target: 'enemy',
     size: { width: 40, height: 40, total: 560 },
     sprite: StoneImg,
-    information: 'flung a',
+    information: 'shot a',
 };
 
 export default Stone;

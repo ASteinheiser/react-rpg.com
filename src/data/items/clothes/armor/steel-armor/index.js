@@ -5,10 +5,10 @@ const SteelArmor = {
     name: 'Steel Armor',
     type: 'armor::body',
     effect: {
-        defence: 20,
+        defence: 15,
     },
     image: SteelArmorImg,
-    value: 210,
+    value: 200,
 };
 
 export default SteelArmor;

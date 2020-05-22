@@ -1,10 +1,11 @@
+// Credit: https://pipoya.itch.io/free-rpg-monster-pack
 import GhostSprite from './ghost.png';
 import LightningBolt from '../../spells/lightning-bolt';
 
 const Ghost = {
     hp: 20,
     maxHp: 20,
-    attackValue: '1d8 + 4',
+    attackValue: '3d6 + 5',
     defence: 4,
     dice: '1d8',
     exp: 80,

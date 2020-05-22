@@ -5,10 +5,10 @@ const BrownRobes = {
     name: 'Brown Robes',
     type: 'armor::body',
     effect: {
-        mana: 3,
+        mana: 30,
     },
     image: BrownRobesImg,
-    value: 35,
+    value: 50,
 };
 
 export default BrownRobes;

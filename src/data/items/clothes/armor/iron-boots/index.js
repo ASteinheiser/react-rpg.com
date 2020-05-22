@@ -7,7 +7,7 @@ const IronBoots = {
         defence: 4,
     },
     image: IronBootsImg,
-    value: 60,
+    value: 50,
 };
 
 export default IronBoots;
