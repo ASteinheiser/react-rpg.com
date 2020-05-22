@@ -33,6 +33,7 @@ export default function confirmAbilityScoreDialog() {
                 payload: {
                     pause: true,
                     gameInstructions: true,
+                    gameRunning: true,
                 },
             });
         }

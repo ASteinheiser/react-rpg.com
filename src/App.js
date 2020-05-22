@@ -28,10 +28,14 @@ const App = ({ appState, world, dialog }) => {
 
     const { sideMenu, journalSideMenu } = appState;
     const { gameMode, floorNum, currentMap } = world;
-    const { gameStart, gameOver, journalSideMenuOpen } = dialog;
+    const { gameStart, gameOver, gameRunning, journalSideMenuOpen } = dialog;
 
     const disableJournal =
-        gameStart || gameOver || !journalSideMenu || !journalSideMenuOpen;
+        gameStart ||
+        gameOver ||
+        !gameRunning ||
+        !journalSideMenu ||
+        !journalSideMenuOpen;
 
     let showFooter = true;
 

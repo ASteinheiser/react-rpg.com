@@ -15,6 +15,7 @@ const GameMenus = ({ appState, dialog }) => {
     const {
         gameOver,
         gameStart,
+        gameRunning,
         paused,
         inventory,
         journalDialog,
@@ -23,9 +24,9 @@ const GameMenus = ({ appState, dialog }) => {
 
     // disable the inventory button when we are in settings or paused and not in the inventory
     const disableInventory =
-        settings || (paused && !inventory && !journalDialog);
+        !gameRunning || settings || (paused && !inventory && !journalDialog);
     // disable the stats view when in game start or game over or settings
-    const disableStats = gameStart || gameOver || settings;
+    const disableStats = !gameRunning || gameStart || gameOver || settings;
 
     const disableJournal = disableInventory;
 
