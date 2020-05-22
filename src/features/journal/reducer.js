@@ -424,7 +424,7 @@ const journalReducer = (state = initialState, { type, payload }) => {
                 entry: (
                     <p key={uuidv4()}>
                         You reached level {colourise(level, 'level')}, gained{' '}
-                        {colourise(hp, 'health-gain')} hp and{' '}
+                        {colourise(hp, 'health-gain')} health and{' '}
                         {colourise(mana, 'mana-gain')} mana!
                     </p>
                 ),

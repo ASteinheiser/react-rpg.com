@@ -43,7 +43,7 @@ const LevelUp = ({
                 {hp !== 0 && (
                     <div className="level-up__value--spacing">
                         Gained<span className="level-up__hp">{` +${hp} `}</span>
-                        Hp
+                        Health
                     </div>
                 )}
             </div>
