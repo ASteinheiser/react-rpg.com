@@ -2,7 +2,7 @@
 import SkullStaffImg from './skull-staff.png';
 
 const SkullStaff = {
-    name: 'Steel Staff',
+    name: 'Skull Staff',
     type: 'weapon',
     kind: 'magic',
     effect: {

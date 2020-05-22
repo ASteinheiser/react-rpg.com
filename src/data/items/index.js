@@ -174,7 +174,6 @@ export const randomItemsT2 = [
     BroadSword,
     HellsPhoenix,
     RedStaff,
-    OldRing,
     AmethystRing,
 ];
 
@@ -189,7 +188,6 @@ export const randomItemsT3 = [
     RedStaff,
     TealStaff,
     AmethystRing,
-    DiamondRing,
 ];
 
 export const randomItemsT4 = [
@@ -198,7 +196,6 @@ export const randomItemsT4 = [
     LichBane,
     MidnightsFury,
     SkullStaff,
-    AmethystRing,
     DiamondRing,
 ];
 
