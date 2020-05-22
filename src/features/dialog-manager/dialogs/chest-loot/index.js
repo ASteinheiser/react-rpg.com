@@ -33,14 +33,14 @@ const ChestLoot = ({ dialog, pickupItem, openChest, closeChestDialog }) => {
                 {gold !== 0 && (
                     <div className="flex-row chest-loot__value--spacing">
                         <span>{'Gold: '}</span>
-                        <span>{gold}</span>
+                        <span className="gold-loot">{gold}</span>
                     </div>
                 )}
 
                 {exp !== 0 && (
                     <div className="flex-row chest-loot__value--spacing">
                         <span>{'Exp: '}</span>
-                        <span>{exp}</span>
+                        <span className="exp-loot">{exp}</span>
                     </div>
                 )}
 

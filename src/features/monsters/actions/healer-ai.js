@@ -6,7 +6,7 @@ import monsterCastSpell from './monster-cast-spell';
 
 export default function healer(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
-        const { id, position } = monster;
+        const { id, position, hp, maxHp } = monster;
 
         const monsterPosition = position.map(pos => pos / SPRITE_SIZE);
 
@@ -26,7 +26,7 @@ export default function healer(sightBox, currentMap, monster) {
             });
 
             const { player } = getState();
-            if (monster.hp <= monster.maxHp / 2) {
+            if (hp <= maxHp / 2) {
                 dispatch(monsterCastSpell(monster));
             } else if (playerInRange(player.position, monsterPosition)) {
                 // check if player is in range

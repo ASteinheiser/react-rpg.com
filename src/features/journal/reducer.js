@@ -302,7 +302,9 @@ const journalReducer = (state = initialState, { type, payload }) => {
             newState.entries.push({
                 key: uuidv4(),
                 entry: (
-                    <p key={uuidv4()}>You cast {colourise(name, 'spell')}</p>
+                    <p key={uuidv4()}>
+                        You cast {colourise(name, 'spell-cast')}
+                    </p>
                 ),
             });
             return newState;
@@ -317,7 +319,7 @@ const journalReducer = (state = initialState, { type, payload }) => {
                 entry: (
                     <p key={uuidv4()}>
                         The {colourise(entity, 'type')} cast{' '}
-                        {colourise(spell.name, 'spell')}!
+                        {colourise(spell.name, 'spell-cast')}!
                     </p>
                 ),
             });

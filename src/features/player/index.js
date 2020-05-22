@@ -264,7 +264,14 @@ class Player extends Component {
                         startPosition={
                             this.props.player.monsterProjectileTargetPosition
                         }
-                        endPosition={[0, 0]}
+                        endPosition={
+                            this.props.player.monsterProjectile.target.includes(
+                                'self'
+                            )
+                                ? this.props.player
+                                      .monsterProjectileTargetPosition // If they're tartgetting themselves, then use their position
+                                : [0, 0] // Otherwise it's targetting the player
+                        }
                         direction={this.props.player.monsterProjectileDirection}
                     />
                 );

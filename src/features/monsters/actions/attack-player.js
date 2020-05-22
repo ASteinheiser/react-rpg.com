@@ -11,7 +11,7 @@ export default function attackPlayer(monster) {
         const calculatedMonsterDamage =
             attack >= Math.max(stats.defence, 0) ? calculateDamage(dice) : 0;
 
-        if (projectile) {
+        if (projectile && !projectile.target.includes('self')) {
             let direction = '';
             const targetPosition = [
                 position[0] - player.position[0],
