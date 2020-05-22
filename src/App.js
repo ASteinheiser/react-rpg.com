@@ -86,17 +86,16 @@ const App = ({ appState, world, dialog }) => {
 
     return (
         <>
-            <div
-                style={{
-                    float: 'left',
-                    marginLeft: '100px',
-                    marginRight: '-300px',
-                    display: disableJournal ? 'none' : 'block',
-                }}
-            >
-                <JournalSide disabled={disableJournal} />
-            </div>
             <div className={`centered flex-row`}>
+                <div
+                    style={{
+                        float: 'left',
+                        marginLeft: '-360px',
+                        display: disableJournal ? 'none' : 'block',
+                    }}
+                >
+                    <JournalSide disabled={disableJournal} />
+                </div>
                 <div
                     className={`centered ${
                         sideMenu ? 'flex-row' : 'flex-column'
