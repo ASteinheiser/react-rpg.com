@@ -20,7 +20,11 @@ const wallType = 'purple-brick';
 const monsters = [
     {
         type: 'plantera',
-        position: [2, 6],
+        position: [1, 6],
+    },
+    {
+        type: 'fire spirit',
+        position: [3, 6],
     },
     {
         type: 'imp',
@@ -32,7 +36,11 @@ const monsters = [
     },
     {
         type: 'warlock',
-        position: [17, 6],
+        position: [16, 6],
+    },
+    {
+        type: 'poison cloud',
+        position: [18, 6],
     },
 ];
 

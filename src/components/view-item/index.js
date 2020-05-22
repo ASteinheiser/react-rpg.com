@@ -77,7 +77,7 @@ const ViewItem = ({
                     stats={{
                         name: data.kind,
                         value:
-                            potionRestore == Infinity ? 'MAX' : potionRestore,
+                            potionRestore === Infinity ? 'MAX' : potionRestore,
                     }}
                     key={uuidv4()}
                 />

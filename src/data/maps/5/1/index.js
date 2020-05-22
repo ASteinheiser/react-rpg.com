@@ -45,7 +45,7 @@ const monsters = [
     },
     {
         type: 'dragon',
-        position: [18, 15],
+        position: [18, 11],
     },
     {
         type: 'stone golem',
