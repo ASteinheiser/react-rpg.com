@@ -24,6 +24,24 @@
         font-size: 22px;
     }
 
+    .button__float-icon {
+        position: relative;
+        float: left;
+
+        padding-right: 10px;
+
+        font-size: 22px;
+    }
+
+    .button__float-icon-right {
+        position: relative;
+        float: right;
+
+        padding-left: 10px;
+
+        font-size: 22px;
+    }
+
     .button__indicator {
         position: absolute;
         bottom: -5px;

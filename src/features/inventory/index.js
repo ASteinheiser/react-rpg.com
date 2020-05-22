@@ -64,7 +64,9 @@ class Inventory extends Component {
                         small={sideMenu}
                         indicator={newItemIndicator}
                         onClick={this._toggleInventory.bind(this)}
-                        icon={open ? 'times' : 'briefcase'}
+                        icon={'briefcase'}
+                        iconRight={open && 'times'}
+                        floatIcons={true}
                         title={open ? 'Close' : 'Inventory'}
                         style={{
                             width: 180,

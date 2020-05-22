@@ -17,6 +17,7 @@ const Button = ({
     image,
     noBorder,
     extraClass,
+    floatIcons,
 }) => {
     function handleClick() {
         if (typeof onClick === 'function') {
@@ -40,7 +41,9 @@ const Button = ({
         >
             {icon && (
                 <i
-                    className={`fa fa-${icon} button__icon`}
+                    className={`fa fa-${icon} ${
+                        floatIcons ? 'button__float-icon' : 'button__icon'
+                    }`}
                     style={iconStyle || {}}
                 >
                     {indicator && <div className="button__indicator" />}
@@ -62,7 +65,11 @@ const Button = ({
 
             {iconRight && (
                 <i
-                    className={`fa fa-${iconRight} button__icon-right`}
+                    className={`fa fa-${iconRight} ${
+                        floatIcons
+                            ? 'button__float-icon-right'
+                            : 'button__icon-right'
+                    }`}
                     style={iconStyle || {}}
                 >
                     {indicator && <div className="button__indicator" />}

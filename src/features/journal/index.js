@@ -16,7 +16,9 @@ const Journal = ({ disabled, sideMenu, dialog, toggleJournal }) => {
             <Button
                 small={sideMenu}
                 onClick={toggleJournal}
-                icon={open ? 'times' : 'book'}
+                icon={'book'}
+                iconRight={open && 'times'}
+                floatIcons={true}
                 title={open ? 'Close' : 'Journal'}
                 style={{
                     width: 160,
