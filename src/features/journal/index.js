@@ -6,8 +6,10 @@ import toggleJournal from '../dialog-manager/actions/toggle-journal';
 
 import './styles.scss';
 
-const Journal = ({ disabled, sideMenu, dialog, toggleJournal }) => {
-    const open = dialog.journalDialog || dialog.journalSideMenuOpen;
+const Journal = ({ disabled, sideMenu, appState, dialog, toggleJournal }) => {
+    const open =
+        dialog.journalDialog ||
+        (appState.journalSideMenu && dialog.journalSideMenuOpen);
 
     if (disabled) return null;
 
@@ -32,7 +34,7 @@ const Journal = ({ disabled, sideMenu, dialog, toggleJournal }) => {
     );
 };
 
-const mapStateToProps = ({ dialog }) => ({ dialog });
+const mapStateToProps = ({ appState, dialog }) => ({ appState, dialog });
 
 const actions = { toggleJournal };
 

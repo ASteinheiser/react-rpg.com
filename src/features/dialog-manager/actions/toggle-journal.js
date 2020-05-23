@@ -1,19 +1,24 @@
 export default function toggleJournal() {
     return (dispatch, getState) => {
-        if (getState().appState.journalSideMenu) {
+        const { dialog, appState } = getState();
+        const { journalSideMenu } = appState;
+        const { inventory, journalDialog } = dialog;
+
+        if (journalSideMenu) {
             dispatch({
                 type: 'PAUSE',
                 payload: {
-                    pause: false,
-                    journalDialog: !getState().dialog.journalDialog,
+                    pause: inventory,
+                    journalDialog: !journalDialog,
+                    inventory,
                 },
             });
-        } else if (getState().dialog.journalDialog) {
+        } else if (journalDialog) {
             dispatch({
                 type: 'PAUSE',
-                payload: { pause: false },
+                payload: { pause: inventory, inventory },
             });
-        } else if (!getState().appState.journalSideMenu) {
+        } else if (!journalSideMenu) {
             dispatch({
                 type: 'PAUSE',
                 payload: {
