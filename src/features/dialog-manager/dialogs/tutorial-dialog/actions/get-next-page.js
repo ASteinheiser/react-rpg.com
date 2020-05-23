@@ -1,6 +1,8 @@
 export default function getNextPage(page) {
     switch (page) {
         case 'movement':
+            return 'ability';
+        case 'ability':
             return 'dice';
         case 'dice':
             return 'combat';
@@ -11,8 +13,6 @@ export default function getNextPage(page) {
         case 'item':
             return 'shop';
         case 'shop':
-            return 'ability';
-        case 'ability':
             return 'hotkey';
         case 'hotkey':
             return null;

@@ -106,3 +106,9 @@
     padding: 10px 5px 5px 5px;
     text-transform: none;
 }
+
+.tutorial-page__dice-types {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+}

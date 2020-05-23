@@ -8,7 +8,7 @@ const AbilityTutorial = () => {
             <div className="tutorial-page__title">{'ABILITIES'}</div>
             <div className="tutorial-page__ability">
                 <span className="tutorial-page__ability-name">
-                    {'STRENGTH'}
+                    {'STRENGTH (STR)'}
                 </span>
                 <br />
                 <span className="tutorial-page__ability-description">
@@ -17,7 +17,7 @@ const AbilityTutorial = () => {
             </div>
             <div className="tutorial-page__ability">
                 <span className="tutorial-page__ability-name">
-                    {'CONSTITUTION'}
+                    {'CONSTITUTION (CON)'}
                 </span>
                 <br />
                 <span className="tutorial-page__ability-description">
@@ -26,7 +26,7 @@ const AbilityTutorial = () => {
             </div>
             <div className="tutorial-page__ability">
                 <span className="tutorial-page__ability-name">
-                    {'DEXTERITY'}
+                    {'DEXTERITY (DEX)'}
                 </span>
                 <br />
                 <span className="tutorial-page__ability-description">
@@ -35,7 +35,7 @@ const AbilityTutorial = () => {
             </div>
             <div className="tutorial-page__ability">
                 <span className="tutorial-page__ability-name">
-                    {'CHARISMA'}
+                    {'CHARISMA (CHR)'}
                 </span>
                 <br />
                 <span className="tutorial-page__ability-description">
@@ -44,7 +44,7 @@ const AbilityTutorial = () => {
             </div>
             <div className="tutorial-page__ability">
                 <span className="tutorial-page__ability-name">
-                    {'INTELLIGENCE'}
+                    {'INTELLIGENCE (INT)'}
                 </span>
                 <br />
                 <span className="tutorial-page__ability-description">
@@ -52,7 +52,9 @@ const AbilityTutorial = () => {
                 </span>
             </div>
             <div className="tutorial-page__ability">
-                <span className="tutorial-page__ability-name">{'WISDOM'}</span>
+                <span className="tutorial-page__ability-name">
+                    {'WISDOM (WIS)'}
+                </span>
                 <br />
                 <span className="tutorial-page__ability-description">
                     Affects health and mana restored from potions.

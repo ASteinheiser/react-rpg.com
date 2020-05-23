@@ -16,7 +16,7 @@ const HotkeyPage = () => {
             <div className="tutorial-page__title">{'MENU HOTKEYS'}</div>
             <div className="tutorial-page__hotkeys">
                 <Hotkey img={BKey} label={'Spellbook'} />
-                <Hotkey img={HKey} label={'Tutorial'} />
+                <Hotkey img={HKey} label={'Help'} />
                 <Hotkey img={IKey} label={'Inventory'} />
                 <Hotkey img={JKey} label={'Journal'} />
                 <Hotkey img={UKey} label={'Abilities'} />
