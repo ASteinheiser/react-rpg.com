@@ -3,6 +3,14 @@ import { move } from './normal-ai';
 import { calculateDamage } from '../../../utils/dice';
 import { SPRITE_SIZE } from '../../../config/constants';
 
+/**
+ * An AI for monsters who will deal damage to the player and die when they come in
+ * contact with the player
+ *
+ * @param {*} sightBox The players FOV
+ * @param {*} currentMap The map the player is in
+ * @param {*} monster The monster we're moving
+ */
 export default function suicidal(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
         const { stats } = getState();

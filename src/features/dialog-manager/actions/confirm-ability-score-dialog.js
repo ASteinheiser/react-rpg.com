@@ -1,6 +1,15 @@
+import loadStartingItems from '../../inventory/actions/load-starting-items';
+import showFirstStoryMessage from './show-first-story-message';
+import showEndlessMessage from './show-endless-message';
+
 export default function confirmAbilityScoreDialog() {
     return (dispatch, getState) => {
-        const { abilities } = getState().dialog;
+        const {
+            abilities,
+            fromLevelUp,
+            playerOpenedAbilityDialog,
+            gameType,
+        } = getState().dialog;
 
         dispatch({
             type: 'SET_ABILITY_SCORES',
@@ -11,7 +20,7 @@ export default function confirmAbilityScoreDialog() {
             },
         });
 
-        if (getState().dialog.fromLevelUp) {
+        if (fromLevelUp) {
             dispatch({
                 type: 'PAUSE',
                 payload: {
@@ -19,7 +28,7 @@ export default function confirmAbilityScoreDialog() {
                     fromLevelUp: false,
                 },
             });
-        } else if (getState().dialog.playerOpenedAbilityDialog) {
+        } else if (playerOpenedAbilityDialog) {
             dispatch({
                 type: 'PAUSE',
                 payload: {
@@ -28,14 +37,12 @@ export default function confirmAbilityScoreDialog() {
                 },
             });
         } else {
-            dispatch({
-                type: 'PAUSE',
-                payload: {
-                    pause: true,
-                    gameInstructions: true,
-                    gameRunning: true,
-                },
-            });
+            dispatch(loadStartingItems());
+            if (gameType === 'endless') {
+                dispatch(showEndlessMessage());
+            } else {
+                dispatch(showFirstStoryMessage());
+            }
         }
     };
 }

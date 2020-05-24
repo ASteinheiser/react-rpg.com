@@ -1,8 +1,10 @@
 import { MAP_DIMENSIONS, MAP_PADDING_DISTANCE } from '../config/constants';
 
+/**
+ * Generate the padding tiles that go around the map so that it appears as if
+ * the walls go on forever, and so they cannot see the end of the map.
+ */
 export default function generatePaddingTiles() {
-    // we need to add padding tiles so the
-    // player cannot see past the edge of the map
     const top = [];
     const bottom = [];
     const left = [];

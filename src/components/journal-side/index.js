@@ -8,6 +8,7 @@ class JournalSide extends Component {
     componentDidUpdate(_prevProps, _prevState) {
         const journal = document.getElementById('journal-side');
         if (journal !== null) {
+            // Automatically scroll the journal when new content is added
             journal.scrollTop = journal.scrollHeight;
         }
     }

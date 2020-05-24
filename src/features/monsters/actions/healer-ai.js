@@ -4,6 +4,13 @@ import attackPlayer from './attack-player';
 import { SPRITE_SIZE } from '../../../config/constants';
 import monsterCastSpell from './monster-cast-spell';
 
+/**
+ * An AI for monsters who have the capability of healing themselves
+ *
+ * @param {*} sightBox The players FOV
+ * @param {*} currentMap The map the player is in
+ * @param {*} monster The monster we're moving
+ */
 export default function healer(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
         const { id, position, hp, maxHp } = monster;
@@ -27,6 +34,7 @@ export default function healer(sightBox, currentMap, monster) {
 
             const { player } = getState();
             if (hp <= maxHp / 2) {
+                // Attempt to heal some health
                 dispatch(monsterCastSpell(monster));
             } else if (playerInRange(player.position, monsterPosition)) {
                 // check if player is in range

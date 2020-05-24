@@ -1,9 +1,13 @@
-// generates a random monster type based on player level and a random chance
-export default function generateMonsterType(playerLv) {
+/**
+ * Get a random monster based on the players level
+ *
+ * @param {*} playerLevel The level of the player
+ */
+export default function generateMonsterType(playerLevel) {
     // generate a number between 1 - 100
     const chance = Math.floor(Math.random() * 100) + 1;
     // if player is level 1 - 2
-    if (playerLv <= 2) {
+    if (playerLevel <= 2) {
         if (chance <= 10) {
             // 10% chance to spawn a goblin
             return 'goblin';
@@ -12,7 +16,7 @@ export default function generateMonsterType(playerLv) {
             return 'rat';
         }
     } // if player is level 3 - 6
-    else if (playerLv <= 6 && playerLv >= 3) {
+    else if (playerLevel <= 6 && playerLevel >= 3) {
         if (chance <= 10) {
             // 10% chance to spawn stone golem
             return 'stone golem';
@@ -24,7 +28,7 @@ export default function generateMonsterType(playerLv) {
             return 'rat';
         }
     } // if player is level 7 - 9
-    else if (playerLv <= 9 && playerLv >= 7) {
+    else if (playerLevel <= 9 && playerLevel >= 7) {
         if (chance <= 10) {
             // 10% chance to spawn imp
             return 'imp';
@@ -36,7 +40,7 @@ export default function generateMonsterType(playerLv) {
             return 'goblin';
         }
     } // if player is level 10 - 12
-    else if (playerLv <= 12 && playerLv >= 10) {
+    else if (playerLevel <= 12 && playerLevel >= 10) {
         if (chance <= 30) {
             // 30% chance to spawn imp
             return 'imp';
@@ -48,7 +52,7 @@ export default function generateMonsterType(playerLv) {
             return 'goblin';
         }
     } // if player is level 13 - 15
-    else if (playerLv <= 15 && playerLv >= 13) {
+    else if (playerLevel <= 15 && playerLevel >= 13) {
         if (chance <= 10) {
             // 10% chance to spawn dragon
             return 'dragon';
@@ -60,7 +64,7 @@ export default function generateMonsterType(playerLv) {
             return 'stone golem';
         }
     } // if player is level 16 - 18
-    else if (playerLv <= 18 && playerLv >= 16) {
+    else if (playerLevel <= 18 && playerLevel >= 16) {
         if (chance <= 30) {
             // 30% chance to spawn dragon
             return 'dragon';
@@ -72,7 +76,7 @@ export default function generateMonsterType(playerLv) {
             return 'stone golem';
         }
     } // if player is level 19 - 21
-    else if (playerLv <= 21 && playerLv >= 19) {
+    else if (playerLevel <= 21 && playerLevel >= 19) {
         if (chance <= 10) {
             // 10% chance to spawn lich
             return 'lich';
@@ -84,7 +88,7 @@ export default function generateMonsterType(playerLv) {
             return 'imp';
         }
     } // if player is level 22 - 24
-    else if (playerLv <= 24 && playerLv >= 22) {
+    else if (playerLevel <= 24 && playerLevel >= 22) {
         if (chance <= 30) {
             // 30% chance to spawn lich
             return 'lich';
@@ -96,7 +100,7 @@ export default function generateMonsterType(playerLv) {
             return 'imp';
         }
     } // if player is level 25 - 27
-    else if (playerLv <= 27 && playerLv >= 25) {
+    else if (playerLevel <= 27 && playerLevel >= 25) {
         if (chance <= 60) {
             // 60% chance to spawn lich
             return 'lich';
@@ -105,7 +109,7 @@ export default function generateMonsterType(playerLv) {
             return 'dragon';
         }
     } // if player is level 28 or greater
-    else if (playerLv >= 28) {
+    else if (playerLevel >= 28) {
         return 'lich';
     }
 }

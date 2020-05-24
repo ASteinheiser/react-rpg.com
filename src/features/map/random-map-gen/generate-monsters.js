@@ -2,13 +2,26 @@ import generateMonsterType from './generate-monster-type';
 import arrContainArr from '../../../utils/arr-contain-arr';
 import getSurroundingTiles from '../../../utils/get-surrounding-tiles';
 import { MAP_DIMENSIONS } from '../../../config/constants';
-// generates random monsters for a random map
-export default function generateMonsters(floorNum, map, playerPos, playerLv) {
+
+/**
+ * Generate all of the monsters in the map
+ *
+ * @param {*} floorNumber The floor number
+ * @param {*} map The map we're generating the monsters in
+ * @param {*} playerPosition The position of the player
+ * @param {*} playerLevel The level of the player
+ */
+export default function generateMonsters(
+    floorNumber,
+    map,
+    playerPosition,
+    playerLevel
+) {
     let availableTiles = [];
     // we need to get the tiles from the surrounding tiles func,
     // then reverse the coordinates because they come back in normal notation (y, x)
     // but for the random map gen, we need them in (x, y)
-    const vision = getSurroundingTiles(playerPos).tiles.map(tile =>
+    const vision = getSurroundingTiles(playerPosition).tiles.map(tile =>
         tile.reverse()
     );
 
@@ -31,7 +44,7 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
 
     // generate number of monsters for the map based on floor number and player level
     const numberMonsters =
-        Math.ceil(floorNum / playerLv) *
+        Math.ceil(floorNumber / playerLevel) *
         Math.round(Math.random() * (4 - 2) + 2);
     const monsterTiles = [];
     // get an array of tiles to position the random monsters
@@ -51,7 +64,7 @@ export default function generateMonsters(floorNum, map, playerPos, playerLv) {
         // as it is in [y, x], and now we need to change to [x, y] (normal notation)
         position = position.reverse();
 
-        const type = generateMonsterType(playerLv);
+        const type = generateMonsterType(playerLevel);
 
         return { position, type };
     });

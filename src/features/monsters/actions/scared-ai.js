@@ -2,6 +2,13 @@ import { observeImpassable, checkForOtherMonster } from './move-monster';
 import attackMonster from './attack-monster';
 import { SPRITE_SIZE } from '../../../config/constants';
 
+/**
+ * An AI for monsters that have been scared by the player
+ *
+ * @param {*} sightBox The players FOV
+ * @param {*} currentMap The map the player is in
+ * @param {*} monster The monster we're moving
+ */
 function moveScared(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
         const playerPosition = getState().player.position;

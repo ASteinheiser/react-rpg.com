@@ -1,5 +1,10 @@
 import { SIGHT_RADIUS, MAP_DIMENSIONS, SPRITE_SIZE } from '../config/constants';
 
+/**
+ * Generate a square of tiles of a size.
+ *
+ * @param {*} radiusSize The size of the square we want to generate
+ */
 export const radiusTiles = (radiusSize = SIGHT_RADIUS) => {
     let x, y;
     const radTiles = [];
@@ -15,7 +20,11 @@ export const radiusTiles = (radiusSize = SIGHT_RADIUS) => {
     return radTiles;
 };
 
-// takes an array of relative coordinates to the map size (20 x 15) i.e. [1, 1]
+/**
+ * Gather the tiles surrounding the position that the player has moved to.
+ *
+ * @param {*} newPos The position that the player will be moving to
+ */
 export default function getSurroundingTiles(newPos) {
     // make sure the new position is in relative map tile size
     const x =

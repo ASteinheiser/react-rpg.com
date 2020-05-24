@@ -1,7 +1,17 @@
-// Create an 'unbiased' roll
+/**
+ * An 'unbiased' dice roll
+ *
+ * @param {*} sides The number of sides the dice has
+ */
 const unbiased = sides => Math.floor(Math.random() * sides) + 1;
 
-// Create a 'biased' dice roll, either to the maximum or the minimum value, if not specified, return an unbiased roll
+//
+/**
+ * Create a 'biased' dice roll, either to the maximum or the minimum value.
+ * If not specified, or it's not biased to either max or min, return an unbiased roll
+ *
+ * @param {*} to The bias we want to represent (max or min)
+ */
 const biased = to => {
     if (to === 'max') {
         return sides => sides;
@@ -88,8 +98,20 @@ const ops = {
     },
 };
 
-const peek = a => a[a.length - 1];
+/**
+ * Take a peek at the last element of an array
+ *
+ * @param {*} arr The array to peek into
+ */
+const peek = arr => arr[arr.length - 1];
 
+/**
+ * Reorder an array so that the precedence of operators is taken into account
+ *
+ * @param {*} stack The stack to reorder
+ * @param {*} token The token (operator) we're trying to insert
+ * @param {*} out Where to put the resulting ordered operators
+ */
 const reorder = (stack, token, out) => {
     while (
         peek(stack) in ops &&
@@ -99,6 +121,11 @@ const reorder = (stack, token, out) => {
     }
 };
 
+/**
+ * Determine if a string is a base 10 number
+ *
+ * @param {*} str The string to check
+ */
 const isNumber = str => {
     for (let i = 0; i < str.length; i++) {
         const ch = str.charAt(i);
@@ -110,18 +137,25 @@ const isNumber = str => {
     return true;
 };
 
+/**
+ * Lex an expression (dice notation) into it's components
+ *
+ * @param {*} expression The expression (given as dice notation) to lex
+ */
 const lex = expression => {
+    const operators = [...Object.keys(ops), '(', ')'];
+
     return expression
         .split('')
         .reduce((output, token) => {
-            if (token in ops) {
-                output.push(token);
-            } else if (token === '(' || token === ')') {
+            if (operators.includes(token)) {
                 output.push(token);
             } else if (token.trim().length > 0) {
                 if (output.length > 0 && isNumber(output[output.length - 1])) {
+                    // If the last thing we parsed was also a number, then this is a part of that number
                     output.push(output.pop() + token);
                 } else {
+                    // Start a new number
                     output.push(token);
                 }
             }
@@ -131,7 +165,12 @@ const lex = expression => {
         .join(' ');
 };
 
-// Djikstra's shunting yard algorithm to convert infix notation to postfix notation
+/**
+ * An implementation of Djikstra's shunting yard algorithm (https://en.wikipedia.org/wiki/Shunting-yard_algorithm)
+ * modified to account for the peculiarities around dice notation
+ *
+ * @param {*} infix The expression to convert to postfix notation for evaluating
+ */
 const yard = infix => {
     let stack = [];
 
@@ -184,7 +223,13 @@ const yard = infix => {
         .join(' ');
 };
 
-// Evaluate a reverse polish notation (postfix) expression
+/**
+ * Evaluate a dice notation given in postfix notation
+ *
+ * @param {*} postfix The notation to parse
+ * @param {*} criticalHit Whether or not the roll was a critical hit
+ * @param {*} die The dice function to use to 'roll' a dice
+ */
 const rpn = (postfix, criticalHit, die) => {
     const evaluated = postfix
         .split(' ')
@@ -201,22 +246,47 @@ const rpn = (postfix, criticalHit, die) => {
         }, [])
         .pop();
 
-    return Array.isArray(evaluated) // We can either get a value here, or an array (indicating the last item is a dice roll)
+    // We can either get a value here, or an array (indicating the last item was a dice roll)
+    return Array.isArray(evaluated)
         ? evaluated.reduce((sum, value) => sum + value, 0)
         : parseInt(evaluated || '0', 10); // In case of evaluated being an empty string
 };
 
+/**
+ * Parse a dice's notation. Based on the notation given at https://en.wikipedia.org/wiki/Dice_notation
+ *
+ * @param {*} notation The notation to parse
+ * @param {*} criticalHit Whether or not the dice was a critical hit
+ * @param {*} dice The dice function to use (useful for determining range)
+ */
 const parse = (notation, criticalHit, dice) =>
     rpn(yard(lex(notation)), criticalHit, dice);
 
+/**
+ * Calculate the damage range of some given notation
+ *
+ * This is mostly used for testing purposes, however it previously
+ * offered a damage range for weapons
+ *
+ * @param {*} notation The notation to determine the range for
+ * @param {*} criticalHit Whether or not that roll was a critical hit
+ */
 export const calculateDamageRange = (notation, criticalHit) => {
     const min = parse(notation, criticalHit, biased('min'));
     const max = parse(notation, criticalHit, biased('max'));
     return [min, max];
 };
 
-// Calculates damage to deal based on Dice Notation (https://en.wikipedia.org/wiki/Dice_notation)
+/**
+ * Determine the damage done given the notation and whether or not the roll is a critical hit
+ *
+ * @param {*} notation The dice notation we want to calculate
+ * @param {*} criticalHit Whether the roll was a critical hit
+ */
 export const calculateDamage = (notation, criticalHit) =>
     parse(notation, criticalHit, unbiased);
 
+/**
+ * A standard 20 sided dice roll
+ */
 export const d20 = () => Math.floor(Math.random() * 20) + 1;

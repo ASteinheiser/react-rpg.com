@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import reactCSS from 'reactcss';
 import { HuePicker } from 'react-color';
 
-class ColourPicker extends React.Component {
+class ColourPicker extends Component {
     constructor(props) {
         super(props);
 

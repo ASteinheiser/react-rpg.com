@@ -1,5 +1,14 @@
 import { SPRITE_SIZE } from '../../../config/constants';
 
+/**
+ * The monster can't move, so all this really does is reveal the monster
+ * if they're in view, hide them if they're not, and then reverts their AI
+ * if they're unfrozen.
+ *
+ * @param {*} sightBox The players FOV
+ * @param {*} currentMap The map the player is in
+ * @param {*} monster The monster we're moving
+ */
 export default function frozen(sightBox, currentMap, monster) {
     return dispatch => {
         const { id, position, direction } = monster;

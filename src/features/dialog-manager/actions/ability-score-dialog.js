@@ -1,11 +1,16 @@
 import { LEVEL_UP_ABILITY_POINTS } from '../../../config/constants';
 
+/**
+ * Open the abilitiy score dialog
+ *
+ * @param {*} fromLevelUp Whether this was called after the level up dialog
+ */
 export default function abilityScoreDialog(fromLevelUp) {
-    // fromLevelUp tells us if we were called from the level up dialog or not
     return (dispatch, getState) => {
         const { abilities } = getState().stats;
 
         if (fromLevelUp) {
+            // They just levelled up and have been allocated some points to use
             abilities.points += LEVEL_UP_ABILITY_POINTS;
         }
 

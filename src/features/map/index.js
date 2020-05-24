@@ -23,6 +23,7 @@ const GameMap = ({ map, world }) => {
         wallType = map.wallType;
     } else {
         map = { ...map, ...randomMaps[floorNum - 1] };
+        // Give the player a variety of walls while they traverse endless mode
         if (floorNum < 30) wallType = 'brick';
         else if (floorNum < 60) wallType = 'ornate';
         else if (floorNum < 90) wallType = 'purple';
@@ -73,6 +74,11 @@ const MapRow = props => {
     );
 };
 
+/**
+ * Determine the wall type for the map
+ *
+ * @param {*} tiles The tiles the map contains
+ */
 function getWallType(tiles) {
     for (let i = 0; i < tiles.length; i++) {
         for (let j = 0; j < tiles[i].length; j++) {

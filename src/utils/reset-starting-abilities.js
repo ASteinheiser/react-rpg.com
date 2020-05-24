@@ -1,5 +1,13 @@
 // Reset all ability scores to default
 import { STARTING_ABILITY_SCORE_VALUE } from '../config/constants';
+
+/**
+ * Reset the players ability scores to the default starting values,
+ * and set the minimums also to the starting values
+ *
+ * @param {*} abilities The players abilities
+ * @param {*} abilities_minimum The players minimum ability value
+ */
 export default function resetAbilityScoreValues(abilities, abilities_minimum) {
     abilities.strength = STARTING_ABILITY_SCORE_VALUE;
     abilities.constitution = STARTING_ABILITY_SCORE_VALUE;

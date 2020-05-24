@@ -23,6 +23,10 @@ export const Animation = ({
     let rotation = '0';
 
     if (!projectile.target.includes('self')) {
+        // If the target is the caster, then we will want to rotate the
+        // sprite such that it at least looks like it's going the right way
+        // Note: This is troublesome when you use a sprite that isn't mirrored horizontally
+        //       (it will appear upside down).
         switch (direction) {
             case 'NORTH':
                 rotation = '270';

@@ -1,8 +1,13 @@
-export default function randomMapMessage(floorNum) {
+/**
+ * Retrieve a map message for a floor
+ *
+ * @param {*} floorNumber The floor number
+ */
+export default function endlessMapMessage(floorNumber) {
     return dispatch => {
         let message = false;
         // check if we should show a message
-        switch (floorNum + 1) {
+        switch (floorNumber + 1) {
             case 20:
                 message = {
                     title: `As <> marches onward, they notice the walls have a faint purple glow to them...`,

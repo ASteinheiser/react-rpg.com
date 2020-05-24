@@ -3,6 +3,13 @@ import { move } from './normal-ai';
 import { SPRITE_SIZE, SIGHT_RADIUS } from '../../../config/constants';
 import attackPlayer from './attack-player';
 
+/**
+ * An AI for monsters who have the capability of using ranged attacks
+ *
+ * @param {*} sightBox The players FOV
+ * @param {*} currentMap The map the player is in
+ * @param {*} monster The monster we're moving
+ */
 export default function ranged(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
         const { id, position } = monster;

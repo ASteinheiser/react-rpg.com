@@ -6,6 +6,13 @@ import {
     SPRITE_SIZE,
 } from '../../../config/constants';
 
+/**
+ * An AI used for monsters that have been poisoned, and will apply poison damage over time
+ *
+ * @param {*} sightBox The players FOV
+ * @param {*} currentMap The map the player is in
+ * @param {*} monster The monster we're moving
+ */
 export default function poisoned(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
         const { stats } = getState();

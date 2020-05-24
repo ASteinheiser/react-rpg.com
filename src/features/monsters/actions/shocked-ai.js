@@ -1,6 +1,13 @@
 import { calculateDamage } from '../../../utils/dice';
 import { SHOCK_DAMAGE, SPRITE_SIZE } from '../../../config/constants';
 
+/**
+ * An AI for monsters that have become shocked by the player
+ *
+ * @param {*} sightBox The players FOV
+ * @param {*} currentMap The map the player is in
+ * @param {*} monster The monster we're moving
+ */
 export default function shocked(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
         const { stats } = getState();

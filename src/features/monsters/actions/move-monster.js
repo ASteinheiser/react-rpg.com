@@ -99,6 +99,13 @@ export function observeImpassable(newPos) {
     };
 }
 
+/**
+ * Check to see if any other monster is at the position this monster is trying to move to
+ *
+ * @param {*} id The id of the monster that's trying to move
+ * @param {*} position The position its moving to
+ * @param {*} currentMap THe map that the monsrer is in
+ */
 export function checkForOtherMonster(id, position, currentMap) {
     return (_, getState) => {
         // get current monsters

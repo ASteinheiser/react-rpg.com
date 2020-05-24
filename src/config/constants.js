@@ -87,6 +87,7 @@ export const FISTS = {
     type: 'weapon',
 };
 
+// The player regenerates mana at this rate
 export const PASSIVE_MANA_RESTORE_TURNS = 10;
 export const OUT_OF_COMBAT_RANGE = 4;
 

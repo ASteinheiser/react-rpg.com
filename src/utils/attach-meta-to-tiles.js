@@ -1,5 +1,15 @@
 import _cloneDeep from 'lodash.clonedeep';
 
+/**
+ * The generation of maps doesn't touch on the extra items we need for processing.
+ *
+ * This will:
+ *  Set the 'value' of a tile (basically what type of tile it is)
+ *  Set the explored state of each tile provided to 0 (i.e. it hasn't been explored)
+ *  Add some variation to tiles that support
+ *
+ * @param {*} tiles The tiles we want to attach this information too
+ */
 export default function attachMetaToTiles(tiles) {
     const newTiles = _cloneDeep(tiles);
 

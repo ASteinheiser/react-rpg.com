@@ -1,5 +1,13 @@
 import addRaceAbilityBonus from '../utils/add-race-ability-bonus';
 import setAbilityMinimum from '../utils/set-ability-minimum';
+
+/**
+ * Given the player's chosen race, deterine the bonuses they receive
+ *
+ * @param {*} characterRace The race of the player
+ * @param {*} abilities The abilities the player currently has
+ * @param {*} abilities_minimum The minimum abilities of the player
+ */
 export default function setRaceBonus(
     characterRace,
     abilities,

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import ChestLoot from './dialogs/chest-loot';
 import EndlessGameStart from './dialogs/endless-game-start';
 import InventoryDialog from './dialogs/inventory-dialog';
-import GameInstructions from './dialogs/game-instructions';
 import CharacterCreation from './dialogs/character-creation';
 import GameTextDialog from './dialogs/game-text-dialog';
 import GameSelect from './dialogs/game-select';
@@ -29,7 +28,6 @@ const DialogManager = ({ dialog, appState }) => {
         gameStart,
         gameSelect,
         gameWin,
-        gameInstructions,
         characterCreation,
         character,
         paused,
@@ -71,7 +69,6 @@ const DialogManager = ({ dialog, appState }) => {
         if (abilityDialog) PauseComp = <AbilityScores />;
         if (characterCreation) PauseComp = <CharacterCreation />;
         if (characterCustomisation) PauseComp = <CharacterCustomisation />;
-        if (gameInstructions) PauseComp = <GameInstructions />;
         if (gameOver) PauseComp = <GameOver />;
         if (gameStart) PauseComp = <GameSelect />;
         if (gameSelect) {

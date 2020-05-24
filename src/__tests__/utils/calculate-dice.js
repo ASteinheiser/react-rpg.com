@@ -50,7 +50,7 @@ describe('when you roll a dice', () => {
     });
 });
 
-describe('When you get a nat 20', () => {
+describe('When you get a nat 20 (critical hit)', () => {
     test('1d4 should have the same range as 2d4', () => {
         const notation = '1d4';
         const range = calculateDamageRange(notation, true);

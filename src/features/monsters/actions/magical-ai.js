@@ -3,6 +3,13 @@ import { move } from './normal-ai';
 import { SPRITE_SIZE, SIGHT_RADIUS } from '../../../config/constants';
 import monsterCastSpell from './monster-cast-spell';
 
+/**
+ * An AI for monsters who have the capability of casting spells
+ *
+ * @param {*} sightBox The players FOV
+ * @param {*} currentMap The map the player is in
+ * @param {*} monster The monster we're moving
+ */
 export default function magical(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
         const { id, position } = monster;

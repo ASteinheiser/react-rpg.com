@@ -1,6 +1,15 @@
 import { observeImpassable, checkForOtherMonster } from './move-monster';
 import { SPRITE_SIZE } from '../../../config/constants';
 
+/**
+ * Move the monster in a frightened manner.
+ *
+ * In future it would be good to have the monster run away from the player instead of randomly moving
+ *
+ * @param {*} sightBox The players FOV
+ * @param {*} currentMap The map the player is in
+ * @param {*} monster The monster we're moving
+ */
 function moveFrightened(sightBox, currentMap, monster) {
     return (dispatch, getState) => {
         const playerPosition = getState().player.position;
@@ -45,6 +54,7 @@ function moveFrightened(sightBox, currentMap, monster) {
         }
 
         if (possibleDirections.length > 0) {
+            // Choose a random position to move to
             const newPosition =
                 possibleDirections[
                     Math.floor(Math.random() * possibleDirections.length)

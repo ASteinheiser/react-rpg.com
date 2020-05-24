@@ -1,7 +1,7 @@
 import _debounce from 'lodash.debounce';
 
 import generateMap from '../../map/random-map-gen/generate-map';
-import randomMapMessage from '../../map/random-map-gen/random-map-message';
+import endlessMapMessage from '../../map/random-map-gen/endless-map-message';
 import uuidv4 from '../../../utils/uuid-v4';
 import { SPRITE_SIZE, MAP_TRANSITION_DELAY } from '../../../config/constants';
 
@@ -26,7 +26,7 @@ export default function walkStairs(nextTile, playerPos) {
         if (gameMode === 'endless') {
             if (direction === 'up') {
                 // conditionally show a message based on floorNum
-                dispatch(randomMapMessage(floorNum));
+                dispatch(endlessMapMessage(floorNum));
                 // if we have reached a new floor
                 if (floorNum === randomMaps.length) {
                     // generate a random map, save it, and set it as the current map

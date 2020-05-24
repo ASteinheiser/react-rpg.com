@@ -258,6 +258,7 @@ class Player extends Component {
                 prevProps.player.monsterUseProjectile !==
                 this.props.player.monsterUseProjectile
             ) {
+                // A monster used a projectile, so we need to show that
                 monsterProjectileAnimation = (
                     <Animation
                         projectile={this.props.player.monsterProjectile}
@@ -409,6 +410,7 @@ class Player extends Component {
         // game start menu open, hide the player
         if (gameStart) return null;
 
+        // Determine what the projectile the player used was
         const projectile =
             attackAnimationPlay === 'spell'
                 ? player.spell

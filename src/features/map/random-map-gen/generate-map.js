@@ -5,7 +5,12 @@ import {
     MAX_LENGTH,
 } from '../../../config/constants';
 
-// generates a random dungeon map
+/**
+ * Generate a map for a specific floor, and having a certain start point
+ *
+ * @param {*} startPos The starting point for the map (where the player spawns)
+ * @param {*} floorNum The floor number
+ */
 export default function generateMap(startPos, floorNum) {
     // change the walls of the dungeon as the floors get higher
     let wallType = 5;

@@ -17,7 +17,14 @@ function changeBossAI(spell, currMonster, criticalHit) {
     };
 }
 
-function changeMonsterAI(spell, currMonster, criticalHit) {
+/**
+ * Change a monsters AI from an effect that the spell the players casting
+ * causes.
+ *
+ * @param {*} spell The spell the player is casting
+ * @param {*} currMonster The monster that's being targetted
+ */
+function changeMonsterAI(spell, currMonster) {
     return (dispatch, getState) => {
         const { currentMap } = getState().world;
         const { to, turns, proc } = spell.effects.changeAI;
@@ -189,9 +196,7 @@ export default function castSpell() {
                     if (currMonster.originalAI === 'boss') {
                         dispatch(changeBossAI(spell, currMonster, criticalHit));
                     } else {
-                        dispatch(
-                            changeMonsterAI(spell, currMonster, criticalHit)
-                        );
+                        dispatch(changeMonsterAI(spell, currMonster));
                     }
                 }
 
