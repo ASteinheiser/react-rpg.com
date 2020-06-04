@@ -38,6 +38,7 @@ export default function confirmAbilityScoreDialog() {
             });
         } else {
             dispatch(loadStartingItems());
+            dispatch({ type: 'PAUSE', payload: { gameRunning: true } });
             if (gameType === 'endless') {
                 dispatch(showEndlessMessage());
             } else {
