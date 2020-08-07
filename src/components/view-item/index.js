@@ -324,7 +324,7 @@ const ViewItem = ({
     }
 
     const HpDiff = stats.maxHp - stats.hp;
-    const MpDiff = stats.maxMp - stats.mp;
+    const MpDiff = stats.maxMana - stats.mana;
 
     return (
         <MicroDialog
