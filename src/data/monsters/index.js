@@ -9,6 +9,7 @@ import Goblin from './goblin';
 import Ghost from './ghost';
 import Imp from './imp';
 import Lich from './lich';
+import LichKing from './lich-king';
 import Medusa from './medusa';
 import Orc from './orc';
 import Plantera from './plantera';
@@ -34,6 +35,7 @@ const monsters = {
     ghost: Ghost,
     imp: Imp,
     lich: Lich,
+    'lich king': LichKing,
     medusa: Medusa,
     orc: Orc,
     plantera: Plantera,
