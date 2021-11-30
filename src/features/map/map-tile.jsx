@@ -6,7 +6,7 @@ import { SPRITE_SIZE } from '../../config/constants';
 const MapTile = ({ tile, wallType, index, sightBox }) => {
     let inSight = false;
     // Load the tile directly from the public folder
-    let tilesrc = `${process.env.PUBLIC_URL}/tiles/${getTileSprite(
+    let tilesrc = `/tiles/${getTileSprite(
         tile.value,
         tile.variation,
         wallType
@@ -98,7 +98,7 @@ export const FogTile = ({ inSight, explored }) => {
 
 const GroundTile = ({ variation, children }) => {
     // Load the tile directly from the public folder
-    let tilesrc = `${process.env.PUBLIC_URL}/tiles/ground-${variation}.png`;
+    let tilesrc = `/tiles/ground-${variation}.png`;
     return (
         <div
             style={{

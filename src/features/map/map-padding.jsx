@@ -58,7 +58,7 @@ const BoundaryTile = ({
 }) => {
     let inSight = false;
     // Load the tile directly from the public folder
-    let tilesrc = `${process.env.PUBLIC_URL}/tiles/${getTileSprite(
+    let tilesrc = `/tiles/${getTileSprite(
         tileType,
         variation,
         wallType
