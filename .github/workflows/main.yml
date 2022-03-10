@@ -1,7 +1,7 @@
 
 # This is a basic workflow to help you get started with Actions
 
-name: Update deployment
+name: Deploy to remote
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -30,8 +30,7 @@ jobs:
 
     # Deployment
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.4.2
+      uses: JamesIves/github-pages-deploy-action@4.1.7
       with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
+        branch: gh-pages
+        folder: dist
