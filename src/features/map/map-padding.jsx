@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { getTileSprite, FogTile } from './map-tile';
-import { SPRITE_SIZE } from '../../config/constants';
+import { REF_URL, SPRITE_SIZE } from '../../config/constants';
 
 import './styles.scss';
 
@@ -58,11 +58,11 @@ const BoundaryTile = ({
 }) => {
     let inSight = false;
     // Load the tile directly from the public folder
-    let tilesrc = `/tiles/${getTileSprite(
+    let tilesrc = new URL(`./${getTileSprite(
         tileType,
         variation,
         wallType
-    )}.png`;
+    )}.png`, REF_URL).href;
 
     if (sightBox) {
         // check the sight box tiles

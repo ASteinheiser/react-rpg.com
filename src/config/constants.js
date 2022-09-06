@@ -105,3 +105,24 @@ export const SHOCK_DAMAGE = '1d4';
 
 // The maximum amount of journal entries. If this is too large it can slow the game down
 export const MAX_JOURNAL_ENTRIES = 100;
+
+// Reference URL for loading tiles from public/ directory
+export const GET_REF_URL = () => {
+
+    let url = import.meta.url;
+    let pos;
+
+    const isProd = import.meta.env.PROD;
+
+    if (isProd) {
+        pos = url.indexOf('assets');
+    } else {
+        pos = url.indexOf('src');
+    }
+    
+    const newURL = url.substring(0, pos) + 'tiles/';
+
+    return newURL;
+}
+
+export const REF_URL = GET_REF_URL();

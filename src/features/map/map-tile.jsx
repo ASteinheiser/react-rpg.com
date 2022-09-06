@@ -1,16 +1,16 @@
 import React from 'react';
 
 import Flame from '../../components/flame';
-import { SPRITE_SIZE } from '../../config/constants';
+import { SPRITE_SIZE, REF_URL } from '../../config/constants';
 
 const MapTile = ({ tile, wallType, index, sightBox }) => {
     let inSight = false;
     // Load the tile directly from the public folder
-    let tilesrc = `/tiles/${getTileSprite(
+    let tilesrc = new URL(`./${getTileSprite(
         tile.value,
         tile.variation,
         wallType
-    )}.png`;
+    )}.png`, REF_URL).href;
     // if you need to render the sightBox
     if (sightBox) {
         // check the sight box tiles
@@ -98,7 +98,7 @@ export const FogTile = ({ inSight, explored }) => {
 
 const GroundTile = ({ variation, children }) => {
     // Load the tile directly from the public folder
-    let tilesrc = `/tiles/ground-${variation}.png`;
+    let tilesrc = new URL(`./ground-${variation}.png`, REF_URL).href;
     return (
         <div
             style={{
