@@ -41,11 +41,11 @@ const initialState = {
         points: STARTING_ABILITY_POINTS,
     },
     appearance: {
-        hairColour: 0,
-        skinColour: 0,
+        hairColour: 56,
+        skinColour: 48,
         eyeColour: 0,
-        armourColour: 0,
-        clothesColour: 0,
+        armourColour: 230,
+        clothesColour: 190,
     },
     abilities_minimum: {
         min_constitution: 0,

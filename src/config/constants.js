@@ -106,6 +106,15 @@ export const SHOCK_DAMAGE = '1d4';
 // The maximum amount of journal entries. If this is too large it can slow the game down
 export const MAX_JOURNAL_ENTRIES = 100;
 
+// Not entirely sure why, but apparently we need to apply some hue offsets
+// but only to certain items
+export const HUE_OFFSETS = {
+    skinColour: -70,
+    hairColour: -70,
+    armourColour: +70,
+    clothesColour: 0,
+}
+
 // Reference URL for loading tiles from public/ directory
 export const GET_REF_URL = () => {
 

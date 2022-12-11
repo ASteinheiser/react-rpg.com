@@ -19,7 +19,7 @@ import PlayerArmour from './assets/player-armour.png';
 import PlayerClothes from './assets/player-clothes.png';
 import PlayerOutline from './assets/player-outline.png';
 
-import { ANIMATION_SPEED, SPRITE_SIZE, FISTS } from '../../config/constants';
+import { ANIMATION_SPEED, SPRITE_SIZE, FISTS, HUE_OFFSETS } from '../../config/constants';
 
 import './styles.scss';
 
@@ -59,29 +59,25 @@ class Player extends Component {
             let currentTick = 0;
             const ticksPerFrame = 5;
 
-            const {
-                hairColour,
-                skinColour,
-                armourColour,
-                clothesColour,
-            } = this.props.dialog.appearance;
+            const { hairColour, skinColour, armourColour, clothesColour } =
+                this.props.dialog.appearance;
 
             const colours = [
-                ['hair', `hue-rotate(${hairColour - 10}deg)`],
-                ['skin', `hue-rotate(${skinColour - 10}deg)`],
-                ['armour', `hue-rotate(${armourColour - 10}deg)`],
-                ['clothes', `hue-rotate(${clothesColour - 10}deg)`],
+                ['hair', `hue-rotate(${hairColour + HUE_OFFSETS.hairColour}deg)`],
+                ['skin', `hue-rotate(${skinColour + HUE_OFFSETS.skinColour}deg)`],
+                ['armour', `hue-rotate(${armourColour + HUE_OFFSETS.armourColour}deg)`],
+                ['clothes', `hue-rotate(${clothesColour + HUE_OFFSETS.clothesColour}deg)`],
                 ['outline', 'none'],
                 ['eyes', 'none'],
             ];
 
-            const draw = frame => {
+            const draw = (frame) => {
                 // don't allow invalid frames
                 if (frame > 7 || frame < 0) frame = 0;
 
                 ctx.clearRect(0, 0, SPRITE_SIZE, SPRITE_SIZE);
 
-                colours.forEach(colour => {
+                colours.forEach((colour) => {
                     ctx.filter = colour[1];
                     ctx.drawImage(
                         this.sprite[colour[0]],
