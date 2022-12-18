@@ -38,7 +38,7 @@ const monsters = [
     {
         type: 'bat',
         position: [14, 4],
-    },
+    }
 ];
 
 const stairs = {

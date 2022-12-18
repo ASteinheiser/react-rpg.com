@@ -43,7 +43,7 @@ export const Animation = ({
             default:
         }
     } else {
-        startPosition = endPosition;
+        endPosition = startPosition;
     }
 
     const animation = keyframes`

@@ -259,7 +259,10 @@ class Player extends Component {
                     <Animation
                         projectile={this.props.player.monsterProjectile}
                         startPosition={
-                            this.props.player.monsterProjectileTargetPosition
+                            [
+                                this.props.player.monsterProjectileTargetPosition[0] - this.props.player.position[0],
+                                this.props.player.monsterProjectileTargetPosition[1] - this.props.player.position[1],
+                            ]
                         }
                         endPosition={
                             this.props.player.monsterProjectile.target.includes(
