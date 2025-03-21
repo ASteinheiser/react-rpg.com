@@ -1,0 +1,32 @@
+.journal-dialog__container {
+    flex: 1;
+    width: 20em;
+    height: 20em;
+
+    overflow-y: scroll;
+}
+
+.journal-container {
+    position: relative;
+    margin-top: 8px;
+    margin-right: 8px;
+    width: 20em;
+    height: 20em;
+    float: right;
+}
+
+.journal-log {
+    background-color: var(--dark-gray);
+    width: 100%;
+
+    justify-content: center;
+
+    color: var(--white);
+    text-transform: none;
+
+    padding: 12px 15px;
+
+    resize: none;
+
+    border: none;
+}

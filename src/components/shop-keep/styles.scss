@@ -1,15 +1,15 @@
 .shop-keep-animated {
-  transform: scale(0.75);
+    transform: scale(0.8);
 
-  height: 200px;
-  width: 210px;
+    height: 192px;
+    width: 170px;
 
-  animation: moveShopKeep .75s steps(6) infinite;
-  background-position-x: 0px;
+    animation: moveShopKeep 0.75s steps(7) infinite;
+    background-position-x: 0px;
 }
 
 @keyframes moveShopKeep {
-  100% {
-    background-position-x: 1260px;
-  }
+    100% {
+        background-position-x: 1190px;
+    }
 }

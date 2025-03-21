@@ -1,38 +1,46 @@
 .chest-loot__title {
-  font-size: 26px;
-  text-align: center;
+    font-size: 26px;
+    text-align: center;
 
-  padding: 25px 0;
+    padding: 25px 0;
 }
 
 .chest-loot__contents {
-  flex: 1;
-  font-size: 22px;
+    flex: 1;
+    font-size: 22px;
 
-  justify-content: space-around;
-  align-self: center;
+    justify-content: space-around;
+    align-self: center;
 
-  min-width: 150px;
+    min-width: 150px;
 
-  .chest-loot__value--spacing {
-    justify-content: space-between;
-  }
-
-  .chest-loot__item {
-    font-size: 24px;
-    text-align: center;
-
-    .chest-loot__item-name {
-      padding-left: 15px;
-
-      justify-content: center;
+    .chest-loot__value--spacing {
+        justify-content: space-between;
     }
-  }
+
+    .chest-loot__item {
+        font-size: 24px;
+        text-align: center;
+
+        .chest-loot__item-name {
+            padding-left: 15px;
+
+            justify-content: center;
+        }
+    }
 }
 
 .chest-loot__buttons {
-  justify-content: flex-end;
+    justify-content: flex-end;
 
-  align-items: center;
-  padding: 25px 0;
+    align-items: center;
+    padding: 25px 0;
+}
+
+.gold-loot {
+    color: var(--orange);
+}
+
+.exp-loot {
+    color: var(--purple);
 }

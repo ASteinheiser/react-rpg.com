@@ -1,0 +1,17 @@
+.character-customisation__option {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.character-customisation__label {
+    flex: 1;
+}
+
+.character-customisation__picker {
+    flex: 1;
+    margin-left: 1rem;
+
+    float: left;
+    margin-right: 10px;
+}

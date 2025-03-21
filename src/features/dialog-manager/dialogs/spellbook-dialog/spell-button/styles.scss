@@ -1,0 +1,26 @@
+.spellbook-button__container {
+    padding: 5px;
+
+    user-select: none;
+
+    .button__image {
+        position: relative;
+        float: left;
+    }
+}
+
+.active {
+    background-color: #383838 !important;
+}
+
+.active-spell {
+    color: var(--green);
+    text-transform: capitalize;
+    font-size: 12px;
+}
+
+.locked {
+    color: var(--orange);
+    text-transform: capitalize;
+    font-size: 12px;
+}

@@ -1,71 +1,68 @@
 {
-  "projectName": "react-rpg.com",
-  "projectOwner": "ASteinheiser",
+  "projectName": "roll-for-reaction",
+  "projectOwner": "matteas-eden",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
     "README.md"
   ],
   "imageSize": 100,
-  "commit": false,
+  "commit": true,
+  "commitConvention": "eslint",
+  "contributorsSortAlphabetically": true,
   "contributors": [
     {
-      "login": "ASteinheiser",
-      "name": "Andrew Steinheiser",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/9949512?v=4",
-      "profile": "http://iamandrew.io",
+      "login": "Matteas-Eden",
+      "name": "Matt Eden",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/45587386?v=4",
+      "profile": "http://matteas.nz",
       "contributions": [
-        "ideas",
-        "question",
-        "test",
         "code",
         "doc",
-        "maintenance",
-        "tool",
-        "review"
-      ]
-    },
-    {
-      "login": "Alphanumber",
-      "name": "Alphanumber",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/9552208?v=4",
-      "profile": "https://github.com/Alphanumber",
-      "contributions": [
-        "ideas"
-      ]
-    },
-    {
-      "login": "Alaricus",
-      "name": "Alaric von Teplitz",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/15240432?v=4",
-      "profile": "http://www.alaric.us",
-      "contributions": [
-        "question",
         "ideas",
         "review",
-        "code",
-        "bug"
+        "maintenance"
       ]
     },
     {
-      "login": "Saintroi",
-      "name": "Drew Nelson",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/13038366?v=4",
-      "profile": "https://github.com/Saintroi",
+      "login": "Pyxxil",
+      "name": "Josh Hill",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/12526499?v=4",
+      "profile": "https://github.com/Pyxxil",
       "contributions": [
-        "test",
-        "bug",
-        "ideas"
+        "code",
+        "ideas",
+        "review",
+        "doc",
+        "maintenance"
       ]
     },
     {
-      "login": "ajrussellaudio",
-      "name": "Alan Russell",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/1347511?v=4",
-      "profile": "https://twitter.com/ajrussellaudio",
+      "login": "Frosty273",
+      "name": "Kelvin",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/39424472?v=4",
+      "profile": "https://github.com/Frosty273",
       "contributions": [
         "code",
-        "bug"
+        "ideas",
+        "design",
+        "review",
+        "doc",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "KimberleyEvans-Parker",
+      "name": "Kimberley",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/45865186?v=4",
+      "profile": "https://github.com/KimberleyEvans-Parker",
+      "contributions": [
+        "design",
+        "ideas",
+        "doc",
+        "review",
+        "code",
+        "maintenance"
       ]
     }
   ],
