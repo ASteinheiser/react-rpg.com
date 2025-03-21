@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/roll-for-reaction/',
+    base: '/',
     optimizeDeps: {
         esbuildOptions: {
             target: 'esnext',
