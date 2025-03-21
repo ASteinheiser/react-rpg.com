@@ -40,4 +40,4 @@ class ConnectedApp extends Component {
     }
 }
 
-ReactDOM.render(<ConnectedApp />, document.getElementById('roll-for-reaction'));
+ReactDOM.render(<ConnectedApp />, document.getElementById('react-rpg'));
