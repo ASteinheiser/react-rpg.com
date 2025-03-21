@@ -1,14 +1,18 @@
-<img src="public/logo/logo-wide-no-background.png">
-
 # React RPG
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-#### SOFTENG 750/COMPSCI 732
+React RPG is an open-source RPG made with React and Redux. Experience the 2D turn-based, dungeon crawler that comes with two game modes: Story and Endless. Story mode will lead you through a short story while introducing you to the most powerful creatures. In Endless mode, a unique challenge waits around every corner, as no two maps are the same.
 
-_Roll For Reaction_ is an open-source fork of [react-rpg](https://github.com/ASteinheiser/react-rpg.com) created for SOFTENG750/COMPSCI 732 at the University of Auckland. This project aims to enhance the systems already present in the base game by modifying and adding elements to lightly emulate the popular tabletop role-playing game _Dungeons and Dragons: 5th Edition_. In doing so, the following features are planned to be added:
+Play now at [react-rpg.com](https://react-rpg.com)!
+
+There is a [React Native webview wrapper](https://github.com/ASteinheiser/ReactRPGNative) for React RPG, however it's no longer available via Google Play or App Store. If you would like to download React RPG for your mobile device, I recommend downloading the Progressive Web App ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Installing)).
+
+## Now introducing React RPG: 2e
+
+This expansion aims to enhance the systems already present in the base game by modifying and adding elements to lightly emulate the popular tabletop role-playing game _Dungeons and Dragons: 5th Edition_. In doing so, the following features are planned to be added:
 
 | Definitely                                        | Hopefully                                      | Maybe                                    |
 | ------------------------------------------------- | ---------------------------------------------- | ---------------------------------------- |
