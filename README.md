@@ -23,19 +23,24 @@ As a personal fan of DnD:5e, I thought this expansion was wonderful and decided 
 
 ### React RPG: 2nd Edition
 
-| New Features | |
-| ------------------------------------------------- | ---------------------------------------------- |
-| ![check][checkmark] DnD Classes and Races | ![check][checkmark] UI/UX Improvements |
-| ![check][checkmark] DnD Ability Scores for Player | ![check][checkmark] Tutorial |
-| ![check][checkmark] Dice-based Combat | ![check][checkmark] Save/Load System |
-| ![check][checkmark] New Maps/Levels | ![check][checkmark] New Enemies |
-| ![check][checkmark] Character Creation | ![check][checkmark] Customisable Outfit Colour |
-| ![check][checkmark] Additional Items in Shop | ![check][checkmark] Diversity in Enemy Attacks |
-| ![check][checkmark] Spellcasting System | |
-
-> Classes include Fighter, Ranger and Wizard
-
-> Races include Human, Elf and Dwarf
+| New Features | | |
+| ------------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| ![check][checkmark] DnD Classes and Races | Fighter, Ranger and Wizard | |
+| | Human, Elf and Dwarf | |
+| | DnD Ability Scores | |
+| | Customisable Outfit Color | |
+| | | |
+| ![check][checkmark] New Combat Systems | Dice-based Combat | |
+| | Spellcasting System | |
+| | Diversity in Enemy Attacks | |
+| | | |
+| ![check][checkmark] New Content | New Maps and Tiles | |
+| | New Enemies | |
+| | New Items in Shop | |
+| | | |
+| ![check][checkmark] General Improvements | Save/Load System | |
+| | Improved Tutorial | |
+| | | |
 
 Huge thanks to the four individuals that put in the hard work to make this update possible! They are credited in the LICENSE and in the Contributers section at the bottom of this page.
 
