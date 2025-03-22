@@ -21,25 +21,27 @@ During 2020 to 2022, a fork was made called [roll-for-reaction](https://github.c
 
 As a personal fan of DnD:5e, I thought this expansion was wonderful and decided that the official game should merge with this fork, giving way to a new (tongue-in-cheek) era dubbed:
 
-### React RPG: 2nd Edition
+## React RPG: 2nd Edition
 
-| New Features | |
-| ------------------------------------------------- | ---------------------------------------------- |
-| ![check][checkmark] DnD Classes and Races | Fighter, Ranger and Wizard |
-| | Human, Elf and Dwarf |
-| | DnD Ability Scores |
-| | |
-| ![check][checkmark] New Combat Systems | Dice-based Combat |
-| | Spellcasting System |
-| | Diversity in Enemy Attacks |
-| | |
-| ![check][checkmark] New Content | New Maps and Tiles |
-| | New Enemies |
-| | New Items in Shop |
-| | |
-| ![check][checkmark] General Improvements | Save/Load System |
-| | Customisable Outfit Color |
-| | Improved Tutorial |
+![check][checkmark] DnD Classes and Races
+ - Classes: Fighter, Ranger and Wizard
+ - Races: Human, Elf and Dwarf
+ - DnD Ability Scores
+
+![check][checkmark] New Combat Systems
+ - Dice-based Combat
+ - Spellcasting System
+ - Diversity in Enemy Attacks
+
+![check][checkmark] New Content
+ - New Maps and Tiles
+ - New Enemies
+ - New Items in Shop
+
+![check][checkmark] General Improvements
+ - Improved Tutorial
+ - Save/Load System
+ - Customisable Outfit Color
 
 Huge thanks to the four individuals that put in the hard work to make this update possible! They are credited in the LICENSE and in the Contributers section at the bottom of this page.
 
