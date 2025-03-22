@@ -28,7 +28,6 @@ As a personal fan of DnD:5e, I thought this expansion was wonderful and decided 
 | ![check][checkmark] DnD Classes and Races | Fighter, Ranger and Wizard | |
 | | Human, Elf and Dwarf | |
 | | DnD Ability Scores | |
-| | Customisable Outfit Color | |
 | | | |
 | ![check][checkmark] New Combat Systems | Dice-based Combat | |
 | | Spellcasting System | |
@@ -39,6 +38,7 @@ As a personal fan of DnD:5e, I thought this expansion was wonderful and decided 
 | | New Items in Shop | |
 | | | |
 | ![check][checkmark] General Improvements | Save/Load System | |
+| | Customisable Outfit Color | |
 | | Improved Tutorial | |
 | | | |
 
