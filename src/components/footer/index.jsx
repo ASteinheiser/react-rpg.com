@@ -7,11 +7,11 @@ import './styles.scss';
 const Footer = () => {
     return (
         <div className="footer__container">
-            <span>{`Adapted from React-RPG with ♥ by Matt Eden, Kimberley Evans-Parker, Josh Hill & Kelvin Ngor - v${version} - `}</span>
+            <span>{`Made with ♥ by Andrew Steinheiser - v${version} - `}</span>
 
             <a
                 className="footer__link"
-                href="https://github.com/Matteas-Eden/roll-for-reaction"
+                href="https://github.com/ASteinheiser/react-rpg.com"
                 target="_blank"
                 rel="noopener noreferrer"
             >
