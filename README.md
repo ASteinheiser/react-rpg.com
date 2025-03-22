@@ -21,7 +21,7 @@ During 2020 to 2022, a fork was made called [roll-for-reaction](https://github.c
 
 As a personal fan of DnD:5e, I thought this expansion was wonderful and decided that the official game should merge with this fork, giving way to a new (tongue-in-cheek) era dubbed:
 
-## React RPG: 2nd Edition
+### React RPG: 2nd Edition
 
 ![check][checkmark] DnD Classes and Races
  - Classes: Fighter, Ranger and Wizard
