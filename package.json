@@ -10,7 +10,7 @@
         "serve": "vite build && vite preview",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
-        "generate-pwa-assets": "pwa-assets-generator --preset minimal public/logo.svg"
+        "generate-pwa-assets": "pwa-assets-generator --preset minimal public/logo.png"
     },
     "eslintConfig": {
         "extends": [
