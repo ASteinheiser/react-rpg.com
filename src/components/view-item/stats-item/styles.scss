@@ -1,7 +1,13 @@
 .stats-item__container {
-  justify-content: space-between;
+    justify-content: space-between;
 
-  font-size: 22px;
+    font-size: 22px;
 
-  padding: 0 64px;
+    padding: 0 40px;
+}
+
+.stats-item__description {
+    padding: 10px 40px;
+    font-size: 18px;
+    font-style: italic;
 }

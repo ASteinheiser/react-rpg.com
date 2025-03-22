@@ -1,0 +1,23 @@
+.tutorial__navigation {
+    flex: 1;
+    direction: row;
+    align-items: center;
+}
+
+.tutorial__button__prev {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    margin: 5px;
+    align-items: center;
+    justify: center;
+}
+
+.tutorial__button__next {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    margin: 5px;
+    align-items: center;
+    justify: center;
+}

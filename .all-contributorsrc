@@ -7,6 +7,7 @@
     "README.md"
   ],
   "imageSize": 100,
+  "contributorsPerLine": 5,
   "commit": false,
   "contributors": [
     {
@@ -67,7 +68,60 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "Matteas-Eden",
+      "name": "Matt Eden",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/45587386?v=4",
+      "profile": "http://matteas.nz",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "review",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "Pyxxil",
+      "name": "Josh Hill",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/12526499?v=4",
+      "profile": "https://github.com/Pyxxil",
+      "contributions": [
+        "code",
+        "ideas",
+        "review",
+        "doc",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "Frosty273",
+      "name": "Kelvin",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/39424472?v=4",
+      "profile": "https://github.com/Frosty273",
+      "contributions": [
+        "code",
+        "ideas",
+        "design",
+        "review",
+        "doc",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "KimberleyEvans-Parker",
+      "name": "Kimberley",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/45865186?v=4",
+      "profile": "https://github.com/KimberleyEvans-Parker",
+      "contributions": [
+        "design",
+        "ideas",
+        "doc",
+        "review",
+        "code",
+        "maintenance"
+      ]
     }
-  ],
-  "contributorsPerLine": 7
+  ]
 }

@@ -1,21 +1,21 @@
 .footer__container {
-  font-size: 18px;
-  text-transform: none;
+    font-size: 18px;
+    text-transform: none;
 
-  margin: 35px 0 25px;
+    margin: 35px 0 25px;
 
-  align-self: center;
-  text-align: center;
+    align-self: center;
+    text-align: center;
 
-  cursor: default;
-  user-select: none;
+    cursor: default;
+    user-select: none;
 
-  .footer__link {
-    color: var(--gray);
-    text-decoration: none;
+    .footer__link {
+        color: var(--gray);
+        text-decoration: none;
 
-    padding-bottom: 3px;
+        padding-bottom: 3px;
 
-    border-bottom: 1px solid;
-  }
+        border-bottom: 1px solid;
+    }
 }

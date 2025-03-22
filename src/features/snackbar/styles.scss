@@ -1,25 +1,67 @@
 .snackbar__container {
-  background-color: var(--dark-gray);
+    background-color: var(--dark-gray);
 
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
+    position: absolute;
+    top: 10;
+    bottom: 0;
+    right: 0;
+    left: 0;
 
-  text-align: center;
+    text-align: center;
 
-  cursor: default;
-  user-select: none;
+    cursor: default;
+    user-select: none;
 
-  display: flex;
+    display: flex;
 }
 
 .snackbar__text {
-  display: flex;
-  flex: 1;
+    display: flex;
+    flex: 1;
 
-  align-self: center;
-  justify-content: center;
+    align-self: center;
+    justify-content: center;
 
-  padding: 5px 15px 10px 15px;
+    padding: 5px 15px 10px 15px;
+}
+
+.snackbar__equip__text {
+    display: flex;
+    flex: 1;
+
+    align-self: center;
+    justify-content: flex-start;
+
+    padding-top: 7px;
+    padding-left: 5px;
+
+    width: 100vh;
+}
+
+.snackbar__equip__button {
+    height: 36px;
+    width: 40px;
+
+    background-color: var(--dark-gray);
+
+    top: 1.5px;
+    right: 5px;
+    bottom: 1px;
+
+    user-select: none;
+
+    position: absolute;
+
+    z-index: 100;
+
+    .button__icon {
+        font-size: 26px;
+
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

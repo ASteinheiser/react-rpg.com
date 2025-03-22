@@ -1,0 +1,33 @@
+.floor-counter__container {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    width: 150px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    font-size: 24px;
+    font-weight: 500;
+
+    color: rgb(0, 0, 0);
+
+    width: fit-content;
+    margin: auto;
+    padding: 0 7px;
+
+    background: rgba(173, 173, 173, 0.5);
+    border-radius: 7px;
+
+    user-select: none;
+
+    .floor-counter__value {
+        font-size: 28px;
+
+        padding-left: 12px;
+    }
+}

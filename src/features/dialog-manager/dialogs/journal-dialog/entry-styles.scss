@@ -1,0 +1,39 @@
+.journal-entry {
+    font-size: 12px;
+    font-family: 'Montserrat';
+    padding: 0px 5px;
+    line-height: 1.5;
+    margin: -5px 0;
+}
+
+.damage-type,
+.gold,
+.type {
+    color: var(--orange);
+}
+
+.ai,
+.damage-to-player,
+.damage-to-monster {
+    color: var(--light-red);
+}
+
+.experience,
+.level,
+.ability {
+    color: var(--purple);
+}
+
+.mana-gain,
+.restore-mana,
+.score {
+    color: var(--blue);
+}
+
+.projectile,
+.restore-health,
+.health-gain,
+.spell-cast,
+.get-item {
+    color: var(--green);
+}

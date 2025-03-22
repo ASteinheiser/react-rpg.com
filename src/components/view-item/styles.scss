@@ -1,34 +1,38 @@
 .view-item__title {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 
-  padding: 12px 0 8px 12px;
+    padding: 12px 0 8px 12px;
 
-  .view-item__image {
-    margin-right: 16px;
-  }
+    .view-item__image {
+        margin-right: 16px;
+    }
 
-  .view-item__text {
-    font-size: 22px;
+    .view-item__text {
+        font-size: 22px;
 
-    align-self: center;
+        align-self: center;
 
-    max-width: 65%;
-  }
+        max-width: 65%;
+    }
 }
 
 .view-item__stats {
-  flex: 1;
-  justify-content: space-evenly;
+    flex: 1;
+    justify-content: space-evenly;
 }
 
 .view-item__button-container {
-  justify-content: flex-end;
-  flex: 1;
+    justify-content: flex-end;
+    flex: 1;
 
-  .view-item__button {
-    justify-content: space-around;
-    padding-bottom: 16px;
-  }
+    .view-item__button {
+        justify-content: space-around;
+        padding-bottom: 16px;
+    }
+}
+
+.locked {
+    color: red;
 }

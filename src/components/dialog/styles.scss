@@ -1,32 +1,32 @@
 .dialog__container {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  position: absolute;
-  top: 4px;
-  bottom: 4px;
-  left: 4px;
-  right: 4px;
-
-  z-index: 1001;
-
-  background: var(--dark-gray);
-  box-shadow: 1px 2px 50px var(--dark-gray);
-
-  cursor: default;
-  user-select: none;
-
-  .dialog__back-button {
     position: absolute;
-    left: 0;
-    top: 0;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
 
-    font-size: 24px;
+    z-index: 1001;
 
-    border-right: 1px solid;
-    border-bottom: 1px solid;
-    border-radius: 2px;
+    background: var(--dark-gray);
+    box-shadow: 1px 2px 50px var(--dark-gray);
 
-    padding: 12px 16px;
-  }
+    cursor: default;
+    user-select: none;
+
+    .dialog__back-button {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        font-size: 24px;
+
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-radius: 2px;
+
+        padding: 12px 16px;
+    }
 }

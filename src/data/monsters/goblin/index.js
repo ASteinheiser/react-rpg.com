@@ -1,13 +1,18 @@
 import GoblinSprite from './goblin.png';
 
 const Goblin = {
-  hp: 12,
-  maxHp: 12,
-  damage: 4,
-  defence: 3,
-  exp: 25,
-  type: 'goblin',
-  sprite: GoblinSprite
+    hp: 14,
+    maxHp: 14,
+    attackValue: '3d4 + 4',
+    defence: 3,
+    dice: '1d6',
+    exp: 30,
+    type: 'goblin',
+    sprite: { WEST: GoblinSprite, EAST: GoblinSprite },
+    ai: 'normal',
+    originalAI: 'normal',
+    direction: 'WEST',
+    aiTurns: 0,
 };
 
 export default Goblin;
