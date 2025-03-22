@@ -9,7 +9,7 @@
         "preview": "vite preview",
         "serve": "vite build && vite preview",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
+        "deploy": "gh-pages -d dist",
         "generate-pwa-assets": "pwa-assets-generator --preset minimal public/logo.png"
     },
     "eslintConfig": {
@@ -62,7 +62,7 @@
         "lint-staged": "^12.1.2",
         "prettier": "^2.4.0",
         "vite": "^2.5.10",
-        "vite-plugin-pwa": "^0.21.2"
+        "vite-plugin-pwa": "^0.12.8"
     },
     "browserslist": [
         ">0.2%",
