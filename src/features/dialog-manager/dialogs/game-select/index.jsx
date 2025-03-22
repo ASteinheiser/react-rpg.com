@@ -15,7 +15,7 @@ const GameSelect = ({ mainGameDialog, endlessGameDialog, loadGame }) => {
         <Dialog>
             <span className="flex-row game-select__title align-center">
                 <img
-                    src="/logo-no-bg.png"
+                    src="/react-rpg.com/logo-no-bg.png"
                     alt="React RPG: 2e"
                     style={{ width: 64, height: 64, marginRight: 8 }}
                 />
