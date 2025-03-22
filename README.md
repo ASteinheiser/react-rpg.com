@@ -10,23 +10,34 @@ Play now at [react-rpg.com](https://react-rpg.com)!
 
 There is a [React Native webview wrapper](https://github.com/ASteinheiser/ReactRPGNative) for React RPG, however it's no longer available via Google Play or App Store. If you would like to download React RPG for your mobile device, I recommend downloading the Progressive Web App ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Installing)).
 
-## Now introducing React RPG: 2e
+### Read more about React RPG
+- [Medium: Making an RPG with React + Redux](https://medium.com/@andrewsteinheiser/making-an-rpg-with-react-redux-dcfffdb06797)
+- [Made With React Native Interview](http://madewithreactnative.com/react-rpg/)
+- [Medium: The Future of React RPG](https://medium.com/@andrewsteinheiser/the-future-of-react-rpg-be257c950eee)
 
-This expansion aims to enhance the systems already present in the base game by modifying and adding elements to lightly emulate the popular tabletop role-playing game _Dungeons and Dragons: 5th Edition_. In doing so, the following features are planned to be added:
+# React RPG: 2e (Major Update)
 
-| Definitely                                        | Hopefully                                      | Maybe                                    |
-| ------------------------------------------------- | ---------------------------------------------- | ---------------------------------------- |
-| ![check][checkmark] DnD Ability Scores for Player | ![check][checkmark] UI/UX Improvements         | ![cross][cross] Particle Effects         |
-| ![check][checkmark] DnD Classes and Races         | ![cross][checkmark] Tutorial                   | ![cross][cross] Class-specific Abilities |
-| ![check][checkmark] Dice-based Combat             | ![check][checkmark] Save/Load System           | ![cross][cross] Party System             |
-| ![check][checkmark] New Maps/Levels               | ![check][checkmark] New Enemies                | ![cross][cross] Additional Game Modes    |
-| ![check][checkmark] Character Creation            | ![check][checkmark] Customisable Outfit Colour |                                          |
-| ![check][checkmark] Additional Items in Shop      | ![check][checkmark] Diversity in Enemy Attacks |                                          |
-| ![check][checkmark] Spellcasting System           |                                                |                                          |
+During 2020 and 2022, a fork was made called [roll-for-reaction](https://github.com/Matteas-Eden/roll-for-reaction), which "aimed to enhance the systems already present in the base game by modifying and adding elements to lightly emulate the popular tabletop role-playing game _Dungeons and Dragons: 5th Edition_".
+
+As a personal fan of DnD:5e, I thought this expansion was wonderful and decided that the official game should merge with this fork, giving way to a new (tongue-in-cheek) era dubbed:
+
+### React RPG: 2nd Edition
+
+| New Features | |
+| ------------------------------------------------- | ---------------------------------------------- |
+| ![check][checkmark] DnD Classes and Races | ![check][checkmark] UI/UX Improvements |
+| ![check][checkmark] DnD Ability Scores for Player | ![check][checkmark] Tutorial |
+| ![check][checkmark] Dice-based Combat | ![check][checkmark] Save/Load System |
+| ![check][checkmark] New Maps/Levels | ![check][checkmark] New Enemies |
+| ![check][checkmark] Character Creation | ![check][checkmark] Customisable Outfit Colour |
+| ![check][checkmark] Additional Items in Shop | ![check][checkmark] Diversity in Enemy Attacks |
+| ![check][checkmark] Spellcasting System | |
 
 > Classes include Fighter, Ranger and Wizard
 
 > Races include Human, Elf and Dwarf
+
+Huge thanks to the four individuals that put in the hard work to make this update possible! They are credited both in the LICENSE and in the Contributers section at the bottom of this page.
 
 ## Developer Instructions
 
@@ -90,4 +101,3 @@ Thanks goes to all of these wonderful people who helped in making this project a
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 [checkmark]: https://api.iconify.design/octicon:check.svg?color=green 'check'
-[cross]: https://api.iconify.design/octicon:x.svg?color=red&height=16 'cross'
