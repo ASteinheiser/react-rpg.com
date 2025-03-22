@@ -22,7 +22,7 @@ const App = ({ appState, world, dialog }) => {
     // disable scrolling of the page
     // prevents iOS Safari bouncing during movement
     useEffect(() => {
-        disableBodyScroll(document.getElementById('roll-for-reaction'));
+        disableBodyScroll(document.getElementById('react-rpg'));
         return clearAllBodyScrollLocks;
     }, []);
 
@@ -51,11 +51,7 @@ const App = ({ appState, world, dialog }) => {
             <>
                 <div className={`centered flex-row`}>
                     <JournalSide disabled={disableJournal} />
-                    <div
-                        className={`centered ${
-                            sideMenu ? 'flex-row' : 'flex-column'
-                        }`}
-                    >
+                    <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
                         <div className={'centered flex-row'}>
                             <Viewport>
                                 <World />
@@ -96,11 +92,7 @@ const App = ({ appState, world, dialog }) => {
                 >
                     <JournalSide disabled={disableJournal} />
                 </div>
-                <div
-                    className={`centered ${
-                        sideMenu ? 'flex-row' : 'flex-column'
-                    }`}
-                >
+                <div className={`centered ${sideMenu ? 'flex-row' : 'flex-column'}`}>
                     <div className={'centered flex-row'}>
                         <Viewport>
                             <World />
