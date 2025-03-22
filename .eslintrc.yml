@@ -1,0 +1,99 @@
+extends:
+  - react-app
+rules:
+  semi: warn
+  no-extra-semi: warn
+  no-irregular-whitespace: warn
+  no-unsafe-negation: warn
+  block-scoped-var: warn
+  dot-notation: warn
+  no-empty-function: warn
+  no-eq-null: warn
+  no-floating-decimal: warn
+  no-invalid-this: warn
+  no-implicit-globals: warn
+  no-implicit-coercion: warn
+  no-warning-comments: warn
+  no-useless-return: warn
+  no-new: warn
+  no-multi-spaces:
+    - warn
+    - exceptions:
+        ImportDeclaration: true
+  no-undef-init: warn
+  no-undefined: warn
+  computed-property-spacing:
+    - warn
+    - never
+  comma-style:
+    - warn
+    - last
+  comma-spacing:
+    - warn
+    - before: false
+      after: true
+  comma-dangle:
+    - warn
+    - never
+  camelcase: warn
+  brace-style:
+    - warn
+    - stroustrup
+    - allowSingleLine: true
+  block-spacing: warn
+  array-element-newline:
+    - warn
+    - consistent
+  array-bracket-spacing: warn
+  array-bracket-newline:
+    - warn
+    - consistent
+  key-spacing: warn
+  jsx-quotes:
+    - warn
+    - prefer-single
+  implicit-arrow-linebreak: warn
+  func-style:
+    - warn
+    - declaration
+    - allowArrowFunctions: true
+  func-names: warn
+  func-name-matching: warn
+  func-call-spacing: warn
+  no-trailing-spaces: warn
+  no-tabs: warn
+  no-new-object: warn
+  no-nested-ternary: warn
+  no-negated-condition: warn
+  no-multiple-empty-lines: warn
+  no-mixed-spaces-and-tabs: warn
+  max-lines:
+    - warn
+    - max: 500
+  quote-props:
+    - warn
+    - as-needed
+  prefer-object-spread: warn
+  one-var-declaration-per-line: warn
+  no-whitespace-before-property: warn
+  no-unneeded-ternary: warn
+  switch-colon-spacing: warn
+  space-before-function-paren:
+    - warn
+    - never
+  template-curly-spacing: warn
+  rest-spread-spacing: warn
+  prefer-template: warn
+  prefer-destructuring: warn
+  prefer-const: warn
+  no-var: warn
+  prefer-arrow-callback: warn
+  object-shorthand: warn
+  no-class-assign: warn
+  no-duplicate-imports: warn
+  no-confusing-arrow: warn
+  constructor-super: warn
+  arrow-spacing: warn
+  arrow-parens:
+    - warn
+    - as-needed

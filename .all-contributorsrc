@@ -1,0 +1,73 @@
+{
+  "projectName": "react-rpg.com",
+  "projectOwner": "ASteinheiser",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "ASteinheiser",
+      "name": "Andrew Steinheiser",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/9949512?v=4",
+      "profile": "http://iamandrew.io",
+      "contributions": [
+        "ideas",
+        "question",
+        "test",
+        "code",
+        "doc",
+        "maintenance",
+        "tool",
+        "review"
+      ]
+    },
+    {
+      "login": "Alphanumber",
+      "name": "Alphanumber",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/9552208?v=4",
+      "profile": "https://github.com/Alphanumber",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "Alaricus",
+      "name": "Alaric von Teplitz",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15240432?v=4",
+      "profile": "http://www.alaric.us",
+      "contributions": [
+        "question",
+        "ideas",
+        "review",
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "Saintroi",
+      "name": "Drew Nelson",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/13038366?v=4",
+      "profile": "https://github.com/Saintroi",
+      "contributions": [
+        "test",
+        "bug",
+        "ideas"
+      ]
+    },
+    {
+      "login": "ajrussellaudio",
+      "name": "Alan Russell",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1347511?v=4",
+      "profile": "https://twitter.com/ajrussellaudio",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

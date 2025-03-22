@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/react-rpg.com/sw.js', { scope: '/react-rpg.com/' })})}
