@@ -17,7 +17,7 @@ There is a [React Native webview wrapper](https://github.com/ASteinheiser/ReactR
 
 # React RPG: 2e (Major Update)
 
-During 2020 and 2022, a fork was made called [roll-for-reaction](https://github.com/Matteas-Eden/roll-for-reaction), which "aimed to enhance the systems already present in the base game by modifying and adding elements to lightly emulate the popular tabletop role-playing game _Dungeons and Dragons: 5th Edition_".
+During 2020 to 2022, a fork was made called [roll-for-reaction](https://github.com/Matteas-Eden/roll-for-reaction), which "aimed to enhance the systems already present in the base game by modifying and adding elements to lightly emulate the popular tabletop role-playing game _Dungeons and Dragons: 5th Edition_".
 
 As a personal fan of DnD:5e, I thought this expansion was wonderful and decided that the official game should merge with this fork, giving way to a new (tongue-in-cheek) era dubbed:
 
@@ -37,36 +37,27 @@ As a personal fan of DnD:5e, I thought this expansion was wonderful and decided 
 
 > Races include Human, Elf and Dwarf
 
-Huge thanks to the four individuals that put in the hard work to make this update possible! They are credited both in the LICENSE and in the Contributers section at the bottom of this page.
+Huge thanks to the four individuals that put in the hard work to make this update possible! They are credited in the LICENSE and in the Contributers section at the bottom of this page.
 
-## Developer Instructions
+## Developer Quickstart
 
-The game is hosted via GitHub pages at https://matteas.nz/roll-for-reaction, but for development purposes it is a requirement to be able to run the game locally.
+1. Clone the repository
 
-#### Requirements
+    `git clone https://github.com/ASteinheiser/react-rpg.com`
 
-In order to run _Roll for Reaction_ locally, you must ensure you have setup, installed and tested:
+1. Change to the directory containing the repository
 
--   `git`
--   `yarn`
+    `cd react-rpg.com`
 
-This implementation is fully supported and tested on Arch Linux and Windows 10.
+1. Ensure you are using the correct node version
 
-#### Install & Setup
+    `nvm use`
 
-1. Clone the repo
-
-    `git clone https://github.com/Matteas-Eden/roll-for-reaction`
-
-2. Change to the directory containing the repository
-
-    `cd roll-for-reaction`
-
-3. Install the dependencies
+1. Install the dependencies
 
     `yarn install --frozen-lockfile`
 
-4. Start the game locally
+1. Start the game locally
 
     `yarn start`
 
