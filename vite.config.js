@@ -21,7 +21,8 @@ export default defineConfig({
             manifest: {
                 name: 'React RPG: 2e',
                 short_name: 'React RPG: 2e',
-                theme_color: '#0f0f0f',
+                theme_color: '#333333',
+                background_color: '#333333',
                 icons: [
                     {
                         src: 'pwa-64x64.png',
