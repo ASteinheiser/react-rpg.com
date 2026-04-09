@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import ReactGA from 'react-ga4';
 
 import store, { persistor } from './config/store';
 import App from './App';
@@ -21,6 +22,9 @@ soundManager.setup({
     debugMode: false,
     ignoreMobileRestrictions: true,
 });
+
+ReactGA.initialize('G-BV6JJG4M97');
+ReactGA.send({ hitType: 'pageview', page: '/', title: 'React RPG: 2e' });
 
 class ConnectedApp extends Component {
     // refresh the local storage in case the redux store structure is old
