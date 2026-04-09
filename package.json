@@ -62,7 +62,7 @@
         "husky": "^7.0.4",
         "lint-staged": "^12.1.2",
         "prettier": "^2.4.0",
-        "vite": "^2.5.10",
+        "vite": "^6.4.2",
         "vite-plugin-pwa": "^0.12.8"
     },
     "browserslist": [
