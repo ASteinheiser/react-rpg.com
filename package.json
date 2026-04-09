@@ -40,6 +40,7 @@
         "react-color": "^2.19.0",
         "react-device-detect": "^2.1.2",
         "react-dom": "^17.0.0",
+        "react-ga4": "^3.0.1",
         "react-redux": "^7.2.0",
         "react-sound": "^1.2.0",
         "react-timeout": "^2.0.0",
