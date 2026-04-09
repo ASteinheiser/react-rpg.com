@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import ReactGA from "react-ga4";
+import ReactGA from 'react-ga4';
 
 import store, { persistor } from './config/store';
 import App from './App';
